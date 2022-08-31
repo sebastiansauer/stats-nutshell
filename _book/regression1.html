@@ -178,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./causality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Untitled</span></a>
+  <a href="./causality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Causality</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -203,15 +203,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#frequentist" id="toc-frequentist" class="nav-link" data-scroll-target="#frequentist"> <span class="header-section-number">3.5.1</span> Frequentist</a></li>
   <li><a href="#bayesian" id="toc-bayesian" class="nav-link" data-scroll-target="#bayesian"> <span class="header-section-number">3.5.2</span> Bayesian</a></li>
+  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance"> <span class="header-section-number">3.5.3</span> Model performance</a></li>
+  <li><a href="#model-check" id="toc-model-check" class="nav-link" data-scroll-target="#model-check"> <span class="header-section-number">3.5.4</span> Model check</a></li>
+  <li><a href="#get-some-predictions" id="toc-get-some-predictions" class="nav-link" data-scroll-target="#get-some-predictions"> <span class="header-section-number">3.5.5</span> Get some predictions</a></li>
+  <li><a href="#plot-the-model" id="toc-plot-the-model" class="nav-link" data-scroll-target="#plot-the-model"> <span class="header-section-number">3.5.6</span> Plot the model</a></li>
   </ul></li>
-  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance"> <span class="header-section-number">3.6</span> Model performance</a></li>
-  <li><a href="#model-check" id="toc-model-check" class="nav-link" data-scroll-target="#model-check"> <span class="header-section-number">3.7</span> Model check</a></li>
-  <li><a href="#more-of-this" id="toc-more-of-this" class="nav-link" data-scroll-target="#more-of-this"> <span class="header-section-number">3.8</span> More of this</a></li>
-  <li><a href="#multiple-metric-predictors" id="toc-multiple-metric-predictors" class="nav-link" data-scroll-target="#multiple-metric-predictors"> <span class="header-section-number">3.9</span> Multiple metric predictors</a></li>
-  <li><a href="#one-nominal-predictor" id="toc-one-nominal-predictor" class="nav-link" data-scroll-target="#one-nominal-predictor"> <span class="header-section-number">3.10</span> One nominal predictor</a></li>
-  <li><a href="#one-metric-and-one-nominal-predictor" id="toc-one-metric-and-one-nominal-predictor" class="nav-link" data-scroll-target="#one-metric-and-one-nominal-predictor"> <span class="header-section-number">3.11</span> One metric and one nominal predictor</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"> <span class="header-section-number">3.12</span> Exercises</a></li>
-  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"> <span class="header-section-number">3.13</span> Lab</a></li>
+  <li><a href="#more-of-this" id="toc-more-of-this" class="nav-link" data-scroll-target="#more-of-this"> <span class="header-section-number">3.6</span> More of this</a></li>
+  <li><a href="#multiple-metric-predictors" id="toc-multiple-metric-predictors" class="nav-link" data-scroll-target="#multiple-metric-predictors"> <span class="header-section-number">3.7</span> Multiple metric predictors</a></li>
+  <li><a href="#one-nominal-predictor" id="toc-one-nominal-predictor" class="nav-link" data-scroll-target="#one-nominal-predictor"> <span class="header-section-number">3.8</span> One nominal predictor</a></li>
+  <li><a href="#one-metric-and-one-nominal-predictor" id="toc-one-metric-and-one-nominal-predictor" class="nav-link" data-scroll-target="#one-metric-and-one-nominal-predictor"> <span class="header-section-number">3.9</span> One metric and one nominal predictor</a></li>
+  <li><a href="#what-about-correlation" id="toc-what-about-correlation" class="nav-link" data-scroll-target="#what-about-correlation"> <span class="header-section-number">3.10</span> What about correlation?</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"> <span class="header-section-number">3.11</span> Exercises</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"> <span class="header-section-number">3.12</span> Lab</a></li>
   </ul>
 </nav>
     </div>
@@ -343,8 +346,8 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter   | Median |         95% CI |   pd | % in ROPE |  Rhat |     ESS |                   Prior
 ----------------------------------------------------------------------------------------------------
-(Intercept) |  30.03 | [26.94, 33.35] | 100% |        0% | 1.000 | 3696.00 | Normal (20.09 +- 15.07)
-hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 0.999 | 3527.00 |   Normal (0.00 +- 0.22)</code></pre>
+(Intercept) |  30.01 | [26.71, 33.35] | 100% |        0% | 1.000 | 3646.00 | Normal (20.09 +- 15.07)
+hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.000 | 3596.00 |   Normal (0.00 +- 0.22)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -360,9 +363,8 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 </div>
 </div>
 </section>
-</section>
-<section id="model-performance" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="model-performance"><span class="header-section-number">3.6</span> Model performance</h2>
+<section id="model-performance" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="model-performance"><span class="header-section-number">3.5.3</span> Model performance</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -376,35 +378,72 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 <div class="cell-output cell-output-stdout">
 <pre><code># Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.586 (95% CI [0.377, 0.739])</code></pre>
+  Conditional R2: 0.583 (95% CI [0.370, 0.742])</code></pre>
 </div>
 </div>
 </section>
-<section id="model-check" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="model-check"><span class="header-section-number">3.7</span> Model check</h2>
-<div class="cell" data-fit-width="10">
+<section id="model-check" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="model-check"><span class="header-section-number">3.5.4</span> Model check</h3>
+<div class="cell" data-fit-width="10" data-fig.asp="1">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="regression1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-fit-width="10" data-fig.asp="1">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="regression1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<p><img src="regression1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
 </div>
 </section>
-<section id="more-of-this" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="more-of-this"><span class="header-section-number">3.8</span> More of this</h2>
-<p>More technical details for gauging model performance and model quality, can be found on the site of <a href="https://easystats.github.io/performance/">the R package “performance</a>.</p>
+<section id="get-some-predictions" class="level3" data-number="3.5.5">
+<h3 data-number="3.5.5" class="anchored" data-anchor-id="get-some-predictions"><span class="header-section-number">3.5.5</span> Get some predictions</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lm1_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm1_freq)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>lm1_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model-based Expectation
+
+hp     | Predicted |   SE |         95% CI
+------------------------------------------
+52.00  |     26.55 | 1.18 | [24.15, 28.95]
+83.44  |     24.41 | 0.94 | [22.49, 26.32]
+114.89 |     22.26 | 0.75 | [20.72, 23.80]
+146.33 |     20.11 | 0.68 | [18.72, 21.51]
+177.78 |     17.97 | 0.75 | [16.43, 19.50]
+209.22 |     15.82 | 0.93 | [13.92, 17.73]
+240.67 |     13.68 | 1.17 | [11.29, 16.07]
+272.11 |     11.53 | 1.44 | [ 8.59, 14.48]
+303.56 |      9.39 | 1.73 | [ 5.86, 12.92]
+335.00 |      7.24 | 2.02 | [ 3.11, 11.38]
+
+Variable predicted: mpg
+Predictors modulated: hp</code></pre>
+</div>
+</div>
+<p>More details on the above function can be found on the <a href="https://easystats.github.io/modelbased/reference/estimate_expectation.html#functions-for-estimating-predicted-values-and-uncertainty">respective page at the easystats site</a>.</p>
 </section>
-<section id="multiple-metric-predictors" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="multiple-metric-predictors"><span class="header-section-number">3.9</span> Multiple metric predictors</h2>
+<section id="plot-the-model" class="level3" data-number="3.5.6">
+<h3 data-number="3.5.6" class="anchored" data-anchor-id="plot-the-model"><span class="header-section-number">3.5.6</span> Plot the model</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm1_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="regression1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="more-of-this" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="more-of-this"><span class="header-section-number">3.6</span> More of this</h2>
+<p>More technical details for gauging model performance and model quality, can be found on the site of <a href="https://easystats.github.io/performance/">the R package “performance</a> at the easystats site.</p>
+</section>
+<section id="multiple-metric-predictors" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="multiple-metric-predictors"><span class="header-section-number">3.7</span> Multiple metric predictors</h2>
 <p>Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lm2_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>lm2_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter   | Coefficient |       SE |         95% CI | t(29) |      p
 ----------------------------------------------------------------------
@@ -420,45 +459,57 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 </div>
 <p>Similarly for Bayes inference:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>lm2_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lm2_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Results</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter   | Median |         95% CI |     pd | % in ROPE |  Rhat |     ESS |                   Prior
 ------------------------------------------------------------------------------------------------------
-(Intercept) |  30.71 | [27.93, 33.49] |   100% |        0% | 1.000 | 4751.00 | Normal (20.09 +- 15.07)
-hp          |  -0.02 | [-0.05,  0.00] | 96.55% |      100% | 1.001 | 1918.00 |   Normal (0.00 +- 0.22)
-disp        |  -0.03 | [-0.05, -0.01] |   100% |      100% | 1.001 | 1944.00 |   Normal (0.00 +- 0.12)</code></pre>
+(Intercept) |  30.75 | [28.04, 33.44] |   100% |        0% | 1.000 | 3914.00 | Normal (20.09 +- 15.07)
+hp          |  -0.02 | [-0.05,  0.00] | 96.03% |      100% | 1.001 | 2190.00 |   Normal (0.00 +- 0.22)
+disp        |  -0.03 | [-0.05, -0.01] |   100% |      100% | 1.000 | 2272.00 |   Normal (0.00 +- 0.12)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
   using a MCMC distribution approximation.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm2_bayes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm2_bayes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="regression1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<p><img src="regression1_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm2_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm2_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.729 (95% CI [0.571, 0.842])</code></pre>
+  Conditional R2: 0.731 (95% CI [0.589, 0.839])</code></pre>
+</div>
+</div>
+<p>Depending on the value of <code>disp</code> the prediction of <code>mpg</code> from <code>hp</code> will vary:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>lm2_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm2_freq)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm2_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="regression1_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="one-nominal-predictor" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="one-nominal-predictor"><span class="header-section-number">3.10</span> One nominal predictor</h2>
+<section id="one-nominal-predictor" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="one-nominal-predictor"><span class="header-section-number">3.8</span> One nominal predictor</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> <span class="fu">factor</span>(am), <span class="at">data =</span> mtcars)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_f =</span> <span class="fu">factor</span>(am))</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am_f, <span class="at">data =</span> mtcars2)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter   | Coefficient |   SE |         95% CI | t(30) |      p
 ------------------------------------------------------------------
 (Intercept) |       17.15 | 1.12 | [14.85, 19.44] | 15.25 | &lt; .001
-am [1]      |        7.24 | 1.76 | [ 3.64, 10.85] |  4.11 | &lt; .001</code></pre>
+am f [1]    |        7.24 | 1.76 | [ 3.64, 10.85] |  4.11 | &lt; .001</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -467,38 +518,50 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a, <span class="at">at =</span> <span class="st">"am"</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>lm3a_means </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a, <span class="at">at =</span> <span class="st">"am_f"</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>lm3a_means </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Estimated Marginal Means
 
-am   |  Mean |   SE |         95% CI
+am_f |  Mean |   SE |         95% CI
 ------------------------------------
-0.00 | 17.15 | 1.12 | [14.85, 19.44]
-1.00 | 24.39 | 1.36 | [21.62, 27.17]
+0    | 17.15 | 1.12 | [14.85, 19.44]
+1    | 24.39 | 1.36 | [21.62, 27.17]
 
-Marginal means estimated at am</code></pre>
+Marginal means estimated at am_f</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(am), <span class="at">y =</span> mpg) <span class="sc">+</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">data =</span> lm3a_means,</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> <span class="st">"orange"</span>,</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> CI_low, <span class="at">ymax =</span> CI_high, <span class="at">y =</span> Mean)) <span class="sc">+</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm3a_means, <span class="fu">aes</span>(<span class="at">y =</span> Mean, <span class="at">group =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="regression1_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<p><img src="regression1_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Note that we should have converted <code>am</code> to a factor variable before fitting the model. Otherwise, the plot won’t work.</p>
+<p>Here’s a more hand-crafted version of the last plot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars2) <span class="sc">+</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> am_f, <span class="at">y =</span> mpg) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">data =</span> lm3a_means,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> <span class="st">"orange"</span>,</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> CI_low, <span class="at">ymax =</span> CI_high, <span class="at">y =</span> Mean)) <span class="sc">+</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm3a_means, <span class="fu">aes</span>(<span class="at">y =</span> Mean, <span class="at">group =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="regression1_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="one-metric-and-one-nominal-predictor" class="level2" data-number="3.11">
-<h2 data-number="3.11" class="anchored" data-anchor-id="one-metric-and-one-nominal-predictor"><span class="header-section-number">3.11</span> One metric and one nominal predictor</h2>
+<section id="one-metric-and-one-nominal-predictor" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="one-metric-and-one-nominal-predictor"><span class="header-section-number">3.9</span> One metric and one nominal predictor</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> <span class="fu">factor</span>(cyl), <span class="at">data =</span> mtcars)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl))</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars2)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter   | Coefficient |   SE |          95% CI | t(28) |      p
 -------------------------------------------------------------------
@@ -513,17 +576,55 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
   using a Wald t-distribution approximation.</code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>lm4_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm4)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm4_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="regression1_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
-<section id="exercises" class="level2" data-number="3.12">
-<h2 data-number="3.12" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.12</span> Exercises</h2>
+<section id="what-about-correlation" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="what-about-correlation"><span class="header-section-number">3.10</span> What about correlation?</h2>
+<p>Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.</p>
+<p>Let’s get the correlation matrix of the variables in involved in <code>lm4</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lm4_corr <span class="ot">&lt;-</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, disp) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>()</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>lm4_corr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Correlation Matrix (pearson-method)
+
+Parameter1 | Parameter2 |     r |         95% CI | t(30) |         p
+--------------------------------------------------------------------
+mpg        |         hp | -0.78 | [-0.89, -0.59] | -6.74 | &lt; .001***
+mpg        |       disp | -0.85 | [-0.92, -0.71] | -8.75 | &lt; .001***
+hp         |       disp |  0.79 | [ 0.61,  0.89] |  7.08 | &lt; .001***
+
+p-value adjustment method: Holm (1979)
+Observations: 32</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">summary</span>(lm4_corr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="regression1_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.11</span> Exercises</h2>
 <ol type="1">
 <li><a href="https://datenwerk.netlify.app/post/mtcars-simple1/mtcars-simple1/">mtcars simple 1</a></li>
 <li><a href="https://datenwerk.netlify.app/post/mtcars-simple2/mtcars-simple2/">mtcars simple 2</a></li>
 <li><a href="https://datenwerk.netlify.app/post/mtcars-simple3/mtcars-simple3/">mtcars simple 3</a></li>
 </ol>
 </section>
-<section id="lab" class="level2" data-number="3.13">
-<h2 data-number="3.13" class="anchored" data-anchor-id="lab"><span class="header-section-number">3.13</span> Lab</h2>
+<section id="lab" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="lab"><span class="header-section-number">3.12</span> Lab</h2>
 <p>Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.</p>
 
 

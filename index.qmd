@@ -273,8 +273,10 @@ All R packages are accessible through the course book; please consult the releva
 The most important R packages for this course are:
 
   - tidyverse
-  - parameters
-  - see
+  - easystats
+  
+The following packages are useful for data access (but not strictly mandatory):
+
   - gapminder
   - nycflights13
   - fivethirtyeight

@@ -1,4 +1,1 @@
----
-title: "Untitled"
-editor: visual
----
+# Causality

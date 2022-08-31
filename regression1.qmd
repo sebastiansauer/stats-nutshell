@@ -113,7 +113,7 @@ plot(parameters(lm1_bayes))
 ```
 
 
-## Model performance
+### Model performance
 
 
 
@@ -128,23 +128,48 @@ r2(lm1_bayes)
 
 
 
-## Model check
+### Model check
 
 ```{r}
 #| fit-width: 10
 #| out-width: "100%"
+#| fig-asp: 1
 check_model(lm1_freq)
 ```
 
 
 ```{r}
+#| fit-width: 10
+#| out-width: "100%"
+#| fig-asp: 1
 check_model(lm1_bayes)
 ```
+
+
+### Get some predictions
+
+```{r}
+lm1_pred <- estimate_relation(lm1_freq)
+lm1_pred
+```
+
+
+More details on the above function can be found on the [respective page at the easystats site](https://easystats.github.io/modelbased/reference/estimate_expectation.html#functions-for-estimating-predicted-values-and-uncertainty).
+
+
+
+### Plot the model
+
+
+```{r}
+plot(lm1_pred)
+```
+
 
 ## More of this
 
 More technical details for gauging model performance and model quality,
-can be found on the site of [the R package "performance](https://easystats.github.io/performance/).
+can be found on the site of [the R package "performance](https://easystats.github.io/performance/) at the easystats site.
 
 
 
@@ -174,11 +199,24 @@ r2(lm2_bayes)
 
 
 
+Depending on the value of `disp` the prediction of `mpg` from `hp` will vary:
+
+```{r}
+lm2_pred <- estimate_relation(lm2_freq)
+plot(lm2_pred)
+```
+
+
+
 ## One nominal predictor
 
 
 ```{r}
-lm3a <- lm(mpg ~ factor(am), data = mtcars)
+mtcars2 <-
+  mtcars %>% 
+  mutate(am_f = factor(am))
+
+lm3a <- lm(mpg ~ am_f, data = mtcars2)
 parameters(lm3a)
 ```
 
@@ -186,13 +224,23 @@ parameters(lm3a)
 
 
 ```{r}
-lm3a_means <- estimate_means(lm3a, at = "am")
+lm3a_means <- estimate_means(lm3a, at = "am_f")
 lm3a_means 
 ```
 
 ```{r}
-ggplot(mtcars) +
-  aes(x = factor(am), y = mpg) +
+plot(lm3a_means)
+```
+Note that we should have converted `am` to a factor variable before fitting the model.
+Otherwise, the plot won't work.
+
+
+Here's a more hand-crafted version of the last plot:
+
+
+```{r}
+ggplot(mtcars2) +
+  aes(x = am_f, y = mpg) +
   geom_violin() +
   geom_jitter(width = .1, alpha = .5) +
   geom_pointrange(data = lm3a_means,
@@ -206,11 +254,42 @@ ggplot(mtcars) +
 
 
 ```{r}
-lm4 <- lm(mpg ~ hp + factor(cyl), data = mtcars)
+mtcars2 <-
+  mtcars %>% 
+  mutate(cyl = factor(cyl))
+
+lm4 <- lm(mpg ~ hp + cyl, data = mtcars2)
 parameters(lm4)
 ```
 
 
+```{r}
+lm4_pred <- estimate_relation(lm4)
+plot(lm4_pred)
+```
+
+
+## What about correlation?
+
+
+Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.
+
+Let's get the correlation matrix of the variables in involved in `lm4`.
+
+```{r}
+lm4_corr <- 
+  mtcars %>% 
+  select(mpg, hp, disp) %>% 
+  correlation()
+
+lm4_corr
+```
+
+
+
+```{r}
+plot(summary(lm4_corr))
+```
 
 
 

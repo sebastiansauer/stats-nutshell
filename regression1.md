@@ -184,8 +184,8 @@ parameters(lm1_bayes)
 ```
 Parameter   | Median |         95% CI |   pd | % in ROPE |  Rhat |     ESS |                   Prior
 ----------------------------------------------------------------------------------------------------
-(Intercept) |  30.03 | [26.94, 33.35] | 100% |        0% | 1.000 | 3696.00 | Normal (20.09 +- 15.07)
-hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 0.999 | 3527.00 |   Normal (0.00 +- 0.22)
+(Intercept) |  30.01 | [26.71, 33.35] | 100% |        0% | 1.000 | 3646.00 | Normal (20.09 +- 15.07)
+hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.000 | 3596.00 |   Normal (0.00 +- 0.22)
 ```
 :::
 
@@ -215,7 +215,7 @@ plot(parameters(lm1_bayes))
 
 
 
-## Model performance
+### Model performance
 
 
 
@@ -245,7 +245,7 @@ r2(lm1_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.586 (95% CI [0.377, 0.739])
+  Conditional R2: 0.583 (95% CI [0.370, 0.742])
 ```
 :::
 :::
@@ -253,10 +253,10 @@ r2(lm1_bayes)
 
 
 
-## Model check
+### Model check
 
 
-::: {.cell fit-width='10'}
+::: {.cell fit-width='10' fig.asp='1'}
 
 ```{.r .cell-code}
 check_model(lm1_freq)
@@ -267,22 +267,79 @@ check_model(lm1_freq)
 :::
 :::
 
-::: {.cell}
+::: {.cell fit-width='10' fig.asp='1'}
 
 ```{.r .cell-code}
 check_model(lm1_bayes)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-14-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-14-1.png){width=100%}
 :::
 :::
+
+
+
+### Get some predictions
+
+
+::: {.cell}
+
+```{.r .cell-code}
+lm1_pred <- estimate_relation(lm1_freq)
+lm1_pred
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+Model-based Expectation
+
+hp     | Predicted |   SE |         95% CI
+------------------------------------------
+52.00  |     26.55 | 1.18 | [24.15, 28.95]
+83.44  |     24.41 | 0.94 | [22.49, 26.32]
+114.89 |     22.26 | 0.75 | [20.72, 23.80]
+146.33 |     20.11 | 0.68 | [18.72, 21.51]
+177.78 |     17.97 | 0.75 | [16.43, 19.50]
+209.22 |     15.82 | 0.93 | [13.92, 17.73]
+240.67 |     13.68 | 1.17 | [11.29, 16.07]
+272.11 |     11.53 | 1.44 | [ 8.59, 14.48]
+303.56 |      9.39 | 1.73 | [ 5.86, 12.92]
+335.00 |      7.24 | 2.02 | [ 3.11, 11.38]
+
+Variable predicted: mpg
+Predictors modulated: hp
+```
+:::
+:::
+
+
+
+More details on the above function can be found on the [respective page at the easystats site](https://easystats.github.io/modelbased/reference/estimate_expectation.html#functions-for-estimating-predicted-values-and-uncertainty).
+
+
+
+### Plot the model
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+plot(lm1_pred)
+```
+
+::: {.cell-output-display}
+![](regression1_files/figure-html/unnamed-chunk-16-1.png){width=672}
+:::
+:::
+
 
 
 ## More of this
 
 More technical details for gauging model performance and model quality,
-can be found on the site of [the R package "performance](https://easystats.github.io/performance/).
+can be found on the site of [the R package "performance](https://easystats.github.io/performance/) at the easystats site.
 
 
 
@@ -342,9 +399,9 @@ parameters(lm2_bayes)
 ```
 Parameter   | Median |         95% CI |     pd | % in ROPE |  Rhat |     ESS |                   Prior
 ------------------------------------------------------------------------------------------------------
-(Intercept) |  30.71 | [27.93, 33.49] |   100% |        0% | 1.000 | 4751.00 | Normal (20.09 +- 15.07)
-hp          |  -0.02 | [-0.05,  0.00] | 96.55% |      100% | 1.001 | 1918.00 |   Normal (0.00 +- 0.22)
-disp        |  -0.03 | [-0.05, -0.01] |   100% |      100% | 1.001 | 1944.00 |   Normal (0.00 +- 0.12)
+(Intercept) |  30.75 | [28.04, 33.44] |   100% |        0% | 1.000 | 3914.00 | Normal (20.09 +- 15.07)
+hp          |  -0.02 | [-0.05,  0.00] | 96.03% |      100% | 1.001 | 2190.00 |   Normal (0.00 +- 0.22)
+disp        |  -0.03 | [-0.05, -0.01] |   100% |      100% | 1.000 | 2272.00 |   Normal (0.00 +- 0.12)
 ```
 :::
 
@@ -361,7 +418,7 @@ plot(parameters(lm2_bayes))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-17-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-19-1.png){width=672}
 :::
 
 ```{.r .cell-code}
@@ -372,8 +429,26 @@ r2(lm2_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.729 (95% CI [0.571, 0.842])
+  Conditional R2: 0.731 (95% CI [0.589, 0.839])
 ```
+:::
+:::
+
+
+
+
+Depending on the value of `disp` the prediction of `mpg` from `hp` will vary:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+lm2_pred <- estimate_relation(lm2_freq)
+plot(lm2_pred)
+```
+
+::: {.cell-output-display}
+![](regression1_files/figure-html/unnamed-chunk-20-1.png){width=672}
 :::
 :::
 
@@ -387,7 +462,11 @@ r2(lm2_bayes)
 ::: {.cell}
 
 ```{.r .cell-code}
-lm3a <- lm(mpg ~ factor(am), data = mtcars)
+mtcars2 <-
+  mtcars %>% 
+  mutate(am_f = factor(am))
+
+lm3a <- lm(mpg ~ am_f, data = mtcars2)
 parameters(lm3a)
 ```
 
@@ -396,7 +475,7 @@ parameters(lm3a)
 Parameter   | Coefficient |   SE |         95% CI | t(30) |      p
 ------------------------------------------------------------------
 (Intercept) |       17.15 | 1.12 | [14.85, 19.44] | 15.25 | < .001
-am [1]      |        7.24 | 1.76 | [ 3.64, 10.85] |  4.11 | < .001
+am f [1]    |        7.24 | 1.76 | [ 3.64, 10.85] |  4.11 | < .001
 ```
 :::
 
@@ -412,7 +491,7 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 ::: {.cell}
 
 ```{.r .cell-code}
-lm3a_means <- estimate_means(lm3a, at = "am")
+lm3a_means <- estimate_means(lm3a, at = "am_f")
 lm3a_means 
 ```
 
@@ -420,12 +499,12 @@ lm3a_means
 ```
 Estimated Marginal Means
 
-am   |  Mean |   SE |         95% CI
+am_f |  Mean |   SE |         95% CI
 ------------------------------------
-0.00 | 17.15 | 1.12 | [14.85, 19.44]
-1.00 | 24.39 | 1.36 | [21.62, 27.17]
+0    | 17.15 | 1.12 | [14.85, 19.44]
+1    | 24.39 | 1.36 | [21.62, 27.17]
 
-Marginal means estimated at am
+Marginal means estimated at am_f
 ```
 :::
 :::
@@ -433,8 +512,27 @@ Marginal means estimated at am
 ::: {.cell}
 
 ```{.r .cell-code}
-ggplot(mtcars) +
-  aes(x = factor(am), y = mpg) +
+plot(lm3a_means)
+```
+
+::: {.cell-output-display}
+![](regression1_files/figure-html/unnamed-chunk-23-1.png){width=672}
+:::
+:::
+
+Note that we should have converted `am` to a factor variable before fitting the model.
+Otherwise, the plot won't work.
+
+
+Here's a more hand-crafted version of the last plot:
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+ggplot(mtcars2) +
+  aes(x = am_f, y = mpg) +
   geom_violin() +
   geom_jitter(width = .1, alpha = .5) +
   geom_pointrange(data = lm3a_means,
@@ -444,7 +542,7 @@ ggplot(mtcars) +
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-20-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-24-1.png){width=672}
 :::
 :::
 
@@ -457,7 +555,11 @@ ggplot(mtcars) +
 ::: {.cell}
 
 ```{.r .cell-code}
-lm4 <- lm(mpg ~ hp + factor(cyl), data = mtcars)
+mtcars2 <-
+  mtcars %>% 
+  mutate(cyl = factor(cyl))
+
+lm4 <- lm(mpg ~ hp + cyl, data = mtcars2)
 parameters(lm4)
 ```
 
@@ -481,7 +583,65 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 :::
 :::
 
+::: {.cell}
 
+```{.r .cell-code}
+lm4_pred <- estimate_relation(lm4)
+plot(lm4_pred)
+```
+
+::: {.cell-output-display}
+![](regression1_files/figure-html/unnamed-chunk-26-1.png){width=672}
+:::
+:::
+
+
+
+## What about correlation?
+
+
+Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.
+
+Let's get the correlation matrix of the variables in involved in `lm4`.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+lm4_corr <- 
+  mtcars %>% 
+  select(mpg, hp, disp) %>% 
+  correlation()
+
+lm4_corr
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# Correlation Matrix (pearson-method)
+
+Parameter1 | Parameter2 |     r |         95% CI | t(30) |         p
+--------------------------------------------------------------------
+mpg        |         hp | -0.78 | [-0.89, -0.59] | -6.74 | < .001***
+mpg        |       disp | -0.85 | [-0.92, -0.71] | -8.75 | < .001***
+hp         |       disp |  0.79 | [ 0.61,  0.89] |  7.08 | < .001***
+
+p-value adjustment method: Holm (1979)
+Observations: 32
+```
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+plot(summary(lm4_corr))
+```
+
+::: {.cell-output-display}
+![](regression1_files/figure-html/unnamed-chunk-28-1.png){width=672}
+:::
+:::
 
 
 
