@@ -1,0 +1,41 @@
+project:
+  type: book
+
+book:
+  title: "stats-nutshell"
+  author: "Sebastian Sauer"
+  date: "8/31/2022"
+  
+  
+
+  
+  
+  chapters:
+    - index.qmd
+    - goals.qmd
+    - inference.qmd
+    - regression1.qmd
+    - regression2.qmd
+    - causality.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo 
+    toc: true
+    number-sections: true
+    
+    
+
+editor: visual
+keep-md: true
+
+knitr: 
+  opts_chunk: 
+    fig-align: center
+    out-width: "70%"
+    
+
+

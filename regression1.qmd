@@ -1,0 +1,234 @@
+# Regression basics
+
+
+
+## Regression as the umbrella tool
+
+![One regression](https://memegenerator.net/img/instances/86435221.jpg){width="50%"}
+
+
+Alternatively, 
+venture into the forest of statistical tests as [oultined eg here, at Uni Muenster](https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html).
+
+
+You may want to ponder on this image of a decision tree of which test to choose, see Figure @fig-choose-test.
+
+![Choose your test carefully](img/choose-test.png){#fig-choose-test}
+
+
+
+
+## Common statistical tests are linear models
+
+
+As Jonas Kristoffer Lindeløv tells us,
+we can formulate most statistical tests as a linear model, ie., a regression.
+
+
+![Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/linear_tests_cheat_sheet.png)
+
+## R-packages needed
+
+```{r}
+#| message: false
+library(rstanarm)
+library(tidyverse)
+library(easystats)
+```
+
+
+
+
+## In all its glory
+
+
+```{r}
+#| message: false
+#| echo: false
+ggplot(mtcars) +
+  aes(x = hp, y = mpg) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal()
+```
+
+
+## First model: one metric predictor
+
+First, let's load some data:
+
+```{r}
+data(mtcars)
+glimpse(mtcars)
+```
+
+
+### Frequentist
+
+Define and fit the model:
+
+```{r}
+lm1_freq <- lm(mpg ~ hp, data = mtcars)
+```
+
+
+Get the parameter values:
+
+```{r}
+parameters(lm1_freq)
+```
+
+Plot the model parameters:
+
+```{r}
+plot(parameters(lm1_freq))
+```
+
+
+### Bayesian
+
+
+
+```{r}
+lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
+```
+
+Actually, we want to suppress some overly verbose output, using `refresh = 0`:
+```{r}
+lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
+```
+
+
+
+Get the parameter values:
+
+```{r}
+parameters(lm1_bayes)
+```
+
+Plot the model parameters:
+
+```{r}
+plot(parameters(lm1_bayes))
+```
+
+
+## Model performance
+
+
+
+```{r}
+r2(lm1_freq)
+```
+
+
+```{r}
+r2(lm1_bayes)
+```
+
+
+
+## Model check
+
+```{r}
+#| fit-width: 10
+#| out-width: "100%"
+check_model(lm1_freq)
+```
+
+
+```{r}
+check_model(lm1_bayes)
+```
+
+## More of this
+
+More technical details for gauging model performance and model quality,
+can be found on the site of [the R package "performance](https://easystats.github.io/performance/).
+
+
+
+## Multiple metric predictors
+
+Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.
+
+```{r}
+lm2_freq <- lm(mpg ~ hp + disp, data = mtcars)
+parameters(lm2_freq)
+```
+
+
+Similarly for Bayes inference:
+
+```{r}
+#| results: hide
+lm2_bayes <- stan_glm(mpg ~ hp + disp, data = mtcars)
+```
+
+Results
+```{r}
+parameters(lm2_bayes)
+plot(parameters(lm2_bayes))
+r2(lm2_bayes)
+```
+
+
+
+## One nominal predictor
+
+
+```{r}
+lm3a <- lm(mpg ~ factor(am), data = mtcars)
+parameters(lm3a)
+```
+
+
+
+
+```{r}
+lm3a_means <- estimate_means(lm3a, at = "am")
+lm3a_means 
+```
+
+```{r}
+ggplot(mtcars) +
+  aes(x = factor(am), y = mpg) +
+  geom_violin() +
+  geom_jitter(width = .1, alpha = .5) +
+  geom_pointrange(data = lm3a_means,
+                  color = "orange",
+                  aes(ymin = CI_low, ymax = CI_high, y = Mean)) +
+  geom_line(data = lm3a_means, aes(y = Mean, group = 1))
+```
+
+
+## One metric and one nominal predictor
+
+
+```{r}
+lm4 <- lm(mpg ~ hp + factor(cyl), data = mtcars)
+parameters(lm4)
+```
+
+
+
+
+
+
+## Exercises
+
+1. [mtcars simple 1](https://datenwerk.netlify.app/post/mtcars-simple1/mtcars-simple1/)
+1. [mtcars simple 2](https://datenwerk.netlify.app/post/mtcars-simple2/mtcars-simple2/)
+1. [mtcars simple 3](https://datenwerk.netlify.app/post/mtcars-simple3/mtcars-simple3/)
+
+
+## Lab
+
+Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.
+
+
+
+
+
+
+
