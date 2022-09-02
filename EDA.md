@@ -1,5 +1,12 @@
 # Exploratory Data Analysis
 
+
+
+
+![](img/stern.png){width=5%}
+
+
+
 Exploratory Data Analysis (EDA) is a procedure to scrutinize a dataset at hand in order learn about it. EDA comprises descriptive statistics, data visualization and data transformation techniques (such as dimension reduction).
 
 

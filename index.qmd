@@ -199,7 +199,7 @@ It's my goal to make this an excellent course and a stimulating and enjoyable ex
 Most of the materials as presented below is made available through the course book [ModernDive](https://moderndive.com/index.html). Please check the relevant chapters of the book before the course to make sure you have all materials available.
 
 
-# Licence
+## Licence
 
 
 This is permissive work, [see the licence here](https://github.com/sebastiansauer/stats-nutshell/blob/main/LICENSE).
@@ -214,7 +214,7 @@ Check out the [Github repo of this project](https://github.com/sebastiansauer/st
 
 
 
-# Resources
+## Resources
 
 ### Recommendations
 

@@ -2,3 +2,6 @@
   netlify:
     - id: c3507de2-4f32-4f38-9e7f-d581f0f82792
       url: 'https://spiffy-kelpie-9bf6bd.netlify.app'
+  quarto-pub:
+    - id: 89de1ba2-15e2-4a03-b94d-e0f8b26ba19a
+      url: 'https://quartopub.com/sites/ssauer-quarto/stats-nutshell'
