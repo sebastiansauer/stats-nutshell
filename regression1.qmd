@@ -1,5 +1,13 @@
 # Regression basics
 
+![](img/stern.png){width=5%}
+
+## The linear model
+
+
+Consider a model with $k$ predictors:
+
+$$y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon$$
 
 
 ## Regression as the umbrella tool
@@ -18,7 +26,7 @@ You may want to ponder on this image of a decision tree of which test to choose,
 
 
 
-## Common statistical tests are linear models
+### Common statistical tests are linear models
 
 
 As Jonas Kristoffer Lindeløv tells us,
@@ -27,7 +35,38 @@ we can formulate most statistical tests as a linear model, ie., a regression.
 
 ![Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/linear_tests_cheat_sheet.png)
 
+### How to find the regression line
+
+In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figre @fig-regr1.
+
+
+
+![Least Square Regression](https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Coefficient_of_Determination.svg/800px-Coefficient_of_Determination.svg.png?20100906105829){#fig-regr1}
+
+
+Put simple, we are looking for the line which is in the "middle of the points". More precisely, we place the line such that the squared distances from the line to the points is minimal, see Figre @fig-regr1.
+
+
+Consider Figure @fig-regr2, from [this source](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression) by @roback_beyond_2021. 
+It visualizes not only the notorious regression line,
+but also sheds light on regression assumptions,
+particularly on the error distribution.
+
+
+![Regression and some of its assumptions](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSassumptions-1.png){#fig-regr2}
+
+
+### Algebraic derivation 
+
+For the mathematical inclined, check out [this derivation](https://data-se.netlify.app/2022/05/23/ableitung-der-koeffizienten-der-einfachen-regression/) of the simple case regression model.
+Note that the article is written in German, but your browser can effortlessly translate into English. 
+Here's a [similar English article from StackExchange](https://math.stackexchange.com/questions/716826/derivation-of-simple-linear-regression-parameters).
+
+
+
 ## R-packages needed
+
+For this chapter, the following R packages are needed.
 
 ```{r}
 #| message: false
@@ -166,10 +205,77 @@ plot(lm1_pred)
 ```
 
 
+
+
+
 ## More of this
 
 More technical details for gauging model performance and model quality,
 can be found on the site of [the R package "performance](https://easystats.github.io/performance/) at the easystats site.
+
+
+
+
+## Bayes-members only
+
+
+Bayes statistics provide a distribution as the result of the analysis,
+the posterior distribution, which provides us with quite some luxury.
+
+
+As the posterior distribution manifests itself by a number of samples,
+we can easily filter and manipulate this sample distribution in order to ask some interesing questions.
+
+See:
+
+```{r}
+lm1_bayes %>% 
+  as_tibble() %>% 
+  head()
+```
+
+
+### Asking for probabilites
+
+
+*What's the probability that the effect of hp is negative?*
+
+
+```{r}
+lm1_bayes %>% 
+  as_tibble() %>% 
+  count(hp < 0)
+````
+
+Feel free to ask similar questions!
+
+
+### Asking for quantiles
+
+
+*With a given probability of, say 90%, how large is the effect of hp?*
+
+
+```{r}
+lm1_bayes %>% 
+  as_tibble() %>% 
+  summarise(q_90 = quantile(hp, .9))
+```
+
+*What's the smallest 95% percent interval for the effect of hp?*
+
+
+```{r}
+hdi(lm1_bayes)
+```
+
+In case you prefer 89% intervals (I do!):
+
+
+
+```{r}
+hdi(lm1_bayes, ci = .89)
+```
 
 
 
@@ -305,6 +411,22 @@ plot(summary(lm4_corr))
 
 Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.
 
+
+
+## Further reading
+
+
+@roback_beyond_2021 provide and more than introductory account of regression while being accessible. 
+A recent but still classic book (if this is possible) is the book by @gelman_regression_2021.
+
+
+
+## Debrief
+
+
+
+
+![Science. Via Giphy.](https://media.giphy.com/media/141amBdjqs9Vvy/giphy.gif)
 
 
 

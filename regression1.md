@@ -1,5 +1,13 @@
 # Regression basics
 
+![](img/stern.png){width=5%}
+
+## The linear model
+
+
+Consider a model with $k$ predictors:
+
+$$y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon$$
 
 
 ## Regression as the umbrella tool
@@ -18,7 +26,7 @@ You may want to ponder on this image of a decision tree of which test to choose,
 
 
 
-## Common statistical tests are linear models
+### Common statistical tests are linear models
 
 
 As Jonas Kristoffer Lindeløv tells us,
@@ -27,7 +35,38 @@ we can formulate most statistical tests as a linear model, ie., a regression.
 
 ![Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/linear_tests_cheat_sheet.png)
 
+### How to find the regression line
+
+In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figre @fig-regr1.
+
+
+
+![Least Square Regression](https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Coefficient_of_Determination.svg/800px-Coefficient_of_Determination.svg.png?20100906105829){#fig-regr1}
+
+
+Put simple, we are looking for the line which is in the "middle of the points". More precisely, we place the line such that the squared distances from the line to the points is minimal, see Figre @fig-regr1.
+
+
+Consider Figure @fig-regr2, from [this source](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression) by @roback_beyond_2021. 
+It visualizes not only the notorious regression line,
+but also sheds light on regression assumptions,
+particularly on the error distribution.
+
+
+![Regression and some of its assumptions](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSassumptions-1.png){#fig-regr2}
+
+
+### Algebraic derivation 
+
+For the mathematical inclined, check out [this derivation](https://data-se.netlify.app/2022/05/23/ableitung-der-koeffizienten-der-einfachen-regression/) of the simple case regression model.
+Note that the article is written in German, but your browser can effortlessly translate into English. 
+Here's a [similar English article from StackExchange](https://math.stackexchange.com/questions/716826/derivation-of-simple-linear-regression-parameters).
+
+
+
 ## R-packages needed
+
+For this chapter, the following R packages are needed.
 
 
 ::: {.cell}
@@ -184,8 +223,8 @@ parameters(lm1_bayes)
 ```
 Parameter   | Median |         95% CI |   pd | % in ROPE |  Rhat |     ESS |                   Prior
 ----------------------------------------------------------------------------------------------------
-(Intercept) |  30.01 | [26.71, 33.35] | 100% |        0% | 1.000 | 3646.00 | Normal (20.09 +- 15.07)
-hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.000 | 3596.00 |   Normal (0.00 +- 0.22)
+(Intercept) |  30.10 | [26.84, 33.48] | 100% |        0% | 1.001 | 3437.00 | Normal (20.09 +- 15.07)
+hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.001 | 3512.00 |   Normal (0.00 +- 0.22)
 ```
 :::
 
@@ -245,7 +284,7 @@ r2(lm1_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.583 (95% CI [0.370, 0.742])
+  Conditional R2: 0.586 (95% CI [0.373, 0.744])
 ```
 :::
 :::
@@ -336,10 +375,156 @@ plot(lm1_pred)
 
 
 
+
+
+
 ## More of this
 
 More technical details for gauging model performance and model quality,
 can be found on the site of [the R package "performance](https://easystats.github.io/performance/) at the easystats site.
+
+
+
+
+## Bayes-members only
+
+
+Bayes statistics provide a distribution as the result of the analysis,
+the posterior distribution, which provides us with quite some luxury.
+
+
+As the posterior distribution manifests itself by a number of samples,
+we can easily filter and manipulate this sample distribution in order to ask some interesing questions.
+
+See:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+lm1_bayes %>% 
+  as_tibble() %>% 
+  head()
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 6 × 3
+  `(Intercept)`      hp sigma
+          <dbl>   <dbl> <dbl>
+1          28.9 -0.0612  3.38
+2          30.3 -0.0640  3.69
+3          33.0 -0.0876  4.11
+4          29.5 -0.0604  3.42
+5          30.0 -0.0717  3.92
+6          29.6 -0.0620  3.66
+```
+:::
+:::
+
+
+
+### Asking for probabilites
+
+
+*What's the probability that the effect of hp is negative?*
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+lm1_bayes %>% 
+  as_tibble() %>% 
+  count(hp < 0)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 1 × 2
+  `hp < 0`     n
+  <lgl>    <int>
+1 TRUE      4000
+```
+:::
+:::
+
+
+Feel free to ask similar questions!
+
+
+### Asking for quantiles
+
+
+*With a given probability of, say 90%, how large is the effect of hp?*
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+lm1_bayes %>% 
+  as_tibble() %>% 
+  summarise(q_90 = quantile(hp, .9))
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 1 × 1
+     q_90
+    <dbl>
+1 -0.0554
+```
+:::
+:::
+
+
+*What's the smallest 95% percent interval for the effect of hp?*
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+hdi(lm1_bayes)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+Highest Density Interval
+
+Parameter   |        95% HDI
+----------------------------
+(Intercept) | [26.70, 33.30]
+hp          | [-0.09, -0.05]
+```
+:::
+:::
+
+
+In case you prefer 89% intervals (I do!):
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+hdi(lm1_bayes, ci = .89)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+Highest Density Interval
+
+Parameter   |        89% HDI
+----------------------------
+(Intercept) | [27.41, 32.70]
+hp          | [-0.09, -0.05]
+```
+:::
+:::
+
 
 
 
@@ -399,9 +584,9 @@ parameters(lm2_bayes)
 ```
 Parameter   | Median |         95% CI |     pd | % in ROPE |  Rhat |     ESS |                   Prior
 ------------------------------------------------------------------------------------------------------
-(Intercept) |  30.75 | [28.04, 33.44] |   100% |        0% | 1.000 | 3914.00 | Normal (20.09 +- 15.07)
-hp          |  -0.02 | [-0.05,  0.00] | 96.03% |      100% | 1.001 | 2190.00 |   Normal (0.00 +- 0.22)
-disp        |  -0.03 | [-0.05, -0.01] |   100% |      100% | 1.000 | 2272.00 |   Normal (0.00 +- 0.12)
+(Intercept) |  30.74 | [28.02, 33.40] |   100% |        0% | 1.001 | 4960.00 | Normal (20.09 +- 15.07)
+hp          |  -0.02 | [-0.05,  0.00] | 97.08% |      100% | 1.002 | 2002.00 |   Normal (0.00 +- 0.22)
+disp        |  -0.03 | [-0.04, -0.02] | 99.95% |      100% | 1.001 | 1815.00 |   Normal (0.00 +- 0.12)
 ```
 :::
 
@@ -418,7 +603,7 @@ plot(parameters(lm2_bayes))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-19-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-24-1.png){width=672}
 :::
 
 ```{.r .cell-code}
@@ -429,7 +614,7 @@ r2(lm2_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.731 (95% CI [0.589, 0.839])
+  Conditional R2: 0.729 (95% CI [0.583, 0.844])
 ```
 :::
 :::
@@ -448,7 +633,7 @@ plot(lm2_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-20-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-25-1.png){width=672}
 :::
 :::
 
@@ -516,7 +701,7 @@ plot(lm3a_means)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-23-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-28-1.png){width=672}
 :::
 :::
 
@@ -542,7 +727,7 @@ ggplot(mtcars2) +
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-24-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-29-1.png){width=672}
 :::
 :::
 
@@ -591,7 +776,7 @@ plot(lm4_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-26-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-31-1.png){width=672}
 :::
 :::
 
@@ -639,7 +824,7 @@ plot(summary(lm4_corr))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-28-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-33-1.png){width=672}
 :::
 :::
 
@@ -658,6 +843,22 @@ plot(summary(lm4_corr))
 
 Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.
 
+
+
+## Further reading
+
+
+@roback_beyond_2021 provide and more than introductory account of regression while being accessible. 
+A recent but still classic book (if this is possible) is the book by @gelman_regression_2021.
+
+
+
+## Debrief
+
+
+
+
+![Science. Via Giphy.](https://media.giphy.com/media/141amBdjqs9Vvy/giphy.gif)
 
 
 

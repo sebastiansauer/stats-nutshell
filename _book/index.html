@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.640">
+<meta name="generator" content="quarto-1.1.168">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
@@ -55,7 +60,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,22 +126,27 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Inference</span></a>
+  <a href="./EDA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regression basics</span></a>
+  <a href="./inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inference</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Advanced Regression</span></a>
+  <a href="./regression1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Regression basics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./causality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Untitled</span></a>
+  <a href="./regression2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Advanced Regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./causality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Causality</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -149,7 +159,7 @@ div.csl-indent {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
@@ -179,10 +189,11 @@ div.csl-indent {
   <li><a href="#talk-to-me" id="toc-talk-to-me" class="nav-link" data-scroll-target="#talk-to-me">Talk to me</a></li>
   <li><a href="#course-materials" id="toc-course-materials" class="nav-link" data-scroll-target="#course-materials">Course materials</a></li>
   </ul></li>
-  <li><a href="#more-resources" id="toc-more-resources" class="nav-link" data-scroll-target="#more-resources">More resources</a>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a>
   <ul class="collapse">
   <li><a href="#recommendations" id="toc-recommendations" class="nav-link" data-scroll-target="#recommendations">Recommendations</a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">R Packages</a></li>
+  <li><a href="#rstudio-cloud" id="toc-rstudio-cloud" class="nav-link" data-scroll-target="#rstudio-cloud">RStudio Cloud</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#labs-case-studies" id="toc-labs-case-studies" class="nav-link" data-scroll-target="#labs-case-studies">Labs (case studies)</a></li>
   <li><a href="#sketching-causal-models" id="toc-sketching-causal-models" class="nav-link" data-scroll-target="#sketching-causal-models">Sketching causal models</a></li>
@@ -225,6 +236,12 @@ div.csl-indent {
 
 <section id="preface" class="level1 unnumbered">
 <h1 class="unnumbered">Preface</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/stern.png" class="img-fluid figure-img" style="width:15.0%"></p>
+<p></p><figcaption class="figure-caption">A nutshell of stars</figcaption><p></p>
+</figure>
+</div>
 <section id="welcome" class="level2">
 <h2 class="anchored" data-anchor-id="welcome">Welcome!</h2>
 <p>This is an introductory course on statistical modelling. Welcome!</p>
@@ -277,18 +294,19 @@ div.csl-indent {
 <section id="upfront-student-preparation" class="level2">
 <h2 class="anchored" data-anchor-id="upfront-student-preparation">UPFRONT student preparation</h2>
 <ul>
-<li><em>Install R and RStudio</em>, see <a href="https://moderndive.com/1-getting-started.html#r-rstudio">ModernDive Chap. 1.1</a>. In case you have your R running on your system, please make sure that you’re uptodate. If outdated, download and install the most recent versions of the software. Similarly, hit the “Update” button in RStudio’s “Packages” tab to update your packages if you have not done so for a couple of months.</li>
-<li>Install the necessary R packages as used in the book chapters covered in this course (see the sections on “Needed packages” in each chapter). If in doubt, see <a href="https://moderndive.com/1-getting-started.html#packages">here</a> the instructions on how to install R packages. <a href="#packages">Here’s</a> the actual list on the R packages we’ll need.</li>
-<li>Students new to R are advised to learn the basics, see <a href="https://moderndive.com/1-getting-started.html#code">ModernDive, Chap 1.2 - 1.5</a></li>
-<li>Sign-up to <a href="https://rstudio.cloud/">RStudio Cloud</a></li>
-<li>Bring your own laptop
+<li><p><em>Install R and RStudio</em>, see <a href="https://moderndive.com/1-getting-started.html#r-rstudio">ModernDive Chap. 1.1</a>. In case you have your R running on your system, please make sure that you’re uptodate. If outdated, download and install the most recent versions of the software. Similarly, hit the “Update” button in RStudio’s “Packages” tab to update your packages if you have not done so for a couple of months.</p></li>
+<li><p>Sign-in at <a href="https://login.rstudio.cloud/">RStudio Cloud</a>. It’s super helpful because I as the techer can provide you with an environment where all R stuff is ready to use (packages installed etc).</p></li>
+<li><p>Install the necessary R packages as used in the book chapters covered in this course (see the sections on “Needed packages” in each chapter). If in doubt, see <a href="https://moderndive.com/1-getting-started.html#packages">here</a> the instructions on how to install R packages. <a href="#packages">Here’s</a> the actual list on the R packages we’ll need.</p></li>
+<li><p>Students new to R are advised to learn the basics, see <a href="https://moderndive.com/1-getting-started.html#code">ModernDive, Chap 1.2 - 1.5</a></p></li>
+<li><p>Sign-up to <a href="https://rstudio.cloud/">RStudio Cloud</a></p></li>
+<li><p>Bring your own laptop</p>
 <ul>
 <li>With R and RStudio installed</li>
 <li>Browse to the <a href="ttps://moderndive.com">textbook website for this course</a></li>
 </ul></li>
-<li>Make sure your internet connection is stable and your loudspeaker/headset is working; a webcam is helpful.</li>
-<li>Students are advised to review the course materials after each session.</li>
-<li>I recommend that you carefully check the course description to make sure the course fits your needs (not too advanced/basic).</li>
+<li><p>Make sure your internet connection is stable and your loudspeaker/headset is working; a webcam is helpful.</p></li>
+<li><p>Students are advised to review the course materials after each session.</p></li>
+<li><p>I recommend that you carefully check the course description to make sure the course fits your needs (not too advanced/basic).</p></li>
 </ul>
 </section>
 <section id="didactic-outline" class="level2">
@@ -427,8 +445,8 @@ div.csl-indent {
 <p>Most of the materials as presented below is made available through the course book <a href="https://moderndive.com/index.html">ModernDive</a>. Please check the relevant chapters of the book before the course to make sure you have all materials available.</p>
 </section>
 </section>
-<section id="more-resources" class="level1">
-<h1>More resources</h1>
+<section id="resources" class="level1">
+<h1>Resources</h1>
 <section id="recommendations" class="level3">
 <h3 class="anchored" data-anchor-id="recommendations">Recommendations</h3>
 <ul>
@@ -447,14 +465,26 @@ div.csl-indent {
 <p>The most important R packages for this course are:</p>
 <ul>
 <li>tidyverse</li>
-<li>parameters</li>
-<li>see</li>
+<li>easystats</li>
+</ul>
+<p>The following packages are useful for data access (but not strictly mandatory):</p>
+<ul>
 <li>gapminder</li>
 <li>nycflights13</li>
 <li>fivethirtyeight</li>
 <li>skimr</li>
 <li>ISLR</li>
 </ul>
+<p>For the Bayes models you’ll need some extra software (free, save and stable), but somewhat more hassle to install. Using Bayes in this course is <em>optional</em>. You don’t miss a lot if you don’t use it.</p>
+<ul>
+<li>rstanarm</li>
+</ul>
+<p>For the R package <code>{rstanarm}</code> to run, you’ll need to <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">install RStan</a>. On Windows, this amounts to installing RTools. On Mac, you’ll need to install the XCode CLI<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>In sum, follow the instructions on the RStan website. It’s unfortunately a bit complicated.</p>
+</section>
+<section id="rstudio-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio-cloud">RStudio Cloud</h3>
+<p>Please</p>
 </section>
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">Data</h3>
@@ -487,16 +517,35 @@ Sauer, Sebastian. 2019. <em>Moderne Datenanalyse Mit r: Daten Einlesen, Aufberei
 </div>
 </section>
 </section>
-<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>Desktop version, not the server<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Desktop version, not the server<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>possibly you need also a Fortran compiler, but maybe that’s optional<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -546,7 +595,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
