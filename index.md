@@ -76,11 +76,11 @@ All learning materials (such as literature, code, data) will be provided in elec
 -   Install the necessary R packages as used in the book chapters covered in this course (see the sections on "Needed packages" in each chapter). If in doubt, see [here](https://moderndive.com/1-getting-started.html#packages) the instructions on how to install R packages. [Here's](#packages) the actual list on the R packages we'll need.
 
 -   Students new to R are advised to learn the basics, see [ModernDive, Chap 1.2 - 1.5](https://moderndive.com/1-getting-started.html#code)
--   Sign-up to [RStudio Cloud](https://rstudio.cloud/)
--   Bring your own laptop
-    -   With R and RStudio installed
-    -   Browse to the [textbook website for this course](ttps://moderndive.com)
-    
+
+
+
+-   Bring your own laptop 
+
 -   Make sure your internet connection is stable and your loudspeaker/headset is working; a webcam is helpful.
 
 -   Students are advised to review the course materials after each session.
@@ -198,6 +198,22 @@ It's my goal to make this an excellent course and a stimulating and enjoyable ex
 
 Most of the materials as presented below is made available through the course book [ModernDive](https://moderndive.com/index.html). Please check the relevant chapters of the book before the course to make sure you have all materials available.
 
+
+# Licence
+
+
+This is permissive work, [see the licence here](https://github.com/sebastiansauer/stats-nutshell/blob/main/LICENSE).
+
+The author is [Sebastian Sauer](https://sebastiansauer-academic.netlify.app/).
+
+
+
+Check out the [Github repo of this project](https://github.com/sebastiansauer/stats-nutshell).
+
+
+
+
+
 # Resources
 
 ### Recommendations
@@ -246,10 +262,6 @@ On Windows, this amounts to installing RTools. On Mac, you'll need to install th
 In sum, follow the instructions on the RStan website. It's unfortunately a bit complicated.
 
 
-
-### RStudio Cloud
-
-Please
 
 
 ### Data
