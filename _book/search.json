@@ -305,7 +305,7 @@
     "href": "goals.html#overview",
     "title": "1  Goals in statistics",
     "section": "1.1 Overview",
-    "text": "1.1 Overview\n\n\n\n\nflowchart LR\n  A{Goals} --> B(describe)\n  A --> C(predict)\n  A --> D(explain)\n  B --> E(distribution)\n  B --> F(assocation)\n  B --> G(extrapolation)\n  C --> H(point estimate)\n  C --> I(interval)\n  D --> J(causal inference)\n  D --> K(population)\n  D --> L(latent construct)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that “goals” do not exist in the world. We make them up in our heads. Hence, they have no ontological existence, they are epistemological beasts. This entails that we are free to devise goals as we wish, provided we can convince ourselves and other souls of the utility of our creativity."
+    "text": "1.1 Overview\nMany stories to be told. Here’s one, on the goals pursued in statistics (and related fields), see Figure Figure 1.1.\n\n\n\n\n\nflowchart LR\n  A{Goals} --> B(describe)\n  A --> C(predict)\n  A --> D(explain)\n  B --> E(distribution)\n  B --> F(assocation)\n  B --> G(extrapolation)\n  C --> H(point estimate)\n  C --> I(interval)\n  D --> J(causal inference)\n  D --> K(population)\n  D --> L(latent construct)\n\n\n\n\n\n\nFigure 1.1: A taxonomy of statistical goals\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that “goals” do not exist in the world. We make them up in our heads. Hence, they have no ontological existence, they are epistemological beasts. This entails that we are free to devise goals as we wish, provided we can convince ourselves and other souls of the utility of our creativity."
   },
   {
     "objectID": "causality.html#intro-to-causality",

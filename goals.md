@@ -5,18 +5,21 @@
 
 ## Overview
 
+Many stories to be told. Here's one, on the goals pursued in statistics (and related fields), see Figure @fig-goals.
+
+
+
 
 
 :::{.cell}
 
 :::{.cell-output-display}
 
-:::{}
+:::{#fig-goals}
 
 <p >
 
-<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">
-flowchart LR
+<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
   A{Goals} --&gt; B(describe)
   A --&gt; C(predict)
   A --&gt; D(explain)
@@ -33,6 +36,9 @@ flowchart LR
 
 <div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
 </p>
+
+
+A taxonomy of statistical goals
 :::
 :::
 :::
@@ -61,4 +67,4 @@ Hernán et al. (2019) distinguish:
 
 Stay calm and behold the infinity.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif/600px-Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif?20170912223608)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif/600px-Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif?20170912223608){width=50%}

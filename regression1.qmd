@@ -1,5 +1,7 @@
 # Regression basics
 
+
+
 ![](img/stern.png){width=5%}
 
 ## The linear model
