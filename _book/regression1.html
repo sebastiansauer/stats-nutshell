@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>stats-nutshell - 4&nbsp; Regression basics</title>
+<title>stats-nutshell - 4&nbsp; Modelling and regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,7 +153,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Regression basics</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelling and regression</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -198,12 +198,12 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Regression basics</span></a>
+  <a href="./regression1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelling and regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Advanced Regression</span></a>
+  <a href="./regression2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More Regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -225,12 +225,13 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-linear-model" id="toc-the-linear-model" class="nav-link active" data-scroll-target="#the-linear-model"><span class="toc-section-number">4.1</span>  The linear model</a></li>
-  <li><a href="#regression-as-the-umbrella-tool" id="toc-regression-as-the-umbrella-tool" class="nav-link" data-scroll-target="#regression-as-the-umbrella-tool"><span class="toc-section-number">4.2</span>  Regression as the umbrella tool</a>
+  <li><a href="#whats-modelling" id="toc-whats-modelling" class="nav-link active" data-scroll-target="#whats-modelling"><span class="toc-section-number">4.1</span>  What’s modelling?</a></li>
+  <li><a href="#regression-as-the-umbrella-tool-for-modelling" id="toc-regression-as-the-umbrella-tool-for-modelling" class="nav-link" data-scroll-target="#regression-as-the-umbrella-tool-for-modelling"><span class="toc-section-number">4.2</span>  Regression as the umbrella tool for modelling</a>
   <ul class="collapse">
   <li><a href="#common-statistical-tests-are-linear-models" id="toc-common-statistical-tests-are-linear-models" class="nav-link" data-scroll-target="#common-statistical-tests-are-linear-models"><span class="toc-section-number">4.2.1</span>  Common statistical tests are linear models</a></li>
   <li><a href="#how-to-find-the-regression-line" id="toc-how-to-find-the-regression-line" class="nav-link" data-scroll-target="#how-to-find-the-regression-line"><span class="toc-section-number">4.2.2</span>  How to find the regression line</a></li>
-  <li><a href="#algebraic-derivation" id="toc-algebraic-derivation" class="nav-link" data-scroll-target="#algebraic-derivation"><span class="toc-section-number">4.2.3</span>  Algebraic derivation</a></li>
+  <li><a href="#the-linear-model" id="toc-the-linear-model" class="nav-link" data-scroll-target="#the-linear-model"><span class="toc-section-number">4.2.3</span>  The linear model</a></li>
+  <li><a href="#algebraic-derivation" id="toc-algebraic-derivation" class="nav-link" data-scroll-target="#algebraic-derivation"><span class="toc-section-number">4.2.4</span>  Algebraic derivation</a></li>
   </ul></li>
   <li><a href="#r-packages-needed" id="toc-r-packages-needed" class="nav-link" data-scroll-target="#r-packages-needed"><span class="toc-section-number">4.3</span>  R-packages needed</a></li>
   <li><a href="#in-all-its-glory" id="toc-in-all-its-glory" class="nav-link" data-scroll-target="#in-all-its-glory"><span class="toc-section-number">4.4</span>  In all its glory</a></li>
@@ -265,7 +266,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Regression basics</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelling and regression</span></h1>
 </div>
 
 
@@ -280,13 +281,12 @@ div.csl-indent {
 </header>
 
 <p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
-<section id="the-linear-model" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="the-linear-model"><span class="header-section-number">4.1</span> The linear model</h2>
-<p>Consider a model with <span class="math inline">\(k\)</span> predictors:</p>
-<p><span class="math display">\[y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon\]</span></p>
+<section id="whats-modelling" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="whats-modelling"><span class="header-section-number">4.1</span> What’s modelling?</h2>
+<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model">Read this great introduction by modelling by Russel Poldrack</a>.</p>
 </section>
-<section id="regression-as-the-umbrella-tool" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="regression-as-the-umbrella-tool"><span class="header-section-number">4.2</span> Regression as the umbrella tool</h2>
+<section id="regression-as-the-umbrella-tool-for-modelling" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="regression-as-the-umbrella-tool-for-modelling"><span class="header-section-number">4.2</span> Regression as the umbrella tool for modelling</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://memegenerator.net/img/instances/86435221.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
@@ -329,8 +329,14 @@ div.csl-indent {
 </figure>
 </div>
 </section>
-<section id="algebraic-derivation" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="algebraic-derivation"><span class="header-section-number">4.2.3</span> Algebraic derivation</h3>
+<section id="the-linear-model" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="the-linear-model"><span class="header-section-number">4.2.3</span> The linear model</h3>
+<p>Here’s the canonical form of the linear model.</p>
+<p>Consider a model with <span class="math inline">\(k\)</span> predictors:</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon\]</span></p>
+</section>
+<section id="algebraic-derivation" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="algebraic-derivation"><span class="header-section-number">4.2.4</span> Algebraic derivation</h3>
 <p>For the mathematical inclined, check out <a href="https://data-se.netlify.app/2022/05/23/ableitung-der-koeffizienten-der-einfachen-regression/">this derivation</a> of the simple case regression model. Note that the article is written in German, but your browser can effortlessly translate into English. Here’s a <a href="https://math.stackexchange.com/questions/716826/derivation-of-simple-linear-regression-parameters">similar English article from StackExchange</a>.</p>
 </section>
 </section>
@@ -417,8 +423,8 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter   | Median |         95% CI |   pd | % in ROPE |  Rhat |     ESS |                   Prior
 ----------------------------------------------------------------------------------------------------
-(Intercept) |  30.02 | [26.73, 33.34] | 100% |        0% | 0.999 | 3749.00 | Normal (20.09 +- 15.07)
-hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.000 | 3804.00 |   Normal (0.00 +- 0.22)</code></pre>
+(Intercept) |  30.08 | [26.83, 33.37] | 100% |        0% | 1.000 | 3329.00 | Normal (20.09 +- 15.07)
+hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.000 | 3679.00 |   Normal (0.00 +- 0.22)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -449,7 +455,7 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 <div class="cell-output cell-output-stdout">
 <pre><code># Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.585 (95% CI [0.380, 0.750])</code></pre>
+  Conditional R2: 0.589 (95% CI [0.384, 0.749])</code></pre>
 </div>
 </div>
 </section>
@@ -522,12 +528,12 @@ Predictors modulated: hp</code></pre>
 <pre><code># A tibble: 6 × 3
   `(Intercept)`      hp sigma
           &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-1          27.2 -0.0533  4.05
-2          32.7 -0.0826  4.04
-3          31.8 -0.0749  4.30
-4          31.8 -0.0739  4.42
-5          33.6 -0.0895  4.53
-6          26.5 -0.0424  3.59</code></pre>
+1          29.0 -0.0530  3.73
+2          32.3 -0.0856  4.54
+3          28.3 -0.0519  3.46
+4          27.8 -0.0510  3.94
+5          30.8 -0.0659  4.13
+6          32.2 -0.0704  4.20</code></pre>
 </div>
 </div>
 <section id="asking-for-probabilites" class="level3" data-number="4.7.1">
@@ -557,7 +563,7 @@ Predictors modulated: hp</code></pre>
 <pre><code># A tibble: 1 × 1
      q_90
     &lt;dbl&gt;
-1 -0.0547</code></pre>
+1 -0.0552</code></pre>
 </div>
 </div>
 <p><em>What’s the smallest 95% percent interval for the effect of hp?</em></p>
@@ -568,7 +574,7 @@ Predictors modulated: hp</code></pre>
 
 Parameter   |        95% HDI
 ----------------------------
-(Intercept) | [26.72, 33.30]
+(Intercept) | [27.12, 33.60]
 hp          | [-0.09, -0.05]</code></pre>
 </div>
 </div>
@@ -580,8 +586,8 @@ hp          | [-0.09, -0.05]</code></pre>
 
 Parameter   |        89% HDI
 ----------------------------
-(Intercept) | [27.48, 32.78]
-hp          | [-0.09, -0.05]</code></pre>
+(Intercept) | [27.57, 32.90]
+hp          | [-0.08, -0.05]</code></pre>
 </div>
 </div>
 </section>
@@ -615,9 +621,9 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter   | Median |         95% CI |     pd | % in ROPE |  Rhat |     ESS |                   Prior
 ------------------------------------------------------------------------------------------------------
-(Intercept) |  30.73 | [28.05, 33.54] |   100% |        0% | 1.000 | 4075.00 | Normal (20.09 +- 15.07)
-hp          |  -0.03 | [-0.05,  0.00] | 96.33% |      100% | 1.000 | 2390.00 |   Normal (0.00 +- 0.22)
-disp        |  -0.03 | [-0.05, -0.01] |   100% |      100% | 1.000 | 2520.00 |   Normal (0.00 +- 0.12)</code></pre>
+(Intercept) |  30.78 | [28.15, 33.40] |   100% |        0% | 1.001 | 3828.00 | Normal (20.09 +- 15.07)
+hp          |  -0.03 | [-0.05,  0.00] | 97.02% |      100% | 1.000 | 1887.00 |   Normal (0.00 +- 0.22)
+disp        |  -0.03 | [-0.04, -0.02] |   100% |      100% | 1.000 | 2208.00 |   Normal (0.00 +- 0.12)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -632,7 +638,7 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 <div class="cell-output cell-output-stdout">
 <pre><code># Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.731 (95% CI [0.571, 0.840])</code></pre>
+  Conditional R2: 0.732 (95% CI [0.576, 0.843])</code></pre>
 </div>
 </div>
 <p>Depending on the value of <code>disp</code> the prediction of <code>mpg</code> from <code>hp</code> will vary:</p>
@@ -906,7 +912,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./regression2.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Advanced Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More Regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

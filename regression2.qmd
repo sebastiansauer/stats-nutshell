@@ -1,5 +1,5 @@
 
-# Advanced Regression
+# More Regression
 
 
 ![](img/stern.png){width=5%}

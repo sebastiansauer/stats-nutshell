@@ -1,18 +1,23 @@
-# Regression basics
-
+# Modelling and regression
 
 
 ![](img/stern.png){width=5%}
 
-## The linear model
 
 
-Consider a model with $k$ predictors:
+## What's modelling?
 
-$$y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon$$
+[Read this great introduction by modelling by Russel Poldrack](https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model).
 
 
-## Regression as the umbrella tool
+
+
+
+
+
+
+
+## Regression as the umbrella tool for modelling
 
 ![One regression](https://memegenerator.net/img/instances/86435221.jpg){width="50%"}
 
@@ -56,6 +61,18 @@ particularly on the error distribution.
 
 
 ![Regression and some of its assumptions](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSassumptions-1.png){#fig-regr2}
+
+
+
+### The linear model 
+
+
+Here's the canonical form of the linear model.
+
+Consider a model with $k$ predictors:
+
+$$y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon$$
+
 
 
 ### Algebraic derivation 
@@ -225,8 +242,8 @@ parameters(lm1_bayes)
 ```
 Parameter   | Median |         95% CI |   pd | % in ROPE |  Rhat |     ESS |                   Prior
 ----------------------------------------------------------------------------------------------------
-(Intercept) |  30.02 | [26.73, 33.34] | 100% |        0% | 0.999 | 3749.00 | Normal (20.09 +- 15.07)
-hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.000 | 3804.00 |   Normal (0.00 +- 0.22)
+(Intercept) |  30.08 | [26.83, 33.37] | 100% |        0% | 1.000 | 3329.00 | Normal (20.09 +- 15.07)
+hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.000 | 3679.00 |   Normal (0.00 +- 0.22)
 ```
 :::
 
@@ -286,7 +303,7 @@ r2(lm1_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.585 (95% CI [0.380, 0.750])
+  Conditional R2: 0.589 (95% CI [0.384, 0.749])
 ```
 :::
 :::
@@ -414,12 +431,12 @@ lm1_bayes %>%
 # A tibble: 6 × 3
   `(Intercept)`      hp sigma
           <dbl>   <dbl> <dbl>
-1          27.2 -0.0533  4.05
-2          32.7 -0.0826  4.04
-3          31.8 -0.0749  4.30
-4          31.8 -0.0739  4.42
-5          33.6 -0.0895  4.53
-6          26.5 -0.0424  3.59
+1          29.0 -0.0530  3.73
+2          32.3 -0.0856  4.54
+3          28.3 -0.0519  3.46
+4          27.8 -0.0510  3.94
+5          30.8 -0.0659  4.13
+6          32.2 -0.0704  4.20
 ```
 :::
 :::
@@ -475,7 +492,7 @@ lm1_bayes %>%
 # A tibble: 1 × 1
      q_90
     <dbl>
-1 -0.0547
+1 -0.0552
 ```
 :::
 :::
@@ -497,7 +514,7 @@ Highest Density Interval
 
 Parameter   |        95% HDI
 ----------------------------
-(Intercept) | [26.72, 33.30]
+(Intercept) | [27.12, 33.60]
 hp          | [-0.09, -0.05]
 ```
 :::
@@ -521,8 +538,8 @@ Highest Density Interval
 
 Parameter   |        89% HDI
 ----------------------------
-(Intercept) | [27.48, 32.78]
-hp          | [-0.09, -0.05]
+(Intercept) | [27.57, 32.90]
+hp          | [-0.08, -0.05]
 ```
 :::
 :::
@@ -586,9 +603,9 @@ parameters(lm2_bayes)
 ```
 Parameter   | Median |         95% CI |     pd | % in ROPE |  Rhat |     ESS |                   Prior
 ------------------------------------------------------------------------------------------------------
-(Intercept) |  30.73 | [28.05, 33.54] |   100% |        0% | 1.000 | 4075.00 | Normal (20.09 +- 15.07)
-hp          |  -0.03 | [-0.05,  0.00] | 96.33% |      100% | 1.000 | 2390.00 |   Normal (0.00 +- 0.22)
-disp        |  -0.03 | [-0.05, -0.01] |   100% |      100% | 1.000 | 2520.00 |   Normal (0.00 +- 0.12)
+(Intercept) |  30.78 | [28.15, 33.40] |   100% |        0% | 1.001 | 3828.00 | Normal (20.09 +- 15.07)
+hp          |  -0.03 | [-0.05,  0.00] | 97.02% |      100% | 1.000 | 1887.00 |   Normal (0.00 +- 0.22)
+disp        |  -0.03 | [-0.04, -0.02] |   100% |      100% | 1.000 | 2208.00 |   Normal (0.00 +- 0.12)
 ```
 :::
 
@@ -616,7 +633,7 @@ r2(lm2_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.731 (95% CI [0.571, 0.840])
+  Conditional R2: 0.732 (95% CI [0.576, 0.843])
 ```
 :::
 :::

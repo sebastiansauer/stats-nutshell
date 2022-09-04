@@ -1,18 +1,23 @@
-# Regression basics
-
+# Modelling and regression
 
 
 ![](img/stern.png){width=5%}
 
-## The linear model
 
 
-Consider a model with $k$ predictors:
+## What's modelling?
 
-$$y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon$$
+[Read this great introduction by modelling by Russel Poldrack](https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model).
 
 
-## Regression as the umbrella tool
+
+
+
+
+
+
+
+## Regression as the umbrella tool for modelling
 
 ![One regression](https://memegenerator.net/img/instances/86435221.jpg){width="50%"}
 
@@ -56,6 +61,18 @@ particularly on the error distribution.
 
 
 ![Regression and some of its assumptions](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSassumptions-1.png){#fig-regr2}
+
+
+
+### The linear model 
+
+
+Here's the canonical form of the linear model.
+
+Consider a model with $k$ predictors:
+
+$$y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon$$
+
 
 
 ### Algebraic derivation 
