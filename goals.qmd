@@ -1,13 +1,10 @@
 # Goals in statistics
 
-
-![](img/stern.png){width=5%}
+![](img/stern.png){width="5%"}
 
 ## Overview
 
 Many stories to be told. Here's one, on the goals pursued in statistics (and related fields), see Figure @fig-goals.
-
-
 
 ```{mermaid}
 %%| label: fig-goals
@@ -49,4 +46,4 @@ Hernán et al. (2019) distinguish:
 
 Stay calm and behold the infinity.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif/600px-Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif?20170912223608){width=50%}
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif/600px-Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif?20170912223608){width="50%"}

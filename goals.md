@@ -6,12 +6,16 @@
 
 Many stories to be told. Here's one, on the goals pursued in statistics (and related fields), see Figure @fig-goals.
 
-::: cell
-::: cell-output-display
-::: {#fig-goals}
-<p>
 
-```{=html}
+
+:::{.cell}
+
+:::{.cell-output-display}
+
+:::{#fig-goals}
+
+<p >
+
 <pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
   A{Goals} --&gt; B(describe)
   A --&gt; C(predict)
@@ -26,16 +30,17 @@ Many stories to be told. Here's one, on the goals pursued in statistics (and rel
   D --&gt; L(latent construct)
 
 </pre>
-```
-::: {#mermaid-tooltip-1 .mermaidTooltip}
-:::
 
+<div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
 </p>
+
 
 A taxonomy of statistical goals
 :::
 :::
 :::
+
+
 
 ::: callout-note
 Note that "goals" do not exist in the world. We make them up in our heads. Hence, they have no ontological existence, they are epistemological beasts. This entails that we are free to devise goals as we wish, provided we can convince ourselves and other souls of the utility of our creativity.

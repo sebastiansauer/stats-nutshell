@@ -1,0 +1,394 @@
+# Modelling and regression
+
+![](img/stern.png){width="5%"}
+
+## What's modelling?
+
+[Read this great introduction by modelling by Russel Poldrack](https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model). Actually, the whole book is nice @poldrack_statistical_2022.
+
+## Regression as the umbrella tool for modelling
+
+![One regression](https://memegenerator.net/img/instances/86435221.jpg){width="50%"}
+
+Alternatively, venture into the forest of statistical tests as [oultined eg here, at Uni Muenster](https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html).
+
+You may want to ponder on this image of a decision tree of which test to choose, see Figure @fig-choose-test.
+
+![Choose your test carefully](img/choose-test.png){#fig-choose-test}
+
+### Common statistical tests are linear models
+
+As Jonas Kristoffer Lindeløv tells us, we can formulate most statistical tests as a linear model, ie., a regression.
+
+![Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/linear_tests_cheat_sheet.png)
+
+### How to find the regression line
+
+In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figre @fig-regr1.
+
+![Least Square Regression](https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Coefficient_of_Determination.svg/800px-Coefficient_of_Determination.svg.png?20100906105829){#fig-regr1}
+
+Put simple, we are looking for the line which is in the "middle of the points". More precisely, we place the line such that the squared distances from the line to the points is minimal, see Figre @fig-regr1.
+
+Consider Figure @fig-regr2, from [this source](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression) by @roback_beyond_2021. It visualizes not only the notorious regression line, but also sheds light on regression assumptions, particularly on the error distribution.
+
+![Regression and some of its assumptions](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSassumptions-1.png){#fig-regr2}
+
+### The linear model
+
+Here's the canonical form of the linear model.
+
+Consider a model with $k$ predictors:
+
+$$y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon$$
+
+### Algebraic derivation
+
+For the mathematical inclined, check out [this derivation](https://data-se.netlify.app/2022/05/23/ableitung-der-koeffizienten-der-einfachen-regression/) of the simple case regression model. Note that the article is written in German, but your browser can effortlessly translate into English. Here's a [similar English article from StackExchange](https://math.stackexchange.com/questions/716826/derivation-of-simple-linear-regression-parameters).
+
+## R-packages needed
+
+For this chapter, the following R packages are needed.
+
+
+```{r}
+#| message: false
+library(rstanarm)
+library(tidyverse)
+library(easystats)
+```
+
+
+## In all its glory
+
+
+```{r in-all-its-glory}
+#| message: false
+#| echo: false
+ggplot(mtcars) +
+  aes(x = hp, y = mpg) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal()
+```
+
+
+## First model: one metric predictor
+
+First, let's load some data:
+
+
+```{r}
+data(mtcars)
+glimpse(mtcars)
+```
+
+
+### Frequentist
+
+Define and fit the model:
+
+
+```{r lm1-freq}
+lm1_freq <- lm(mpg ~ hp, data = mtcars)
+```
+
+
+Get the parameter values:
+
+
+```{r}
+parameters(lm1_freq)
+```
+
+
+Plot the model parameters:
+
+
+```{r}
+plot(parameters(lm1_freq))
+```
+
+
+### Bayesian
+
+
+```{r lm1-bayes}
+lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars)
+```
+
+
+Actually, we want to suppress some overly verbose output, using `refresh = 0`:
+
+
+```{r lm-bayes-refresh0}
+lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
+```
+
+
+Get the parameter values:
+
+
+```{r}
+parameters(lm1_bayes)
+```
+
+
+Plot the model parameters:
+
+
+```{r}
+plot(parameters(lm1_bayes))
+```
+
+
+### Model performance
+
+
+```{r}
+r2(lm1_freq)
+```
+
+```{r r2-bayes}
+r2(lm1_bayes)
+```
+
+
+### Model check
+
+
+```{r}
+#| fit-width: 10
+#| out-width: "100%"
+#| fig-asp: 1
+check_model(lm1_freq)
+```
+
+```{r}
+#| fit-width: 10
+#| out-width: "100%"
+#| fig-asp: 1
+check_model(lm1_bayes)
+```
+
+
+### Get some predictions
+
+
+```{r}
+lm1_pred <- estimate_relation(lm1_freq)
+lm1_pred
+```
+
+
+More details on the above function can be found on the [respective page at the easystats site](https://easystats.github.io/modelbased/reference/estimate_expectation.html#functions-for-estimating-predicted-values-and-uncertainty).
+
+### Plot the model
+
+
+```{r}
+plot(lm1_pred)
+```
+
+
+## More of this
+
+More technical details for gauging model performance and model quality, can be found on the site of [the R package "performance](https://easystats.github.io/performance/) at the easystats site.
+
+## Bayes-members only
+
+Bayes statistics provide a distribution as the result of the analysis, the posterior distribution, which provides us with quite some luxury.
+
+As the posterior distribution manifests itself by a number of samples, we can easily filter and manipulate this sample distribution in order to ask some interesing questions.
+
+See:
+
+
+```{r}
+lm1_bayes %>% 
+  as_tibble() %>% 
+  head()
+```
+
+
+### Asking for probabilites
+
+*What's the probability that the effect of hp is negative?*
+
+
+```{r}
+lm1_bayes %>% 
+  as_tibble() %>% 
+  count(hp < 0)
+```
+
+
+Feel free to ask similar questions!
+
+
+### Asking for quantiles
+
+
+*With a given probability of, say 90%, how large is the effect of hp?*
+
+
+```{r}
+lm1_bayes %>% 
+  as_tibble() %>% 
+  summarise(q_90 = quantile(hp, .9))
+```
+
+
+*What's the smallest 95% percent interval for the effect of hp?*
+
+
+```{r}
+hdi(lm1_bayes)
+```
+
+
+In case you prefer 89% intervals (I do!):
+
+
+```{r}
+hdi(lm1_bayes, ci = .89)
+```
+
+
+## Multiple metric predictors
+
+Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.
+
+
+```{r}
+lm2_freq <- lm(mpg ~ hp + disp, data = mtcars)
+parameters(lm2_freq)
+```
+
+
+Similarly for Bayes inference:
+
+
+```{r lm2-bayes}
+#| results: hide
+lm2_bayes <- stan_glm(mpg ~ hp + disp, data = mtcars)
+```
+
+
+Results
+
+
+```{r lm2-results}
+parameters(lm2_bayes)
+plot(parameters(lm2_bayes))
+r2(lm2_bayes)
+```
+
+
+Depending on the value of `disp` the prediction of `mpg` from `hp` will vary:
+
+
+```{r}
+lm2_pred <- estimate_relation(lm2_freq)
+plot(lm2_pred)
+```
+
+
+## One nominal predictor
+
+
+```{r}
+mtcars2 <-
+  mtcars %>% 
+  mutate(am_f = factor(am))
+
+lm3a <- lm(mpg ~ am_f, data = mtcars2)
+parameters(lm3a)
+```
+
+```{r}
+lm3a_means <- estimate_means(lm3a, at = "am_f")
+lm3a_means 
+```
+
+```{r}
+plot(lm3a_means)
+```
+
+
+Note that we should have converted `am` to a factor variable before fitting the model. Otherwise, the plot won't work.
+
+Here's a more hand-crafted version of the last plot, se. Fig. @lm3a-means
+
+
+```{r plot-}
+#| label: lm3a-means
+#| fig-cap: Means per level of am
+ggplot(mtcars2) +
+  aes(x = am_f, y = mpg) +
+  geom_violin() +
+  geom_jitter(width = .1, alpha = .5) +
+  geom_pointrange(data = lm3a_means,
+                  color = "orange",
+                  aes(ymin = CI_low, ymax = CI_high, y = Mean)) +
+  geom_line(data = lm3a_means, aes(y = Mean, group = 1))
+```
+
+
+## One metric and one nominal predictor
+
+
+```{r}
+mtcars2 <-
+  mtcars %>% 
+  mutate(cyl = factor(cyl))
+
+lm4 <- lm(mpg ~ hp + cyl, data = mtcars2)
+parameters(lm4)
+```
+
+```{r}
+lm4_pred <- estimate_relation(lm4)
+plot(lm4_pred)
+```
+
+
+## What about correlation?
+
+Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.
+
+Let's get the correlation matrix of the variables in involved in `lm4`.
+
+
+```{r}
+lm4_corr <- 
+  mtcars %>% 
+  select(mpg, hp, disp) %>% 
+  correlation()
+
+lm4_corr
+```
+
+```{r}
+plot(summary(lm4_corr))
+```
+
+
+## Exercises
+
+1.  [mtcars simple 1](https://datenwerk.netlify.app/posts/mtcars-simple1/mtcars-simple1/)
+2.  [mtcars simple 2](https://datenwerk.netlify.app/posts/mtcars-simple2/mtcars-simple2/)
+3.  [mtcars simple 3](https://datenwerk.netlify.app/posts/mtcars-simple3/mtcars-simple3/)
+
+## Lab
+
+Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.
+
+## Further reading
+
+@roback_beyond_2021 provide and more than introductory account of regression while being accessible. A recent but still classic book (if this is possible) is the book by @gelman_regression_2021.
+
+## Debrief
+
+![Science. Via Giphy.](https://media.giphy.com/media/141amBdjqs9Vvy/giphy.gif)
+

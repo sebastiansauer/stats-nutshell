@@ -6,9 +6,7 @@
 :::
 
 
-![](img/stern.png){width=5%}
-
-
+![](img/stern.png){width="5%"}
 
 ## What is it?
 

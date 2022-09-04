@@ -6,9 +6,7 @@
 library(tidyverse)
 ```
 
-![](img/stern.png){width=5%}
-
-
+![](img/stern.png){width="5%"}
 
 ## What is it?
 
@@ -71,10 +69,11 @@ Frequentism is all about controling the *long-term error*. For illustration, sup
 
 Bayes inference is concerned about the probability of your research hypothesis.
 
-It simply redestributes your beliefs based on new data (evidence) you observe:
+It simply redestributes your beliefs based on new data (evidence) you observe, see Figure @bfig-elief-update:
 
 ```{mermaid}
-
+%%| label: fig-belief-update
+%%| fig-cap: Bayesian belief updating
 flowchart LR
   A(prior belief) --> B(new data) --> C(posterior belief)
 
@@ -127,7 +126,7 @@ The p-value is defined as the probability of obtaining the observed data (or mor
 
 Figure @fig-p visualizes the p-value.
 
-```{r}
+```{r p-value-plot}
 #| fig-align: "center"
 #| fig-cap: "Visualization of the p-value"
 #| label: "fig-p"
