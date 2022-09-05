@@ -1,44 +1,24 @@
 # Modelling and regression
 
-
-![](img/stern.png){width=5%}
-
-
+![](img/stern.png){width="5%"}
 
 ## What's modelling?
 
-[Read this great introduction by modelling by Russel Poldrack](https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model).
-
-
-
-
-
-
-
-
+[Read this great introduction by modelling by Russel Poldrack](https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model). Actually, the whole book is nice @poldrack_statistical_2022.
 
 ## Regression as the umbrella tool for modelling
 
 ![One regression](https://memegenerator.net/img/instances/86435221.jpg){width="50%"}
 
-
-Alternatively, 
-venture into the forest of statistical tests as [oultined eg here, at Uni Muenster](https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html).
-
+Alternatively, venture into the forest of statistical tests as [oultined eg here, at Uni Muenster](https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html).
 
 You may want to ponder on this image of a decision tree of which test to choose, see Figure @fig-choose-test.
 
 ![Choose your test carefully](img/choose-test.png){#fig-choose-test}
 
-
-
-
 ### Common statistical tests are linear models
 
-
-As Jonas Kristoffer Lindeløv tells us,
-we can formulate most statistical tests as a linear model, ie., a regression.
-
+As Jonas Kristoffer Lindeløv tells us, we can formulate most statistical tests as a linear model, ie., a regression.
 
 ![Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/linear_tests_cheat_sheet.png)
 
@@ -46,26 +26,15 @@ we can formulate most statistical tests as a linear model, ie., a regression.
 
 In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figre @fig-regr1.
 
-
-
 ![Least Square Regression](https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Coefficient_of_Determination.svg/800px-Coefficient_of_Determination.svg.png?20100906105829){#fig-regr1}
-
 
 Put simple, we are looking for the line which is in the "middle of the points". More precisely, we place the line such that the squared distances from the line to the points is minimal, see Figre @fig-regr1.
 
-
-Consider Figure @fig-regr2, from [this source](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression) by @roback_beyond_2021. 
-It visualizes not only the notorious regression line,
-but also sheds light on regression assumptions,
-particularly on the error distribution.
-
+Consider Figure @fig-regr2, from [this source](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression) by @roback_beyond_2021. It visualizes not only the notorious regression line, but also sheds light on regression assumptions, particularly on the error distribution.
 
 ![Regression and some of its assumptions](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSassumptions-1.png){#fig-regr2}
 
-
-
-### The linear model 
-
+### The linear model
 
 Here's the canonical form of the linear model.
 
@@ -73,15 +42,9 @@ Consider a model with $k$ predictors:
 
 $$y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon$$
 
+### Algebraic derivation
 
-
-### Algebraic derivation 
-
-For the mathematical inclined, check out [this derivation](https://data-se.netlify.app/2022/05/23/ableitung-der-koeffizienten-der-einfachen-regression/) of the simple case regression model.
-Note that the article is written in German, but your browser can effortlessly translate into English. 
-Here's a [similar English article from StackExchange](https://math.stackexchange.com/questions/716826/derivation-of-simple-linear-regression-parameters).
-
-
+For the mathematical inclined, check out [this derivation](https://data-se.netlify.app/2022/05/23/ableitung-der-koeffizienten-der-einfachen-regression/) of the simple case regression model. Note that the article is written in German, but your browser can effortlessly translate into English. Here's a [similar English article from StackExchange](https://math.stackexchange.com/questions/716826/derivation-of-simple-linear-regression-parameters).
 
 ## R-packages needed
 
@@ -92,25 +55,30 @@ For this chapter, the following R packages are needed.
 
 ```{.r .cell-code}
 library(rstanarm)
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
+Please use the `linewidth` argument instead.
+```
+:::
+
+```{.r .cell-code}
 library(tidyverse)
 library(easystats)
 ```
 :::
 
 
-
-
-
 ## In all its glory
-
 
 
 ::: {.cell}
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-2-1.png){width=672}
+![](regression1_files/figure-html/in-all-its-glory-1.png){width=672}
 :::
 :::
-
 
 
 ## First model: one metric predictor
@@ -145,7 +113,6 @@ $ carb <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,�
 :::
 
 
-
 ### Frequentist
 
 Define and fit the model:
@@ -157,7 +124,6 @@ Define and fit the model:
 lm1_freq <- lm(mpg ~ hp, data = mtcars)
 ```
 :::
-
 
 
 Get the parameter values:
@@ -197,36 +163,144 @@ Plot the model parameters:
 plot(parameters(lm1_freq))
 ```
 
-::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-6-1.png){width=672}
-:::
+::: {.cell-output .cell-output-stderr}
+```
+Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+Please use `linewidth` instead.
+```
 :::
 
+::: {.cell-output-display}
+![](regression1_files/figure-html/unnamed-chunk-4-1.png){width=672}
+:::
+:::
 
 
 ### Bayesian
 
 
-
-
 ::: {.cell}
 
 ```{.r .cell-code}
-lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
+lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars)
 ```
+
+::: {.cell-output .cell-output-stdout}
+```
+
+SAMPLING FOR MODEL 'continuous' NOW (CHAIN 1).
+Chain 1: 
+Chain 1: Gradient evaluation took 0.000601 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 6.01 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
+Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 1: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 1: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 1: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 1: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 1: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 1: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 0.046955 seconds (Warm-up)
+Chain 1:                0.046687 seconds (Sampling)
+Chain 1:                0.093642 seconds (Total)
+Chain 1: 
+
+SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
+Chain 2: 
+Chain 2: Gradient evaluation took 2e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.2 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
+Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 2: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 2: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 2: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 2: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 2: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 2: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 0.050986 seconds (Warm-up)
+Chain 2:                0.048418 seconds (Sampling)
+Chain 2:                0.099404 seconds (Total)
+Chain 2: 
+
+SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
+Chain 3: 
+Chain 3: Gradient evaluation took 1.9e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.19 seconds.
+Chain 3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
+Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 3: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 3: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 3: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 3: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 3: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 3: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 0.050064 seconds (Warm-up)
+Chain 3:                0.052421 seconds (Sampling)
+Chain 3:                0.102485 seconds (Total)
+Chain 3: 
+
+SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
+Chain 4: 
+Chain 4: Gradient evaluation took 1.8e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.18 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
+Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 4: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 4: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 4: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 4: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 4: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 4: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 0.05014 seconds (Warm-up)
+Chain 4:                0.046328 seconds (Sampling)
+Chain 4:                0.096468 seconds (Total)
+Chain 4: 
+```
+:::
 :::
 
 
 Actually, we want to suppress some overly verbose output, using `refresh = 0`:
 
+
 ::: {.cell}
 
 ```{.r .cell-code}
 lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
 ```
 :::
-
-
 
 
 Get the parameter values:
@@ -242,8 +316,8 @@ parameters(lm1_bayes)
 ```
 Parameter   | Median |         95% CI |   pd | % in ROPE |  Rhat |     ESS |                   Prior
 ----------------------------------------------------------------------------------------------------
-(Intercept) |  30.08 | [26.83, 33.37] | 100% |        0% | 1.000 | 3329.00 | Normal (20.09 +- 15.07)
-hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.000 | 3679.00 |   Normal (0.00 +- 0.22)
+(Intercept) |  30.04 | [26.90, 33.42] | 100% |        0% | 1.001 | 3055.00 | Normal (20.09 +- 15.07)
+hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.001 | 3100.00 |   Normal (0.00 +- 0.22)
 ```
 :::
 
@@ -267,15 +341,12 @@ plot(parameters(lm1_bayes))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-10-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-6-1.png){width=672}
 :::
 :::
-
 
 
 ### Model performance
-
-
 
 
 ::: {.cell}
@@ -303,12 +374,10 @@ r2(lm1_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.589 (95% CI [0.384, 0.749])
+  Conditional R2: 0.586 (95% CI [0.389, 0.757])
 ```
 :::
 :::
-
-
 
 
 ### Model check
@@ -321,7 +390,7 @@ check_model(lm1_freq)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-13-1.png){width=100%}
+![](regression1_files/figure-html/unnamed-chunk-8-1.png){width=100%}
 :::
 :::
 
@@ -332,10 +401,9 @@ check_model(lm1_bayes)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-14-1.png){width=100%}
+![](regression1_files/figure-html/unnamed-chunk-9-1.png){width=100%}
 :::
 :::
-
 
 
 ### Get some predictions
@@ -372,13 +440,9 @@ Predictors modulated: hp
 :::
 
 
-
 More details on the above function can be found on the [respective page at the easystats site](https://easystats.github.io/modelbased/reference/estimate_expectation.html#functions-for-estimating-predicted-values-and-uncertainty).
 
-
-
 ### Plot the model
-
 
 
 ::: {.cell}
@@ -388,32 +452,20 @@ plot(lm1_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-16-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-11-1.png){width=672}
 :::
 :::
-
-
-
-
 
 
 ## More of this
 
-More technical details for gauging model performance and model quality,
-can be found on the site of [the R package "performance](https://easystats.github.io/performance/) at the easystats site.
-
-
-
+More technical details for gauging model performance and model quality, can be found on the site of [the R package "performance](https://easystats.github.io/performance/) at the easystats site.
 
 ## Bayes-members only
 
+Bayes statistics provide a distribution as the result of the analysis, the posterior distribution, which provides us with quite some luxury.
 
-Bayes statistics provide a distribution as the result of the analysis,
-the posterior distribution, which provides us with quite some luxury.
-
-
-As the posterior distribution manifests itself by a number of samples,
-we can easily filter and manipulate this sample distribution in order to ask some interesing questions.
+As the posterior distribution manifests itself by a number of samples, we can easily filter and manipulate this sample distribution in order to ask some interesing questions.
 
 See:
 
@@ -431,23 +483,20 @@ lm1_bayes %>%
 # A tibble: 6 × 3
   `(Intercept)`      hp sigma
           <dbl>   <dbl> <dbl>
-1          29.0 -0.0530  3.73
-2          32.3 -0.0856  4.54
-3          28.3 -0.0519  3.46
-4          27.8 -0.0510  3.94
-5          30.8 -0.0659  4.13
-6          32.2 -0.0704  4.20
+1          33.2 -0.0792  4.02
+2          32.6 -0.0815  3.48
+3          29.0 -0.0621  3.55
+4          31.2 -0.0742  3.60
+5          29.8 -0.0675  4.09
+6          32.2 -0.0824  3.65
 ```
 :::
 :::
 
 
-
 ### Asking for probabilites
 
-
 *What's the probability that the effect of hp is negative?*
-
 
 
 ::: {.cell}
@@ -478,7 +527,6 @@ Feel free to ask similar questions!
 *With a given probability of, say 90%, how large is the effect of hp?*
 
 
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -492,14 +540,13 @@ lm1_bayes %>%
 # A tibble: 1 × 1
      q_90
     <dbl>
-1 -0.0552
+1 -0.0553
 ```
 :::
 :::
 
 
 *What's the smallest 95% percent interval for the effect of hp?*
-
 
 
 ::: {.cell}
@@ -514,7 +561,7 @@ Highest Density Interval
 
 Parameter   |        95% HDI
 ----------------------------
-(Intercept) | [27.12, 33.60]
+(Intercept) | [26.95, 33.45]
 hp          | [-0.09, -0.05]
 ```
 :::
@@ -522,8 +569,6 @@ hp          | [-0.09, -0.05]
 
 
 In case you prefer 89% intervals (I do!):
-
-
 
 
 ::: {.cell}
@@ -538,13 +583,11 @@ Highest Density Interval
 
 Parameter   |        89% HDI
 ----------------------------
-(Intercept) | [27.57, 32.90]
+(Intercept) | [27.47, 32.72]
 hp          | [-0.08, -0.05]
 ```
 :::
 :::
-
-
 
 
 ## Multiple metric predictors
@@ -579,7 +622,6 @@ Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
 :::
 
 
-
 Similarly for Bayes inference:
 
 
@@ -593,6 +635,7 @@ lm2_bayes <- stan_glm(mpg ~ hp + disp, data = mtcars)
 
 Results
 
+
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -603,9 +646,9 @@ parameters(lm2_bayes)
 ```
 Parameter   | Median |         95% CI |     pd | % in ROPE |  Rhat |     ESS |                   Prior
 ------------------------------------------------------------------------------------------------------
-(Intercept) |  30.78 | [28.15, 33.40] |   100% |        0% | 1.001 | 3828.00 | Normal (20.09 +- 15.07)
-hp          |  -0.03 | [-0.05,  0.00] | 97.02% |      100% | 1.000 | 1887.00 |   Normal (0.00 +- 0.22)
-disp        |  -0.03 | [-0.04, -0.02] |   100% |      100% | 1.000 | 2208.00 |   Normal (0.00 +- 0.12)
+(Intercept) |  30.72 | [27.90, 33.49] |   100% |        0% | 1.000 | 4915.00 | Normal (20.09 +- 15.07)
+hp          |  -0.02 | [-0.05,  0.00] | 96.05% |      100% | 1.001 | 2046.00 |   Normal (0.00 +- 0.22)
+disp        |  -0.03 | [-0.05, -0.02] | 99.95% |      100% | 1.000 | 1985.00 |   Normal (0.00 +- 0.12)
 ```
 :::
 
@@ -622,7 +665,7 @@ plot(parameters(lm2_bayes))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-24-1.png){width=672}
+![](regression1_files/figure-html/lm2-results-1.png){width=672}
 :::
 
 ```{.r .cell-code}
@@ -633,12 +676,10 @@ r2(lm2_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.732 (95% CI [0.576, 0.843])
+  Conditional R2: 0.728 (95% CI [0.570, 0.840])
 ```
 :::
 :::
-
-
 
 
 Depending on the value of `disp` the prediction of `mpg` from `hp` will vary:
@@ -652,15 +693,12 @@ plot(lm2_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-25-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-18-1.png){width=672}
 :::
 :::
-
-
 
 
 ## One nominal predictor
-
 
 
 ::: {.cell}
@@ -720,16 +758,14 @@ plot(lm3a_means)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-28-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-21-1.png){width=672}
 :::
 :::
 
-Note that we should have converted `am` to a factor variable before fitting the model.
-Otherwise, the plot won't work.
 
+Note that we should have converted `am` to a factor variable before fitting the model. Otherwise, the plot won't work.
 
-Here's a more hand-crafted version of the last plot:
-
+Here's a more hand-crafted version of the last plot, se. Fig. @lm3a-means
 
 
 ::: {.cell}
@@ -746,14 +782,12 @@ ggplot(mtcars2) +
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-29-1.png){width=672}
+![Means per level of am](regression1_files/figure-html/lm3a-means-1.png){width=672}
 :::
 :::
-
 
 
 ## One metric and one nominal predictor
-
 
 
 ::: {.cell}
@@ -795,14 +829,12 @@ plot(lm4_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-31-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-23-1.png){width=672}
 :::
 :::
-
 
 
 ## What about correlation?
-
 
 Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.
 
@@ -843,44 +875,25 @@ plot(summary(lm4_corr))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-33-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-25-1.png){width=672}
 :::
 :::
-
-
-
 
 
 ## Exercises
 
-1. [mtcars simple 1](https://datenwerk.netlify.app/post/mtcars-simple1/mtcars-simple1/)
-1. [mtcars simple 2](https://datenwerk.netlify.app/post/mtcars-simple2/mtcars-simple2/)
-1. [mtcars simple 3](https://datenwerk.netlify.app/post/mtcars-simple3/mtcars-simple3/)
-
+1.  [mtcars simple 1](https://datenwerk.netlify.app/posts/mtcars-simple1/mtcars-simple1/)
+2.  [mtcars simple 2](https://datenwerk.netlify.app/posts/mtcars-simple2/mtcars-simple2/)
+3.  [mtcars simple 3](https://datenwerk.netlify.app/posts/mtcars-simple3/mtcars-simple3/)
 
 ## Lab
 
 Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.
 
-
-
 ## Further reading
 
-
-@roback_beyond_2021 provide and more than introductory account of regression while being accessible. 
-A recent but still classic book (if this is possible) is the book by @gelman_regression_2021.
-
-
+@roback_beyond_2021 provide and more than introductory account of regression while being accessible. A recent but still classic book (if this is possible) is the book by @gelman_regression_2021.
 
 ## Debrief
 
-
-
-
 ![Science. Via Giphy.](https://media.giphy.com/media/141amBdjqs9Vvy/giphy.gif)
-
-
-
-
-
-

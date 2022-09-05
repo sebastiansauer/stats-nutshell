@@ -1,14 +1,8 @@
 # Preface {.unnumbered}
 
-
-
-![A nutshell of stars](img/stern.png){width=15%}
+![A nutshell of stars](img/stern.png){width="15%"}
 
 ## Welcome!
-
-
-
-
 
 This is an introductory course on statistical modelling. Welcome!
 
@@ -71,15 +65,13 @@ All learning materials (such as literature, code, data) will be provided in elec
 
 -   *Install R and RStudio*, see [ModernDive Chap. 1.1](https://moderndive.com/1-getting-started.html#r-rstudio). In case you have your R running on your system, please make sure that you're uptodate. If outdated, download and install the most recent versions of the software. Similarly, hit the "Update" button in RStudio's "Packages" tab to update your packages if you have not done so for a couple of months.
 
-- Sign-in at [RStudio Cloud](https://login.rstudio.cloud/). It's super helpful because I as the techer can provide you with an environment where all R stuff is ready to use (packages installed etc). 
+-   Sign-in at [RStudio Cloud](https://login.rstudio.cloud/). It's super helpful because I as the techer can provide you with an environment where all R stuff is ready to use (packages installed etc).
 
 -   Install the necessary R packages as used in the book chapters covered in this course (see the sections on "Needed packages" in each chapter). If in doubt, see [here](https://moderndive.com/1-getting-started.html#packages) the instructions on how to install R packages. [Here's](#packages) the actual list on the R packages we'll need.
 
 -   Students new to R are advised to learn the basics, see [ModernDive, Chap 1.2 - 1.5](https://moderndive.com/1-getting-started.html#code)
 
-
-
--   Bring your own laptop 
+-   Bring your own laptop
 
 -   Make sure your internet connection is stable and your loudspeaker/headset is working; a webcam is helpful.
 
@@ -198,21 +190,13 @@ It's my goal to make this an excellent course and a stimulating and enjoyable ex
 
 Most of the materials as presented below is made available through the course book [ModernDive](https://moderndive.com/index.html). Please check the relevant chapters of the book before the course to make sure you have all materials available.
 
-
 ## Licence
-
 
 This is permissive work, [see the licence here](https://github.com/sebastiansauer/stats-nutshell/blob/main/LICENSE).
 
 The author is [Sebastian Sauer](https://sebastiansauer-academic.netlify.app/).
 
-
-
 Check out the [Github repo of this project](https://github.com/sebastiansauer/stats-nutshell).
-
-
-
-
 
 ## Resources
 
@@ -249,20 +233,15 @@ The following packages are useful for data access (but not strictly mandatory):
 -   skimr
 -   ISLR
 
+For the Bayes models you'll need some extra software (free, save and stable), but somewhat more hassle to install. Using Bayes in this course is *optional*. You don't miss a lot if you don't use it.
 
-For the Bayes models you'll need some extra software (free, save and stable),
-but somewhat more hassle to install. 
-Using Bayes in this course is *optional*. You don't miss a lot if you don't use it.
+-   rstanarm
 
-- rstanarm
+For the R package `{rstanarm}` to run, you'll need to [install RStan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). On Windows, this amounts to installing RTools. On Mac, you'll need to install the XCode CLI[^index-2].
 
-For the R package `{rstanarm}` to run, you'll need to [install RStan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). 
-On Windows, this amounts to installing RTools. On Mac, you'll need to install the XCode CLI^[possibly you need also a Fortran compiler, but maybe that's optional].
+[^index-2]: possibly you need also a Fortran compiler, but maybe that's optional
 
 In sum, follow the instructions on the RStan website. It's unfortunately a bit complicated.
-
-
-
 
 ### Data
 
@@ -289,3 +268,59 @@ There are none. I feel that slides are not optimal for learning. In class, slide
 To underline my messages to you, dear learners, I will use some sketches on a virtual whiteboard, some interactive apps, live coding, and some (pre-prepared) diagrams. That's a bit similar to what happens at [Khan Academy](https://de.khanacademy.org/). You might have noticed that many courses at [Coursera](https://www.coursera.org/) follow a similar approach.
 
 I readily confess that this approach is novel to many learners in these days, learners who are accustomed to hundreds of Powerpoint slides. Please be open and I think you will appreciate this didactic style.
+
+
+
+## Technical Details
+
+Last update: 2022-09-05 20:32:09
+
+
+::: {.cell}
+
+```{.r .cell-code}
+sessioninfo::session_info()
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+─ Session info ───────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.2.1 (2022-06-23)
+ os       macOS Big Sur ... 10.16
+ system   x86_64, darwin17.0
+ ui       X11
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       Europe/Berlin
+ date     2022-09-05
+ pandoc   2.19.2 @ /usr/local/bin/ (via rmarkdown)
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package     * version date (UTC) lib source
+ cli           3.3.0   2022-04-25 [1] CRAN (R 4.2.0)
+ colorout    * 1.2-2   2022-06-13 [1] local
+ digest        0.6.29  2021-12-01 [1] CRAN (R 4.2.0)
+ evaluate      0.16    2022-08-09 [1] CRAN (R 4.2.0)
+ fastmap       1.1.0   2021-01-25 [1] CRAN (R 4.2.0)
+ htmltools     0.5.3   2022-07-18 [1] CRAN (R 4.2.0)
+ htmlwidgets   1.5.4   2021-09-08 [1] CRAN (R 4.2.0)
+ jsonlite      1.8.0   2022-02-22 [1] CRAN (R 4.2.0)
+ knitr         1.40    2022-08-24 [1] CRAN (R 4.2.0)
+ magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.2.0)
+ rlang         1.0.5   2022-08-31 [1] CRAN (R 4.2.0)
+ rmarkdown     2.16    2022-08-24 [1] CRAN (R 4.2.0)
+ rstudioapi    0.14    2022-08-22 [1] CRAN (R 4.2.0)
+ sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.2.0)
+ stringi       1.7.8   2022-07-11 [1] CRAN (R 4.2.0)
+ stringr       1.4.1   2022-08-20 [1] CRAN (R 4.2.0)
+ xfun          0.32    2022-08-10 [1] CRAN (R 4.2.0)
+
+ [1] /Users/sebastiansaueruser/Rlibs
+ [2] /Library/Frameworks/R.framework/Versions/4.2/Resources/library
+
+──────────────────────────────────────────────────────────────────────────────
+```
+:::
+:::

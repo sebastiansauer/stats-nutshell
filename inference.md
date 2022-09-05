@@ -70,7 +70,7 @@ Frequentism is all about controling the *long-term error*. For illustration, sup
 
 Bayes inference is concerned about the probability of your research hypothesis.
 
-It simply redestributes your beliefs based on new data (evidence) you observe:
+It simply redestributes your beliefs based on new data (evidence) you observe, see Figure @bfig-elief-update:
 
 
 
@@ -78,18 +78,20 @@ It simply redestributes your beliefs based on new data (evidence) you observe:
 
 :::{.cell-output-display}
 
-:::{}
+:::{#fig-belief-update}
 
 <p >
 
-<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">
-flowchart LR
+<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
   A(prior belief) --&gt; B(new data) --&gt; C(posterior belief)
 
 </pre>
 
 <div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
 </p>
+
+
+Bayesian belief updating
 :::
 :::
 :::
