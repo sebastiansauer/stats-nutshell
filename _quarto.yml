@@ -13,6 +13,7 @@ book:
   chapters:
     - index.qmd
     - goals.qmd
+    - basics.qmd
     - EDA.qmd
     - inference.qmd
     - regression1.qmd
