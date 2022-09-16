@@ -1,9 +1,9 @@
 # Inference
 
 ```{r}
-#| echo: false
-#| message: false
+#| include: false
 library(tidyverse)
+library(knitr)
 ```
 
 ![](img/stern.png){width="5%"}
@@ -40,10 +40,11 @@ Population vs. sample (Image credit: Karsten Luebke)
 
 Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive* and *inferential* statistics.
 
-```{r}
+```{r desk-vs-ino-crop-plot}
 #| fig-cap: "The difference between description and inference"
 #| label: fig-desk-inf
 #| echo: false
+#| out-width: "50%"
 knitr::include_graphics("img/desk_vs_inf-crop.png")
 ```
 
@@ -51,7 +52,15 @@ knitr::include_graphics("img/desk_vs_inf-crop.png")
 
 Larger samples allow for more precise estimations (ceteris paribus).
 
-![Sample size in motion, Image credit: Karsten Luebke](img/Estimate.gif)
+```{r plot-estimate-gif}
+#| include: !expr is_html_output()
+#| fig-cap: "Sample size in motion, Image credit: Karsten Luebke"
+
+knitr::include_graphics("img/Estimate.gif")
+```
+
+
+<!-- ![Sample size in motion, Image credit: Karsten Luebke](img/Estimate.gif) -->
 
 ## What flavors are available?
 
@@ -63,15 +72,21 @@ However, there's a second flavor of statistics to be mentioned here: *Bayesian s
 
 Frequentism is *not* concerned about the probability of your research hypothesis.
 
-Frequentism is all about controling the *long-term error*. For illustration, suppose you are the CEO of a factory producing screws, and many of them. As the boss, you are not so much interested if a particular scree is in order (or faulty). Rather you are interested that the overall, long-term error rate of your production is low. One may add that your goal might not the minimize the long-term error, but to control it to a certain level - it may be to expensive to produce super high quality screws. Some decent, but cheap screws, might be more profitable.
+Frequentism is all about controlling the *long-term error*. For illustration, suppose you are the CEO of a factory producing screws, and many of them. 
+As the boss, you are not so much interested if a particular scree is in order (or faulty). 
+Rather you are interested that the overall, long-term error rate of your production is low. 
+One may add that your goal might not the minimize the long-term error, b
+ut to control it to a certain level - it may be to expensive to produce super high quality screws. 
+Some decent, but cheap screws, might be more profitable.
 
 ### Bayes inference
 
 Bayes inference is concerned about the probability of your research hypothesis.
 
-It simply redestributes your beliefs based on new data (evidence) you observe, see Figure @bfig-elief-update:
+It simply redistributes your beliefs based on new data (evidence) you observe, 
+see Figure @fig-belief-update:
 
-```{mermaid}
+```{mermaid, include=knitr::is_html_output()}
 %%| label: fig-belief-update
 %%| fig-cap: Bayesian belief updating
 flowchart LR
@@ -80,13 +95,21 @@ flowchart LR
 
 ```
 
-In more detail, the posterior belief is formalized as the posterior probability. The Likelihood is the probability of the data given some hypothesis. The normalizing constant serves to give us a number between zero and one.
+In more detail, the posterior belief is formalized as the posterior probability. The Likelihood is the probability of the data given some hypothesis. 
+The normalizing constant serves to give us a number between zero and one.
 
 $$\overbrace{\Pr(\color{blue}{H}|\color{green}{D})}^\text{posterior probability} = \overbrace{Pr(\color{blue}{H})}^\text{prior} \frac{\overbrace{Pr(\color{green}{D}|\color{blue}{H})}^\text{likelihood}}{\underbrace{Pr(\color{green}{D})}_{\text{normalizing constant}}}$$
 
-In practice, the posterior probability of your hypothesis is, the average of your prior and the Likelihood of your data.
+In practice, the posterior probability of your hypothesis is, 
+the average of your prior and the Likelihood of your data.
 
 ![Prior-Likelihood-Posterior](img/prior-l-post.png){width="70%"}
+
+
+Can you see that the posterior is some average of prior and likelihood?
+
+
+Check out this [great video on Bayes Theorem by 3b1b](https://youtu.be/HZGCoVF3YvM).
 
 ## But which one should I consume?
 
@@ -111,7 +134,7 @@ You'll learn that the technical setup used for doing Bayes statistics is quite s
 #| fig-align: center
 #| out-width: "50%"
 
-knitr::include_graphics("https://imgs.xkcd.com/comics/frequentists_vs_bayesians_2x.png")
+knitr::include_graphics("img/frequentists_vs_bayesians_2x.png")
 ```
 
 [Quelle](https://xkcd.com/1132/)
@@ -131,6 +154,7 @@ Figure @fig-pvalue visualizes the p-value.
 #| fig-cap: "Visualization of the p-value"
 #| label: fig-pvalue
 #| echo: false
+#| out-width: "50%"
 ggplot(NULL, aes(c(-3,3))) +
   geom_area(stat = "function", fun = dnorm, fill = "grey80", xlim = c(-3, 1.960)) +
   geom_area(stat = "function", fun = dnorm, fill = "firebrick", xlim = c(1.96, 3)) + 
@@ -142,12 +166,8 @@ ggplot(NULL, aes(c(-3,3))) +
 
 ## Some confusion remains about the p-value
 
-<a href="https://imgflip.com/i/6m29tz"><img src="https://i.imgflip.com/6m29tz.jpg" title="made at imgflip.com" width="400"/></a>
+![Source: from ImgFlip Meme Generator](img/6m29tz.jpeg){width=25%}
 
-<div>
 
-<a href="https://imgflip.com/memegenerator">from Imgflip Meme Generator</a>
-
-</div>
 
 @goodman_dirty_2008 provides an entertaining overview on typical misconceptions of the p-value [full text](https://www.ohri.ca//newsroom/seminars/SeminarUploads/1829/Suggested%20Reading%20-%20Nov%203,%202014.pdf).

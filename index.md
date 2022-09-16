@@ -1,6 +1,6 @@
 # Preface {.unnumbered}
 
-![A nutshell of stars](img/stern.png){width="15%"}
+![A nutshell of (statistics) stars](img/stern.png){width="15%"}
 
 ## Welcome!
 
@@ -273,10 +273,10 @@ I readily confess that this approach is novel to many learners in these days, le
 
 ## Technical Details
 
-Last update: 2022-09-16 15:05:40
+Last update: 2022-09-16 22:11:32
 
 
-::: {.cell}
+::: {.cell hash='index_cache/pdf/unnamed-chunk-1_c99c95df1ce7bd970d9cb8540746caf5'}
 
 ```{.r .cell-code}
 sessioninfo::session_info()
@@ -284,7 +284,7 @@ sessioninfo::session_info()
 
 ::: {.cell-output .cell-output-stdout}
 ```
-─ Session info ───────────────────────────────────────────────────────────────
+- Session info ---------------------------------------------------------------
  setting  value
  version  R version 4.2.1 (2022-06-23)
  os       macOS Big Sur ... 10.16
@@ -297,7 +297,7 @@ sessioninfo::session_info()
  date     2022-09-16
  pandoc   2.19.2 @ /usr/local/bin/ (via rmarkdown)
 
-─ Packages ───────────────────────────────────────────────────────────────────
+- Packages -------------------------------------------------------------------
  package     * version date (UTC) lib source
  cli           3.4.0   2022-09-08 [1] CRAN (R 4.2.0)
  colorout    * 1.2-2   2022-06-13 [1] local
@@ -305,7 +305,6 @@ sessioninfo::session_info()
  evaluate      0.16    2022-08-09 [1] CRAN (R 4.2.0)
  fastmap       1.1.0   2021-01-25 [1] CRAN (R 4.2.0)
  htmltools     0.5.3   2022-07-18 [1] CRAN (R 4.2.0)
- htmlwidgets   1.5.4   2021-09-08 [1] CRAN (R 4.2.0)
  jsonlite      1.8.0   2022-02-22 [1] CRAN (R 4.2.0)
  knitr         1.40    2022-08-24 [1] CRAN (R 4.2.0)
  magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.2.0)
@@ -320,7 +319,7 @@ sessioninfo::session_info()
  [1] /Users/sebastiansaueruser/Rlibs
  [2] /Library/Frameworks/R.framework/Versions/4.2/Resources/library
 
-──────────────────────────────────────────────────────────────────────────────
+------------------------------------------------------------------------------
 ```
 :::
 :::

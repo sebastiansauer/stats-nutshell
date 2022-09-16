@@ -1,4 +1,4 @@
-# More Regression
+# More lineare models
 
 ![](img/stern.png){width="5%"}
 
@@ -106,13 +106,14 @@ X1 --> Y2
 X2 --> Y2
 ```
 
-A different perspective is given by Figure @fig-3dregr, where a 3D account of a regression is given. 3D means to input variables, and (which is always the case) one output variable.
+ given by Figure @fig-3dregr, where a 3D account of a regression is given. 3D means to input variables, and (which is always the case) one output variable.
 
 ::: callout-note
 Note that the slope in linear in both axis (X1 and X2).
 :::
 
-![Multiple Regression. Image source: Cfbaf, Public Domain](https://upload.wikimedia.org/wikipedia/commons/a/ae/2d_multiple_linear_regression.gif?20161014061355){#fig-3dregr}
+A different perspective is shown [here](https://upload.wikimedia.org/wikipedia/commons/a/ae/2d_multiple_linear_regression.gif?20161014061355),  
+where a 3D account of a regression is given. 3D means to input variables, and (which is always the case) one output variable.
 
 ::: callout-important
 If the slope for one predictor is the same for all values of the other predictor, then we say that no interaction is taking place.
@@ -121,26 +122,25 @@ If the slope for one predictor is the same for all values of the other predictor
 Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure, @fig-3dregr2.
 
 ```{r plot-3dregr2}
-#| out-width: "33%"
 #| echo: false
 #| label: fig-3dregr2
-#| fig-subcap: 
-#|   - "Theta = 30"
-#|   - "Theta = 90"
-#|   - "Theta = 150"
+#| fig-cap: "3D regression plane (not line) without interaction"
 #| results: "hold"
 #| fig-align: "center"
 
-plane <- function(x, y) {
-  x+y
-}
+# plane <- function(x, y) {
+#   x+y
+# }
+# 
+# x <- y <- seq(-1, 1, length = 30)
+# z <- outer(x,y, plane)
+# 
+# persp(x,y,z, theta = 30)
+# persp(x,y,z, theta = 90)
+# persp(x,y,z, theta = 150)
 
-x <- y <- seq(-1, 1, length = 30)
-z <- outer(x,y, plane)
 
-persp(x,y,z, theta = 30)
-persp(x,y,z, theta = 90)
-persp(x,y,z, theta = 150)
+knitr::include_graphics(c("img/3d1.png", "img/3d2.png", "img/3d3.png"))
 ```
 
 Note that in the above figure, the slope in each predictor axis equals 1, boringly. Hence the according 2D plots are boring, too.
@@ -337,7 +337,15 @@ A similar approach is presented [here](https://shainarace.github.io/LinearAlgebr
 
 Consider this geometric interpretation of the least square method in Figure @fig-leastsq.
 
-![Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Linear_least_squares_geometric_interpretation.png/543px-Linear_least_squares_geometric_interpretation.png?20080406011122){#fig-leastsq}{width=25%}
+
+```{r}
+#| label: fig-leastsq
+#| fig-cap: "Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia"
+#| out-width: "25%"
+#| echo: false
+knitr::include_graphics("img/543px-Linear_least_squares_geometric_interpretation.png")
+```
+
 
 ## Literatur
 

@@ -1,6 +1,6 @@
 # Preface {.unnumbered}
 
-![A nutshell of stars](img/stern.png){width="15%"}
+![A nutshell of (statistics) stars](img/stern.png){width="15%"}
 
 ## Welcome!
 

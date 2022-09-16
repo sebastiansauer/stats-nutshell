@@ -6,7 +6,7 @@
 ## R packages needed for this chapter
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-1_5e60e969ded20b36c4862df64fc60c76'}
 
 ```{.r .cell-code}
 library(easystats)
@@ -41,36 +41,15 @@ A more visual account of our basic modelling equation is depicted in @fig-model1
 
 
 
-:::{.cell}
-
-:::{.cell-output-display}
-
-:::{#fig-model1}
-
-<p >
-
-<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
-  X --&gt; Y
-  error --&gt; Y
-</pre>
-
-<div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
-</p>
-
-
-A more visual account of our basic modelling equation
-:::
-:::
-:::
-
 
 
 
 ## Regression as the umbrella tool for modelling
 
-![One regression](https://memegenerator.net/img/instances/86435221.jpg){width="50%"}
+![One regression](img/one-regression-to-rule-them-all.jpeg){width="50%"}
+[Source: Image Flip](www.imgflip.com)
 
-Alternatively, venture into the forest of statistical tests as [oultined eg here, at Uni Muenster](https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html).
+Alternatively, venture into the forest of statistical tests as [outlined e.g. here, at Uni Muenster](https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html).
 
 You may want to ponder on this image of a decision tree of which test to choose, see Figure @fig-choose-test.
 
@@ -80,19 +59,21 @@ You may want to ponder on this image of a decision tree of which test to choose,
 
 As Jonas Kristoffer Lindeløv tells us, we can formulate most statistical tests as a linear model, ie., a regression.
 
-![Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/linear_tests_cheat_sheet.png)
+![Common statistical tests as linear models](img/linear_tests_cheat_sheet.png){width=75%}
 
 ### How to find the regression line
 
-In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figre @fig-regr1.
+In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figure @fig-regr1.
 
-![Least Square Regression](https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Coefficient_of_Determination.svg/800px-Coefficient_of_Determination.svg.png?20100906105829){#fig-regr1}
+![Least Square Regression](img/800px-Coefficient_of_Determination.svg.png){#fig-regr1}
+
+[Source: Orzetoo, CC-SA, Wikimedia](https://commons.wikimedia.org/wiki/File:Coefficient_of_Determination.svg)
 
 Put simple, we are looking for the line which is in the "middle of the points". More precisely, we place the line such that the squared distances from the line to the points is minimal, see Figre @fig-regr1.
 
 Consider Figure @fig-regr2, from [this source](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression) by @roback_beyond_2021. It visualizes not only the notorious regression line, but also sheds light on regression assumptions, particularly on the error distribution.
 
-![Regression and some of its assumptions](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSassumptions-1.png){#fig-regr2}
+![Regression and some of its assumptions](img/OLSassumptions-1.png){#fig-regr2}
 
 ### The linear model
 
@@ -106,27 +87,14 @@ $$y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon$$
 
 For the mathematical inclined, check out [this derivation](https://data-se.netlify.app/2022/05/23/ableitung-der-koeffizienten-der-einfachen-regression/) of the simple case regression model. Note that the article is written in German, but your browser can effortlessly translate into English. Here's a [similar English article from StackExchange](https://math.stackexchange.com/questions/716826/derivation-of-simple-linear-regression-parameters).
 
-## R-packages needed
-
-For this chapter, the following R packages are needed.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-library(rstanarm)
-library(tidyverse)
-library(easystats)
-```
-:::
 
 
 ## In all its glory
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/in-all-its-glory_8f6281094a8b505d0e9d3faf9e78363d'}
 ::: {.cell-output-display}
-![](regression1_files/figure-html/in-all-its-glory-1.png){width=672}
+![](regression1_files/figure-pdf/in-all-its-glory-1.pdf)
 :::
 :::
 
@@ -136,7 +104,7 @@ library(easystats)
 First, let's load some data:
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-2_1ff9809622f526d6b2c9105964db1844'}
 
 ```{.r .cell-code}
 data(mtcars)
@@ -147,17 +115,17 @@ glimpse(mtcars)
 ```
 Rows: 32
 Columns: 11
-$ mpg  <dbl> 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…
-$ cyl  <dbl> 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…
-$ disp <dbl> 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…
-$ hp   <dbl> 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…
-$ drat <dbl> 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…
-$ wt   <dbl> 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…
-$ qsec <dbl> 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…
-$ vs   <dbl> 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…
-$ am   <dbl> 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…
-$ gear <dbl> 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…
-$ carb <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…
+$ mpg  <dbl> 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,~
+$ cyl  <dbl> 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,~
+$ disp <dbl> 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16~
+$ hp   <dbl> 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180~
+$ drat <dbl> 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,~
+$ wt   <dbl> 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.~
+$ qsec <dbl> 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18~
+$ vs   <dbl> 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,~
+$ am   <dbl> 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,~
+$ gear <dbl> 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,~
+$ carb <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,~
 ```
 :::
 :::
@@ -168,7 +136,7 @@ $ carb <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,�
 Define and fit the model:
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm1-freq_400060b0bde95999c938e5c2d0aac4c2'}
 
 ```{.r .cell-code}
 lm1_freq <- lm(mpg ~ hp, data = mtcars)
@@ -179,21 +147,19 @@ lm1_freq <- lm(mpg ~ hp, data = mtcars)
 Get the parameter values:
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm1-frewq-params_49a783dbed9937e09e2acca72b7c90e5'}
 
 ```{.r .cell-code}
 parameters(lm1_freq)
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
-
-|Parameter   | Coefficient|        SE|   CI|     CI_low|    CI_high|         t| df_error|     p|
-|:-----------|-----------:|---------:|----:|----------:|----------:|---------:|--------:|-----:|
-|(Intercept) |  30.0988605| 1.6339210| 0.95| 26.7619488| 33.4357723| 18.421246|       30| 0e+00|
-|hp          |  -0.0682283| 0.0101193| 0.95| -0.0888947| -0.0475619| -6.742388|       30| 2e-07|
-
-</div>
+::: {.cell-output .cell-output-stdout}
+```
+Parameter   | Coefficient |   SE |         95% CI | t(30) |      p
+------------------------------------------------------------------
+(Intercept) |       30.10 | 1.63 | [26.76, 33.44] | 18.42 | < .001
+hp          |       -0.07 | 0.01 | [-0.09, -0.05] | -6.74 | < .001
+```
 :::
 :::
 
@@ -201,21 +167,14 @@ parameters(lm1_freq)
 Plot the model parameters:
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/plot-lm1-freq_60db7bbb6052fd1561fe00f5168654c8'}
 
 ```{.r .cell-code}
 plot(parameters(lm1_freq))
 ```
 
-::: {.cell-output .cell-output-stderr}
-```
-Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-Please use `linewidth` instead.
-```
-:::
-
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-6-1.png){width=672}
+![](regression1_files/figure-pdf/plot-lm1-freq-1.pdf){fig-pos='H'}
 :::
 :::
 
@@ -223,7 +182,7 @@ Please use `linewidth` instead.
 ### Bayesian
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm1-bayes_0b94f56f1ee1fb5568fbc496ce752c49'}
 
 ```{.r .cell-code}
 lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars)
@@ -234,8 +193,8 @@ lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars)
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 0.000831 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 8.31 seconds.
+Chain 1: Gradient evaluation took 0.000671 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 6.71 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -252,15 +211,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.042686 seconds (Warm-up)
-Chain 1:                0.035384 seconds (Sampling)
-Chain 1:                0.07807 seconds (Total)
+Chain 1:  Elapsed Time: 0.031964 seconds (Warm-up)
+Chain 1:                0.030428 seconds (Sampling)
+Chain 1:                0.062392 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 1.8e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.18 seconds.
+Chain 2: Gradient evaluation took 1.4e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.14 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -277,15 +236,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.042009 seconds (Warm-up)
-Chain 2:                0.033546 seconds (Sampling)
-Chain 2:                0.075555 seconds (Total)
+Chain 2:  Elapsed Time: 0.032053 seconds (Warm-up)
+Chain 2:                0.030316 seconds (Sampling)
+Chain 2:                0.062369 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 2.5e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.25 seconds.
+Chain 3: Gradient evaluation took 1.7e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.17 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -302,15 +261,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.036563 seconds (Warm-up)
-Chain 3:                0.043174 seconds (Sampling)
-Chain 3:                0.079737 seconds (Total)
+Chain 3:  Elapsed Time: 0.030275 seconds (Warm-up)
+Chain 3:                0.03358 seconds (Sampling)
+Chain 3:                0.063855 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 1.8e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.18 seconds.
+Chain 4: Gradient evaluation took 1.6e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.16 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -327,9 +286,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.041863 seconds (Warm-up)
-Chain 4:                0.040007 seconds (Sampling)
-Chain 4:                0.08187 seconds (Total)
+Chain 4:  Elapsed Time: 0.031825 seconds (Warm-up)
+Chain 4:                0.029619 seconds (Sampling)
+Chain 4:                0.061444 seconds (Total)
 Chain 4: 
 ```
 :::
@@ -339,7 +298,7 @@ Chain 4:
 Actually, we want to suppress some overly verbose output of the sampling, so add the argument `refresh = 0`:
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm-bayes-refresh0_58824704a69bbfb19aa719d33ad09f12'}
 
 ```{.r .cell-code}
 lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
@@ -350,21 +309,19 @@ lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
 Get the parameter values:
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-3_09a06926ea9c34fed3894433c7a8fb62'}
 
 ```{.r .cell-code}
 parameters(lm1_bayes)
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
-
-|Parameter   |     Median|   CI|     CI_low|   CI_high| pd| ROPE_Percentage|     Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
-|:-----------|----------:|----:|----------:|---------:|--:|---------------:|--------:|--------:|:------------------|--------------:|-----------:|
-|(Intercept) | 30.0795318| 0.95| 26.8026587| 33.570419|  1|               0| 1.000433| 3323.896|normal             |       20.09062|  15.0673701|
-|hp          | -0.0682765| 0.95| -0.0895345| -0.047832|  1|               1| 1.000014| 3254.075|normal             |        0.00000|   0.2197599|
-
-</div>
+::: {.cell-output .cell-output-stdout}
+```
+Parameter   | Median |         95% CI |   pd | % in ROPE |  Rhat |     ESS |                   Prior
+----------------------------------------------------------------------------------------------------
+(Intercept) |  30.12 | [26.85, 33.34] | 100% |        0% | 1.001 | 3257.00 | Normal (20.09 +- 15.07)
+hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.000 | 3387.00 |   Normal (0.00 +- 0.22)
+```
 :::
 :::
 
@@ -372,14 +329,14 @@ parameters(lm1_bayes)
 Plot the model parameters:
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-4_830779a438edd5a8582665175173f952'}
 
 ```{.r .cell-code}
 plot(parameters(lm1_bayes))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-8-1.png){width=672}
+![](regression1_files/figure-pdf/unnamed-chunk-4-1.pdf){fig-pos='H'}
 :::
 :::
 
@@ -387,7 +344,7 @@ plot(parameters(lm1_bayes))
 ### Model performance
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-5_c165df2f3e83d39ca2298a5b9e1b71bc'}
 
 ```{.r .cell-code}
 r2(lm1_freq)
@@ -402,7 +359,7 @@ r2(lm1_freq)
 :::
 :::
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/r2-bayes_b11c56cfb6fb061189ea436161792846'}
 
 ```{.r .cell-code}
 r2(lm1_bayes)
@@ -412,7 +369,7 @@ r2(lm1_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.588 (95% CI [0.386, 0.750])
+  Conditional R2: 0.585 (95% CI [0.376, 0.744])
 ```
 :::
 :::
@@ -423,14 +380,14 @@ r2(lm1_bayes)
 Here's a bunch of typical model checks in the Frequentist sense.
 
 
-::: {.cell fit-width='10' fig.asp='1'}
+::: {.cell fit-width='10' fig.asp='1' hash='regression1_cache/pdf/checkmodel-lm1-freq_566a6ef0c05f51b912456400db3ce6fa'}
 
 ```{.r .cell-code}
 check_model(lm1_freq)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-10-1.png){width=100%}
+![](regression1_files/figure-pdf/checkmodel-lm1-freq-1.pdf){fig-pos='H' width=100%}
 :::
 :::
 
@@ -439,14 +396,14 @@ check_model(lm1_freq)
 And here are some Bayesian flavored model checks.
 
 
-::: {.cell fit-width='10' fig.asp='1'}
+::: {.cell fit-width='10' fig.asp='1' hash='regression1_cache/pdf/checkmodel-lm1-bayes_4ddb2be711e0946e7f7983667c4991e9'}
 
 ```{.r .cell-code}
 check_model(lm1_bayes)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-11-1.png){width=100%}
+![](regression1_files/figure-pdf/checkmodel-lm1-bayes-1.pdf){fig-pos='H' width=100%}
 :::
 :::
 
@@ -454,30 +411,33 @@ check_model(lm1_bayes)
 ### Get some predictions
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm1-preds_bcbb26836ddffd05115a20b424d2a3c4'}
 
 ```{.r .cell-code}
 lm1_pred <- estimate_relation(lm1_freq)
 lm1_pred
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
+::: {.cell-output .cell-output-stdout}
+```
+Model-based Expectation
 
-|        hp| Predicted|        SE|    CI_low|  CI_high|
-|---------:|---------:|---------:|---------:|--------:|
-|  52.00000| 26.550990| 1.1766139| 24.148024| 28.95396|
-|  83.44444| 24.405590| 0.9358933| 22.494241| 26.31694|
-| 114.88889| 22.260189| 0.7548971| 20.718484| 23.80190|
-| 146.33333| 20.114789| 0.6828911| 18.720139| 21.50944|
-| 177.77778| 17.969389| 0.7518697| 16.433866| 19.50491|
-| 209.22222| 15.823989| 0.9310065| 13.922620| 17.72536|
-| 240.66667| 13.678588| 1.1707841| 11.287528| 16.06965|
-| 272.11111| 11.533188| 1.4412478|  8.589767| 14.47661|
-| 303.55556|  9.387788| 1.7280486|  5.858642| 12.91693|
-| 335.00000|  7.242387| 2.0242544|  3.108308| 11.37647|
+hp     | Predicted |   SE |         95% CI
+------------------------------------------
+52.00  |     26.55 | 1.18 | [24.15, 28.95]
+83.44  |     24.41 | 0.94 | [22.49, 26.32]
+114.89 |     22.26 | 0.75 | [20.72, 23.80]
+146.33 |     20.11 | 0.68 | [18.72, 21.51]
+177.78 |     17.97 | 0.75 | [16.43, 19.50]
+209.22 |     15.82 | 0.93 | [13.92, 17.73]
+240.67 |     13.68 | 1.17 | [11.29, 16.07]
+272.11 |     11.53 | 1.44 | [ 8.59, 14.48]
+303.56 |      9.39 | 1.73 | [ 5.86, 12.92]
+335.00 |      7.24 | 2.02 | [ 3.11, 11.38]
 
-</div>
+Variable predicted: mpg
+Predictors modulated: hp
+```
 :::
 :::
 
@@ -487,14 +447,14 @@ More details on the above function can be found on the [respective page at the e
 ### Plot the model
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/plot-lm1-pred_ef4205a9bed0dcc13d89a5ed1f01df43'}
 
 ```{.r .cell-code}
 plot(lm1_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-13-1.png){width=672}
+![](regression1_files/figure-pdf/plot-lm1-pred-1.pdf){fig-pos='H'}
 :::
 :::
 
@@ -512,7 +472,7 @@ As the posterior distribution manifests itself by a number of samples, we can ea
 See:
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-6_e747b9b6b90d56740872dec713407f73'}
 
 ```{.r .cell-code}
 lm1_bayes %>% 
@@ -520,19 +480,18 @@ lm1_bayes %>%
   head()
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
-
-| (Intercept)|         hp|    sigma|
-|-----------:|----------:|--------:|
-|    28.27642| -0.0591659| 5.017778|
-|    33.15667| -0.0858229| 3.433353|
-|    28.58500| -0.0612133| 3.162451|
-|    29.13762| -0.0678200| 3.570594|
-|    27.89647| -0.0575504| 4.811973|
-|    28.76891| -0.0624424| 5.507252|
-
-</div>
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 6 x 3
+  `(Intercept)`      hp sigma
+          <dbl>   <dbl> <dbl>
+1          27.5 -0.0545  3.86
+2          32.4 -0.0812  3.60
+3          29.7 -0.0567  3.86
+4          29.5 -0.0608  4.47
+5          30.7 -0.0664  3.78
+6          29.4 -0.0682  3.89
+```
 :::
 :::
 
@@ -542,7 +501,7 @@ lm1_bayes %>%
 *What's the probability that the effect of hp is negative?*
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-7_39fb7eed142b8d0a1cd27b9de5a54d76'}
 
 ```{.r .cell-code}
 lm1_bayes %>% 
@@ -550,14 +509,13 @@ lm1_bayes %>%
   count(hp < 0)
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
-
-|hp < 0 |    n|
-|:------|----:|
-|TRUE   | 4000|
-
-</div>
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 1 x 2
+  `hp < 0`     n
+  <lgl>    <int>
+1 TRUE      4000
+```
 :::
 :::
 
@@ -569,7 +527,7 @@ Feel free to ask similar questions!
 *With a given probability of, say 90%, how large is the effect of hp?*
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-8_e93f2dce642329d2d148d5d524343294'}
 
 ```{.r .cell-code}
 lm1_bayes %>% 
@@ -577,14 +535,13 @@ lm1_bayes %>%
   summarise(q_90 = quantile(hp, .9))
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
-
-|       q_90|
-|----------:|
-| -0.0553509|
-
-</div>
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 1 x 1
+     q_90
+    <dbl>
+1 -0.0550
+```
 :::
 :::
 
@@ -592,21 +549,21 @@ lm1_bayes %>%
 *What's the smallest 95% percent interval for the effect of hp?*
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-9_4f0a3c3fb23768e0ecb95339d4982e33'}
 
 ```{.r .cell-code}
 hdi(lm1_bayes)
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
+::: {.cell-output .cell-output-stdout}
+```
+Highest Density Interval
 
-|Parameter   |   CI|     CI_low|    CI_high|Effects |Component   |
-|:-----------|----:|----------:|----------:|:-------|:-----------|
-|(Intercept) | 0.95| 26.7049455| 33.4273159|fixed   |conditional |
-|hp          | 0.95| -0.0907723| -0.0492018|fixed   |conditional |
-
-</div>
+Parameter   |        95% HDI
+----------------------------
+(Intercept) | [26.95, 33.43]
+hp          | [-0.09, -0.05]
+```
 :::
 :::
 
@@ -614,21 +571,21 @@ hdi(lm1_bayes)
 In case you prefer 89% intervals (I do!):
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-10_33414b4739b3dbc963ad62454a83a968'}
 
 ```{.r .cell-code}
 hdi(lm1_bayes, ci = .89)
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
+::: {.cell-output .cell-output-stdout}
+```
+Highest Density Interval
 
-|Parameter   |   CI|    CI_low|    CI_high|Effects |Component   |
-|:-----------|----:|---------:|----------:|:-------|:-----------|
-|(Intercept) | 0.89| 27.615719| 33.0054493|fixed   |conditional |
-|hp          | 0.89| -0.085043| -0.0517985|fixed   |conditional |
-
-</div>
+Parameter   |        89% HDI
+----------------------------
+(Intercept) | [27.41, 32.68]
+hp          | [-0.09, -0.05]
+```
 :::
 :::
 
@@ -638,23 +595,21 @@ hdi(lm1_bayes, ci = .89)
 Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm2-freq_bcebd7060c16f74a514159263c189625'}
 
 ```{.r .cell-code}
 lm2_freq <- lm(mpg ~ hp + disp, data = mtcars)
 parameters(lm2_freq)
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
-
-|Parameter   | Coefficient|        SE|   CI|     CI_low|    CI_high|         t| df_error|         p|
-|:-----------|-----------:|---------:|----:|----------:|----------:|---------:|--------:|---------:|
-|(Intercept) |  30.7359042| 1.3315661| 0.95| 28.0125457| 33.4592628| 23.082522|       29| 0.0000000|
-|hp          |  -0.0248401| 0.0133855| 0.95| -0.0522165|  0.0025363| -1.855746|       29| 0.0736791|
-|disp        |  -0.0303463| 0.0074049| 0.95| -0.0454909| -0.0152016| -4.098159|       29| 0.0003063|
-
-</div>
+::: {.cell-output .cell-output-stdout}
+```
+Parameter   | Coefficient |       SE |         95% CI | t(29) |      p
+----------------------------------------------------------------------
+(Intercept) |       30.74 |     1.33 | [28.01, 33.46] | 23.08 | < .001
+hp          |       -0.02 |     0.01 | [-0.05,  0.00] | -1.86 | 0.074 
+disp        |       -0.03 | 7.40e-03 | [-0.05, -0.02] | -4.10 | < .001
+```
 :::
 :::
 
@@ -662,7 +617,7 @@ parameters(lm2_freq)
 Similarly for Bayes inference:
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm2-bayes_76cc30acc8fe855c9c9880fe99e94c21'}
 
 ```{.r .cell-code}
 lm2_bayes <- stan_glm(mpg ~ hp + disp, data = mtcars)
@@ -673,22 +628,20 @@ lm2_bayes <- stan_glm(mpg ~ hp + disp, data = mtcars)
 Results
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm2-results_6a8ca37265c9de039f47e1a6b92daf17'}
 
 ```{.r .cell-code}
 parameters(lm2_bayes)
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
-
-|Parameter   |     Median|   CI|     CI_low|    CI_high|      pd| ROPE_Percentage|      Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
-|:-----------|----------:|----:|----------:|----------:|-------:|---------------:|---------:|--------:|:------------------|--------------:|-----------:|
-|(Intercept) | 30.7466648| 0.95| 27.9337775| 33.6340655| 1.00000|               0| 0.9997994| 4378.773|normal             |       20.09062|  15.0673701|
-|hp          | -0.0244193| 0.95| -0.0517429|  0.0016371| 0.96625|               1| 1.0000532| 2313.156|normal             |        0.00000|   0.2197599|
-|disp        | -0.0303470| 0.95| -0.0445648| -0.0150526| 1.00000|               1| 1.0004781| 2348.480|normal             |        0.00000|   0.1215712|
-
-</div>
+::: {.cell-output .cell-output-stdout}
+```
+Parameter   | Median |         95% CI |     pd | % in ROPE |  Rhat |     ESS |                   Prior
+------------------------------------------------------------------------------------------------------
+(Intercept) |  30.78 | [27.94, 33.57] |   100% |        0% | 0.999 | 5095.00 | Normal (20.09 +- 15.07)
+hp          |  -0.02 | [-0.05,  0.00] | 97.28% |      100% | 1.001 | 2226.00 |   Normal (0.00 +- 0.22)
+disp        |  -0.03 | [-0.04, -0.01] |   100% |      100% | 1.001 | 2150.00 |   Normal (0.00 +- 0.12)
+```
 :::
 
 ```{.r .cell-code}
@@ -696,7 +649,7 @@ plot(parameters(lm2_bayes))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/lm2-results-1.png){width=672}
+![](regression1_files/figure-pdf/lm2-results-1.pdf){fig-pos='H'}
 :::
 
 ```{.r .cell-code}
@@ -707,7 +660,7 @@ r2(lm2_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.728 (95% CI [0.571, 0.840])
+  Conditional R2: 0.731 (95% CI [0.579, 0.847])
 ```
 :::
 :::
@@ -716,7 +669,7 @@ r2(lm2_bayes)
 Depending on the value of `disp` the prediction of `mpg` from `hp` will vary:
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm2-pred_7014d48bf51dca654d2d49e276025f94'}
 
 ```{.r .cell-code}
 lm2_pred <- estimate_relation(lm2_freq)
@@ -724,7 +677,7 @@ plot(lm2_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-20-1.png){width=672}
+![](regression1_files/figure-pdf/lm2-pred-1.pdf){fig-pos='H'}
 :::
 :::
 
@@ -732,7 +685,7 @@ plot(lm2_pred)
 ## One nominal predictor
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm3a_9d7c21c9f5e959b269cd646dc43792ee'}
 
 ```{.r .cell-code}
 mtcars2 <-
@@ -743,45 +696,45 @@ lm3a <- lm(mpg ~ am_f, data = mtcars2)
 parameters(lm3a)
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
-
-|Parameter   | Coefficient|       SE|   CI|   CI_low|  CI_high|         t| df_error|        p|
-|:-----------|-----------:|--------:|----:|--------:|--------:|---------:|--------:|--------:|
-|(Intercept) |   17.147368| 1.124602| 0.95| 14.85062| 19.44411| 15.247492|       30| 0.000000|
-|am_f1       |    7.244939| 1.764422| 0.95|  3.64151| 10.84837|  4.106127|       30| 0.000285|
-
-</div>
+::: {.cell-output .cell-output-stdout}
+```
+Parameter   | Coefficient |   SE |         95% CI | t(30) |      p
+------------------------------------------------------------------
+(Intercept) |       17.15 | 1.12 | [14.85, 19.44] | 15.25 | < .001
+am f [1]    |        7.24 | 1.76 | [ 3.64, 10.85] |  4.11 | < .001
+```
 :::
 :::
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-11_b1e10fa1fd41d7ecfc3ec2c703a8f490'}
 
 ```{.r .cell-code}
 lm3a_means <- estimate_means(lm3a, at = "am_f")
 lm3a_means 
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
+::: {.cell-output .cell-output-stdout}
+```
+Estimated Marginal Means
 
-|am_f |     Mean|       SE|   CI_low|  CI_high|
-|:----|--------:|--------:|--------:|--------:|
-|0    | 17.14737| 1.124602| 14.85062| 19.44411|
-|1    | 24.39231| 1.359578| 21.61568| 27.16894|
+am_f |  Mean |   SE |         95% CI
+------------------------------------
+0    | 17.15 | 1.12 | [14.85, 19.44]
+1    | 24.39 | 1.36 | [21.62, 27.17]
 
-</div>
+Marginal means estimated at am_f
+```
 :::
 :::
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-12_f1f83990f1772365d7a3bc7fab78200c'}
 
 ```{.r .cell-code}
 plot(lm3a_means)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-23-1.png){width=672}
+![](regression1_files/figure-pdf/unnamed-chunk-12-1.pdf){fig-pos='H'}
 :::
 :::
 
@@ -791,7 +744,7 @@ Note that we should have converted `am` to a factor variable before fitting the 
 Here's a more hand-crafted version of the last plot, see Fig. @fig-lm3a-means.
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/fig-lm3a-means_8b7707668c2a21311d181f7eaab3148f'}
 
 ```{.r .cell-code}
 ggplot(mtcars2) +
@@ -805,7 +758,7 @@ ggplot(mtcars2) +
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/fig-lm3a-means-1.png){#fig-lm3a-means width=672}
+![](regression1_files/figure-pdf/fig-lm3a-means-1.pdf){#fig-lm3a-means fig-pos='H'}
 :::
 :::
 
@@ -813,7 +766,7 @@ ggplot(mtcars2) +
 ## One metric and one nominal predictor
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm4_84431baf255114e7c0a89760d68345e1'}
 
 ```{.r .cell-code}
 mtcars2 <-
@@ -824,21 +777,19 @@ lm4 <- lm(mpg ~ hp + cyl, data = mtcars2)
 parameters(lm4)
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
-
-|Parameter   | Coefficient|        SE|   CI|      CI_low|    CI_high|         t| df_error|         p|
-|:-----------|-----------:|---------:|----:|-----------:|----------:|---------:|--------:|---------:|
-|(Intercept) |  28.6501182| 1.5877870| 0.95|  25.3976840| 31.9025524| 18.044056|       28| 0.0000000|
-|hp          |  -0.0240388| 0.0154079| 0.95|  -0.0556005|  0.0075228| -1.560163|       28| 0.1299540|
-|cyl6        |  -5.9676551| 1.6392776| 0.95|  -9.3255631| -2.6097471| -3.640418|       28| 0.0010921|
-|cyl8        |  -8.5208508| 2.3260749| 0.95| -13.2855993| -3.7561022| -3.663188|       28| 0.0010286|
-
-</div>
+::: {.cell-output .cell-output-stdout}
+```
+Parameter   | Coefficient |   SE |          95% CI | t(28) |      p
+-------------------------------------------------------------------
+(Intercept) |       28.65 | 1.59 | [ 25.40, 31.90] | 18.04 | < .001
+hp          |       -0.02 | 0.02 | [ -0.06,  0.01] | -1.56 | 0.130 
+cyl [6]     |       -5.97 | 1.64 | [ -9.33, -2.61] | -3.64 | 0.001 
+cyl [8]     |       -8.52 | 2.33 | [-13.29, -3.76] | -3.66 | 0.001 
+```
 :::
 :::
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm4-pred_2b0bbfdb304523c7c26cb0cf5a879ab0'}
 
 ```{.r .cell-code}
 lm4_pred <- estimate_relation(lm4)
@@ -846,7 +797,7 @@ plot(lm4_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-25-1.png){width=672}
+![](regression1_files/figure-pdf/lm4-pred-1.pdf){fig-pos='H'}
 :::
 :::
 
@@ -858,7 +809,7 @@ Correlation is really a close cousin to regression. In fact, regression with sta
 Let's get the correlation matrix of the variables in involved in `lm4`.
 
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/lm4-corr_88a71893d7a45bcd54f1552f71ef076a'}
 
 ```{.r .cell-code}
 lm4_corr <- 
@@ -869,27 +820,30 @@ lm4_corr <-
 lm4_corr
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
+::: {.cell-output .cell-output-stdout}
+```
+# Correlation Matrix (pearson-method)
 
-|Parameter1 |Parameter2 |          r|   CI|     CI_low|    CI_high|         t| df_error|     p|Method              | n_Obs|
-|:----------|:----------|----------:|----:|----------:|----------:|---------:|--------:|-----:|:-------------------|-----:|
-|mpg        |hp         | -0.7761684| 0.95| -0.8852686| -0.5860994| -6.742388|       30| 2e-07|Pearson correlation |    32|
-|mpg        |disp       | -0.8475514| 0.95| -0.9233594| -0.7081376| -8.747151|       30| 0e+00|Pearson correlation |    32|
-|hp         |disp       |  0.7909486| 0.95|  0.6106794|  0.8932775|  7.080122|       30| 1e-07|Pearson correlation |    32|
+Parameter1 | Parameter2 |     r |         95% CI | t(30) |         p
+--------------------------------------------------------------------
+mpg        |         hp | -0.78 | [-0.89, -0.59] | -6.74 | < .001***
+mpg        |       disp | -0.85 | [-0.92, -0.71] | -8.75 | < .001***
+hp         |       disp |  0.79 | [ 0.61,  0.89] |  7.08 | < .001***
 
-</div>
+p-value adjustment method: Holm (1979)
+Observations: 32
+```
 :::
 :::
 
-::: {.cell}
+::: {.cell hash='regression1_cache/pdf/unnamed-chunk-13_a80e793699ae47265146e2e1fc262fc1'}
 
 ```{.r .cell-code}
 plot(summary(lm4_corr))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-27-1.png){width=672}
+![](regression1_files/figure-pdf/unnamed-chunk-13-1.pdf){fig-pos='H'}
 :::
 :::
 
@@ -913,4 +867,4 @@ You may also benefit from @poldrack_statistical_2022 (open access).
 
 ## Debrief
 
-![Science. Via Giphy.](https://media.giphy.com/media/141amBdjqs9Vvy/giphy.gif)
+[Science!](https://media.giphy.com/media/141amBdjqs9Vvy/giphy.gif)

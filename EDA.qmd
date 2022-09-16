@@ -46,7 +46,7 @@ EDA can roughly be said to comprise the following parts:
 i.e., the steps we are taking in order to learn from data, seen from an hands-on angle,
 see @fig-data-journey.
 
-![The data journey](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png){#fig-data-journey}
+![The data journey](img/data-journey.png){#fig-data-journey}
 
 
 ## Blitz data
@@ -59,7 +59,7 @@ See @sec-blitz-data for some data sets suitable to get going.
 
 There are many systems and approaches to explore data. One particular interesting system is the R-package `DataExplorer`.
 
-![R-package DataExplorer](http://boxuancui.github.io/DataExplorer/reference/figures/logo.png){width="20%"}
+![R-package DataExplorer](img/dataexplorer-logo.png){width="20%"}
 
 Check it out [on its Githup page](http://boxuancui.github.io/DataExplorer/).
 
@@ -67,7 +67,7 @@ Check it out [on its Githup page](http://boxuancui.github.io/DataExplorer/).
 
 A bit similar to {DataExplorer}, the [R package {vtree}](https://nbarrowman.github.io/vtree) helps to explore visually datasets.
 
-![vtree is used to generate variable trees, like the one above.](https://nbarrowman.github.io/images/vertical.png)
+![vtree is used to generate variable trees, like the one above.](img/vtree-vertical.png)
 
 ## Tidyverse
 
@@ -118,29 +118,35 @@ For example, [here's the function reference site](https://easystats.github.io/da
 
 ## Case Study
 
-![R package/dataset palmerpenguins](https://allisonhorst.github.io/palmerpenguins/logo.png){width="20%"}
+![R package/dataset palmerpenguins](img/palmerpenguins-logo.png){width="20%"}
 
 Explore the `palmerpenguins` dataset, it's a famous dataset made for learning data analysis.
 
 There's a great [interactive course on EDA based on the penguins](https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome). Have a look, it's great!
 
-![Release the penguins](https://media.giphy.com/media/3og0IO5z8Rd30ktV6g/giphy.gif){width="50%"}
+
+
+
+[Go penguins! Allez!](https://media.giphy.com/media/3og0IO5z8Rd30ktV6g/giphy.gif){width="50%"}
 
 ## Cheatsheets
 
-There are a number of nice cheatsheets [available on an array of topics related to EDA](https://www.rstudio.com/resources/cheatsheets/), made available by the folks at RStudio.
+There are a number of nice cheat sheets [available on an array of topics related to EDA](https://www.rstudio.com/resources/cheatsheets/), made available by the folks at RStudio.
 
-::: {layout-ncol="2"}
-![{dplyr}: data wrangling](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/data-transformation.png)
 
-![{tidyr}: data preparation](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/tidyr.png)
+Consider this collection:
 
-![{ggplot}: data visualization](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/data-visualization.png)
+- [{dplyr}: data wrangling](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/data-transformation.png)
 
-![{gtsummary}: publication ready tables](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/gtsummary.png)
-:::
+- [{tidyr}: data preparation](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/tidyr.png)
 
-So much great stuff! A bit too much to digest in one go, but definitely worthwhile if you plan to dig deeper in data analysis.
+- [{ggplot}: data visualization](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/data-visualization.png)
+
+- [{gtsummary}: publication ready tables](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/gtsummary.png)
+
+
+So much great stuff! A bit too much to digest in one go, 
+but definitely worthwhile if you plan to dig deeper in data analysis.
 
 
 

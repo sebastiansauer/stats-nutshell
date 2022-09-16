@@ -36,7 +36,7 @@ $${#eq-modelling}
 
 A more visual account of our basic modelling equation is depicted in @fig-model1.
 
-```{mermaid}
+```{mermaid model1-mm, include=knitr::is_html_output()}
 %%| fig-cap: A more visual account of our basic modelling equation
 %%| label: fig-model1
 flowchart LR
@@ -47,9 +47,10 @@ flowchart LR
 
 ## Regression as the umbrella tool for modelling
 
-![One regression](https://memegenerator.net/img/instances/86435221.jpg){width="50%"}
+![One regression](img/one-regression-to-rule-them-all.jpeg){width="50%"}
+[Source: Image Flip](www.imgflip.com)
 
-Alternatively, venture into the forest of statistical tests as [oultined eg here, at Uni Muenster](https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html).
+Alternatively, venture into the forest of statistical tests as [outlined e.g. here, at Uni Muenster](https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html).
 
 You may want to ponder on this image of a decision tree of which test to choose, see Figure @fig-choose-test.
 
@@ -59,19 +60,21 @@ You may want to ponder on this image of a decision tree of which test to choose,
 
 As Jonas Kristoffer Lindeløv tells us, we can formulate most statistical tests as a linear model, ie., a regression.
 
-![Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/linear_tests_cheat_sheet.png)
+![Common statistical tests as linear models](img/linear_tests_cheat_sheet.png){width=75%}
 
 ### How to find the regression line
 
-In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figre @fig-regr1.
+In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figure @fig-regr1.
 
-![Least Square Regression](https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Coefficient_of_Determination.svg/800px-Coefficient_of_Determination.svg.png?20100906105829){#fig-regr1}
+![Least Square Regression](img/800px-Coefficient_of_Determination.svg.png){#fig-regr1}
+
+[Source: Orzetoo, CC-SA, Wikimedia](https://commons.wikimedia.org/wiki/File:Coefficient_of_Determination.svg)
 
 Put simple, we are looking for the line which is in the "middle of the points". More precisely, we place the line such that the squared distances from the line to the points is minimal, see Figre @fig-regr1.
 
 Consider Figure @fig-regr2, from [this source](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression) by @roback_beyond_2021. It visualizes not only the notorious regression line, but also sheds light on regression assumptions, particularly on the error distribution.
 
-![Regression and some of its assumptions](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSassumptions-1.png){#fig-regr2}
+![Regression and some of its assumptions](img/OLSassumptions-1.png){#fig-regr2}
 
 ### The linear model
 
@@ -85,17 +88,7 @@ $$y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon$$
 
 For the mathematical inclined, check out [this derivation](https://data-se.netlify.app/2022/05/23/ableitung-der-koeffizienten-der-einfachen-regression/) of the simple case regression model. Note that the article is written in German, but your browser can effortlessly translate into English. Here's a [similar English article from StackExchange](https://math.stackexchange.com/questions/716826/derivation-of-simple-linear-regression-parameters).
 
-## R-packages needed
 
-For this chapter, the following R packages are needed.
-
-```{r}
-#| message: false
-#| warning: false
-library(rstanarm)
-library(tidyverse)
-library(easystats)
-```
 
 ## In all its glory
 
@@ -128,13 +121,13 @@ lm1_freq <- lm(mpg ~ hp, data = mtcars)
 
 Get the parameter values:
 
-```{r}
+```{r lm1-frewq-params}
 parameters(lm1_freq)
 ```
 
 Plot the model parameters:
 
-```{r}
+```{r plot-lm1-freq}
 plot(parameters(lm1_freq))
 ```
 
@@ -176,7 +169,7 @@ r2(lm1_bayes)
 
 Here's a bunch of typical model checks in the Frequentist sense.
 
-```{r}
+```{r checkmodel-lm1-freq}
 #| fit-width: 10
 #| out-width: "100%"
 #| fig-asp: 1
@@ -186,7 +179,7 @@ check_model(lm1_freq)
 
 And here are some Bayesian flavored model checks.
 
-```{r}
+```{r checkmodel-lm1-bayes}
 #| fit-width: 10
 #| out-width: "100%"
 #| fig-asp: 1
@@ -195,7 +188,7 @@ check_model(lm1_bayes)
 
 ### Get some predictions
 
-```{r}
+```{r lm1-preds}
 lm1_pred <- estimate_relation(lm1_freq)
 lm1_pred
 ```
@@ -204,7 +197,7 @@ More details on the above function can be found on the [respective page at the e
 
 ### Plot the model
 
-```{r}
+```{r plot-lm1-pred}
 plot(lm1_pred)
 ```
 
@@ -264,7 +257,7 @@ hdi(lm1_bayes, ci = .89)
 
 Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.
 
-```{r}
+```{r lm2-freq}
 lm2_freq <- lm(mpg ~ hp + disp, data = mtcars)
 parameters(lm2_freq)
 ```
@@ -286,14 +279,14 @@ r2(lm2_bayes)
 
 Depending on the value of `disp` the prediction of `mpg` from `hp` will vary:
 
-```{r}
+```{r lm2-pred}
 lm2_pred <- estimate_relation(lm2_freq)
 plot(lm2_pred)
 ```
 
 ## One nominal predictor
 
-```{r}
+```{r lm3a}
 mtcars2 <-
   mtcars %>% 
   mutate(am_f = factor(am))
@@ -330,7 +323,7 @@ ggplot(mtcars2) +
 
 ## One metric and one nominal predictor
 
-```{r}
+```{r lm4}
 mtcars2 <-
   mtcars %>% 
   mutate(cyl = factor(cyl))
@@ -339,7 +332,7 @@ lm4 <- lm(mpg ~ hp + cyl, data = mtcars2)
 parameters(lm4)
 ```
 
-```{r}
+```{r lm4-pred}
 lm4_pred <- estimate_relation(lm4)
 plot(lm4_pred)
 ```
@@ -350,7 +343,7 @@ Correlation is really a close cousin to regression. In fact, regression with sta
 
 Let's get the correlation matrix of the variables in involved in `lm4`.
 
-```{r}
+```{r lm4-corr}
 lm4_corr <- 
   mtcars %>% 
   select(mpg, hp, disp) %>% 
@@ -382,4 +375,4 @@ You may also benefit from @poldrack_statistical_2022 (open access).
 
 ## Debrief
 
-![Science. Via Giphy.](https://media.giphy.com/media/141amBdjqs9Vvy/giphy.gif)
+[Science!](https://media.giphy.com/media/141amBdjqs9Vvy/giphy.gif)

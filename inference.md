@@ -1,9 +1,7 @@
 # Inference
 
 
-::: {.cell}
 
-:::
 
 
 ![](img/stern.png){width="5%"}
@@ -41,9 +39,9 @@ Population vs. sample (Image credit: Karsten Luebke)
 Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive* and *inferential* statistics.
 
 
-::: {.cell}
+::: {.cell hash='inference_cache/pdf/fig-desk-inf_4216cea4a10f7d4a6a6684b030224de3'}
 ::: {.cell-output-display}
-![The difference between description and inference](img/desk_vs_inf-crop.png){#fig-desk-inf width=912}
+![The difference between description and inference](img/desk_vs_inf-crop.png){#fig-desk-inf width=6.08in}
 :::
 :::
 
@@ -52,7 +50,12 @@ Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive
 
 Larger samples allow for more precise estimations (ceteris paribus).
 
-![Sample size in motion, Image credit: Karsten Luebke](img/Estimate.gif)
+
+
+
+
+
+<!-- ![Sample size in motion, Image credit: Karsten Luebke](img/Estimate.gif) -->
 
 ## What flavors are available?
 
@@ -64,47 +67,39 @@ However, there's a second flavor of statistics to be mentioned here: *Bayesian s
 
 Frequentism is *not* concerned about the probability of your research hypothesis.
 
-Frequentism is all about controling the *long-term error*. For illustration, suppose you are the CEO of a factory producing screws, and many of them. As the boss, you are not so much interested if a particular scree is in order (or faulty). Rather you are interested that the overall, long-term error rate of your production is low. One may add that your goal might not the minimize the long-term error, but to control it to a certain level - it may be to expensive to produce super high quality screws. Some decent, but cheap screws, might be more profitable.
+Frequentism is all about controlling the *long-term error*. For illustration, suppose you are the CEO of a factory producing screws, and many of them. 
+As the boss, you are not so much interested if a particular scree is in order (or faulty). 
+Rather you are interested that the overall, long-term error rate of your production is low. 
+One may add that your goal might not the minimize the long-term error, b
+ut to control it to a certain level - it may be to expensive to produce super high quality screws. 
+Some decent, but cheap screws, might be more profitable.
 
 ### Bayes inference
 
 Bayes inference is concerned about the probability of your research hypothesis.
 
-It simply redestributes your beliefs based on new data (evidence) you observe, see Figure @bfig-elief-update:
+It simply redistributes your beliefs based on new data (evidence) you observe, 
+see Figure @fig-belief-update:
 
 
 
-:::{.cell}
-
-:::{.cell-output-display}
-
-:::{#fig-belief-update}
-
-<p >
-
-<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
-  A(prior belief) --&gt; B(new data) --&gt; C(posterior belief)
-
-</pre>
-
-<div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
-</p>
 
 
-Bayesian belief updating
-:::
-:::
-:::
-
-
-
-In more detail, the posterior belief is formalized as the posterior probability. The Likelihood is the probability of the data given some hypothesis. The normalizing constant serves to give us a number between zero and one.
+In more detail, the posterior belief is formalized as the posterior probability. The Likelihood is the probability of the data given some hypothesis. 
+The normalizing constant serves to give us a number between zero and one.
 
 $$\overbrace{\Pr(\color{blue}{H}|\color{green}{D})}^\text{posterior probability} = \overbrace{Pr(\color{blue}{H})}^\text{prior} \frac{\overbrace{Pr(\color{green}{D}|\color{blue}{H})}^\text{likelihood}}{\underbrace{Pr(\color{green}{D})}_{\text{normalizing constant}}}$$
 
-In practice, the posterior probability of your hypothesis is, the average of your prior and the Likelihood of your data.
+In practice, the posterior probability of your hypothesis is, 
+the average of your prior and the Likelihood of your data.
 
 ![Prior-Likelihood-Posterior](img/prior-l-post.png){width="70%"}
+
+
+Can you see that the posterior is some average of prior and likelihood?
+
+
+Check out this [great video on Bayes Theorem by 3b1b](https://youtu.be/HZGCoVF3YvM).
 
 ## But which one should I consume?
 
@@ -125,9 +120,9 @@ You'll learn that the technical setup used for doing Bayes statistics is quite s
 ## Comment from xkcd
 
 
-::: {.cell layout-align="center"}
+::: {.cell layout-align="center" hash='inference_cache/pdf/unnamed-chunk-3_5368272b838d1a633db5ff786c20da7b'}
 ::: {.cell-output-display}
-![](https://imgs.xkcd.com/comics/frequentists_vs_bayesians_2x.png){fig-align='center' width=50%}
+![](img/frequentists_vs_bayesians_2x.png){fig-align='center' width=50%}
 :::
 :::
 
@@ -145,21 +140,17 @@ The p-value is defined as the probability of obtaining the observed data (or mor
 Figure @fig-pvalue visualizes the p-value.
 
 
-::: {.cell layout-align="center"}
+::: {.cell layout-align="center" hash='inference_cache/pdf/fig-pvalue_77da99b37f346215a2d8b16d6fa44dcd'}
 ::: {.cell-output-display}
-![Visualization of the p-value](inference_files/figure-html/fig-pvalue-1.png){#fig-pvalue fig-align='center' width=672}
+![Visualization of the p-value](inference_files/figure-pdf/fig-pvalue-1.pdf){#fig-pvalue fig-align='center' width=50%}
 :::
 :::
 
 
 ## Some confusion remains about the p-value
 
-<a href="https://imgflip.com/i/6m29tz"><img src="https://i.imgflip.com/6m29tz.jpg" title="made at imgflip.com" width="400"/></a>
+![Source: from ImgFlip Meme Generator](img/6m29tz.jpeg){width=25%}
 
-<div>
 
-<a href="https://imgflip.com/memegenerator">from Imgflip Meme Generator</a>
-
-</div>
 
 @goodman_dirty_2008 provides an entertaining overview on typical misconceptions of the p-value [full text](https://www.ohri.ca//newsroom/seminars/SeminarUploads/1829/Suggested%20Reading%20-%20Nov%203,%202014.pdf).

@@ -16,22 +16,8 @@ Many stories to be told. Here's one, on the goals pursued in statistics (and rel
 
 <p >
 
-<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
-  A{Goals} --&gt; B(describe)
-  A --&gt; C(predict)
-  A --&gt; D(explain)
-  B --&gt; E(distribution)
-  B --&gt; F(assocation)
-  B --&gt; G(extrapolation)
-  C --&gt; H(point estimate)
-  C --&gt; I(interval)
-  D --&gt; J(causal inference)
-  D --&gt; K(population)
-  D --&gt; L(latent construct)
+![](goals_files/figure-latex/mermaid-figure-1.png){width="5.5in" height="3.5in" fig-pos='H'}
 
-</pre>
-
-<div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
 </p>
 
 
@@ -62,6 +48,7 @@ Hernán et al. (2019) distinguish:
 
 ## If nothing else helps
 
-Stay calm and behold the infinity.
+Stay calm and behold the [infinity](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif/600px-Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif?20170912223608).
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif/600px-Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif?20170912223608){width="50%"}
+
+
