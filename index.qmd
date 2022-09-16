@@ -8,6 +8,15 @@ This is an introductory course on statistical modelling. Welcome!
 
 The focus of this course is on how to specify a theoretical idea (possibly vague) in a testable statistical model.
 
+
+## PDF-Version
+
+
+There's a [PDF version of this book available](https://stats-nutshell.netlify.app/stats-nutshell.pdf).
+Note that the HTML is the more recent one.
+
+
+
 ## Course description
 
 Analyzing research data can broadly be classified in three parts: explorative data analysis, modeling (including inference), and visualization. Either part is pivotal in its own right, but it can be argued that modeling is at the core of the scientific endeavor. However, in practice, modeling, visualization, and data exploration is heavily intertwined, so that three parts may be recognized (as individual entities) but not usefully separated from each other. This idea provides the rationale of this course: Data exploration, data visualization and data modeling is discussed as an integrated framework.
