@@ -1,0 +1,46 @@
+# Case studies
+
+
+
+
+
+
+## Case studies on explorative data analysis
+
+
+```{r child1, results='asis', echo = FALSE}
+url <- "https://raw.githubusercontent.com/sebastiansauer/Lehre/main/Material/yacsdas-EDA.md"
+childtext <- readLines(url)
+cat(childtext, sep="\n")
+```
+
+
+
+
+
+
+
+
+## Case studies on linear modesl
+
+
+
+
+```{r child2, results='asis', echo = FALSE}
+url <- "https://raw.githubusercontent.com/sebastiansauer/Lehre/main/Material/yacsdas-lm.md"
+childtext <- readLines(url)
+cat(childtext, sep="\n")
+```
+
+
+
+## Case studies on machine learning using tidymodels
+
+
+
+```{r child3, results='asis', echo = FALSE}
+url <- "https://raw.githubusercontent.com/sebastiansauer/Lehre/main/Material/yacsdas-tidymodels.md"
+childtext <- readLines(url)
+cat(childtext, sep="\n")
+```
+
