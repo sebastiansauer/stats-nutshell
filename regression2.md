@@ -36,7 +36,7 @@ $log (\hat{y}) = b_0 + b_1x_1 + b_2x_2 + \ldots + b_kx_k$
 
 For simplicity, let's drop the subscripts in the following without loss of generality and keep it short:
 
-$y = e^{x}$, with $\approx 2.71...$
+$y = e^{x}$, with $e \approx 2.71...$
 
 Exponentiate both sides to get:
 
@@ -48,12 +48,12 @@ This association is called multiplicative, because if x increases by 1, y increa
 The logarithm is not defined for negative (input) values. And $log(0) = -\infty$.
 :::
 
-A side-effect of modelling `log_y` instead of `y` is that the distribution shape of the outcome variable changes. This can be useful in times.
+A side-effect of modelling `log_y` instead of `y` is that the distribution shape of the outcome variable changes. This can be useful at times.
 
 
 Log-Y Regression can usefully be employed for modelling growth, among othrs, see @exm-logy.
 
-:::exm-logy
+::: {#exm-logy}
 
 ## Bacteria growth
 
@@ -149,20 +149,20 @@ Note that the slope in linear in both axis (X1 and X2).
 If the slope for one predictor is the same for all values of the other predictor, then we say that no interaction is taking place.
 :::
 
-Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure.
+Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure, @fig-3dregr2.
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![](regression2_files/figure-html/plot-3dregr2-1.png){width=33%}
+![Theta = 30](regression2_files/figure-html/fig-3dregr2-1.png){#fig-3dregr2-1 fig-align='center' width=33%}
 :::
 
 ::: {.cell-output-display}
-![](regression2_files/figure-html/plot-3dregr2-2.png){width=33%}
+![Theta = 90](regression2_files/figure-html/fig-3dregr2-2.png){#fig-3dregr2-2 fig-align='center' width=33%}
 :::
 
 ::: {.cell-output-display}
-![](regression2_files/figure-html/plot-3dregr2-3.png){width=33%}
+![Theta = 150](regression2_files/figure-html/fig-3dregr2-3.png){#fig-3dregr2-3 fig-align='center' width=33%}
 :::
 :::
 

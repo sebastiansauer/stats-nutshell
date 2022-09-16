@@ -273,7 +273,7 @@ I readily confess that this approach is novel to many learners in these days, le
 
 ## Technical Details
 
-Last update: 2022-09-16 14:19:09
+Last update: 2022-09-16 15:05:40
 
 
 ::: {.cell}
@@ -299,7 +299,7 @@ sessioninfo::session_info()
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date (UTC) lib source
- cli           3.3.0   2022-04-25 [1] CRAN (R 4.2.0)
+ cli           3.4.0   2022-09-08 [1] CRAN (R 4.2.0)
  colorout    * 1.2-2   2022-06-13 [1] local
  digest        0.6.29  2021-12-01 [1] CRAN (R 4.2.0)
  evaluate      0.16    2022-08-09 [1] CRAN (R 4.2.0)
@@ -315,7 +315,7 @@ sessioninfo::session_info()
  sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.2.0)
  stringi       1.7.8   2022-07-11 [1] CRAN (R 4.2.0)
  stringr       1.4.1   2022-08-20 [1] CRAN (R 4.2.0)
- xfun          0.32    2022-08-10 [1] CRAN (R 4.2.0)
+ xfun          0.33    2022-09-12 [1] CRAN (R 4.2.0)
 
  [1] /Users/sebastiansaueruser/Rlibs
  [2] /Library/Frameworks/R.framework/Versions/4.2/Resources/library

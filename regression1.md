@@ -234,8 +234,8 @@ lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars)
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 0.001406 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 14.06 seconds.
+Chain 1: Gradient evaluation took 0.000831 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 8.31 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -252,15 +252,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.036347 seconds (Warm-up)
-Chain 1:                0.03071 seconds (Sampling)
-Chain 1:                0.067057 seconds (Total)
+Chain 1:  Elapsed Time: 0.042686 seconds (Warm-up)
+Chain 1:                0.035384 seconds (Sampling)
+Chain 1:                0.07807 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 1.9e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.19 seconds.
+Chain 2: Gradient evaluation took 1.8e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.18 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -277,15 +277,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.033469 seconds (Warm-up)
-Chain 2:                0.035926 seconds (Sampling)
-Chain 2:                0.069395 seconds (Total)
+Chain 2:  Elapsed Time: 0.042009 seconds (Warm-up)
+Chain 2:                0.033546 seconds (Sampling)
+Chain 2:                0.075555 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 1.3e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
+Chain 3: Gradient evaluation took 2.5e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.25 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -302,9 +302,9 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.035342 seconds (Warm-up)
-Chain 3:                0.031618 seconds (Sampling)
-Chain 3:                0.06696 seconds (Total)
+Chain 3:  Elapsed Time: 0.036563 seconds (Warm-up)
+Chain 3:                0.043174 seconds (Sampling)
+Chain 3:                0.079737 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
@@ -327,9 +327,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.031239 seconds (Warm-up)
-Chain 4:                0.030868 seconds (Sampling)
-Chain 4:                0.062107 seconds (Total)
+Chain 4:  Elapsed Time: 0.041863 seconds (Warm-up)
+Chain 4:                0.040007 seconds (Sampling)
+Chain 4:                0.08187 seconds (Total)
 Chain 4: 
 ```
 :::
@@ -359,10 +359,10 @@ parameters(lm1_bayes)
 ::: {.cell-output-display}
 <div class="kable-table">
 
-|Parameter   |     Median|   CI|     CI_low|    CI_high| pd| ROPE_Percentage|      Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
-|:-----------|----------:|----:|----------:|----------:|--:|---------------:|---------:|--------:|:------------------|--------------:|-----------:|
-|(Intercept) | 30.0553039| 0.95| 26.5874236| 33.5288105|  1|               0| 0.9993612| 3487.218|normal             |       20.09062|  15.0673701|
-|hp          | -0.0683969| 0.95| -0.0894888| -0.0466614|  1|               1| 0.9997904| 3513.985|normal             |        0.00000|   0.2197599|
+|Parameter   |     Median|   CI|     CI_low|   CI_high| pd| ROPE_Percentage|     Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
+|:-----------|----------:|----:|----------:|---------:|--:|---------------:|--------:|--------:|:------------------|--------------:|-----------:|
+|(Intercept) | 30.0795318| 0.95| 26.8026587| 33.570419|  1|               0| 1.000433| 3323.896|normal             |       20.09062|  15.0673701|
+|hp          | -0.0682765| 0.95| -0.0895345| -0.047832|  1|               1| 1.000014| 3254.075|normal             |        0.00000|   0.2197599|
 
 </div>
 :::
@@ -412,7 +412,7 @@ r2(lm1_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.584 (95% CI [0.379, 0.750])
+  Conditional R2: 0.588 (95% CI [0.386, 0.750])
 ```
 :::
 :::
@@ -525,12 +525,12 @@ lm1_bayes %>%
 
 | (Intercept)|         hp|    sigma|
 |-----------:|----------:|--------:|
-|    30.45748| -0.0671151| 4.334861|
-|    29.68723| -0.0634855| 3.754180|
-|    29.63639| -0.0683420| 3.560405|
-|    30.52217| -0.0678723| 3.856826|
-|    29.91507| -0.0685724| 3.610405|
-|    31.69873| -0.0810027| 3.631821|
+|    28.27642| -0.0591659| 5.017778|
+|    33.15667| -0.0858229| 3.433353|
+|    28.58500| -0.0612133| 3.162451|
+|    29.13762| -0.0678200| 3.570594|
+|    27.89647| -0.0575504| 4.811973|
+|    28.76891| -0.0624424| 5.507252|
 
 </div>
 :::
@@ -582,7 +582,7 @@ lm1_bayes %>%
 
 |       q_90|
 |----------:|
-| -0.0545755|
+| -0.0553509|
 
 </div>
 :::
@@ -603,8 +603,8 @@ hdi(lm1_bayes)
 
 |Parameter   |   CI|     CI_low|    CI_high|Effects |Component   |
 |:-----------|----:|----------:|----------:|:-------|:-----------|
-|(Intercept) | 0.95| 26.5876438| 33.5355645|fixed   |conditional |
-|hp          | 0.95| -0.0882026| -0.0456057|fixed   |conditional |
+|(Intercept) | 0.95| 26.7049455| 33.4273159|fixed   |conditional |
+|hp          | 0.95| -0.0907723| -0.0492018|fixed   |conditional |
 
 </div>
 :::
@@ -625,8 +625,8 @@ hdi(lm1_bayes, ci = .89)
 
 |Parameter   |   CI|    CI_low|    CI_high|Effects |Component   |
 |:-----------|----:|---------:|----------:|:-------|:-----------|
-|(Intercept) | 0.89| 27.361972| 32.9444275|fixed   |conditional |
-|hp          | 0.89| -0.084607| -0.0506713|fixed   |conditional |
+|(Intercept) | 0.89| 27.615719| 33.0054493|fixed   |conditional |
+|hp          | 0.89| -0.085043| -0.0517985|fixed   |conditional |
 
 </div>
 :::
@@ -682,11 +682,11 @@ parameters(lm2_bayes)
 ::: {.cell-output-display}
 <div class="kable-table">
 
-|Parameter   |     Median|   CI|     CI_low|    CI_high|     pd| ROPE_Percentage|     Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
-|:-----------|----------:|----:|----------:|----------:|------:|---------------:|--------:|--------:|:------------------|--------------:|-----------:|
-|(Intercept) | 30.7391469| 0.95| 28.0125768| 33.5190791| 1.0000|               0| 1.000132| 4229.243|normal             |       20.09062|  15.0673701|
-|hp          | -0.0252385| 0.95| -0.0540080|  0.0040053| 0.9555|               1| 1.000813| 1551.503|normal             |        0.00000|   0.2197599|
-|disp        | -0.0300650| 0.95| -0.0467173| -0.0142290| 1.0000|               1| 1.000353| 1646.682|normal             |        0.00000|   0.1215712|
+|Parameter   |     Median|   CI|     CI_low|    CI_high|      pd| ROPE_Percentage|      Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
+|:-----------|----------:|----:|----------:|----------:|-------:|---------------:|---------:|--------:|:------------------|--------------:|-----------:|
+|(Intercept) | 30.7466648| 0.95| 27.9337775| 33.6340655| 1.00000|               0| 0.9997994| 4378.773|normal             |       20.09062|  15.0673701|
+|hp          | -0.0244193| 0.95| -0.0517429|  0.0016371| 0.96625|               1| 1.0000532| 2313.156|normal             |        0.00000|   0.2197599|
+|disp        | -0.0303470| 0.95| -0.0445648| -0.0150526| 1.00000|               1| 1.0004781| 2348.480|normal             |        0.00000|   0.1215712|
 
 </div>
 :::
@@ -707,7 +707,7 @@ r2(lm2_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.728 (95% CI [0.578, 0.844])
+  Conditional R2: 0.728 (95% CI [0.571, 0.840])
 ```
 :::
 :::

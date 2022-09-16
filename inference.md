@@ -142,12 +142,12 @@ The p-value has been used as the pivotal criterion to decide about whether or no
 The p-value is defined as the probability of obtaining the observed data (or more extreme) under the assumption of no effect.
 :::
 
-Figure @fig-p visualizes the p-value.
+Figure @fig-pvalue visualizes the p-value.
 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Visualization of the p-value](inference_files/figure-html/fig-p-1.png){#fig-p fig-align='center' width=672}
+![Visualization of the p-value](inference_files/figure-html/fig-pvalue-1.png){#fig-pvalue fig-align='center' width=672}
 :::
 :::
 
