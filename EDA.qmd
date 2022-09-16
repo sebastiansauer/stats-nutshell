@@ -1,96 +1,136 @@
 # Exploratory Data Analysis
 
+![](img/stern.png){width="5%"}
 
 
 
-![](img/stern.png){width=5%}
+## R packages needed for this chapter
 
+```{r}
+#| message: false
+#| warning: false
+library(easystats)
+library(tidyverse)
+library(rstanarm)  # optional!
+```
+
+
+
+## What's EDA?
 
 
 Exploratory Data Analysis (EDA) is a procedure to scrutinize a dataset at hand in order learn about it. EDA comprises descriptive statistics, data visualization and data transformation techniques (such as dimension reduction).
-
 
 It's not so mathematical deep as modelling, but in practice it's really important.
 
 There's this famous saying:
 
-
->   In Data Science, 80% of time spent prepare data, 20% of time spent complain about the need to prepare data.
-
+> In Data Science, 80% of time spent prepare data, 20% of time spent complain about the need to prepare data.
 
 EDA can roughly be said to comprise the following parts:
 
-- Importing (and exporting) data
-- Data cleansing (such as deal with missing data etc)
-- Data transformation or "wrangling" (such as long to wide format)
-- Computing desriptive statistics (such as the notorious mean)
-- Analyzing distributions (is it normal?)
-- Finding patterns in data (aka data mining)
-- More complex data transformation techniques (such as factor analysis)
+-   Importing (and exporting) data
+-   Data cleansing (such as deal with missing data etc)
+-   Data transformation or "wrangling" (such as long to wide format)
+-   Computing desriptive statistics (such as the notorious mean)
+-   Analyzing distributions (is it normal?)
+-   Finding patterns in data (aka data mining)
+-   More complex data transformation techniques (such as factor analysis)
+
+
+
+
+## Data journey
+
+@r4ds present a visual sketch of what could be called the "data journey",
+i.e., the steps we are taking in order to learn from data, seen from an hands-on angle,
+see @fig-data-journey.
+
+![The data journey](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png){#fig-data-journey}
+
+
+## Blitz data
+
+
+See @sec-blitz-data for some data sets suitable to get going.
 
 
 ## Data Explorer
 
-There are many systems and approaches to explore data.
-One particular interesting system is the R-package `DataExplorer`.
+There are many systems and approaches to explore data. One particular interesting system is the R-package `DataExplorer`.
 
-
-![R-package DataExplorer](http://boxuancui.github.io/DataExplorer/reference/figures/logo.png){width=20%}
-
+![R-package DataExplorer](http://boxuancui.github.io/DataExplorer/reference/figures/logo.png){width="20%"}
 
 Check it out [on its Githup page](http://boxuancui.github.io/DataExplorer/).
 
-
-
-
 ## vtree
 
-A bit similar to {DataExplorer}, the [R package {vtree}](https://nbarrowman.github.io/vtree) helps to explore visually datasets. 
+A bit similar to {DataExplorer}, the [R package {vtree}](https://nbarrowman.github.io/vtree) helps to explore visually datasets.
 
 ![vtree is used to generate variable trees, like the one above.](https://nbarrowman.github.io/images/vertical.png)
 
-
 ## Tidyverse
 
-The Tidyverse is probably the R thing with the most publicity. And it's great.
-It's a philosophy baken into an array of R packages. 
-Perhaps central is the idea that a lot of little lego pieces, if fitting nicely together, provides a simple yet flexibel and thus powerful machinery.
-
-
-
+The Tidyverse is probably the R thing with the most publicity. And it's great. It's a philosophy baken into an array of R packages. Perhaps central is the idea that a lot of little lego pieces, if fitting nicely together, provides a simple yet flexibel and thus powerful machinery.
 
 ## janitor
 
-The R package {janitor} provides some nice stuff for data cleansing.
-Check out [this case study](https://www.exploringdata.org/post/how-to-clean-data-janitor-package/).
+The R package {janitor} provides some nice stuff for data cleansing. Check out [this case study](https://www.exploringdata.org/post/how-to-clean-data-janitor-package/).
+
+
+## The easystats way
+
+There are some packages, such as `{easystats}`, which provide comfortable access to basic statistics:
+
+```{r}
+library(easystats)  # once per session
+describe_distribution(mtcars)
+```
+
+
+`describe_distribution` provides us with an overview on typical descriptive summaries.
+
+
+For nominal variables, consider `data_tabulate`:
+
+```{r}
+data_tabulate(mtcars, select = c("am", "vs"))
+```
+
+
+We can also get *grouped* tabulations,
+which amounts to something similar to a [contingency table](https://en.wikipedia.org/wiki/Contingency_table):
+
+
+```{r}
+mtcars %>% 
+  group_by(am) %>% 
+  data_tabulate(select = "vs", collapse = TRUE)
+```
 
 
 
 
+:::{callout-note}
+Checkout the function reference of your favorite package in order to learn what's on the shelf.
+For example, [here's the function reference site](https://easystats.github.io/datawizard/reference/index.html) of `datawizard`, one of the packages in the `easystats` ecosystem.
+::::
 
 ## Case Study
 
-![R package/dataset palmerpenguins](https://allisonhorst.github.io/palmerpenguins/logo.png){width=20%}
-
+![R package/dataset palmerpenguins](https://allisonhorst.github.io/palmerpenguins/logo.png){width="20%"}
 
 Explore the `palmerpenguins` dataset, it's a famous dataset made for learning data analysis.
 
+There's a great [interactive course on EDA based on the penguins](https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome). Have a look, it's great!
 
-There's a great [interactive course on EDA based on the penguins](https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome).
-Have a look, it's great!
-
-
-![Release the penguins](https://media.giphy.com/media/3og0IO5z8Rd30ktV6g/giphy.gif){width=50%}
-
-
+![Release the penguins](https://media.giphy.com/media/3og0IO5z8Rd30ktV6g/giphy.gif){width="50%"}
 
 ## Cheatsheets
 
 There are a number of nice cheatsheets [available on an array of topics related to EDA](https://www.rstudio.com/resources/cheatsheets/), made available by the folks at RStudio.
 
-
-
-::: {layout-ncol=2}
+::: {layout-ncol="2"}
 ![{dplyr}: data wrangling](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/data-transformation.png)
 
 ![{tidyr}: data preparation](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/tidyr.png)
@@ -98,13 +138,14 @@ There are a number of nice cheatsheets [available on an array of topics related 
 ![{ggplot}: data visualization](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/data-visualization.png)
 
 ![{gtsummary}: publication ready tables](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/gtsummary.png)
-
 :::
 
-
-So much great stuff! 
-A bit too much to digest in one go,
-but definitely worthwhile if you plan to dig deeper in data analysis.
+So much great stuff! A bit too much to digest in one go, but definitely worthwhile if you plan to dig deeper in data analysis.
 
 
+
+## Literature
+
+@r4ds is an highly recommendable resource in order to get a thorough understanding of data analysis using R. Note that this source is focusing on the "how to", not so much to theoretical foundations.
+@ismay_statistical_2020 is a gently introduction into many steps on the data journey, including EDA.
 

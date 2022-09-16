@@ -124,12 +124,12 @@ The p-value has been used as the pivotal criterion to decide about whether or no
 The p-value is defined as the probability of obtaining the observed data (or more extreme) under the assumption of no effect.
 :::
 
-Figure @fig-p visualizes the p-value.
+Figure @fig-pvalue visualizes the p-value.
 
 ```{r p-value-plot}
 #| fig-align: "center"
 #| fig-cap: "Visualization of the p-value"
-#| label: "fig-p"
+#| label: fig-pvalue
 #| echo: false
 ggplot(NULL, aes(c(-3,3))) +
   geom_area(stat = "function", fun = dnorm, fill = "grey80", xlim = c(-3, 1.960)) +

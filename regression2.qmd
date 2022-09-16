@@ -4,13 +4,16 @@
 
 ## R-packages needed
 
-For this chapter, the following R packages are needed.
+
+## R packages needed for this chapter
 
 ```{r}
 #| message: false
-library(tidyverse)
+#| warning: false
 library(easystats)
+library(tidyverse)
 ```
+
 
 ## Multiplicative associations
 
@@ -30,7 +33,7 @@ $log (\hat{y}) = b_0 + b_1x_1 + b_2x_2 + \ldots + b_kx_k$
 
 For simplicity, let's drop the subscripts in the following without loss of generality and keep it short:
 
-$y = e^{x}$, with $\approx 2.71...$
+$y = e^{x}$, with $e \approx 2.71...$
 
 Exponentiate both sides to get:
 
@@ -42,7 +45,29 @@ This association is called multiplicative, because if x increases by 1, y increa
 The logarithm is not defined for negative (input) values. And $log(0) = -\infty$.
 :::
 
-A side-effect of modelling `log_y` instead of `y` is that the distribution shape of the outcome variable changes. This can be useful in times.
+A side-effect of modelling `log_y` instead of `y` is that the distribution shape of the outcome variable changes. This can be useful at times.
+
+
+Log-Y Regression can usefully be employed for modelling growth, among othrs, see @exm-logy.
+
+::: {#exm-logy}
+
+## Bacteria growth
+
+Some bacteria dish grows with at a fixed proportional rate, that is it doubles its population size in a fixed period of time. This is what is called exponential growth.
+For concreteness, say, the bacteriae double each two days, starting with 1 unit of bacteria.
+
+After about three weeks, we'll have this number (of units) of bacteriae:
+
+```{r}
+e <- 2.7178
+e^10
+```
+
+
+
+:::
+
 
 ### Exercise
 
@@ -93,13 +118,19 @@ Note that the slope in linear in both axis (X1 and X2).
 If the slope for one predictor is the same for all values of the other predictor, then we say that no interaction is taking place.
 :::
 
-Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see Figure @fig-3dregr2.
+Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure, @fig-3dregr2.
 
-```{r}
+```{r plot-3dregr2}
 #| out-width: "33%"
 #| echo: false
-#| results: hold
 #| label: fig-3dregr2
+#| fig-subcap: 
+#|   - "Theta = 30"
+#|   - "Theta = 90"
+#|   - "Theta = 150"
+#| results: "hold"
+#| fig-align: "center"
+
 plane <- function(x, y) {
   x+y
 }
@@ -112,7 +143,7 @@ persp(x,y,z, theta = 90)
 persp(x,y,z, theta = 150)
 ```
 
-Note that the slope in each predictor axis equals 1, boringly. Hence the according 2D plots are boring, too, see Figure @3d-2dregr.
+Note that in the above figure, the slope in each predictor axis equals 1, boringly. Hence the according 2D plots are boring, too.
 
 For the sake of an example, consider this linear model:
 
@@ -301,12 +332,15 @@ Get your own data, and build a simple model reflecting your research hypothesis 
 
 ## Glimpse on parameter estimation
 
-An elegant yet simple explanation of the math of parameter estimation can be found [at "go data driven"](https://godatadriven.com/blog/the-linear-algebra-behind-linear-regression/). A similar approach is presented [here](https://shainarace.github.io/LinearAlgebra/leastsquares.html).
+An elegant yet simple explanation of the math of parameter estimation can be found [at "go data driven"](https://godatadriven.com/blog/the-linear-algebra-behind-linear-regression/). 
+A similar approach is presented [here](https://shainarace.github.io/LinearAlgebra/leastsquares.html).
 
-Here's the essence of a geometric interpretation of the least square method, see Figure @fig-leastsq.
+Consider this geometric interpretation of the least square method in Figure @fig-leastsq.
 
-![Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Linear_least_squares_geometric_interpretation.png/543px-Linear_least_squares_geometric_interpretation.png?20080406011122){#fig-leastsq}
+![Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Linear_least_squares_geometric_interpretation.png/543px-Linear_least_squares_geometric_interpretation.png?20080406011122){#fig-leastsq}{width=25%}
 
-## Further Reading
+## Literatur
+
+A recent but already classic book on regression and inference (if this is possible) is the book by @gelman_regression_2021. A great textbook on statistical modelling (with a Bayesian flavor) was written by @mcelreath_statistical_2020; it's suitable for PhD level.
 
 Mathematical foundations can be found in @deisenroth_mathematics_2020. [Here's](https://data-se.netlify.app/2022/06/13/free-resources-for-aspiring-data-adepts/) a collection of online resources tapping into statistics and machine learning.

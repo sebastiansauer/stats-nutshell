@@ -1,7 +1,19 @@
 # Causality
 
+![](img/stern.png){width="5%"}
 
-![](img/stern.png){width=5%}
+
+
+## R packages needed for this chapter
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(ggdag)  # optional  
+```
+
+
 
 
 
@@ -9,11 +21,11 @@
 
 Check out this [talk](https://sebastiansauer-academic.netlify.app/uploads/Intro-to-Causality.pdf).
 
+## Literature
+
+@rohrer_thinking_2018 provides an accessible introduction to causal inference. Slightly more advanced is the introduction by one of the leading figures of the Field, Judea Pearl, @pearl_causal_2016.
+If your after a text book on modelling that covers causal inference, and if you like Bayesian statistics, than you should definitely check out @mcelreath_statistical_2020.
 
 
 
-## Further reading
-
-@rohrer_thinking_2018 provides an accessible introduction to causal inference.
-Slightly more advanced is the introduction by one of the leading figures of the Field, Judea Pearl, @pearl_causal_2016.
 

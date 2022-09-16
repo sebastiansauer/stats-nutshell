@@ -251,7 +251,7 @@ All data are accessible through the course book; please consult the relevant cha
 
 Practical data analysis skills can be practiced using [these labs](https://moderndive.github.io/moderndive_labs/index.html); in addition [Chapter 11](https://moderndive.com/11-thinking-with-data.html) provides two cases studies. Note that such content may be used as homework.
 
-There are a lot of case studies scatter on the internet.
+There are a lot of case studies scattered on the internet.
 
 ### Sketching causal models
 
@@ -273,7 +273,7 @@ I readily confess that this approach is novel to many learners in these days, le
 
 ## Technical Details
 
-Last update: 2022-09-05 20:32:09
+Last update: 2022-09-16 14:19:09
 
 
 ::: {.cell}
@@ -294,7 +294,7 @@ sessioninfo::session_info()
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Europe/Berlin
- date     2022-09-05
+ date     2022-09-16
  pandoc   2.19.2 @ /usr/local/bin/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────

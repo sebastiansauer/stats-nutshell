@@ -28,10 +28,11 @@ format:
     theme: cosmo 
     toc: true
     number-sections: true
+    df-print: kable
     
     
 
-editor: visual
+editor: source 
 keep-md: true
 
 knitr: 

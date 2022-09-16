@@ -4,16 +4,18 @@
 
 ## R-packages needed
 
-For this chapter, the following R packages are needed.
+
+## R packages needed for this chapter
 
 
 ::: {.cell}
 
 ```{.r .cell-code}
-library(tidyverse)
 library(easystats)
+library(tidyverse)
 ```
 :::
+
 
 
 ## Multiplicative associations
@@ -47,6 +49,39 @@ The logarithm is not defined for negative (input) values. And $log(0) = -\infty$
 :::
 
 A side-effect of modelling `log_y` instead of `y` is that the distribution shape of the outcome variable changes. This can be useful in times.
+
+
+Log-Y Regression can usefully be employed for modelling growth, among othrs, see @exm-logy.
+
+:::exm-logy
+
+## Bacteria growth
+
+Some bacteria dish grows with at a fixed proportional rate, that is it doubles its population size in a fixed period of time. This is what is called exponential growth.
+For concreteness, say, the bacteriae double each two days, starting with 1 unit of bacteria.
+
+After about three weeks, we'll have this number (of units) of bacteriae:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+e <- 2.7178
+e^10
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+[1] 21987.45
+```
+:::
+:::
+
+
+
+
+:::
+
 
 ### Exercise
 
@@ -114,25 +149,25 @@ Note that the slope in linear in both axis (X1 and X2).
 If the slope for one predictor is the same for all values of the other predictor, then we say that no interaction is taking place.
 :::
 
-Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see Figure @fig-3dregr2.
+Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure.
 
 
 ::: {.cell}
 ::: {.cell-output-display}
-![](regression2_files/figure-html/fig-3dregr2-1.png){#fig-3dregr2-1 width=33%}
+![](regression2_files/figure-html/plot-3dregr2-1.png){width=33%}
 :::
 
 ::: {.cell-output-display}
-![](regression2_files/figure-html/fig-3dregr2-2.png){#fig-3dregr2-2 width=33%}
+![](regression2_files/figure-html/plot-3dregr2-2.png){width=33%}
 :::
 
 ::: {.cell-output-display}
-![](regression2_files/figure-html/fig-3dregr2-3.png){#fig-3dregr2-3 width=33%}
+![](regression2_files/figure-html/plot-3dregr2-3.png){width=33%}
 :::
 :::
 
 
-Note that the slope in each predictor axis equals 1, boringly. Hence the according 2D plots are boring, too, see Figure @3d-2dregr.
+Note that in the above figure, the slope in each predictor axis equals 1, boringly. Hence the according 2D plots are boring, too.
 
 For the sake of an example, consider this linear model:
 
@@ -316,23 +351,17 @@ lm_interact_simple2 <- lm(mpg ~ disp_c + am_f + disp_c:am_f, data = mtcars3)
 parameters(lm_interact_simple2)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Parameter         | Coefficient |       SE |         95% CI | t(28) |      p
-----------------------------------------------------------------------------
-(Intercept)       |       18.79 |     0.76 | [17.23, 20.36] | 24.63 | < .001
-disp c            |       -0.03 | 6.22e-03 | [-0.04, -0.01] | -4.44 | < .001
-am f [1]          |        0.45 |     1.39 | [-2.40,  3.30] |  0.32 | 0.748 
-disp c * am f [1] |       -0.03 |     0.01 | [-0.05, -0.01] | -2.75 | 0.010 
-```
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
-::: {.cell-output .cell-output-stderr}
-```
+|Parameter    | Coefficient|        SE|   CI|     CI_low|    CI_high|          t| df_error|         p|
+|:------------|-----------:|---------:|----:|----------:|----------:|----------:|--------:|---------:|
+|(Intercept)  |  18.7929250| 0.7631321| 0.95| 17.2297199| 20.3561302| 24.6260457|       28| 0.0000000|
+|disp_c       |  -0.0275836| 0.0062190| 0.95| -0.0403225| -0.0148447| -4.4354101|       28| 0.0001295|
+|am_f1        |   0.4517578| 1.3915089| 0.95| -2.3986189|  3.3021346|  0.3246532|       28| 0.7478567|
+|disp_c:am_f1 |  -0.0314548| 0.0114574| 0.95| -0.0549242| -0.0079855| -2.7453781|       28| 0.0104373|
 
-Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
-  using a Wald t-distribution approximation.
-```
+</div>
 :::
 :::
 
@@ -449,23 +478,17 @@ m <- lm(mpg ~ disp + hp + cyl, data = mtcars4)
 parameters(m)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Parameter   | Coefficient |   SE |         95% CI | t(28) |      p
-------------------------------------------------------------------
-(Intercept) |       20.09 | 0.54 | [18.98, 21.20] | 37.20 | < .001
-disp        |       -2.33 | 1.29 | [-4.98,  0.31] | -1.81 | 0.081 
-hp          |       -1.01 | 1.00 | [-3.06,  1.05] | -1.00 | 0.325 
-cyl         |       -2.19 | 1.42 | [-5.11,  0.72] | -1.54 | 0.135 
-```
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
-::: {.cell-output .cell-output-stderr}
-```
+|Parameter   | Coefficient|        SE|   CI|    CI_low|    CI_high|         t| df_error|         p|
+|:-----------|-----------:|---------:|----:|---------:|----------:|---------:|--------:|---------:|
+|(Intercept) |   20.090625| 0.5400989| 0.95| 18.984282| 21.1969675| 37.198045|       28| 0.0000000|
+|disp        |   -2.334768| 1.2894201| 0.95| -4.976025|  0.3064896| -1.810711|       28| 0.0809290|
+|hp          |   -1.006457| 1.0045056| 0.95| -3.064094|  1.0511791| -1.001943|       28| 0.3249519|
+|cyl         |   -2.192076| 1.4238730| 0.95| -5.108747|  0.7245958| -1.539516|       28| 0.1349044|
 
-Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
-  using a Wald t-distribution approximation.
-```
+</div>
 :::
 :::
 
@@ -483,12 +506,15 @@ Get your own data, and build a simple model reflecting your research hypothesis 
 
 ## Glimpse on parameter estimation
 
-An elegant yet simple explanation of the math of parameter estimation can be found [at "go data driven"](https://godatadriven.com/blog/the-linear-algebra-behind-linear-regression/). A similar approach is presented [here](https://shainarace.github.io/LinearAlgebra/leastsquares.html).
+An elegant yet simple explanation of the math of parameter estimation can be found [at "go data driven"](https://godatadriven.com/blog/the-linear-algebra-behind-linear-regression/). 
+A similar approach is presented [here](https://shainarace.github.io/LinearAlgebra/leastsquares.html).
 
-Here's the essence of a geometric interpretation of the least square method, see Figure @fig-leastsq.
+Consider this geometric interpretation of the least square method in Figure @fig-leastsq.
 
-![Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Linear_least_squares_geometric_interpretation.png/543px-Linear_least_squares_geometric_interpretation.png?20080406011122){#fig-leastsq}
+![Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Linear_least_squares_geometric_interpretation.png/543px-Linear_least_squares_geometric_interpretation.png?20080406011122){#fig-leastsq}{width=25%}
 
-## Further Reading
+## Literatur
+
+A recent but already classic book on regression and inference (if this is possible) is the book by @gelman_regression_2021. A great textbook on statistical modelling (with a Bayesian flavor) was written by @mcelreath_statistical_2020; it's suitable for PhD level.
 
 Mathematical foundations can be found in @deisenroth_mathematics_2020. [Here's](https://data-se.netlify.app/2022/06/13/free-resources-for-aspiring-data-adepts/) a collection of online resources tapping into statistics and machine learning.

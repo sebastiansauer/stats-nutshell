@@ -2,9 +2,48 @@
 
 ![](img/stern.png){width="5%"}
 
+
+## R packages needed for this chapter
+
+```{r}
+#| message: false
+#| warning: false
+library(easystats)
+library(tidyverse)
+library(rstanarm)  # optional!
+```
+
+
 ## What's modelling?
 
 [Read this great introduction by modelling by Russel Poldrack](https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model). Actually, the whole book is nice @poldrack_statistical_2022.
+
+
+An epitome of modelling is this, let's call it the fundamental modelling equation, a bit grandiose but at the point, see @eq-modelling.
+
+
+
+
+
+The data can be separated in the model's prediction and the rest (the "error"), i.e., what's unaccounted for by the model.
+
+$$
+\text{data} = \text{model} + \text{error}
+$${#eq-modelling}
+
+
+
+
+A more visual account of our basic modelling equation is depicted in @fig-model1.
+
+```{mermaid}
+%%| fig-cap: A more visual account of our basic modelling equation
+%%| label: fig-model1
+flowchart LR
+  X --> Y
+  error --> Y
+```
+
 
 ## Regression as the umbrella tool for modelling
 
@@ -52,6 +91,7 @@ For this chapter, the following R packages are needed.
 
 ```{r}
 #| message: false
+#| warning: false
 library(rstanarm)
 library(tidyverse)
 library(easystats)
@@ -104,7 +144,7 @@ plot(parameters(lm1_freq))
 lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars)
 ```
 
-Actually, we want to suppress some overly verbose output, using `refresh = 0`:
+Actually, we want to suppress some overly verbose output of the sampling, so add the argument `refresh = 0`:
 
 ```{r lm-bayes-refresh0}
 lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
@@ -134,12 +174,17 @@ r2(lm1_bayes)
 
 ### Model check
 
+Here's a bunch of typical model checks in the Frequentist sense.
+
 ```{r}
 #| fit-width: 10
 #| out-width: "100%"
 #| fig-asp: 1
 check_model(lm1_freq)
 ```
+
+
+And here are some Bayesian flavored model checks.
 
 ```{r}
 #| fit-width: 10
@@ -193,9 +238,7 @@ lm1_bayes %>%
 
 Feel free to ask similar questions!
 
-
 ### Asking for quantiles
-
 
 *With a given probability of, say 90%, how large is the effect of hp?*
 
@@ -270,11 +313,11 @@ plot(lm3a_means)
 
 Note that we should have converted `am` to a factor variable before fitting the model. Otherwise, the plot won't work.
 
-Here's a more hand-crafted version of the last plot, se. Fig. @lm3a-means
+Here's a more hand-crafted version of the last plot, see Fig. @fig-lm3a-means.
 
-```{r plot-}
-#| label: lm3a-means
-#| fig-cap: Means per level of am
+```{r plot-lm3a-means}
+#| label: fig-lm3a-means
+#| #| fig-cap: Means per level of am
 ggplot(mtcars2) +
   aes(x = am_f, y = mpg) +
   geom_violin() +
@@ -330,9 +373,12 @@ plot(summary(lm4_corr))
 
 Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.
 
-## Further reading
+## Literature
 
-@roback_beyond_2021 provide and more than introductory account of regression while being accessible. A recent but still classic book (if this is possible) is the book by @gelman_regression_2021.
+An accessible treatment of regression is provided by @ismay_statistical_2020.
+
+@roback_beyond_2021 provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by @gelman_regression_2021.
+You may also benefit from @poldrack_statistical_2022 (open access).
 
 ## Debrief
 

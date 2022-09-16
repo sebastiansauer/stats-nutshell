@@ -2,9 +2,69 @@
 
 ![](img/stern.png){width="5%"}
 
+
+## R packages needed for this chapter
+
+
+::: {.cell}
+
+```{.r .cell-code}
+library(easystats)
+library(tidyverse)
+library(rstanarm)  # optional!
+```
+:::
+
+
+
 ## What's modelling?
 
 [Read this great introduction by modelling by Russel Poldrack](https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model). Actually, the whole book is nice @poldrack_statistical_2022.
+
+
+An epitome of modelling is this, let's call it the fundamental modelling equation, a bit grandiose but at the point, see @eq-modelling.
+
+
+
+
+
+The data can be separated in the model's prediction and the rest (the "error"), i.e., what's unaccounted for by the model.
+
+$$
+\text{data} = \text{model} + \text{error}
+$${#eq-modelling}
+
+
+
+
+A more visual account of our basic modelling equation is depicted in @fig-model1.
+
+
+
+:::{.cell}
+
+:::{.cell-output-display}
+
+:::{#fig-model1}
+
+<p >
+
+<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+  X --&gt; Y
+  error --&gt; Y
+</pre>
+
+<div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
+</p>
+
+
+A more visual account of our basic modelling equation
+:::
+:::
+:::
+
+
+
 
 ## Regression as the umbrella tool for modelling
 
@@ -55,16 +115,6 @@ For this chapter, the following R packages are needed.
 
 ```{.r .cell-code}
 library(rstanarm)
-```
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
-Please use the `linewidth` argument instead.
-```
-:::
-
-```{.r .cell-code}
 library(tidyverse)
 library(easystats)
 ```
@@ -135,21 +185,15 @@ Get the parameter values:
 parameters(lm1_freq)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Parameter   | Coefficient |   SE |         95% CI | t(30) |      p
-------------------------------------------------------------------
-(Intercept) |       30.10 | 1.63 | [26.76, 33.44] | 18.42 | < .001
-hp          |       -0.07 | 0.01 | [-0.09, -0.05] | -6.74 | < .001
-```
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
-::: {.cell-output .cell-output-stderr}
-```
+|Parameter   | Coefficient|        SE|   CI|     CI_low|    CI_high|         t| df_error|     p|
+|:-----------|-----------:|---------:|----:|----------:|----------:|---------:|--------:|-----:|
+|(Intercept) |  30.0988605| 1.6339210| 0.95| 26.7619488| 33.4357723| 18.421246|       30| 0e+00|
+|hp          |  -0.0682283| 0.0101193| 0.95| -0.0888947| -0.0475619| -6.742388|       30| 2e-07|
 
-Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
-  using a Wald t-distribution approximation.
-```
+</div>
 :::
 :::
 
@@ -171,7 +215,7 @@ Please use `linewidth` instead.
 :::
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-4-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-6-1.png){width=672}
 :::
 :::
 
@@ -190,8 +234,8 @@ lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars)
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 0.000601 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 6.01 seconds.
+Chain 1: Gradient evaluation took 0.001406 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 14.06 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -208,15 +252,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.046955 seconds (Warm-up)
-Chain 1:                0.046687 seconds (Sampling)
-Chain 1:                0.093642 seconds (Total)
+Chain 1:  Elapsed Time: 0.036347 seconds (Warm-up)
+Chain 1:                0.03071 seconds (Sampling)
+Chain 1:                0.067057 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 2e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.2 seconds.
+Chain 2: Gradient evaluation took 1.9e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.19 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -233,15 +277,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.050986 seconds (Warm-up)
-Chain 2:                0.048418 seconds (Sampling)
-Chain 2:                0.099404 seconds (Total)
+Chain 2:  Elapsed Time: 0.033469 seconds (Warm-up)
+Chain 2:                0.035926 seconds (Sampling)
+Chain 2:                0.069395 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 1.9e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.19 seconds.
+Chain 3: Gradient evaluation took 1.3e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -258,9 +302,9 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.050064 seconds (Warm-up)
-Chain 3:                0.052421 seconds (Sampling)
-Chain 3:                0.102485 seconds (Total)
+Chain 3:  Elapsed Time: 0.035342 seconds (Warm-up)
+Chain 3:                0.031618 seconds (Sampling)
+Chain 3:                0.06696 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
@@ -283,16 +327,16 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.05014 seconds (Warm-up)
-Chain 4:                0.046328 seconds (Sampling)
-Chain 4:                0.096468 seconds (Total)
+Chain 4:  Elapsed Time: 0.031239 seconds (Warm-up)
+Chain 4:                0.030868 seconds (Sampling)
+Chain 4:                0.062107 seconds (Total)
 Chain 4: 
 ```
 :::
 :::
 
 
-Actually, we want to suppress some overly verbose output, using `refresh = 0`:
+Actually, we want to suppress some overly verbose output of the sampling, so add the argument `refresh = 0`:
 
 
 ::: {.cell}
@@ -312,21 +356,15 @@ Get the parameter values:
 parameters(lm1_bayes)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Parameter   | Median |         95% CI |   pd | % in ROPE |  Rhat |     ESS |                   Prior
-----------------------------------------------------------------------------------------------------
-(Intercept) |  30.04 | [26.90, 33.42] | 100% |        0% | 1.001 | 3055.00 | Normal (20.09 +- 15.07)
-hp          |  -0.07 | [-0.09, -0.05] | 100% |      100% | 1.001 | 3100.00 |   Normal (0.00 +- 0.22)
-```
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
-::: {.cell-output .cell-output-stderr}
-```
+|Parameter   |     Median|   CI|     CI_low|    CI_high| pd| ROPE_Percentage|      Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
+|:-----------|----------:|----:|----------:|----------:|--:|---------------:|---------:|--------:|:------------------|--------------:|-----------:|
+|(Intercept) | 30.0553039| 0.95| 26.5874236| 33.5288105|  1|               0| 0.9993612| 3487.218|normal             |       20.09062|  15.0673701|
+|hp          | -0.0683969| 0.95| -0.0894888| -0.0466614|  1|               1| 0.9997904| 3513.985|normal             |        0.00000|   0.2197599|
 
-Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
-  using a MCMC distribution approximation.
-```
+</div>
 :::
 :::
 
@@ -341,7 +379,7 @@ plot(parameters(lm1_bayes))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-6-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-8-1.png){width=672}
 :::
 :::
 
@@ -374,13 +412,15 @@ r2(lm1_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.586 (95% CI [0.389, 0.757])
+  Conditional R2: 0.584 (95% CI [0.379, 0.750])
 ```
 :::
 :::
 
 
 ### Model check
+
+Here's a bunch of typical model checks in the Frequentist sense.
 
 
 ::: {.cell fit-width='10' fig.asp='1'}
@@ -390,9 +430,14 @@ check_model(lm1_freq)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-8-1.png){width=100%}
+![](regression1_files/figure-html/unnamed-chunk-10-1.png){width=100%}
 :::
 :::
+
+
+
+And here are some Bayesian flavored model checks.
+
 
 ::: {.cell fit-width='10' fig.asp='1'}
 
@@ -401,7 +446,7 @@ check_model(lm1_bayes)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-9-1.png){width=100%}
+![](regression1_files/figure-html/unnamed-chunk-11-1.png){width=100%}
 :::
 :::
 
@@ -416,26 +461,23 @@ lm1_pred <- estimate_relation(lm1_freq)
 lm1_pred
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Model-based Expectation
+::: {.cell-output-display}
+<div class="kable-table">
 
-hp     | Predicted |   SE |         95% CI
-------------------------------------------
-52.00  |     26.55 | 1.18 | [24.15, 28.95]
-83.44  |     24.41 | 0.94 | [22.49, 26.32]
-114.89 |     22.26 | 0.75 | [20.72, 23.80]
-146.33 |     20.11 | 0.68 | [18.72, 21.51]
-177.78 |     17.97 | 0.75 | [16.43, 19.50]
-209.22 |     15.82 | 0.93 | [13.92, 17.73]
-240.67 |     13.68 | 1.17 | [11.29, 16.07]
-272.11 |     11.53 | 1.44 | [ 8.59, 14.48]
-303.56 |      9.39 | 1.73 | [ 5.86, 12.92]
-335.00 |      7.24 | 2.02 | [ 3.11, 11.38]
+|        hp| Predicted|        SE|    CI_low|  CI_high|
+|---------:|---------:|---------:|---------:|--------:|
+|  52.00000| 26.550990| 1.1766139| 24.148024| 28.95396|
+|  83.44444| 24.405590| 0.9358933| 22.494241| 26.31694|
+| 114.88889| 22.260189| 0.7548971| 20.718484| 23.80190|
+| 146.33333| 20.114789| 0.6828911| 18.720139| 21.50944|
+| 177.77778| 17.969389| 0.7518697| 16.433866| 19.50491|
+| 209.22222| 15.823989| 0.9310065| 13.922620| 17.72536|
+| 240.66667| 13.678588| 1.1707841| 11.287528| 16.06965|
+| 272.11111| 11.533188| 1.4412478|  8.589767| 14.47661|
+| 303.55556|  9.387788| 1.7280486|  5.858642| 12.91693|
+| 335.00000|  7.242387| 2.0242544|  3.108308| 11.37647|
 
-Variable predicted: mpg
-Predictors modulated: hp
-```
+</div>
 :::
 :::
 
@@ -452,7 +494,7 @@ plot(lm1_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-11-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-13-1.png){width=672}
 :::
 :::
 
@@ -478,18 +520,19 @@ lm1_bayes %>%
   head()
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-# A tibble: 6 × 3
-  `(Intercept)`      hp sigma
-          <dbl>   <dbl> <dbl>
-1          33.2 -0.0792  4.02
-2          32.6 -0.0815  3.48
-3          29.0 -0.0621  3.55
-4          31.2 -0.0742  3.60
-5          29.8 -0.0675  4.09
-6          32.2 -0.0824  3.65
-```
+::: {.cell-output-display}
+<div class="kable-table">
+
+| (Intercept)|         hp|    sigma|
+|-----------:|----------:|--------:|
+|    30.45748| -0.0671151| 4.334861|
+|    29.68723| -0.0634855| 3.754180|
+|    29.63639| -0.0683420| 3.560405|
+|    30.52217| -0.0678723| 3.856826|
+|    29.91507| -0.0685724| 3.610405|
+|    31.69873| -0.0810027| 3.631821|
+
+</div>
 :::
 :::
 
@@ -507,22 +550,21 @@ lm1_bayes %>%
   count(hp < 0)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-# A tibble: 1 × 2
-  `hp < 0`     n
-  <lgl>    <int>
-1 TRUE      4000
-```
+::: {.cell-output-display}
+<div class="kable-table">
+
+|hp < 0 |    n|
+|:------|----:|
+|TRUE   | 4000|
+
+</div>
 :::
 :::
 
 
 Feel free to ask similar questions!
 
-
 ### Asking for quantiles
-
 
 *With a given probability of, say 90%, how large is the effect of hp?*
 
@@ -535,13 +577,14 @@ lm1_bayes %>%
   summarise(q_90 = quantile(hp, .9))
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-# A tibble: 1 × 1
-     q_90
-    <dbl>
-1 -0.0553
-```
+::: {.cell-output-display}
+<div class="kable-table">
+
+|       q_90|
+|----------:|
+| -0.0545755|
+
+</div>
 :::
 :::
 
@@ -555,15 +598,15 @@ lm1_bayes %>%
 hdi(lm1_bayes)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Highest Density Interval
+::: {.cell-output-display}
+<div class="kable-table">
 
-Parameter   |        95% HDI
-----------------------------
-(Intercept) | [26.95, 33.45]
-hp          | [-0.09, -0.05]
-```
+|Parameter   |   CI|     CI_low|    CI_high|Effects |Component   |
+|:-----------|----:|----------:|----------:|:-------|:-----------|
+|(Intercept) | 0.95| 26.5876438| 33.5355645|fixed   |conditional |
+|hp          | 0.95| -0.0882026| -0.0456057|fixed   |conditional |
+
+</div>
 :::
 :::
 
@@ -577,15 +620,15 @@ In case you prefer 89% intervals (I do!):
 hdi(lm1_bayes, ci = .89)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Highest Density Interval
+::: {.cell-output-display}
+<div class="kable-table">
 
-Parameter   |        89% HDI
-----------------------------
-(Intercept) | [27.47, 32.72]
-hp          | [-0.08, -0.05]
-```
+|Parameter   |   CI|    CI_low|    CI_high|Effects |Component   |
+|:-----------|----:|---------:|----------:|:-------|:-----------|
+|(Intercept) | 0.89| 27.361972| 32.9444275|fixed   |conditional |
+|hp          | 0.89| -0.084607| -0.0506713|fixed   |conditional |
+
+</div>
 :::
 :::
 
@@ -602,22 +645,16 @@ lm2_freq <- lm(mpg ~ hp + disp, data = mtcars)
 parameters(lm2_freq)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Parameter   | Coefficient |       SE |         95% CI | t(29) |      p
-----------------------------------------------------------------------
-(Intercept) |       30.74 |     1.33 | [28.01, 33.46] | 23.08 | < .001
-hp          |       -0.02 |     0.01 | [-0.05,  0.00] | -1.86 | 0.074 
-disp        |       -0.03 | 7.40e-03 | [-0.05, -0.02] | -4.10 | < .001
-```
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
-::: {.cell-output .cell-output-stderr}
-```
+|Parameter   | Coefficient|        SE|   CI|     CI_low|    CI_high|         t| df_error|         p|
+|:-----------|-----------:|---------:|----:|----------:|----------:|---------:|--------:|---------:|
+|(Intercept) |  30.7359042| 1.3315661| 0.95| 28.0125457| 33.4592628| 23.082522|       29| 0.0000000|
+|hp          |  -0.0248401| 0.0133855| 0.95| -0.0522165|  0.0025363| -1.855746|       29| 0.0736791|
+|disp        |  -0.0303463| 0.0074049| 0.95| -0.0454909| -0.0152016| -4.098159|       29| 0.0003063|
 
-Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
-  using a Wald t-distribution approximation.
-```
+</div>
 :::
 :::
 
@@ -642,22 +679,16 @@ Results
 parameters(lm2_bayes)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Parameter   | Median |         95% CI |     pd | % in ROPE |  Rhat |     ESS |                   Prior
-------------------------------------------------------------------------------------------------------
-(Intercept) |  30.72 | [27.90, 33.49] |   100% |        0% | 1.000 | 4915.00 | Normal (20.09 +- 15.07)
-hp          |  -0.02 | [-0.05,  0.00] | 96.05% |      100% | 1.001 | 2046.00 |   Normal (0.00 +- 0.22)
-disp        |  -0.03 | [-0.05, -0.02] | 99.95% |      100% | 1.000 | 1985.00 |   Normal (0.00 +- 0.12)
-```
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
-::: {.cell-output .cell-output-stderr}
-```
+|Parameter   |     Median|   CI|     CI_low|    CI_high|     pd| ROPE_Percentage|     Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
+|:-----------|----------:|----:|----------:|----------:|------:|---------------:|--------:|--------:|:------------------|--------------:|-----------:|
+|(Intercept) | 30.7391469| 0.95| 28.0125768| 33.5190791| 1.0000|               0| 1.000132| 4229.243|normal             |       20.09062|  15.0673701|
+|hp          | -0.0252385| 0.95| -0.0540080|  0.0040053| 0.9555|               1| 1.000813| 1551.503|normal             |        0.00000|   0.2197599|
+|disp        | -0.0300650| 0.95| -0.0467173| -0.0142290| 1.0000|               1| 1.000353| 1646.682|normal             |        0.00000|   0.1215712|
 
-Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
-  using a MCMC distribution approximation.
-```
+</div>
 :::
 
 ```{.r .cell-code}
@@ -676,7 +707,7 @@ r2(lm2_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.728 (95% CI [0.570, 0.840])
+  Conditional R2: 0.728 (95% CI [0.578, 0.844])
 ```
 :::
 :::
@@ -693,7 +724,7 @@ plot(lm2_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-18-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-20-1.png){width=672}
 :::
 :::
 
@@ -712,21 +743,15 @@ lm3a <- lm(mpg ~ am_f, data = mtcars2)
 parameters(lm3a)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Parameter   | Coefficient |   SE |         95% CI | t(30) |      p
-------------------------------------------------------------------
-(Intercept) |       17.15 | 1.12 | [14.85, 19.44] | 15.25 | < .001
-am f [1]    |        7.24 | 1.76 | [ 3.64, 10.85] |  4.11 | < .001
-```
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
-::: {.cell-output .cell-output-stderr}
-```
+|Parameter   | Coefficient|       SE|   CI|   CI_low|  CI_high|         t| df_error|        p|
+|:-----------|-----------:|--------:|----:|--------:|--------:|---------:|--------:|--------:|
+|(Intercept) |   17.147368| 1.124602| 0.95| 14.85062| 19.44411| 15.247492|       30| 0.000000|
+|am_f1       |    7.244939| 1.764422| 0.95|  3.64151| 10.84837|  4.106127|       30| 0.000285|
 
-Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
-  using a Wald t-distribution approximation.
-```
+</div>
 :::
 :::
 
@@ -737,17 +762,15 @@ lm3a_means <- estimate_means(lm3a, at = "am_f")
 lm3a_means 
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Estimated Marginal Means
+::: {.cell-output-display}
+<div class="kable-table">
 
-am_f |  Mean |   SE |         95% CI
-------------------------------------
-0    | 17.15 | 1.12 | [14.85, 19.44]
-1    | 24.39 | 1.36 | [21.62, 27.17]
+|am_f |     Mean|       SE|   CI_low|  CI_high|
+|:----|--------:|--------:|--------:|--------:|
+|0    | 17.14737| 1.124602| 14.85062| 19.44411|
+|1    | 24.39231| 1.359578| 21.61568| 27.16894|
 
-Marginal means estimated at am_f
-```
+</div>
 :::
 :::
 
@@ -758,14 +781,14 @@ plot(lm3a_means)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-21-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-23-1.png){width=672}
 :::
 :::
 
 
 Note that we should have converted `am` to a factor variable before fitting the model. Otherwise, the plot won't work.
 
-Here's a more hand-crafted version of the last plot, se. Fig. @lm3a-means
+Here's a more hand-crafted version of the last plot, see Fig. @fig-lm3a-means.
 
 
 ::: {.cell}
@@ -782,7 +805,7 @@ ggplot(mtcars2) +
 ```
 
 ::: {.cell-output-display}
-![Means per level of am](regression1_files/figure-html/lm3a-means-1.png){width=672}
+![](regression1_files/figure-html/fig-lm3a-means-1.png){#fig-lm3a-means width=672}
 :::
 :::
 
@@ -801,23 +824,17 @@ lm4 <- lm(mpg ~ hp + cyl, data = mtcars2)
 parameters(lm4)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Parameter   | Coefficient |   SE |          95% CI | t(28) |      p
--------------------------------------------------------------------
-(Intercept) |       28.65 | 1.59 | [ 25.40, 31.90] | 18.04 | < .001
-hp          |       -0.02 | 0.02 | [ -0.06,  0.01] | -1.56 | 0.130 
-cyl [6]     |       -5.97 | 1.64 | [ -9.33, -2.61] | -3.64 | 0.001 
-cyl [8]     |       -8.52 | 2.33 | [-13.29, -3.76] | -3.66 | 0.001 
-```
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
-::: {.cell-output .cell-output-stderr}
-```
+|Parameter   | Coefficient|        SE|   CI|      CI_low|    CI_high|         t| df_error|         p|
+|:-----------|-----------:|---------:|----:|-----------:|----------:|---------:|--------:|---------:|
+|(Intercept) |  28.6501182| 1.5877870| 0.95|  25.3976840| 31.9025524| 18.044056|       28| 0.0000000|
+|hp          |  -0.0240388| 0.0154079| 0.95|  -0.0556005|  0.0075228| -1.560163|       28| 0.1299540|
+|cyl6        |  -5.9676551| 1.6392776| 0.95|  -9.3255631| -2.6097471| -3.640418|       28| 0.0010921|
+|cyl8        |  -8.5208508| 2.3260749| 0.95| -13.2855993| -3.7561022| -3.663188|       28| 0.0010286|
 
-Uncertainty intervals (equal-tailed) and p-values (two-tailed) computed
-  using a Wald t-distribution approximation.
-```
+</div>
 :::
 :::
 
@@ -829,7 +846,7 @@ plot(lm4_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-23-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-25-1.png){width=672}
 :::
 :::
 
@@ -852,19 +869,16 @@ lm4_corr <-
 lm4_corr
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-# Correlation Matrix (pearson-method)
+::: {.cell-output-display}
+<div class="kable-table">
 
-Parameter1 | Parameter2 |     r |         95% CI | t(30) |         p
---------------------------------------------------------------------
-mpg        |         hp | -0.78 | [-0.89, -0.59] | -6.74 | < .001***
-mpg        |       disp | -0.85 | [-0.92, -0.71] | -8.75 | < .001***
-hp         |       disp |  0.79 | [ 0.61,  0.89] |  7.08 | < .001***
+|Parameter1 |Parameter2 |          r|   CI|     CI_low|    CI_high|         t| df_error|     p|Method              | n_Obs|
+|:----------|:----------|----------:|----:|----------:|----------:|---------:|--------:|-----:|:-------------------|-----:|
+|mpg        |hp         | -0.7761684| 0.95| -0.8852686| -0.5860994| -6.742388|       30| 2e-07|Pearson correlation |    32|
+|mpg        |disp       | -0.8475514| 0.95| -0.9233594| -0.7081376| -8.747151|       30| 0e+00|Pearson correlation |    32|
+|hp         |disp       |  0.7909486| 0.95|  0.6106794|  0.8932775|  7.080122|       30| 1e-07|Pearson correlation |    32|
 
-p-value adjustment method: Holm (1979)
-Observations: 32
-```
+</div>
 :::
 :::
 
@@ -875,7 +889,7 @@ plot(summary(lm4_corr))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-25-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-27-1.png){width=672}
 :::
 :::
 
@@ -890,9 +904,12 @@ plot(summary(lm4_corr))
 
 Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.
 
-## Further reading
+## Literature
 
-@roback_beyond_2021 provide and more than introductory account of regression while being accessible. A recent but still classic book (if this is possible) is the book by @gelman_regression_2021.
+An accessible treatment of regression is provided by @ismay_statistical_2020.
+
+@roback_beyond_2021 provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by @gelman_regression_2021.
+You may also benefit from @poldrack_statistical_2022 (open access).
 
 ## Debrief
 
