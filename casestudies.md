@@ -9,7 +9,6 @@
 
 
 
-::: {.cell hash='casestudies_cache/pdf/child1_1e169448d6b33a33f80b1f06d133f3f2'}
 
 **FALLSTUDIEN - NUR EXPLORATIVE DATENANALYSE**
 
@@ -50,7 +49,6 @@
 - [The Open Case Study Search](https://www.opencasestudies.org/) provides a nice collection of helpful case studies.
 
 - [ifes@FOM Fallstudienseite](https://fallstudien.netlify.app/)
-:::
 
 
 
@@ -66,7 +64,6 @@
 
 
 
-::: {.cell hash='casestudies_cache/pdf/child2_8667ae393890b5a4fe621e79bb548330'}
 
 **FALLSTUDIEN - NUR LINEARE MODELLE**
 
@@ -97,7 +94,6 @@
 - [Vorhersage-Modellierung des Preises von Diamanten](https://data-se.netlify.app/2021/05/19/vohrersgage-modellierung-des-preises-von-diamanten/)
 
 - [Modellierung Diamantenpreis 2](https://data-se.netlify.app/2021/05/25/modellierung-diamantenpreis-2/)
-:::
 
 
 
@@ -107,7 +103,6 @@
 
 
 
-::: {.cell hash='casestudies_cache/pdf/child3_b01ac7f9f9d31c1e9158fc5eeca8181b'}
 
 **FALLSTUDIEN - MASCHINELLES LERNEN MIT TIDYMODELS**
 
@@ -203,4 +198,3 @@
 
 
 - [Exploring the Star Wars “Prequel Renaissance” Using tidymodels and workflowsets](https://www.r-bloggers.com/2021/04/exploring-the-star-wars-prequel-renaissance-using-tidymodels-and-workflowsets/)
-:::

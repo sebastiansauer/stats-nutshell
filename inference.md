@@ -39,9 +39,9 @@ Population vs. sample (Image credit: Karsten Luebke)
 Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive* and *inferential* statistics.
 
 
-::: {.cell hash='inference_cache/pdf/fig-desk-inf_4216cea4a10f7d4a6a6684b030224de3'}
+::: {.cell hash='inference_cache/html/fig-desk-inf_8dfcd8f8cc9b6995ef058468f22fcd4f'}
 ::: {.cell-output-display}
-![The difference between description and inference](img/desk_vs_inf-crop.png){#fig-desk-inf width=6.08in}
+![The difference between description and inference](img/desk_vs_inf-crop.png){#fig-desk-inf width=50%}
 :::
 :::
 
@@ -51,7 +51,16 @@ Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive
 Larger samples allow for more precise estimations (ceteris paribus).
 
 
+::: {.cell hash='inference_cache/html/plot-estimate-gif_a9996929bd7572a87571fd430db35a73'}
 
+```{.r .cell-code}
+knitr::include_graphics("img/Estimate.gif")
+```
+
+::: {.cell-output-display}
+![Sample size in motion, Image credit: Karsten Luebke](img/Estimate.gif)
+:::
+:::
 
 
 
@@ -82,6 +91,28 @@ It simply redistributes your beliefs based on new data (evidence) you observe,
 see Figure @fig-belief-update:
 
 
+
+:::{.cell}
+
+:::{.cell-output-display}
+
+:::{#fig-belief-update}
+
+<p >
+
+<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+  A(prior belief) --&gt; B(new data) --&gt; C(posterior belief)
+
+</pre>
+
+<div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
+</p>
+
+
+Bayesian belief updating
+:::
+:::
+:::
 
 
 
@@ -120,7 +151,7 @@ You'll learn that the technical setup used for doing Bayes statistics is quite s
 ## Comment from xkcd
 
 
-::: {.cell layout-align="center" hash='inference_cache/pdf/unnamed-chunk-3_5368272b838d1a633db5ff786c20da7b'}
+::: {.cell layout-align="center" hash='inference_cache/html/unnamed-chunk-3_60fdb266799b474fd053f5b896af8a34'}
 ::: {.cell-output-display}
 ![](img/frequentists_vs_bayesians_2x.png){fig-align='center' width=50%}
 :::
@@ -140,9 +171,9 @@ The p-value is defined as the probability of obtaining the observed data (or mor
 Figure @fig-pvalue visualizes the p-value.
 
 
-::: {.cell layout-align="center" hash='inference_cache/pdf/fig-pvalue_77da99b37f346215a2d8b16d6fa44dcd'}
+::: {.cell layout-align="center" hash='inference_cache/html/fig-pvalue_97c66be20a442eaba5b941daf227a760'}
 ::: {.cell-output-display}
-![Visualization of the p-value](inference_files/figure-pdf/fig-pvalue-1.pdf){#fig-pvalue fig-align='center' width=50%}
+![Visualization of the p-value](inference_files/figure-html/fig-pvalue-1.png){#fig-pvalue fig-align='center' width=50%}
 :::
 :::
 

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.168">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>stats-nutshell - 8&nbsp; Case studies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./causality.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case studies</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">stats-nutshell</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./goals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./EDA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More lineare models</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./causality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./casestudies.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case studies</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#case-studies-on-explorative-data-analysis" id="toc-case-studies-on-explorative-data-analysis" class="nav-link active" data-scroll-target="#case-studies-on-explorative-data-analysis"><span class="toc-section-number">8.1</span>  Case studies on explorative data analysis</a></li>
+  <li><a href="#case-studies-on-linear-modesl" id="toc-case-studies-on-linear-modesl" class="nav-link" data-scroll-target="#case-studies-on-linear-modesl"><span class="toc-section-number">8.2</span>  Case studies on linear modesl</a></li>
+  <li><a href="#case-studies-on-machine-learning-using-tidymodels" id="toc-case-studies-on-machine-learning-using-tidymodels" class="nav-link" data-scroll-target="#case-studies-on-machine-learning-using-tidymodels"><span class="toc-section-number">8.3</span>  Case studies on machine learning using tidymodels</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case studies</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="case-studies-on-explorative-data-analysis" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="case-studies-on-explorative-data-analysis"><span class="header-section-number">8.1</span> Case studies on explorative data analysis</h2>
+<p><strong>FALLSTUDIEN - NUR EXPLORATIVE DATENANALYSE</strong></p>
+<ul>
+<li><p><a href="https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome">Datenjudo mit Pinguinen</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/02/24/exercises-to-data-wrangling-with-the-tidyverse/">Data-Wranglinng-Aufgaben zur Lebenserwartung</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/02/24/case-study-data-vizualization-on-flight-delays-using-tidyverse-tools/">Case study: data vizualization on flight delays using tidyverse tools</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2020/12/07/ex-visualizing-diamonds/">Aufgabe zur Datenvisualisierung des Diamantenpreises</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/03/08/eda-zu-flugversp%C3%A4tungen/">Fallstudie Flugverspätungen - EDA</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/02/11/yacda-topgear/">Fallstudie zur EDA: Top-Gear</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/02/11/explorative-datenanalyse-zum-datensatz-oecd-wellbeing/">Fallstudie zur EDA: OECD-Wellbeing-Studie</a></p></li>
+<li><p><a href="https://minimaxir.com/2018/07/imdb-data-analysis/">Fallstudie zur EDA: Movie Rating</a></p></li>
+<li><p><a href="https://github.com/saghirb/WiP-tidyverse/blob/master/doc/WiP-tidyverse.pdf">Fallstudie zur EDA: Women in Parliament</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/05/27/datensatz-flights-finde-den-tag-mit-den-meisten-abfl%C3%BCgen/">Finde den Tag mit den meisten Flugverspätungen, Datensatz ‘nycflights13’</a></p></li>
+<li><p><a href="http://varianceexplained.org/r/tidy-genomics/">Cleaning and visualizing genomic data: a case study in tidy analysis</a></p></li>
+<li><p><a href="https://www.njtierney.com/post/2017/11/07/tidyverse-billboard/">Tidyverse Case Study: Exploring the Billboard Charts</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/11/27/analyse-der-rki-coronadaten/">Analyse einiger RKI-Coronadaten: Eine reproduzierbare Fallstudie</a></p></li>
+<li><p><a href="https://www.opencasestudies.org/casestudies/ocs-healthexpenditure.html">OpenCaseStudies - Health Expenditure</a></p></li>
+<li><p><a href="https://www.opencasestudies.org/ocs-bp-school-shootings-dashboard/#Motivation">Open Case Studies: School Shootings in the United States</a> - includes dashboards</p></li>
+<li><p><a href="https://www.opencasestudies.org/ocs-bp-youth-disconnection/">Open Case Studies: Disparities in Youth Disconnection</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/05/28/yacsda-seitenspr%C3%BCnge/">YACSDA Seitensprünge</a></p></li>
+<li><p><a href="https://www.opencasestudies.org/">The Open Case Study Search</a> provides a nice collection of helpful case studies.</p></li>
+<li><p><a href="https://fallstudien.netlify.app/">ifes@FOM Fallstudienseite</a></p></li>
+</ul>
+</section>
+<section id="case-studies-on-linear-modesl" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="case-studies-on-linear-modesl"><span class="header-section-number">8.2</span> Case studies on linear modesl</h2>
+<p><strong>FALLSTUDIEN - NUR LINEARE MODELLE</strong></p>
+<ul>
+<li><p><a href="https://youtu.be/5pBTHrnRIZY">Beispiel für Prognosemodellierung 1, grundlegender Anspruch, Video</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2020/11/13/fallstudie-zur-regressionsanalyse-ggplot2movies/">Beispiel für Ihre Prognosemodellierung 2, mittlerer Anspruch</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/03/10/fallstudie-modellierung-von-flugversp%C3%A4tungen/">Beispiel für Ihre Prognosemodellierung 3, hoher Anspruch</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/03/10/fallstudie-modellierung-von-flugversp%C3%A4tungen/">Fallstudie: Modellierung von Flugverspätungen</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/02/24/modelling-movie-successes-linear-regression/">Modelling movie successes: linear regression</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2020/11/13/fallstudie-zur-regressionsanalyse-ggplot2movies/">Movies</a></p></li>
+<li><p><a href="https://www.kaggle.com/code/ssauer/tmdb-simple-regression-beginners">Fallstudie Einfache lineare Regression in Base-R, Anfängerniveau, Kaggle-Competition TMDB</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2022/05/02/fallstudie-spritverbrauch/">Fallstudie Sprit sparen</a></p></li>
+<li><p><a href="https://www.kaggle.com/code/saikatkumardey/linear-regression-case-study/notebook">Fallstudie zum Beitrag verschiedener Werbeformate zum Umsatz</a>; eine Fallstudie in Python, aber mit etwas Erfahrung wird man den Code einfach in R umsetzen können (wenn man nicht in Python schreiben will)</p></li>
+<li><p><a href="https://www.linkedin.com/pulse/practical-linear-regression-r-case-study-diamond-prices-valdeleon/?trk=public_profile_article_view">Practical Linear Regression with R: A case study on diamond prices</a></p></li>
+<li><p><a href="https://stat-ata-asu.github.io/MultipleAndLogisticRegression/case-study-italian-restaurants-in-nyc.html">Case Study: Italian restaurants in NYC</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/05/19/vohrersgage-modellierung-des-preises-von-diamanten/">Vorhersage-Modellierung des Preises von Diamanten</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2021/05/25/modellierung-diamantenpreis-2/">Modellierung Diamantenpreis 2</a></p></li>
+</ul>
+</section>
+<section id="case-studies-on-machine-learning-using-tidymodels" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="case-studies-on-machine-learning-using-tidymodels"><span class="header-section-number">8.3</span> Case studies on machine learning using tidymodels</h2>
+<p><strong>FALLSTUDIEN - MASCHINELLES LERNEN MIT TIDYMODELS</strong></p>
+<ul>
+<li><p><a href="https://www.r-bloggers.com/2021/08/experimenting-with-machine-learning-in-r-with-tidymodels-and-the-kaggle-titanic-dataset/">Experimenting with machine learning in R with tidymodels and the Kaggle titanic dataset</a></p></li>
+<li><p><a href="https://hansjoerg.me/2020/02/09/tidymodels-for-machine-learning/">Tutorial on tidymodels for Machine Learning</a></p></li>
+<li><p><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/">Classification with Tidymodels, Workflows and Recipes</a></p></li>
+<li><p><a href="https://www.kaggle.com/code/varimp/a-mostly-tidyverse-tour-of-the-titanic/report">A (mostly!) tidyverse tour of the Titanic</a></p></li>
+<li><p><a href="https://www.kaggle.com/code/headsortails/personalised-medicine-eda-with-tidy-r/report">Personalised Medicine - EDA with tidy R</a></p></li>
+<li><p><a href="https://www.kaggle.com/code/headsortails/tidy-titarnic/report">Tidy TitaRnic</a></p></li>
+<li><p><a href="https://www.tidymodels.org/start/models/">Fallstudie Seegurken</a></p></li>
+<li><p><a href="https://juliasilge.com/blog/student-debt/">Sehr einfache Fallstudie zur Modellierung einer Regression mit tidymodels</a></p></li>
+<li><p><a href="https://www.gmudatamining.com/lesson-10-r-tutorial.html">Fallstudie zur linearen Regression mit Tidymodels</a></p></li>
+<li><p><a href="https://github.com/sebastiansauer/covid-icu">Analyse zum Verlauf von Covid-Fällen</a></p></li>
+<li><p><a href="https://onezero.blog/modelling-binary-logistic-regression-using-tidymodels-library-in-r-part-1/">Fallstudie zur Modellierung einer logististischen Regression mit tidymodels</a></p></li>
+<li><p><a href="https://juliasilge.com/blog/multinomial-volcano-eruptions/">Fallstudie zu Vulkanausbrüchen</a></p></li>
+<li><p><a href="https://juliasilge.com/blog/himalayan-climbing/">Fallstudie Himalaya</a></p></li>
+<li><p><a href="https://juliasilge.com/blog/tuition-resampling/">Fallstudien zu Studiengebühren</a></p></li>
+<li><p><a href="https://www.tidymodels.org/start/case-study/">1. Modell der Fallstudie Hotel Bookings</a></p></li>
+<li><p><a href="https://github.com/sebastiansauer/datascience1/blob/main/Aufgaben/Thema8-Loesungen1.pdf">Aufgaben zur logistischen Regression, PDF</a></p></li>
+<li><p><a href="https://bcullen.rbind.io/post/2020-06-02-tidymodels-decision-tree-learning-in-r/">Fallstudie Oregon Schools</a></p></li>
+<li><p><a href="https://juliasilge.com/blog/wind-turbine/">Fallstudie Windturbinen</a></p></li>
+<li><p><a href="https://www.gmudatamining.com/lesson-13-r-tutorial.html">Fallstudie Churn</a></p></li>
+<li><p><a href="https://data-se.netlify.app/2020/12/14/titanic-tidymodels-boost/">Einfache Durchführung eines Modellierung mit XGBoost</a></p></li>
+<li><p><a href="https://bcullen.rbind.io/post/2020-06-02-tidymodels-decision-tree-learning-in-r/">Fallstudie Oregon Schools</a></p></li>
+<li><p><a href="https://www.gmudatamining.com/lesson-13-r-tutorial.html">Fallstudie Churn</a></p></li>
+<li><p><a href="https://juliasilge.com/blog/ikea-prices/">Fallstudie Ikea</a></p></li>
+<li><p><a href="https://juliasilge.com/blog/water-sources/">Fallstudie Wasserquellen in Sierra Leone</a></p></li>
+<li><p><a href="https://dev.to/juliasilge/tuning-random-forest-hyperparameters-in-r-with-tidytuesday-trees-data-4ilh">Fallstudie Bäume in San Francisco</a></p></li>
+<li><p><a href="https://juliasilge.com/blog/multinomial-volcano-eruptions/">Fallstudie Vulkanausbrüche</a></p></li>
+<li><p><a href="https://juliasilge.com/blog/board-games/">Fallstudie Brettspiele mit XGBoost</a></p></li>
+<li><p><a href="https://juliasilge.com/blog/lasso-the-office/">Fallstudie Serie The Office</a></p></li>
+<li><p><a href="https://juliasilge.com/blog/nber-papers/">Fallstudie NBER Papers</a></p></li>
+<li><p><a href="https://www.kaggle.com/ssauer/simple-linear-model-tidymodels">Fallstudie Einfache lineare Regression mit Tidymodels, Kaggle-Competition TMDB</a></p></li>
+<li><p><a href="https://www.kaggle.com/code/ssauer/simple-rf-tuned">Fallstudie Einfaches Random-Forest-Modell mit Tidymodels, Kaggle-Competition TMDB</a></p></li>
+<li><p><a href="https://www.kaggle.com/ssauer/tmdb-xgboost-tidymodels">Fallstudie Workflow-Set mit Tidymodels, Kaggle-Competition TMDB</a></p></li>
+<li><p><a href="https://www.kaggle.com/code/modesty520/a-tutorial-with-tidymodels/report#modeling">Fallstudie Titanic mit Tidymodels bei Kaggle</a></p></li>
+<li><p><a href="https://www.kaggle.com/code/benthecoder/tidymodels-in-r-using-measles-data/notebook">Einfache Fallstudie mit Tidymodels bei Kaggle</a></p></li>
+<li><p><a href="https://www.r-bloggers.com/2021/04/exploring-the-star-wars-prequel-renaissance-using-tidymodels-and-workflowsets/">Exploring the Star Wars “Prequel Renaissance” Using tidymodels and workflowsets</a></p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./causality.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

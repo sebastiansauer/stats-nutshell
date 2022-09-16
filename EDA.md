@@ -7,7 +7,7 @@
 ## R packages needed for this chapter
 
 
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-1_431d269fc5bf37acc77b746e1e7b09cc'}
+::: {.cell}
 
 ```{.r .cell-code}
 library(easystats)
@@ -86,29 +86,31 @@ The R package {janitor} provides some nice stuff for data cleansing. Check out [
 There are some packages, such as `{easystats}`, which provide comfortable access to basic statistics:
 
 
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-2_f3fdfb14a69495e6e192ae18101fcca1'}
+::: {.cell}
 
 ```{.r .cell-code}
 library(easystats)  # once per session
 describe_distribution(mtcars)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Variable |   Mean |     SD |    IQR |           Range | Skewness | Kurtosis |  n | n_Missing
---------------------------------------------------------------------------------------------
-mpg      |  20.09 |   6.03 |   7.53 |  [10.40, 33.90] |     0.67 |    -0.02 | 32 |         0
-cyl      |   6.19 |   1.79 |   4.00 |    [4.00, 8.00] |    -0.19 |    -1.76 | 32 |         0
-disp     | 230.72 | 123.94 | 221.53 | [71.10, 472.00] |     0.42 |    -1.07 | 32 |         0
-hp       | 146.69 |  68.56 |  84.50 | [52.00, 335.00] |     0.80 |     0.28 | 32 |         0
-drat     |   3.60 |   0.53 |   0.84 |    [2.76, 4.93] |     0.29 |    -0.45 | 32 |         0
-wt       |   3.22 |   0.98 |   1.19 |    [1.51, 5.42] |     0.47 |     0.42 | 32 |         0
-qsec     |  17.85 |   1.79 |   2.02 |  [14.50, 22.90] |     0.41 |     0.86 | 32 |         0
-vs       |   0.44 |   0.50 |   1.00 |    [0.00, 1.00] |     0.26 |    -2.06 | 32 |         0
-am       |   0.41 |   0.50 |   1.00 |    [0.00, 1.00] |     0.40 |    -1.97 | 32 |         0
-gear     |   3.69 |   0.74 |   1.00 |    [3.00, 5.00] |     0.58 |    -0.90 | 32 |         0
-carb     |   2.81 |   1.62 |   2.00 |    [1.00, 8.00] |     1.16 |     2.02 | 32 |         0
-```
+::: {.cell-output-display}
+<div class="kable-table">
+
+|Variable |       Mean|          SD|       IQR|    Min|     Max|   Skewness|   Kurtosis|  n| n_Missing|
+|:--------|----------:|-----------:|---------:|------:|-------:|----------:|----------:|--:|---------:|
+|mpg      |  20.090625|   6.0269481|   7.52500| 10.400|  33.900|  0.6723771| -0.0220063| 32|         0|
+|cyl      |   6.187500|   1.7859216|   4.00000|  4.000|   8.000| -0.1922609| -1.7627939| 32|         0|
+|disp     | 230.721875| 123.9386938| 221.52500| 71.100| 472.000|  0.4202331| -1.0675234| 32|         0|
+|hp       | 146.687500|  68.5628685|  84.50000| 52.000| 335.000|  0.7994067|  0.2752116| 32|         0|
+|drat     |   3.596563|   0.5346787|   0.84000|  2.760|   4.930|  0.2927802| -0.4504325| 32|         0|
+|wt       |   3.217250|   0.9784574|   1.18625|  1.513|   5.424|  0.4659161|  0.4165947| 32|         0|
+|qsec     |  17.848750|   1.7869432|   2.02250| 14.500|  22.900|  0.4063466|  0.8649307| 32|         0|
+|vs       |   0.437500|   0.5040161|   1.00000|  0.000|   1.000|  0.2645418| -2.0632731| 32|         0|
+|am       |   0.406250|   0.4989909|   1.00000|  0.000|   1.000|  0.4008089| -1.9665503| 32|         0|
+|gear     |   3.687500|   0.7378041|   1.00000|  3.000|   5.000|  0.5823086| -0.8952916| 32|         0|
+|carb     |   2.812500|   1.6152000|   2.00000|  1.000|   8.000|  1.1570911|  2.0200593| 32|         0|
+
+</div>
 :::
 :::
 
@@ -120,7 +122,7 @@ carb     |   2.81 |   1.62 |   2.00 |    [1.00, 8.00] |     1.16 |     2.02 | 32
 For nominal variables, consider `data_tabulate`:
 
 
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-3_2b9091cc3e2b49589785e3c2d120e817'}
+::: {.cell}
 
 ```{.r .cell-code}
 data_tabulate(mtcars, select = c("am", "vs"))
@@ -156,7 +158,7 @@ which amounts to something similar to a [contingency table](https://en.wikipedia
 
 
 
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-4_377d7803cdf903320b4888ed1f00224a'}
+::: {.cell}
 
 ```{.r .cell-code}
 mtcars %>% 
