@@ -11,6 +11,10 @@ Statistician Chris Wild puts the PPDAC cycle in the following figure, see Figure
 
 ![PPDAC cycle. Image source: Chris Wild](img/ppdac.png){#fig-ppdac}
 
+
+Wickham and Grolemund (see Figure @fig-data-journey in @sec-data-journey) provide a suggestion of the parts of the statistical analyses, that is the "Analysis" step in the PPDAC.
+
+
 ### Fundamental issues in data analysis
 
 
@@ -203,6 +207,9 @@ Check out [this curated list](https://data-se.netlify.app/2022/02/23/data-sets-f
 ## Literature
 
 
+
+
+@wild_statistical_1999 discuss the thougnht processes involved in statistical problem solving seen from a broad perspective.
 @ismay_statistical_2020 is a helpful start into the first steps in R.
 
 

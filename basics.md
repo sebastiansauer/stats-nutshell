@@ -1,7 +1,9 @@
 # Basics
 
 
-## PPDAC Model as a framework for problem solving
+## A framework for problem solving
+
+### PPDAC
 
 The PPDAC Model is a methodological framework (aka a model) for applying the scientific method to any analytical or research question, or at least it is applicable to quite a few [@mackay_scientific_2000].
 It is not meant to be a rigid sequence, but rather a cycle that may turn a number of rounds like a spiral.
@@ -10,6 +12,17 @@ Statistician Chris Wild puts the PPDAC cycle in the following figure, see Figure
 ![PPDAC cycle. Image source: Chris Wild](img/ppdac.png){#fig-ppdac}
 
 
+Wickham and Grolemund (see Figure @fig-data-journey in Chapter @sec-data-journey) provides a suggestion of the parts of the statistical analyses, that is the "Analysis" step in the PPDAC.
+
+
+### Fundamental issues in data analysis
+
+
+
+
+@wild_statistical_1999  further note that variation is one of the essential characteristics of data. They discern to types of variation however, see Figure @fig-variation.
+
+![Two types of variartion. Image source: Chris Wild](img/variation.png){#fig-variation}
 
 @wild_statistical_1999 give a more systematic overview on how a quantitative research question - applied or basic - can be tackled and conceived.
 For example, in their paper the authors enumarate some dispositions that researcher should embrace in order to fruitfully engage in empirical research:
@@ -18,16 +31,10 @@ For example, in their paper the authors enumarate some dispositions that researc
 - Imagination
 - Curiosity
 - Opennness
-- A propsenisty to seek deeper menaing
+- A propensity to seek deeper menaing
 - Being logical
 - Engagement
 - Perseverance
-
-
-
-@wild_statistical_1999  further note that variation is one of the essential characteristics of data. They discern to types of variation however, see Figure @fig-variation.
-
-![Two types of variartion. Image source: Chris Wild](img/variation.png){#fig-variation}
 
 
 
@@ -244,6 +251,9 @@ Check out [this curated list](https://data-se.netlify.app/2022/02/23/data-sets-f
 ## Literature
 
 
+
+
+@wild_statistical_1999 discuss the thougnht processes involved in statistical problem solving seen from a broad perspective.
 @ismay_statistical_2020 is a helpful start into the first steps in R.
 
 

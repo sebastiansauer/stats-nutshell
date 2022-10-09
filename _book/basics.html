@@ -234,7 +234,11 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#ppdac-model-as-a-framework-for-problem-solving" id="toc-ppdac-model-as-a-framework-for-problem-solving" class="nav-link active" data-scroll-target="#ppdac-model-as-a-framework-for-problem-solving"><span class="toc-section-number">2.1</span>  PPDAC Model as a framework for problem solving</a></li>
+  <li><a href="#a-framework-for-problem-solving" id="toc-a-framework-for-problem-solving" class="nav-link active" data-scroll-target="#a-framework-for-problem-solving"><span class="toc-section-number">2.1</span>  A framework for problem solving</a>
+  <ul class="collapse">
+  <li><a href="#ppdac" id="toc-ppdac" class="nav-link" data-scroll-target="#ppdac"><span class="toc-section-number">2.1.1</span>  PPDAC</a></li>
+  <li><a href="#fundamental-issues-in-data-analysis" id="toc-fundamental-issues-in-data-analysis" class="nav-link" data-scroll-target="#fundamental-issues-in-data-analysis"><span class="toc-section-number">2.1.2</span>  Fundamental issues in data analysis</a></li>
+  </ul></li>
   <li><a href="#r-basics" id="toc-r-basics" class="nav-link" data-scroll-target="#r-basics"><span class="toc-section-number">2.2</span>  R Basics</a></li>
   <li><a href="#initial-quiz" id="toc-initial-quiz" class="nav-link" data-scroll-target="#initial-quiz"><span class="toc-section-number">2.3</span>  Initial quiz</a></li>
   <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import"><span class="toc-section-number">2.4</span>  Data import</a></li>
@@ -263,13 +267,26 @@ div.csl-indent {
 
 </header>
 
-<section id="ppdac-model-as-a-framework-for-problem-solving" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="ppdac-model-as-a-framework-for-problem-solving"><span class="header-section-number">2.1</span> PPDAC Model as a framework for problem solving</h2>
+<section id="a-framework-for-problem-solving" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="a-framework-for-problem-solving"><span class="header-section-number">2.1</span> A framework for problem solving</h2>
+<section id="ppdac" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="ppdac"><span class="header-section-number">2.1.1</span> PPDAC</h3>
 <p>The PPDAC Model is a methodological framework (aka a model) for applying the scientific method to any analytical or research question, or at least it is applicable to quite a few <span class="citation" data-cites="mackay_scientific_2000">(<a href="references.html#ref-mackay_scientific_2000" role="doc-biblioref">MacKay and Oldford 2000</a>)</span>. It is not meant to be a rigid sequence, but rather a cycle that may turn a number of rounds like a spiral. Statistician Chris Wild puts the PPDAC cycle in the following figure, see Figure <a href="#fig-ppdac">Figure&nbsp;<span>2.1</span></a>. In <a href="https://www.stat.auckland.ac.nz/~wild/d2i/articles/1.4%20Place%20of%20data%20analysis%20in%20problem%20solving_ARTICLE.pdf">this short essay</a>, he summaries his ideas on how to use the PPDAC as a tool for data analysis in problem solving.</p>
 <div id="fig-ppdac" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/ppdac.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;2.1: PPDAC cycle. Image source: Chris Wild</figcaption><p></p>
+</figure>
+</div>
+<p>Wickham and Grolemund (see Figure <a href="EDA.html#fig-data-journey">Figure&nbsp;<span>3.1</span></a> in Chapter <a href="EDA.html#sec-data-journey"><span>Section&nbsp;3.3</span></a>) provides a suggestion of the parts of the statistical analyses, that is the “Analysis” step in the PPDAC.</p>
+</section>
+<section id="fundamental-issues-in-data-analysis" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="fundamental-issues-in-data-analysis"><span class="header-section-number">2.1.2</span> Fundamental issues in data analysis</h3>
+<p><span class="citation" data-cites="wild_statistical_1999">Wild and Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> further note that variation is one of the essential characteristics of data. They discern to types of variation however, see Figure <a href="#fig-variation">Figure&nbsp;<span>2.2</span></a>.</p>
+<div id="fig-variation" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/variation.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.2: Two types of variartion. Image source: Chris Wild</figcaption><p></p>
 </figure>
 </div>
 <p><span class="citation" data-cites="wild_statistical_1999">Wild and Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> give a more systematic overview on how a quantitative research question - applied or basic - can be tackled and conceived. For example, in their paper the authors enumarate some dispositions that researcher should embrace in order to fruitfully engage in empirical research:</p>
@@ -278,18 +295,12 @@ div.csl-indent {
 <li>Imagination</li>
 <li>Curiosity</li>
 <li>Opennness</li>
-<li>A propsenisty to seek deeper menaing</li>
+<li>A propensity to seek deeper menaing</li>
 <li>Being logical</li>
 <li>Engagement</li>
 <li>Perseverance</li>
 </ul>
-<p><span class="citation" data-cites="wild_statistical_1999">Wild and Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> further note that variation is one of the essential characteristics of data. They discern to types of variation however, see Figure <a href="#fig-variation">Figure&nbsp;<span>2.2</span></a>.</p>
-<div id="fig-variation" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/variation.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.2: Two types of variartion. Image source: Chris Wild</figcaption><p></p>
-</figure>
-</div>
+</section>
 </section>
 <section id="r-basics" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="r-basics"><span class="header-section-number">2.2</span> R Basics</h2>
@@ -455,7 +466,7 @@ div.csl-indent {
 </section>
 <section id="literature" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="literature"><span class="header-section-number">2.7</span> Literature</h2>
-<p><span class="citation" data-cites="ismay_statistical_2020">Ismay and Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span> is a helpful start into the first steps in R.</p>
+<p><span class="citation" data-cites="wild_statistical_1999">Wild and Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> discuss the thougnht processes involved in statistical problem solving seen from a broad perspective. <span class="citation" data-cites="ismay_statistical_2020">Ismay and Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span> is a helpful start into the first steps in R.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">

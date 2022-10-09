@@ -40,7 +40,7 @@ EDA can roughly be said to comprise the following parts:
 
 
 
-## Data journey
+## Data journey {#sec-data-journey}
 
 @r4ds present a visual sketch of what could be called the "data journey",
 i.e., the steps we are taking in order to learn from data, seen from an hands-on angle,
