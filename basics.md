@@ -1,11 +1,37 @@
 # Basics
 
 
+## PPDAC Model as a framework for problem solving
+
+The PPDAC Model is a methodological framework (aka a model) for applying the scientific method to any analytical or research question, or at least it is applicable to quite a few [@mackay_scientific_2000].
+It is not meant to be a rigid sequence, but rather a cycle that may turn a number of rounds like a spiral.
+Statistician Chris Wild puts the PPDAC cycle in the following figure, see Figure @fig-ppdac.
+
+![PPDAC cycle. Image source: Chris Wild](https://www.stat.auckland.ac.nz/~wild/StatThink/images/99.Investigative.png){#fig-ppdac}
+
+@wild_statistical_1999 give a more systematic overview on how a quantitative research question - applied or basic - can be tackled and conceived.
+For example, in their paper the authors enumarate some dispositions that researcher should embrace in order to fruitfully engage in empirical research:
+
+- Scepticism
+- Imagination
+- Curiosity
+- Opennness
+- A propsenisty to seek deeper menaing
+- Being logical
+- Engagement
+- Perseverance
+
+
+
+@wild_statistical_1999  further note that variation is one of the essential characteristics of data. They discern to types of variation however, see Figure @fig-variation.
+
+![Two types of variartion. Image source: Chris Wild](https://www.stat.auckland.ac.nz/~wild/StatThink/images/99.Variation1.png){#fig-variation}
+
 ## R Basics
 
 Check out [chapter 1 in ModernDive](https://moderndive.com/1-getting-started.html) for an accessible introduction to getting started with R and RStudio.
 
-Please also note that R and RStudio should be installed upfront (see also in ModernDive).
+Please also note that R and RStudio should be installed before starting (this course).
 
 
 
@@ -96,7 +122,7 @@ Compute the variance of `x` using basic arithmetic.^[`sum(x^2)`][^sol8]
 
 
 
-    ::: {.cell}
+    ::: {.cell hash='basics_cache/html/unnamed-chunk-1_46dbf099908aa6ced7e180fc0e3798b0'}
     
     ```{.r .cell-code}
     x <- c(1, 2, 3)
@@ -154,7 +180,7 @@ Just click it, and things should work out.
 To blitz start with data, type the following in R:
 
 
-::: {.cell}
+::: {.cell hash='basics_cache/html/unnamed-chunk-2_58f5faa8ad70194959dbe2d4b46e1f30'}
 
 ```{.r .cell-code}
 data(mtcars)
@@ -172,7 +198,7 @@ To get help for the data set, type `help(mtcars)`
 A bit more advanced, but it's a nice data set, try the Palmer Penguins data set:
 
 
-::: {.cell}
+::: {.cell hash='basics_cache/html/unnamed-chunk-3_fb18c89d614cf90619247bc45ccb4f36'}
 
 ```{.r .cell-code}
 d <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")

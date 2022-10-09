@@ -234,12 +234,13 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-basics" id="toc-r-basics" class="nav-link active" data-scroll-target="#r-basics"><span class="toc-section-number">2.1</span>  R Basics</a></li>
-  <li><a href="#initial-quiz" id="toc-initial-quiz" class="nav-link" data-scroll-target="#initial-quiz"><span class="toc-section-number">2.2</span>  Initial quiz</a></li>
-  <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import"><span class="toc-section-number">2.3</span>  Data import</a></li>
-  <li><a href="#sec-blitz-data" id="toc-sec-blitz-data" class="nav-link" data-scroll-target="#sec-blitz-data"><span class="toc-section-number">2.4</span>  Blitz start with data</a></li>
-  <li><a href="#more-data-set" id="toc-more-data-set" class="nav-link" data-scroll-target="#more-data-set"><span class="toc-section-number">2.5</span>  More data set</a></li>
-  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="toc-section-number">2.6</span>  Literature</a></li>
+  <li><a href="#ppdac-model-as-a-framework-for-problem-solving" id="toc-ppdac-model-as-a-framework-for-problem-solving" class="nav-link active" data-scroll-target="#ppdac-model-as-a-framework-for-problem-solving"><span class="toc-section-number">2.1</span>  PPDAC Model as a framework for problem solving</a></li>
+  <li><a href="#r-basics" id="toc-r-basics" class="nav-link" data-scroll-target="#r-basics"><span class="toc-section-number">2.2</span>  R Basics</a></li>
+  <li><a href="#initial-quiz" id="toc-initial-quiz" class="nav-link" data-scroll-target="#initial-quiz"><span class="toc-section-number">2.3</span>  Initial quiz</a></li>
+  <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import"><span class="toc-section-number">2.4</span>  Data import</a></li>
+  <li><a href="#sec-blitz-data" id="toc-sec-blitz-data" class="nav-link" data-scroll-target="#sec-blitz-data"><span class="toc-section-number">2.5</span>  Blitz start with data</a></li>
+  <li><a href="#more-data-set" id="toc-more-data-set" class="nav-link" data-scroll-target="#more-data-set"><span class="toc-section-number">2.6</span>  More data set</a></li>
+  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="toc-section-number">2.7</span>  Literature</a></li>
   </ul>
 </nav>
     </div>
@@ -262,13 +263,41 @@ div.csl-indent {
 
 </header>
 
-<section id="r-basics" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="r-basics"><span class="header-section-number">2.1</span> R Basics</h2>
-<p>Check out <a href="https://moderndive.com/1-getting-started.html">chapter 1 in ModernDive</a> for an accessible introduction to getting started with R and RStudio.</p>
-<p>Please also note that R and RStudio should be installed upfront (see also in ModernDive).</p>
+<section id="ppdac-model-as-a-framework-for-problem-solving" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="ppdac-model-as-a-framework-for-problem-solving"><span class="header-section-number">2.1</span> PPDAC Model as a framework for problem solving</h2>
+<p>The PPDAC Model is a methodological framework (aka a model) for applying the scientific method to any analytical or research question, or at least it is applicable to quite a few <span class="citation" data-cites="mackay_scientific_2000">(<a href="references.html#ref-mackay_scientific_2000" role="doc-biblioref">MacKay and Oldford 2000</a>)</span>. It is not meant to be a rigid sequence, but rather a cycle that may turn a number of rounds like a spiral. Statistician Chris Wild puts the PPDAC cycle in the following figure, see Figure <a href="#fig-ppdac">Figure&nbsp;<span>2.1</span></a>.</p>
+<div id="fig-ppdac" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://www.stat.auckland.ac.nz/~wild/StatThink/images/99.Investigative.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.1: PPDAC cycle. Image source: Chris Wild</figcaption><p></p>
+</figure>
+</div>
+<p><span class="citation" data-cites="wild_statistical_1999">Wild and Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> give a more systematic overview on how a quantitative research question - applied or basic - can be tackled and conceived. For example, in their paper the authors enumarate some dispositions that researcher should embrace in order to fruitfully engage in empirical research:</p>
+<ul>
+<li>Scepticism</li>
+<li>Imagination</li>
+<li>Curiosity</li>
+<li>Opennness</li>
+<li>A propsenisty to seek deeper menaing</li>
+<li>Being logical</li>
+<li>Engagement</li>
+<li>Perseverance</li>
+</ul>
+<p><span class="citation" data-cites="wild_statistical_1999">Wild and Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> further note that variation is one of the essential characteristics of data. They discern to types of variation however, see Figure <a href="#fig-variation">Figure&nbsp;<span>2.2</span></a>.</p>
+<div id="fig-variation" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://www.stat.auckland.ac.nz/~wild/StatThink/images/99.Variation1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.2: Two types of variartion. Image source: Chris Wild</figcaption><p></p>
+</figure>
+</div>
 </section>
-<section id="initial-quiz" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="initial-quiz"><span class="header-section-number">2.2</span> Initial quiz</h2>
+<section id="r-basics" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="r-basics"><span class="header-section-number">2.2</span> R Basics</h2>
+<p>Check out <a href="https://moderndive.com/1-getting-started.html">chapter 1 in ModernDive</a> for an accessible introduction to getting started with R and RStudio.</p>
+<p>Please also note that R and RStudio should be installed before starting (this course).</p>
+</section>
+<section id="initial-quiz" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="initial-quiz"><span class="header-section-number">2.3</span> Initial quiz</h2>
 <p>To get an idea whether you have digested some R basics, consider the following quiz.</p>
 <div id="exr-q1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.1 (Define a variable) </strong></span>Define in R the variable <code>age</code> and assign the value <code>42</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
@@ -301,21 +330,21 @@ div.csl-indent {
 <p><span class="theorem-title"><strong>Exercise 2.10 (Work with NA) </strong></span>Define the vector <code>y</code> with the values 1,2,NA. Compute the mean. Explain the results.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
 </div>
 </section>
-<section id="data-import" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="data-import"><span class="header-section-number">2.3</span> Data import</h2>
+<section id="data-import" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="data-import"><span class="header-section-number">2.4</span> Data import</h2>
 <p>Check out <a href="https://moderndive.com/4-tidy.html">chapter 4 in ModernDive</a> on how to import data into RStudio and for some basic concepts about “tidy data”.</p>
 <p>Spoiler: There’s a button in RStudio in the “Environment” Pane saying “Import Dataset”. Just click it, and things should work out.</p>
 </section>
-<section id="sec-blitz-data" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="sec-blitz-data"><span class="header-section-number">2.4</span> Blitz start with data</h2>
+<section id="sec-blitz-data" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="sec-blitz-data"><span class="header-section-number">2.5</span> Blitz start with data</h2>
 <p>To blitz start with data, type the following in R:</p>
-<div class="cell">
+<div class="cell" data-hash="basics_cache/html/unnamed-chunk-2_58f5faa8ad70194959dbe2d4b46e1f30">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And the data set <code>mtcars</code> will be available.</p>
 <p>To get help for the data set, type <code>help(mtcars)</code></p>
 <p>A bit more advanced, but it’s a nice data set, try the Palmer Penguins data set:</p>
-<div class="cell">
+<div class="cell" data-hash="basics_cache/html/unnamed-chunk-3_fb18c89d614cf90619247bc45ccb4f36">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)  <span class="co"># see the first few rows, the "head" of the table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -420,18 +449,24 @@ div.csl-indent {
 </div>
 <p>Here’s some <a href="https://vincentarelbundock.github.io/Rdatasets/doc/palmerpenguins/penguins.html">documentation (code book)</a> for this data set.</p>
 </section>
-<section id="more-data-set" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="more-data-set"><span class="header-section-number">2.5</span> More data set</h2>
+<section id="more-data-set" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="more-data-set"><span class="header-section-number">2.6</span> More data set</h2>
 <p>Check out <a href="https://data-se.netlify.app/2022/02/23/data-sets-for-for-teaching/">this curated list</a> of data sets useful for learning and practicing your data skills.</p>
 </section>
-<section id="literature" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="literature"><span class="header-section-number">2.6</span> Literature</h2>
+<section id="literature" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="literature"><span class="header-section-number">2.7</span> Literature</h2>
 <p><span class="citation" data-cites="ismay_statistical_2020">Ismay and Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span> is a helpful start into the first steps in R.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
 <div id="ref-ismay_statistical_2020" class="csl-entry" role="doc-biblioentry">
 Ismay, Chester, and Albert Young-Sun Kim. 2020. <em>Statistical Inference via Data Science: A <span>ModernDive</span> into r and the Tidyverse</em>. Chapman &amp; Hall/<span>CRC</span> the r Series. Boca Raton: <span>CRC</span> Press / Taylor &amp; Francis Group. <a href="https://moderndive.com/">https://moderndive.com/</a>.
+</div>
+<div id="ref-mackay_scientific_2000" class="csl-entry" role="doc-biblioentry">
+MacKay, R. J., and R. W. Oldford. 2000. <span>“Scientific Method, Statistical Method and the Speed of Light.”</span> <em>Statistical Science</em> 15 (3): 254–78. <a href="https://doi.org/10.1214/ss/1009212817">https://doi.org/10.1214/ss/1009212817</a>.
+</div>
+<div id="ref-wild_statistical_1999" class="csl-entry" role="doc-biblioentry">
+Wild, Chris J, and Maxine Pfannkuch. 1999. <span>“Statistical Thinking in Empirical Enquiry.”</span> <em>International Statistical Review</em> 67 (3): 223–48.
 </div>
 </div>
 </section>
@@ -447,7 +482,7 @@ Ismay, Chester, and Albert Young-Sun Kim. 2020. <em>Statistical Inference via Da
 <li id="fn7"><p><code>sum(x^2)</code><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p><code>mean(x^2)</code><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p><code>sum(x^2)</code><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><div class="cell">
+<li id="fn10"><div class="cell" data-hash="basics_cache/html/unnamed-chunk-1_46dbf099908aa6ced7e180fc0e3798b0">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

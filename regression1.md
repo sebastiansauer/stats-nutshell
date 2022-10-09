@@ -715,7 +715,74 @@ plot(lm2_pred)
 ## One nominal predictor
 
 
-::: {.cell hash='regression1_cache/html/lm3a_c014d3ad3c8d16c3d139ae665fe095f8'}
+::: {.cell hash='regression1_cache/html/lm3a_535b185d06fc6d1b2a30a814ca37d81a'}
+
+```{.r .cell-code}
+lm3a <- lm(mpg ~ am, data = mtcars)
+parameters(lm3a)
+```
+
+::: {.cell-output-display}
+<div class="kable-table">
+
+|Parameter   | Coefficient|       SE|   CI|   CI_low|  CI_high|         t| df_error|        p|
+|:-----------|-----------:|--------:|----:|--------:|--------:|---------:|--------:|--------:|
+|(Intercept) |   17.147368| 1.124602| 0.95| 14.85062| 19.44411| 15.247492|       30| 0.000000|
+|am          |    7.244939| 1.764422| 0.95|  3.64151| 10.84837|  4.106127|       30| 0.000285|
+
+</div>
+:::
+:::
+
+::: {.cell hash='regression1_cache/html/unnamed-chunk-11_aa1f0c697b0e8b60365c118b142345d5'}
+
+```{.r .cell-code}
+lm3a_means <- estimate_means(lm3a, at = "am = c(0, 1)")
+lm3a_means 
+```
+
+::: {.cell-output-display}
+<div class="kable-table">
+
+| am|     Mean|       SE|   CI_low|  CI_high|
+|--:|--------:|--------:|--------:|--------:|
+|  0| 17.14737| 1.124602| 14.85062| 19.44411|
+|  1| 24.39231| 1.359578| 21.61568| 27.16894|
+
+</div>
+:::
+:::
+
+If we were not to specify the values of `am` which we would like to get predictions for, the default of the function would select 10 values, spreaded across the range of `am`. For numeric variables, this is usually fine. However, for nominal variables - and `am` is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for `0` and `1`.
+
+
+However, unfortunately, the plot *needs* a nominal variable if we are to compare groups. 
+In our case, `am` is considered a numeric variables, since it consists of numbers only. 
+The plot does not work, malheureusement:
+
+
+
+
+::: {.cell hash='regression1_cache/html/unnamed-chunk-12_457a991c1e6482827f489847c3ae66c0'}
+
+```{.r .cell-code}
+plot(lm3a_means)
+```
+
+::: {.cell-output-display}
+![](regression1_files/figure-html/unnamed-chunk-12-1.png){width=672}
+:::
+:::
+
+
+
+
+We need to transform `am` to a factor variable. That's something like a string. If we hand over a `factor()` to the plotting function, everything will run smoothly. 
+Computationwise, no big differences:
+
+
+
+::: {.cell hash='regression1_cache/html/lm3a-factor_ec6e4c42488953d3cfbcf0df9b982713'}
 
 ```{.r .cell-code}
 mtcars2 <-
@@ -738,35 +805,18 @@ parameters(lm3a)
 :::
 :::
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-11_24dd1c3dc32b81a65ffb8daeffa69d3d'}
+::: {.cell hash='regression1_cache/html/unnamed-chunk-13_a8419f2072a5b685be7c159f79842610'}
 
 ```{.r .cell-code}
-lm3a_means <- estimate_means(lm3a, at = "am_f")
-lm3a_means 
-```
-
-::: {.cell-output-display}
-<div class="kable-table">
-
-|am_f |     Mean|       SE|   CI_low|  CI_high|
-|:----|--------:|--------:|--------:|--------:|
-|0    | 17.14737| 1.124602| 14.85062| 19.44411|
-|1    | 24.39231| 1.359578| 21.61568| 27.16894|
-
-</div>
-:::
-:::
-
-::: {.cell hash='regression1_cache/html/unnamed-chunk-12_457a991c1e6482827f489847c3ae66c0'}
-
-```{.r .cell-code}
+lm3a_means <- estimate_means(lm3a)
 plot(lm3a_means)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-12-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-13-1.png){width=672}
 :::
 :::
+
 
 
 Note that we should have converted `am` to a factor variable before fitting the model. Otherwise, the plot won't work.
@@ -834,6 +884,14 @@ plot(lm4_pred)
 :::
 
 
+
+## Watch out for Simpson
+
+Beware! Model estimates can swing wildly if you add (or remove) some predictor from your model. [See this post](https://ecologyforthemasses.com/2022/06/08/who-is-simpson-and-what-does-his-paradox-mean-for-ecologists/) for an demonstration.
+
+
+
+
 ## What about correlation?
 
 Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.
@@ -865,14 +923,14 @@ lm4_corr
 :::
 :::
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-13_abe5162df7b4a9c95911f1529c0fe0f5'}
+::: {.cell hash='regression1_cache/html/unnamed-chunk-14_d6887e03f8ed87ec063f88417d795447'}
 
 ```{.r .cell-code}
 plot(summary(lm4_corr))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-13-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-14-1.png){width=672}
 :::
 :::
 

@@ -51,7 +51,7 @@ Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive
 Larger samples allow for more precise estimations (ceteris paribus).
 
 
-::: {.cell hash='inference_cache/html/plot-estimate-gif_a9996929bd7572a87571fd430db35a73'}
+::: {.cell hash='inference_cache/html/plot-estimate-gif_19dfe573bb6746e22515e59b2f521ee1'}
 
 ```{.r .cell-code}
 knitr::include_graphics("img/Estimate.gif")
@@ -88,7 +88,7 @@ Some decent, but cheap screws, might be more profitable.
 Bayes inference is concerned about the probability of your research hypothesis.
 
 It simply redistributes your beliefs based on new data (evidence) you observe, 
-see Figure @fig-belief-update:
+see Figure @fig-belief-update.
 
 
 

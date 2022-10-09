@@ -53,7 +53,7 @@ knitr::include_graphics("img/desk_vs_inf-crop.png")
 Larger samples allow for more precise estimations (ceteris paribus).
 
 ```{r plot-estimate-gif}
-#| include: !expr is_html_output()
+#| include: !expr knitr::is_html_output()
 #| fig-cap: "Sample size in motion, Image credit: Karsten Luebke"
 
 knitr::include_graphics("img/Estimate.gif")
@@ -84,7 +84,7 @@ Some decent, but cheap screws, might be more profitable.
 Bayes inference is concerned about the probability of your research hypothesis.
 
 It simply redistributes your beliefs based on new data (evidence) you observe, 
-see Figure @fig-belief-update:
+see Figure @fig-belief-update.
 
 ```{mermaid, include=knitr::is_html_output()}
 %%| label: fig-belief-update

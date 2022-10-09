@@ -1,66 +1,10 @@
 [
   {
-    "objectID": "inference.html#what-is-it",
-    "href": "inference.html#what-is-it",
-    "title": "4  Inference",
-    "section": "4.1 What is it?",
-    "text": "4.1 What is it?\nStatistical inference, according to Gelman, Hill, and Vehtari (2021), chap. 1.1, faces the challenge of generalizing from the particular to the general.\nIn more details, this amounts to generalizing from …\n\na sample to a population\na treatment to a control group (i.e., causal inference)\nobserved measurement to the underlying (“latent”) construct of interest\n\n\n\n\n\n\n\nImportant\n\n\n\nStatistical inference is concerned with making general claims from particular data using mathematical tools."
-  },
-  {
-    "objectID": "inference.html#population-and-sample",
-    "href": "inference.html#population-and-sample",
-    "title": "4  Inference",
-    "section": "4.2 Population and sample",
-    "text": "4.2 Population and sample\nWe want to have an estimate of some population value, for example the proportion of A.\nHowever, all we have is a subset, a sample of the populuation. Hence, we need to infer from the sample to the popluation. We do so by generalizing from the sample to the population, see Figure Figure 4.1.\n\n\n\n\n\n\n\n(a) Population\n\n\n\n\n\n\n\n(b) Sample\n\n\n\n\nFigure 4.1: Population vs. sample (Image credit: Karsten Luebke)"
-  },
-  {
-    "objectID": "inference.html#whats-not-inference",
-    "href": "inference.html#whats-not-inference",
-    "title": "4  Inference",
-    "section": "4.3 What’s not inference?",
-    "text": "4.3 What’s not inference?\nConsider fig. Figure 4.2 which epitomizes the difference between descriptive and inferential statistics.\n\n\n\n\n\nFigure 4.2: The difference between description and inference"
-  },
-  {
-    "objectID": "inference.html#when-size-helps",
-    "href": "inference.html#when-size-helps",
-    "title": "4  Inference",
-    "section": "4.4 When size helps",
-    "text": "4.4 When size helps\nLarger samples allow for more precise estimations (ceteris paribus).\n\nknitr::include_graphics(\"img/Estimate.gif\")\n\n\n\n\nSample size in motion, Image credit: Karsten Luebke"
-  },
-  {
-    "objectID": "inference.html#what-flavors-are-available",
-    "href": "inference.html#what-flavors-are-available",
-    "title": "4  Inference",
-    "section": "4.5 What flavors are available?",
-    "text": "4.5 What flavors are available?\nTypically, when one hears “inference” one thinks of p-values and null hypothesis testing. Those procedures are examples of the school of Frequentist statistics.\nHowever, there’s a second flavor of statistics to be mentioned here: Bayesian statistics.\n\n4.5.1 Frequentist inference\nFrequentism is not concerned about the probability of your research hypothesis.\nFrequentism is all about controlling the long-term error. For illustration, suppose you are the CEO of a factory producing screws, and many of them. As the boss, you are not so much interested if a particular scree is in order (or faulty). Rather you are interested that the overall, long-term error rate of your production is low. One may add that your goal might not the minimize the long-term error, b ut to control it to a certain level - it may be to expensive to produce super high quality screws. Some decent, but cheap screws, might be more profitable.\n\n\n4.5.2 Bayes inference\nBayes inference is concerned about the probability of your research hypothesis.\nIt simply redistributes your beliefs based on new data (evidence) you observe, see Figure Figure 4.3:\n\n\n\n\n\nflowchart LR\n  A(prior belief) --> B(new data) --> C(posterior belief)\n\n\n\n\n\n\nFigure 4.3: Bayesian belief updating\n\n\n\n\nIn more detail, the posterior belief is formalized as the posterior probability. The Likelihood is the probability of the data given some hypothesis. The normalizing constant serves to give us a number between zero and one.\n\\[\\overbrace{\\Pr(\\color{blue}{H}|\\color{green}{D})}^\\text{posterior probability} = \\overbrace{Pr(\\color{blue}{H})}^\\text{prior} \\frac{\\overbrace{Pr(\\color{green}{D}|\\color{blue}{H})}^\\text{likelihood}}{\\underbrace{Pr(\\color{green}{D})}_{\\text{normalizing constant}}}\\]\nIn practice, the posterior probability of your hypothesis is, the average of your prior and the Likelihood of your data.\n\n\n\nPrior-Likelihood-Posterior\n\n\nCan you see that the posterior is some average of prior and likelihood?\nCheck out this great video on Bayes Theorem by 3b1b."
-  },
-  {
-    "objectID": "inference.html#but-which-one-should-i-consume",
-    "href": "inference.html#but-which-one-should-i-consume",
-    "title": "4  Inference",
-    "section": "4.6 But which one should I consume?",
-    "text": "4.6 But which one should I consume?\nPRO Frequentist:\n\nYour supervisor and reviewers will be more familiar with it\nThe technical overhead is simpler compared to Bayes\n\nPRO Bayes:\n\nYou’ll probably want to have a posterior probability of your hypothesis\nYou may appear as a cool kid and an early adoptor of emering statistical methods\n\n\n\n\n\n\n\nTip\n\n\n\nYou’ll learn that the technical setup used for doing Bayes statistics is quite similar to doing frequentist statistics. Stay tuned."
-  },
-  {
-    "objectID": "inference.html#comment-from-xkcd",
-    "href": "inference.html#comment-from-xkcd",
-    "title": "4  Inference",
-    "section": "4.7 Comment from xkcd",
-    "text": "4.7 Comment from xkcd\n\n\n\n\n\n\n\n\n\nQuelle"
-  },
-  {
-    "objectID": "inference.html#p-value",
-    "href": "inference.html#p-value",
-    "title": "4  Inference",
-    "section": "4.8 p-value",
-    "text": "4.8 p-value\nThe p-value has been used as the pivotal criterion to decide about whether or not a research hypothesis were to be “accepted” (a term forbidden in frequentist and Popperian langauge) or to be rejected. However, more recently, it is advised to use the p-value only as one indicator among multiple; see Wasserstein and Lazar (2016) and Wasserstein, Schirm, and Lazar (2019).\n\n\n\n\n\n\nImportant\n\n\n\nThe p-value is defined as the probability of obtaining the observed data (or more extreme) under the assumption of no effect.\n\n\nFigure Figure 4.4 visualizes the p-value.\n\n\n\n\n\nFigure 4.4: Visualization of the p-value"
-  },
-  {
-    "objectID": "inference.html#some-confusion-remains-about-the-p-value",
-    "href": "inference.html#some-confusion-remains-about-the-p-value",
-    "title": "4  Inference",
-    "section": "4.9 Some confusion remains about the p-value",
-    "text": "4.9 Some confusion remains about the p-value\n\n\n\nSource: from ImgFlip Meme Generator\n\n\nGoodman (2008) provides an entertaining overview on typical misconceptions of the p-value full text.\n\n\n\n\nGelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. Regression and Other Stories. Analytical Methods for Social Research. Cambridge: Cambridge University Press.\n\n\nGoodman, Steven. 2008. “A Dirty Dozen: Twelve p-Value Misconceptions.” Seminars in Hematology, Interpretation of quantitative research, 45 (3): 135–40. https://doi.org/10.1053/j.seminhematol.2008.04.003.\n\n\nWasserstein, Ronald L., and Nicole A. Lazar. 2016. “The ASA’s Statement on p-Values: Context, Process, and Purpose.” The American Statistician 70 (2): 129–33. https://doi.org/10.1080/00031305.2016.1154108.\n\n\nWasserstein, Ronald L., Allen L. Schirm, and Nicole A. Lazar. 2019. “Moving to a World Beyond ‘ p</i> p < 0.05’.” The American Statistician 73 (March): 1–19. https://doi.org/10.1080/00031305.2019.1583913."
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "stats-nutshell",
+    "section": "",
+    "text": "Desktop version, not the server↩︎\npossibly you need also a Fortran compiler, but maybe that’s optional↩︎"
   },
   {
     "objectID": "goals.html#overview",
@@ -88,42 +32,49 @@
     "href": "basics.html",
     "title": "2  Basics",
     "section": "",
-    "text": "Check out chapter 1 in ModernDive for an accessible introduction to getting started with R and RStudio.\nPlease also note that R and RStudio should be installed upfront (see also in ModernDive)."
+    "text": "The PPDAC Model is a methodological framework (aka a model) for applying the scientific method to any analytical or research question, or at least it is applicable to quite a few (MacKay and Oldford 2000). It is not meant to be a rigid sequence, but rather a cycle that may turn a number of rounds like a spiral. Statistician Chris Wild puts the PPDAC cycle in the following figure, see Figure Figure 2.1.\n\n\n\nFigure 2.1: PPDAC cycle. Image source: Chris Wild\n\n\nWild and Pfannkuch (1999) give a more systematic overview on how a quantitative research question - applied or basic - can be tackled and conceived. For example, in their paper the authors enumarate some dispositions that researcher should embrace in order to fruitfully engage in empirical research:\n\nScepticism\nImagination\nCuriosity\nOpennness\nA propsenisty to seek deeper menaing\nBeing logical\nEngagement\nPerseverance\n\nWild and Pfannkuch (1999) further note that variation is one of the essential characteristics of data. They discern to types of variation however, see Figure Figure 2.2.\n\n\n\nFigure 2.2: Two types of variartion. Image source: Chris Wild"
+  },
+  {
+    "objectID": "basics.html#r-basics",
+    "href": "basics.html#r-basics",
+    "title": "2  Basics",
+    "section": "2.2 R Basics",
+    "text": "2.2 R Basics\nCheck out chapter 1 in ModernDive for an accessible introduction to getting started with R and RStudio.\nPlease also note that R and RStudio should be installed before starting (this course)."
   },
   {
     "objectID": "basics.html#initial-quiz",
     "href": "basics.html#initial-quiz",
     "title": "2  Basics",
-    "section": "2.2 Initial quiz",
-    "text": "2.2 Initial quiz\nTo get an idea whether you have digested some R basics, consider the following quiz.\n\nExercise 2.1 (Define a variable) Define in R the variable age and assign the value 42.1\n\n\nExercise 2.2 (Define a variable as a string) Define in R the variable name and assign the value me.2\n\n\nExercise 2.3 (Define a variable by another variable) Define in R the variable name and assign the variable age.3\n\n\nExercise 2.4 (Call a function) Ask R what today’s date() is, that is, call a function.4\n\n\nExercise 2.5 (Define a vector) Define in R a vector x with the values 1,2,3 .5\n\n\nExercise 2.6 (Vector wise computation) Square each value in the vector x.6\n\n\nExercise 2.7 (Vector wise computation 2) Square each value in the vector x and sum up the values.7\n\n\nExercise 2.8 (Vector wise computation 3) Square each value in the vector x, sum up the values, and divide by 3.8\n\n\nExercise 2.9 (Compute the variance) Compute the variance of x using basic arithmetic.910\n\n\nExercise 2.10 (Work with NA) Define the vector y with the values 1,2,NA. Compute the mean. Explain the results.11"
+    "section": "2.3 Initial quiz",
+    "text": "2.3 Initial quiz\nTo get an idea whether you have digested some R basics, consider the following quiz.\n\nExercise 2.1 (Define a variable) Define in R the variable age and assign the value 42.1\n\n\nExercise 2.2 (Define a variable as a string) Define in R the variable name and assign the value me.2\n\n\nExercise 2.3 (Define a variable by another variable) Define in R the variable name and assign the variable age.3\n\n\nExercise 2.4 (Call a function) Ask R what today’s date() is, that is, call a function.4\n\n\nExercise 2.5 (Define a vector) Define in R a vector x with the values 1,2,3 .5\n\n\nExercise 2.6 (Vector wise computation) Square each value in the vector x.6\n\n\nExercise 2.7 (Vector wise computation 2) Square each value in the vector x and sum up the values.7\n\n\nExercise 2.8 (Vector wise computation 3) Square each value in the vector x, sum up the values, and divide by 3.8\n\n\nExercise 2.9 (Compute the variance) Compute the variance of x using basic arithmetic.910\n\n\nExercise 2.10 (Work with NA) Define the vector y with the values 1,2,NA. Compute the mean. Explain the results.11"
   },
   {
     "objectID": "basics.html#data-import",
     "href": "basics.html#data-import",
     "title": "2  Basics",
-    "section": "2.3 Data import",
-    "text": "2.3 Data import\nCheck out chapter 4 in ModernDive on how to import data into RStudio and for some basic concepts about “tidy data”.\nSpoiler: There’s a button in RStudio in the “Environment” Pane saying “Import Dataset”. Just click it, and things should work out."
+    "section": "2.4 Data import",
+    "text": "2.4 Data import\nCheck out chapter 4 in ModernDive on how to import data into RStudio and for some basic concepts about “tidy data”.\nSpoiler: There’s a button in RStudio in the “Environment” Pane saying “Import Dataset”. Just click it, and things should work out."
   },
   {
     "objectID": "basics.html#sec-blitz-data",
     "href": "basics.html#sec-blitz-data",
     "title": "2  Basics",
-    "section": "2.4 Blitz start with data",
-    "text": "2.4 Blitz start with data\nTo blitz start with data, type the following in R:\n\ndata(mtcars)\n\nAnd the data set mtcars will be available.\nTo get help for the data set, type help(mtcars)\nA bit more advanced, but it’s a nice data set, try the Palmer Penguins data set:\n\nd <- read.csv(\"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv\")\n\nhead(d)  # see the first few rows, the \"head\" of the table\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nX\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n1\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\n2\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n2007\n\n\n4\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n2007\n\n\n5\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007\n\n\n6\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale\n2007\n\n\n\n\n\n\nHere’s some documentation (code book) for this data set."
+    "section": "2.5 Blitz start with data",
+    "text": "2.5 Blitz start with data\nTo blitz start with data, type the following in R:\n\ndata(mtcars)\n\nAnd the data set mtcars will be available.\nTo get help for the data set, type help(mtcars)\nA bit more advanced, but it’s a nice data set, try the Palmer Penguins data set:\n\nd <- read.csv(\"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv\")\n\nhead(d)  # see the first few rows, the \"head\" of the table\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nX\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n1\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\n2\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n2007\n\n\n4\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n2007\n\n\n5\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007\n\n\n6\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale\n2007\n\n\n\n\n\n\nHere’s some documentation (code book) for this data set."
   },
   {
     "objectID": "basics.html#more-data-set",
     "href": "basics.html#more-data-set",
     "title": "2  Basics",
-    "section": "2.5 More data set",
-    "text": "2.5 More data set\nCheck out this curated list of data sets useful for learning and practicing your data skills."
+    "section": "2.6 More data set",
+    "text": "2.6 More data set\nCheck out this curated list of data sets useful for learning and practicing your data skills."
   },
   {
     "objectID": "basics.html#literature",
     "href": "basics.html#literature",
     "title": "2  Basics",
-    "section": "2.6 Literature",
-    "text": "2.6 Literature\nIsmay and Kim (2020) is a helpful start into the first steps in R.\n\n\n\n\nIsmay, Chester, and Albert Young-Sun Kim. 2020. Statistical Inference via Data Science: A ModernDive into r and the Tidyverse. Chapman & Hall/CRC the r Series. Boca Raton: CRC Press / Taylor & Francis Group. https://moderndive.com/."
+    "section": "2.7 Literature",
+    "text": "2.7 Literature\nIsmay and Kim (2020) is a helpful start into the first steps in R.\n\n\n\n\nIsmay, Chester, and Albert Young-Sun Kim. 2020. Statistical Inference via Data Science: A ModernDive into r and the Tidyverse. Chapman & Hall/CRC the r Series. Boca Raton: CRC Press / Taylor & Francis Group. https://moderndive.com/.\n\n\nMacKay, R. J., and R. W. Oldford. 2000. “Scientific Method, Statistical Method and the Speed of Light.” Statistical Science 15 (3): 254–78. https://doi.org/10.1214/ss/1009212817.\n\n\nWild, Chris J, and Maxine Pfannkuch. 1999. “Statistical Thinking in Empirical Enquiry.” International Statistical Review 67 (3): 223–48."
   },
   {
     "objectID": "EDA.html#r-packages-needed-for-this-chapter",
@@ -151,7 +102,7 @@
     "href": "EDA.html#blitz-data",
     "title": "3  Exploratory Data Analysis",
     "section": "3.4 Blitz data",
-    "text": "3.4 Blitz data\nSee Section 2.4 for some data sets suitable to get going."
+    "text": "3.4 Blitz data\nSee Section 2.5 for some data sets suitable to get going."
   },
   {
     "objectID": "EDA.html#data-explorer",
@@ -208,6 +159,69 @@
     "title": "3  Exploratory Data Analysis",
     "section": "3.12 Literature",
     "text": "3.12 Literature\nWickham and Grolemund (2016) is an highly recommendable resource in order to get a thorough understanding of data analysis using R. Note that this source is focusing on the “how to”, not so much to theoretical foundations. Ismay and Kim (2020) is a gently introduction into many steps on the data journey, including EDA.\n\n\n\n\nIsmay, Chester, and Albert Young-Sun Kim. 2020. Statistical Inference via Data Science: A ModernDive into r and the Tidyverse. Chapman & Hall/CRC the r Series. Boca Raton: CRC Press / Taylor & Francis Group. https://moderndive.com/.\n\n\nWickham, Hadley, and Garrett Grolemund. 2016. R for Data Science: Visualize, Model, Transform, Tidy, and Import Data. O’Reilly Media. https://r4ds.had.co.nz/index.html."
+  },
+  {
+    "objectID": "inference.html#what-is-it",
+    "href": "inference.html#what-is-it",
+    "title": "4  Inference",
+    "section": "4.1 What is it?",
+    "text": "4.1 What is it?\nStatistical inference, according to Gelman, Hill, and Vehtari (2021), chap. 1.1, faces the challenge of generalizing from the particular to the general.\nIn more details, this amounts to generalizing from …\n\na sample to a population\na treatment to a control group (i.e., causal inference)\nobserved measurement to the underlying (“latent”) construct of interest\n\n\n\n\n\n\n\nImportant\n\n\n\nStatistical inference is concerned with making general claims from particular data using mathematical tools."
+  },
+  {
+    "objectID": "inference.html#population-and-sample",
+    "href": "inference.html#population-and-sample",
+    "title": "4  Inference",
+    "section": "4.2 Population and sample",
+    "text": "4.2 Population and sample\nWe want to have an estimate of some population value, for example the proportion of A.\nHowever, all we have is a subset, a sample of the populuation. Hence, we need to infer from the sample to the popluation. We do so by generalizing from the sample to the population, see Figure Figure 4.1.\n\n\n\n\n\n\n\n(a) Population\n\n\n\n\n\n\n\n(b) Sample\n\n\n\n\nFigure 4.1: Population vs. sample (Image credit: Karsten Luebke)"
+  },
+  {
+    "objectID": "inference.html#whats-not-inference",
+    "href": "inference.html#whats-not-inference",
+    "title": "4  Inference",
+    "section": "4.3 What’s not inference?",
+    "text": "4.3 What’s not inference?\nConsider fig. Figure 4.2 which epitomizes the difference between descriptive and inferential statistics.\n\n\n\n\n\nFigure 4.2: The difference between description and inference"
+  },
+  {
+    "objectID": "inference.html#when-size-helps",
+    "href": "inference.html#when-size-helps",
+    "title": "4  Inference",
+    "section": "4.4 When size helps",
+    "text": "4.4 When size helps\nLarger samples allow for more precise estimations (ceteris paribus).\n\nknitr::include_graphics(\"img/Estimate.gif\")\n\n\n\n\nSample size in motion, Image credit: Karsten Luebke"
+  },
+  {
+    "objectID": "inference.html#what-flavors-are-available",
+    "href": "inference.html#what-flavors-are-available",
+    "title": "4  Inference",
+    "section": "4.5 What flavors are available?",
+    "text": "4.5 What flavors are available?\nTypically, when one hears “inference” one thinks of p-values and null hypothesis testing. Those procedures are examples of the school of Frequentist statistics.\nHowever, there’s a second flavor of statistics to be mentioned here: Bayesian statistics.\n\n4.5.1 Frequentist inference\nFrequentism is not concerned about the probability of your research hypothesis.\nFrequentism is all about controlling the long-term error. For illustration, suppose you are the CEO of a factory producing screws, and many of them. As the boss, you are not so much interested if a particular scree is in order (or faulty). Rather you are interested that the overall, long-term error rate of your production is low. One may add that your goal might not the minimize the long-term error, b ut to control it to a certain level - it may be to expensive to produce super high quality screws. Some decent, but cheap screws, might be more profitable.\n\n\n4.5.2 Bayes inference\nBayes inference is concerned about the probability of your research hypothesis.\nIt simply redistributes your beliefs based on new data (evidence) you observe, see Figure Figure 4.3.\n\n\n\n\n\nflowchart LR\n  A(prior belief) --> B(new data) --> C(posterior belief)\n\n\n\n\n\n\nFigure 4.3: Bayesian belief updating\n\n\n\n\nIn more detail, the posterior belief is formalized as the posterior probability. The Likelihood is the probability of the data given some hypothesis. The normalizing constant serves to give us a number between zero and one.\n\\[\\overbrace{\\Pr(\\color{blue}{H}|\\color{green}{D})}^\\text{posterior probability} = \\overbrace{Pr(\\color{blue}{H})}^\\text{prior} \\frac{\\overbrace{Pr(\\color{green}{D}|\\color{blue}{H})}^\\text{likelihood}}{\\underbrace{Pr(\\color{green}{D})}_{\\text{normalizing constant}}}\\]\nIn practice, the posterior probability of your hypothesis is, the average of your prior and the Likelihood of your data.\n\n\n\nPrior-Likelihood-Posterior\n\n\nCan you see that the posterior is some average of prior and likelihood?\nCheck out this great video on Bayes Theorem by 3b1b."
+  },
+  {
+    "objectID": "inference.html#but-which-one-should-i-consume",
+    "href": "inference.html#but-which-one-should-i-consume",
+    "title": "4  Inference",
+    "section": "4.6 But which one should I consume?",
+    "text": "4.6 But which one should I consume?\nPRO Frequentist:\n\nYour supervisor and reviewers will be more familiar with it\nThe technical overhead is simpler compared to Bayes\n\nPRO Bayes:\n\nYou’ll probably want to have a posterior probability of your hypothesis\nYou may appear as a cool kid and an early adoptor of emering statistical methods\n\n\n\n\n\n\n\nTip\n\n\n\nYou’ll learn that the technical setup used for doing Bayes statistics is quite similar to doing frequentist statistics. Stay tuned."
+  },
+  {
+    "objectID": "inference.html#comment-from-xkcd",
+    "href": "inference.html#comment-from-xkcd",
+    "title": "4  Inference",
+    "section": "4.7 Comment from xkcd",
+    "text": "4.7 Comment from xkcd\n\n\n\n\n\n\n\n\n\nQuelle"
+  },
+  {
+    "objectID": "inference.html#p-value",
+    "href": "inference.html#p-value",
+    "title": "4  Inference",
+    "section": "4.8 p-value",
+    "text": "4.8 p-value\nThe p-value has been used as the pivotal criterion to decide about whether or not a research hypothesis were to be “accepted” (a term forbidden in frequentist and Popperian langauge) or to be rejected. However, more recently, it is advised to use the p-value only as one indicator among multiple; see Wasserstein and Lazar (2016) and Wasserstein, Schirm, and Lazar (2019).\n\n\n\n\n\n\nImportant\n\n\n\nThe p-value is defined as the probability of obtaining the observed data (or more extreme) under the assumption of no effect.\n\n\nFigure Figure 4.4 visualizes the p-value.\n\n\n\n\n\nFigure 4.4: Visualization of the p-value"
+  },
+  {
+    "objectID": "inference.html#some-confusion-remains-about-the-p-value",
+    "href": "inference.html#some-confusion-remains-about-the-p-value",
+    "title": "4  Inference",
+    "section": "4.9 Some confusion remains about the p-value",
+    "text": "4.9 Some confusion remains about the p-value\n\n\n\nSource: from ImgFlip Meme Generator\n\n\nGoodman (2008) provides an entertaining overview on typical misconceptions of the p-value full text.\n\n\n\n\nGelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. Regression and Other Stories. Analytical Methods for Social Research. Cambridge: Cambridge University Press.\n\n\nGoodman, Steven. 2008. “A Dirty Dozen: Twelve p-Value Misconceptions.” Seminars in Hematology, Interpretation of quantitative research, 45 (3): 135–40. https://doi.org/10.1053/j.seminhematol.2008.04.003.\n\n\nWasserstein, Ronald L., and Nicole A. Lazar. 2016. “The ASA’s Statement on p-Values: Context, Process, and Purpose.” The American Statistician 70 (2): 129–33. https://doi.org/10.1080/00031305.2016.1154108.\n\n\nWasserstein, Ronald L., Allen L. Schirm, and Nicole A. Lazar. 2019. “Moving to a World Beyond ‘ p</i> p < 0.05’.” The American Statistician 73 (March): 1–19. https://doi.org/10.1080/00031305.2019.1583913."
   },
   {
     "objectID": "regression1.html#r-packages-needed-for-this-chapter",
@@ -270,7 +284,7 @@
     "href": "regression1.html#one-nominal-predictor",
     "title": "5  Modelling and regression",
     "section": "5.9 One nominal predictor",
-    "text": "5.9 One nominal predictor\n\nmtcars2 <-\n  mtcars %>% \n  mutate(am_f = factor(am))\n\nlm3a <- lm(mpg ~ am_f, data = mtcars2)\nparameters(lm3a)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter\nCoefficient\nSE\nCI\nCI_low\nCI_high\nt\ndf_error\np\n\n\n\n\n(Intercept)\n17.147368\n1.124602\n0.95\n14.85062\n19.44411\n15.247492\n30\n0.000000\n\n\nam_f1\n7.244939\n1.764422\n0.95\n3.64151\n10.84837\n4.106127\n30\n0.000285\n\n\n\n\n\n\n\nlm3a_means <- estimate_means(lm3a, at = \"am_f\")\nlm3a_means \n\n\n\n\n\nam_f\nMean\nSE\nCI_low\nCI_high\n\n\n\n\n0\n17.14737\n1.124602\n14.85062\n19.44411\n\n\n1\n24.39231\n1.359578\n21.61568\n27.16894\n\n\n\n\n\n\n\nplot(lm3a_means)\n\n\n\n\nNote that we should have converted am to a factor variable before fitting the model. Otherwise, the plot won’t work.\nHere’s a more hand-crafted version of the last plot, see Fig. Figure 5.5.\n\nggplot(mtcars2) +\n  aes(x = am_f, y = mpg) +\n  geom_violin() +\n  geom_jitter(width = .1, alpha = .5) +\n  geom_pointrange(data = lm3a_means,\n                  color = \"orange\",\n                  aes(ymin = CI_low, ymax = CI_high, y = Mean)) +\n  geom_line(data = lm3a_means, aes(y = Mean, group = 1))\n\n\n\n\nFigure 5.5: ?(caption)"
+    "text": "5.9 One nominal predictor\n\nlm3a <- lm(mpg ~ am, data = mtcars)\nparameters(lm3a)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter\nCoefficient\nSE\nCI\nCI_low\nCI_high\nt\ndf_error\np\n\n\n\n\n(Intercept)\n17.147368\n1.124602\n0.95\n14.85062\n19.44411\n15.247492\n30\n0.000000\n\n\nam\n7.244939\n1.764422\n0.95\n3.64151\n10.84837\n4.106127\n30\n0.000285\n\n\n\n\n\n\n\nlm3a_means <- estimate_means(lm3a, at = \"am = c(0, 1)\")\nlm3a_means \n\n\n\n\n\nam\nMean\nSE\nCI_low\nCI_high\n\n\n\n\n0\n17.14737\n1.124602\n14.85062\n19.44411\n\n\n1\n24.39231\n1.359578\n21.61568\n27.16894\n\n\n\n\n\n\nIf we were not to specify the values of am which we would like to get predictions for, the default of the function would select 10 values, spreaded across the range of am. For numeric variables, this is usually fine. However, for nominal variables - and am is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for 0 and 1.\nHowever, unfortunately, the plot needs a nominal variable if we are to compare groups. In our case, am is considered a numeric variables, since it consists of numbers only. The plot does not work, malheureusement:\n\nplot(lm3a_means)\n\n\n\n\nWe need to transform am to a factor variable. That’s something like a string. If we hand over a factor() to the plotting function, everything will run smoothly. Computationwise, no big differences:\n\nmtcars2 <-\n  mtcars %>% \n  mutate(am_f = factor(am))\n\nlm3a <- lm(mpg ~ am_f, data = mtcars2)\nparameters(lm3a)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter\nCoefficient\nSE\nCI\nCI_low\nCI_high\nt\ndf_error\np\n\n\n\n\n(Intercept)\n17.147368\n1.124602\n0.95\n14.85062\n19.44411\n15.247492\n30\n0.000000\n\n\nam_f1\n7.244939\n1.764422\n0.95\n3.64151\n10.84837\n4.106127\n30\n0.000285\n\n\n\n\n\n\n\nlm3a_means <- estimate_means(lm3a)\nplot(lm3a_means)\n\n\n\n\nNote that we should have converted am to a factor variable before fitting the model. Otherwise, the plot won’t work.\nHere’s a more hand-crafted version of the last plot, see Fig. Figure 5.5.\n\nggplot(mtcars2) +\n  aes(x = am_f, y = mpg) +\n  geom_violin() +\n  geom_jitter(width = .1, alpha = .5) +\n  geom_pointrange(data = lm3a_means,\n                  color = \"orange\",\n                  aes(ymin = CI_low, ymax = CI_high, y = Mean)) +\n  geom_line(data = lm3a_means, aes(y = Mean, group = 1))\n\n\n\n\nFigure 5.5: ?(caption)"
   },
   {
     "objectID": "regression1.html#one-metric-and-one-nominal-predictor",
@@ -280,39 +294,46 @@
     "text": "5.10 One metric and one nominal predictor\n\nmtcars2 <-\n  mtcars %>% \n  mutate(cyl = factor(cyl))\n\nlm4 <- lm(mpg ~ hp + cyl, data = mtcars2)\nparameters(lm4)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter\nCoefficient\nSE\nCI\nCI_low\nCI_high\nt\ndf_error\np\n\n\n\n\n(Intercept)\n28.6501182\n1.5877870\n0.95\n25.3976840\n31.9025524\n18.044056\n28\n0.0000000\n\n\nhp\n-0.0240388\n0.0154079\n0.95\n-0.0556005\n0.0075228\n-1.560163\n28\n0.1299540\n\n\ncyl6\n-5.9676551\n1.6392776\n0.95\n-9.3255631\n-2.6097471\n-3.640418\n28\n0.0010921\n\n\ncyl8\n-8.5208508\n2.3260749\n0.95\n-13.2855993\n-3.7561022\n-3.663188\n28\n0.0010286\n\n\n\n\n\n\n\nlm4_pred <- estimate_relation(lm4)\nplot(lm4_pred)"
   },
   {
+    "objectID": "regression1.html#watch-out-for-simpson",
+    "href": "regression1.html#watch-out-for-simpson",
+    "title": "5  Modelling and regression",
+    "section": "5.11 Watch out for Simpson",
+    "text": "5.11 Watch out for Simpson\nBeware! Model estimates can swing wildly if you add (or remove) some predictor from your model. See this post for an demonstration."
+  },
+  {
     "objectID": "regression1.html#what-about-correlation",
     "href": "regression1.html#what-about-correlation",
     "title": "5  Modelling and regression",
-    "section": "5.11 What about correlation?",
-    "text": "5.11 What about correlation?\nCorrelation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.\nLet’s get the correlation matrix of the variables in involved in lm4.\n\nlm4_corr <- \n  mtcars %>% \n  select(mpg, hp, disp) %>% \n  correlation()\n\nlm4_corr\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter1\nParameter2\nr\nCI\nCI_low\nCI_high\nt\ndf_error\np\nMethod\nn_Obs\n\n\n\n\nmpg\nhp\n-0.7761684\n0.95\n-0.8852686\n-0.5860994\n-6.742388\n30\n2e-07\nPearson correlation\n32\n\n\nmpg\ndisp\n-0.8475514\n0.95\n-0.9233594\n-0.7081376\n-8.747151\n30\n0e+00\nPearson correlation\n32\n\n\nhp\ndisp\n0.7909486\n0.95\n0.6106794\n0.8932775\n7.080122\n30\n1e-07\nPearson correlation\n32\n\n\n\n\n\n\n\nplot(summary(lm4_corr))"
+    "section": "5.12 What about correlation?",
+    "text": "5.12 What about correlation?\nCorrelation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.\nLet’s get the correlation matrix of the variables in involved in lm4.\n\nlm4_corr <- \n  mtcars %>% \n  select(mpg, hp, disp) %>% \n  correlation()\n\nlm4_corr\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter1\nParameter2\nr\nCI\nCI_low\nCI_high\nt\ndf_error\np\nMethod\nn_Obs\n\n\n\n\nmpg\nhp\n-0.7761684\n0.95\n-0.8852686\n-0.5860994\n-6.742388\n30\n2e-07\nPearson correlation\n32\n\n\nmpg\ndisp\n-0.8475514\n0.95\n-0.9233594\n-0.7081376\n-8.747151\n30\n0e+00\nPearson correlation\n32\n\n\nhp\ndisp\n0.7909486\n0.95\n0.6106794\n0.8932775\n7.080122\n30\n1e-07\nPearson correlation\n32\n\n\n\n\n\n\n\nplot(summary(lm4_corr))"
   },
   {
     "objectID": "regression1.html#exercises",
     "href": "regression1.html#exercises",
     "title": "5  Modelling and regression",
-    "section": "5.12 Exercises",
-    "text": "5.12 Exercises\n\nmtcars simple 1\nmtcars simple 2\nmtcars simple 3"
+    "section": "5.13 Exercises",
+    "text": "5.13 Exercises\n\nmtcars simple 1\nmtcars simple 2\nmtcars simple 3"
   },
   {
     "objectID": "regression1.html#lab",
     "href": "regression1.html#lab",
     "title": "5  Modelling and regression",
-    "section": "5.13 Lab",
-    "text": "5.13 Lab\nGet your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it."
+    "section": "5.14 Lab",
+    "text": "5.14 Lab\nGet your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it."
   },
   {
     "objectID": "regression1.html#literature",
     "href": "regression1.html#literature",
     "title": "5  Modelling and regression",
-    "section": "5.14 Literature",
-    "text": "5.14 Literature\nAn accessible treatment of regression is provided by Ismay and Kim (2020).\nRoback and Legler (2021) provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by Gelman, Hill, and Vehtari (2021). You may also benefit from Poldrack (2022) (open access)."
+    "section": "5.15 Literature",
+    "text": "5.15 Literature\nAn accessible treatment of regression is provided by Ismay and Kim (2020).\nRoback and Legler (2021) provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by Gelman, Hill, and Vehtari (2021). You may also benefit from Poldrack (2022) (open access)."
   },
   {
     "objectID": "regression1.html#debrief",
     "href": "regression1.html#debrief",
     "title": "5  Modelling and regression",
-    "section": "5.15 Debrief",
-    "text": "5.15 Debrief\nScience!\n\n\n\n\nGelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. Regression and Other Stories. Analytical Methods for Social Research. Cambridge: Cambridge University Press.\n\n\nIsmay, Chester, and Albert Young-Sun Kim. 2020. Statistical Inference via Data Science: A ModernDive into r and the Tidyverse. Chapman & Hall/CRC the r Series. Boca Raton: CRC Press / Taylor & Francis Group. https://moderndive.com/.\n\n\nPoldrack, Russell. 2022. Statistical Thinking for the 21st Century. https://statsthinking21.github.io/statsthinking21-core-site/index.html.\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in. 1st ed. Chapman and Hall Texts in Statistical Science. Boca Raton: CRC Press."
+    "section": "5.16 Debrief",
+    "text": "5.16 Debrief\nScience!\n\n\n\n\nGelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. Regression and Other Stories. Analytical Methods for Social Research. Cambridge: Cambridge University Press.\n\n\nIsmay, Chester, and Albert Young-Sun Kim. 2020. Statistical Inference via Data Science: A ModernDive into r and the Tidyverse. Chapman & Hall/CRC the r Series. Boca Raton: CRC Press / Taylor & Francis Group. https://moderndive.com/.\n\n\nPoldrack, Russell. 2022. Statistical Thinking for the 21st Century. https://statsthinking21.github.io/statsthinking21-core-site/index.html.\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in. 1st ed. Chapman and Hall Texts in Statistical Science. Boca Raton: CRC Press."
   },
   {
     "objectID": "regression2.html#r-packages-needed",
@@ -410,27 +431,20 @@
     "href": "casestudies.html#case-studies-on-linear-modesl",
     "title": "8  Case studies",
     "section": "8.2 Case studies on linear modesl",
-    "text": "8.2 Case studies on linear modesl\nFALLSTUDIEN - NUR LINEARE MODELLE\n\nBeispiel für Prognosemodellierung 1, grundlegender Anspruch, Video\nBeispiel für Ihre Prognosemodellierung 2, mittlerer Anspruch\nBeispiel für Ihre Prognosemodellierung 3, hoher Anspruch\nFallstudie: Modellierung von Flugverspätungen\nModelling movie successes: linear regression\nMovies\nFallstudie Einfache lineare Regression in Base-R, Anfängerniveau, Kaggle-Competition TMDB\nFallstudie Sprit sparen\nFallstudie zum Beitrag verschiedener Werbeformate zum Umsatz; eine Fallstudie in Python, aber mit etwas Erfahrung wird man den Code einfach in R umsetzen können (wenn man nicht in Python schreiben will)\nPractical Linear Regression with R: A case study on diamond prices\nCase Study: Italian restaurants in NYC\nVorhersage-Modellierung des Preises von Diamanten\nModellierung Diamantenpreis 2"
+    "text": "8.2 Case studies on linear modesl\n\nFALLSTUDIEN - NUR LINEARE MODELLE\n\nBeispiel für Prognosemodellierung 1, grundlegender Anspruch, Video\nBeispiel für Ihre Prognosemodellierung 2, mittlerer Anspruch\nBeispiel für Ihre Prognosemodellierung 3, hoher Anspruch\nFallstudie: Modellierung von Flugverspätungen\nModelling movie successes: linear regression\nMovies\nFallstudie Einfache lineare Regression in Base-R, Anfängerniveau, Kaggle-Competition TMDB\nFallstudie Sprit sparen\nFallstudie zum Beitrag verschiedener Werbeformate zum Umsatz; eine Fallstudie in Python, aber mit etwas Erfahrung wird man den Code einfach in R umsetzen können (wenn man nicht in Python schreiben will)\nPractical Linear Regression with R: A case study on diamond prices\nCase Study: Italian restaurants in NYC\nVorhersage-Modellierung des Preises von Diamanten\nModellierung Diamantenpreis 2"
   },
   {
     "objectID": "casestudies.html#case-studies-on-machine-learning-using-tidymodels",
     "href": "casestudies.html#case-studies-on-machine-learning-using-tidymodels",
     "title": "8  Case studies",
     "section": "8.3 Case studies on machine learning using tidymodels",
-    "text": "8.3 Case studies on machine learning using tidymodels\nFALLSTUDIEN - MASCHINELLES LERNEN MIT TIDYMODELS\n\nExperimenting with machine learning in R with tidymodels and the Kaggle titanic dataset\nTutorial on tidymodels for Machine Learning\nClassification with Tidymodels, Workflows and Recipes\nA (mostly!) tidyverse tour of the Titanic\nPersonalised Medicine - EDA with tidy R\nTidy TitaRnic\nFallstudie Seegurken\nSehr einfache Fallstudie zur Modellierung einer Regression mit tidymodels\nFallstudie zur linearen Regression mit Tidymodels\nAnalyse zum Verlauf von Covid-Fällen\nFallstudie zur Modellierung einer logististischen Regression mit tidymodels\nFallstudie zu Vulkanausbrüchen\nFallstudie Himalaya\nFallstudien zu Studiengebühren\n1. Modell der Fallstudie Hotel Bookings\nAufgaben zur logistischen Regression, PDF\nFallstudie Oregon Schools\nFallstudie Windturbinen\nFallstudie Churn\nEinfache Durchführung eines Modellierung mit XGBoost\nFallstudie Oregon Schools\nFallstudie Churn\nFallstudie Ikea\nFallstudie Wasserquellen in Sierra Leone\nFallstudie Bäume in San Francisco\nFallstudie Vulkanausbrüche\nFallstudie Brettspiele mit XGBoost\nFallstudie Serie The Office\nFallstudie NBER Papers\nFallstudie Einfache lineare Regression mit Tidymodels, Kaggle-Competition TMDB\nFallstudie Einfaches Random-Forest-Modell mit Tidymodels, Kaggle-Competition TMDB\nFallstudie Workflow-Set mit Tidymodels, Kaggle-Competition TMDB\nFallstudie Titanic mit Tidymodels bei Kaggle\nEinfache Fallstudie mit Tidymodels bei Kaggle\nExploring the Star Wars “Prequel Renaissance” Using tidymodels and workflowsets"
+    "text": "8.3 Case studies on machine learning using tidymodels\n\nFALLSTUDIEN - MASCHINELLES LERNEN MIT TIDYMODELS\n\nExperimenting with machine learning in R with tidymodels and the Kaggle titanic dataset\nTutorial on tidymodels for Machine Learning\nClassification with Tidymodels, Workflows and Recipes\nA (mostly!) tidyverse tour of the Titanic\nPersonalised Medicine - EDA with tidy R\nTidy TitaRnic\nFallstudie Seegurken\nSehr einfache Fallstudie zur Modellierung einer Regression mit tidymodels\nFallstudie zur linearen Regression mit Tidymodels\nAnalyse zum Verlauf von Covid-Fällen\nFallstudie zur Modellierung einer logististischen Regression mit tidymodels\nFallstudie zu Vulkanausbrüchen\nFallstudie Himalaya\nFallstudien zu Studiengebühren\n1. Modell der Fallstudie Hotel Bookings\nAufgaben zur logistischen Regression, PDF\nFallstudie Oregon Schools\nFallstudie Windturbinen\nFallstudie Churn\nEinfache Durchführung eines Modellierung mit XGBoost\nFallstudie Oregon Schools\nFallstudie Churn\nFallstudie Ikea\nFallstudie Wasserquellen in Sierra Leone\nFallstudie Bäume in San Francisco\nFallstudie Vulkanausbrüche\nFallstudie Brettspiele mit XGBoost\nFallstudie Serie The Office\nFallstudie NBER Papers\nFallstudie Einfache lineare Regression mit Tidymodels, Kaggle-Competition TMDB\nFallstudie Einfaches Random-Forest-Modell mit Tidymodels, Kaggle-Competition TMDB\nFallstudie Workflow-Set mit Tidymodels, Kaggle-Competition TMDB\nFallstudie Titanic mit Tidymodels bei Kaggle\nEinfache Fallstudie mit Tidymodels bei Kaggle\nExploring the Star Wars “Prequel Renaissance” Using tidymodels and workflowsets"
   },
   {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Deisenroth, Marc Peter, A. Aldo Faisal, and Cheng Soon Ong. 2020.\nMathematics for Machine Learning. Cambridge ; New York,\nNY: Cambridge University Press.\n\n\nGelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. Regression and\nOther Stories. Analytical Methods for Social Research. Cambridge:\nCambridge University Press.\n\n\nGoodman, Steven. 2008. “A Dirty Dozen: Twelve p-Value\nMisconceptions.” Seminars in Hematology, Interpretation\nof quantitative research, 45 (3): 135–40. https://doi.org/10.1053/j.seminhematol.2008.04.003.\n\n\nHernán, Miguel A., John Hsu, and Brian Healy. 2019. “A Second\nChance to Get Causal Inference Right: A Classification of Data Science\nTasks.” Chance 32 (1): 42–49. https://doi.org/10.1080/09332480.2019.1579578.\n\n\nIsmay, Chester, and Albert Young-Sun Kim. 2020. Statistical\nInference via Data Science: A ModernDive into r and the\nTidyverse. Chapman & Hall/CRC the r Series. Boca\nRaton: CRC Press / Taylor & Francis Group. https://moderndive.com/.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course\nwith Examples in r and Stan. 2nd ed. CRC Texts in\nStatistical Science. Boca Raton: Taylor; Francis, CRC\nPress.\n\n\nPearl, Judea, Madelyn Glymour, and Nicholas P. Jewell. 2016. Causal\nInference in Statistics: A Primer. Chichester, West Sussex: Wiley.\n\n\nPoldrack, Russell. 2022. Statistical Thinking for the 21st\nCentury. https://statsthinking21.github.io/statsthinking21-core-site/index.html.\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond Multiple Linear\nRegression: Applied Generalized Linear Models and Multilevel Models\nin. 1st ed. Chapman and Hall Texts in Statistical Science. Boca\nRaton: CRC Press.\n\n\nRohrer, Julia M. 2018. “Thinking Clearly about Correlations and\nCausation: Graphical Causal Models for Observational Data.”\nAdvances in Methods and Practices in Psychological Science 1\n(1): 27–42. https://doi.org/10.1177/2515245917745629.\n\n\nWasserstein, Ronald L., and Nicole A. Lazar. 2016. “The\nASA’s Statement on p-Values: Context, Process, and\nPurpose.” The American Statistician 70 (2): 129–33. https://doi.org/10.1080/00031305.2016.1154108.\n\n\nWasserstein, Ronald L., Allen L. Schirm, and Nicole A. Lazar. 2019.\n“Moving to a World Beyond ‘\np</i> p <\n0.05’.” The American Statistician 73 (March):\n1–19. https://doi.org/10.1080/00031305.2019.1583913.\n\n\nWickham, Hadley, and Garrett Grolemund. 2016. R for Data Science:\nVisualize, Model, Transform, Tidy, and Import Data. O’Reilly Media.\nhttps://r4ds.had.co.nz/index.html."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "stats-nutshell",
-    "section": "",
-    "text": "Desktop version, not the server↩︎\npossibly you need also a Fortran compiler, but maybe that’s optional↩︎"
+    "text": "Deisenroth, Marc Peter, A. Aldo Faisal, and Cheng Soon Ong. 2020.\nMathematics for Machine Learning. Cambridge ; New York,\nNY: Cambridge University Press.\n\n\nGelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. Regression and\nOther Stories. Analytical Methods for Social Research. Cambridge:\nCambridge University Press.\n\n\nGoodman, Steven. 2008. “A Dirty Dozen: Twelve p-Value\nMisconceptions.” Seminars in Hematology, Interpretation\nof quantitative research, 45 (3): 135–40. https://doi.org/10.1053/j.seminhematol.2008.04.003.\n\n\nHernán, Miguel A., John Hsu, and Brian Healy. 2019. “A Second\nChance to Get Causal Inference Right: A Classification of Data Science\nTasks.” Chance 32 (1): 42–49. https://doi.org/10.1080/09332480.2019.1579578.\n\n\nIsmay, Chester, and Albert Young-Sun Kim. 2020. Statistical\nInference via Data Science: A ModernDive into r and the\nTidyverse. Chapman & Hall/CRC the r Series. Boca\nRaton: CRC Press / Taylor & Francis Group. https://moderndive.com/.\n\n\nMacKay, R. J., and R. W. Oldford. 2000. “Scientific Method,\nStatistical Method and the Speed of Light.” Statistical\nScience 15 (3): 254–78. https://doi.org/10.1214/ss/1009212817.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course\nwith Examples in r and Stan. 2nd ed. CRC Texts in\nStatistical Science. Boca Raton: Taylor; Francis, CRC\nPress.\n\n\nPearl, Judea, Madelyn Glymour, and Nicholas P. Jewell. 2016. Causal\nInference in Statistics: A Primer. Chichester, West Sussex: Wiley.\n\n\nPoldrack, Russell. 2022. Statistical Thinking for the 21st\nCentury. https://statsthinking21.github.io/statsthinking21-core-site/index.html.\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond Multiple Linear\nRegression: Applied Generalized Linear Models and Multilevel Models\nin. 1st ed. Chapman and Hall Texts in Statistical Science. Boca\nRaton: CRC Press.\n\n\nRohrer, Julia M. 2018. “Thinking Clearly about Correlations and\nCausation: Graphical Causal Models for Observational Data.”\nAdvances in Methods and Practices in Psychological Science 1\n(1): 27–42. https://doi.org/10.1177/2515245917745629.\n\n\nSauer, Sebastian. 2019. Moderne Datenanalyse Mit r: Daten Einlesen,\nAufbereiten, Visualisieren Und Modellieren. 1. Auflage 2019.\nFOM-Edition. Wiesbaden: Springer. https://www.springer.com/de/book/9783658215866.\n\n\nWasserstein, Ronald L., and Nicole A. Lazar. 2016. “The\nASA’s Statement on p-Values: Context, Process, and\nPurpose.” The American Statistician 70 (2): 129–33. https://doi.org/10.1080/00031305.2016.1154108.\n\n\nWasserstein, Ronald L., Allen L. Schirm, and Nicole A. Lazar. 2019.\n“Moving to a World Beyond ‘\np</i> p <\n0.05’.” The American Statistician 73 (March):\n1–19. https://doi.org/10.1080/00031305.2019.1583913.\n\n\nWickham, Hadley, and Garrett Grolemund. 2016. R for Data Science:\nVisualize, Model, Transform, Tidy, and Import Data. O’Reilly Media.\nhttps://r4ds.had.co.nz/index.html.\n\n\nWild, Chris J, and Maxine Pfannkuch. 1999. “Statistical Thinking\nin Empirical Enquiry.” International Statistical Review\n67 (3): 223–48."
   }
 ]

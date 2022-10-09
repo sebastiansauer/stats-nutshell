@@ -7,7 +7,7 @@
 ## R packages needed for this chapter
 
 
-::: {.cell}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-1_83ecc65f0ea2ecb7bebcb50bf205c07a'}
 
 ```{.r .cell-code}
 library(easystats)
@@ -86,7 +86,7 @@ The R package {janitor} provides some nice stuff for data cleansing. Check out [
 There are some packages, such as `{easystats}`, which provide comfortable access to basic statistics:
 
 
-::: {.cell}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-2_aec71c1ba93ceb55fcc7ef1e05d0c8bc'}
 
 ```{.r .cell-code}
 library(easystats)  # once per session
@@ -122,7 +122,7 @@ describe_distribution(mtcars)
 For nominal variables, consider `data_tabulate`:
 
 
-::: {.cell}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-3_7ed716191172d307da328d7876b10cd0'}
 
 ```{.r .cell-code}
 data_tabulate(mtcars, select = c("am", "vs"))
@@ -158,7 +158,7 @@ which amounts to something similar to a [contingency table](https://en.wikipedia
 
 
 
-::: {.cell}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-4_1e6710c7a4618c94812017b1dc0fb240'}
 
 ```{.r .cell-code}
 mtcars %>% 
