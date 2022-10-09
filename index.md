@@ -1,6 +1,6 @@
 # Preface {.unnumbered}
 
-![A nutshell of (statistics) stars](img/stern.png){width="15%"}
+![A nutshell of little (statistics) stars](img/stern.png){width="15%"}
 
 ## Welcome!
 
@@ -282,7 +282,7 @@ I readily confess that this approach is novel to many learners in these days, le
 
 ## Technical Details
 
-Last update: 2022-10-09 19:20:53
+Last update: 2022-10-09 19:29:58
 
 
 ::: {.cell hash='index_cache/html/unnamed-chunk-1_d16679d51455719f70c3f7444ac81137'}
