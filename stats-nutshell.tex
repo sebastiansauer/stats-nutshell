@@ -240,7 +240,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, frame hidden, interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners, boxrule=0pt]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, breakable, sharp corners, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -956,7 +956,7 @@ Please be open and I think you will appreciate this didactic style.
 \section*{Technical Details}\label{technical-details}}
 \addcontentsline{toc}{section}{Technical Details}
 
-Last update: 2022-10-30 12:14:43
+Last update: 2022-10-30 17:27:33
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1034,7 +1034,7 @@ Many stories to be told. Here's one, on the goals pursued in statistics
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, opacitybacktitle=0.6, arc=.35mm, colframe=quarto-callout-note-color-frame, left=2mm, bottomrule=.15mm, coltitle=black, toptitle=1mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, leftrule=.75mm, toprule=.15mm, colback=white, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, toptitle=1mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, titlerule=0mm, arc=.35mm, rightrule=.15mm, left=2mm, breakable, toprule=.15mm, leftrule=.75mm]
 Note that ``goals'' do not exist in the world. We make them up in our
 heads. Hence, they have no ontological existence, they are
 epistemological beasts. This entails that we are free to devise goals as
@@ -1358,6 +1358,7 @@ chapter}\label{r-packages-needed-for-this-chapter}}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(easystats)}
 \FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(tableone)}
 \FunctionTok{library}\NormalTok{(rstanarm)  }\CommentTok{\# optional!}
 \end{Highlighting}
 \end{Shaded}
@@ -1572,6 +1573,109 @@ learn what's on the shelf. For example,
 the function reference site} of \texttt{datawizard}, one of the packages
 in the \texttt{easystats} ecosystem.
 
+\hypertarget{tableone}{%
+\subsection{TableOne}\label{tableone}}
+
+The
+\href{https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html}{R
+package \texttt{\{tableOne\}}} provides something like the typical
+``Table One'' in many papers.
+
+From the homepage:
+
+\begin{quote}
+The tableone package is an R package that eases the construction of
+``Table 1'', i.e., patient baseline characteristics table commonly found
+in biomedical research papers. The packages can summarize both
+continuous and categorical variables mixed within one table. Categorical
+variables can be summarized as counts and/or percentages. Continuous
+variables can be summarized in the ``normal'' way (means and standard
+deviations) or ``nonnormal'' way (medians and interquartile ranges).
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{penguins }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+It's quite simple to use:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{CreateTableOne}\NormalTok{(}\AttributeTok{data =}\NormalTok{ penguins)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+                               
+                                Overall         
+  n                                 344         
+  X (mean (SD))                  172.50 (99.45) 
+  species (%)                                   
+     Adelie                         152 (44.2)  
+     Chinstrap                       68 (19.8)  
+     Gentoo                         124 (36.0)  
+  island (%)                                    
+     Biscoe                         168 (48.8)  
+     Dream                          124 (36.0)  
+     Torgersen                       52 (15.1)  
+  bill_length_mm (mean (SD))      43.92 (5.46)  
+  bill_depth_mm (mean (SD))       17.15 (1.97)  
+  flipper_length_mm (mean (SD))  200.92 (14.06) 
+  body_mass_g (mean (SD))       4201.75 (801.95)
+  sex = male (%)                    168 (50.5)  
+  year (mean (SD))              2008.03 (0.82)  
+\end{verbatim}
+
+To get more detailled results, use the \texttt{summary} method:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tab1 }\OtherTok{\textless{}{-}} \FunctionTok{CreateTableOne}\NormalTok{(}\AttributeTok{data =}\NormalTok{ penguins)}
+\FunctionTok{summary}\NormalTok{(tab1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+     ### Summary of continuous variables ###
+
+strata: Overall
+                    n miss p.miss mean    sd median  p25  p75  min  max  skew
+X                 344    0    0.0  172  99.4    172   87  258    1  344  0.00
+bill_length_mm    344    2    0.6   44   5.5     44   39   48   32   60  0.05
+bill_depth_mm     344    2    0.6   17   2.0     17   16   19   13   22 -0.14
+flipper_length_mm 344    2    0.6  201  14.1    197  190  213  172  231  0.35
+body_mass_g       344    2    0.6 4202 802.0   4050 3550 4750 2700 6300  0.47
+year              344    0    0.0 2008   0.8   2008 2007 2009 2007 2009 -0.05
+                  kurt
+X                 -1.2
+bill_length_mm    -0.9
+bill_depth_mm     -0.9
+flipper_length_mm -1.0
+body_mass_g       -0.7
+year              -1.5
+
+=======================================================================================
+
+     ### Summary of categorical variables ### 
+
+strata: Overall
+     var   n miss p.miss     level freq percent cum.percent
+ species 344    0    0.0    Adelie  152    44.2        44.2
+                         Chinstrap   68    19.8        64.0
+                            Gentoo  124    36.0       100.0
+                                                           
+  island 344    0    0.0    Biscoe  168    48.8        48.8
+                             Dream  124    36.0        84.9
+                         Torgersen   52    15.1       100.0
+                                                           
+     sex 344   11    3.2    female  165    49.5        49.5
+                              male  168    50.5       100.0
+                                                           
+\end{verbatim}
+
 \hypertarget{tidyverse}{%
 \section{Tidyverse}\label{tidyverse}}
 
@@ -1691,25 +1795,21 @@ i.e.~tidyverse only.
 \NormalTok{d }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{transmute}\NormalTok{(}\FunctionTok{across}\NormalTok{(bill\_length\_mm}\SpecialCharTok{:}\NormalTok{body\_mass\_g, }
                 \AttributeTok{.fns =} \SpecialCharTok{\textasciitilde{}}\NormalTok{ \{(.x }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(.x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)) }\SpecialCharTok{/} \FunctionTok{sd}\NormalTok{(.x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)\},}
-                \AttributeTok{.names =} \StringTok{"\{.col\}\_z"}\NormalTok{))}
+                \AttributeTok{.names =} \StringTok{"\{.col\}\_z"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-# A tibble: 344 x 4
-   bill_length_mm_z bill_depth_mm_z flipper_length_mm_z body_mass_g_z
-              <dbl>           <dbl>               <dbl>         <dbl>
- 1           -0.883           0.784              -1.42        -0.563 
- 2           -0.810           0.126              -1.06        -0.501 
- 3           -0.663           0.430              -0.421       -1.19  
- 4           NA              NA                  NA           NA     
- 5           -1.32            1.09               -0.563       -0.937 
- 6           -0.847           1.75               -0.776       -0.688 
- 7           -0.920           0.329              -1.42        -0.719 
- 8           -0.865           1.24               -0.421        0.590 
- 9           -1.80            0.480              -0.563       -0.906 
-10           -0.352           1.54               -0.776        0.0602
-# ... with 334 more rows
+# A tibble: 6 x 4
+  bill_length_mm_z bill_depth_mm_z flipper_length_mm_z body_mass_g_z
+             <dbl>           <dbl>               <dbl>         <dbl>
+1           -0.883           0.784              -1.42         -0.563
+2           -0.810           0.126              -1.06         -0.501
+3           -0.663           0.430              -0.421        -1.19 
+4           NA              NA                  NA            NA    
+5           -1.32            1.09               -0.563        -0.937
+6           -0.847           1.75               -0.776        -0.688
 \end{verbatim}
 
 It's maybe more succint to put the z-value computation in its function,
@@ -1750,7 +1850,7 @@ $ year              <dbl> 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007~
 \end{verbatim}
 
 \hypertarget{rowwise-operations}{%
-\subsection{Rowwise operations}\label{rowwise-operations}}
+\subsubsection{Rowwise operations}\label{rowwise-operations}}
 
 For technical reasons, it's a bit cumbersome in (base) R to compute
 rowwise operations. The thing is, R's dataframes are organized as
@@ -1873,7 +1973,7 @@ In more details, this amounts to generalizing from \ldots{}
   interest
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, opacitybacktitle=0.6, arc=.35mm, colframe=quarto-callout-important-color-frame, left=2mm, bottomrule=.15mm, coltitle=black, toptitle=1mm, breakable, opacityback=0, colbacktitle=quarto-callout-important-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, leftrule=.75mm, toprule=.15mm, colback=white, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-important-color!10!white, bottomrule=.15mm, opacityback=0, colframe=quarto-callout-important-color-frame, toptitle=1mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, titlerule=0mm, arc=.35mm, rightrule=.15mm, left=2mm, breakable, toprule=.15mm, leftrule=.75mm]
 Statistical inference is concerned with making general claims from
 particular data using mathematical tools.
 \end{tcolorbox}
@@ -2034,7 +2134,7 @@ PRO Bayes:
   statistical methods
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, opacitybacktitle=0.6, arc=.35mm, colframe=quarto-callout-tip-color-frame, left=2mm, bottomrule=.15mm, coltitle=black, toptitle=1mm, breakable, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, leftrule=.75mm, toprule=.15mm, colback=white, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, opacityback=0, colframe=quarto-callout-tip-color-frame, toptitle=1mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, titlerule=0mm, arc=.35mm, rightrule=.15mm, left=2mm, breakable, toprule=.15mm, leftrule=.75mm]
 You'll learn that the technical setup used for doing Bayes statistics is
 quite similar to doing frequentist statistics. Stay tuned.
 \end{tcolorbox}
@@ -2062,7 +2162,7 @@ However, more recently, it is advised to use the p-value only as
 \emph{one} indicator among multiple; see Wasserstein and Lazar (2016)
 and Wasserstein, Schirm, and Lazar (2019).
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, opacitybacktitle=0.6, arc=.35mm, colframe=quarto-callout-important-color-frame, left=2mm, bottomrule=.15mm, coltitle=black, toptitle=1mm, breakable, opacityback=0, colbacktitle=quarto-callout-important-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, leftrule=.75mm, toprule=.15mm, colback=white, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-important-color!10!white, bottomrule=.15mm, opacityback=0, colframe=quarto-callout-important-color-frame, toptitle=1mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, titlerule=0mm, arc=.35mm, rightrule=.15mm, left=2mm, breakable, toprule=.15mm, leftrule=.75mm]
 The p-value is defined as the probability of obtaining the observed data
 (or more extreme) under the assumption of no effect.
 \end{tcolorbox}
@@ -3106,7 +3206,7 @@ Exponentiate both sides to get:
 This association is called multiplicative, because if x increases by 1,
 y increased by a \emph{constant factor}.
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, opacitybacktitle=0.6, arc=.35mm, colframe=quarto-callout-note-color-frame, left=2mm, bottomrule=.15mm, coltitle=black, toptitle=1mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, leftrule=.75mm, toprule=.15mm, colback=white, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, toptitle=1mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, titlerule=0mm, arc=.35mm, rightrule=.15mm, left=2mm, breakable, toprule=.15mm, leftrule=.75mm]
 The logarithm is not defined for negative (input) values. And
 \(log(0) = -\infty\).
 \end{tcolorbox}
@@ -3154,7 +3254,7 @@ After about three weeks, we'll have this number (of units) of bacteriae:
   of log-y transformation on the distribution, an example}
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, opacitybacktitle=0.6, arc=.35mm, colframe=quarto-callout-note-color-frame, left=2mm, bottomrule=.15mm, coltitle=black, toptitle=1mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, leftrule=.75mm, toprule=.15mm, colback=white, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, toptitle=1mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, titlerule=0mm, arc=.35mm, rightrule=.15mm, left=2mm, breakable, toprule=.15mm, leftrule=.75mm]
 The exercises are written in German Language. Don't fret. Browsers are
 able to translate websites instantaneously. Alternatively, go to sites
 such as
@@ -3219,7 +3319,7 @@ given by Figure \textbf{?@fig-3dregr}, where a 3D account of a
 regression is given. 3D means to input variables, and (which is always
 the case) one output variable.
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, opacitybacktitle=0.6, arc=.35mm, colframe=quarto-callout-note-color-frame, left=2mm, bottomrule=.15mm, coltitle=black, toptitle=1mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, leftrule=.75mm, toprule=.15mm, colback=white, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, toptitle=1mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, titlerule=0mm, arc=.35mm, rightrule=.15mm, left=2mm, breakable, toprule=.15mm, leftrule=.75mm]
 Note that the slope in linear in both axis (X1 and X2).
 \end{tcolorbox}
 
@@ -3228,7 +3328,7 @@ A different perspective is shown
 where a 3D account of a regression is given. 3D means to input
 variables, and (which is always the case) one output variable.
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, opacitybacktitle=0.6, arc=.35mm, colframe=quarto-callout-important-color-frame, left=2mm, bottomrule=.15mm, coltitle=black, toptitle=1mm, breakable, opacityback=0, colbacktitle=quarto-callout-important-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, leftrule=.75mm, toprule=.15mm, colback=white, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-important-color!10!white, bottomrule=.15mm, opacityback=0, colframe=quarto-callout-important-color-frame, toptitle=1mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, titlerule=0mm, arc=.35mm, rightrule=.15mm, left=2mm, breakable, toprule=.15mm, leftrule=.75mm]
 If the slope for one predictor is the same for all values of the other
 predictor, then we say that no interaction is taking place.
 \end{tcolorbox}
@@ -3375,7 +3475,7 @@ In Figure~\ref{fig-mtcars3d-interact} you'll see that the lines along
 the Y axis are not parallel anymore. Similarly, the lines along the X
 axis are not parallel anymore.
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, opacitybacktitle=0.6, arc=.35mm, colframe=quarto-callout-important-color-frame, left=2mm, bottomrule=.15mm, coltitle=black, toptitle=1mm, breakable, opacityback=0, colbacktitle=quarto-callout-important-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, leftrule=.75mm, toprule=.15mm, colback=white, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-important-color!10!white, bottomrule=.15mm, opacityback=0, colframe=quarto-callout-important-color-frame, toptitle=1mm, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, titlerule=0mm, arc=.35mm, rightrule=.15mm, left=2mm, breakable, toprule=.15mm, leftrule=.75mm]
 If the regression lines (indicating different values of one predictor)
 are \emph{not} parallel, we say that an interaction effect is taking
 place.

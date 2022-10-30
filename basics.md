@@ -133,8 +133,7 @@ Compute the variance of `x` using basic arithmetic.^[`sum(x^2)`][^sol8]
 
 
 
-
-    ::: {.cell hash='basics_cache/pdf/unnamed-chunk-1_4a4fc100a7ea08571d63707542057100'}
+    ::: {.cell hash='basics_cache/html/unnamed-chunk-1_46dbf099908aa6ced7e180fc0e3798b0'}
     
     ```{.r .cell-code}
     x <- c(1, 2, 3)
@@ -159,7 +158,6 @@ Compute the variance of `x` using basic arithmetic.^[`sum(x^2)`][^sol8]
     ```
     :::
     :::
-
 
 
 
@@ -193,14 +191,12 @@ Just click it, and things should work out.
 To blitz start with data, type the following in R:
 
 
-
-::: {.cell hash='basics_cache/pdf/unnamed-chunk-2_dcebb5330321a590e8688fe390b963ab'}
+::: {.cell hash='basics_cache/html/unnamed-chunk-2_58f5faa8ad70194959dbe2d4b46e1f30'}
 
 ```{.r .cell-code}
 data(mtcars)
 ```
 :::
-
 
 
 And the data set `mtcars` will be available.
@@ -213,8 +209,7 @@ To get help for the data set, type `help(mtcars)`
 A bit more advanced, but it's a nice data set, try the Palmer Penguins data set:
 
 
-
-::: {.cell hash='basics_cache/pdf/unnamed-chunk-3_0f6fb25478ce210dc1f03577a3ff3d28'}
+::: {.cell hash='basics_cache/html/unnamed-chunk-3_fb18c89d614cf90619247bc45ccb4f36'}
 
 ```{.r .cell-code}
 d <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
@@ -222,26 +217,21 @@ d <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins
 head(d)  # see the first few rows, the "head" of the table
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-  X species    island bill_length_mm bill_depth_mm flipper_length_mm
-1 1  Adelie Torgersen           39.1          18.7               181
-2 2  Adelie Torgersen           39.5          17.4               186
-3 3  Adelie Torgersen           40.3          18.0               195
-4 4  Adelie Torgersen             NA            NA                NA
-5 5  Adelie Torgersen           36.7          19.3               193
-6 6  Adelie Torgersen           39.3          20.6               190
-  body_mass_g    sex year
-1        3750   male 2007
-2        3800 female 2007
-3        3250 female 2007
-4          NA   <NA> 2007
-5        3450 female 2007
-6        3650   male 2007
-```
-:::
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
+|  X|species |island    | bill_length_mm| bill_depth_mm| flipper_length_mm| body_mass_g|sex    | year|
+|--:|:-------|:---------|--------------:|-------------:|-----------------:|-----------:|:------|----:|
+|  1|Adelie  |Torgersen |           39.1|          18.7|               181|        3750|male   | 2007|
+|  2|Adelie  |Torgersen |           39.5|          17.4|               186|        3800|female | 2007|
+|  3|Adelie  |Torgersen |           40.3|          18.0|               195|        3250|female | 2007|
+|  4|Adelie  |Torgersen |             NA|            NA|                NA|          NA|NA     | 2007|
+|  5|Adelie  |Torgersen |           36.7|          19.3|               193|        3450|female | 2007|
+|  6|Adelie  |Torgersen |           39.3|          20.6|               190|        3650|male   | 2007|
+
+</div>
+:::
+:::
 
 
 

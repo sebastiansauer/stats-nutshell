@@ -244,16 +244,21 @@ div.csl-indent {
   <li><a href="#data-explorer" id="toc-data-explorer" class="nav-link" data-scroll-target="#data-explorer"><span class="toc-section-number">3.6.1</span>  Data Explorer</a></li>
   <li><a href="#vtree" id="toc-vtree" class="nav-link" data-scroll-target="#vtree"><span class="toc-section-number">3.6.2</span>  vtree</a></li>
   <li><a href="#the-easystats-way" id="toc-the-easystats-way" class="nav-link" data-scroll-target="#the-easystats-way"><span class="toc-section-number">3.6.3</span>  The easystats way</a></li>
+  <li><a href="#tableone" id="toc-tableone" class="nav-link" data-scroll-target="#tableone"><span class="toc-section-number">3.6.4</span>  TableOne</a></li>
   </ul></li>
   <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><span class="toc-section-number">3.7</span>  Tidyverse</a>
   <ul class="collapse">
   <li><a href="#intro-to-the-tidyverse" id="toc-intro-to-the-tidyverse" class="nav-link" data-scroll-target="#intro-to-the-tidyverse"><span class="toc-section-number">3.7.1</span>  Intro to the tidyverse</a></li>
   <li><a href="#more-advanced-tidyverse" id="toc-more-advanced-tidyverse" class="nav-link" data-scroll-target="#more-advanced-tidyverse"><span class="toc-section-number">3.7.2</span>  More advanced tidyverse</a></li>
-  <li><a href="#rowwise-operations" id="toc-rowwise-operations" class="nav-link" data-scroll-target="#rowwise-operations"><span class="toc-section-number">3.7.3</span>  Rowwise operations</a></li>
   </ul></li>
-  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="toc-section-number">3.8</span>  Case Study</a></li>
-  <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets"><span class="toc-section-number">3.9</span>  Cheatsheets</a></li>
-  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="toc-section-number">3.10</span>  Literature</a></li>
+  <li><a href="#exporting-to-office" id="toc-exporting-to-office" class="nav-link" data-scroll-target="#exporting-to-office"><span class="toc-section-number">3.8</span>  Exporting to Office</a>
+  <ul class="collapse">
+  <li><a href="#excel" id="toc-excel" class="nav-link" data-scroll-target="#excel"><span class="toc-section-number">3.8.1</span>  Excel</a></li>
+  <li><a href="#word" id="toc-word" class="nav-link" data-scroll-target="#word"><span class="toc-section-number">3.8.2</span>  Word</a></li>
+  </ul></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="toc-section-number">3.9</span>  Case Study</a></li>
+  <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets"><span class="toc-section-number">3.10</span>  Cheatsheets</a></li>
+  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="toc-section-number">3.11</span>  Literature</a></li>
   </ul>
 </nav>
     </div>
@@ -279,10 +284,12 @@ div.csl-indent {
 <p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
 <section id="r-packages-needed-for-this-chapter" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">3.1</span> R packages needed for this chapter</h2>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-1_83ecc65f0ea2ecb7bebcb50bf205c07a">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)  <span class="co"># optional!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-1_6079e5ce64c5b66417274007c37270f5">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># make stats easy again</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># data wrangling</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)  <span class="co"># tables</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)  <span class="co"># optional!</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)  <span class="co"># import/export data, eg., to excel</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="whats-eda" class="level2" data-number="3.2">
@@ -567,6 +574,84 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
 <p>Checkout the function reference of your favorite package in order to learn what’s on the shelf. For example, <a href="https://easystats.github.io/datawizard/reference/index.html">here’s the function reference site</a> of <code>datawizard</code>, one of the packages in the <code>easystats</code> ecosystem.</p>
 </div>
 </section>
+<section id="tableone" class="level3" data-number="3.6.4">
+<h3 data-number="3.6.4" class="anchored" data-anchor-id="tableone"><span class="header-section-number">3.6.4</span> TableOne</h3>
+<p>The <a href="https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html">R package <code>{tableOne}</code></a> provides something like the typical “Table One” in many papers.</p>
+<p>From the homepage:</p>
+<blockquote class="blockquote">
+<p>The tableone package is an R package that eases the construction of “Table 1”, i.e., patient baseline characteristics table commonly found in biomedical research papers. The packages can summarize both continuous and categorical variables mixed within one table. Categorical variables can be summarized as counts and/or percentages. Continuous variables can be summarized in the “normal” way (means and standard deviations) or “nonnormal” way (medians and interquartile ranges).</p>
+</blockquote>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-5_e1f3478568ec602eb0c4a272e7dbaaf2">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It’s quite simple to use:</p>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-6_ac78d48410aa7b7d73fb3158679882f4">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">CreateTableOne</span>(<span class="at">data =</span> penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                               
+                                Overall         
+  n                                 344         
+  X (mean (SD))                  172.50 (99.45) 
+  species (%)                                   
+     Adelie                         152 (44.2)  
+     Chinstrap                       68 (19.8)  
+     Gentoo                         124 (36.0)  
+  island (%)                                    
+     Biscoe                         168 (48.8)  
+     Dream                          124 (36.0)  
+     Torgersen                       52 (15.1)  
+  bill_length_mm (mean (SD))      43.92 (5.46)  
+  bill_depth_mm (mean (SD))       17.15 (1.97)  
+  flipper_length_mm (mean (SD))  200.92 (14.06) 
+  body_mass_g (mean (SD))       4201.75 (801.95)
+  sex = male (%)                    168 (50.5)  
+  year (mean (SD))              2008.03 (0.82)  </code></pre>
+</div>
+</div>
+<p>To get more detailled results, use the <code>summary</code> method:</p>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-7_053fbe311e825a6dc5057c0bbaff35ca">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> penguins)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tab1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     ### Summary of continuous variables ###
+
+strata: Overall
+                    n miss p.miss mean    sd median  p25  p75  min  max  skew
+X                 344    0    0.0  172  99.4    172   87  258    1  344  0.00
+bill_length_mm    344    2    0.6   44   5.5     44   39   48   32   60  0.05
+bill_depth_mm     344    2    0.6   17   2.0     17   16   19   13   22 -0.14
+flipper_length_mm 344    2    0.6  201  14.1    197  190  213  172  231  0.35
+body_mass_g       344    2    0.6 4202 802.0   4050 3550 4750 2700 6300  0.47
+year              344    0    0.0 2008   0.8   2008 2007 2009 2007 2009 -0.05
+                  kurt
+X                 -1.2
+bill_length_mm    -0.9
+bill_depth_mm     -0.9
+flipper_length_mm -1.0
+body_mass_g       -0.7
+year              -1.5
+
+=======================================================================================
+
+     ### Summary of categorical variables ### 
+
+strata: Overall
+     var   n miss p.miss     level freq percent cum.percent
+ species 344    0    0.0    Adelie  152    44.2        44.2
+                         Chinstrap   68    19.8        64.0
+                            Gentoo  124    36.0       100.0
+                                                           
+  island 344    0    0.0    Biscoe  168    48.8        48.8
+                             Dream  124    36.0        84.9
+                         Torgersen   52    15.1       100.0
+                                                           
+     sex 344   11    3.2    female  165    49.5        49.5
+                              male  168    50.5       100.0
+                                                           </code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="tidyverse" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="tidyverse"><span class="header-section-number">3.7</span> Tidyverse</h2>
@@ -581,10 +666,10 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
 <h4 data-number="3.7.2.1" class="anchored" data-anchor-id="repeat-a-function-over-many-columns"><span class="header-section-number">3.7.2.1</span> Repeat a function over many columns</h4>
 <p>At times, we would like to compute the same functions for many variables, ie columns for tidyverse applications.</p>
 <p>Let’s load the penguins data for illustration.</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-5_247804597b35aa1129509bcf13151c8e">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-8_9c5cb99ec8d24ceb9bfa5dc32c3a17f3">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped">
@@ -685,9 +770,9 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
 </div>
 </div>
 <p>Say, we would like to compute the mean value for each numeric variable in the data set:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-6_e449d1de321923a012fb57950e6c85fb">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-9_edaaf29be7067282662be2c029a58835">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped">
@@ -712,9 +797,9 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
 </div>
 </div>
 <p>Synonymously, we could write:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-7_b0191479dbf93286fb84211bd41db8af">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-10_fc59f8a3a6d73adbca9e4fb157a24f45">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped">
@@ -752,10 +837,10 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
 </div>
 <p>Say, we would like to compute the z-value of each numeric variable.</p>
 <p>Addmittedly, <code>easystats</code> makes it quite simple:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-8_5f7f506425038dddef8e505ec855b3d4">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">standardise</span>(<span class="at">select =</span> is.numeric) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-11_02cc84d5aa2e9df1dd350484823abe18">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">standardise</span>(<span class="at">select =</span> is.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped">
@@ -857,11 +942,12 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
 </div>
 <p>See the help page of <code>standardise</code> for mor details on how to select variables and on more options.</p>
 <p>But for the purpose of illustration, let’s do it with more simple means, i.e.&nbsp;tidyverse only.</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-9_7fc07804e78e01640be04bc5bb5fe516">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span> {(.x <span class="sc">-</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)},</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.names =</span> <span class="st">"{.col}_z"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-12_e2cc7a54ffd4d4fc40c4d75d86a85e6e">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span> {(.x <span class="sc">-</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)},</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.names =</span> <span class="st">"{.col}_z"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped">
@@ -910,2053 +996,25 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
 <td style="text-align: right;">-0.7762357</td>
 <td style="text-align: right;">-0.6880121</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">-0.9198375</td>
-<td style="text-align: right;">0.3285561</td>
-<td style="text-align: right;">-1.4162715</td>
-<td style="text-align: right;">-0.7191859</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.8648883</td>
-<td style="text-align: right;">1.2400440</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">0.5901153</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.7990254</td>
-<td style="text-align: right;">0.4804708</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-0.9062289</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.3520286</td>
-<td style="text-align: right;">1.5438733</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">0.0601600</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.1213181</td>
-<td style="text-align: right;">-0.0259114</td>
-<td style="text-align: right;">-1.0606961</td>
-<td style="text-align: right;">-1.1244458</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.1213181</td>
-<td style="text-align: right;">0.0753651</td>
-<td style="text-align: right;">-1.4873866</td>
-<td style="text-align: right;">-0.6256644</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.5168764</td>
-<td style="text-align: right;">0.2272797</td>
-<td style="text-align: right;">-1.3451564</td>
-<td style="text-align: right;">-1.2491411</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.9747867</td>
-<td style="text-align: right;">2.0502554</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-0.5009690</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.7074433</td>
-<td style="text-align: right;">1.9996172</td>
-<td style="text-align: right;">-0.2073150</td>
-<td style="text-align: right;">0.2472031</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.3411150</td>
-<td style="text-align: right;">0.3285561</td>
-<td style="text-align: right;">-1.1318112</td>
-<td style="text-align: right;">-0.6256644</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.9564703</td>
-<td style="text-align: right;">0.9362147</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">-0.9374027</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.2604466</td>
-<td style="text-align: right;">1.7970644</td>
-<td style="text-align: right;">-0.2784301</td>
-<td style="text-align: right;">0.3718984</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.7440762</td>
-<td style="text-align: right;">0.6323854</td>
-<td style="text-align: right;">-1.2029263</td>
-<td style="text-align: right;">-1.0932719</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.3806280</td>
-<td style="text-align: right;">2.2021701</td>
-<td style="text-align: right;">-0.4917754</td>
-<td style="text-align: right;">-0.0021876</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.1213181</td>
-<td style="text-align: right;">0.5817472</td>
-<td style="text-align: right;">-1.9140771</td>
-<td style="text-align: right;">-0.9997504</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.1396345</td>
-<td style="text-align: right;">0.7843001</td>
-<td style="text-align: right;">-1.4873866</td>
-<td style="text-align: right;">-0.7503597</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.4693299</td>
-<td style="text-align: right;">1.0374911</td>
-<td style="text-align: right;">-0.8473508</td>
-<td style="text-align: right;">-0.5009690</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.0480524</td>
-<td style="text-align: right;">0.4804708</td>
-<td style="text-align: right;">-1.1318112</td>
-<td style="text-align: right;">-0.3139260</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.9381539</td>
-<td style="text-align: right;">0.0247268</td>
-<td style="text-align: right;">-1.4873866</td>
-<td style="text-align: right;">-0.5009690</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.5792284</td>
-<td style="text-align: right;">0.8855765</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-0.5009690</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.6084584</td>
-<td style="text-align: right;">0.7336619</td>
-<td style="text-align: right;">-1.2740413</td>
-<td style="text-align: right;">-0.8127074</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.6267749</td>
-<td style="text-align: right;">0.3791944</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-1.2491411</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.1030016</td>
-<td style="text-align: right;">0.7336619</td>
-<td style="text-align: right;">-2.0563073</td>
-<td style="text-align: right;">-1.3114888</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.6267749</td>
-<td style="text-align: right;">0.8855765</td>
-<td style="text-align: right;">-1.4873866</td>
-<td style="text-align: right;">-0.3139260</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.8099390</td>
-<td style="text-align: right;">-0.2284642</td>
-<td style="text-align: right;">-1.6296168</td>
-<td style="text-align: right;">-1.1867934</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.2312165</td>
-<td style="text-align: right;">0.4804708</td>
-<td style="text-align: right;">-1.6296168</td>
-<td style="text-align: right;">-0.3762737</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.8099390</td>
-<td style="text-align: right;">0.3285561</td>
-<td style="text-align: right;">-0.9184659</td>
-<td style="text-align: right;">-1.1244458</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.5535092</td>
-<td style="text-align: right;">0.8855765</td>
-<td style="text-align: right;">-1.2029263</td>
-<td style="text-align: right;">-0.3762737</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.3777479</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">-1.0932719</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.8648883</td>
-<td style="text-align: right;">1.9996172</td>
-<td style="text-align: right;">-0.3495452</td>
-<td style="text-align: right;">-0.0645353</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.9381539</td>
-<td style="text-align: right;">1.4425969</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.3139260</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.3153958</td>
-<td style="text-align: right;">0.6830236</td>
-<td style="text-align: right;">-1.4873866</td>
-<td style="text-align: right;">-0.8127074</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.1579509</td>
-<td style="text-align: right;">1.0881294</td>
-<td style="text-align: right;">-1.4162715</td>
-<td style="text-align: right;">-1.1244458</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.7549898</td>
-<td style="text-align: right;">0.9868529</td>
-<td style="text-align: right;">-1.2029263</td>
-<td style="text-align: right;">0.5589414</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.3594315</td>
-<td style="text-align: right;">0.4298326</td>
-<td style="text-align: right;">-1.3451564</td>
-<td style="text-align: right;">-1.3114888</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.5718256</td>
-<td style="text-align: right;">0.6323854</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">-0.3762737</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.4510135</td>
-<td style="text-align: right;">0.6830236</td>
-<td style="text-align: right;">-1.0606961</td>
-<td style="text-align: right;">-1.3738365</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0326161</td>
-<td style="text-align: right;">1.2906822</td>
-<td style="text-align: right;">-0.3495452</td>
-<td style="text-align: right;">0.2472031</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.2678494</td>
-<td style="text-align: right;">-0.1271878</td>
-<td style="text-align: right;">-1.1318112</td>
-<td style="text-align: right;">-1.4985318</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.7916226</td>
-<td style="text-align: right;">0.8349383</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">0.4965938</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.5168764</td>
-<td style="text-align: right;">0.9362147</td>
-<td style="text-align: right;">-1.3451564</td>
-<td style="text-align: right;">-0.9685766</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.1762673</td>
-<td style="text-align: right;">0.8855765</td>
-<td style="text-align: right;">-1.5585017</td>
-<td style="text-align: right;">-1.5297057</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.4510135</td>
-<td style="text-align: right;">0.3791944</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.9374027</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.2970794</td>
-<td style="text-align: right;">2.0502554</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-0.0645353</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.7916226</td>
-<td style="text-align: right;">0.2779179</td>
-<td style="text-align: right;">-1.0606961</td>
-<td style="text-align: right;">-0.8750551</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.7000405</td>
-<td style="text-align: right;">0.8855765</td>
-<td style="text-align: right;">-0.9184659</td>
-<td style="text-align: right;">0.1225077</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.6341777</td>
-<td style="text-align: right;">0.3791944</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.9374027</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.3520286</td>
-<td style="text-align: right;">1.1894058</td>
-<td style="text-align: right;">-0.0650849</td>
-<td style="text-align: right;">-0.1892307</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.7257597</td>
-<td style="text-align: right;">0.4804708</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-1.6232272</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.4619271</td>
-<td style="text-align: right;">0.7336619</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-0.6256644</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.9015211</td>
-<td style="text-align: right;">0.1766415</td>
-<td style="text-align: right;">-1.0606961</td>
-<td style="text-align: right;">-0.8127074</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.6084584</td>
-<td style="text-align: right;">0.8349383</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-0.5009690</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.3594315</td>
-<td style="text-align: right;">-0.2791024</td>
-<td style="text-align: right;">-1.4162715</td>
-<td style="text-align: right;">-1.6855748</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.1579509</td>
-<td style="text-align: right;">0.9868529</td>
-<td style="text-align: right;">-0.4917754</td>
-<td style="text-align: right;">-0.5633167</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.5059628</td>
-<td style="text-align: right;">-0.1271878</td>
-<td style="text-align: right;">-1.1318112</td>
-<td style="text-align: right;">-1.3114888</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.4802435</td>
-<td style="text-align: right;">1.9996172</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">0.2472031</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.1579509</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">-1.1318112</td>
-<td style="text-align: right;">-0.7503597</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.5168764</td>
-<td style="text-align: right;">0.5311090</td>
-<td style="text-align: right;">-0.6340056</td>
-<td style="text-align: right;">-0.1892307</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.3777479</td>
-<td style="text-align: right;">-0.0259114</td>
-<td style="text-align: right;">-1.2029263</td>
-<td style="text-align: right;">-1.6855748</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.4252943</td>
-<td style="text-align: right;">0.4298326</td>
-<td style="text-align: right;">-0.6340056</td>
-<td style="text-align: right;">-0.3139260</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.5425956</td>
-<td style="text-align: right;">-0.4816553</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">-1.0620981</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.5168764</td>
-<td style="text-align: right;">0.9868529</td>
-<td style="text-align: right;">-0.9184659</td>
-<td style="text-align: right;">-0.1268830</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.4693299</td>
-<td style="text-align: right;">-0.2791024</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-1.4361841</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.3886615</td>
-<td style="text-align: right;">1.1387676</td>
-<td style="text-align: right;">-0.2073150</td>
-<td style="text-align: right;">0.3095507</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.9089239</td>
-<td style="text-align: right;">0.9362147</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.7503597</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.7733062</td>
-<td style="text-align: right;">0.6323854</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.3762737</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.7916226</td>
-<td style="text-align: right;">0.0247268</td>
-<td style="text-align: right;">-0.3495452</td>
-<td style="text-align: right;">-0.8127074</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.3439951</td>
-<td style="text-align: right;">0.8855765</td>
-<td style="text-align: right;">-0.2784301</td>
-<td style="text-align: right;">-0.0645353</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.5425956</td>
-<td style="text-align: right;">0.1766415</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.6256644</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.2054973</td>
-<td style="text-align: right;">0.6830236</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">0.0601600</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.5535092</td>
-<td style="text-align: right;">-0.1778260</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-0.6256644</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.2312165</td>
-<td style="text-align: right;">1.1387676</td>
-<td style="text-align: right;">-1.2029263</td>
-<td style="text-align: right;">-0.3762737</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.4143807</td>
-<td style="text-align: right;">-0.5322935</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-0.8127074</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.3337122</td>
-<td style="text-align: right;">0.9868529</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">-0.2515783</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.7074433</td>
-<td style="text-align: right;">0.0247268</td>
-<td style="text-align: right;">-0.8473508</td>
-<td style="text-align: right;">-1.2491411</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.1871809</td>
-<td style="text-align: right;">0.2272797</td>
-<td style="text-align: right;">-0.3495452</td>
-<td style="text-align: right;">0.6212891</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.3227986</td>
-<td style="text-align: right;">0.8349383</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-0.5009690</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.6158613</td>
-<td style="text-align: right;">1.1387676</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-0.0021876</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.2129001</td>
-<td style="text-align: right;">0.3285561</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-1.0620981</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.4802435</td>
-<td style="text-align: right;">1.5945115</td>
-<td style="text-align: right;">-0.4917754</td>
-<td style="text-align: right;">-0.8127074</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.3960643</td>
-<td style="text-align: right;">1.1894058</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.5009690</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.2861658</td>
-<td style="text-align: right;">0.7336619</td>
-<td style="text-align: right;">-0.8473508</td>
-<td style="text-align: right;">-0.8750551</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.0297360</td>
-<td style="text-align: right;">1.0374911</td>
-<td style="text-align: right;">-0.8473508</td>
-<td style="text-align: right;">-0.3139260</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.9198375</td>
-<td style="text-align: right;">0.8349383</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.7503597</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.5059628</td>
-<td style="text-align: right;">0.4298326</td>
-<td style="text-align: right;">0.0771453</td>
-<td style="text-align: right;">-0.8127074</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.5168764</td>
-<td style="text-align: right;">0.4804708</td>
-<td style="text-align: right;">0.2904906</td>
-<td style="text-align: right;">0.1225077</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.8173418</td>
-<td style="text-align: right;">-0.0259114</td>
-<td style="text-align: right;">-1.1318112</td>
-<td style="text-align: right;">-0.9997504</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.7916226</td>
-<td style="text-align: right;">0.4804708</td>
-<td style="text-align: right;">-1.0606961</td>
-<td style="text-align: right;">0.3095507</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.4143807</td>
-<td style="text-align: right;">0.0753651</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-1.1244458</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.5718256</td>
-<td style="text-align: right;">0.8855765</td>
-<td style="text-align: right;">0.5038358</td>
-<td style="text-align: right;">0.1225077</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.0663688</td>
-<td style="text-align: right;">0.7336619</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.6256644</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.6634077</td>
-<td style="text-align: right;">0.6830236</td>
-<td style="text-align: right;">-0.3495452</td>
-<td style="text-align: right;">0.1848554</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.9821896</td>
-<td style="text-align: right;">-0.5322935</td>
-<td style="text-align: right;">-1.6296168</td>
-<td style="text-align: right;">-1.6232272</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.1322317</td>
-<td style="text-align: right;">0.6830236</td>
-<td style="text-align: right;">-0.6340056</td>
-<td style="text-align: right;">-0.1268830</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.6341777</td>
-<td style="text-align: right;">0.3791944</td>
-<td style="text-align: right;">-0.6340056</td>
-<td style="text-align: right;">-0.5944905</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.5351928</td>
-<td style="text-align: right;">1.4425969</td>
-<td style="text-align: right;">0.1482604</td>
-<td style="text-align: right;">0.6524629</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.1396345</td>
-<td style="text-align: right;">-0.5829317</td>
-<td style="text-align: right;">-1.2740413</td>
-<td style="text-align: right;">-1.4050103</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.1213181</td>
-<td style="text-align: right;">1.4425969</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">0.0601600</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.1030016</td>
-<td style="text-align: right;">0.7336619</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-1.5920533</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.7733062</td>
-<td style="text-align: right;">0.8855765</td>
-<td style="text-align: right;">-1.2029263</td>
-<td style="text-align: right;">-0.8127074</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.9747867</td>
-<td style="text-align: right;">0.0247268</td>
-<td style="text-align: right;">-0.1361999</td>
-<td style="text-align: right;">-0.5633167</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.0480524</td>
-<td style="text-align: right;">1.4425969</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.3762737</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.0663688</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">-1.4162715</td>
-<td style="text-align: right;">-1.2803150</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.1322317</td>
-<td style="text-align: right;">0.9362147</td>
-<td style="text-align: right;">-0.2784301</td>
-<td style="text-align: right;">0.7148106</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.0663688</td>
-<td style="text-align: right;">-0.3297407</td>
-<td style="text-align: right;">-0.2073150</td>
-<td style="text-align: right;">-0.4697952</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.3073623</td>
-<td style="text-align: right;">1.5945115</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">0.4965938</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.7733062</td>
-<td style="text-align: right;">0.2779179</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-1.2491411</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.3153958</td>
-<td style="text-align: right;">1.1894058</td>
-<td style="text-align: right;">-0.2784301</td>
-<td style="text-align: right;">0.0913339</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.7916226</td>
-<td style="text-align: right;">1.7970644</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-0.3762737</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.2238137</td>
-<td style="text-align: right;">0.5817472</td>
-<td style="text-align: right;">-0.3495452</td>
-<td style="text-align: right;">-0.1580568</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.9747867</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">-0.9184659</td>
-<td style="text-align: right;">-1.6232272</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.2129001</td>
-<td style="text-align: right;">1.6957879</td>
-<td style="text-align: right;">-0.1361999</td>
-<td style="text-align: right;">-0.5321429</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.5059628</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">-0.8473508</td>
-<td style="text-align: right;">-1.0620981</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.5168764</td>
-<td style="text-align: right;">0.7336619</td>
-<td style="text-align: right;">-0.8473508</td>
-<td style="text-align: right;">-1.0932719</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.4143807</td>
-<td style="text-align: right;">0.0247268</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-1.3114888</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.1396345</td>
-<td style="text-align: right;">1.3413204</td>
-<td style="text-align: right;">-0.2073150</td>
-<td style="text-align: right;">-0.8750551</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.6817241</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">-1.7718470</td>
-<td style="text-align: right;">-0.9374027</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.4619271</td>
-<td style="text-align: right;">0.6830236</td>
-<td style="text-align: right;">0.0771453</td>
-<td style="text-align: right;">-0.4074475</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.5975448</td>
-<td style="text-align: right;">-0.6335699</td>
-<td style="text-align: right;">-1.0606961</td>
-<td style="text-align: right;">-1.4361841</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.6084584</td>
-<td style="text-align: right;">0.9362147</td>
-<td style="text-align: right;">-0.1361999</td>
-<td style="text-align: right;">-0.2515783</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.9381539</td>
-<td style="text-align: right;">0.2272797</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-1.1556196</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.4436107</td>
-<td style="text-align: right;">0.5817472</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">0.1225077</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.9015211</td>
-<td style="text-align: right;">-0.0259114</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-1.4361841</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0326161</td>
-<td style="text-align: right;">0.4298326</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">-0.2515783</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.9931032</td>
-<td style="text-align: right;">0.3791944</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-1.0932719</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.1505481</td>
-<td style="text-align: right;">1.0374911</td>
-<td style="text-align: right;">-0.2784301</td>
-<td style="text-align: right;">-0.8750551</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.3044822</td>
-<td style="text-align: right;">0.6830236</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-0.8750551</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.1762673</td>
-<td style="text-align: right;">0.6830236</td>
-<td style="text-align: right;">-0.1361999</td>
-<td style="text-align: right;">0.3407246</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.0663688</td>
-<td style="text-align: right;">0.2272797</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-0.9685766</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.5168764</td>
-<td style="text-align: right;">0.1766415</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.3762737</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.5242792</td>
-<td style="text-align: right;">0.1766415</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-1.2803150</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.6817241</td>
-<td style="text-align: right;">1.4932351</td>
-<td style="text-align: right;">-0.0650849</td>
-<td style="text-align: right;">-0.2827522</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.2678494</td>
-<td style="text-align: right;">-0.3297407</td>
-<td style="text-align: right;">-1.1318112</td>
-<td style="text-align: right;">-0.9997504</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.7733062</td>
-<td style="text-align: right;">0.3791944</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">0.0601600</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.6817241</td>
-<td style="text-align: right;">-0.0259114</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-0.9997504</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.6084584</td>
-<td style="text-align: right;">0.0247268</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-0.9062289</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-2.1653537</td>
-<td style="text-align: right;">-0.8361228</td>
-<td style="text-align: right;">-0.9184659</td>
-<td style="text-align: right;">-1.4361841</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.5901420</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.5944905</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.2129001</td>
-<td style="text-align: right;">-0.1778260</td>
-<td style="text-align: right;">-0.6340056</td>
-<td style="text-align: right;">-1.4985318</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.9015211</td>
-<td style="text-align: right;">0.7843001</td>
-<td style="text-align: right;">-1.1318112</td>
-<td style="text-align: right;">-0.6880121</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.8648883</td>
-<td style="text-align: right;">0.7336619</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">0.0601600</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.3411150</td>
-<td style="text-align: right;">0.6323854</td>
-<td style="text-align: right;">-1.2029263</td>
-<td style="text-align: right;">-0.9062289</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.4510135</td>
-<td style="text-align: right;">0.3285561</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">-0.9374027</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-1.1213181</td>
-<td style="text-align: right;">0.4804708</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-0.5633167</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-1.4510135</td>
-<td style="text-align: right;">-0.0259114</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-0.6256644</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.4436107</td>
-<td style="text-align: right;">0.6830236</td>
-<td style="text-align: right;">0.0060302</td>
-<td style="text-align: right;">-0.2515783</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.3989444</td>
-<td style="text-align: right;">-2.0008017</td>
-<td style="text-align: right;">0.7171811</td>
-<td style="text-align: right;">0.3718984</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.1132845</td>
-<td style="text-align: right;">-0.4310171</td>
-<td style="text-align: right;">2.0683678</td>
-<td style="text-align: right;">1.8682426</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.8751712</td>
-<td style="text-align: right;">-1.5450578</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">0.3095507</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.1132845</td>
-<td style="text-align: right;">-0.9880374</td>
-<td style="text-align: right;">1.2149867</td>
-<td style="text-align: right;">1.8682426</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.6736906</td>
-<td style="text-align: right;">-1.3425050</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">1.4941565</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.4722100</td>
-<td style="text-align: right;">-1.8488871</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">0.4342461</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.2707295</td>
-<td style="text-align: right;">-1.2918667</td>
-<td style="text-align: right;">0.7171811</td>
-<td style="text-align: right;">0.7459845</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.5088429</td>
-<td style="text-align: right;">-0.9373992</td>
-<td style="text-align: right;">1.2861018</td>
-<td style="text-align: right;">1.2447658</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.1139152</td>
-<td style="text-align: right;">-1.8995253</td>
-<td style="text-align: right;">0.5749509</td>
-<td style="text-align: right;">0.2472031</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.5271593</td>
-<td style="text-align: right;">-0.8867610</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">1.1824182</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.5535092</td>
-<td style="text-align: right;">-1.7476107</td>
-<td style="text-align: right;">0.9305264</td>
-<td style="text-align: right;">0.5589414</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.9301204</td>
-<td style="text-align: right;">-0.5322935</td>
-<td style="text-align: right;">1.0727565</td>
-<td style="text-align: right;">1.6811996</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.2890459</td>
-<td style="text-align: right;">-1.7476107</td>
-<td style="text-align: right;">0.9305264</td>
-<td style="text-align: right;">0.5589414</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.8202219</td>
-<td style="text-align: right;">-1.2918667</td>
-<td style="text-align: right;">0.8594113</td>
-<td style="text-align: right;">2.0552856</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.3439951</td>
-<td style="text-align: right;">-1.2918667</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">-0.0021876</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.9850696</td>
-<td style="text-align: right;">-0.7348464</td>
-<td style="text-align: right;">1.1438716</td>
-<td style="text-align: right;">2.0552856</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.3520286</td>
-<td style="text-align: right;">-1.8488871</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">-0.0645353</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.9667532</td>
-<td style="text-align: right;">-0.9880374</td>
-<td style="text-align: right;">1.4283320</td>
-<td style="text-align: right;">2.6164147</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.4172608</td>
-<td style="text-align: right;">-1.3425050</td>
-<td style="text-align: right;">0.5749509</td>
-<td style="text-align: right;">0.7459845</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.8751712</td>
-<td style="text-align: right;">-1.0386757</td>
-<td style="text-align: right;">1.4994471</td>
-<td style="text-align: right;">1.4318089</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.1499174</td>
-<td style="text-align: right;">-1.4437814</td>
-<td style="text-align: right;">1.2149867</td>
-<td style="text-align: right;">1.8682426</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.2157802</td>
-<td style="text-align: right;">-1.3425050</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">0.9953751</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.4722100</td>
-<td style="text-align: right;">-1.3425050</td>
-<td style="text-align: right;">0.8594113</td>
-<td style="text-align: right;">0.2472031</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.4355772</td>
-<td style="text-align: right;">-0.6842082</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">1.0577228</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.1871809</td>
-<td style="text-align: right;">-2.0514400</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">0.9953751</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.3989444</td>
-<td style="text-align: right;">-1.0386757</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">1.1200705</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.1058817</td>
-<td style="text-align: right;">-1.4437814</td>
-<td style="text-align: right;">1.0727565</td>
-<td style="text-align: right;">-0.1268830</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.7103234</td>
-<td style="text-align: right;">-1.0893139</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">1.8058949</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.7835891</td>
-<td style="text-align: right;">-1.4437814</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">0.4965938</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.1132845</td>
-<td style="text-align: right;">-0.9373992</td>
-<td style="text-align: right;">1.3572169</td>
-<td style="text-align: right;">1.6811996</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.6187413</td>
-<td style="text-align: right;">-0.9373992</td>
-<td style="text-align: right;">1.4994471</td>
-<td style="text-align: right;">1.3071135</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.2054973</td>
-<td style="text-align: right;">-1.4944196</td>
-<td style="text-align: right;">0.5749509</td>
-<td style="text-align: right;">0.6212891</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.2157802</td>
-<td style="text-align: right;">-1.3425050</td>
-<td style="text-align: right;">0.4327208</td>
-<td style="text-align: right;">1.0577228</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2.8716604</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">2.0683678</td>
-<td style="text-align: right;">2.3046763</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.9484368</td>
-<td style="text-align: right;">-1.1905903</td>
-<td style="text-align: right;">1.3572169</td>
-<td style="text-align: right;">1.1824182</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.8202219</td>
-<td style="text-align: right;">-0.4310171</td>
-<td style="text-align: right;">1.3572169</td>
-<td style="text-align: right;">1.4941565</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.2421302</td>
-<td style="text-align: right;">-1.7476107</td>
-<td style="text-align: right;">0.8594113</td>
-<td style="text-align: right;">0.9330275</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0875653</td>
-<td style="text-align: right;">0.0753651</td>
-<td style="text-align: right;">1.2861018</td>
-<td style="text-align: right;">1.3071135</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0142997</td>
-<td style="text-align: right;">-1.7982489</td>
-<td style="text-align: right;">0.5038358</td>
-<td style="text-align: right;">0.1848554</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.8751712</td>
-<td style="text-align: right;">-0.7348464</td>
-<td style="text-align: right;">0.5038358</td>
-<td style="text-align: right;">1.4318089</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.2238137</td>
-<td style="text-align: right;">-1.7476107</td>
-<td style="text-align: right;">0.5038358</td>
-<td style="text-align: right;">-0.3139260</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0400189</td>
-<td style="text-align: right;">-0.5829317</td>
-<td style="text-align: right;">1.7127923</td>
-<td style="text-align: right;">1.8682426</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.2524130</td>
-<td style="text-align: right;">-1.7476107</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">0.1225077</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0400189</td>
-<td style="text-align: right;">-1.0893139</td>
-<td style="text-align: right;">1.0727565</td>
-<td style="text-align: right;">0.6836368</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.2048666</td>
-<td style="text-align: right;">-0.6335699</td>
-<td style="text-align: right;">1.4994471</td>
-<td style="text-align: right;">1.6811996</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-0.0589660</td>
-<td style="text-align: right;">-1.6463342</td>
-<td style="text-align: right;">1.1438716</td>
-<td style="text-align: right;">0.8706798</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.2890459</td>
-<td style="text-align: right;">-1.6463342</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">-0.0021876</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.2048666</td>
-<td style="text-align: right;">-0.6335699</td>
-<td style="text-align: right;">1.7127923</td>
-<td style="text-align: right;">1.4941565</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.1791474</td>
-<td style="text-align: right;">-1.9501635</td>
-<td style="text-align: right;">0.8594113</td>
-<td style="text-align: right;">1.1200705</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.2340966</td>
-<td style="text-align: right;">-0.6842082</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">1.3694612</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.4905264</td>
-<td style="text-align: right;">-1.4944196</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">0.8083321</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.8385383</td>
-<td style="text-align: right;">-1.5450578</td>
-<td style="text-align: right;">1.3572169</td>
-<td style="text-align: right;">1.3694612</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.2157802</td>
-<td style="text-align: right;">-1.3931432</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">0.2472031</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.1316010</td>
-<td style="text-align: right;">-1.0893139</td>
-<td style="text-align: right;">1.7127923</td>
-<td style="text-align: right;">0.9953751</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.4722100</td>
-<td style="text-align: right;">-1.3931432</td>
-<td style="text-align: right;">1.1438716</td>
-<td style="text-align: right;">0.8706798</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.1974638</td>
-<td style="text-align: right;">-0.8867610</td>
-<td style="text-align: right;">1.3572169</td>
-<td style="text-align: right;">1.0577228</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.0223332</td>
-<td style="text-align: right;">-1.6463342</td>
-<td style="text-align: right;">0.5038358</td>
-<td style="text-align: right;">0.1225077</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.2890459</td>
-<td style="text-align: right;">-1.0893139</td>
-<td style="text-align: right;">1.3572169</td>
-<td style="text-align: right;">0.9953751</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.1322317</td>
-<td style="text-align: right;">-1.3425050</td>
-<td style="text-align: right;">0.5038358</td>
-<td style="text-align: right;">0.3095507</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.1865502</td>
-<td style="text-align: right;">-0.9373992</td>
-<td style="text-align: right;">1.6416772</td>
-<td style="text-align: right;">1.6811996</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.2524130</td>
-<td style="text-align: right;">-1.6969725</td>
-<td style="text-align: right;">0.5038358</td>
-<td style="text-align: right;">-0.0021876</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.4172608</td>
-<td style="text-align: right;">-1.1399521</td>
-<td style="text-align: right;">1.4283320</td>
-<td style="text-align: right;">1.3694612</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.3256787</td>
-<td style="text-align: right;">-1.6463342</td>
-<td style="text-align: right;">0.9305264</td>
-<td style="text-align: right;">0.2472031</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.9008904</td>
-<td style="text-align: right;">-0.7348464</td>
-<td style="text-align: right;">2.1394829</td>
-<td style="text-align: right;">1.8058949</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.3439951</td>
-<td style="text-align: right;">-1.4944196</td>
-<td style="text-align: right;">1.2861018</td>
-<td style="text-align: right;">0.6212891</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0766517</td>
-<td style="text-align: right;">-0.1778260</td>
-<td style="text-align: right;">2.0683678</td>
-<td style="text-align: right;">1.8682426</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.4172608</td>
-<td style="text-align: right;">-1.3931432</td>
-<td style="text-align: right;">0.9305264</td>
-<td style="text-align: right;">0.5589414</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0217025</td>
-<td style="text-align: right;">-0.4816553</td>
-<td style="text-align: right;">1.9972527</td>
-<td style="text-align: right;">1.9929379</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.0772824</td>
-<td style="text-align: right;">-1.4944196</td>
-<td style="text-align: right;">1.3572169</td>
-<td style="text-align: right;">0.6212891</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.2414994</td>
-<td style="text-align: right;">-1.0893139</td>
-<td style="text-align: right;">1.5705622</td>
-<td style="text-align: right;">1.6811996</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.6920070</td>
-<td style="text-align: right;">-1.0893139</td>
-<td style="text-align: right;">1.0727565</td>
-<td style="text-align: right;">0.6836368</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.4538936</td>
-<td style="text-align: right;">-0.7854846</td>
-<td style="text-align: right;">1.4283320</td>
-<td style="text-align: right;">0.9953751</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.7835891</td>
-<td style="text-align: right;">-0.7854846</td>
-<td style="text-align: right;">1.4283320</td>
-<td style="text-align: right;">1.1200705</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.4722100</td>
-<td style="text-align: right;">-1.1905903</td>
-<td style="text-align: right;">1.1438716</td>
-<td style="text-align: right;">1.2447658</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.4538936</td>
-<td style="text-align: right;">-1.0893139</td>
-<td style="text-align: right;">1.0727565</td>
-<td style="text-align: right;">0.6212891</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.8568547</td>
-<td style="text-align: right;">-0.5829317</td>
-<td style="text-align: right;">2.0683678</td>
-<td style="text-align: right;">1.9929379</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.6553742</td>
-<td style="text-align: right;">-1.4944196</td>
-<td style="text-align: right;">0.5749509</td>
-<td style="text-align: right;">0.4965938</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.3147651</td>
-<td style="text-align: right;">-0.4310171</td>
-<td style="text-align: right;">1.3572169</td>
-<td style="text-align: right;">2.2423286</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.2340966</td>
-<td style="text-align: right;">-1.6969725</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">0.6836368</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.2340966</td>
-<td style="text-align: right;">-0.3803789</td>
-<td style="text-align: right;">1.5705622</td>
-<td style="text-align: right;">2.1799810</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.9484368</td>
-<td style="text-align: right;">-1.3425050</td>
-<td style="text-align: right;">0.7882962</td>
-<td style="text-align: right;">0.5277676</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.5711949</td>
-<td style="text-align: right;">-0.7854846</td>
-<td style="text-align: right;">1.4283320</td>
-<td style="text-align: right;">1.5565042</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.6370578</td>
-<td style="text-align: right;">-1.2918667</td>
-<td style="text-align: right;">0.7882962</td>
-<td style="text-align: right;">0.6524629</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.1132845</td>
-<td style="text-align: right;">-0.6335699</td>
-<td style="text-align: right;">1.6416772</td>
-<td style="text-align: right;">1.4318089</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.1791474</td>
-<td style="text-align: right;">-1.6969725</td>
-<td style="text-align: right;">0.7882962</td>
-<td style="text-align: right;">0.6836368</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.2598159</td>
-<td style="text-align: right;">0.0753651</td>
-<td style="text-align: right;">1.9261376</td>
-<td style="text-align: right;">1.7435472</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.0955988</td>
-<td style="text-align: right;">-1.3931432</td>
-<td style="text-align: right;">1.2149867</td>
-<td style="text-align: right;">0.4965938</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.3513979</td>
-<td style="text-align: right;">-1.4944196</td>
-<td style="text-align: right;">1.2149867</td>
-<td style="text-align: right;">1.3694612</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.6553742</td>
-<td style="text-align: right;">-1.5956960</td>
-<td style="text-align: right;">0.7882962</td>
-<td style="text-align: right;">0.8395060</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.4979293</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">2.0683678</td>
-<td style="text-align: right;">1.6811996</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.6553742</td>
-<td style="text-align: right;">-1.0893139</td>
-<td style="text-align: right;">1.2149867</td>
-<td style="text-align: right;">0.9330275</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.5162457</td>
-<td style="text-align: right;">-0.0259114</td>
-<td style="text-align: right;">1.9261376</td>
-<td style="text-align: right;">1.4941565</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.2890459</td>
-<td style="text-align: right;">-1.3425050</td>
-<td style="text-align: right;">0.7882962</td>
-<td style="text-align: right;">0.6836368</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0217025</td>
-<td style="text-align: right;">-0.5322935</td>
-<td style="text-align: right;">1.6416772</td>
-<td style="text-align: right;">1.8058949</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.1058817</td>
-<td style="text-align: right;">-1.2412285</td>
-<td style="text-align: right;">0.9305264</td>
-<td style="text-align: right;">0.8083321</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.2598159</td>
-<td style="text-align: right;">-0.7348464</td>
-<td style="text-align: right;">1.7839074</td>
-<td style="text-align: right;">1.2447658</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0033861</td>
-<td style="text-align: right;">-0.6842082</td>
-<td style="text-align: right;">1.0727565</td>
-<td style="text-align: right;">0.9018536</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.5454757</td>
-<td style="text-align: right;">-1.2918667</td>
-<td style="text-align: right;">1.4994471</td>
-<td style="text-align: right;">0.8395060</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.8202219</td>
-<td style="text-align: right;">-1.3931432</td>
-<td style="text-align: right;">0.1482604</td>
-<td style="text-align: right;">0.5277676</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.3147651</td>
-<td style="text-align: right;">-0.3297407</td>
-<td style="text-align: right;">1.7127923</td>
-<td style="text-align: right;">1.3071135</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.8385383</td>
-<td style="text-align: right;">-1.0893139</td>
-<td style="text-align: right;">1.2861018</td>
-<td style="text-align: right;">0.8083321</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2.1939530</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">1.9261376</td>
-<td style="text-align: right;">1.7435472</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.6004249</td>
-<td style="text-align: right;">-0.8361228</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">0.9642013</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.9484368</td>
-<td style="text-align: right;">-1.0893139</td>
-<td style="text-align: right;">1.9261376</td>
-<td style="text-align: right;">1.6188519</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.6187413</td>
-<td style="text-align: right;">-1.6969725</td>
-<td style="text-align: right;">1.0727565</td>
-<td style="text-align: right;">0.6524629</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.5271593</td>
-<td style="text-align: right;">-0.5322935</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">1.6188519</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.4069779</td>
-<td style="text-align: right;">-1.2412285</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">0.6212891</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.7360426</td>
-<td style="text-align: right;">-0.6842082</td>
-<td style="text-align: right;">1.2861018</td>
-<td style="text-align: right;">1.6188519</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.1139152</td>
-<td style="text-align: right;">-1.5956960</td>
-<td style="text-align: right;">0.5038358</td>
-<td style="text-align: right;">0.4654199</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.7652727</td>
-<td style="text-align: right;">-1.0386757</td>
-<td style="text-align: right;">0.5749509</td>
-<td style="text-align: right;">1.6188519</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.2048666</td>
-<td style="text-align: right;">-0.9880374</td>
-<td style="text-align: right;">1.0727565</td>
-<td style="text-align: right;">0.9953751</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0766517</td>
-<td style="text-align: right;">-0.6335699</td>
-<td style="text-align: right;">1.9972527</td>
-<td style="text-align: right;">2.1799810</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.0772824</td>
-<td style="text-align: right;">-0.9880374</td>
-<td style="text-align: right;">0.8594113</td>
-<td style="text-align: right;">0.5589414</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.3880308</td>
-<td style="text-align: right;">-0.4310171</td>
-<td style="text-align: right;">2.0683678</td>
-<td style="text-align: right;">1.6188519</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.4172608</td>
-<td style="text-align: right;">-1.5450578</td>
-<td style="text-align: right;">1.1438716</td>
-<td style="text-align: right;">0.2160292</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2.0474217</td>
-<td style="text-align: right;">-0.5829317</td>
-<td style="text-align: right;">2.0683678</td>
-<td style="text-align: right;">2.0552856</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.1058817</td>
-<td style="text-align: right;">-0.7348464</td>
-<td style="text-align: right;">1.1438716</td>
-<td style="text-align: right;">0.8395060</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.8934876</td>
-<td style="text-align: right;">-0.4816553</td>
-<td style="text-align: right;">1.4994471</td>
-<td style="text-align: right;">2.2423286</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.6004249</td>
-<td style="text-align: right;">-1.7476107</td>
-<td style="text-align: right;">0.9305264</td>
-<td style="text-align: right;">0.9018536</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.5271593</td>
-<td style="text-align: right;">-1.4437814</td>
-<td style="text-align: right;">1.0016415</td>
-<td style="text-align: right;">0.8083321</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.1865502</td>
-<td style="text-align: right;">-0.7348464</td>
-<td style="text-align: right;">1.4994471</td>
-<td style="text-align: right;">1.9305903</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.2340966</td>
-<td style="text-align: right;">-1.1905903</td>
-<td style="text-align: right;">0.7882962</td>
-<td style="text-align: right;">1.2447658</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0949681</td>
-<td style="text-align: right;">-0.5322935</td>
-<td style="text-align: right;">0.8594113</td>
-<td style="text-align: right;">1.4941565</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.4722100</td>
-<td style="text-align: right;">0.3791944</td>
-<td style="text-align: right;">-0.6340056</td>
-<td style="text-align: right;">-0.8750551</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.1132845</td>
-<td style="text-align: right;">1.1894058</td>
-<td style="text-align: right;">-0.3495452</td>
-<td style="text-align: right;">-0.3762737</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.3513979</td>
-<td style="text-align: right;">1.0374911</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-0.6880121</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.2707295</td>
-<td style="text-align: right;">0.7843001</td>
-<td style="text-align: right;">-0.9184659</td>
-<td style="text-align: right;">-0.8438812</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.6078277</td>
-<td style="text-align: right;">1.3413204</td>
-<td style="text-align: right;">-0.2784301</td>
-<td style="text-align: right;">-0.5944905</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.2340966</td>
-<td style="text-align: right;">0.3285561</td>
-<td style="text-align: right;">-0.2073150</td>
-<td style="text-align: right;">-0.3139260</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.3989444</td>
-<td style="text-align: right;">0.5311090</td>
-<td style="text-align: right;">-1.6296168</td>
-<td style="text-align: right;">-1.1867934</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.3513979</td>
-<td style="text-align: right;">0.5311090</td>
-<td style="text-align: right;">-0.2784301</td>
-<td style="text-align: right;">-0.5633167</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.3806280</td>
-<td style="text-align: right;">0.8855765</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">-0.0645353</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.3513979</td>
-<td style="text-align: right;">1.3919586</td>
-<td style="text-align: right;">-0.2073150</td>
-<td style="text-align: right;">-0.6256644</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.4905264</td>
-<td style="text-align: right;">0.3285561</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-0.5009690</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.4246636</td>
-<td style="text-align: right;">1.5945115</td>
-<td style="text-align: right;">-0.4917754</td>
-<td style="text-align: right;">-0.5321429</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.5637921</td>
-<td style="text-align: right;">0.0753651</td>
-<td style="text-align: right;">-1.1318112</td>
-<td style="text-align: right;">-0.6256644</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.4796128</td>
-<td style="text-align: right;">0.4804708</td>
-<td style="text-align: right;">0.0060302</td>
-<td style="text-align: right;">-0.1892307</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.3623115</td>
-<td style="text-align: right;">-0.0259114</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.7815336</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.2048666</td>
-<td style="text-align: right;">1.2400440</td>
-<td style="text-align: right;">0.0060302</td>
-<td style="text-align: right;">-0.1892307</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.1682338</td>
-<td style="text-align: right;">1.4425969</td>
-<td style="text-align: right;">-0.2784301</td>
-<td style="text-align: right;">-1.1244458</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2.5785977</td>
-<td style="text-align: right;">0.3285561</td>
-<td style="text-align: right;">-1.4162715</td>
-<td style="text-align: right;">-0.6256644</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.4538936</td>
-<td style="text-align: right;">0.7336619</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.9374027</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.9667532</td>
-<td style="text-align: right;">0.5311090</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">0.2472031</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.2787630</td>
-<td style="text-align: right;">0.0753651</td>
-<td style="text-align: right;">-1.4162715</td>
-<td style="text-align: right;">-0.7503597</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.8385383</td>
-<td style="text-align: right;">0.1766415</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-0.9997504</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.1322317</td>
-<td style="text-align: right;">-0.2791024</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-1.6232272</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.2231830</td>
-<td style="text-align: right;">1.1387676</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-0.5009690</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.5088429</td>
-<td style="text-align: right;">0.3791944</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">-1.1244458</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.4796128</td>
-<td style="text-align: right;">0.9362147</td>
-<td style="text-align: right;">-0.2784301</td>
-<td style="text-align: right;">-0.0645353</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.2048666</td>
-<td style="text-align: right;">0.6323854</td>
-<td style="text-align: right;">-0.0650849</td>
-<td style="text-align: right;">-0.9997504</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0217025</td>
-<td style="text-align: right;">0.9362147</td>
-<td style="text-align: right;">-0.0650849</td>
-<td style="text-align: right;">-0.5009690</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.4538936</td>
-<td style="text-align: right;">0.3285561</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-0.6256644</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.6261442</td>
-<td style="text-align: right;">1.4425969</td>
-<td style="text-align: right;">0.2904906</td>
-<td style="text-align: right;">0.4342461</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.5535092</td>
-<td style="text-align: right;">-0.2791024</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-1.2491411</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.8825740</td>
-<td style="text-align: right;">1.8477026</td>
-<td style="text-align: right;">0.0060302</td>
-<td style="text-align: right;">0.1225077</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.2604466</td>
-<td style="text-align: right;">-0.2284642</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-1.0620981</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.2964487</td>
-<td style="text-align: right;">0.8349383</td>
-<td style="text-align: right;">0.1482604</td>
-<td style="text-align: right;">-0.1268830</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0583353</td>
-<td style="text-align: right;">0.7336619</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">-0.7503597</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.6553742</td>
-<td style="text-align: right;">-0.1778260</td>
-<td style="text-align: right;">-0.1361999</td>
-<td style="text-align: right;">-0.3762737</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.6736906</td>
-<td style="text-align: right;">0.5817472</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">-0.4386214</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.4796128</td>
-<td style="text-align: right;">1.7970644</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">0.7459845</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.5454757</td>
-<td style="text-align: right;">-0.2791024</td>
-<td style="text-align: right;">-0.6340056</td>
-<td style="text-align: right;">-1.8726179</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.7543591</td>
-<td style="text-align: right;">1.3919586</td>
-<td style="text-align: right;">0.2904906</td>
-<td style="text-align: right;">0.3718984</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.9301204</td>
-<td style="text-align: right;">1.1894058</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">-0.3139260</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.4172608</td>
-<td style="text-align: right;">0.1766415</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-0.6880121</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.2781323</td>
-<td style="text-align: right;">0.9868529</td>
-<td style="text-align: right;">-0.3495452</td>
-<td style="text-align: right;">-0.8127074</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.2890459</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">-0.3495452</td>
-<td style="text-align: right;">-0.8750551</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.2781323</td>
-<td style="text-align: right;">0.3791944</td>
-<td style="text-align: right;">-0.3495452</td>
-<td style="text-align: right;">-0.6568382</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.2598159</td>
-<td style="text-align: right;">0.6830236</td>
-<td style="text-align: right;">0.0060302</td>
-<td style="text-align: right;">0.3095507</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.1316010</td>
-<td style="text-align: right;">0.3791944</td>
-<td style="text-align: right;">-0.7762357</td>
-<td style="text-align: right;">-0.9997504</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.9301204</td>
-<td style="text-align: right;">1.2400440</td>
-<td style="text-align: right;">0.7882962</td>
-<td style="text-align: right;">0.1225077</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.3880308</td>
-<td style="text-align: right;">0.7843001</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-1.1867934</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0766517</td>
-<td style="text-align: right;">0.0753651</td>
-<td style="text-align: right;">-0.2073150</td>
-<td style="text-align: right;">-0.6568382</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.7652727</td>
-<td style="text-align: right;">-0.3803789</td>
-<td style="text-align: right;">-0.1361999</td>
-<td style="text-align: right;">-1.0932719</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.3697144</td>
-<td style="text-align: right;">0.9362147</td>
-<td style="text-align: right;">0.0060302</td>
-<td style="text-align: right;">-0.3139260</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.3256787</td>
-<td style="text-align: right;">0.0753651</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-0.7503597</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.2414994</td>
-<td style="text-align: right;">1.2906822</td>
-<td style="text-align: right;">0.1482604</td>
-<td style="text-align: right;">-0.1892307</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.2604466</td>
-<td style="text-align: right;">0.0753651</td>
-<td style="text-align: right;">-0.9895810</td>
-<td style="text-align: right;">-1.0620981</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.5162457</td>
-<td style="text-align: right;">0.8349383</td>
-<td style="text-align: right;">-0.2784301</td>
-<td style="text-align: right;">-0.9374027</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.2340966</td>
-<td style="text-align: right;">-0.2791024</td>
-<td style="text-align: right;">-0.7051206</td>
-<td style="text-align: right;">-1.1867934</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.9850696</td>
-<td style="text-align: right;">1.3919586</td>
-<td style="text-align: right;">0.1482604</td>
-<td style="text-align: right;">-0.1892307</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.1499174</td>
-<td style="text-align: right;">0.8349383</td>
-<td style="text-align: right;">0.0771453</td>
-<td style="text-align: right;">-0.5009690</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.3073623</td>
-<td style="text-align: right;">1.1387676</td>
-<td style="text-align: right;">-0.4917754</td>
-<td style="text-align: right;">-0.8438812</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.4612964</td>
-<td style="text-align: right;">1.1894058</td>
-<td style="text-align: right;">0.3616057</td>
-<td style="text-align: right;">-0.3139260</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.5271593</td>
-<td style="text-align: right;">-0.3297407</td>
-<td style="text-align: right;">-0.8473508</td>
-<td style="text-align: right;">-0.6880121</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.3256787</td>
-<td style="text-align: right;">-0.0765496</td>
-<td style="text-align: right;">-0.4206603</td>
-<td style="text-align: right;">-0.6880121</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2.1756366</td>
-<td style="text-align: right;">1.3413204</td>
-<td style="text-align: right;">0.4327208</td>
-<td style="text-align: right;">-0.2515783</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-0.0772824</td>
-<td style="text-align: right;">0.4804708</td>
-<td style="text-align: right;">0.0771453</td>
-<td style="text-align: right;">-0.9997504</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0400189</td>
-<td style="text-align: right;">0.5311090</td>
-<td style="text-align: right;">-0.5628905</td>
-<td style="text-align: right;">-0.5321429</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.2598159</td>
-<td style="text-align: right;">0.9362147</td>
-<td style="text-align: right;">0.6460660</td>
-<td style="text-align: right;">-0.1268830</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.1499174</td>
-<td style="text-align: right;">0.7843001</td>
-<td style="text-align: right;">-0.2073150</td>
-<td style="text-align: right;">-0.5321429</td>
-</tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
 <p>It’s maybe more succint to put the z-value computation in its function, and then just apply this function:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-10_d3ebca469bf3e6417cda22cfbb77218e">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>z_stand <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-13_f13ab5640f3f2b377d5f1978327443fc">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>z_stand <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-11_7a34ef03f6582e227a378765d86a74c9">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> z_stand))</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-14_25fac674f4b632acf36e7e8d41235418">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> z_stand))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 9
@@ -2972,17 +1030,16 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 </section>
-</section>
-<section id="rowwise-operations" class="level3" data-number="3.7.3">
-<h3 data-number="3.7.3" class="anchored" data-anchor-id="rowwise-operations"><span class="header-section-number">3.7.3</span> Rowwise operations</h3>
+<section id="rowwise-operations" class="level4" data-number="3.7.2.2">
+<h4 data-number="3.7.2.2" class="anchored" data-anchor-id="rowwise-operations"><span class="header-section-number">3.7.2.2</span> Rowwise operations</h4>
 <p>For technical reasons, it’s a bit cumbersome in (base) R to compute rowwise operations. The thing is, R’s dataframes are organized as vectors of <em>columns</em> so it’s much easier to do stuff columnwise.</p>
 <p>However, since recently, computing rowwise operations with the tidyverse has become simpler. Consider the following example. Say we would like to know the highest z-value for each variable we just computed, that is the highest values <em>per individual</em>, ie., by row in the data frame.</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-12_774d3dfd8f06bd05e2817b4e3d7d508a">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">max_z =</span> <span class="fu">max</span>(<span class="fu">c</span>(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g))) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-15_5a44817c1572357524406907f4369d3e">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">max_z =</span> <span class="fu">max</span>(<span class="fu">c</span>(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g))) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped">
@@ -3092,8 +1149,125 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </section>
 </section>
-<section id="case-study" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="case-study"><span class="header-section-number">3.8</span> Case Study</h2>
+</section>
+<section id="exporting-to-office" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="exporting-to-office"><span class="header-section-number">3.8</span> Exporting to Office</h2>
+<section id="excel" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="excel"><span class="header-section-number">3.8.1</span> Excel</h3>
+<p>The most straightforward approach is to convince your EDA function to produce a data frame. Data frames can be written as CSV or XLSX to disk, and then easily imported to office packages.</p>
+<p><code>easystats</code> and <code>tidyverse</code> are two examples where this happens.</p>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-16_311d9415aa3418b833531df578b9d4f5">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">describe_distribution</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, <code>df1</code> is a data frame:</p>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-17_4a2763ef0667ef5e2c158c384d0c3655">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Classes 'parameters_distribution', 'see_parameters_distribution' and 'data.frame':  11 obs. of  10 variables:
+ $ Variable : chr  "mpg" "cyl" "disp" "hp" ...
+ $ Mean     : num  20.09 6.19 230.72 146.69 3.6 ...
+ $ SD       : num  6.027 1.786 123.939 68.563 0.535 ...
+ $ IQR      : num  7.53 4 221.53 84.5 0.84 ...
+ $ Min      : num  10.4 4 71.1 52 2.76 ...
+ $ Max      : num  33.9 8 472 335 4.93 ...
+ $ Skewness : num  0.672 -0.192 0.42 0.799 0.293 ...
+ $ Kurtosis : num  -0.022 -1.763 -1.068 0.275 -0.45 ...
+ $ n        : int  32 32 32 32 32 32 32 32 32 32 ...
+ $ n_Missing: int  0 0 0 0 0 0 0 0 0 0 ...
+ - attr(*, "object_name")= chr "mtcars"
+ - attr(*, "threshold")= num 0.1</code></pre>
+</div>
+</div>
+<p>Let’s export as XLSX (via the R package <code>rio</code>) and as CSV:</p>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-18_39b05e91bbda54716e6ff1de6d0d4af5">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.xlsx"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For exporting <code>csv</code> files we could also use <code>write_csv()</code> from the tidyverse or <code>write.csv</code> from base R.</p>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-19_862493b4eaa7ccfc9d9fa5e838a94959">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars<span class="sc">$</span>am)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Classes 'dw_data_tabulate' and 'data.frame':    3 obs. of  6 variables:
+ $ Variable    : chr  "mtcars$am" "mtcars$am" "mtcars$am"
+ $ Value       : Factor w/ 2 levels "0","1": 1 2 NA
+ $ N           : int  19 13 0
+ $ Raw %       : num  59.4 40.6 0
+ $ Valid %     : num  59.4 40.6 NA
+ $ Cumulative %: num  59.4 100 NA
+ - attr(*, "type")= chr "numeric"
+ - attr(*, "object")= chr "mtcars$am"
+ - attr(*, "duplicate_varnames")= logi [1:3] FALSE TRUE TRUE
+ - attr(*, "total_n")= int 32
+ - attr(*, "valid_n")= int 32</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-20_6399da51a8a6595057d8eacb8de1eb36">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df2, <span class="at">file =</span> <span class="st">"df2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that if we use <code>data_tabulate</code> like this:</p>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-21_ef0f031b84fac9d57d4cec4012df68dc">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"am"</span>, <span class="st">"vs"</span>))</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 2
+ $ :Classes 'dw_data_tabulate' and 'data.frame':    3 obs. of  6 variables:
+  ..$ Variable    : chr [1:3] "am" "am" "am"
+  ..$ Value       : Factor w/ 2 levels "0","1": 1 2 NA
+  ..$ N           : int [1:3] 19 13 0
+  ..$ Raw %       : num [1:3] 59.4 40.6 0
+  ..$ Valid %     : num [1:3] 59.4 40.6 NA
+  ..$ Cumulative %: num [1:3] 59.4 100 NA
+  ..- attr(*, "type")= chr "numeric"
+  ..- attr(*, "varname")= chr "am"
+  ..- attr(*, "object")= chr "am"
+  ..- attr(*, "duplicate_varnames")= logi [1:3] FALSE TRUE TRUE
+  ..- attr(*, "total_n")= int 32
+  ..- attr(*, "valid_n")= int 32
+ $ :Classes 'dw_data_tabulate' and 'data.frame':    3 obs. of  6 variables:
+  ..$ Variable    : chr [1:3] "vs" "vs" "vs"
+  ..$ Value       : Factor w/ 2 levels "0","1": 1 2 NA
+  ..$ N           : int [1:3] 18 14 0
+  ..$ Raw %       : num [1:3] 56.2 43.8 0
+  ..$ Valid %     : num [1:3] 56.2 43.8 NA
+  ..$ Cumulative %: num [1:3] 56.2 100 NA
+  ..- attr(*, "type")= chr "numeric"
+  ..- attr(*, "varname")= chr "vs"
+  ..- attr(*, "object")= chr "vs"
+  ..- attr(*, "duplicate_varnames")= logi [1:3] FALSE TRUE TRUE
+  ..- attr(*, "total_n")= int 32
+  ..- attr(*, "valid_n")= int 32
+ - attr(*, "class")= chr [1:2] "dw_data_tabulates" "list"
+ - attr(*, "collapse")= logi FALSE</code></pre>
+</div>
+</div>
+<p>We’ll get a <em>list</em> of two data frames.</p>
+<p>To export either, we need to access each list list element:</p>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-22_421f0386ac5c345c3cd71d5237b50152">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df3[[<span class="dv">1</span>]], <span class="at">file =</span> <span class="st">"df3.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="word" class="level3" data-number="3.8.2">
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="word"><span class="header-section-number">3.8.2</span> Word</h3>
+<p>Obviously, once your data has arriven as a spreadsheet in Excel (or similar software packages), it’s no big deal to get it into Word processors as well.</p>
+<p>In addition, one <a href="https://stackoverflow.com/questions/60815583/how-to-save-table1-package-output-table-to-doc-format-r">user gave the following recommendation on StackOverflow</a>:</p>
+<blockquote class="blockquote">
+<p>Another possible solution: The above strategy did not work for me when I had a similar issue, but it was resolved once I knitted the table1 object and opened the html in browser to copy the html table and successfully paste into word. Doing it within RStudio viewer would not work for me for some reason.</p>
+</blockquote>
+<p>Lastly, there are options to export directly to Word or Powerpoint. The R package <code>flextable</code> provides functions for that purpose:</p>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-23_3bc583d5cd13c8f80ad1cb4a68b3e064">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>my_flex_tab <span class="ot">&lt;-</span> <span class="fu">flextable</span>(penguins)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_docx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.docx"</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_pptx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.pptx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="case-study" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="case-study"><span class="header-section-number">3.9</span> Case Study</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/palmerpenguins-logo.png" class="img-fluid figure-img" style="width:20.0%"></p>
@@ -3104,8 +1278,8 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>There’s a great <a href="https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome">interactive course on EDA based on the penguins</a>. Have a look, it’s great!</p>
 <p><a href="https://media.giphy.com/media/3og0IO5z8Rd30ktV6g/giphy.gif" width="50%">Go penguins! Allez!</a></p>
 </section>
-<section id="cheatsheets" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="cheatsheets"><span class="header-section-number">3.9</span> Cheatsheets</h2>
+<section id="cheatsheets" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="cheatsheets"><span class="header-section-number">3.10</span> Cheatsheets</h2>
 <p>There are a number of nice cheat sheets <a href="https://www.rstudio.com/resources/cheatsheets/">available on an array of topics related to EDA</a>, made available by the folks at RStudio.</p>
 <p>Consider this collection:</p>
 <ul>
@@ -3116,8 +1290,8 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </ul>
 <p>So much great stuff! A bit too much to digest in one go, but definitely worthwhile if you plan to dig deeper in data analysis.</p>
 </section>
-<section id="literature" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="literature"><span class="header-section-number">3.10</span> Literature</h2>
+<section id="literature" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="literature"><span class="header-section-number">3.11</span> Literature</h2>
 <p><span class="citation" data-cites="r4ds">Wickham and Grolemund (<a href="references.html#ref-r4ds" role="doc-biblioref">2016</a>)</span> is an highly recommendable resource in order to get a thorough understanding of data analysis using R. Note that this source is focusing on the “how to”, not so much to theoretical foundations. <span class="citation" data-cites="ismay_statistical_2020">Ismay and Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span> is a gently introduction into many steps on the data journey, including EDA.</p>
 
 

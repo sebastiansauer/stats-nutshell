@@ -14,9 +14,11 @@ editor_options:
 ```{r}
 #| message: false
 #| warning: false
-library(easystats)
-library(tidyverse)
+library(easystats)  # make stats easy again
+library(tidyverse)  # data wrangling
+library(tableone)  # tables
 library(rstanarm)  # optional!
+library(rio)  # import/export data, eg., to excel
 ```
 
 
@@ -141,6 +143,38 @@ For example, [here's the function reference site](https://easystats.github.io/da
 
 
 
+### TableOne
+
+The [R package `{tableOne}`](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html) provides something like the typical "Table One" in many papers.
+
+
+From the homepage:
+
+>   The tableone package is an R package that eases the construction of “Table 1”, i.e., patient baseline characteristics table commonly found in biomedical research papers. The packages can summarize both continuous and categorical variables mixed within one table. Categorical variables can be summarized as counts and/or percentages. Continuous variables can be summarized in the “normal” way (means and standard deviations) or “nonnormal” way (medians and interquartile ranges).
+
+
+```{r}
+penguins <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
+```
+
+
+It's quite simple to use:
+
+```{r}
+CreateTableOne(data = penguins)
+```
+
+
+To get more detailled results, use the `summary` method:
+
+```{r}
+tab1 <- CreateTableOne(data = penguins)
+summary(tab1)
+```
+
+
+
+
 
 ## Tidyverse
 
@@ -211,7 +245,8 @@ But for the purpose of illustration, let's do it with more simple means, i.e. ti
 d %>% 
   transmute(across(bill_length_mm:body_mass_g, 
                 .fns = ~ {(.x - mean(.x, na.rm = TRUE)) / sd(.x, na.rm = TRUE)},
-                .names = "{.col}_z"))
+                .names = "{.col}_z")) %>% 
+  head()
 ```
 
 
@@ -235,7 +270,7 @@ d2 %>%
 ```
 
 
-### Rowwise operations
+#### Rowwise operations
 
 
 For technical reasons, it's a bit cumbersome in (base) R to compute rowwise operations. 
@@ -252,6 +287,103 @@ d2 %>%
   rowwise() %>% 
   mutate(max_z = max(c(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g))) %>% 
   head()
+```
+
+
+
+## Exporting to Office
+
+
+### Excel
+
+The most straightforward approach is to convince your EDA function to produce a data frame.
+Data frames can be written as CSV or XLSX to disk, and then easily imported to office packages.
+
+`easystats` and `tidyverse` are two examples where this happens.
+
+
+```{r}
+df1 <- describe_distribution(mtcars)
+```
+
+Now, `df1` is a data frame:
+
+```{r}
+str(df1)
+```
+
+
+Let's export as XLSX (via the R package `rio`) and as CSV:
+
+
+
+```{r}
+#| eval: false
+export(df1, file = "df1.xlsx")
+export(df1, file = "df1.csv")
+```
+
+
+For exporting `csv` files we could also use `write_csv()` from the tidyverse or `write.csv` from base R.
+
+
+```{r}
+df2 <- data_tabulate(mtcars$am)
+str(df2)
+```
+
+
+```{r}
+#| eval: false
+export(df2, file = "df2.csv")
+```
+
+
+Note that if we use `data_tabulate` like this:
+
+```{r}
+df3 <- data_tabulate(mtcars, select = c("am", "vs"))
+
+df3 %>% str()
+```
+
+
+We'll get a *list* of two data frames.
+
+To export either, we need to access each list list element:
+
+```{r}
+#| eval: false
+export(df3[[1]], file = "df3.csv")
+```
+
+
+
+### Word
+
+
+Obviously, once your data has arriven as a spreadsheet in Excel (or similar software packages),
+it's no big deal to get it into Word processors as well.
+
+In addition, one [user gave the following recommendation on StackOverflow](https://stackoverflow.com/questions/60815583/how-to-save-table1-package-output-table-to-doc-format-r):
+
+
+>   Another possible solution: The above strategy did not work for me when I had a similar issue, but it was resolved once I knitted the table1 object and opened the html in browser to copy the html table and successfully paste into word. Doing it within RStudio viewer would not work for me for some reason.
+
+
+Lastly, there are options to export directly to Word or Powerpoint.
+The R package `flextable` provides functions for that purpose:
+
+
+
+```{r}
+#| eval: false
+library(flextable)
+my_flex_tab <- flextable(penguins)
+
+save_as_docx("Table 1 " = my_flex_tab, path = "my_tab.docx")
+
+save_as_pptx("Table 1 " = my_flex_tab, path = "my_tab.pptx")
 ```
 
 

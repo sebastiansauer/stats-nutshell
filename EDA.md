@@ -5,7 +5,6 @@ editor_options:
 ---
 
 
-
 # Exploratory Data Analysis
 
 ![](img/stern.png){width="5%"}
@@ -15,16 +14,16 @@ editor_options:
 ## R packages needed for this chapter
 
 
-
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-1_431d269fc5bf37acc77b746e1e7b09cc'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-1_6079e5ce64c5b66417274007c37270f5'}
 
 ```{.r .cell-code}
-library(easystats)
-library(tidyverse)
+library(easystats)  # make stats easy again
+library(tidyverse)  # data wrangling
+library(tableone)  # tables
 library(rstanarm)  # optional!
+library(rio)  # import/export data, eg., to excel
 ```
 :::
-
 
 
 
@@ -114,33 +113,33 @@ A bit similar to {DataExplorer}, the [R package {vtree}](https://nbarrowman.gith
 There are some packages, such as `{easystats}`, which provide comfortable access to basic statistics:
 
 
-
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-2_f3fdfb14a69495e6e192ae18101fcca1'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-2_aec71c1ba93ceb55fcc7ef1e05d0c8bc'}
 
 ```{.r .cell-code}
 library(easystats)  # once per session
 describe_distribution(mtcars)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-Variable |   Mean |     SD |    IQR |           Range | Skewness | Kurtosis |  n | n_Missing
---------------------------------------------------------------------------------------------
-mpg      |  20.09 |   6.03 |   7.53 |  [10.40, 33.90] |     0.67 |    -0.02 | 32 |         0
-cyl      |   6.19 |   1.79 |   4.00 |    [4.00, 8.00] |    -0.19 |    -1.76 | 32 |         0
-disp     | 230.72 | 123.94 | 221.53 | [71.10, 472.00] |     0.42 |    -1.07 | 32 |         0
-hp       | 146.69 |  68.56 |  84.50 | [52.00, 335.00] |     0.80 |     0.28 | 32 |         0
-drat     |   3.60 |   0.53 |   0.84 |    [2.76, 4.93] |     0.29 |    -0.45 | 32 |         0
-wt       |   3.22 |   0.98 |   1.19 |    [1.51, 5.42] |     0.47 |     0.42 | 32 |         0
-qsec     |  17.85 |   1.79 |   2.02 |  [14.50, 22.90] |     0.41 |     0.86 | 32 |         0
-vs       |   0.44 |   0.50 |   1.00 |    [0.00, 1.00] |     0.26 |    -2.06 | 32 |         0
-am       |   0.41 |   0.50 |   1.00 |    [0.00, 1.00] |     0.40 |    -1.97 | 32 |         0
-gear     |   3.69 |   0.74 |   1.00 |    [3.00, 5.00] |     0.58 |    -0.90 | 32 |         0
-carb     |   2.81 |   1.62 |   2.00 |    [1.00, 8.00] |     1.16 |     2.02 | 32 |         0
-```
-:::
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
+|Variable |       Mean|          SD|       IQR|    Min|     Max|   Skewness|   Kurtosis|  n| n_Missing|
+|:--------|----------:|-----------:|---------:|------:|-------:|----------:|----------:|--:|---------:|
+|mpg      |  20.090625|   6.0269481|   7.52500| 10.400|  33.900|  0.6723771| -0.0220063| 32|         0|
+|cyl      |   6.187500|   1.7859216|   4.00000|  4.000|   8.000| -0.1922609| -1.7627939| 32|         0|
+|disp     | 230.721875| 123.9386938| 221.52500| 71.100| 472.000|  0.4202331| -1.0675234| 32|         0|
+|hp       | 146.687500|  68.5628685|  84.50000| 52.000| 335.000|  0.7994067|  0.2752116| 32|         0|
+|drat     |   3.596563|   0.5346787|   0.84000|  2.760|   4.930|  0.2927802| -0.4504325| 32|         0|
+|wt       |   3.217250|   0.9784574|   1.18625|  1.513|   5.424|  0.4659161|  0.4165947| 32|         0|
+|qsec     |  17.848750|   1.7869432|   2.02250| 14.500|  22.900|  0.4063466|  0.8649307| 32|         0|
+|vs       |   0.437500|   0.5040161|   1.00000|  0.000|   1.000|  0.2645418| -2.0632731| 32|         0|
+|am       |   0.406250|   0.4989909|   1.00000|  0.000|   1.000|  0.4008089| -1.9665503| 32|         0|
+|gear     |   3.687500|   0.7378041|   1.00000|  3.000|   5.000|  0.5823086| -0.8952916| 32|         0|
+|carb     |   2.812500|   1.6152000|   2.00000|  1.000|   8.000|  1.1570911|  2.0200593| 32|         0|
+
+</div>
+:::
+:::
 
 
 
@@ -150,8 +149,7 @@ carb     |   2.81 |   1.62 |   2.00 |    [1.00, 8.00] |     1.16 |     2.02 | 32
 For nominal variables, consider `data_tabulate`:
 
 
-
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-3_2b9091cc3e2b49589785e3c2d120e817'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-3_7ed716191172d307da328d7876b10cd0'}
 
 ```{.r .cell-code}
 data_tabulate(mtcars, select = c("am", "vs"))
@@ -182,14 +180,12 @@ Value |  N | Raw % | Valid % | Cumulative %
 
 
 
-
 We can also get *grouped* tabulations,
 which amounts to something similar to a [contingency table](https://en.wikipedia.org/wiki/Contingency_table):
 
 
 
-
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-4_377d7803cdf903320b4888ed1f00224a'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-4_1e6710c7a4618c94812017b1dc0fb240'}
 
 ```{.r .cell-code}
 mtcars %>% 
@@ -219,11 +215,121 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
 
 
 
-
 :::{callout-note}
 Checkout the function reference of your favorite package in order to learn what's on the shelf.
 For example, [here's the function reference site](https://easystats.github.io/datawizard/reference/index.html) of `datawizard`, one of the packages in the `easystats` ecosystem.
 ::::
+
+
+
+### TableOne
+
+The [R package `{tableOne}`](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html) provides something like the typical "Table One" in many papers.
+
+
+From the homepage:
+
+>   The tableone package is an R package that eases the construction of “Table 1”, i.e., patient baseline characteristics table commonly found in biomedical research papers. The packages can summarize both continuous and categorical variables mixed within one table. Categorical variables can be summarized as counts and/or percentages. Continuous variables can be summarized in the “normal” way (means and standard deviations) or “nonnormal” way (medians and interquartile ranges).
+
+
+
+::: {.cell hash='EDA_cache/html/unnamed-chunk-5_e1f3478568ec602eb0c4a272e7dbaaf2'}
+
+```{.r .cell-code}
+penguins <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
+```
+:::
+
+
+
+It's quite simple to use:
+
+
+::: {.cell hash='EDA_cache/html/unnamed-chunk-6_ac78d48410aa7b7d73fb3158679882f4'}
+
+```{.r .cell-code}
+CreateTableOne(data = penguins)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+                               
+                                Overall         
+  n                                 344         
+  X (mean (SD))                  172.50 (99.45) 
+  species (%)                                   
+     Adelie                         152 (44.2)  
+     Chinstrap                       68 (19.8)  
+     Gentoo                         124 (36.0)  
+  island (%)                                    
+     Biscoe                         168 (48.8)  
+     Dream                          124 (36.0)  
+     Torgersen                       52 (15.1)  
+  bill_length_mm (mean (SD))      43.92 (5.46)  
+  bill_depth_mm (mean (SD))       17.15 (1.97)  
+  flipper_length_mm (mean (SD))  200.92 (14.06) 
+  body_mass_g (mean (SD))       4201.75 (801.95)
+  sex = male (%)                    168 (50.5)  
+  year (mean (SD))              2008.03 (0.82)  
+```
+:::
+:::
+
+
+
+To get more detailled results, use the `summary` method:
+
+
+::: {.cell hash='EDA_cache/html/unnamed-chunk-7_053fbe311e825a6dc5057c0bbaff35ca'}
+
+```{.r .cell-code}
+tab1 <- CreateTableOne(data = penguins)
+summary(tab1)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+
+     ### Summary of continuous variables ###
+
+strata: Overall
+                    n miss p.miss mean    sd median  p25  p75  min  max  skew
+X                 344    0    0.0  172  99.4    172   87  258    1  344  0.00
+bill_length_mm    344    2    0.6   44   5.5     44   39   48   32   60  0.05
+bill_depth_mm     344    2    0.6   17   2.0     17   16   19   13   22 -0.14
+flipper_length_mm 344    2    0.6  201  14.1    197  190  213  172  231  0.35
+body_mass_g       344    2    0.6 4202 802.0   4050 3550 4750 2700 6300  0.47
+year              344    0    0.0 2008   0.8   2008 2007 2009 2007 2009 -0.05
+                  kurt
+X                 -1.2
+bill_length_mm    -0.9
+bill_depth_mm     -0.9
+flipper_length_mm -1.0
+body_mass_g       -0.7
+year              -1.5
+
+=======================================================================================
+
+     ### Summary of categorical variables ### 
+
+strata: Overall
+     var   n miss p.miss     level freq percent cum.percent
+ species 344    0    0.0    Adelie  152    44.2        44.2
+                         Chinstrap   68    19.8        64.0
+                            Gentoo  124    36.0       100.0
+                                                           
+  island 344    0    0.0    Biscoe  168    48.8        48.8
+                             Dream  124    36.0        84.9
+                         Torgersen   52    15.1       100.0
+                                                           
+     sex 344   11    3.2    female  165    49.5        49.5
+                              male  168    50.5       100.0
+                                                           
+```
+:::
+:::
+
+
 
 
 
@@ -252,8 +358,7 @@ At times, we would like to compute the same functions for many variables, ie col
 Let's load the penguins data for illustration.
 
 
-
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-5_ab7d86234658a50d716a2b200aebfa17'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-8_9c5cb99ec8d24ceb9bfa5dc32c3a17f3'}
 
 ```{.r .cell-code}
 d <- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
@@ -261,23 +366,21 @@ d <- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins
 head(d)
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-# A tibble: 6 x 9
-   ...1 species island    bill_length_mm bill_dept~1 flipp~2 body_~3 sex    year
-  <dbl> <chr>   <chr>              <dbl>       <dbl>   <dbl>   <dbl> <chr> <dbl>
-1     1 Adelie  Torgersen           39.1        18.7     181    3750 male   2007
-2     2 Adelie  Torgersen           39.5        17.4     186    3800 fema~  2007
-3     3 Adelie  Torgersen           40.3        18       195    3250 fema~  2007
-4     4 Adelie  Torgersen           NA          NA        NA      NA <NA>   2007
-5     5 Adelie  Torgersen           36.7        19.3     193    3450 fema~  2007
-6     6 Adelie  Torgersen           39.3        20.6     190    3650 male   2007
-# ... with abbreviated variable names 1: bill_depth_mm, 2: flipper_length_mm,
-#   3: body_mass_g
-```
-:::
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
+| ...1|species |island    | bill_length_mm| bill_depth_mm| flipper_length_mm| body_mass_g|sex    | year|
+|----:|:-------|:---------|--------------:|-------------:|-----------------:|-----------:|:------|----:|
+|    1|Adelie  |Torgersen |           39.1|          18.7|               181|        3750|male   | 2007|
+|    2|Adelie  |Torgersen |           39.5|          17.4|               186|        3800|female | 2007|
+|    3|Adelie  |Torgersen |           40.3|          18.0|               195|        3250|female | 2007|
+|    4|Adelie  |Torgersen |             NA|            NA|                NA|          NA|NA     | 2007|
+|    5|Adelie  |Torgersen |           36.7|          19.3|               193|        3450|female | 2007|
+|    6|Adelie  |Torgersen |           39.3|          20.6|               190|        3650|male   | 2007|
+
+</div>
+:::
+:::
 
 
 
@@ -285,48 +388,46 @@ Say, we would like to compute the mean value for each numeric variable in the da
 
 
 
-
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-6_0f79885fa2a6b112be3d21d22065d69d'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-9_edaaf29be7067282662be2c029a58835'}
 
 ```{.r .cell-code}
 d %>% 
   summarise(across(bill_length_mm:body_mass_g, mean, na.rm = TRUE))
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-# A tibble: 1 x 4
-  bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-           <dbl>         <dbl>             <dbl>       <dbl>
-1           43.9          17.2              201.       4202.
-```
-:::
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
+| bill_length_mm| bill_depth_mm| flipper_length_mm| body_mass_g|
+|--------------:|-------------:|-----------------:|-----------:|
+|       43.92193|      17.15117|          200.9152|    4201.754|
+
+</div>
+:::
+:::
 
 
 
 Synonymously, we could write:
 
 
-
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-7_5ad5da7219adcc7ff1e7886d3a6dd25b'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-10_fc59f8a3a6d73adbca9e4fb157a24f45'}
 
 ```{.r .cell-code}
 d %>% 
   summarise(across(where(is.numeric), ~ mean(.x, na.rm = TRUE)))
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-# A tibble: 1 x 6
-   ...1 bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year
-  <dbl>          <dbl>         <dbl>             <dbl>       <dbl> <dbl>
-1  172.           43.9          17.2              201.       4202. 2008.
-```
-:::
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
+|  ...1| bill_length_mm| bill_depth_mm| flipper_length_mm| body_mass_g|     year|
+|-----:|--------------:|-------------:|-----------------:|-----------:|--------:|
+| 172.5|       43.92193|      17.15117|          200.9152|    4201.754| 2008.029|
+
+</div>
+:::
+:::
 
 
 
@@ -336,8 +437,7 @@ Addmittedly, `easystats` makes it quite simple:
 
 
 
-
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-8_86e7a22ecf6d85226216f00a6eae441a'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-11_02cc84d5aa2e9df1dd350484823abe18'}
 
 ```{.r .cell-code}
 d %>% 
@@ -345,23 +445,21 @@ d %>%
   head()
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-# A tibble: 6 x 9
-   ...1 species island    bill_length_mm bill_dept~1 flipp~2 body_~3 sex    year
-  <dbl> <chr>   <chr>              <dbl>       <dbl>   <dbl>   <dbl> <chr> <dbl>
-1 -1.72 Adelie  Torgersen         -0.883       0.784  -1.42   -0.563 male  -1.26
-2 -1.71 Adelie  Torgersen         -0.810       0.126  -1.06   -0.501 fema~ -1.26
-3 -1.70 Adelie  Torgersen         -0.663       0.430  -0.421  -1.19  fema~ -1.26
-4 -1.69 Adelie  Torgersen         NA          NA      NA      NA     <NA>  -1.26
-5 -1.68 Adelie  Torgersen         -1.32        1.09   -0.563  -0.937 fema~ -1.26
-6 -1.67 Adelie  Torgersen         -0.847       1.75   -0.776  -0.688 male  -1.26
-# ... with abbreviated variable names 1: bill_depth_mm, 2: flipper_length_mm,
-#   3: body_mass_g
-```
-:::
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
+|      ...1|species |island    | bill_length_mm| bill_depth_mm| flipper_length_mm| body_mass_g|sex    |      year|
+|---------:|:-------|:---------|--------------:|-------------:|-----------------:|-----------:|:------|---------:|
+| -1.724511|Adelie  |Torgersen |     -0.8832047|     0.7843001|        -1.4162715|  -0.5633167|male   | -1.257484|
+| -1.714456|Adelie  |Torgersen |     -0.8099390|     0.1260033|        -1.0606961|  -0.5009690|female | -1.257484|
+| -1.704400|Adelie  |Torgersen |     -0.6634077|     0.4298326|        -0.4206603|  -1.1867934|female | -1.257484|
+| -1.694345|Adelie  |Torgersen |             NA|            NA|                NA|          NA|NA     | -1.257484|
+| -1.684289|Adelie  |Torgersen |     -1.3227986|     1.0881294|        -0.5628905|  -0.9374027|female | -1.257484|
+| -1.674234|Adelie  |Torgersen |     -0.8465718|     1.7464261|        -0.7762357|  -0.6880121|male   | -1.257484|
+
+</div>
+:::
+:::
 
 
 
@@ -372,44 +470,38 @@ But for the purpose of illustration, let's do it with more simple means, i.e. ti
 
 
 
-
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-9_126632baca152d41cb607b118549c3d3'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-12_e2cc7a54ffd4d4fc40c4d75d86a85e6e'}
 
 ```{.r .cell-code}
 d %>% 
   transmute(across(bill_length_mm:body_mass_g, 
                 .fns = ~ {(.x - mean(.x, na.rm = TRUE)) / sd(.x, na.rm = TRUE)},
-                .names = "{.col}_z"))
+                .names = "{.col}_z")) %>% 
+  head()
 ```
 
-::: {.cell-output .cell-output-stdout}
-```
-# A tibble: 344 x 4
-   bill_length_mm_z bill_depth_mm_z flipper_length_mm_z body_mass_g_z
-              <dbl>           <dbl>               <dbl>         <dbl>
- 1           -0.883           0.784              -1.42        -0.563 
- 2           -0.810           0.126              -1.06        -0.501 
- 3           -0.663           0.430              -0.421       -1.19  
- 4           NA              NA                  NA           NA     
- 5           -1.32            1.09               -0.563       -0.937 
- 6           -0.847           1.75               -0.776       -0.688 
- 7           -0.920           0.329              -1.42        -0.719 
- 8           -0.865           1.24               -0.421        0.590 
- 9           -1.80            0.480              -0.563       -0.906 
-10           -0.352           1.54               -0.776        0.0602
-# ... with 334 more rows
-```
-:::
-:::
+::: {.cell-output-display}
+<div class="kable-table">
 
+| bill_length_mm_z| bill_depth_mm_z| flipper_length_mm_z| body_mass_g_z|
+|----------------:|---------------:|-------------------:|-------------:|
+|       -0.8832047|       0.7843001|          -1.4162715|    -0.5633167|
+|       -0.8099390|       0.1260033|          -1.0606961|    -0.5009690|
+|       -0.6634077|       0.4298326|          -0.4206603|    -1.1867934|
+|               NA|              NA|                  NA|            NA|
+|       -1.3227986|       1.0881294|          -0.5628905|    -0.9374027|
+|       -0.8465718|       1.7464261|          -0.7762357|    -0.6880121|
+
+</div>
+:::
+:::
 
 
 
 It's maybe more succint to put the z-value computation in its function, and then just apply this function:
 
 
-
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-10_32a44461ebbf4a0f3329d9a2f134be62'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-13_f13ab5640f3f2b377d5f1978327443fc'}
 
 ```{.r .cell-code}
 z_stand <- function(x){
@@ -418,7 +510,7 @@ z_stand <- function(x){
 ```
 :::
 
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-11_972f0daa2aa21f19e4290cb88863a717'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-14_25fac674f4b632acf36e7e8d41235418'}
 
 ```{.r .cell-code}
 d2 <-
@@ -434,23 +526,22 @@ d2 %>%
 ```
 Rows: 344
 Columns: 9
-$ ...1              <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1~
-$ species           <chr> "Adelie", "Adelie", "Adelie", "Adelie", "Adelie", "A~
-$ island            <chr> "Torgersen", "Torgersen", "Torgersen", "Torgersen", ~
-$ bill_length_mm    <dbl> -0.8832047, -0.8099390, -0.6634077, NA, -1.3227986, ~
-$ bill_depth_mm     <dbl> 0.78430007, 0.12600328, 0.42983257, NA, 1.08812936, ~
-$ flipper_length_mm <dbl> -1.4162715, -1.0606961, -0.4206603, NA, -0.5628905, ~
-$ body_mass_g       <dbl> -0.563316704, -0.500969030, -1.186793445, NA, -0.937~
-$ sex               <chr> "male", "female", "female", NA, "female", "male", "f~
-$ year              <dbl> 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007~
+$ ...1              <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
+$ species           <chr> "Adelie", "Adelie", "Adelie", "Adelie", "Adelie", "A…
+$ island            <chr> "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
+$ bill_length_mm    <dbl> -0.8832047, -0.8099390, -0.6634077, NA, -1.3227986, …
+$ bill_depth_mm     <dbl> 0.78430007, 0.12600328, 0.42983257, NA, 1.08812936, …
+$ flipper_length_mm <dbl> -1.4162715, -1.0606961, -0.4206603, NA, -0.5628905, …
+$ body_mass_g       <dbl> -0.563316704, -0.500969030, -1.186793445, NA, -0.937…
+$ sex               <chr> "male", "female", "female", NA, "female", "male", "f…
+$ year              <dbl> 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
 ```
 :::
 :::
 
 
 
-
-### Rowwise operations
+#### Rowwise operations
 
 
 For technical reasons, it's a bit cumbersome in (base) R to compute rowwise operations. 
@@ -462,8 +553,7 @@ Consider the following example. Say we would like to know the highest z-value fo
 
 
 
-
-::: {.cell hash='EDA_cache/pdf/unnamed-chunk-12_ba6cc72661da17bdb6a2892785cff8b4'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-15_5a44817c1572357524406907f4369d3e'}
 
 ```{.r .cell-code}
 d2 %>% 
@@ -473,24 +563,220 @@ d2 %>%
   head()
 ```
 
+::: {.cell-output-display}
+<div class="kable-table">
+
+| ...1|species |island    | bill_length_mm| bill_depth_mm| flipper_length_mm| body_mass_g|sex    | year|     max_z|
+|----:|:-------|:---------|--------------:|-------------:|-----------------:|-----------:|:------|----:|---------:|
+|    1|Adelie  |Torgersen |     -0.8832047|     0.7843001|        -1.4162715|  -0.5633167|male   | 2007| 0.7843001|
+|    2|Adelie  |Torgersen |     -0.8099390|     0.1260033|        -1.0606961|  -0.5009690|female | 2007| 0.1260033|
+|    3|Adelie  |Torgersen |     -0.6634077|     0.4298326|        -0.4206603|  -1.1867934|female | 2007| 0.4298326|
+|    5|Adelie  |Torgersen |     -1.3227986|     1.0881294|        -0.5628905|  -0.9374027|female | 2007| 1.0881294|
+|    6|Adelie  |Torgersen |     -0.8465718|     1.7464261|        -0.7762357|  -0.6880121|male   | 2007| 1.7464261|
+|    7|Adelie  |Torgersen |     -0.9198375|     0.3285561|        -1.4162715|  -0.7191859|female | 2007| 0.3285561|
+
+</div>
+:::
+:::
+
+
+
+
+## Exporting to Office
+
+
+### Excel
+
+The most straightforward approach is to convince your EDA function to produce a data frame.
+Data frames can be written as CSV or XLSX to disk, and then easily imported to office packages.
+
+`easystats` and `tidyverse` are two examples where this happens.
+
+
+
+::: {.cell hash='EDA_cache/html/unnamed-chunk-16_311d9415aa3418b833531df578b9d4f5'}
+
+```{.r .cell-code}
+df1 <- describe_distribution(mtcars)
+```
+:::
+
+
+Now, `df1` is a data frame:
+
+
+::: {.cell hash='EDA_cache/html/unnamed-chunk-17_4a2763ef0667ef5e2c158c384d0c3655'}
+
+```{.r .cell-code}
+str(df1)
+```
+
 ::: {.cell-output .cell-output-stdout}
 ```
-# A tibble: 6 x 10
-# Rowwise: 
-   ...1 species island    bill_lengt~1 bill_~2 flipp~3 body_~4 sex    year max_z
-  <dbl> <chr>   <chr>            <dbl>   <dbl>   <dbl>   <dbl> <chr> <dbl> <dbl>
-1     1 Adelie  Torgersen       -0.883   0.784  -1.42   -0.563 male   2007 0.784
-2     2 Adelie  Torgersen       -0.810   0.126  -1.06   -0.501 fema~  2007 0.126
-3     3 Adelie  Torgersen       -0.663   0.430  -0.421  -1.19  fema~  2007 0.430
-4     5 Adelie  Torgersen       -1.32    1.09   -0.563  -0.937 fema~  2007 1.09 
-5     6 Adelie  Torgersen       -0.847   1.75   -0.776  -0.688 male   2007 1.75 
-6     7 Adelie  Torgersen       -0.920   0.329  -1.42   -0.719 fema~  2007 0.329
-# ... with abbreviated variable names 1: bill_length_mm, 2: bill_depth_mm,
-#   3: flipper_length_mm, 4: body_mass_g
+Classes 'parameters_distribution', 'see_parameters_distribution' and 'data.frame':	11 obs. of  10 variables:
+ $ Variable : chr  "mpg" "cyl" "disp" "hp" ...
+ $ Mean     : num  20.09 6.19 230.72 146.69 3.6 ...
+ $ SD       : num  6.027 1.786 123.939 68.563 0.535 ...
+ $ IQR      : num  7.53 4 221.53 84.5 0.84 ...
+ $ Min      : num  10.4 4 71.1 52 2.76 ...
+ $ Max      : num  33.9 8 472 335 4.93 ...
+ $ Skewness : num  0.672 -0.192 0.42 0.799 0.293 ...
+ $ Kurtosis : num  -0.022 -1.763 -1.068 0.275 -0.45 ...
+ $ n        : int  32 32 32 32 32 32 32 32 32 32 ...
+ $ n_Missing: int  0 0 0 0 0 0 0 0 0 0 ...
+ - attr(*, "object_name")= chr "mtcars"
+ - attr(*, "threshold")= num 0.1
 ```
 :::
 :::
 
+
+
+Let's export as XLSX (via the R package `rio`) and as CSV:
+
+
+
+
+::: {.cell hash='EDA_cache/html/unnamed-chunk-18_39b05e91bbda54716e6ff1de6d0d4af5'}
+
+```{.r .cell-code}
+export(df1, file = "df1.xlsx")
+export(df1, file = "df1.csv")
+```
+:::
+
+
+
+For exporting `csv` files we could also use `write_csv()` from the tidyverse or `write.csv` from base R.
+
+
+
+::: {.cell hash='EDA_cache/html/unnamed-chunk-19_862493b4eaa7ccfc9d9fa5e838a94959'}
+
+```{.r .cell-code}
+df2 <- data_tabulate(mtcars$am)
+str(df2)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+Classes 'dw_data_tabulate' and 'data.frame':	3 obs. of  6 variables:
+ $ Variable    : chr  "mtcars$am" "mtcars$am" "mtcars$am"
+ $ Value       : Factor w/ 2 levels "0","1": 1 2 NA
+ $ N           : int  19 13 0
+ $ Raw %       : num  59.4 40.6 0
+ $ Valid %     : num  59.4 40.6 NA
+ $ Cumulative %: num  59.4 100 NA
+ - attr(*, "type")= chr "numeric"
+ - attr(*, "object")= chr "mtcars$am"
+ - attr(*, "duplicate_varnames")= logi [1:3] FALSE TRUE TRUE
+ - attr(*, "total_n")= int 32
+ - attr(*, "valid_n")= int 32
+```
+:::
+:::
+
+::: {.cell hash='EDA_cache/html/unnamed-chunk-20_6399da51a8a6595057d8eacb8de1eb36'}
+
+```{.r .cell-code}
+export(df2, file = "df2.csv")
+```
+:::
+
+
+
+Note that if we use `data_tabulate` like this:
+
+
+::: {.cell hash='EDA_cache/html/unnamed-chunk-21_ef0f031b84fac9d57d4cec4012df68dc'}
+
+```{.r .cell-code}
+df3 <- data_tabulate(mtcars, select = c("am", "vs"))
+
+df3 %>% str()
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+List of 2
+ $ :Classes 'dw_data_tabulate' and 'data.frame':	3 obs. of  6 variables:
+  ..$ Variable    : chr [1:3] "am" "am" "am"
+  ..$ Value       : Factor w/ 2 levels "0","1": 1 2 NA
+  ..$ N           : int [1:3] 19 13 0
+  ..$ Raw %       : num [1:3] 59.4 40.6 0
+  ..$ Valid %     : num [1:3] 59.4 40.6 NA
+  ..$ Cumulative %: num [1:3] 59.4 100 NA
+  ..- attr(*, "type")= chr "numeric"
+  ..- attr(*, "varname")= chr "am"
+  ..- attr(*, "object")= chr "am"
+  ..- attr(*, "duplicate_varnames")= logi [1:3] FALSE TRUE TRUE
+  ..- attr(*, "total_n")= int 32
+  ..- attr(*, "valid_n")= int 32
+ $ :Classes 'dw_data_tabulate' and 'data.frame':	3 obs. of  6 variables:
+  ..$ Variable    : chr [1:3] "vs" "vs" "vs"
+  ..$ Value       : Factor w/ 2 levels "0","1": 1 2 NA
+  ..$ N           : int [1:3] 18 14 0
+  ..$ Raw %       : num [1:3] 56.2 43.8 0
+  ..$ Valid %     : num [1:3] 56.2 43.8 NA
+  ..$ Cumulative %: num [1:3] 56.2 100 NA
+  ..- attr(*, "type")= chr "numeric"
+  ..- attr(*, "varname")= chr "vs"
+  ..- attr(*, "object")= chr "vs"
+  ..- attr(*, "duplicate_varnames")= logi [1:3] FALSE TRUE TRUE
+  ..- attr(*, "total_n")= int 32
+  ..- attr(*, "valid_n")= int 32
+ - attr(*, "class")= chr [1:2] "dw_data_tabulates" "list"
+ - attr(*, "collapse")= logi FALSE
+```
+:::
+:::
+
+
+
+We'll get a *list* of two data frames.
+
+To export either, we need to access each list list element:
+
+
+::: {.cell hash='EDA_cache/html/unnamed-chunk-22_421f0386ac5c345c3cd71d5237b50152'}
+
+```{.r .cell-code}
+export(df3[[1]], file = "df3.csv")
+```
+:::
+
+
+
+
+### Word
+
+
+Obviously, once your data has arriven as a spreadsheet in Excel (or similar software packages),
+it's no big deal to get it into Word processors as well.
+
+In addition, one [user gave the following recommendation on StackOverflow](https://stackoverflow.com/questions/60815583/how-to-save-table1-package-output-table-to-doc-format-r):
+
+
+>   Another possible solution: The above strategy did not work for me when I had a similar issue, but it was resolved once I knitted the table1 object and opened the html in browser to copy the html table and successfully paste into word. Doing it within RStudio viewer would not work for me for some reason.
+
+
+Lastly, there are options to export directly to Word or Powerpoint.
+The R package `flextable` provides functions for that purpose:
+
+
+
+
+::: {.cell hash='EDA_cache/html/unnamed-chunk-23_3bc583d5cd13c8f80ad1cb4a68b3e064'}
+
+```{.r .cell-code}
+library(flextable)
+my_flex_tab <- flextable(penguins)
+
+save_as_docx("Table 1 " = my_flex_tab, path = "my_tab.docx")
+
+save_as_pptx("Table 1 " = my_flex_tab, path = "my_tab.pptx")
+```
+:::
 
 
 

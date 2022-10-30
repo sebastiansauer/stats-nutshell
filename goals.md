@@ -8,7 +8,6 @@ Many stories to be told. Here's one, on the goals pursued in statistics (and rel
 
 
 
-
 :::{.cell}
 
 :::{.cell-output-display}
@@ -17,8 +16,22 @@ Many stories to be told. Here's one, on the goals pursued in statistics (and rel
 
 <p >
 
-![](goals_files/figure-latex/mermaid-figure-1.png){width="5.5in" height="3.5in" fig-pos='H'}
+<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+  A{Goals} --&gt; B(describe)
+  A --&gt; C(predict)
+  A --&gt; D(explain)
+  B --&gt; E(distribution)
+  B --&gt; F(assocation)
+  B --&gt; G(extrapolation)
+  C --&gt; H(point estimate)
+  C --&gt; I(interval)
+  D --&gt; J(causal inference)
+  D --&gt; K(population)
+  D --&gt; L(latent construct)
 
+</pre>
+
+<div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
 </p>
 
 
@@ -26,7 +39,6 @@ A taxonomy of statistical goals
 :::
 :::
 :::
-
 
 
 
