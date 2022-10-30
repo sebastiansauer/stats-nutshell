@@ -9,7 +9,8 @@
 
 
 
-::: {.cell hash='casestudies_cache/html/child1_3ca47aa31947115aa8101340d618afa8'}
+
+::: {.cell hash='casestudies_cache/pdf/child1_1e169448d6b33a33f80b1f06d133f3f2'}
 
 **FALLSTUDIEN - NUR EXPLORATIVE DATENANALYSE**
 
@@ -60,13 +61,15 @@
 
 
 
+
 ## Case studies on linear modesl
 
 
 
 
 
-::: {.cell hash='casestudies_cache/html/child2_c643b3a83626e893efda599efcdca3f6'}
+
+::: {.cell hash='casestudies_cache/pdf/child2_8667ae393890b5a4fe621e79bb548330'}
 
 **FALLSTUDIEN - NUR LINEARE MODELLE**
 
@@ -102,12 +105,14 @@
 
 
 
+
 ## Case studies on machine learning using tidymodels
 
 
 
 
-::: {.cell hash='casestudies_cache/html/child3_91eb1809f46617e9e24aa1c1a5da674b'}
+
+::: {.cell hash='casestudies_cache/pdf/child3_b01ac7f9f9d31c1e9158fc5eeca8181b'}
 
 **FALLSTUDIEN - MASCHINELLES LERNEN MIT TIDYMODELS**
 

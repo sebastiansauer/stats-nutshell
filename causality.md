@@ -7,13 +7,15 @@
 ## R packages needed for this chapter
 
 
-::: {.cell hash='causality_cache/html/unnamed-chunk-1_319f633bc3b9ab254d1ae3c2f5baff23'}
+
+::: {.cell hash='causality_cache/pdf/unnamed-chunk-1_0e59727842344716c37a9af103de5ded'}
 
 ```{.r .cell-code}
 library(tidyverse)
 library(ggdag)  # optional  
 ```
 :::
+
 
 
 

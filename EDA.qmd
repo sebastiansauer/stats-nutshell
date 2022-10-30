@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Exploratory Data Analysis
 
 ![](img/stern.png){width="5%"}
@@ -55,7 +60,20 @@ see @fig-data-journey.
 See @sec-blitz-data for some data sets suitable to get going.
 
 
-## Data Explorer
+## Data cleansing
+
+The R package {janitor} provides some nice stuff for data cleansing. Check out [this case study](https://www.exploringdata.org/post/how-to-clean-data-janitor-package/).
+
+
+
+## Convenience functions
+
+There a quite a few functions (residing in some packages) that help you doing EDA from a helicoptor point of view. In other words, you do not have to pay attention to nitty-gritty details, the function will do that for you. 
+This is approach is, well, convenient, but of course comes at a price.
+You will not have a great amount of choice and influence on the way the data is analyzed and presented. 
+
+
+### Data Explorer
 
 There are many systems and approaches to explore data. One particular interesting system is the R-package `DataExplorer`.
 
@@ -63,22 +81,27 @@ There are many systems and approaches to explore data. One particular interestin
 
 Check it out [on its Githup page](http://boxuancui.github.io/DataExplorer/).
 
-## vtree
+
+
+
+
+
+
+
+
+
+
+
+
+### vtree
 
 A bit similar to {DataExplorer}, the [R package {vtree}](https://nbarrowman.github.io/vtree) helps to explore visually datasets.
 
 ![vtree is used to generate variable trees, like the one above.](img/vtree-vertical.png)
 
-## Tidyverse
-
-The Tidyverse is probably the R thing with the most publicity. And it's great. It's a philosophy baken into an array of R packages. Perhaps central is the idea that a lot of little lego pieces, if fitting nicely together, provides a simple yet flexibel and thus powerful machinery.
-
-## janitor
-
-The R package {janitor} provides some nice stuff for data cleansing. Check out [this case study](https://www.exploringdata.org/post/how-to-clean-data-janitor-package/).
 
 
-## The easystats way
+### The easystats way
 
 There are some packages, such as `{easystats}`, which provide comfortable access to basic statistics:
 
@@ -115,6 +138,123 @@ mtcars %>%
 Checkout the function reference of your favorite package in order to learn what's on the shelf.
 For example, [here's the function reference site](https://easystats.github.io/datawizard/reference/index.html) of `datawizard`, one of the packages in the `easystats` ecosystem.
 ::::
+
+
+
+
+## Tidyverse
+
+### Intro to the tidyverse
+
+The Tidyverse is probably the R thing with the most publicity. And it's great. It's a philosophy baken into an array of R packages. Perhaps central is the idea that a lot of little lego pieces, if fitting nicely together, provides a simple yet flexibel and thus powerful machinery.
+
+There's a lot of introctory material to the tidyverse around [for instance ](https://datasciencebook.ca/wrangling.html), so I'm not repeating that here.
+
+
+
+### More advanced tidyverse
+
+
+
+
+
+
+#### Repeat a function over many columns
+
+At times, we would like to compute the same functions for many variables, ie columns for tidyverse applications.
+
+Let's load the penguins data for illustration.
+
+```{r}
+d <- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
+
+head(d)
+```
+
+
+Say, we would like to compute the mean value for each numeric variable in the data set:
+
+
+```{r}
+d %>% 
+  summarise(across(bill_length_mm:body_mass_g, mean, na.rm = TRUE))
+```
+
+
+Synonymously, we could write:
+
+```{r}
+d %>% 
+  summarise(across(where(is.numeric), ~ mean(.x, na.rm = TRUE)))
+```
+
+
+Say, we would like to compute the z-value of each numeric variable.
+
+Addmittedly, `easystats` makes it quite simple:
+
+
+```{r}
+d %>% 
+  standardise(select = is.numeric) %>% 
+  head()
+```
+
+
+See the help page of `standardise` for mor details on how to select variables and on more options.
+
+
+But for the purpose of illustration, let's do it with more simple means, i.e. tidyverse only.
+
+
+```{r}
+d %>% 
+  transmute(across(bill_length_mm:body_mass_g, 
+                .fns = ~ {(.x - mean(.x, na.rm = TRUE)) / sd(.x, na.rm = TRUE)},
+                .names = "{.col}_z"))
+```
+
+
+It's maybe more succint to put the z-value computation in its function, and then just apply this function:
+
+```{r}
+z_stand <- function(x){
+  (x - mean(x, na.rm = TRUE)) / sd(x, na.rm = TRUE)
+}
+```
+
+
+```{r}
+d2 <-
+d %>% 
+  mutate(across(bill_length_mm:body_mass_g, 
+                .fns = z_stand))
+  
+d2 %>% 
+  glimpse()
+```
+
+
+### Rowwise operations
+
+
+For technical reasons, it's a bit cumbersome in (base) R to compute rowwise operations. 
+The thing is, R's dataframes are organized as vectors of *columns* so it's much easier to do stuff columnwise.
+
+However, since recently, computing rowwise operations with the tidyverse has become simpler.
+Consider the following example. Say we would like to know the highest z-value for each variable we just computed, that is the highest values *per individual*, ie., by row in the data frame.
+
+
+
+```{r}
+d2 %>% 
+  drop_na() %>% 
+  rowwise() %>% 
+  mutate(max_z = max(c(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g))) %>% 
+  head()
+```
+
+
 
 ## Case Study
 

@@ -1,3 +1,11 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
 # Exploratory Data Analysis
 
 ![](img/stern.png){width="5%"}
@@ -7,7 +15,8 @@
 ## R packages needed for this chapter
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-1_83ecc65f0ea2ecb7bebcb50bf205c07a'}
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-1_431d269fc5bf37acc77b746e1e7b09cc'}
 
 ```{.r .cell-code}
 library(easystats)
@@ -15,6 +24,7 @@ library(tidyverse)
 library(rstanarm)  # optional!
 ```
 :::
+
 
 
 
@@ -58,7 +68,20 @@ see @fig-data-journey.
 See @sec-blitz-data for some data sets suitable to get going.
 
 
-## Data Explorer
+## Data cleansing
+
+The R package {janitor} provides some nice stuff for data cleansing. Check out [this case study](https://www.exploringdata.org/post/how-to-clean-data-janitor-package/).
+
+
+
+## Convenience functions
+
+There a quite a few functions (residing in some packages) that help you doing EDA from a helicoptor point of view. In other words, you do not have to pay attention to nitty-gritty details, the function will do that for you. 
+This is approach is, well, convenient, but of course comes at a price.
+You will not have a great amount of choice and influence on the way the data is analyzed and presented. 
+
+
+### Data Explorer
 
 There are many systems and approaches to explore data. One particular interesting system is the R-package `DataExplorer`.
 
@@ -66,53 +89,58 @@ There are many systems and approaches to explore data. One particular interestin
 
 Check it out [on its Githup page](http://boxuancui.github.io/DataExplorer/).
 
-## vtree
+
+
+
+
+
+
+
+
+
+
+
+
+### vtree
 
 A bit similar to {DataExplorer}, the [R package {vtree}](https://nbarrowman.github.io/vtree) helps to explore visually datasets.
 
 ![vtree is used to generate variable trees, like the one above.](img/vtree-vertical.png)
 
-## Tidyverse
-
-The Tidyverse is probably the R thing with the most publicity. And it's great. It's a philosophy baken into an array of R packages. Perhaps central is the idea that a lot of little lego pieces, if fitting nicely together, provides a simple yet flexibel and thus powerful machinery.
-
-## janitor
-
-The R package {janitor} provides some nice stuff for data cleansing. Check out [this case study](https://www.exploringdata.org/post/how-to-clean-data-janitor-package/).
 
 
-## The easystats way
+### The easystats way
 
 There are some packages, such as `{easystats}`, which provide comfortable access to basic statistics:
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-2_aec71c1ba93ceb55fcc7ef1e05d0c8bc'}
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-2_f3fdfb14a69495e6e192ae18101fcca1'}
 
 ```{.r .cell-code}
 library(easystats)  # once per session
 describe_distribution(mtcars)
 ```
 
-::: {.cell-output-display}
-<div class="kable-table">
-
-|Variable |       Mean|          SD|       IQR|    Min|     Max|   Skewness|   Kurtosis|  n| n_Missing|
-|:--------|----------:|-----------:|---------:|------:|-------:|----------:|----------:|--:|---------:|
-|mpg      |  20.090625|   6.0269481|   7.52500| 10.400|  33.900|  0.6723771| -0.0220063| 32|         0|
-|cyl      |   6.187500|   1.7859216|   4.00000|  4.000|   8.000| -0.1922609| -1.7627939| 32|         0|
-|disp     | 230.721875| 123.9386938| 221.52500| 71.100| 472.000|  0.4202331| -1.0675234| 32|         0|
-|hp       | 146.687500|  68.5628685|  84.50000| 52.000| 335.000|  0.7994067|  0.2752116| 32|         0|
-|drat     |   3.596563|   0.5346787|   0.84000|  2.760|   4.930|  0.2927802| -0.4504325| 32|         0|
-|wt       |   3.217250|   0.9784574|   1.18625|  1.513|   5.424|  0.4659161|  0.4165947| 32|         0|
-|qsec     |  17.848750|   1.7869432|   2.02250| 14.500|  22.900|  0.4063466|  0.8649307| 32|         0|
-|vs       |   0.437500|   0.5040161|   1.00000|  0.000|   1.000|  0.2645418| -2.0632731| 32|         0|
-|am       |   0.406250|   0.4989909|   1.00000|  0.000|   1.000|  0.4008089| -1.9665503| 32|         0|
-|gear     |   3.687500|   0.7378041|   1.00000|  3.000|   5.000|  0.5823086| -0.8952916| 32|         0|
-|carb     |   2.812500|   1.6152000|   2.00000|  1.000|   8.000|  1.1570911|  2.0200593| 32|         0|
-
-</div>
+::: {.cell-output .cell-output-stdout}
+```
+Variable |   Mean |     SD |    IQR |           Range | Skewness | Kurtosis |  n | n_Missing
+--------------------------------------------------------------------------------------------
+mpg      |  20.09 |   6.03 |   7.53 |  [10.40, 33.90] |     0.67 |    -0.02 | 32 |         0
+cyl      |   6.19 |   1.79 |   4.00 |    [4.00, 8.00] |    -0.19 |    -1.76 | 32 |         0
+disp     | 230.72 | 123.94 | 221.53 | [71.10, 472.00] |     0.42 |    -1.07 | 32 |         0
+hp       | 146.69 |  68.56 |  84.50 | [52.00, 335.00] |     0.80 |     0.28 | 32 |         0
+drat     |   3.60 |   0.53 |   0.84 |    [2.76, 4.93] |     0.29 |    -0.45 | 32 |         0
+wt       |   3.22 |   0.98 |   1.19 |    [1.51, 5.42] |     0.47 |     0.42 | 32 |         0
+qsec     |  17.85 |   1.79 |   2.02 |  [14.50, 22.90] |     0.41 |     0.86 | 32 |         0
+vs       |   0.44 |   0.50 |   1.00 |    [0.00, 1.00] |     0.26 |    -2.06 | 32 |         0
+am       |   0.41 |   0.50 |   1.00 |    [0.00, 1.00] |     0.40 |    -1.97 | 32 |         0
+gear     |   3.69 |   0.74 |   1.00 |    [3.00, 5.00] |     0.58 |    -0.90 | 32 |         0
+carb     |   2.81 |   1.62 |   2.00 |    [1.00, 8.00] |     1.16 |     2.02 | 32 |         0
+```
 :::
 :::
+
 
 
 
@@ -122,7 +150,8 @@ describe_distribution(mtcars)
 For nominal variables, consider `data_tabulate`:
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-3_7ed716191172d307da328d7876b10cd0'}
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-3_2b9091cc3e2b49589785e3c2d120e817'}
 
 ```{.r .cell-code}
 data_tabulate(mtcars, select = c("am", "vs"))
@@ -153,12 +182,14 @@ Value |  N | Raw % | Valid % | Cumulative %
 
 
 
+
 We can also get *grouped* tabulations,
 which amounts to something similar to a [contingency table](https://en.wikipedia.org/wiki/Contingency_table):
 
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-4_1e6710c7a4618c94812017b1dc0fb240'}
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-4_377d7803cdf903320b4888ed1f00224a'}
 
 ```{.r .cell-code}
 mtcars %>% 
@@ -188,10 +219,281 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
 
 
 
+
 :::{callout-note}
 Checkout the function reference of your favorite package in order to learn what's on the shelf.
 For example, [here's the function reference site](https://easystats.github.io/datawizard/reference/index.html) of `datawizard`, one of the packages in the `easystats` ecosystem.
 ::::
+
+
+
+
+## Tidyverse
+
+### Intro to the tidyverse
+
+The Tidyverse is probably the R thing with the most publicity. And it's great. It's a philosophy baken into an array of R packages. Perhaps central is the idea that a lot of little lego pieces, if fitting nicely together, provides a simple yet flexibel and thus powerful machinery.
+
+There's a lot of introctory material to the tidyverse around [for instance ](https://datasciencebook.ca/wrangling.html), so I'm not repeating that here.
+
+
+
+### More advanced tidyverse
+
+
+
+
+
+
+#### Repeat a function over many columns
+
+At times, we would like to compute the same functions for many variables, ie columns for tidyverse applications.
+
+Let's load the penguins data for illustration.
+
+
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-5_ab7d86234658a50d716a2b200aebfa17'}
+
+```{.r .cell-code}
+d <- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
+
+head(d)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 6 x 9
+   ...1 species island    bill_length_mm bill_dept~1 flipp~2 body_~3 sex    year
+  <dbl> <chr>   <chr>              <dbl>       <dbl>   <dbl>   <dbl> <chr> <dbl>
+1     1 Adelie  Torgersen           39.1        18.7     181    3750 male   2007
+2     2 Adelie  Torgersen           39.5        17.4     186    3800 fema~  2007
+3     3 Adelie  Torgersen           40.3        18       195    3250 fema~  2007
+4     4 Adelie  Torgersen           NA          NA        NA      NA <NA>   2007
+5     5 Adelie  Torgersen           36.7        19.3     193    3450 fema~  2007
+6     6 Adelie  Torgersen           39.3        20.6     190    3650 male   2007
+# ... with abbreviated variable names 1: bill_depth_mm, 2: flipper_length_mm,
+#   3: body_mass_g
+```
+:::
+:::
+
+
+
+
+Say, we would like to compute the mean value for each numeric variable in the data set:
+
+
+
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-6_0f79885fa2a6b112be3d21d22065d69d'}
+
+```{.r .cell-code}
+d %>% 
+  summarise(across(bill_length_mm:body_mass_g, mean, na.rm = TRUE))
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 1 x 4
+  bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+           <dbl>         <dbl>             <dbl>       <dbl>
+1           43.9          17.2              201.       4202.
+```
+:::
+:::
+
+
+
+
+Synonymously, we could write:
+
+
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-7_5ad5da7219adcc7ff1e7886d3a6dd25b'}
+
+```{.r .cell-code}
+d %>% 
+  summarise(across(where(is.numeric), ~ mean(.x, na.rm = TRUE)))
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 1 x 6
+   ...1 bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year
+  <dbl>          <dbl>         <dbl>             <dbl>       <dbl> <dbl>
+1  172.           43.9          17.2              201.       4202. 2008.
+```
+:::
+:::
+
+
+
+
+Say, we would like to compute the z-value of each numeric variable.
+
+Addmittedly, `easystats` makes it quite simple:
+
+
+
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-8_86e7a22ecf6d85226216f00a6eae441a'}
+
+```{.r .cell-code}
+d %>% 
+  standardise(select = is.numeric) %>% 
+  head()
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 6 x 9
+   ...1 species island    bill_length_mm bill_dept~1 flipp~2 body_~3 sex    year
+  <dbl> <chr>   <chr>              <dbl>       <dbl>   <dbl>   <dbl> <chr> <dbl>
+1 -1.72 Adelie  Torgersen         -0.883       0.784  -1.42   -0.563 male  -1.26
+2 -1.71 Adelie  Torgersen         -0.810       0.126  -1.06   -0.501 fema~ -1.26
+3 -1.70 Adelie  Torgersen         -0.663       0.430  -0.421  -1.19  fema~ -1.26
+4 -1.69 Adelie  Torgersen         NA          NA      NA      NA     <NA>  -1.26
+5 -1.68 Adelie  Torgersen         -1.32        1.09   -0.563  -0.937 fema~ -1.26
+6 -1.67 Adelie  Torgersen         -0.847       1.75   -0.776  -0.688 male  -1.26
+# ... with abbreviated variable names 1: bill_depth_mm, 2: flipper_length_mm,
+#   3: body_mass_g
+```
+:::
+:::
+
+
+
+
+See the help page of `standardise` for mor details on how to select variables and on more options.
+
+
+But for the purpose of illustration, let's do it with more simple means, i.e. tidyverse only.
+
+
+
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-9_126632baca152d41cb607b118549c3d3'}
+
+```{.r .cell-code}
+d %>% 
+  transmute(across(bill_length_mm:body_mass_g, 
+                .fns = ~ {(.x - mean(.x, na.rm = TRUE)) / sd(.x, na.rm = TRUE)},
+                .names = "{.col}_z"))
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 344 x 4
+   bill_length_mm_z bill_depth_mm_z flipper_length_mm_z body_mass_g_z
+              <dbl>           <dbl>               <dbl>         <dbl>
+ 1           -0.883           0.784              -1.42        -0.563 
+ 2           -0.810           0.126              -1.06        -0.501 
+ 3           -0.663           0.430              -0.421       -1.19  
+ 4           NA              NA                  NA           NA     
+ 5           -1.32            1.09               -0.563       -0.937 
+ 6           -0.847           1.75               -0.776       -0.688 
+ 7           -0.920           0.329              -1.42        -0.719 
+ 8           -0.865           1.24               -0.421        0.590 
+ 9           -1.80            0.480              -0.563       -0.906 
+10           -0.352           1.54               -0.776        0.0602
+# ... with 334 more rows
+```
+:::
+:::
+
+
+
+
+It's maybe more succint to put the z-value computation in its function, and then just apply this function:
+
+
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-10_32a44461ebbf4a0f3329d9a2f134be62'}
+
+```{.r .cell-code}
+z_stand <- function(x){
+  (x - mean(x, na.rm = TRUE)) / sd(x, na.rm = TRUE)
+}
+```
+:::
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-11_972f0daa2aa21f19e4290cb88863a717'}
+
+```{.r .cell-code}
+d2 <-
+d %>% 
+  mutate(across(bill_length_mm:body_mass_g, 
+                .fns = z_stand))
+  
+d2 %>% 
+  glimpse()
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+Rows: 344
+Columns: 9
+$ ...1              <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1~
+$ species           <chr> "Adelie", "Adelie", "Adelie", "Adelie", "Adelie", "A~
+$ island            <chr> "Torgersen", "Torgersen", "Torgersen", "Torgersen", ~
+$ bill_length_mm    <dbl> -0.8832047, -0.8099390, -0.6634077, NA, -1.3227986, ~
+$ bill_depth_mm     <dbl> 0.78430007, 0.12600328, 0.42983257, NA, 1.08812936, ~
+$ flipper_length_mm <dbl> -1.4162715, -1.0606961, -0.4206603, NA, -0.5628905, ~
+$ body_mass_g       <dbl> -0.563316704, -0.500969030, -1.186793445, NA, -0.937~
+$ sex               <chr> "male", "female", "female", NA, "female", "male", "f~
+$ year              <dbl> 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007~
+```
+:::
+:::
+
+
+
+
+### Rowwise operations
+
+
+For technical reasons, it's a bit cumbersome in (base) R to compute rowwise operations. 
+The thing is, R's dataframes are organized as vectors of *columns* so it's much easier to do stuff columnwise.
+
+However, since recently, computing rowwise operations with the tidyverse has become simpler.
+Consider the following example. Say we would like to know the highest z-value for each variable we just computed, that is the highest values *per individual*, ie., by row in the data frame.
+
+
+
+
+
+::: {.cell hash='EDA_cache/pdf/unnamed-chunk-12_ba6cc72661da17bdb6a2892785cff8b4'}
+
+```{.r .cell-code}
+d2 %>% 
+  drop_na() %>% 
+  rowwise() %>% 
+  mutate(max_z = max(c(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g))) %>% 
+  head()
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 6 x 10
+# Rowwise: 
+   ...1 species island    bill_lengt~1 bill_~2 flipp~3 body_~4 sex    year max_z
+  <dbl> <chr>   <chr>            <dbl>   <dbl>   <dbl>   <dbl> <chr> <dbl> <dbl>
+1     1 Adelie  Torgersen       -0.883   0.784  -1.42   -0.563 male   2007 0.784
+2     2 Adelie  Torgersen       -0.810   0.126  -1.06   -0.501 fema~  2007 0.126
+3     3 Adelie  Torgersen       -0.663   0.430  -0.421  -1.19  fema~  2007 0.430
+4     5 Adelie  Torgersen       -1.32    1.09   -0.563  -0.937 fema~  2007 1.09 
+5     6 Adelie  Torgersen       -0.847   1.75   -0.776  -0.688 male   2007 1.75 
+6     7 Adelie  Torgersen       -0.920   0.329  -1.42   -0.719 fema~  2007 0.329
+# ... with abbreviated variable names 1: bill_length_mm, 2: bill_depth_mm,
+#   3: flipper_length_mm, 4: body_mass_g
+```
+:::
+:::
+
+
+
+
 
 ## Case Study
 
