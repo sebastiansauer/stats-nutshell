@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.168">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -248,9 +248,10 @@ div.csl-indent {
   <li><a href="#bayes-inference" id="toc-bayes-inference" class="nav-link" data-scroll-target="#bayes-inference"><span class="toc-section-number">4.5.2</span>  Bayes inference</a></li>
   </ul></li>
   <li><a href="#but-which-one-should-i-consume" id="toc-but-which-one-should-i-consume" class="nav-link" data-scroll-target="#but-which-one-should-i-consume"><span class="toc-section-number">4.6</span>  But which one should I consume?</a></li>
-  <li><a href="#comment-from-xkcd" id="toc-comment-from-xkcd" class="nav-link" data-scroll-target="#comment-from-xkcd"><span class="toc-section-number">4.7</span>  Comment from xkcd</a></li>
-  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="toc-section-number">4.8</span>  p-value</a></li>
-  <li><a href="#some-confusion-remains-about-the-p-value" id="toc-some-confusion-remains-about-the-p-value" class="nav-link" data-scroll-target="#some-confusion-remains-about-the-p-value"><span class="toc-section-number">4.9</span>  Some confusion remains about the p-value</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="toc-section-number">4.7</span>  Lab</a></li>
+  <li><a href="#comment-from-xkcd" id="toc-comment-from-xkcd" class="nav-link" data-scroll-target="#comment-from-xkcd"><span class="toc-section-number">4.8</span>  Comment from xkcd</a></li>
+  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="toc-section-number">4.9</span>  p-value</a></li>
+  <li><a href="#some-confusion-remains-about-the-p-value" id="toc-some-confusion-remains-about-the-p-value" class="nav-link" data-scroll-target="#some-confusion-remains-about-the-p-value"><span class="toc-section-number">4.10</span>  Some confusion remains about the p-value</a></li>
   </ul>
 </nav>
     </div>
@@ -267,6 +268,7 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -373,7 +375,7 @@ Important
 <div id="fig-belief-update" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p>
-</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
   A(prior belief) --&gt; B(new data) --&gt; C(posterior belief)
 
 </pre>
@@ -425,8 +427,12 @@ Tip
 </div>
 </div>
 </section>
-<section id="comment-from-xkcd" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="comment-from-xkcd"><span class="header-section-number">4.7</span> Comment from xkcd</h2>
+<section id="lab" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="lab"><span class="header-section-number">4.7</span> Lab</h2>
+<p>Consider your (most pressing) research question. Assess whether it is more accessible via Frequentist or via Bayesian statistics. Explain your reasoning.</p>
+</section>
+<section id="comment-from-xkcd" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="comment-from-xkcd"><span class="header-section-number">4.8</span> Comment from xkcd</h2>
 <div class="cell" data-layout-align="center" data-hash="inference_cache/html/unnamed-chunk-3_60fdb266799b474fd053f5b896af8a34">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -438,8 +444,8 @@ Tip
 </div>
 <p><a href="https://xkcd.com/1132/">Quelle</a></p>
 </section>
-<section id="p-value" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="p-value"><span class="header-section-number">4.8</span> p-value</h2>
+<section id="p-value" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="p-value"><span class="header-section-number">4.9</span> p-value</h2>
 <p>The p-value has been used as the pivotal criterion to decide about whether or not a research hypothesis were to be “accepted” (a term forbidden in frequentist and Popperian langauge) or to be rejected. However, more recently, it is advised to use the p-value only as <em>one</em> indicator among multiple; see <span class="citation" data-cites="wasserstein_asas_2016">Wasserstein and Lazar (<a href="references.html#ref-wasserstein_asas_2016" role="doc-biblioref">2016</a>)</span> and <span class="citation" data-cites="wasserstein_moving_2019">Wasserstein, Schirm, and Lazar (<a href="references.html#ref-wasserstein_moving_2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -466,8 +472,8 @@ Important
 </div>
 </div>
 </section>
-<section id="some-confusion-remains-about-the-p-value" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="some-confusion-remains-about-the-p-value"><span class="header-section-number">4.9</span> Some confusion remains about the p-value</h2>
+<section id="some-confusion-remains-about-the-p-value" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="some-confusion-remains-about-the-p-value"><span class="header-section-number">4.10</span> Some confusion remains about the p-value</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/6m29tz.jpeg" class="img-fluid figure-img" style="width:25.0%"></p>
@@ -535,7 +541,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -571,24 +594,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

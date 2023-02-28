@@ -85,8 +85,8 @@ e^10
 
 ### Exercise
 
--   [Effect of education on income](https://datenwerk.netlify.app/post/log-y-regr1/log-y-regr1/)
--   [Effect of log-y transformation on the distribution, an example](https://datenwerk.netlify.app/post/log-y-regr2/log-y-regr2/)
+-   [Effect of education on income](https://datenwerk.netlify.app/posts/log-y-regr1/log-y-regr1/)
+-   [Effect of log-y transformation on the distribution, an example](https://datenwerk.netlify.app/posts/log-y-regr2/log-y-regr2/)
 
 ::: callout-note
 The exercises are written in German Language. Don't fret. Browsers are able to translate websites instantaneously. Alternatively, go to sites such as [Google Translate](https://translate.google.de/?sl=de&tl=en&op=websites) and enter the URL of the website to be translated. Also check out the webstor of your favorite browser to get an extention [such as this one for Google Chrome](https://chrome.google.com/webstore/detail/google-translate).
@@ -118,7 +118,7 @@ Regression analyses can be used with more than one predictor, see Figure @fig-mu
 
 <p >
 
-<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">
+<pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">
 flowchart LR
 X --&gt; Y1
 
@@ -137,7 +137,7 @@ One predictor (X) vs. two predictors (X1, X2)
 
 
 
- given by Figure @fig-3dregr, where a 3D account of a regression is given. 3D means to input variables, and (which is always the case) one output variable.
+ given by Figure @fig-3dregr2, where a 3D account of a regression is given. 3D means to input variables, and (which is always the case) one output variable.
 
 ::: callout-note
 Note that the slope in linear in both axis (X1 and X2).
@@ -153,7 +153,7 @@ If the slope for one predictor is the same for all values of the other predictor
 Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure, @fig-3dregr2.
 
 
-::: {.cell layout-align="center" hash='regression2_cache/html/fig-3dregr2_bfc36c23ffba0913606a18adf0f40bf7'}
+::: {.cell layout-ncol="3" layout-align="center" hash='regression2_cache/html/fig-3dregr2_3e714268d5aa9242f00dcb8c45302cc4'}
 ::: {.cell-output-display}
 ![3D regression plane (not line) without interaction](img/3d1.png){#fig-3dregr2-1 fig-align='center' width=875}
 :::

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.168">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -275,6 +275,7 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -337,8 +338,8 @@ Note
 <section id="exercise" class="level3" data-number="6.3.2">
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="exercise"><span class="header-section-number">6.3.2</span> Exercise</h3>
 <ul>
-<li><a href="https://datenwerk.netlify.app/post/log-y-regr1/log-y-regr1/">Effect of education on income</a></li>
-<li><a href="https://datenwerk.netlify.app/post/log-y-regr2/log-y-regr2/">Effect of log-y transformation on the distribution, an example</a></li>
+<li><a href="https://datenwerk.netlify.app/posts/log-y-regr1/log-y-regr1/">Effect of education on income</a></li>
+<li><a href="https://datenwerk.netlify.app/posts/log-y-regr2/log-y-regr2/">Effect of log-y transformation on the distribution, an example</a></li>
 </ul>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -374,7 +375,7 @@ Note
 <div id="fig-multregr" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p>
-</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
 X --&gt; Y1
 
 X1 --&gt; Y2
@@ -389,7 +390,7 @@ X2 --&gt; Y2
 </div>
 </div>
 </div>
-<p>given by Figure <span class="quarto-unresolved-ref">?fig-3dregr</span>, where a 3D account of a regression is given. 3D means to input variables, and (which is always the case) one output variable.</p>
+<p>given by Figure <span class="quarto-unresolved-ref">?fig-3dregr2</span>, where a 3D account of a regression is given. 3D means to input variables, and (which is always the case) one output variable.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -419,8 +420,9 @@ Important
 </div>
 </div>
 <p>Here’s a visualization of a 3D regression plane (not line) <em>without interaction</em>: constant slope in one axis, see the following figure, <span class="quarto-unresolved-ref">?fig-3dregr2</span>.</p>
-<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/fig-3dregr2_bfc36c23ffba0913606a18adf0f40bf7">
-<div class="cell-output-display">
+<div class="cell quarto-layout-panel" data-hash="regression2_cache/html/fig-3dregr2_3e714268d5aa9242f00dcb8c45302cc4">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-3dregr2-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/3d1.png" class="img-fluid figure-img" width="875"></p>
@@ -428,7 +430,7 @@ Important
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-3dregr2-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/3d2.png" class="img-fluid figure-img" width="875"></p>
@@ -436,12 +438,13 @@ Important
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-3dregr2-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/3d3.png" class="img-fluid figure-img" width="875"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;6.4: 3D regression plane (not line) without interaction</figcaption><p></p>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -911,7 +914,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -947,24 +967,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

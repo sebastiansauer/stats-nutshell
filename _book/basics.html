@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.168">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -243,8 +243,9 @@ div.csl-indent {
   <li><a href="#initial-quiz" id="toc-initial-quiz" class="nav-link" data-scroll-target="#initial-quiz"><span class="toc-section-number">2.3</span>  Initial quiz</a></li>
   <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import"><span class="toc-section-number">2.4</span>  Data import</a></li>
   <li><a href="#sec-blitz-data" id="toc-sec-blitz-data" class="nav-link" data-scroll-target="#sec-blitz-data"><span class="toc-section-number">2.5</span>  Blitz start with data</a></li>
-  <li><a href="#more-data-set" id="toc-more-data-set" class="nav-link" data-scroll-target="#more-data-set"><span class="toc-section-number">2.6</span>  More data set</a></li>
-  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="toc-section-number">2.7</span>  Literature</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="toc-section-number">2.6</span>  Lab</a></li>
+  <li><a href="#more-data-set" id="toc-more-data-set" class="nav-link" data-scroll-target="#more-data-set"><span class="toc-section-number">2.7</span>  More data set</a></li>
+  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="toc-section-number">2.8</span>  Literature</a></li>
   </ul>
 </nav>
     </div>
@@ -261,6 +262,7 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -345,6 +347,19 @@ div.csl-indent {
 <h2 data-number="2.4" class="anchored" data-anchor-id="data-import"><span class="header-section-number">2.4</span> Data import</h2>
 <p>Check out <a href="https://moderndive.com/4-tidy.html">chapter 4 in ModernDive</a> on how to import data into RStudio and for some basic concepts about “tidy data”.</p>
 <p>Spoiler: There’s a button in RStudio in the “Environment” Pane saying “Import Dataset”. Just click it, and things should work out.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I strongly advice working with <em>Projects</em> in RStudio, as it makes working with file paths a lot easier.</p>
+</div>
+</div>
 </section>
 <section id="sec-blitz-data" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="sec-blitz-data"><span class="header-section-number">2.5</span> Blitz start with data</h2>
@@ -460,12 +475,16 @@ div.csl-indent {
 </div>
 <p>Here’s some <a href="https://vincentarelbundock.github.io/Rdatasets/doc/palmerpenguins/penguins.html">documentation (code book)</a> for this data set.</p>
 </section>
-<section id="more-data-set" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="more-data-set"><span class="header-section-number">2.6</span> More data set</h2>
+<section id="lab" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="lab"><span class="header-section-number">2.6</span> Lab</h2>
+<p>Import <em>your</em> research data into R.</p>
+</section>
+<section id="more-data-set" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="more-data-set"><span class="header-section-number">2.7</span> More data set</h2>
 <p>Check out <a href="https://data-se.netlify.app/2022/02/23/data-sets-for-for-teaching/">this curated list</a> of data sets useful for learning and practicing your data skills.</p>
 </section>
-<section id="literature" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="literature"><span class="header-section-number">2.7</span> Literature</h2>
+<section id="literature" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="literature"><span class="header-section-number">2.8</span> Literature</h2>
 <p><span class="citation" data-cites="wild_statistical_1999">Wild and Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> discuss the thougnht processes involved in statistical problem solving seen from a broad perspective. <span class="citation" data-cites="ismay_statistical_2020">Ismay and Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span> is a helpful start into the first steps in R.</p>
 
 
@@ -553,7 +572,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -589,24 +625,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

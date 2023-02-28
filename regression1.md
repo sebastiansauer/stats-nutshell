@@ -49,7 +49,7 @@ A more visual account of our basic modelling equation is depicted in @fig-model1
 
 <p >
 
-<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+<pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
   X --&gt; Y
   error --&gt; Y
 </pre>
@@ -485,6 +485,19 @@ plot(lm1_pred)
 ## More of this
 
 More technical details for gauging model performance and model quality, can be found on the site of [the R package "performance](https://easystats.github.io/performance/) at the easystats site.
+
+
+
+
+## Lab
+
+Run a simple regression on your own research data. Present the results. Did you encounter any glitches?
+
+
+
+
+
+
 
 ## Bayes-members only
 

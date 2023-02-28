@@ -16,7 +16,7 @@ Many stories to be told. Here's one, on the goals pursued in statistics (and rel
 
 <p >
 
-<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+<pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
   A{Goals} --&gt; B(describe)
   A --&gt; C(predict)
   A --&gt; D(explain)
@@ -46,11 +46,21 @@ A taxonomy of statistical goals
 Note that "goals" do not exist in the world. We make them up in our heads. Hence, they have no ontological existence, they are epistemological beasts. This entails that we are free to devise goals as we wish, provided we can convince ourselves and other souls of the utility of our creativity.
 :::
 
+
+## Lab
+
+
+Match *your* (most pressing) research goal to the nomenclature for scientific goals as shown in @fig-goals.
+Explain your reasoning.
+
+Next, put three research themes or studies you particularly like to this nomenclature and explain your reasoning.
+
+
+
 ## Further reading
 
 @hernan_second_2019 distinguish:
 
-Hernán et al. (2019) distinguish:
 
 -   *Description*: "How can women aged 60--80 years with stroke history be partitioned in classes defined by their characteristics?"
 

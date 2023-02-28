@@ -100,7 +100,7 @@ see Figure @fig-belief-update.
 
 <p >
 
-<pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+<pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
   A(prior belief) --&gt; B(new data) --&gt; C(posterior belief)
 
 </pre>
@@ -147,6 +147,21 @@ PRO Bayes:
 ::: callout-tip
 You'll learn that the technical setup used for doing Bayes statistics is quite similar to doing frequentist statistics. Stay tuned.
 :::
+
+
+
+
+
+## Lab
+
+Consider your (most pressing) research question. Assess whether it is more accessible via Frequentist or via Bayesian statistics. Explain your reasoning.
+
+
+
+
+
+
+
 
 ## Comment from xkcd
 

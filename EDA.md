@@ -332,6 +332,10 @@ strata: Overall
 
 
 
+## Lab
+
+Take your research data and prepare it using (at least) one of the "convenience" functions for data cleansing presented above. 
+
 
 
 ## Tidyverse

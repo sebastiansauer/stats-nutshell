@@ -205,6 +205,19 @@ plot(lm1_pred)
 
 More technical details for gauging model performance and model quality, can be found on the site of [the R package "performance](https://easystats.github.io/performance/) at the easystats site.
 
+
+
+
+## Lab
+
+Run a simple regression on your own research data. Present the results. Did you encounter any glitches?
+
+
+
+
+
+
+
 ## Bayes-members only
 
 Bayes statistics provide a distribution as the result of the analysis, the posterior distribution, which provides us with quite some luxury.

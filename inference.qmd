@@ -127,6 +127,21 @@ PRO Bayes:
 You'll learn that the technical setup used for doing Bayes statistics is quite similar to doing frequentist statistics. Stay tuned.
 :::
 
+
+
+
+
+## Lab
+
+Consider your (most pressing) research question. Assess whether it is more accessible via Frequentist or via Bayesian statistics. Explain your reasoning.
+
+
+
+
+
+
+
+
 ## Comment from xkcd
 
 ```{r}

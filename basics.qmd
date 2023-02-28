@@ -164,6 +164,10 @@ Spoiler: There's a button in RStudio in the "Environment" Pane saying "Import Da
 Just click it, and things should work out.
 
 
+:::{.callout-note}
+I strongly advice working with *Projects* in RStudio, as it makes working with file paths a lot easier.
+:::
+
 
 
 ## Blitz start with data {#sec-blitz-data}
@@ -193,6 +197,11 @@ head(d)  # see the first few rows, the "head" of the table
 
 Here's some [documentation (code book)](https://vincentarelbundock.github.io/Rdatasets/doc/palmerpenguins/penguins.html) for this data set.
 
+
+
+## Lab
+
+Import *your* research data into R.
 
 
 
