@@ -14,14 +14,14 @@ editor_options:
 ## R packages needed for this chapter
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-1_6079e5ce64c5b66417274007c37270f5'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-1_51ce3a0d1472293493c821f76309b6f0'}
 
 ```{.r .cell-code}
 library(easystats)  # make stats easy again
 library(tidyverse)  # data wrangling
-library(tableone)  # tables
-library(rstanarm)  # optional!
+library(tableone)  # tables, optional
 library(rio)  # import/export data, eg., to excel
+library(ggstatsplot)  # data visualization
 ```
 :::
 
@@ -586,6 +586,45 @@ d2 %>%
 
 
 
+## Data visualization
+
+
+
+The star on the R visualization sky is called [ggplot](https://ggplot2.tidyverse.org/).
+It probably is one of the most advanced statistical visualization package on the planet.
+
+
+
+
+
+However, for a quick start,
+there are some nice wrappers on ggplot,
+levering the beauty of ggplot but making the making simple(r).
+
+Consider [ggstatsplot])(https://indrajeetpatil.github.io/ggstatsplot/). 
+Let's use the `mtcars` dataset for a quick demonstration.
+For example, assume you would like to compare two group of cars, automatic vs. manual shifting, in terms of fuel economy.
+Here we go, @fig-ggstatsplot1.
+
+
+
+::: {.cell hash='EDA_cache/html/fig-ggstatsplot_973ea5baa93ad924fb0723145b592699'}
+
+```{.r .cell-code}
+ggbetweenstats(
+  data = mtcars,
+  x = am,
+  y = mpg)
+```
+
+::: {.cell-output-display}
+![ggstatsplot baut auf ggplot2 auf, ist aber einfacher zu bedienen](EDA_files/figure-html/fig-ggstatsplot-1.png){#fig-ggstatsplot width=672}
+:::
+:::
+
+
+
+
 ## Exporting to Office
 
 
@@ -598,7 +637,7 @@ Data frames can be written as CSV or XLSX to disk, and then easily imported to o
 
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-16_311d9415aa3418b833531df578b9d4f5'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-17_bd57b8eb910ca0cf5af991a9bf9a95df'}
 
 ```{.r .cell-code}
 df1 <- describe_distribution(mtcars)
@@ -609,7 +648,7 @@ df1 <- describe_distribution(mtcars)
 Now, `df1` is a data frame:
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-17_4a2763ef0667ef5e2c158c384d0c3655'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-18_83cb86725dba2bcec15a855ec7e8db40'}
 
 ```{.r .cell-code}
 str(df1)
@@ -641,7 +680,7 @@ Let's export as XLSX (via the R package `rio`) and as CSV:
 
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-18_39b05e91bbda54716e6ff1de6d0d4af5'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-19_30f3a29218f40f5ee4e728c357508c90'}
 
 ```{.r .cell-code}
 export(df1, file = "df1.xlsx")
@@ -655,7 +694,7 @@ For exporting `csv` files we could also use `write_csv()` from the tidyverse or 
 
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-19_862493b4eaa7ccfc9d9fa5e838a94959'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-20_751e720d34cbeec88e6ec6f047782335'}
 
 ```{.r .cell-code}
 df2 <- data_tabulate(mtcars$am)
@@ -680,7 +719,7 @@ Classes 'dw_data_tabulate' and 'data.frame':	3 obs. of  6 variables:
 :::
 :::
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-20_6399da51a8a6595057d8eacb8de1eb36'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-21_004beb1f573dde44558f96cf4fea9ffa'}
 
 ```{.r .cell-code}
 export(df2, file = "df2.csv")
@@ -692,7 +731,7 @@ export(df2, file = "df2.csv")
 Note that if we use `data_tabulate` like this:
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-21_ef0f031b84fac9d57d4cec4012df68dc'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-22_05ea787e0f88f9b408ead3d3375a6b47'}
 
 ```{.r .cell-code}
 df3 <- data_tabulate(mtcars, select = c("am", "vs"))
@@ -742,7 +781,7 @@ We'll get a *list* of two data frames.
 To export either, we need to access each list list element:
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-22_421f0386ac5c345c3cd71d5237b50152'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-23_7efaeb203f4ddc7aa966f7ce716254ce'}
 
 ```{.r .cell-code}
 export(df3[[1]], file = "df3.csv")
@@ -770,7 +809,7 @@ The R package `flextable` provides functions for that purpose:
 
 
 
-::: {.cell hash='EDA_cache/html/unnamed-chunk-23_3bc583d5cd13c8f80ad1cb4a68b3e064'}
+::: {.cell hash='EDA_cache/html/unnamed-chunk-24_994b96af749a44823f17d0e4c287df79'}
 
 ```{.r .cell-code}
 library(flextable)

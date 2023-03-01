@@ -60,14 +60,15 @@ Log-Y Regression can usefully be employed for modelling growth, among othrs, see
 Some bacteria dish grows with at a fixed proportional rate, that is it doubles its population size in a fixed period of time. This is what is called exponential growth.
 For concreteness, say, the bacteriae double each two days, starting with 1 unit of bacteria.
 
-After about three weeks, we'll have this number (of units) of bacteriae:
+After about three weeks, i.e., 10 doubling periods (20 days), we'll have $y$  units of bacteriae:
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-2_dab2aa49b9b17a542605dce2333a6582'}
+::: {.cell hash='regression2_cache/html/unnamed-chunk-2_0f132f1dfb57231c9a838d5dc649f555'}
 
 ```{.r .cell-code}
 e <- 2.7178
-e^10
+y <- e^10
+y
 ```
 
 ::: {.cell-output .cell-output-stdout}
@@ -78,7 +79,7 @@ e^10
 :::
 
 
-
+Quite a bit! More than 20 thousand times more than before.
 
 :::
 
@@ -150,20 +151,20 @@ where a 3D account of a regression is given. 3D means to input variables, and (w
 If the slope for one predictor is the same for all values of the other predictor, then we say that no interaction is taking place.
 :::
 
-Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure, @fig-3dregr2.
+Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure, @fig-3dregr2. The three cubes show the same data, just turned by different degrees (along the z axis).
 
 
-::: {.cell layout-ncol="3" layout-align="center" hash='regression2_cache/html/fig-3dregr2_3e714268d5aa9242f00dcb8c45302cc4'}
+::: {.cell hash='regression2_cache/html/fig-3dregr2_43580a5de4d401d30743d59b30ae151c'}
 ::: {.cell-output-display}
-![3D regression plane (not line) without interaction](img/3d1.png){#fig-3dregr2-1 fig-align='center' width=875}
+![3D regression plane (not line) without interaction](img/3d1.png){#fig-3dregr2-1 width=875}
 :::
 
 ::: {.cell-output-display}
-![3D regression plane (not line) without interaction](img/3d2.png){#fig-3dregr2-2 fig-align='center' width=875}
+![3D regression plane (not line) without interaction](img/3d2.png){#fig-3dregr2-2 width=875}
 :::
 
 ::: {.cell-output-display}
-![3D regression plane (not line) without interaction](img/3d3.png){#fig-3dregr2-3 fig-align='center' width=875}
+![3D regression plane (not line) without interaction](img/3d3.png){#fig-3dregr2-3 width=875}
 :::
 :::
 
@@ -202,7 +203,7 @@ The 3D plot is shown in Figure @fig-mtcars3d.
 Here are the two corresponding 2d (1 predictor) regression models:
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-6_74e4e28f7979f8fe374608b41385a2a9'}
+::: {.cell layout-ncol="2" hash='regression2_cache/html/unnamed-chunk-6_c74ea34971797271182078abacd22472'}
 
 ```{.r .cell-code}
 lm1 <- lm(mpg ~ hp, data = mtcars)
@@ -254,8 +255,10 @@ Here's a visual account, see Figure @fig-mtcars3d-interact.
 
 
 Compare @fig-mtcars3d-interact and @fig-mtcars3d.
+The difference is the interaction effect.
 
-In @fig-mtcars3d-interact you'll see that the lines along the Y axis are not parallel anymore. Similarly, the lines along the X axis are not parallel anymore.
+In @fig-mtcars3d-interact you'll see that the lines along the Y axis are not parallel anymore. 
+Similarly, the lines along the X axis are not parallel anymore.
 
 ::: callout-important
 If the regression lines (indicating different values of one predictor) are *not* parallel, we say that an interaction effect is taking place.
@@ -308,7 +311,7 @@ plot(estimate_relation(lm_interact_simple))
 
 In this picture, we see that the two regression lines are *not* parallel, and hence there is evidence of an interaction effect.
 
-The interaction effect amounts to the *difference* in slops in Figure @fig-interact-simple.
+The interaction effect amounts to the *difference* in slops in  @fig-interact-simple.
 
 One might be inclined to interpret Figure @fig-interact-simple as an 3D image, where the one (reddish) line is in the foreground and the blueish line in the background (or vice versa, as you like). Given a 3D image (and hence 2 predictors), we are where we started further above.
 

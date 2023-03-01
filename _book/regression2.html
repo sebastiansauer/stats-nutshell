@@ -325,14 +325,16 @@ Note
 <p>Log-Y Regression can usefully be employed for modelling growth, among othrs, see <a href="#exm-logy">Example&nbsp;<span>6.1</span></a>.</p>
 <div id="exm-logy" class="theorem example">
 <p><span class="theorem-title"><strong>Example 6.1 (Bacteria growth) </strong></span>Some bacteria dish grows with at a fixed proportional rate, that is it doubles its population size in a fixed period of time. This is what is called exponential growth. For concreteness, say, the bacteriae double each two days, starting with 1 unit of bacteria.</p>
-<p>After about three weeks, we’ll have this number (of units) of bacteriae:</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-2_dab2aa49b9b17a542605dce2333a6582">
+<p>After about three weeks, i.e., 10 doubling periods (20 days), we’ll have <span class="math inline">\(y\)</span> units of bacteriae:</p>
+<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-2_0f132f1dfb57231c9a838d5dc649f555">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fl">2.7178</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>e<span class="sc">^</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> e<span class="sc">^</span><span class="dv">10</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 21987.45</code></pre>
 </div>
 </div>
+<p>Quite a bit! More than 20 thousand times more than before.</p>
 </div>
 </section>
 <section id="exercise" class="level3" data-number="6.3.2">
@@ -419,10 +421,9 @@ Important
 <p>If the slope for one predictor is the same for all values of the other predictor, then we say that no interaction is taking place.</p>
 </div>
 </div>
-<p>Here’s a visualization of a 3D regression plane (not line) <em>without interaction</em>: constant slope in one axis, see the following figure, <span class="quarto-unresolved-ref">?fig-3dregr2</span>.</p>
-<div class="cell quarto-layout-panel" data-hash="regression2_cache/html/fig-3dregr2_3e714268d5aa9242f00dcb8c45302cc4">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p>Here’s a visualization of a 3D regression plane (not line) <em>without interaction</em>: constant slope in one axis, see the following figure, <span class="quarto-unresolved-ref">?fig-3dregr2</span>. The three cubes show the same data, just turned by different degrees (along the z axis).</p>
+<div class="cell" data-hash="regression2_cache/html/fig-3dregr2_43580a5de4d401d30743d59b30ae151c">
+<div class="cell-output-display">
 <div id="fig-3dregr2-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/3d1.png" class="img-fluid figure-img" width="875"></p>
@@ -430,7 +431,7 @@ Important
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="cell-output-display">
 <div id="fig-3dregr2-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/3d2.png" class="img-fluid figure-img" width="875"></p>
@@ -438,13 +439,12 @@ Important
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="cell-output-display">
 <div id="fig-3dregr2-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/3d3.png" class="img-fluid figure-img" width="875"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;6.4: 3D regression plane (not line) without interaction</figcaption><p></p>
 </figure>
-</div>
 </div>
 </div>
 </div>
@@ -469,16 +469,20 @@ Important
 </div>
 </div>
 <p>Here are the two corresponding 2d (1 predictor) regression models:</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-6_74e4e28f7979f8fe374608b41385a2a9">
+<div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm1))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-hash="regression2_cache/html/unnamed-chunk-6_c74ea34971797271182078abacd22472">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="regression2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="regression2_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </div>
 </div>
 <p>Checkout <a href="https://data-se.netlify.app/2022/04/19/3d-regression-plane-with-scatter-plot/">this post</a> for a visually slightly more appealing 3d regression plane.</p>
@@ -488,7 +492,7 @@ Important
 <p>For interaction to happen we relax the assumption that the slope of predictor 1 must be constant for all values of predictor 2.</p>
 <p>In R, we specify an interaction model like this:</p>
 <div class="cell" data-hash="regression2_cache/html/unnamed-chunk-7_087b9ecf6ce5b16322c02fc2ec37ddb3">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lm3d_interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp <span class="sc">+</span> hp<span class="sc">:</span>disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lm3d_interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp <span class="sc">+</span> hp<span class="sc">:</span>disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The symbol <code>hp:disp</code> can be read as “the interaction effect of <code>hp</code> and <code>disp</code>”.</p>
 <p>Here’s a visual account, see Figure <a href="#fig-mtcars3d-interact">Figure&nbsp;<span>6.6</span></a>.</p>
@@ -502,7 +506,7 @@ Important
 </div>
 </div>
 </div>
-<p>Compare <a href="#fig-mtcars3d-interact">Figure&nbsp;<span>6.6</span></a> and <a href="#fig-mtcars3d">Figure&nbsp;<span>6.5</span></a>.</p>
+<p>Compare <a href="#fig-mtcars3d-interact">Figure&nbsp;<span>6.6</span></a> and <a href="#fig-mtcars3d">Figure&nbsp;<span>6.5</span></a>. The difference is the interaction effect.</p>
 <p>In <a href="#fig-mtcars3d-interact">Figure&nbsp;<span>6.6</span></a> you’ll see that the lines along the Y axis are not parallel anymore. Similarly, the lines along the X axis are not parallel anymore.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -524,17 +528,17 @@ Important
 <p>If you find that two sophisticated, consider the following simple case.</p>
 <p>First, we mutate <code>am</code> to be a factor variable, in order to make things simpler (without loss of generality).</p>
 <div class="cell" data-hash="regression2_cache/html/unnamed-chunk-9_5f4ab9fff14557a7082f8df868dba4e1">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_f =</span> <span class="fu">factor</span>(am))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_f =</span> <span class="fu">factor</span>(am))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we use this new variable for a simple regression model:</p>
 <div class="cell" data-hash="regression2_cache/html/unnamed-chunk-10_5feb123e3fd4e520aa6b36f9f392b42a">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lm_interact_simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp <span class="sc">+</span> am_f <span class="sc">+</span> disp<span class="sc">:</span>am_f, <span class="at">data =</span> mtcars2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lm_interact_simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp <span class="sc">+</span> am_f <span class="sc">+</span> disp<span class="sc">:</span>am_f, <span class="at">data =</span> mtcars2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here’s the plot, Figure <a href="#fig-interact-simple">Figure&nbsp;<span>6.7</span></a>.</p>
 <div class="cell" data-hash="regression2_cache/html/fig-interact-simple_99fbef9f6a0fbc0508326abb1bb3540b">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm_interact_simple))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm_interact_simple))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-interact-simple" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -545,7 +549,7 @@ Important
 </div>
 </div>
 <p>In this picture, we see that the two regression lines are <em>not</em> parallel, and hence there is evidence of an interaction effect.</p>
-<p>The interaction effect amounts to the <em>difference</em> in slops in Figure <a href="#fig-interact-simple">Figure&nbsp;<span>6.7</span></a>.</p>
+<p>The interaction effect amounts to the <em>difference</em> in slops in <a href="#fig-interact-simple">Figure&nbsp;<span>6.7</span></a>.</p>
 <p>One might be inclined to interpret Figure <a href="#fig-interact-simple">Figure&nbsp;<span>6.7</span></a> as an 3D image, where the one (reddish) line is in the foreground and the blueish line in the background (or vice versa, as you like). Given a 3D image (and hence 2 predictors), we are where we started further above.</p>
 <p>For completeness, here are the parameters of the model.</p>
 <div class="cell" data-hash="regression2_cache/html/unnamed-chunk-12_775d5188655c479fc8b4cf34299662c9">
@@ -613,13 +617,13 @@ Important
 <p>Therefore it simplifies the interpretation of regression coefficients to <em>center</em> all input variables, by subtrating the mean value (“demeaning” or “centering”):</p>
 <p><span class="math display">\[x' = x - \bar{x}\]</span> In R, this can be achieved e.g,. in this way:</p>
 <div class="cell" data-hash="regression2_cache/html/unnamed-chunk-13_f36f42eb7efbf9a3eed3efc3c7cdb729">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mtcars3 <span class="ot">&lt;-</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">disp_c =</span> disp <span class="sc">-</span> <span class="fu">mean</span>(disp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mtcars3 <span class="ot">&lt;-</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">disp_c =</span> disp <span class="sc">-</span> <span class="fu">mean</span>(disp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-hash="regression2_cache/html/unnamed-chunk-14_62b434ed9d3a8b35ff94aac7a598612a">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lm_interact_simple2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp_c <span class="sc">+</span> am_f <span class="sc">+</span> disp_c<span class="sc">:</span>am_f, <span class="at">data =</span> mtcars3)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm_interact_simple2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lm_interact_simple2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp_c <span class="sc">+</span> am_f <span class="sc">+</span> disp_c<span class="sc">:</span>am_f, <span class="at">data =</span> mtcars3)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm_interact_simple2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped">
@@ -705,48 +709,48 @@ Important
 <p>In order to answer this question, all predictor must have the same scale. Otherwise the importance of a predictor would increase by 1000, if we multiply each of the observations’ values by the same factor. However, this multiplication should not change the relevance of a predictor.</p>
 <p>A simple solution is to standardize all predictors to the same scale (sd=1).</p>
 <div class="cell" data-hash="regression2_cache/html/unnamed-chunk-15_368c43c0bc8774e8380981e6182b2254">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mtcars4 <span class="ot">&lt;-</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">standardize</span>(<span class="at">select =</span> <span class="fu">c</span>(<span class="st">"disp"</span>, <span class="st">"hp"</span>, <span class="st">"cyl"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mtcars4 <span class="ot">&lt;-</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">standardize</span>(<span class="at">select =</span> <span class="fu">c</span>(<span class="st">"disp"</span>, <span class="st">"hp"</span>, <span class="st">"cyl"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>By the way, “standardizing” centers the variable by default to a mean value of zero (by demeaning).</p>
 <p>See:</p>
 <div class="cell" data-hash="regression2_cache/html/unnamed-chunk-16_8bbdc1eed4dfdcd3734d94a48de3925d">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars4<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars4<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.57061982 -0.57061982 -0.99018209  0.22009369  1.04308123 -0.04616698</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 160 160 108 258 360 225</code></pre>
 </div>
 </div>
 <p>Here’s the SD:</p>
 <div class="cell" data-hash="regression2_cache/html/unnamed-chunk-17_07d71b50a16fba00facdd4b67c382ce9">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mtcars4<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mtcars4<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 123.9387</code></pre>
 </div>
 </div>
 <p>And here’s the mean value:</p>
 <div class="cell" data-hash="regression2_cache/html/unnamed-chunk-18_0ab5603ab03d1e8653182be64713a065">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mtcars4<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mtcars4<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -9.084937e-17</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 230.7219</code></pre>
 </div>
 </div>
 <p>Now we are in a position to decide which predictor is more important:</p>
 <div class="cell" data-hash="regression2_cache/html/unnamed-chunk-19_54f18adf8411ad472d635e1f109e514a">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp <span class="sc">+</span> hp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars4)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp <span class="sc">+</span> hp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars4)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped">

@@ -14,6 +14,12 @@ library(rstanarm)  # optional!
 ```
 
 
+
+```{r}
+#| echo: false
+theme_set(theme_minimal())
+```
+
 ## What's modelling?
 
 [Read this great introduction by modelling by Russel Poldrack](https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model). Actually, the whole book is nice @poldrack_statistical_2022.
@@ -48,9 +54,10 @@ flowchart LR
 ## Regression as the umbrella tool for modelling
 
 ![One regression](img/one-regression-to-rule-them-all.jpeg){width="50%"}
+
 [Source: Image Flip](www.imgflip.com)
 
-Alternatively, venture into the forest of statistical tests as [outlined e.g. here, at Uni Muenster](https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html).
+Alternatively, venture into the forest of statistical tests as [outlined e.g. here, at Uni Muenster](https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html). Proceed at your own peril.
 
 You may want to ponder on this image of a decision tree of which test to choose, see Figure @fig-choose-test.
 
@@ -75,6 +82,14 @@ Put simple, we are looking for the line which is in the "middle of the points". 
 Consider Figure @fig-regr2, from [this source](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression) by @roback_beyond_2021. It visualizes not only the notorious regression line, but also sheds light on regression assumptions, particularly on the error distribution.
 
 ![Regression and some of its assumptions](img/OLSassumptions-1.png){#fig-regr2}
+
+Among the assumptions of the linear model are:
+
+- linearity of the function
+- variance of $y$ remains constant across range of $x$
+- normality of residuals
+
+
 
 ### The linear model
 
@@ -101,6 +116,36 @@ ggplot(mtcars) +
   geom_smooth(method = "lm") +
   theme_minimal()
 ```
+
+
+Let's depict the residuals, s. @fig-lm2.
+
+```{r}
+#| echo: false
+#| label: fig-lm2
+#| fig-cap: "Residuals as deviations from the predicted value"
+d <- mtcars
+lm1 <- lm(mpg ~ hp, data = d)
+
+d <-
+  d %>% 
+  mutate(pred = predict(lm1),
+         resid = residuals(lm1))
+
+
+ggplot(d, 
+       aes(x = hp, y = mpg)) +
+  geom_smooth(method = "lm", se = FALSE, color = "dodgerblue") +
+  geom_segment(aes(xend = hp, yend = pred), alpha = .5) +
+  geom_point() +
+  geom_hline(yintercept = mean(d$mpg), 
+             color = "grey60", linetype = "dashed") +
+  geom_vline(xintercept = mean(d$hp), 
+             color = "grey60", linetype = "dashed") + 
+  annotate("point", x = mean(d$hp), y = mean(d$mpg),
+           size = 5, color = "red", alpha = .5)
+```
+
 
 ## First model: one metric predictor
 
@@ -224,12 +269,12 @@ Bayes statistics provide a distribution as the result of the analysis, the poste
 
 As the posterior distribution manifests itself by a number of samples, we can easily filter and manipulate this sample distribution in order to ask some interesing questions.
 
-See:
+See
 
 ```{r}
-lm1_bayes %>% 
-  as_tibble() %>% 
-  head()
+lm1_bayes_tibble <- as_tibble(lm1_bayes)  # cast as a tibble (table)
+
+head(lm1_bayes_tibble)  # show the first few rows
 ```
 
 ### Asking for probabilites
@@ -237,8 +282,7 @@ lm1_bayes %>%
 *What's the probability that the effect of hp is negative?*
 
 ```{r}
-lm1_bayes %>% 
-  as_tibble() %>% 
+lm1_bayes_tibble %>% 
   count(hp < 0)
 ```
 
@@ -249,9 +293,7 @@ Feel free to ask similar questions!
 *With a given probability of, say 90%, how large is the effect of hp?*
 
 ```{r}
-lm1_bayes %>% 
-  as_tibble() %>% 
-  summarise(q_90 = quantile(hp, .9))
+quantile(lm1_bayes_tibble$hp, .9)
 ```
 
 *What's the smallest 95% percent interval for the effect of hp?*
@@ -323,7 +365,8 @@ plot(lm3a_means)
 
 
 
-We need to transform `am` to a factor variable. That's something like a string. If we hand over a `factor()` to the plotting function, everything will run smoothly. 
+We need to transform `am` to a factor variable. That's something like a string. 
+If we hand over a `factor()` to the plotting function, everything will run smoothly. 
 Computationwise, no big differences:
 
 

@@ -16,9 +16,9 @@ editor_options:
 #| warning: false
 library(easystats)  # make stats easy again
 library(tidyverse)  # data wrangling
-library(tableone)  # tables
-library(rstanarm)  # optional!
+library(tableone)  # tables, optional
 library(rio)  # import/export data, eg., to excel
+library(ggstatsplot)  # data visualization
 ```
 
 
@@ -291,6 +291,39 @@ d2 %>%
   rowwise() %>% 
   mutate(max_z = max(c(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g))) %>% 
   head()
+```
+
+
+
+## Data visualization
+
+
+
+The star on the R visualization sky is called [ggplot](https://ggplot2.tidyverse.org/).
+It probably is one of the most advanced statistical visualization package on the planet.
+
+
+
+
+
+However, for a quick start,
+there are some nice wrappers on ggplot,
+levering the beauty of ggplot but making the making simple(r).
+
+Consider [ggstatsplot])(https://indrajeetpatil.github.io/ggstatsplot/). 
+Let's use the `mtcars` dataset for a quick demonstration.
+For example, assume you would like to compare two group of cars, automatic vs. manual shifting, in terms of fuel economy.
+Here we go, @fig-ggstatsplot1.
+
+
+```{r}
+#| label: fig-ggstatsplot
+#| fig-cap: "ggstatsplot baut auf ggplot2 auf, ist aber einfacher zu bedienen"
+
+ggbetweenstats(
+  data = mtcars,
+  x = am,
+  y = mpg)
 ```
 
 

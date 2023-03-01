@@ -252,14 +252,15 @@ div.csl-indent {
   <li><a href="#intro-to-the-tidyverse" id="toc-intro-to-the-tidyverse" class="nav-link" data-scroll-target="#intro-to-the-tidyverse"><span class="toc-section-number">3.8.1</span>  Intro to the tidyverse</a></li>
   <li><a href="#more-advanced-tidyverse" id="toc-more-advanced-tidyverse" class="nav-link" data-scroll-target="#more-advanced-tidyverse"><span class="toc-section-number">3.8.2</span>  More advanced tidyverse</a></li>
   </ul></li>
-  <li><a href="#exporting-to-office" id="toc-exporting-to-office" class="nav-link" data-scroll-target="#exporting-to-office"><span class="toc-section-number">3.9</span>  Exporting to Office</a>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><span class="toc-section-number">3.9</span>  Data visualization</a></li>
+  <li><a href="#exporting-to-office" id="toc-exporting-to-office" class="nav-link" data-scroll-target="#exporting-to-office"><span class="toc-section-number">3.10</span>  Exporting to Office</a>
   <ul class="collapse">
-  <li><a href="#excel" id="toc-excel" class="nav-link" data-scroll-target="#excel"><span class="toc-section-number">3.9.1</span>  Excel</a></li>
-  <li><a href="#word" id="toc-word" class="nav-link" data-scroll-target="#word"><span class="toc-section-number">3.9.2</span>  Word</a></li>
+  <li><a href="#excel" id="toc-excel" class="nav-link" data-scroll-target="#excel"><span class="toc-section-number">3.10.1</span>  Excel</a></li>
+  <li><a href="#word" id="toc-word" class="nav-link" data-scroll-target="#word"><span class="toc-section-number">3.10.2</span>  Word</a></li>
   </ul></li>
-  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="toc-section-number">3.10</span>  Case Study</a></li>
-  <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets"><span class="toc-section-number">3.11</span>  Cheatsheets</a></li>
-  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="toc-section-number">3.12</span>  Literature</a></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="toc-section-number">3.11</span>  Case Study</a></li>
+  <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets"><span class="toc-section-number">3.12</span>  Cheatsheets</a></li>
+  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="toc-section-number">3.13</span>  Literature</a></li>
   </ul>
 </nav>
     </div>
@@ -286,12 +287,12 @@ div.csl-indent {
 <p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
 <section id="r-packages-needed-for-this-chapter" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">3.1</span> R packages needed for this chapter</h2>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-1_6079e5ce64c5b66417274007c37270f5">
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-1_51ce3a0d1472293493c821f76309b6f0">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># make stats easy again</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># data wrangling</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)  <span class="co"># tables</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)  <span class="co"># optional!</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)  <span class="co"># import/export data, eg., to excel</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)  <span class="co"># tables, optional</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)  <span class="co"># import/export data, eg., to excel</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)  <span class="co"># data visualization</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="whats-eda" class="level2" data-number="3.2">
@@ -1156,18 +1157,38 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </section>
 </section>
 </section>
-<section id="exporting-to-office" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="exporting-to-office"><span class="header-section-number">3.9</span> Exporting to Office</h2>
-<section id="excel" class="level3" data-number="3.9.1">
-<h3 data-number="3.9.1" class="anchored" data-anchor-id="excel"><span class="header-section-number">3.9.1</span> Excel</h3>
+<section id="data-visualization" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="data-visualization"><span class="header-section-number">3.9</span> Data visualization</h2>
+<p>The star on the R visualization sky is called <a href="https://ggplot2.tidyverse.org/">ggplot</a>. It probably is one of the most advanced statistical visualization package on the planet.</p>
+<p>However, for a quick start, there are some nice wrappers on ggplot, levering the beauty of ggplot but making the making simple(r).</p>
+<p>Consider [ggstatsplot])(https://indrajeetpatil.github.io/ggstatsplot/). Let’s use the <code>mtcars</code> dataset for a quick demonstration. For example, assume you would like to compare two group of cars, automatic vs.&nbsp;manual shifting, in terms of fuel economy. Here we go, <span class="quarto-unresolved-ref">?fig-ggstatsplot1</span>.</p>
+<div class="cell" data-hash="EDA_cache/html/fig-ggstatsplot_973ea5baa93ad924fb0723145b592699">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> mtcars,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> am,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-ggstatsplot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="EDA_files/figure-html/fig-ggstatsplot-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.2: ggstatsplot baut auf ggplot2 auf, ist aber einfacher zu bedienen</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exporting-to-office" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="exporting-to-office"><span class="header-section-number">3.10</span> Exporting to Office</h2>
+<section id="excel" class="level3" data-number="3.10.1">
+<h3 data-number="3.10.1" class="anchored" data-anchor-id="excel"><span class="header-section-number">3.10.1</span> Excel</h3>
 <p>The most straightforward approach is to convince your EDA function to produce a data frame. Data frames can be written as CSV or XLSX to disk, and then easily imported to office packages.</p>
 <p><code>easystats</code> and <code>tidyverse</code> are two examples where this happens.</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-16_311d9415aa3418b833531df578b9d4f5">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">describe_distribution</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-17_bd57b8eb910ca0cf5af991a9bf9a95df">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">describe_distribution</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, <code>df1</code> is a data frame:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-17_4a2763ef0667ef5e2c158c384d0c3655">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-18_83cb86725dba2bcec15a855ec7e8db40">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Classes 'parameters_distribution', 'see_parameters_distribution' and 'data.frame':  11 obs. of  10 variables:
  $ Variable : chr  "mpg" "cyl" "disp" "hp" ...
@@ -1185,14 +1206,14 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 <p>Let’s export as XLSX (via the R package <code>rio</code>) and as CSV:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-18_39b05e91bbda54716e6ff1de6d0d4af5">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.xlsx"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-19_30f3a29218f40f5ee4e728c357508c90">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.xlsx"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For exporting <code>csv</code> files we could also use <code>write_csv()</code> from the tidyverse or <code>write.csv</code> from base R.</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-19_862493b4eaa7ccfc9d9fa5e838a94959">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars<span class="sc">$</span>am)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-20_751e720d34cbeec88e6ec6f047782335">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars<span class="sc">$</span>am)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Classes 'dw_data_tabulate' and 'data.frame':    3 obs. of  6 variables:
  $ Variable    : chr  "mtcars$am" "mtcars$am" "mtcars$am"
@@ -1208,14 +1229,14 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
  - attr(*, "valid_n")= int 32</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-20_6399da51a8a6595057d8eacb8de1eb36">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df2, <span class="at">file =</span> <span class="st">"df2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-21_004beb1f573dde44558f96cf4fea9ffa">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df2, <span class="at">file =</span> <span class="st">"df2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that if we use <code>data_tabulate</code> like this:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-21_ef0f031b84fac9d57d4cec4012df68dc">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"am"</span>, <span class="st">"vs"</span>))</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-22_05ea787e0f88f9b408ead3d3375a6b47">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"am"</span>, <span class="st">"vs"</span>))</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 2
  $ :Classes 'dw_data_tabulate' and 'data.frame':    3 obs. of  6 variables:
@@ -1250,30 +1271,30 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 <p>We’ll get a <em>list</em> of two data frames.</p>
 <p>To export either, we need to access each list list element:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-22_421f0386ac5c345c3cd71d5237b50152">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df3[[<span class="dv">1</span>]], <span class="at">file =</span> <span class="st">"df3.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-23_7efaeb203f4ddc7aa966f7ce716254ce">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df3[[<span class="dv">1</span>]], <span class="at">file =</span> <span class="st">"df3.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="word" class="level3" data-number="3.9.2">
-<h3 data-number="3.9.2" class="anchored" data-anchor-id="word"><span class="header-section-number">3.9.2</span> Word</h3>
+<section id="word" class="level3" data-number="3.10.2">
+<h3 data-number="3.10.2" class="anchored" data-anchor-id="word"><span class="header-section-number">3.10.2</span> Word</h3>
 <p>Obviously, once your data has arriven as a spreadsheet in Excel (or similar software packages), it’s no big deal to get it into Word processors as well.</p>
 <p>In addition, one <a href="https://stackoverflow.com/questions/60815583/how-to-save-table1-package-output-table-to-doc-format-r">user gave the following recommendation on StackOverflow</a>:</p>
 <blockquote class="blockquote">
 <p>Another possible solution: The above strategy did not work for me when I had a similar issue, but it was resolved once I knitted the table1 object and opened the html in browser to copy the html table and successfully paste into word. Doing it within RStudio viewer would not work for me for some reason.</p>
 </blockquote>
 <p>Lastly, there are options to export directly to Word or Powerpoint. The R package <code>flextable</code> provides functions for that purpose:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-23_3bc583d5cd13c8f80ad1cb4a68b3e064">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>my_flex_tab <span class="ot">&lt;-</span> <span class="fu">flextable</span>(penguins)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_docx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.docx"</span>)</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_pptx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.pptx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-24_994b96af749a44823f17d0e4c287df79">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>my_flex_tab <span class="ot">&lt;-</span> <span class="fu">flextable</span>(penguins)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_docx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.docx"</span>)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_pptx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.pptx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="case-study" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="case-study"><span class="header-section-number">3.10</span> Case Study</h2>
+<section id="case-study" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="case-study"><span class="header-section-number">3.11</span> Case Study</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/palmerpenguins-logo.png" class="img-fluid figure-img" style="width:20.0%"></p>
@@ -1284,8 +1305,8 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>There’s a great <a href="https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome">interactive course on EDA based on the penguins</a>. Have a look, it’s great!</p>
 <p><a href="https://media.giphy.com/media/3og0IO5z8Rd30ktV6g/giphy.gif" width="50%">Go penguins! Allez!</a></p>
 </section>
-<section id="cheatsheets" class="level2" data-number="3.11">
-<h2 data-number="3.11" class="anchored" data-anchor-id="cheatsheets"><span class="header-section-number">3.11</span> Cheatsheets</h2>
+<section id="cheatsheets" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="cheatsheets"><span class="header-section-number">3.12</span> Cheatsheets</h2>
 <p>There are a number of nice cheat sheets <a href="https://www.rstudio.com/resources/cheatsheets/">available on an array of topics related to EDA</a>, made available by the folks at RStudio.</p>
 <p>Consider this collection:</p>
 <ul>
@@ -1296,8 +1317,8 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </ul>
 <p>So much great stuff! A bit too much to digest in one go, but definitely worthwhile if you plan to dig deeper in data analysis.</p>
 </section>
-<section id="literature" class="level2" data-number="3.12">
-<h2 data-number="3.12" class="anchored" data-anchor-id="literature"><span class="header-section-number">3.12</span> Literature</h2>
+<section id="literature" class="level2" data-number="3.13">
+<h2 data-number="3.13" class="anchored" data-anchor-id="literature"><span class="header-section-number">3.13</span> Literature</h2>
 <p><span class="citation" data-cites="r4ds">Wickham and Grolemund (<a href="references.html#ref-r4ds" role="doc-biblioref">2016</a>)</span> is an highly recommendable resource in order to get a thorough understanding of data analysis using R. Note that this source is focusing on the “how to”, not so much to theoretical foundations. <span class="citation" data-cites="ismay_statistical_2020">Ismay and Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span> is a gently introduction into many steps on the data journey, including EDA.</p>
 
 

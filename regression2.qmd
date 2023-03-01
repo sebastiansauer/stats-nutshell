@@ -57,14 +57,15 @@ Log-Y Regression can usefully be employed for modelling growth, among othrs, see
 Some bacteria dish grows with at a fixed proportional rate, that is it doubles its population size in a fixed period of time. This is what is called exponential growth.
 For concreteness, say, the bacteriae double each two days, starting with 1 unit of bacteria.
 
-After about three weeks, we'll have this number (of units) of bacteriae:
+After about three weeks, i.e., 10 doubling periods (20 days), we'll have $y$  units of bacteriae:
 
 ```{r}
 e <- 2.7178
-e^10
+y <- e^10
+y
 ```
 
-
+Quite a bit! More than 20 thousand times more than before.
 
 :::
 
@@ -119,13 +120,13 @@ where a 3D account of a regression is given. 3D means to input variables, and (w
 If the slope for one predictor is the same for all values of the other predictor, then we say that no interaction is taking place.
 :::
 
-Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure, @fig-3dregr2.
+Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure, @fig-3dregr2. The three cubes show the same data, just turned by different degrees (along the z axis).
 
 ```{r plot-3dregr2}
 #| echo: false
 #| label: fig-3dregr2
 #| fig-cap: "3D regression plane (not line) without interaction"
-#| results: "hold"
+# results: "hold"
 #| fig-align: "center"
 #| layout-ncol: 3
 
@@ -175,6 +176,7 @@ persp(x,y,z , theta = c(45, 135, 225, 315), col = "lightblue")
 Here are the two corresponding 2d (1 predictor) regression models:
 
 ```{r}
+#| layout-ncol: 2
 lm1 <- lm(mpg ~ hp, data = mtcars)
 plot(estimate_relation(lm1))
 
@@ -209,8 +211,10 @@ persp(x,y,z , theta = c(45, 135, 225, 315), col = "lightblue")
 ```
 
 Compare @fig-mtcars3d-interact and @fig-mtcars3d.
+The difference is the interaction effect.
 
-In @fig-mtcars3d-interact you'll see that the lines along the Y axis are not parallel anymore. Similarly, the lines along the X axis are not parallel anymore.
+In @fig-mtcars3d-interact you'll see that the lines along the Y axis are not parallel anymore. 
+Similarly, the lines along the X axis are not parallel anymore.
 
 ::: callout-important
 If the regression lines (indicating different values of one predictor) are *not* parallel, we say that an interaction effect is taking place.
@@ -246,7 +250,7 @@ plot(estimate_relation(lm_interact_simple))
 
 In this picture, we see that the two regression lines are *not* parallel, and hence there is evidence of an interaction effect.
 
-The interaction effect amounts to the *difference* in slops in Figure @fig-interact-simple.
+The interaction effect amounts to the *difference* in slops in  @fig-interact-simple.
 
 One might be inclined to interpret Figure @fig-interact-simple as an 3D image, where the one (reddish) line is in the foreground and the blueish line in the background (or vice versa, as you like). Given a 3D image (and hence 2 predictors), we are where we started further above.
 

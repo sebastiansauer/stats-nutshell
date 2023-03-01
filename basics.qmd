@@ -44,6 +44,13 @@ Check out [chapter 1 in ModernDive](https://moderndive.com/1-getting-started.htm
 
 Please also note that R and RStudio should be installed before starting (this course).
 
+In addition, your R packages should be updtodate, according to Arnold Schwarzenegger (s. @fig-arnie).
+
+[Keep your R packages uptodate, or risk being an outdated model, Arnie says](img/terminator.jpg){#fig-arnie width="50%"}
+
+
+
+
 
 
 ## Initial quiz

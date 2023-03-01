@@ -9,6 +9,14 @@ This is an introductory course on statistical modelling. Welcome!
 The focus of this course is on how to specify a theoretical idea (possibly vague) in a testable statistical model.
 
 
+
+## Please read me
+
+
+In order to benefit as much as possible from this course, it is neccessary for you to read this preface information. Yoada agrees (s. @fig-yoda).
+
+[Yoda finds you should read the manual](img/yoda.jpg){#fig-yoda width="50%"}
+
 ## PDF-Version
 
 
@@ -282,7 +290,7 @@ I readily confess that this approach is novel to many learners in these days, le
 
 ## Technical Details
 
-Last update: 2023-02-28 08:38:07
+Last update: 2023-03-01 14:23:45
 
 
 ::: {.cell hash='index_cache/html/unnamed-chunk-1_d16679d51455719f70c3f7444ac81137'}
