@@ -647,6 +647,79 @@ hdi(lm1_bayes, ci = .89)
 :::
 
 
+
+### Model specification
+
+In Bayes statistics, it is customary to specify the model in something like the following way:
+
+
+$$\begin{aligned}
+
+y_i &\sim N(\mu_i,\sigma)\\
+\mu_i &= \beta_0 + \beta_1 x_i\\
+\beta_0, \beta_1 &\sim N(0, 1) \\
+\sigma &\sim E(1)
+\end{aligned}$$
+
+In this specification, $N$ refers to the normal distribution, and $E$ to the exponential distribution.
+Furthermore, this model assumes that the $X$ and $Y$ are given in standard units.
+
+
+
+
+### Prediction interval
+
+A prediction interval answers the following question
+
+
+>   How large is the uncertainty in $y$ associated with a given obersation? What interval of values should I expect for a randomly chosen observation?
+
+
+For example, what's the uncertainty attached to the fuel economy of a car with 100 hp?
+
+
+
+::: {.cell hash='regression1_cache/html/unnamed-chunk-13_2a16a52b3eaca3ace64ce12783c86e7f'}
+
+```{.r .cell-code}
+estimate_prediction(model = lm1_bayes, 
+                    data = tibble(hp = 100) )
+```
+
+::: {.cell-output-display}
+<div class="kable-table">
+
+|  hp| Predicted|       SE|   CI_low|  CI_high|
+|---:|---------:|--------:|--------:|--------:|
+| 100|  23.24689| 4.143285| 14.99219| 31.56238|
+
+</div>
+:::
+:::
+
+
+
+
+
+### ... And more
+
+We could even ask intriguing questions such as 
+
+
+>   Given the model, and given two random observations, one from the experimental group and one from the control group, what is the probability that observation 1 has a higher value in $Y$ than observation 2 has?
+
+Note that we are not only asking for "typical" observations as predicted by the model but we are also taking into account the uncertainty of the prediction for each group. 
+Hence, *this* kind of questions is likely to yield more realistic (and less clear-cut) answers than just asking for the typical value.
+In other words, such analyses draw on the posterior predictive distribution.
+
+
+
+
+
+
+
+
+
 ## Multiple metric predictors
 
 Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.
@@ -765,7 +838,7 @@ parameters(lm3a)
 :::
 :::
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-13_268e51721dd6d64bfee4eca96ac6d67a'}
+::: {.cell hash='regression1_cache/html/unnamed-chunk-14_c49dac5bae175a71ed12b3c2ea772ca4'}
 
 ```{.r .cell-code}
 lm3a_means <- estimate_means(lm3a, at = "am = c(0, 1)")
@@ -784,7 +857,7 @@ lm3a_means
 :::
 :::
 
-If we were not to specify the values of `am` which we would like to get predictions for, the default of the function would select 10 values, spreaded across the range of `am`. For numeric variables, this is usually fine. However, for nominal variables - and `am` is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for `0` and `1`.
+If we were not to specify the values of `am` which we would like to get predictions for, the default of the function would select 10 values, spread across the range of `am`. For numeric variables, this is usually fine. However, for nominal variables - and `am` is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for `0` and `1`.
 
 
 However, unfortunately, the plot *needs* a nominal variable if we are to compare groups. 
@@ -794,14 +867,14 @@ The plot does not work, malheureusement:
 
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-14_45d7660fccea14de8c9fb9dd61512daf'}
+::: {.cell hash='regression1_cache/html/unnamed-chunk-15_3f26968118ac254f421277f6d43651a4'}
 
 ```{.r .cell-code}
 plot(lm3a_means)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-14-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-15-1.png){width=672}
 :::
 :::
 
@@ -837,7 +910,7 @@ parameters(lm3a)
 :::
 :::
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-15_c3ca8152261ad3c0dd6d16f900dd4e1a'}
+::: {.cell hash='regression1_cache/html/unnamed-chunk-16_cd8a9d0d0c1d4e3108c7c9e309b3b898'}
 
 ```{.r .cell-code}
 lm3a_means <- estimate_means(lm3a)
@@ -845,7 +918,7 @@ plot(lm3a_means)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-15-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-16-1.png){width=672}
 :::
 :::
 
@@ -856,7 +929,7 @@ Note that we should have converted `am` to a factor variable before fitting the 
 Here's a more hand-crafted version of the last plot, see Fig. @fig-lm3a-means.
 
 
-::: {.cell hash='regression1_cache/html/fig-lm3a-means_c21c7baa144eb946cb4480018e6dd95f'}
+::: {.cell hash='regression1_cache/html/fig-lm3a-means_e45955c35ba6eb96437967555bfd10f8'}
 
 ```{.r .cell-code}
 ggplot(mtcars2) +
@@ -870,7 +943,7 @@ ggplot(mtcars2) +
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/fig-lm3a-means-1.png){#fig-lm3a-means width=672}
+![Means per level of am](regression1_files/figure-html/fig-lm3a-means-1.png){#fig-lm3a-means width=672}
 :::
 :::
 
@@ -955,14 +1028,14 @@ lm4_corr
 :::
 :::
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-16_4f4a987ac52b9bc3a0d65e3e3ac350a6'}
+::: {.cell hash='regression1_cache/html/unnamed-chunk-17_57cdfa2a1ed976620bbd0e9bb9fa23ba'}
 
 ```{.r .cell-code}
 plot(summary(lm4_corr))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-16-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-17-1.png){width=672}
 :::
 :::
 

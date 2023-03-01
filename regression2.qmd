@@ -1,4 +1,4 @@
-# More lineare models
+# More linear models
 
 ![](img/stern.png){width="5%"}
 

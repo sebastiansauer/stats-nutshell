@@ -308,6 +308,64 @@ In case you prefer 89% intervals (I do!):
 hdi(lm1_bayes, ci = .89)
 ```
 
+
+### Model specification
+
+In Bayes statistics, it is customary to specify the model in something like the following way:
+
+
+$$\begin{aligned}
+
+y_i &\sim N(\mu_i,\sigma)\\
+\mu_i &= \beta_0 + \beta_1 x_i\\
+\beta_0, \beta_1 &\sim N(0, 1) \\
+\sigma &\sim E(1)
+\end{aligned}$$
+
+In this specification, $N$ refers to the normal distribution, and $E$ to the exponential distribution.
+Furthermore, this model assumes that the $X$ and $Y$ are given in standard units.
+
+
+
+
+### Prediction interval
+
+A prediction interval answers the following question
+
+
+>   How large is the uncertainty in $y$ associated with a given obersation? What interval of values should I expect for a randomly chosen observation?
+
+
+For example, what's the uncertainty attached to the fuel economy of a car with 100 hp?
+
+
+```{r}
+estimate_prediction(model = lm1_bayes, 
+                    data = tibble(hp = 100) )
+```
+
+
+
+
+### ... And more
+
+We could even ask intriguing questions such as 
+
+
+>   Given the model, and given two random observations, one from the experimental group and one from the control group, what is the probability that observation 1 has a higher value in $Y$ than observation 2 has?
+
+Note that we are not only asking for "typical" observations as predicted by the model but we are also taking into account the uncertainty of the prediction for each group. 
+Hence, *this* kind of questions is likely to yield more realistic (and less clear-cut) answers than just asking for the typical value.
+In other words, such analyses draw on the posterior predictive distribution.
+
+
+
+
+
+
+
+
+
 ## Multiple metric predictors
 
 Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.
@@ -350,7 +408,7 @@ parameters(lm3a)
 lm3a_means <- estimate_means(lm3a, at = "am = c(0, 1)")
 lm3a_means 
 ```
-If we were not to specify the values of `am` which we would like to get predictions for, the default of the function would select 10 values, spreaded across the range of `am`. For numeric variables, this is usually fine. However, for nominal variables - and `am` is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for `0` and `1`.
+If we were not to specify the values of `am` which we would like to get predictions for, the default of the function would select 10 values, spread across the range of `am`. For numeric variables, this is usually fine. However, for nominal variables - and `am` is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for `0` and `1`.
 
 
 However, unfortunately, the plot *needs* a nominal variable if we are to compare groups. 
@@ -392,7 +450,7 @@ Here's a more hand-crafted version of the last plot, see Fig. @fig-lm3a-means.
 
 ```{r plot-lm3a-means}
 #| label: fig-lm3a-means
-#| #| fig-cap: Means per level of am
+#| fig-cap: Means per level of am
 ggplot(mtcars2) +
   aes(x = am_f, y = mpg) +
   geom_violin() +
