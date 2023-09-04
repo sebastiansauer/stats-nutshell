@@ -4,24 +4,23 @@
 
 ## Welcome!
 
-This is an introductory course on statistical modelling. Welcome!
+This is an introductory course on *statistical modelling*. Welcome!
 
-The focus of this course is on how to specify a theoretical idea (possibly vague) in a testable statistical model.
+The *focus of this course* is on how to specify a theoretical idea (possibly vague) in a testable statistical model.
 
 
 
 ## Please read me
 
 
-In order to benefit as much as possible from this course, it is neccessary for you to read this preface information. Yoada agrees (s. @fig-yoda).
+In order to benefit as much as possible from this course, it is necessary for you to read this preface information. Yoda agrees (s. @fig-yoda).
 
-[Yoda finds you should read the manual](img/yoda.jpg){#fig-yoda width="50%"}
+![Yoda finds you should read the manual](img/yoda.jpg){#fig-yoda width="50%"}
 
 ## PDF-Version
 
 
-There's a [PDF version of this book available](https://stats-nutshell.netlify.app/stats-nutshell.pdf).
-Note that the HTML is the more recent one.
+Use the print button of your browser to print the html page into a PDF page.
 
 
 
@@ -47,7 +46,7 @@ Models and modeling are of pivotal importance in many sciences, not only for pro
 
 ## Course prerequisites
 
-Basic computer usage knowledge is needed (downloading materials from the internet, operating a PC, etc). Basic R knowledge is needed. Basic knowledge of statistical concepts (such as descriptive statistics) is needed. Willingness to learn is essential.
+Basic *computer usage knowledge* is needed (downloading materials from the internet, operating a PC, etc). *Basic R knowledge* is needed. *Basic knowledge of statistical concepts (such as descriptive statistics) *is needed. *Willingness to learn* is essential.
 
 ## Learning objectives
 
@@ -62,11 +61,11 @@ Upon successful completion of this course, students should be able to:
 
 ## Course Literature
 
-This course builds on the freely available e-book [ModernDive](https://moderndive.com/index.html). Each topic is paralleled by an ackompagnying chapter from ModernDive. A hard copy can be purchased [here](https://moderndive.com/index.html). The book is for sale in print [here](https://www.routledge.com/Statistical-Inference-via-Data-Science-A-ModernDive-into-R-and-the-Tidyverse/Ismay-Kim/p/book/9780367409821?utm_source=crcpress.com&utm_medium=referral).
+This course builds on the freely available e-book [ModernDive](https://moderndive.com/index.html). Each topic is paralleled by an accompanying chapter from ModernDive. A hard copy can be purchased [here](https://moderndive.com/index.html). The book is for sale in print [here](https://www.routledge.com/Statistical-Inference-via-Data-Science-A-ModernDive-into-R-and-the-Tidyverse/Ismay-Kim/p/book/9780367409821?utm_source=crcpress.com&utm_medium=referral).
 
 ## Course logistics
 
-This course can be presented as a one-day seminar or split-up in four blocks.
+This course can be presented as a one-day seminar or split-up in two or more blocks.
 
 The course can be held in English or German.
 
@@ -84,7 +83,7 @@ All learning materials (such as literature, code, data) will be provided in elec
 
 -   Sign-in at [RStudio Cloud](https://login.rstudio.cloud/). It's super helpful because I as the techer can provide you with an environment where all R stuff is ready to use (packages installed etc).
 
--   Install the necessary R packages as used in the book chapters covered in this course (see the sections on "Needed packages" in each chapter). If in doubt, see [here](https://moderndive.com/1-getting-started.html#packages) the instructions on how to install R packages. [Here's](#packages) the actual list on the R packages we'll need.
+-   Install the *necessary R packages* as used in the book chapters covered in this course (see the sections on "Needed packages" in each chapter). If in doubt, see [here](https://moderndive.com/1-getting-started.html#packages) the instructions on how to install R packages. [Here's](#packages) the actual list on the R packages we'll need.
 
 -   Students new to R are advised to learn the basics, see [ModernDive, Chap 1.2 - 1.5](https://moderndive.com/1-getting-started.html#code)
 

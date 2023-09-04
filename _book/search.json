@@ -18,14 +18,14 @@
     "href": "index.html#please-read-me",
     "title": "stats-nutshell",
     "section": "Please read me",
-    "text": "Please read me\nIn order to benefit as much as possible from this course, it is neccessary for you to read this preface information. Yoada agrees (s. ?fig-yoda).\nYoda finds you should read the manual"
+    "text": "Please read me\nIn order to benefit as much as possible from this course, it is necessary for you to read this preface information. Yoda agrees (s. Figure 1).\n\n\n\nFigure 1: Yoda finds you should read the manual"
   },
   {
     "objectID": "index.html#pdf-version",
     "href": "index.html#pdf-version",
     "title": "stats-nutshell",
     "section": "PDF-Version",
-    "text": "PDF-Version\nThere’s a PDF version of this book available. Note that the HTML is the more recent one."
+    "text": "PDF-Version\nUse the print button of your browser to print the html page into a PDF page."
   },
   {
     "objectID": "index.html#course-description",
@@ -67,14 +67,14 @@
     "href": "index.html#course-literature",
     "title": "stats-nutshell",
     "section": "Course Literature",
-    "text": "Course Literature\nThis course builds on the freely available e-book ModernDive. Each topic is paralleled by an ackompagnying chapter from ModernDive. A hard copy can be purchased here. The book is for sale in print here."
+    "text": "Course Literature\nThis course builds on the freely available e-book ModernDive. Each topic is paralleled by an accompanying chapter from ModernDive. A hard copy can be purchased here. The book is for sale in print here."
   },
   {
     "objectID": "index.html#course-logistics",
     "href": "index.html#course-logistics",
     "title": "stats-nutshell",
     "section": "Course logistics",
-    "text": "Course logistics\nThis course can be presented as a one-day seminar or split-up in four blocks.\nThe course can be held in English or German.\nPlease bring your own computer and read the notes regarding course logistics in advance. Note that some upfront preparation is needed from the learners.\nR and RStudio1 will be needed throughout the course. Please make sure that the IT is running. In case of technical difficulties with R feel free to use RStudio Cloud; free plans are available.\nAll learning materials (such as literature, code, data) will be provided in electronic format."
+    "text": "Course logistics\nThis course can be presented as a one-day seminar or split-up in two or more blocks.\nThe course can be held in English or German.\nPlease bring your own computer and read the notes regarding course logistics in advance. Note that some upfront preparation is needed from the learners.\nR and RStudio1 will be needed throughout the course. Please make sure that the IT is running. In case of technical difficulties with R feel free to use RStudio Cloud; free plans are available.\nAll learning materials (such as literature, code, data) will be provided in electronic format."
   },
   {
     "objectID": "index.html#upfront-student-preparation",
@@ -158,7 +158,7 @@
     "href": "index.html#technical-details",
     "title": "stats-nutshell",
     "section": "Technical Details",
-    "text": "Technical Details\nLast update: 2023-03-01 17:07:19\n\nsessioninfo::session_info()\n\n─ Session info ───────────────────────────────────────────────────────────────\n setting  value\n version  R version 4.2.1 (2022-06-23)\n os       macOS Big Sur ... 10.16\n system   x86_64, darwin17.0\n ui       X11\n language (EN)\n collate  en_US.UTF-8\n ctype    en_US.UTF-8\n tz       Europe/Berlin\n date     2022-09-16\n pandoc   2.19.2 @ /usr/local/bin/ (via rmarkdown)\n\n─ Packages ───────────────────────────────────────────────────────────────────\n package     * version date (UTC) lib source\n cli           3.4.0   2022-09-08 [1] CRAN (R 4.2.0)\n colorout    * 1.2-2   2022-06-13 [1] local\n digest        0.6.29  2021-12-01 [1] CRAN (R 4.2.0)\n evaluate      0.16    2022-08-09 [1] CRAN (R 4.2.0)\n fastmap       1.1.0   2021-01-25 [1] CRAN (R 4.2.0)\n htmltools     0.5.3   2022-07-18 [1] CRAN (R 4.2.0)\n htmlwidgets   1.5.4   2021-09-08 [1] CRAN (R 4.2.0)\n jsonlite      1.8.0   2022-02-22 [1] CRAN (R 4.2.0)\n knitr         1.40    2022-08-24 [1] CRAN (R 4.2.0)\n magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.2.0)\n rlang         1.0.5   2022-08-31 [1] CRAN (R 4.2.0)\n rmarkdown     2.16    2022-08-24 [1] CRAN (R 4.2.0)\n rstudioapi    0.14    2022-08-22 [1] CRAN (R 4.2.0)\n sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.2.0)\n stringi       1.7.8   2022-07-11 [1] CRAN (R 4.2.0)\n stringr       1.4.1   2022-08-20 [1] CRAN (R 4.2.0)\n xfun          0.33    2022-09-12 [1] CRAN (R 4.2.0)\n\n [1] /Users/sebastiansaueruser/Rlibs\n [2] /Library/Frameworks/R.framework/Versions/4.2/Resources/library\n\n──────────────────────────────────────────────────────────────────────────────\n\n\n\n\n\n\nSauer, Sebastian. 2019. Moderne Datenanalyse Mit r: Daten Einlesen, Aufbereiten, Visualisieren Und Modellieren. 1. Auflage 2019. FOM-Edition. Wiesbaden: Springer. https://www.springer.com/de/book/9783658215866."
+    "text": "Technical Details\nLast update: 2023-09-04 10:15:40\n\nsessioninfo::session_info()\n\n─ Session info ───────────────────────────────────────────────────────────────\n setting  value\n version  R version 4.2.1 (2022-06-23)\n os       macOS Big Sur ... 10.16\n system   x86_64, darwin17.0\n ui       X11\n language (EN)\n collate  en_US.UTF-8\n ctype    en_US.UTF-8\n tz       Europe/Berlin\n date     2022-09-16\n pandoc   2.19.2 @ /usr/local/bin/ (via rmarkdown)\n\n─ Packages ───────────────────────────────────────────────────────────────────\n package     * version date (UTC) lib source\n cli           3.4.0   2022-09-08 [1] CRAN (R 4.2.0)\n colorout    * 1.2-2   2022-06-13 [1] local\n digest        0.6.29  2021-12-01 [1] CRAN (R 4.2.0)\n evaluate      0.16    2022-08-09 [1] CRAN (R 4.2.0)\n fastmap       1.1.0   2021-01-25 [1] CRAN (R 4.2.0)\n htmltools     0.5.3   2022-07-18 [1] CRAN (R 4.2.0)\n htmlwidgets   1.5.4   2021-09-08 [1] CRAN (R 4.2.0)\n jsonlite      1.8.0   2022-02-22 [1] CRAN (R 4.2.0)\n knitr         1.40    2022-08-24 [1] CRAN (R 4.2.0)\n magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.2.0)\n rlang         1.0.5   2022-08-31 [1] CRAN (R 4.2.0)\n rmarkdown     2.16    2022-08-24 [1] CRAN (R 4.2.0)\n rstudioapi    0.14    2022-08-22 [1] CRAN (R 4.2.0)\n sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.2.0)\n stringi       1.7.8   2022-07-11 [1] CRAN (R 4.2.0)\n stringr       1.4.1   2022-08-20 [1] CRAN (R 4.2.0)\n xfun          0.33    2022-09-12 [1] CRAN (R 4.2.0)\n\n [1] /Users/sebastiansaueruser/Rlibs\n [2] /Library/Frameworks/R.framework/Versions/4.2/Resources/library\n\n──────────────────────────────────────────────────────────────────────────────\n\n\n\n\n\n\nSauer, Sebastian. 2019. Moderne Datenanalyse Mit r: Daten Einlesen, Aufbereiten, Visualisieren Und Modellieren. 1. Auflage 2019. FOM-Edition. Wiesbaden: Springer. https://www.springer.com/de/book/9783658215866."
   },
   {
     "objectID": "goals.html#overview",
@@ -635,5 +635,12 @@
     "title": "References",
     "section": "",
     "text": "Deisenroth, Marc Peter, A. Aldo Faisal, and Cheng Soon Ong. 2020.\nMathematics for Machine Learning. Cambridge ; New York,\nNY: Cambridge University Press.\n\n\nGelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. Regression and\nOther Stories. Analytical Methods for Social Research. Cambridge:\nCambridge University Press.\n\n\nGoodman, Steven. 2008. “A Dirty Dozen: Twelve p-Value\nMisconceptions.” Seminars in Hematology, Interpretation\nof quantitative research, 45 (3): 135–40. https://doi.org/10.1053/j.seminhematol.2008.04.003.\n\n\nHernán, Miguel A., John Hsu, and Brian Healy. 2019. “A Second\nChance to Get Causal Inference Right: A Classification of Data Science\nTasks.” Chance 32 (1): 42–49. https://doi.org/10.1080/09332480.2019.1579578.\n\n\nIsmay, Chester, and Albert Young-Sun Kim. 2020. Statistical\nInference via Data Science: A ModernDive into r and the\nTidyverse. Chapman & Hall/CRC the r Series. Boca\nRaton: CRC Press / Taylor & Francis Group. https://moderndive.com/.\n\n\nMacKay, R. J., and R. W. Oldford. 2000. “Scientific Method,\nStatistical Method and the Speed of Light.” Statistical\nScience 15 (3): 254–78. https://doi.org/10.1214/ss/1009212817.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course\nwith Examples in r and Stan. 2nd ed. CRC Texts in\nStatistical Science. Boca Raton: Taylor; Francis, CRC\nPress.\n\n\nPearl, Judea, Madelyn Glymour, and Nicholas P. Jewell. 2016. Causal\nInference in Statistics: A Primer. Chichester, West Sussex: Wiley.\n\n\nPoldrack, Russell. 2022. Statistical Thinking for the 21st\nCentury. https://statsthinking21.github.io/statsthinking21-core-site/index.html.\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond Multiple Linear\nRegression: Applied Generalized Linear Models and Multilevel Models\nin. 1st ed. Chapman and Hall Texts in Statistical Science. Boca\nRaton: CRC Press.\n\n\nRohrer, Julia M. 2018. “Thinking Clearly about Correlations and\nCausation: Graphical Causal Models for Observational Data.”\nAdvances in Methods and Practices in Psychological Science 1\n(1): 27–42. https://doi.org/10.1177/2515245917745629.\n\n\nSauer, Sebastian. 2019. Moderne Datenanalyse Mit r: Daten Einlesen,\nAufbereiten, Visualisieren Und Modellieren. 1. Auflage 2019.\nFOM-Edition. Wiesbaden: Springer. https://www.springer.com/de/book/9783658215866.\n\n\nWasserstein, Ronald L., and Nicole A. Lazar. 2016. “The\nASA’s Statement on p-Values: Context, Process, and\nPurpose.” The American Statistician 70 (2): 129–33. https://doi.org/10.1080/00031305.2016.1154108.\n\n\nWasserstein, Ronald L., Allen L. Schirm, and Nicole A. Lazar. 2019.\n“Moving to a World Beyond ‘\np</i> p <\n0.05’.” The American Statistician 73 (March):\n1–19. https://doi.org/10.1080/00031305.2019.1583913.\n\n\nWickham, Hadley, and Garrett Grolemund. 2016. R for Data Science:\nVisualize, Model, Transform, Tidy, and Import Data. O’Reilly Media.\nhttps://r4ds.had.co.nz/index.html.\n\n\nWild, Chris J, and Maxine Pfannkuch. 1999. “Statistical Thinking\nin Empirical Enquiry.” International Statistical Review\n67 (3): 223–48."
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "stats-nutshell",
+    "section": "",
+    "text": "Desktop version, not the server↩︎\npossibly you need also a Fortran compiler, but maybe that’s optional↩︎"
   }
 ]
