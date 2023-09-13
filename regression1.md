@@ -6,7 +6,7 @@
 ## R packages needed for this chapter
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-1_30f763fa3519da195ff3ddf012ab3657'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-1_93b8d8fc847bcfda0a70959e87bf1f06'}
 
 ```{.r .cell-code}
 library(easystats)
@@ -15,7 +15,7 @@ library(rstanarm)  # optional!
 ```
 :::
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-2_7aefcddcffcfa448f4f9373f9a2e0755'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-2_ba91e1dcc5594a57fd60da490d55623d'}
 
 :::
 
@@ -50,15 +50,13 @@ A more visual account of our basic modelling equation is depicted in @fig-model1
 
 :::{#fig-model1}
 
-<p >
+:::{}
 
-<pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+<pre class="mermaid mermaid-js" data-label="fig-model1">flowchart LR
   X --&gt; Y
   error --&gt; Y
 </pre>
-
-<div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
-</p>
+:::
 
 
 A more visual account of our basic modelling equation
@@ -126,9 +124,9 @@ For the mathematical inclined, check out [this derivation](https://data-se.netli
 ## In all its glory
 
 
-::: {.cell hash='regression1_cache/html/in-all-its-glory_f6ff172af2741a0f34d3bc30aaa8d4d2'}
+::: {.cell layout-align="center" hash='regression1_cache/html/in-all-its-glory_5c581682d468720b7333bf33b7a903d1'}
 ::: {.cell-output-display}
-![](regression1_files/figure-html/in-all-its-glory-1.png){width=672}
+![](regression1_files/figure-html/in-all-its-glory-1.png){fig-align='center' width=70%}
 :::
 :::
 
@@ -137,9 +135,9 @@ For the mathematical inclined, check out [this derivation](https://data-se.netli
 Let's depict the residuals, s. @fig-lm2.
 
 
-::: {.cell hash='regression1_cache/html/fig-lm2_550059835de9bd967d93a16007b55f8a'}
+::: {.cell layout-align="center" hash='regression1_cache/html/fig-lm2_1dc15526e6d9f007d9ceb9935a449642'}
 ::: {.cell-output-display}
-![Residuals as deviations from the predicted value](regression1_files/figure-html/fig-lm2-1.png){#fig-lm2 width=672}
+![Residuals as deviations from the predicted value](regression1_files/figure-html/fig-lm2-1.png){#fig-lm2 fig-align='center' width=70%}
 :::
 :::
 
@@ -150,7 +148,7 @@ Let's depict the residuals, s. @fig-lm2.
 First, let's load some data:
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-4_2790791213d8e0cecab1a2487dc1cab5'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-4_3c8b1bf2ad527a21413c685f004b84de'}
 
 ```{.r .cell-code}
 data(mtcars)
@@ -182,7 +180,7 @@ $ carb <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,â€
 Define and fit the model:
 
 
-::: {.cell hash='regression1_cache/html/lm1-freq_8fbd56fc8e0f333639dcc6113e5461fb'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm1-freq_57d698fdecbface4b124cfe7a860beef'}
 
 ```{.r .cell-code}
 lm1_freq <- lm(mpg ~ hp, data = mtcars)
@@ -193,7 +191,7 @@ lm1_freq <- lm(mpg ~ hp, data = mtcars)
 Get the parameter values:
 
 
-::: {.cell hash='regression1_cache/html/lm1-frewq-params_afaa8ae5a8071254de977d13ea1b8ca8'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm1-frewq-params_9c17347accb479960459635ab41fcc2c'}
 
 ```{.r .cell-code}
 parameters(lm1_freq)
@@ -215,14 +213,14 @@ parameters(lm1_freq)
 Plot the model parameters:
 
 
-::: {.cell hash='regression1_cache/html/plot-lm1-freq_51bc615ba27af3f0e8ff3896f87b8c45'}
+::: {.cell layout-align="center" hash='regression1_cache/html/plot-lm1-freq_694e16cdea4ec8ae54f14a47e6cd8cc2'}
 
 ```{.r .cell-code}
 plot(parameters(lm1_freq))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/plot-lm1-freq-1.png){width=672}
+![](regression1_files/figure-html/plot-lm1-freq-1.png){fig-align='center' width=70%}
 :::
 :::
 
@@ -230,7 +228,7 @@ plot(parameters(lm1_freq))
 ### Bayesian
 
 
-::: {.cell hash='regression1_cache/html/lm1-bayes_8f8326b95b1f425052582a8f44268745'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm1-bayes_14b91552278be724010b364b2ac3e386'}
 
 ```{.r .cell-code}
 lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars)
@@ -241,8 +239,8 @@ lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars)
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 7.4e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.74 seconds.
+Chain 1: Gradient evaluation took 8.9e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.89 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -259,15 +257,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.034904 seconds (Warm-up)
-Chain 1:                0.035594 seconds (Sampling)
-Chain 1:                0.070498 seconds (Total)
+Chain 1:  Elapsed Time: 0.056403 seconds (Warm-up)
+Chain 1:                0.062497 seconds (Sampling)
+Chain 1:                0.1189 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 1.7e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.17 seconds.
+Chain 2: Gradient evaluation took 2.1e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.21 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -284,15 +282,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.036974 seconds (Warm-up)
-Chain 2:                0.030925 seconds (Sampling)
-Chain 2:                0.067899 seconds (Total)
+Chain 2:  Elapsed Time: 0.059504 seconds (Warm-up)
+Chain 2:                0.052776 seconds (Sampling)
+Chain 2:                0.11228 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 1.8e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.18 seconds.
+Chain 3: Gradient evaluation took 1.5e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.15 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -309,15 +307,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.033843 seconds (Warm-up)
-Chain 3:                0.031322 seconds (Sampling)
-Chain 3:                0.065165 seconds (Total)
+Chain 3:  Elapsed Time: 0.060164 seconds (Warm-up)
+Chain 3:                0.055246 seconds (Sampling)
+Chain 3:                0.11541 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 1.6e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.16 seconds.
+Chain 4: Gradient evaluation took 1.5e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.15 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -334,9 +332,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.033838 seconds (Warm-up)
-Chain 4:                0.030412 seconds (Sampling)
-Chain 4:                0.06425 seconds (Total)
+Chain 4:  Elapsed Time: 0.058865 seconds (Warm-up)
+Chain 4:                0.053954 seconds (Sampling)
+Chain 4:                0.112819 seconds (Total)
 Chain 4: 
 ```
 :::
@@ -346,7 +344,7 @@ Chain 4:
 Actually, we want to suppress some overly verbose output of the sampling, so add the argument `refresh = 0`:
 
 
-::: {.cell hash='regression1_cache/html/lm-bayes-refresh0_f68ef60c7c5ad05c86fc6bfd2a7e8d41'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm-bayes-refresh0_092a69f530a8d4bc77dd5fe243b53681'}
 
 ```{.r .cell-code}
 lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
@@ -357,7 +355,7 @@ lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
 Get the parameter values:
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-5_a84686611038a6a8f1f1711773890a05'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-5_0f06415c9b41d9e5936317771231e61c'}
 
 ```{.r .cell-code}
 parameters(lm1_bayes)
@@ -366,10 +364,10 @@ parameters(lm1_bayes)
 ::: {.cell-output-display}
 <div class="kable-table">
 
-|Parameter   |     Median|   CI|    CI_low|    CI_high| pd|      Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
-|:-----------|----------:|----:|---------:|----------:|--:|---------:|--------:|:------------------|--------------:|-----------:|
-|(Intercept) | 30.0458334| 0.95| 26.744874| 33.3780301|  1| 0.9999552| 3816.002|normal             |       20.09062|  15.0673701|
-|hp          | -0.0683247| 0.95| -0.088284| -0.0476861|  1| 1.0002417| 3851.764|normal             |        0.00000|   0.2197599|
+|Parameter   |   Median|   CI|     CI_low|    CI_high| pd|      Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
+|:-----------|--------:|----:|----------:|----------:|--:|---------:|--------:|:------------------|--------------:|-----------:|
+|(Intercept) | 30.01923| 0.95| 26.7517738| 33.2576098|  1| 0.9993350| 3839.400|normal             |       20.09062|  15.0673701|
+|hp          | -0.06770| 0.95| -0.0884016| -0.0470858|  1| 0.9995484| 3453.765|normal             |        0.00000|   0.2197599|
 
 </div>
 :::
@@ -379,14 +377,14 @@ parameters(lm1_bayes)
 Plot the model parameters:
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-6_d3d8d5ceaa6d7dc932d3757376720f7c'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-6_0acf166ddcd089e8fa196d2dc98af8df'}
 
 ```{.r .cell-code}
 plot(parameters(lm1_bayes))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-6-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-6-1.png){fig-align='center' width=70%}
 :::
 :::
 
@@ -394,7 +392,7 @@ plot(parameters(lm1_bayes))
 ### Model performance
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-7_8aa0625b1256729307ec353ff2422738'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-7_a82da158b8780b4230d68367b545b7a5'}
 
 ```{.r .cell-code}
 r2(lm1_freq)
@@ -409,7 +407,7 @@ r2(lm1_freq)
 :::
 :::
 
-::: {.cell hash='regression1_cache/html/r2-bayes_9c99a448f25aa57b8eed74d85d66adfb'}
+::: {.cell layout-align="center" hash='regression1_cache/html/r2-bayes_980606c884dd1a483c6726e44aafbf20'}
 
 ```{.r .cell-code}
 r2(lm1_bayes)
@@ -419,7 +417,7 @@ r2(lm1_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.584 (95% CI [0.378, 0.749])
+  Conditional R2: 0.584 (95% CI [0.370, 0.745])
 ```
 :::
 :::
@@ -430,14 +428,14 @@ r2(lm1_bayes)
 Here's a bunch of typical model checks in the Frequentist sense.
 
 
-::: {.cell fit-width='10' fig.asp='1' hash='regression1_cache/html/checkmodel-lm1-freq_93daa3551d1393e753e19879372dfff8'}
+::: {.cell layout-align="center" fit-width='10' fig.asp='1' hash='regression1_cache/html/checkmodel-lm1-freq_6e539e04ba51e77e9ffaefb176ca9d25'}
 
 ```{.r .cell-code}
 check_model(lm1_freq)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/checkmodel-lm1-freq-1.png){width=100%}
+![](regression1_files/figure-html/checkmodel-lm1-freq-1.png){fig-align='center' width=100%}
 :::
 :::
 
@@ -446,14 +444,14 @@ check_model(lm1_freq)
 And here are some Bayesian flavored model checks.
 
 
-::: {.cell fit-width='10' fig.asp='1' hash='regression1_cache/html/checkmodel-lm1-bayes_c1ed59d01c06f907a47ffe587842fcf5'}
+::: {.cell layout-align="center" fit-width='10' fig.asp='1' hash='regression1_cache/html/checkmodel-lm1-bayes_c312ec3b95da0c954bf2014308fe436d'}
 
 ```{.r .cell-code}
 check_model(lm1_bayes)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/checkmodel-lm1-bayes-1.png){width=100%}
+![](regression1_files/figure-html/checkmodel-lm1-bayes-1.png){fig-align='center' width=100%}
 :::
 :::
 
@@ -461,7 +459,7 @@ check_model(lm1_bayes)
 ### Get some predictions
 
 
-::: {.cell hash='regression1_cache/html/lm1-preds_2ab30940a3cb9202fc7df5852e38e5b4'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm1-preds_ab6df23ff10147b9aacf30d54afa5af9'}
 
 ```{.r .cell-code}
 lm1_pred <- estimate_relation(lm1_freq)
@@ -494,14 +492,14 @@ More details on the above function can be found on the [respective page at the e
 ### Plot the model
 
 
-::: {.cell hash='regression1_cache/html/plot-lm1-pred_516f5bebbc7613de1049f0e0496a9569'}
+::: {.cell layout-align="center" hash='regression1_cache/html/plot-lm1-pred_a5eba640930a182577cdb291a29f205b'}
 
 ```{.r .cell-code}
 plot(lm1_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/plot-lm1-pred-1.png){width=672}
+![](regression1_files/figure-html/plot-lm1-pred-1.png){fig-align='center' width=70%}
 :::
 :::
 
@@ -532,7 +530,7 @@ As the posterior distribution manifests itself by a number of samples, we can ea
 See
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-8_2c5e5556a490cef27bfa77bddc716f34'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-8_c2a00d5d4ea888219a920453cd0f7dc9'}
 
 ```{.r .cell-code}
 lm1_bayes_tibble <- as_tibble(lm1_bayes)  # cast as a tibble (table)
@@ -545,12 +543,12 @@ head(lm1_bayes_tibble)  # show the first few rows
 
 | (Intercept)|         hp|    sigma|
 |-----------:|----------:|--------:|
-|    31.31765| -0.0801401| 4.248651|
-|    33.89991| -0.0824994| 4.802076|
-|    30.73198| -0.0680882| 3.826181|
-|    30.09580| -0.0701588| 4.905716|
-|    30.35285| -0.0656387| 3.295531|
-|    31.50666| -0.0706685| 4.168542|
+|    31.13917| -0.0711852| 3.197711|
+|    28.75411| -0.0636610| 4.671171|
+|    29.39286| -0.0665289| 4.114371|
+|    29.96161| -0.0651294| 4.548393|
+|    31.62700| -0.0701204| 3.804601|
+|    28.14868| -0.0626511| 4.102010|
 
 </div>
 :::
@@ -562,7 +560,7 @@ head(lm1_bayes_tibble)  # show the first few rows
 *What's the probability that the effect of hp is negative?*
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-9_58601c10b83842914656716ca43115e0'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-9_728a86c555d120f0a87889863d0b0963'}
 
 ```{.r .cell-code}
 lm1_bayes_tibble %>% 
@@ -588,7 +586,7 @@ Feel free to ask similar questions!
 *With a given probability of, say 90%, how large is the effect of hp?*
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-10_5b2b330e1792c0e9f0c996fd14031f3e'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-10_2d212b89b31ad2130df5d30409e67ae9'}
 
 ```{.r .cell-code}
 quantile(lm1_bayes_tibble$hp, .9)
@@ -597,7 +595,7 @@ quantile(lm1_bayes_tibble$hp, .9)
 ::: {.cell-output .cell-output-stdout}
 ```
         90% 
--0.05474905 
+-0.05448312 
 ```
 :::
 :::
@@ -606,7 +604,7 @@ quantile(lm1_bayes_tibble$hp, .9)
 *What's the smallest 95% percent interval for the effect of hp?*
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-11_34018e8741fd1ced4d78811a4a689e0d'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-11_bfc2da08dbcbbed8c000a0eb0082db33'}
 
 ```{.r .cell-code}
 hdi(lm1_bayes)
@@ -615,10 +613,10 @@ hdi(lm1_bayes)
 ::: {.cell-output-display}
 <div class="kable-table">
 
-|Parameter   |   CI|     CI_low|    CI_high|Effects |Component   |
-|:-----------|----:|----------:|----------:|:-------|:-----------|
-|(Intercept) | 0.95| 26.8722745| 33.4599590|fixed   |conditional |
-|hp          | 0.95| -0.0884446| -0.0478163|fixed   |conditional |
+|Parameter   |   CI|    CI_low|    CI_high|Effects |Component   |
+|:-----------|----:|---------:|----------:|:-------|:-----------|
+|(Intercept) | 0.95| 26.817785| 33.2873498|fixed   |conditional |
+|hp          | 0.95| -0.088532| -0.0475954|fixed   |conditional |
 
 </div>
 :::
@@ -628,7 +626,7 @@ hdi(lm1_bayes)
 In case you prefer 89% intervals (I do!):
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-12_9e631f5aba491a74d911cfee1396fd18'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-12_426a2de919fdd7a9d84209e5116bf1ac'}
 
 ```{.r .cell-code}
 hdi(lm1_bayes, ci = .89)
@@ -639,8 +637,8 @@ hdi(lm1_bayes, ci = .89)
 
 |Parameter   |   CI|     CI_low|    CI_high|Effects |Component   |
 |:-----------|----:|----------:|----------:|:-------|:-----------|
-|(Intercept) | 0.89| 27.3645122| 32.6733738|fixed   |conditional |
-|hp          | 0.89| -0.0850095| -0.0523753|fixed   |conditional |
+|(Intercept) | 0.89| 27.3732054| 32.6197653|fixed   |conditional |
+|hp          | 0.89| -0.0832743| -0.0491476|fixed   |conditional |
 
 </div>
 :::
@@ -679,7 +677,7 @@ For example, what's the uncertainty attached to the fuel economy of a car with 1
 
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-13_2a16a52b3eaca3ace64ce12783c86e7f'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-13_39cf7fc7cd4f46a0869ade354588d976'}
 
 ```{.r .cell-code}
 estimate_prediction(model = lm1_bayes, 
@@ -689,9 +687,9 @@ estimate_prediction(model = lm1_bayes,
 ::: {.cell-output-display}
 <div class="kable-table">
 
-|  hp| Predicted|       SE|   CI_low|  CI_high|
-|---:|---------:|--------:|--------:|--------:|
-| 100|  23.24689| 4.143285| 14.99219| 31.56238|
+|  hp| Predicted|       SE|   CI_low| CI_high|
+|---:|---------:|--------:|--------:|-------:|
+| 100|  23.35222| 4.094458| 15.53018| 31.2594|
 
 </div>
 :::
@@ -725,7 +723,7 @@ In other words, such analyses draw on the posterior predictive distribution.
 Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.
 
 
-::: {.cell hash='regression1_cache/html/lm2-freq_f3bb56953b93b38fbf6cd25fbb14bb33'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm2-freq_3d5dd6099feba168e4d828e7d4df082d'}
 
 ```{.r .cell-code}
 lm2_freq <- lm(mpg ~ hp + disp, data = mtcars)
@@ -749,7 +747,7 @@ parameters(lm2_freq)
 Similarly for Bayes inference:
 
 
-::: {.cell hash='regression1_cache/html/lm2-bayes_9b49d9262f9fdb667eb14f799e2eb0e3'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm2-bayes_4e6c232641f8c20c79ef5d19377b7de9'}
 
 ```{.r .cell-code}
 lm2_bayes <- stan_glm(mpg ~ hp + disp, data = mtcars)
@@ -760,7 +758,7 @@ lm2_bayes <- stan_glm(mpg ~ hp + disp, data = mtcars)
 Results
 
 
-::: {.cell hash='regression1_cache/html/lm2-results_b3013a3370e43218fdd00dd6a97ebae0'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm2-results_ce9463700302cc3a1cd9eb5150490f97'}
 
 ```{.r .cell-code}
 parameters(lm2_bayes)
@@ -769,11 +767,11 @@ parameters(lm2_bayes)
 ::: {.cell-output-display}
 <div class="kable-table">
 
-|Parameter   |     Median|   CI|     CI_low|    CI_high|      pd| ROPE_Percentage|     Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
-|:-----------|----------:|----:|----------:|----------:|-------:|---------------:|--------:|--------:|:------------------|--------------:|-----------:|
-|(Intercept) | 30.7631742| 0.95| 27.9592857| 33.4523213| 1.00000|               0| 1.000854| 4605.880|normal             |       20.09062|  15.0673701|
-|hp          | -0.0252340| 0.95| -0.0538511|  0.0032994| 0.95825|               1| 1.001172| 2080.083|normal             |        0.00000|   0.2197599|
-|disp        | -0.0304116| 0.95| -0.0456015| -0.0144810| 0.99900|               1| 1.000431| 1957.573|normal             |        0.00000|   0.1215712|
+|Parameter   |     Median|   CI|     CI_low|    CI_high|      pd|      Rhat|      ESS|Prior_Distribution | Prior_Location| Prior_Scale|
+|:-----------|----------:|----:|----------:|----------:|-------:|---------:|--------:|:------------------|--------------:|-----------:|
+|(Intercept) | 30.7505061| 0.95| 28.0524917| 33.5248323| 1.00000| 0.9994184| 4416.682|normal             |       20.09062|  15.0673701|
+|hp          | -0.0251499| 0.95| -0.0526039|  0.0024292| 0.96625| 1.0006908| 2181.434|normal             |        0.00000|   0.2197599|
+|disp        | -0.0301997| 0.95| -0.0455587| -0.0150872| 0.99975| 1.0016436| 2213.671|normal             |        0.00000|   0.1215712|
 
 </div>
 :::
@@ -783,7 +781,7 @@ plot(parameters(lm2_bayes))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/lm2-results-1.png){width=672}
+![](regression1_files/figure-html/lm2-results-1.png){fig-align='center' width=70%}
 :::
 
 ```{.r .cell-code}
@@ -794,7 +792,7 @@ r2(lm2_bayes)
 ```
 # Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.731 (95% CI [0.580, 0.844])
+  Conditional R2: 0.731 (95% CI [0.573, 0.839])
 ```
 :::
 :::
@@ -803,7 +801,7 @@ r2(lm2_bayes)
 Depending on the value of `disp` the prediction of `mpg` from `hp` will vary:
 
 
-::: {.cell hash='regression1_cache/html/lm2-pred_493dc9d10a4d4930a9f0d09e4cb85a40'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm2-pred_3cb57115d7699fb4d0568f8ea5707f9c'}
 
 ```{.r .cell-code}
 lm2_pred <- estimate_relation(lm2_freq)
@@ -811,7 +809,7 @@ plot(lm2_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/lm2-pred-1.png){width=672}
+![](regression1_files/figure-html/lm2-pred-1.png){fig-align='center' width=70%}
 :::
 :::
 
@@ -819,7 +817,7 @@ plot(lm2_pred)
 ## One nominal predictor
 
 
-::: {.cell hash='regression1_cache/html/lm3a_535b185d06fc6d1b2a30a814ca37d81a'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm3a_1d159cead1008eba3b38a89cc0957301'}
 
 ```{.r .cell-code}
 lm3a <- lm(mpg ~ am, data = mtcars)
@@ -838,7 +836,7 @@ parameters(lm3a)
 :::
 :::
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-14_c49dac5bae175a71ed12b3c2ea772ca4'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-14_b1faed086e858181a0739285358596b6'}
 
 ```{.r .cell-code}
 lm3a_means <- estimate_means(lm3a, at = "am = c(0, 1)")
@@ -867,14 +865,17 @@ The plot does not work, malheureusement:
 
 
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-15_3f26968118ac254f421277f6d43651a4'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-15_31a871c3856cf6ae06f1e240b4c2779e'}
 
 ```{.r .cell-code}
 plot(lm3a_means)
 ```
 
-::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-15-1.png){width=672}
+::: {.cell-output .cell-output-error}
+```
+Error in `rlang::sym()`:
+! Can't convert a character vector to a symbol.
+```
 :::
 :::
 
@@ -887,7 +888,7 @@ Computationwise, no big differences:
 
 
 
-::: {.cell hash='regression1_cache/html/lm3a-factor_ec6e4c42488953d3cfbcf0df9b982713'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm3a-factor_cfb7938c06a476e1be37eac7e627ea98'}
 
 ```{.r .cell-code}
 mtcars2 <-
@@ -910,7 +911,7 @@ parameters(lm3a)
 :::
 :::
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-16_cd8a9d0d0c1d4e3108c7c9e309b3b898'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-16_5efbe04852f3b671a74345ac5598969f'}
 
 ```{.r .cell-code}
 lm3a_means <- estimate_means(lm3a)
@@ -918,7 +919,7 @@ plot(lm3a_means)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-16-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-16-1.png){fig-align='center' width=70%}
 :::
 :::
 
@@ -929,7 +930,7 @@ Note that we should have converted `am` to a factor variable before fitting the 
 Here's a more hand-crafted version of the last plot, see Fig. @fig-lm3a-means.
 
 
-::: {.cell hash='regression1_cache/html/fig-lm3a-means_e45955c35ba6eb96437967555bfd10f8'}
+::: {.cell layout-align="center" hash='regression1_cache/html/fig-lm3a-means_3dd55d01f828c0056362c33cc582d31a'}
 
 ```{.r .cell-code}
 ggplot(mtcars2) +
@@ -943,7 +944,7 @@ ggplot(mtcars2) +
 ```
 
 ::: {.cell-output-display}
-![Means per level of am](regression1_files/figure-html/fig-lm3a-means-1.png){#fig-lm3a-means width=672}
+![Means per level of am](regression1_files/figure-html/fig-lm3a-means-1.png){#fig-lm3a-means fig-align='center' width=70%}
 :::
 :::
 
@@ -951,7 +952,7 @@ ggplot(mtcars2) +
 ## One metric and one nominal predictor
 
 
-::: {.cell hash='regression1_cache/html/lm4_dbe3a16013f682f75ade95a933811eb6'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm4_448330ab3ed6d775d9c65a5b9fced8e4'}
 
 ```{.r .cell-code}
 mtcars2 <-
@@ -976,7 +977,7 @@ parameters(lm4)
 :::
 :::
 
-::: {.cell hash='regression1_cache/html/lm4-pred_82b59b63241acbd1a5f1973d5dc49f74'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm4-pred_7689412ac310b3ddd84f5d216614f6a4'}
 
 ```{.r .cell-code}
 lm4_pred <- estimate_relation(lm4)
@@ -984,7 +985,7 @@ plot(lm4_pred)
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/lm4-pred-1.png){width=672}
+![](regression1_files/figure-html/lm4-pred-1.png){fig-align='center' width=70%}
 :::
 :::
 
@@ -1004,7 +1005,7 @@ Correlation is really a close cousin to regression. In fact, regression with sta
 Let's get the correlation matrix of the variables in involved in `lm4`.
 
 
-::: {.cell hash='regression1_cache/html/lm4-corr_8e97ccf6a3950214c412baad22942a71'}
+::: {.cell layout-align="center" hash='regression1_cache/html/lm4-corr_b4c7b83f8cc1771d6d1e4bd398543dcf'}
 
 ```{.r .cell-code}
 lm4_corr <- 
@@ -1028,14 +1029,14 @@ lm4_corr
 :::
 :::
 
-::: {.cell hash='regression1_cache/html/unnamed-chunk-17_57cdfa2a1ed976620bbd0e9bb9fa23ba'}
+::: {.cell layout-align="center" hash='regression1_cache/html/unnamed-chunk-17_8f10e67ab0aa49de42bac0d77b4ab544'}
 
 ```{.r .cell-code}
 plot(summary(lm4_corr))
 ```
 
 ::: {.cell-output-display}
-![](regression1_files/figure-html/unnamed-chunk-17-1.png){width=672}
+![](regression1_files/figure-html/unnamed-chunk-17-1.png){fig-align='center' width=70%}
 :::
 :::
 

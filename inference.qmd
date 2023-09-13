@@ -55,6 +55,7 @@ Larger samples allow for more precise estimations (ceteris paribus).
 ```{r plot-estimate-gif}
 #| include: !expr knitr::is_html_output()
 #| fig-cap: "Sample size in motion, Image credit: Karsten Luebke"
+#| echo: false
 
 knitr::include_graphics("img/Estimate.gif")
 ```

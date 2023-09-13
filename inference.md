@@ -39,9 +39,9 @@ Population vs. sample (Image credit: Karsten Luebke)
 Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive* and *inferential* statistics.
 
 
-::: {.cell hash='inference_cache/html/fig-desk-inf_8dfcd8f8cc9b6995ef058468f22fcd4f'}
+::: {.cell layout-align="center" hash='inference_cache/html/fig-desk-inf_4e374c23216bfacf6c21e7a9e89fcddb'}
 ::: {.cell-output-display}
-![The difference between description and inference](img/desk_vs_inf-crop.png){#fig-desk-inf width=50%}
+![The difference between description and inference](img/desk_vs_inf-crop.png){#fig-desk-inf fig-align='center' width=50%}
 :::
 :::
 
@@ -51,14 +51,9 @@ Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive
 Larger samples allow for more precise estimations (ceteris paribus).
 
 
-::: {.cell hash='inference_cache/html/plot-estimate-gif_19dfe573bb6746e22515e59b2f521ee1'}
-
-```{.r .cell-code}
-knitr::include_graphics("img/Estimate.gif")
-```
-
+::: {.cell layout-align="center" hash='inference_cache/html/plot-estimate-gif_3ae1e91d8ff11c1acb61c8c33e1b0fd5'}
 ::: {.cell-output-display}
-![Sample size in motion, Image credit: Karsten Luebke](img/Estimate.gif)
+![Sample size in motion, Image credit: Karsten Luebke](img/Estimate.gif){fig-align='center' width=70%}
 :::
 :::
 
@@ -98,15 +93,13 @@ see Figure @fig-belief-update.
 
 :::{#fig-belief-update}
 
-<p >
+:::{}
 
-<pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+<pre class="mermaid mermaid-js" data-label="fig-belief-update">flowchart LR
   A(prior belief) --&gt; B(new data) --&gt; C(posterior belief)
 
 </pre>
-
-<div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
-</p>
+:::
 
 
 Bayesian belief updating
@@ -186,7 +179,7 @@ The p-value is defined as the probability of obtaining the observed data (or mor
 Figure @fig-pvalue visualizes the p-value.
 
 
-::: {.cell layout-align="center" hash='inference_cache/html/fig-pvalue_97c66be20a442eaba5b941daf227a760'}
+::: {.cell layout-align="center" hash='inference_cache/html/fig-pvalue_62ca56df7a39f9d0e8804217e0a4894a'}
 ::: {.cell-output-display}
 ![Visualization of the p-value](inference_files/figure-html/fig-pvalue-1.png){#fig-pvalue fig-align='center' width=50%}
 :::

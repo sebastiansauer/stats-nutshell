@@ -95,6 +95,9 @@ All learning materials (such as literature, code, data) will be provided in elec
 
 -   I recommend that you carefully check the course description to make sure the course fits your needs (not too advanced/basic).
 
+
+
+
 ## Didactic outline
 
 This course can rather be considered a workshop in the sense that the instructor uses a dialogue-based approach to teaching and that there are numerous exercises during the course. Instead of providing long talks to the students, the instructor feels obligated to engage students in back-and-forth conversations. Similarly, the presentation of a large number of Powerpoint slide is avoided. Instead, a thorough course literature is available (free online), so that students will have no barrier in diving deeply into the materials and ideas presented. However, during class it is more important to transmit the pivotal ideas; details need to be read and worked by the students individually after (and before) the course. As an alternative to presenting a lot of text on slides, in this course there will be a (electronic) whiteboard where concepts are developed dynamically and in pace of the teaching conversation thereby adjusting the "dose" of new thoughts to the actual pace of the instruction.

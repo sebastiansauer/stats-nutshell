@@ -46,7 +46,7 @@ Please also note that R and RStudio should be installed before starting (this co
 
 In addition, your R packages should be updtodate, according to Arnold Schwarzenegger (s. @fig-arnie).
 
-[Keep your R packages uptodate, or risk being an outdated model, Arnie says](img/terminator.jpg){#fig-arnie width="50%"}
+![Keep your R packages uptodate, or risk being an outdated model, Arnie says](img/terminator.jpg){#fig-arnie width="50%"}
 
 
 

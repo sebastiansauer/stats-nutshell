@@ -95,6 +95,9 @@ All learning materials (such as literature, code, data) will be provided in elec
 
 -   I recommend that you carefully check the course description to make sure the course fits your needs (not too advanced/basic).
 
+
+
+
 ## Didactic outline
 
 This course can rather be considered a workshop in the sense that the instructor uses a dialogue-based approach to teaching and that there are numerous exercises during the course. Instead of providing long talks to the students, the instructor feels obligated to engage students in back-and-forth conversations. Similarly, the presentation of a large number of Powerpoint slide is avoided. Instead, a thorough course literature is available (free online), so that students will have no barrier in diving deeply into the materials and ideas presented. However, during class it is more important to transmit the pivotal ideas; details need to be read and worked by the students individually after (and before) the course. As an alternative to presenting a lot of text on slides, in this course there will be a (electronic) whiteboard where concepts are developed dynamically and in pace of the teaching conversation thereby adjusting the "dose" of new thoughts to the actual pace of the instruction.
@@ -289,10 +292,10 @@ I readily confess that this approach is novel to many learners in these days, le
 
 ## Technical Details
 
-Last update: 2023-09-04 10:15:40
+Last update: 2023-09-13 08:33:20
 
 
-::: {.cell hash='index_cache/html/unnamed-chunk-1_d16679d51455719f70c3f7444ac81137'}
+::: {.cell layout-align="center" hash='index_cache/html/unnamed-chunk-1_853f1f4c1d8eacb67b6745510041dcf5'}
 
 ```{.r .cell-code}
 sessioninfo::session_info()
@@ -310,28 +313,25 @@ sessioninfo::session_info()
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Europe/Berlin
- date     2022-09-16
- pandoc   2.19.2 @ /usr/local/bin/ (via rmarkdown)
+ date     2023-09-12
+ pandoc   3.1.1 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date (UTC) lib source
- cli           3.4.0   2022-09-08 [1] CRAN (R 4.2.0)
+ cli           3.6.1   2023-03-23 [1] CRAN (R 4.2.0)
  colorout    * 1.2-2   2022-06-13 [1] local
- digest        0.6.29  2021-12-01 [1] CRAN (R 4.2.0)
- evaluate      0.16    2022-08-09 [1] CRAN (R 4.2.0)
- fastmap       1.1.0   2021-01-25 [1] CRAN (R 4.2.0)
- htmltools     0.5.3   2022-07-18 [1] CRAN (R 4.2.0)
- htmlwidgets   1.5.4   2021-09-08 [1] CRAN (R 4.2.0)
- jsonlite      1.8.0   2022-02-22 [1] CRAN (R 4.2.0)
- knitr         1.40    2022-08-24 [1] CRAN (R 4.2.0)
- magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.2.0)
- rlang         1.0.5   2022-08-31 [1] CRAN (R 4.2.0)
- rmarkdown     2.16    2022-08-24 [1] CRAN (R 4.2.0)
- rstudioapi    0.14    2022-08-22 [1] CRAN (R 4.2.0)
+ digest        0.6.33  2023-07-07 [1] CRAN (R 4.2.0)
+ evaluate      0.21    2023-05-05 [1] CRAN (R 4.2.0)
+ fastmap       1.1.1   2023-02-24 [1] CRAN (R 4.2.0)
+ htmltools     0.5.6   2023-08-10 [1] CRAN (R 4.2.0)
+ htmlwidgets   1.6.2   2023-03-17 [1] CRAN (R 4.2.0)
+ jsonlite      1.8.7   2023-06-29 [1] CRAN (R 4.2.0)
+ knitr         1.44    2023-09-11 [1] CRAN (R 4.2.1)
+ rlang         1.1.1   2023-04-28 [1] CRAN (R 4.2.0)
+ rmarkdown     2.24    2023-08-14 [1] CRAN (R 4.2.0)
+ rstudioapi    0.15.0  2023-07-07 [1] CRAN (R 4.2.0)
  sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.2.0)
- stringi       1.7.8   2022-07-11 [1] CRAN (R 4.2.0)
- stringr       1.4.1   2022-08-20 [1] CRAN (R 4.2.0)
- xfun          0.33    2022-09-12 [1] CRAN (R 4.2.0)
+ xfun          0.40    2023-08-09 [1] CRAN (R 4.2.0)
 
  [1] /Users/sebastiansaueruser/Rlibs
  [2] /Library/Frameworks/R.framework/Versions/4.2/Resources/library

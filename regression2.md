@@ -8,7 +8,7 @@
 ## R packages needed for this chapter
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-1_b68bb1815aa20ce64b425de7ce553587'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-1_044342c54650671281c1424559fb2a84'}
 
 ```{.r .cell-code}
 library(easystats)
@@ -63,7 +63,7 @@ For concreteness, say, the bacteriae double each two days, starting with 1 unit 
 After about three weeks, i.e., 10 doubling periods (20 days), we'll have $y$  units of bacteriae:
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-2_0f132f1dfb57231c9a838d5dc649f555'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-2_7145e9009d8659ec0af3579192a22e95'}
 
 ```{.r .cell-code}
 e <- 2.7178
@@ -117,18 +117,16 @@ Regression analyses can be used with more than one predictor, see Figure @fig-mu
 
 :::{#fig-multregr}
 
-<p >
+:::{}
 
-<pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">
+<pre class="mermaid mermaid-js" data-label="fig-multregr">
 flowchart LR
 X --&gt; Y1
 
 X1 --&gt; Y2
 X2 --&gt; Y2
 </pre>
-
-<div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
-</p>
+:::
 
 
 One predictor (X) vs. two predictors (X1, X2)
@@ -154,17 +152,17 @@ If the slope for one predictor is the same for all values of the other predictor
 Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure, @fig-3dregr2. The three cubes show the same data, just turned by different degrees (along the z axis).
 
 
-::: {.cell hash='regression2_cache/html/fig-3dregr2_43580a5de4d401d30743d59b30ae151c'}
+::: {.cell layout-align="center" hash='regression2_cache/html/fig-3dregr2_48c90e576e029884ca20c60158cfeb90'}
 ::: {.cell-output-display}
-![3D regression plane (not line) without interaction](img/3d1.png){#fig-3dregr2-1 width=875}
+![3D regression plane (not line) without interaction](img/3d1.png){#fig-3dregr2-1 fig-align='center' width=70%}
 :::
 
 ::: {.cell-output-display}
-![3D regression plane (not line) without interaction](img/3d2.png){#fig-3dregr2-2 width=875}
+![3D regression plane (not line) without interaction](img/3d2.png){#fig-3dregr2-2 fig-align='center' width=70%}
 :::
 
 ::: {.cell-output-display}
-![3D regression plane (not line) without interaction](img/3d3.png){#fig-3dregr2-3 width=875}
+![3D regression plane (not line) without interaction](img/3d3.png){#fig-3dregr2-3 fig-align='center' width=70%}
 :::
 :::
 
@@ -182,7 +180,7 @@ $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon$, where x1 is `hp` and `x2` 
 In R terms:
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-4_74f830d92c8865198e463f86dd7bed66'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-4_3228f84cf5511f82684605e41abb43ff'}
 
 ```{.r .cell-code}
 lm3d <- lm(mpg ~ hp + disp, data = mtcars)
@@ -193,9 +191,9 @@ lm3d <- lm(mpg ~ hp + disp, data = mtcars)
 The 3D plot is shown in Figure @fig-mtcars3d.
 
 
-::: {.cell hash='regression2_cache/html/fig-mtcars3d_e7b44966f8248cf6aceef8ed7ad337c3'}
+::: {.cell layout-align="center" hash='regression2_cache/html/fig-mtcars3d_426a3a2399d895452d36d7cc58f7545f'}
 ::: {.cell-output-display}
-![mpg ~ hp + disp](regression2_files/figure-html/fig-mtcars3d-1.png){#fig-mtcars3d width=672}
+![mpg ~ hp + disp](regression2_files/figure-html/fig-mtcars3d-1.png){#fig-mtcars3d fig-align='center' width=70%}
 :::
 :::
 
@@ -203,7 +201,7 @@ The 3D plot is shown in Figure @fig-mtcars3d.
 Here are the two corresponding 2d (1 predictor) regression models:
 
 
-::: {.cell layout-ncol="2" hash='regression2_cache/html/unnamed-chunk-6_c74ea34971797271182078abacd22472'}
+::: {.cell layout-ncol="2" layout-align="center" hash='regression2_cache/html/unnamed-chunk-6_03bdd34274b4e9c62e419645ab3a8f64'}
 
 ```{.r .cell-code}
 lm1 <- lm(mpg ~ hp, data = mtcars)
@@ -211,7 +209,7 @@ plot(estimate_relation(lm1))
 ```
 
 ::: {.cell-output-display}
-![](regression2_files/figure-html/unnamed-chunk-6-1.png){width=672}
+![](regression2_files/figure-html/unnamed-chunk-6-1.png){fig-align='center' width=70%}
 :::
 
 ```{.r .cell-code}
@@ -220,7 +218,7 @@ plot(estimate_relation(lm2))
 ```
 
 ::: {.cell-output-display}
-![](regression2_files/figure-html/unnamed-chunk-6-2.png){width=672}
+![](regression2_files/figure-html/unnamed-chunk-6-2.png){fig-align='center' width=70%}
 :::
 :::
 
@@ -234,7 +232,7 @@ For interaction to happen we relax the assumption that the slope of predictor 1 
 In R, we specify an interaction model like this:
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-7_087b9ecf6ce5b16322c02fc2ec37ddb3'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-7_4f1f142c00fd46d9811d249e5c0b095d'}
 
 ```{.r .cell-code}
 lm3d_interact <- lm(mpg ~ hp + disp + hp:disp, data = mtcars)
@@ -247,9 +245,9 @@ The symbol `hp:disp` can be read as "the interaction effect of `hp` and `disp`".
 Here's a visual account, see Figure @fig-mtcars3d-interact.
 
 
-::: {.cell hash='regression2_cache/html/fig-mtcars3d-interact_a85f255a9b91f608efd76ec2f51d3a53'}
+::: {.cell layout-align="center" hash='regression2_cache/html/fig-mtcars3d-interact_5ee2fe3e3416c1eb23b78fe9988595e6'}
 ::: {.cell-output-display}
-![mpg ~ hp + disp](regression2_files/figure-html/fig-mtcars3d-interact-1.png){#fig-mtcars3d-interact width=672}
+![mpg ~ hp + disp](regression2_files/figure-html/fig-mtcars3d-interact-1.png){#fig-mtcars3d-interact fig-align='center' width=70%}
 :::
 :::
 
@@ -273,7 +271,7 @@ If you find that two sophisticated, consider the following simple case.
 First, we mutate `am` to be a factor variable, in order to make things simpler (without loss of generality).
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-9_5f4ab9fff14557a7082f8df868dba4e1'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-9_08e55b928e3b66fd81ecce3f4f0201c5'}
 
 ```{.r .cell-code}
 mtcars2 <-
@@ -286,7 +284,7 @@ mtcars2 <-
 Now we use this new variable for a simple regression model:
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-10_5feb123e3fd4e520aa6b36f9f392b42a'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-10_e9b4a64ce25735185cfc159fdcce0ec6'}
 
 ```{.r .cell-code}
 lm_interact_simple <- lm(mpg ~ disp + am_f + disp:am_f, data = mtcars2)
@@ -297,14 +295,14 @@ lm_interact_simple <- lm(mpg ~ disp + am_f + disp:am_f, data = mtcars2)
 Here's the plot, Figure @fig-interact-simple.
 
 
-::: {.cell hash='regression2_cache/html/fig-interact-simple_99fbef9f6a0fbc0508326abb1bb3540b'}
+::: {.cell layout-align="center" hash='regression2_cache/html/fig-interact-simple_2ef53d007bd582908a5b115af2040afd'}
 
 ```{.r .cell-code}
 plot(estimate_relation(lm_interact_simple))
 ```
 
 ::: {.cell-output-display}
-![A simple interaction model](regression2_files/figure-html/fig-interact-simple-1.png){#fig-interact-simple width=672}
+![A simple interaction model](regression2_files/figure-html/fig-interact-simple-1.png){#fig-interact-simple fig-align='center' width=70%}
 :::
 :::
 
@@ -318,14 +316,14 @@ One might be inclined to interpret Figure @fig-interact-simple as an 3D image, w
 For completeness, here are the parameters of the model.
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-12_775d5188655c479fc8b4cf34299662c9'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-12_29b38b5a0b9f137445cef04893411787'}
 ::: {.cell-output-display}
 |Parameter       | Coefficient |       SE |             95% CI | t(28) |      p |
 |:---------------|:-----------:|:--------:|:------------------:|:-----:|:------:|
 |(Intercept)     |       25.16 |     1.93 |     (21.21, 29.10) | 13.07 | < .001 |
 |disp            |       -0.03 | 6.22e-03 |     (-0.04, -0.01) | -4.44 | < .001 |
 |am f (1)        |        7.71 |     2.50 |      (2.58, 12.84) |  3.08 | 0.005  |
-|disp * am f (1) |       -0.03 |     0.01 | (-0.05, -7.99e-03) | -2.75 | 0.010  |
+|disp × am f (1) |       -0.03 |     0.01 | (-0.05, -7.99e-03) | -2.75 | 0.010  |
 :::
 :::
 
@@ -339,7 +337,7 @@ Therefore it simplifies the interpretation of regression coefficients to *center
 $$x' = x - \bar{x}$$ In R, this can be achieved e.g,. in this way:
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-13_f36f42eb7efbf9a3eed3efc3c7cdb729'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-13_a8c3d6da7832739f5665fc591a380351'}
 
 ```{.r .cell-code}
 mtcars3 <- 
@@ -348,7 +346,7 @@ mtcars2 %>%
 ```
 :::
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-14_62b434ed9d3a8b35ff94aac7a598612a'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-14_58b6b6011208093cfe91c4c3843ade52'}
 
 ```{.r .cell-code}
 lm_interact_simple2 <- lm(mpg ~ disp_c + am_f + disp_c:am_f, data = mtcars3)
@@ -379,7 +377,7 @@ In order to answer this question, all predictor must have the same scale. Otherw
 A simple solution is to standardize all predictors to the same scale (sd=1).
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-15_368c43c0bc8774e8380981e6182b2254'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-15_6113501163f42270780d37129fcfb377'}
 
 ```{.r .cell-code}
 mtcars4 <-
@@ -394,7 +392,7 @@ By the way, "standardizing" centers the variable by default to a mean value of z
 See:
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-16_8bbdc1eed4dfdcd3734d94a48de3925d'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-16_b63948e2998d696974b9c1ce4748329b'}
 
 ```{.r .cell-code}
 head(mtcars4$disp)
@@ -421,7 +419,7 @@ head(mtcars$disp)
 Here's the SD:
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-17_07d71b50a16fba00facdd4b67c382ce9'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-17_57836103614b7aa76498c4579707cf27'}
 
 ```{.r .cell-code}
 sd(mtcars4$disp)
@@ -448,7 +446,7 @@ sd(mtcars$disp)
 And here's the mean value:
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-18_0ab5603ab03d1e8653182be64713a065'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-18_62df871933139045b92666f01c4ed0b6'}
 
 ```{.r .cell-code}
 mean(mtcars4$disp)
@@ -475,7 +473,7 @@ mean(mtcars$disp)
 Now we are in a position to decide which predictor is more important:
 
 
-::: {.cell hash='regression2_cache/html/unnamed-chunk-19_54f18adf8411ad472d635e1f109e514a'}
+::: {.cell layout-align="center" hash='regression2_cache/html/unnamed-chunk-19_e5159b5a2ef343a995bf1cb055d0589c'}
 
 ```{.r .cell-code}
 m <- lm(mpg ~ disp + hp + cyl, data = mtcars4)
@@ -517,9 +515,9 @@ Consider this geometric interpretation of the least square method in Figure @fig
 
 
 
-::: {.cell hash='regression2_cache/html/fig-leastsq_95e70ddafb325bc05bc167308d719a7b'}
+::: {.cell layout-align="center" hash='regression2_cache/html/fig-leastsq_5a49421ea69ad7c4234985334843dfd1'}
 ::: {.cell-output-display}
-![Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia](img/543px-Linear_least_squares_geometric_interpretation.png){#fig-leastsq width=25%}
+![Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia](img/543px-Linear_least_squares_geometric_interpretation.png){#fig-leastsq fig-align='center' width=25%}
 :::
 :::
 

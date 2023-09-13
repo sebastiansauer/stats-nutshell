@@ -46,7 +46,7 @@ Please also note that R and RStudio should be installed before starting (this co
 
 In addition, your R packages should be updtodate, according to Arnold Schwarzenegger (s. @fig-arnie).
 
-[Keep your R packages uptodate, or risk being an outdated model, Arnie says](img/terminator.jpg){#fig-arnie width="50%"}
+![Keep your R packages uptodate, or risk being an outdated model, Arnie says](img/terminator.jpg){#fig-arnie width="50%"}
 
 
 
@@ -140,7 +140,7 @@ Compute the variance of `x` using basic arithmetic.^[`sum(x^2)`][^sol8]
 
 
 
-    ::: {.cell hash='basics_cache/html/unnamed-chunk-1_46dbf099908aa6ced7e180fc0e3798b0'}
+    ::: {.cell layout-align="center" hash='basics_cache/html/unnamed-chunk-1_206ffacd9c31fb13eb5ac6a097766367'}
     
     ```{.r .cell-code}
     x <- c(1, 2, 3)
@@ -202,7 +202,7 @@ I strongly advice working with *Projects* in RStudio, as it makes working with f
 To blitz start with data, type the following in R:
 
 
-::: {.cell hash='basics_cache/html/unnamed-chunk-2_58f5faa8ad70194959dbe2d4b46e1f30'}
+::: {.cell layout-align="center" hash='basics_cache/html/unnamed-chunk-2_a1c7461cc157a0684991e4f80acef985'}
 
 ```{.r .cell-code}
 data(mtcars)
@@ -220,7 +220,7 @@ To get help for the data set, type `help(mtcars)`
 A bit more advanced, but it's a nice data set, try the Palmer Penguins data set:
 
 
-::: {.cell hash='basics_cache/html/unnamed-chunk-3_fb18c89d614cf90619247bc45ccb4f36'}
+::: {.cell layout-align="center" hash='basics_cache/html/unnamed-chunk-3_56ff8b301410f122e9f65ce84357743a'}
 
 ```{.r .cell-code}
 d <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
@@ -231,14 +231,14 @@ head(d)  # see the first few rows, the "head" of the table
 ::: {.cell-output-display}
 <div class="kable-table">
 
-|  X|species |island    | bill_length_mm| bill_depth_mm| flipper_length_mm| body_mass_g|sex    | year|
-|--:|:-------|:---------|--------------:|-------------:|-----------------:|-----------:|:------|----:|
-|  1|Adelie  |Torgersen |           39.1|          18.7|               181|        3750|male   | 2007|
-|  2|Adelie  |Torgersen |           39.5|          17.4|               186|        3800|female | 2007|
-|  3|Adelie  |Torgersen |           40.3|          18.0|               195|        3250|female | 2007|
-|  4|Adelie  |Torgersen |             NA|            NA|                NA|          NA|NA     | 2007|
-|  5|Adelie  |Torgersen |           36.7|          19.3|               193|        3450|female | 2007|
-|  6|Adelie  |Torgersen |           39.3|          20.6|               190|        3650|male   | 2007|
+| rownames|species |island    | bill_length_mm| bill_depth_mm| flipper_length_mm| body_mass_g|sex    | year|
+|--------:|:-------|:---------|--------------:|-------------:|-----------------:|-----------:|:------|----:|
+|        1|Adelie  |Torgersen |           39.1|          18.7|               181|        3750|male   | 2007|
+|        2|Adelie  |Torgersen |           39.5|          17.4|               186|        3800|female | 2007|
+|        3|Adelie  |Torgersen |           40.3|          18.0|               195|        3250|female | 2007|
+|        4|Adelie  |Torgersen |             NA|            NA|                NA|          NA|       | 2007|
+|        5|Adelie  |Torgersen |           36.7|          19.3|               193|        3450|female | 2007|
+|        6|Adelie  |Torgersen |           39.3|          20.6|               190|        3650|male   | 2007|
 
 </div>
 :::

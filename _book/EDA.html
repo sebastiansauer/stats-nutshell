@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,48 +47,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -101,8 +73,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -139,7 +110,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -150,11 +122,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./EDA.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -162,105 +139,120 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">stats-nutshell</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./goals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></a>
+  <a href="./goals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></a>
+  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./EDA.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a>
+  <a href="./EDA.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></a>
+  <a href="./inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></a>
+  <a href="./regression1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></a>
+  <a href="./regression2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./causality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></a>
+  <a href="./causality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./casestudies.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case studies</span></a>
+  <a href="./casestudies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case studies</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link active" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="toc-section-number">3.1</span>  R packages needed for this chapter</a></li>
-  <li><a href="#whats-eda" id="toc-whats-eda" class="nav-link" data-scroll-target="#whats-eda"><span class="toc-section-number">3.2</span>  What’s EDA?</a></li>
-  <li><a href="#sec-data-journey" id="toc-sec-data-journey" class="nav-link" data-scroll-target="#sec-data-journey"><span class="toc-section-number">3.3</span>  Data journey</a></li>
-  <li><a href="#blitz-data" id="toc-blitz-data" class="nav-link" data-scroll-target="#blitz-data"><span class="toc-section-number">3.4</span>  Blitz data</a></li>
-  <li><a href="#data-cleansing" id="toc-data-cleansing" class="nav-link" data-scroll-target="#data-cleansing"><span class="toc-section-number">3.5</span>  Data cleansing</a></li>
-  <li><a href="#convenience-functions" id="toc-convenience-functions" class="nav-link" data-scroll-target="#convenience-functions"><span class="toc-section-number">3.6</span>  Convenience functions</a>
+  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link active" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="header-section-number">3.1</span> R packages needed for this chapter</a></li>
+  <li><a href="#whats-eda" id="toc-whats-eda" class="nav-link" data-scroll-target="#whats-eda"><span class="header-section-number">3.2</span> What’s EDA?</a></li>
+  <li><a href="#sec-data-journey" id="toc-sec-data-journey" class="nav-link" data-scroll-target="#sec-data-journey"><span class="header-section-number">3.3</span> Data journey</a></li>
+  <li><a href="#blitz-data" id="toc-blitz-data" class="nav-link" data-scroll-target="#blitz-data"><span class="header-section-number">3.4</span> Blitz data</a></li>
+  <li><a href="#data-cleansing" id="toc-data-cleansing" class="nav-link" data-scroll-target="#data-cleansing"><span class="header-section-number">3.5</span> Data cleansing</a></li>
+  <li><a href="#convenience-functions" id="toc-convenience-functions" class="nav-link" data-scroll-target="#convenience-functions"><span class="header-section-number">3.6</span> Convenience functions</a>
   <ul class="collapse">
-  <li><a href="#data-explorer" id="toc-data-explorer" class="nav-link" data-scroll-target="#data-explorer"><span class="toc-section-number">3.6.1</span>  Data Explorer</a></li>
-  <li><a href="#vtree" id="toc-vtree" class="nav-link" data-scroll-target="#vtree"><span class="toc-section-number">3.6.2</span>  vtree</a></li>
-  <li><a href="#the-easystats-way" id="toc-the-easystats-way" class="nav-link" data-scroll-target="#the-easystats-way"><span class="toc-section-number">3.6.3</span>  The easystats way</a></li>
-  <li><a href="#tableone" id="toc-tableone" class="nav-link" data-scroll-target="#tableone"><span class="toc-section-number">3.6.4</span>  TableOne</a></li>
+  <li><a href="#data-explorer" id="toc-data-explorer" class="nav-link" data-scroll-target="#data-explorer"><span class="header-section-number">3.6.1</span> Data Explorer</a></li>
+  <li><a href="#vtree" id="toc-vtree" class="nav-link" data-scroll-target="#vtree"><span class="header-section-number">3.6.2</span> vtree</a></li>
+  <li><a href="#the-easystats-way" id="toc-the-easystats-way" class="nav-link" data-scroll-target="#the-easystats-way"><span class="header-section-number">3.6.3</span> The easystats way</a></li>
+  <li><a href="#tableone" id="toc-tableone" class="nav-link" data-scroll-target="#tableone"><span class="header-section-number">3.6.4</span> TableOne</a></li>
   </ul></li>
-  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="toc-section-number">3.7</span>  Lab</a></li>
-  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><span class="toc-section-number">3.8</span>  Tidyverse</a>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">3.7</span> Lab</a></li>
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><span class="header-section-number">3.8</span> Tidyverse</a>
   <ul class="collapse">
-  <li><a href="#intro-to-the-tidyverse" id="toc-intro-to-the-tidyverse" class="nav-link" data-scroll-target="#intro-to-the-tidyverse"><span class="toc-section-number">3.8.1</span>  Intro to the tidyverse</a></li>
-  <li><a href="#more-advanced-tidyverse" id="toc-more-advanced-tidyverse" class="nav-link" data-scroll-target="#more-advanced-tidyverse"><span class="toc-section-number">3.8.2</span>  More advanced tidyverse</a></li>
+  <li><a href="#intro-to-the-tidyverse" id="toc-intro-to-the-tidyverse" class="nav-link" data-scroll-target="#intro-to-the-tidyverse"><span class="header-section-number">3.8.1</span> Intro to the tidyverse</a></li>
+  <li><a href="#more-advanced-tidyverse" id="toc-more-advanced-tidyverse" class="nav-link" data-scroll-target="#more-advanced-tidyverse"><span class="header-section-number">3.8.2</span> More advanced tidyverse</a></li>
   </ul></li>
-  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><span class="toc-section-number">3.9</span>  Data visualization</a></li>
-  <li><a href="#exporting-to-office" id="toc-exporting-to-office" class="nav-link" data-scroll-target="#exporting-to-office"><span class="toc-section-number">3.10</span>  Exporting to Office</a>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><span class="header-section-number">3.9</span> Data visualization</a></li>
+  <li><a href="#exporting-to-office" id="toc-exporting-to-office" class="nav-link" data-scroll-target="#exporting-to-office"><span class="header-section-number">3.10</span> Exporting to Office</a>
   <ul class="collapse">
-  <li><a href="#excel" id="toc-excel" class="nav-link" data-scroll-target="#excel"><span class="toc-section-number">3.10.1</span>  Excel</a></li>
-  <li><a href="#word" id="toc-word" class="nav-link" data-scroll-target="#word"><span class="toc-section-number">3.10.2</span>  Word</a></li>
+  <li><a href="#excel" id="toc-excel" class="nav-link" data-scroll-target="#excel"><span class="header-section-number">3.10.1</span> Excel</a></li>
+  <li><a href="#word" id="toc-word" class="nav-link" data-scroll-target="#word"><span class="header-section-number">3.10.2</span> Word</a></li>
   </ul></li>
-  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="toc-section-number">3.11</span>  Case Study</a></li>
-  <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets"><span class="toc-section-number">3.12</span>  Cheatsheets</a></li>
-  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="toc-section-number">3.13</span>  Literature</a></li>
+  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies"><span class="header-section-number">3.11</span> Case Studies</a>
+  <ul class="collapse">
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling"><span class="header-section-number">3.11.1</span> Data Wrangling</a></li>
+  <li><a href="#data-visualization-1" id="toc-data-visualization-1" class="nav-link" data-scroll-target="#data-visualization-1"><span class="header-section-number">3.11.2</span> Data visualization</a></li>
+  </ul></li>
+  <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets"><span class="header-section-number">3.12</span> Cheatsheets</a></li>
+  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="header-section-number">3.13</span> Literature</a></li>
   </ul>
 </nav>
     </div>
@@ -269,7 +261,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></h1>
 </div>
 
 
@@ -287,12 +279,13 @@ div.csl-indent {
 <p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
 <section id="r-packages-needed-for-this-chapter" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">3.1</span> R packages needed for this chapter</h2>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-1_51ce3a0d1472293493c821f76309b6f0">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-1_539703320a8dc74b3ff2d8b09245de65">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># make stats easy again</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># data wrangling</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)  <span class="co"># tables, optional</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)  <span class="co"># import/export data, eg., to excel</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)  <span class="co"># data visualization</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)  <span class="co"># simple data visualization</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)  <span class="co"># data visualization ornamented with statistics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="whats-eda" class="level2" data-number="3.2">
@@ -320,7 +313,7 @@ div.csl-indent {
 <div id="fig-data-journey" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/data-journey.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.1: The data journey</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;3.1: The data journey</figcaption>
 </figure>
 </div>
 </section>
@@ -341,7 +334,7 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/dataexplorer-logo.png" class="img-fluid figure-img" style="width:20.0%"></p>
-<p></p><figcaption class="figure-caption">R-package DataExplorer</figcaption><p></p>
+<figcaption class="figure-caption">R-package DataExplorer</figcaption>
 </figure>
 </div>
 <p>Check it out <a href="http://boxuancui.github.io/DataExplorer/">on its Githup page</a>.</p>
@@ -352,19 +345,19 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/vtree-vertical.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">vtree is used to generate variable trees, like the one above.</figcaption><p></p>
+<figcaption class="figure-caption">vtree is used to generate variable trees, like the one above.</figcaption>
 </figure>
 </div>
 </section>
 <section id="the-easystats-way" class="level3" data-number="3.6.3">
 <h3 data-number="3.6.3" class="anchored" data-anchor-id="the-easystats-way"><span class="header-section-number">3.6.3</span> The easystats way</h3>
 <p>There are some packages, such as <code>{easystats}</code>, which provide comfortable access to basic statistics:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-2_aec71c1ba93ceb55fcc7ef1e05d0c8bc">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-2_38c4630b3c95fddd6dfabd648661d9a7">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># once per session</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 9%">
 <col style="width: 11%">
@@ -531,7 +524,7 @@ div.csl-indent {
 </div>
 <p><code>describe_distribution</code> provides us with an overview on typical descriptive summaries.</p>
 <p>For nominal variables, consider <code>data_tabulate</code>:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-3_7ed716191172d307da328d7876b10cd0">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-3_380e7e2110f684da32d7978993ce4d7f">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_tabulate</span>(mtcars, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"am"</span>, <span class="st">"vs"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>am (am) &lt;numeric&gt;
@@ -554,7 +547,7 @@ Value |  N | Raw % | Valid % | Cumulative %
 </div>
 </div>
 <p>We can also get <em>grouped</em> tabulations, which amounts to something similar to a <a href="https://en.wikipedia.org/wiki/Contingency_table">contingency table</a>:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-4_1e6710c7a4618c94812017b1dc0fb240">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-4_168c6f08374cb1912aa1c36c86ec445b">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(am) <span class="sc">%&gt;%</span> </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_tabulate</span>(<span class="at">select =</span> <span class="st">"vs"</span>, <span class="at">collapse =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -584,17 +577,17 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
 <blockquote class="blockquote">
 <p>The tableone package is an R package that eases the construction of “Table 1”, i.e., patient baseline characteristics table commonly found in biomedical research papers. The packages can summarize both continuous and categorical variables mixed within one table. Categorical variables can be summarized as counts and/or percentages. Continuous variables can be summarized in the “normal” way (means and standard deviations) or “nonnormal” way (medians and interquartile ranges).</p>
 </blockquote>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-5_e1f3478568ec602eb0c4a272e7dbaaf2">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-5_08d1a1517a61195879097910b92d215d">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>It’s quite simple to use:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-6_ac78d48410aa7b7d73fb3158679882f4">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-6_a53cf35500848271a509d8bc9d677360">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">CreateTableOne</span>(<span class="at">data =</span> penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                               
                                 Overall         
   n                                 344         
-  X (mean (SD))                  172.50 (99.45) 
+  rownames (mean (SD))           172.50 (99.45) 
   species (%)                                   
      Adelie                         152 (44.2)  
      Chinstrap                       68 (19.8)  
@@ -607,12 +600,15 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
   bill_depth_mm (mean (SD))       17.15 (1.97)  
   flipper_length_mm (mean (SD))  200.92 (14.06) 
   body_mass_g (mean (SD))       4201.75 (801.95)
-  sex = male (%)                    168 (50.5)  
+  sex (%)                                       
+                                     11 ( 3.2)  
+     female                         165 (48.0)  
+     male                           168 (48.8)  
   year (mean (SD))              2008.03 (0.82)  </code></pre>
 </div>
 </div>
 <p>To get more detailled results, use the <code>summary</code> method:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-7_053fbe311e825a6dc5057c0bbaff35ca">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-7_8a7dd11964cb0f997f186a7915a586c0">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> penguins)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tab1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -621,14 +617,14 @@ vs       | am (1) |     0 |  6 | 46.15 |   46.15 |        46.15
 
 strata: Overall
                     n miss p.miss mean    sd median  p25  p75  min  max  skew
-X                 344    0    0.0  172  99.4    172   87  258    1  344  0.00
+rownames          344    0    0.0  172  99.4    172   87  258    1  344  0.00
 bill_length_mm    344    2    0.6   44   5.5     44   39   48   32   60  0.05
 bill_depth_mm     344    2    0.6   17   2.0     17   16   19   13   22 -0.14
 flipper_length_mm 344    2    0.6  201  14.1    197  190  213  172  231  0.35
 body_mass_g       344    2    0.6 4202 802.0   4050 3550 4750 2700 6300  0.47
 year              344    0    0.0 2008   0.8   2008 2007 2009 2007 2009 -0.05
                   kurt
-X                 -1.2
+rownames          -1.2
 bill_length_mm    -0.9
 bill_depth_mm     -0.9
 flipper_length_mm -1.0
@@ -649,8 +645,9 @@ strata: Overall
                              Dream  124    36.0        84.9
                          Torgersen   52    15.1       100.0
                                                            
-     sex 344   11    3.2    female  165    49.5        49.5
-                              male  168    50.5       100.0
+     sex 344    0    0.0             11     3.2         3.2
+                            female  165    48.0        51.2
+                              male  168    48.8       100.0
                                                            </code></pre>
 </div>
 </div>
@@ -673,27 +670,27 @@ strata: Overall
 <h4 data-number="3.8.2.1" class="anchored" data-anchor-id="repeat-a-function-over-many-columns"><span class="header-section-number">3.8.2.1</span> Repeat a function over many columns</h4>
 <p>At times, we would like to compute the same functions for many variables, ie columns for tidyverse applications.</p>
 <p>Let’s load the penguins data for illustration.</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-8_9c5cb99ec8d24ceb9bfa5dc32c3a17f3">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-8_dbaa96de6a6dbb7f725bd0c38be1df7a">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <colgroup>
-<col style="width: 5%">
+<col style="width: 9%">
 <col style="width: 8%">
 <col style="width: 10%">
 <col style="width: 15%">
 <col style="width: 14%">
-<col style="width: 19%">
+<col style="width: 18%">
 <col style="width: 12%">
 <col style="width: 7%">
 <col style="width: 5%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">…1</th>
+<th style="text-align: right;">rownames</th>
 <th style="text-align: left;">species</th>
 <th style="text-align: left;">island</th>
 <th style="text-align: right;">bill_length_mm</th>
@@ -777,12 +774,12 @@ strata: Overall
 </div>
 </div>
 <p>Say, we would like to compute the mean value for each numeric variable in the data set:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-9_edaaf29be7067282662be2c029a58835">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-9_20573601eb79b709b3599a43625dbacd">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">bill_length_mm</th>
@@ -804,23 +801,23 @@ strata: Overall
 </div>
 </div>
 <p>Synonymously, we could write:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-10_fc59f8a3a6d73adbca9e4fb157a24f45">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-10_03c12962a9fa85d0be4d58d011cb0953">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <colgroup>
-<col style="width: 8%">
-<col style="width: 20%">
+<col style="width: 11%">
+<col style="width: 19%">
 <col style="width: 18%">
-<col style="width: 24%">
-<col style="width: 16%">
-<col style="width: 12%">
+<col style="width: 23%">
+<col style="width: 15%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">…1</th>
+<th style="text-align: right;">rownames</th>
 <th style="text-align: right;">bill_length_mm</th>
 <th style="text-align: right;">bill_depth_mm</th>
 <th style="text-align: right;">flipper_length_mm</th>
@@ -844,13 +841,13 @@ strata: Overall
 </div>
 <p>Say, we would like to compute the z-value of each numeric variable.</p>
 <p>Addmittedly, <code>easystats</code> makes it quite simple:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-11_02cc84d5aa2e9df1dd350484823abe18">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-11_4229a79b38fefe301afd4ca79a145a6e">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">standardise</span>(<span class="at">select =</span> is.numeric) <span class="sc">%&gt;%</span> </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 9%">
 <col style="width: 7%">
@@ -864,7 +861,7 @@ strata: Overall
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">…1</th>
+<th style="text-align: right;">rownames</th>
 <th style="text-align: left;">species</th>
 <th style="text-align: left;">island</th>
 <th style="text-align: right;">bill_length_mm</th>
@@ -949,7 +946,7 @@ strata: Overall
 </div>
 <p>See the help page of <code>standardise</code> for mor details on how to select variables and on more options.</p>
 <p>But for the purpose of illustration, let’s do it with more simple means, i.e.&nbsp;tidyverse only.</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-12_e2cc7a54ffd4d4fc40c4d75d86a85e6e">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-12_fbba517a3d286d492b12315388efcbfa">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span> {(.x <span class="sc">-</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)},</span>
@@ -957,7 +954,7 @@ strata: Overall
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">bill_length_mm_z</th>
@@ -1009,12 +1006,12 @@ strata: Overall
 </div>
 </div>
 <p>It’s maybe more succint to put the z-value computation in its function, and then just apply this function:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-13_f13ab5640f3f2b377d5f1978327443fc">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-13_2d482cbd4194068afcc8a63e55f7354b">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>z_stand <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-14_25fac674f4b632acf36e7e8d41235418">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-14_4f8a321c0e51393ba750130441a84661">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
@@ -1025,7 +1022,7 @@ strata: Overall
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 9
-$ ...1              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
+$ rownames          &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
 $ species           &lt;chr&gt; "Adelie", "Adelie", "Adelie", "Adelie", "Adelie", "A…
 $ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
 $ bill_length_mm    &lt;dbl&gt; -0.8832047, -0.8099390, -0.6634077, NA, -1.3227986, …
@@ -1041,7 +1038,7 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <h4 data-number="3.8.2.2" class="anchored" data-anchor-id="rowwise-operations"><span class="header-section-number">3.8.2.2</span> Rowwise operations</h4>
 <p>For technical reasons, it’s a bit cumbersome in (base) R to compute rowwise operations. The thing is, R’s dataframes are organized as vectors of <em>columns</em> so it’s much easier to do stuff columnwise.</p>
 <p>However, since recently, computing rowwise operations with the tidyverse has become simpler. Consider the following example. Say we would like to know the highest z-value for each variable we just computed, that is the highest values <em>per individual</em>, ie., by row in the data frame.</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-15_5a44817c1572357524406907f4369d3e">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-15_a5cd01373ead7958b36a72adeb98641e">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
@@ -1049,14 +1046,14 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <colgroup>
-<col style="width: 4%">
+<col style="width: 8%">
 <col style="width: 7%">
 <col style="width: 9%">
-<col style="width: 14%">
 <col style="width: 13%">
-<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 16%">
 <col style="width: 11%">
 <col style="width: 6%">
 <col style="width: 4%">
@@ -1064,7 +1061,7 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">…1</th>
+<th style="text-align: right;">rownames</th>
 <th style="text-align: left;">species</th>
 <th style="text-align: left;">island</th>
 <th style="text-align: right;">bill_length_mm</th>
@@ -1161,8 +1158,9 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <h2 data-number="3.9" class="anchored" data-anchor-id="data-visualization"><span class="header-section-number">3.9</span> Data visualization</h2>
 <p>The star on the R visualization sky is called <a href="https://ggplot2.tidyverse.org/">ggplot</a>. It probably is one of the most advanced statistical visualization package on the planet.</p>
 <p>However, for a quick start, there are some nice wrappers on ggplot, levering the beauty of ggplot but making the making simple(r).</p>
-<p>Consider [ggstatsplot])(https://indrajeetpatil.github.io/ggstatsplot/). Let’s use the <code>mtcars</code> dataset for a quick demonstration. For example, assume you would like to compare two group of cars, automatic vs.&nbsp;manual shifting, in terms of fuel economy. Here we go, <span class="quarto-unresolved-ref">?fig-ggstatsplot1</span>.</p>
-<div class="cell" data-hash="EDA_cache/html/fig-ggstatsplot_973ea5baa93ad924fb0723145b592699">
+<p><a href="https://rpkgs.datanovia.com/ggpubr/index.html">ggpubr</a> is a simple yet powerful way to visualize data.</p>
+<p>In addtion, consider [ggstatsplot])(https://indrajeetpatil.github.io/ggstatsplot/). Let’s use the <code>mtcars</code> dataset for a quick demonstration. For example, assume you would like to compare two group of cars, automatic vs.&nbsp;manual shifting, in terms of fuel economy. Here we go, <span class="quarto-unresolved-ref">?fig-ggstatsplot1</span>.</p>
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/fig-ggstatsplot_e3e48d5375f9aa8f17f124bc2b493551">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> mtcars,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> am,</span>
@@ -1170,8 +1168,8 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div id="fig-ggstatsplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="EDA_files/figure-html/fig-ggstatsplot-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.2: ggstatsplot baut auf ggplot2 auf, ist aber einfacher zu bedienen</figcaption><p></p>
+<p><img src="EDA_files/figure-html/fig-ggstatsplot-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;3.2: ggstatsplot baut auf ggplot2 auf, ist aber einfacher zu bedienen</figcaption>
 </figure>
 </div>
 </div>
@@ -1183,11 +1181,11 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <h3 data-number="3.10.1" class="anchored" data-anchor-id="excel"><span class="header-section-number">3.10.1</span> Excel</h3>
 <p>The most straightforward approach is to convince your EDA function to produce a data frame. Data frames can be written as CSV or XLSX to disk, and then easily imported to office packages.</p>
 <p><code>easystats</code> and <code>tidyverse</code> are two examples where this happens.</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-17_bd57b8eb910ca0cf5af991a9bf9a95df">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-17_8c26ccdae84d2ddf8573dcb92f52b12f">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">describe_distribution</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, <code>df1</code> is a data frame:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-18_83cb86725dba2bcec15a855ec7e8db40">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-18_6781e7f51fe1a398f8121ed21e511fcd">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Classes 'parameters_distribution', 'see_parameters_distribution' and 'data.frame':  11 obs. of  10 variables:
@@ -1206,12 +1204,12 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 <p>Let’s export as XLSX (via the R package <code>rio</code>) and as CSV:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-19_30f3a29218f40f5ee4e728c357508c90">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-19_6c361101da83038c409de0ae770e4263">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.xlsx"</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For exporting <code>csv</code> files we could also use <code>write_csv()</code> from the tidyverse or <code>write.csv</code> from base R.</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-20_751e720d34cbeec88e6ec6f047782335">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-20_0ee39fdcbc13a3b9fab1d262474b61a9">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars<span class="sc">$</span>am)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1229,11 +1227,11 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
  - attr(*, "valid_n")= int 32</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-21_004beb1f573dde44558f96cf4fea9ffa">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-21_523bbd2a871f6f1c27271dc10acb0ba0">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df2, <span class="at">file =</span> <span class="st">"df2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that if we use <code>data_tabulate</code> like this:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-22_05ea787e0f88f9b408ead3d3375a6b47">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-22_dbe96566129f31240fb8fc1b548155ed">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"am"</span>, <span class="st">"vs"</span>))</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1271,7 +1269,7 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 <p>We’ll get a <em>list</em> of two data frames.</p>
 <p>To export either, we need to access each list list element:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-23_7efaeb203f4ddc7aa966f7ce716254ce">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-23_ab24e944ebd20a7eac583c8138aa6145">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df3[[<span class="dv">1</span>]], <span class="at">file =</span> <span class="st">"df3.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1283,7 +1281,7 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>Another possible solution: The above strategy did not work for me when I had a similar issue, but it was resolved once I knitted the table1 object and opened the html in browser to copy the html table and successfully paste into word. Doing it within RStudio viewer would not work for me for some reason.</p>
 </blockquote>
 <p>Lastly, there are options to export directly to Word or Powerpoint. The R package <code>flextable</code> provides functions for that purpose:</p>
-<div class="cell" data-hash="EDA_cache/html/unnamed-chunk-24_994b96af749a44823f17d0e4c287df79">
+<div class="cell" data-layout-align="center" data-hash="EDA_cache/html/unnamed-chunk-24_adb102d389df8b63d1b9bde951f1b891">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>my_flex_tab <span class="ot">&lt;-</span> <span class="fu">flextable</span>(penguins)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1293,17 +1291,28 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </section>
 </section>
-<section id="case-study" class="level2" data-number="3.11">
-<h2 data-number="3.11" class="anchored" data-anchor-id="case-study"><span class="header-section-number">3.11</span> Case Study</h2>
+<section id="case-studies" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="case-studies"><span class="header-section-number">3.11</span> Case Studies</h2>
+<section id="data-wrangling" class="level3" data-number="3.11.1">
+<h3 data-number="3.11.1" class="anchored" data-anchor-id="data-wrangling"><span class="header-section-number">3.11.1</span> Data Wrangling</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/palmerpenguins-logo.png" class="img-fluid figure-img" style="width:20.0%"></p>
-<p></p><figcaption class="figure-caption">R package/dataset palmerpenguins</figcaption><p></p>
+<figcaption class="figure-caption">R package/dataset palmerpenguins</figcaption>
 </figure>
 </div>
 <p>Explore the <code>palmerpenguins</code> dataset, it’s a famous dataset made for learning data analysis.</p>
 <p>There’s a great <a href="https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome">interactive course on EDA based on the penguins</a>. Have a look, it’s great!</p>
 <p><a href="https://media.giphy.com/media/3og0IO5z8Rd30ktV6g/giphy.gif" width="50%">Go penguins! Allez!</a></p>
+</section>
+<section id="data-visualization-1" class="level3" data-number="3.11.2">
+<h3 data-number="3.11.2" class="anchored" data-anchor-id="data-visualization-1"><span class="header-section-number">3.11.2</span> Data visualization</h3>
+<ul>
+<li><a href="https://datenwerk.netlify.app/posts/vis-gapminder/vis-gapminder">Gapminder</a></li>
+<li><a href="https://datenwerk.netlify.app/posts/vis-penguins/vis-penguins">Penguins</a></li>
+<li><a href="https://datenwerk.netlify.app/posts/vis-mtcars/vis-mtcars">mtcars</a></li>
+</ul>
+</section>
 </section>
 <section id="cheatsheets" class="level2" data-number="3.12">
 <h2 data-number="3.12" class="anchored" data-anchor-id="cheatsheets"><span class="header-section-number">3.12</span> Cheatsheets</h2>
@@ -1322,11 +1331,11 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p><span class="citation" data-cites="r4ds">Wickham and Grolemund (<a href="references.html#ref-r4ds" role="doc-biblioref">2016</a>)</span> is an highly recommendable resource in order to get a thorough understanding of data analysis using R. Note that this source is focusing on the “how to”, not so much to theoretical foundations. <span class="citation" data-cites="ismay_statistical_2020">Ismay and Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span> is a gently introduction into many steps on the data journey, including EDA.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-ismay_statistical_2020" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-ismay_statistical_2020" class="csl-entry" role="listitem">
 Ismay, Chester, and Albert Young-Sun Kim. 2020. <em>Statistical Inference via Data Science: A <span>ModernDive</span> into r and the Tidyverse</em>. Chapman &amp; Hall/<span>CRC</span> the r Series. Boca Raton: <span>CRC</span> Press / Taylor &amp; Francis Group. <a href="https://moderndive.com/">https://moderndive.com/</a>.
 </div>
-<div id="ref-r4ds" class="csl-entry" role="doc-biblioentry">
+<div id="ref-r4ds" class="csl-entry" role="listitem">
 Wickham, Hadley, and Garrett Grolemund. 2016. <em>R for Data Science: Visualize, Model, Transform, Tidy, and Import Data</em>. O’Reilly Media. <a href="https://r4ds.had.co.nz/index.html">https://r4ds.had.co.nz/index.html</a>.
 </div>
 </div>
@@ -1360,9 +1369,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1427,6 +1450,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

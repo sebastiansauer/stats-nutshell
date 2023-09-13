@@ -14,9 +14,9 @@ Many stories to be told. Here's one, on the goals pursued in statistics (and rel
 
 :::{#fig-goals}
 
-<p >
+:::{}
 
-<pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+<pre class="mermaid mermaid-js" data-label="fig-goals">flowchart LR
   A{Goals} --&gt; B(describe)
   A --&gt; C(predict)
   A --&gt; D(explain)
@@ -30,9 +30,7 @@ Many stories to be told. Here's one, on the goals pursued in statistics (and rel
   D --&gt; L(latent construct)
 
 </pre>
-
-<div id="mermaid-tooltip-1" class="mermaidTooltip"></div>
-</p>
+:::
 
 
 A taxonomy of statistical goals

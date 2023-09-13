@@ -7,7 +7,7 @@
 ## R packages needed for this chapter
 
 
-::: {.cell hash='causality_cache/html/unnamed-chunk-1_319f633bc3b9ab254d1ae3c2f5baff23'}
+::: {.cell layout-align="center" hash='causality_cache/html/unnamed-chunk-1_9c391667a60bd840a4adc7a0b0dae37c'}
 
 ```{.r .cell-code}
 library(tidyverse)

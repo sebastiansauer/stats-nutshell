@@ -18,7 +18,8 @@ library(easystats)  # make stats easy again
 library(tidyverse)  # data wrangling
 library(tableone)  # tables, optional
 library(rio)  # import/export data, eg., to excel
-library(ggstatsplot)  # data visualization
+library(ggpubr)  # simple data visualization
+library(ggstatsplot)  # data visualization ornamented with statistics
 ```
 
 
@@ -310,7 +311,12 @@ However, for a quick start,
 there are some nice wrappers on ggplot,
 levering the beauty of ggplot but making the making simple(r).
 
-Consider [ggstatsplot])(https://indrajeetpatil.github.io/ggstatsplot/). 
+
+[ggpubr](https://rpkgs.datanovia.com/ggpubr/index.html) is a simple yet powerful way to visualize data.
+
+
+
+In addtion, consider [ggstatsplot])(https://indrajeetpatil.github.io/ggstatsplot/). 
 Let's use the `mtcars` dataset for a quick demonstration.
 For example, assume you would like to compare two group of cars, automatic vs. manual shifting, in terms of fuel economy.
 Here we go, @fig-ggstatsplot1.
@@ -425,7 +431,10 @@ save_as_pptx("Table 1 " = my_flex_tab, path = "my_tab.pptx")
 
 
 
-## Case Study
+## Case Studies
+
+
+### Data Wrangling
 
 ![R package/dataset palmerpenguins](img/palmerpenguins-logo.png){width="20%"}
 
@@ -437,6 +446,15 @@ There's a great [interactive course on EDA based on the penguins](https://alliso
 
 
 [Go penguins! Allez!](https://media.giphy.com/media/3og0IO5z8Rd30ktV6g/giphy.gif){width="50%"}
+
+### Data visualization
+
+
+- [Gapminder](https://datenwerk.netlify.app/posts/vis-gapminder/vis-gapminder)
+- [Penguins](https://datenwerk.netlify.app/posts/vis-penguins/vis-penguins)
+- [mtcars](https://datenwerk.netlify.app/posts/vis-mtcars/vis-mtcars)
+
+
 
 ## Cheatsheets
 

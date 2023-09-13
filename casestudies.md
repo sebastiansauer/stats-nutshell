@@ -2,6 +2,28 @@
 
 
 
+## Case studies on data visualization
+
+
+
+::: {.cell layout-align="center" hash='casestudies_cache/html/child-vis_88fa380ea15126d94a4e6f311f748581'}
+
+**Fallstudien -- NUR Datenvisualisierung**
+
+- [vis-gapminder](https://datenwerk.netlify.app/posts/vis-gapminder/vis-gapminder)
+
+- [vis-penguins](https://datenwerk.netlify.app/posts/vis-penguins/vis-penguins)
+
+- [vis-mtcars](https://datenwerk.netlify.app/posts/vis-mtcars/vis-mtcars)
+
+- [Aufgabe zur Datenvisualisierung des Diamantenpreises](https://data-se.netlify.app/2020/12/07/ex-visualizing-diamonds/)
+:::
+
+
+
+
+
+
 
 
 
@@ -9,18 +31,22 @@
 
 
 
-::: {.cell hash='casestudies_cache/html/child1_3ca47aa31947115aa8101340d618afa8'}
+::: {.cell layout-align="center" hash='casestudies_cache/html/child-eda_a1b95eae03e4731fecb575d6c3bcb441'}
 
 **FALLSTUDIEN - NUR EXPLORATIVE DATENANALYSE**
 
+- [Louise E. Sinks: TidyTuesday Week 18: Portal Project](https://lsinks.github.io/posts/2023-05-02-portal-project/portal.html)
+
+- [Louise E. Sinks: TidyTuesday Week 17: London Marathon](https://lsinks.github.io/posts/2023-04-25-tidytuesday-marathon/marathon.html)
+
+- [Louise E. Sinks: TidyTuesday Week 16: Neolithic Founder Crops](https://lsinks.github.io/posts/2023-04-18-tidytuesday-founder-crops/founder-crops.html)
+
+
 - [Datenjudo mit Pinguinen](https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome)
 
-- [Data-Wranglinng-Aufgaben zur Lebenserwartung](https://data-se.netlify.app/2021/02/24/exercises-to-data-wrangling-with-the-tidyverse/)
+- [Data-Wrangling-Aufgaben zur Lebenserwartung](https://data-se.netlify.app/2021/02/24/exercises-to-data-wrangling-with-the-tidyverse/)
 
 - [Case study: data vizualization on flight delays using tidyverse tools](https://data-se.netlify.app/2021/02/24/case-study-data-vizualization-on-flight-delays-using-tidyverse-tools/)
-
-- [Aufgabe zur Datenvisualisierung des Diamantenpreises](https://data-se.netlify.app/2020/12/07/ex-visualizing-diamonds/)
-
 - [Fallstudie Flugverspätungen - EDA](https://data-se.netlify.app/2021/03/08/eda-zu-flugversp%C3%A4tungen/)
 
 - [Fallstudie zur EDA: Top-Gear](https://data-se.netlify.app/2021/02/11/yacda-topgear/)
@@ -66,7 +92,7 @@
 
 
 
-::: {.cell hash='casestudies_cache/html/child2_c643b3a83626e893efda599efcdca3f6'}
+::: {.cell layout-align="center" hash='casestudies_cache/html/child2_d1bad40a2e0e65f15f1a6bc61a2d1845'}
 
 **FALLSTUDIEN - NUR LINEARE MODELLE**
 
@@ -107,9 +133,17 @@
 
 
 
-::: {.cell hash='casestudies_cache/html/child3_91eb1809f46617e9e24aa1c1a5da674b'}
+::: {.cell layout-align="center" hash='casestudies_cache/html/child3_3547acdfc4821937d6b2310575d8405a'}
 
 **FALLSTUDIEN - MASCHINELLES LERNEN MIT TIDYMODELS**
+
+- [Louise E. Sinks: One Class SVM](https://lsinks.github.io/posts/2023-03-30-One-Class-SVM/one-class-svm.html)
+
+- [Louise E. Sinks: Credit Card Fraud: A Tidymodels Tutorial - inklusive Workflow-Sets](https://lsinks.github.io/posts/2023-04-11-credit-card-fraud/fraud_tutorial.html)
+
+
+
+
 
 - [Experimenting with machine learning in R with tidymodels and the Kaggle titanic dataset](https://www.r-bloggers.com/2021/08/experimenting-with-machine-learning-in-r-with-tidymodels-and-the-kaggle-titanic-dataset/)
 
@@ -152,9 +186,9 @@
 - [Fallstudie zur Modellierung einer logististischen Regression mit tidymodels](https://onezero.blog/modelling-binary-logistic-regression-using-tidymodels-library-in-r-part-1/)
 
 
-- [Fallstudie zu Vulkanausbrüchen](https://juliasilge.com/blog/multinomial-volcano-eruptions/)
+- [Fallstudie zu Vulkanausbrüchen (Resampling and kein Tuning)](https://juliasilge.com/blog/multinomial-volcano-eruptions/)
 
-- [Fallstudie Himalaya](https://juliasilge.com/blog/himalayan-climbing/)
+- [Fallstudie Himalaya (Resampling and kein Tuning)](https://juliasilge.com/blog/himalayan-climbing/)
 
 - [Fallstudien zu Studiengebühren](https://juliasilge.com/blog/tuition-resampling/)
 
@@ -179,14 +213,14 @@
 
 - [Fallstudie Wasserquellen in Sierra Leone](https://juliasilge.com/blog/water-sources/)
 
-- [Fallstudie Bäume in San Francisco](https://dev.to/juliasilge/tuning-random-forest-hyperparameters-in-r-with-tidytuesday-trees-data-4ilh)
+- [Fallstudie Bäume in San Francisco: Random Forest tunen](https://juliasilge.com/blog/sf-trees-random-tuning/)
 
 - [Fallstudie Vulkanausbrüche](https://juliasilge.com/blog/multinomial-volcano-eruptions/)
 
 - [Fallstudie Brettspiele mit XGBoost](https://juliasilge.com/blog/board-games/)
 
 
-- [Fallstudie Serie The Office](https://juliasilge.com/blog/lasso-the-office/)
+- [Fallstudie Serie The Office: Lasso tunen](https://juliasilge.com/blog/lasso-the-office/)
 
 - [Fallstudie NBER Papers](https://juliasilge.com/blog/nber-papers/)
 
@@ -203,4 +237,13 @@
 
 
 - [Exploring the Star Wars “Prequel Renaissance” Using tidymodels and workflowsets](https://www.r-bloggers.com/2021/04/exploring-the-star-wars-prequel-renaissance-using-tidymodels-and-workflowsets/)
+
+
+- [Classification modelling workflow using tidymodels, Konstantinos Patelis](https://www.kpatelis.com/posts/2021-04-11-classification-modeling-workflow-using-tidymodels/)
+
+- [Tune xgboost models with early stopping to predict shelter animal status](https://juliasilge.com/blog/shelter-animals/)
+
+- [Predicting injuries for Chicago traffic crashes: Resampling BAG Tree](https://juliasilge.com/blog/chicago-traffic-model/)
+
+- [Using tidymodels to Predict Health Insurance Cost: Resmapling](https://www.r-bloggers.com/2021/02/using-tidymodels-to-predict-health-insurance-cost/)
 :::

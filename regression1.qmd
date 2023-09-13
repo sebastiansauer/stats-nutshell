@@ -418,6 +418,7 @@ The plot does not work, malheureusement:
 
 
 ```{r}
+#| error: true
 plot(lm3a_means)
 ```
 

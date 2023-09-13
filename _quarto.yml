@@ -30,11 +30,11 @@ format:
     toc: true
     number-sections: true
     df-print: kable
-  pdf:
-    toc: true
-    number-sections: true
-    colorlinks: true
-    keep-tex: true
+  # pdf:
+  #   toc: true
+  #   number-sections: true
+  #   colorlinks: true
+  #   keep-tex: true
 
     
 execute:

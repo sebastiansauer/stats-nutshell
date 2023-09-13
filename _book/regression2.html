@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,48 +47,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -101,8 +73,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -139,13 +110,15 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -154,11 +127,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regression2.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -166,99 +144,110 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">stats-nutshell</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./goals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></a>
+  <a href="./goals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></a>
+  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./EDA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a>
+  <a href="./EDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></a>
+  <a href="./inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></a>
+  <a href="./regression1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></a>
+  <a href="./regression2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./causality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></a>
+  <a href="./causality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./casestudies.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case studies</span></a>
+  <a href="./casestudies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case studies</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-packages-needed" id="toc-r-packages-needed" class="nav-link active" data-scroll-target="#r-packages-needed"><span class="toc-section-number">6.1</span>  R-packages needed</a></li>
-  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="toc-section-number">6.2</span>  R packages needed for this chapter</a></li>
-  <li><a href="#multiplicative-associations" id="toc-multiplicative-associations" class="nav-link" data-scroll-target="#multiplicative-associations"><span class="toc-section-number">6.3</span>  Multiplicative associations</a>
+  <li><a href="#r-packages-needed" id="toc-r-packages-needed" class="nav-link active" data-scroll-target="#r-packages-needed"><span class="header-section-number">6.1</span> R-packages needed</a></li>
+  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="header-section-number">6.2</span> R packages needed for this chapter</a></li>
+  <li><a href="#multiplicative-associations" id="toc-multiplicative-associations" class="nav-link" data-scroll-target="#multiplicative-associations"><span class="header-section-number">6.3</span> Multiplicative associations</a>
   <ul class="collapse">
-  <li><a href="#the-log-y-model" id="toc-the-log-y-model" class="nav-link" data-scroll-target="#the-log-y-model"><span class="toc-section-number">6.3.1</span>  The Log-Y model</a></li>
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="toc-section-number">6.3.2</span>  Exercise</a></li>
-  <li><a href="#visualizing-log-transformation" id="toc-visualizing-log-transformation" class="nav-link" data-scroll-target="#visualizing-log-transformation"><span class="toc-section-number">6.3.3</span>  Visualizing Log Transformation</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="toc-section-number">6.3.4</span>  Further reading</a></li>
+  <li><a href="#the-log-y-model" id="toc-the-log-y-model" class="nav-link" data-scroll-target="#the-log-y-model"><span class="header-section-number">6.3.1</span> The Log-Y model</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">6.3.2</span> Exercise</a></li>
+  <li><a href="#visualizing-log-transformation" id="toc-visualizing-log-transformation" class="nav-link" data-scroll-target="#visualizing-log-transformation"><span class="header-section-number">6.3.3</span> Visualizing Log Transformation</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">6.3.4</span> Further reading</a></li>
   </ul></li>
-  <li><a href="#interaction" id="toc-interaction" class="nav-link" data-scroll-target="#interaction"><span class="toc-section-number">6.4</span>  Interaction</a>
+  <li><a href="#interaction" id="toc-interaction" class="nav-link" data-scroll-target="#interaction"><span class="header-section-number">6.4</span> Interaction</a>
   <ul class="collapse">
-  <li><a href="#multiple-predictors-no-interaction" id="toc-multiple-predictors-no-interaction" class="nav-link" data-scroll-target="#multiple-predictors-no-interaction"><span class="toc-section-number">6.4.1</span>  Multiple predictors, no interaction</a></li>
-  <li><a href="#interaction-1" id="toc-interaction-1" class="nav-link" data-scroll-target="#interaction-1"><span class="toc-section-number">6.4.2</span>  Interaction</a></li>
-  <li><a href="#interaction-made-simple" id="toc-interaction-made-simple" class="nav-link" data-scroll-target="#interaction-made-simple"><span class="toc-section-number">6.4.3</span>  Interaction made simple</a></li>
-  <li><a href="#centering-variables" id="toc-centering-variables" class="nav-link" data-scroll-target="#centering-variables"><span class="toc-section-number">6.4.4</span>  Centering variables</a></li>
+  <li><a href="#multiple-predictors-no-interaction" id="toc-multiple-predictors-no-interaction" class="nav-link" data-scroll-target="#multiple-predictors-no-interaction"><span class="header-section-number">6.4.1</span> Multiple predictors, no interaction</a></li>
+  <li><a href="#interaction-1" id="toc-interaction-1" class="nav-link" data-scroll-target="#interaction-1"><span class="header-section-number">6.4.2</span> Interaction</a></li>
+  <li><a href="#interaction-made-simple" id="toc-interaction-made-simple" class="nav-link" data-scroll-target="#interaction-made-simple"><span class="header-section-number">6.4.3</span> Interaction made simple</a></li>
+  <li><a href="#centering-variables" id="toc-centering-variables" class="nav-link" data-scroll-target="#centering-variables"><span class="header-section-number">6.4.4</span> Centering variables</a></li>
   </ul></li>
-  <li><a href="#predictor-relevance" id="toc-predictor-relevance" class="nav-link" data-scroll-target="#predictor-relevance"><span class="toc-section-number">6.5</span>  Predictor relevance</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">6.6</span>  Exercises</a></li>
-  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="toc-section-number">6.7</span>  Lab</a></li>
-  <li><a href="#glimpse-on-parameter-estimation" id="toc-glimpse-on-parameter-estimation" class="nav-link" data-scroll-target="#glimpse-on-parameter-estimation"><span class="toc-section-number">6.8</span>  Glimpse on parameter estimation</a></li>
-  <li><a href="#literatur" id="toc-literatur" class="nav-link" data-scroll-target="#literatur"><span class="toc-section-number">6.9</span>  Literatur</a></li>
+  <li><a href="#predictor-relevance" id="toc-predictor-relevance" class="nav-link" data-scroll-target="#predictor-relevance"><span class="header-section-number">6.5</span> Predictor relevance</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.6</span> Exercises</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">6.7</span> Lab</a></li>
+  <li><a href="#glimpse-on-parameter-estimation" id="toc-glimpse-on-parameter-estimation" class="nav-link" data-scroll-target="#glimpse-on-parameter-estimation"><span class="header-section-number">6.8</span> Glimpse on parameter estimation</a></li>
+  <li><a href="#literatur" id="toc-literatur" class="nav-link" data-scroll-target="#literatur"><span class="header-section-number">6.9</span> Literatur</a></li>
   </ul>
 </nav>
     </div>
@@ -267,7 +256,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></h1>
 </div>
 
 
@@ -288,7 +277,7 @@ div.csl-indent {
 </section>
 <section id="r-packages-needed-for-this-chapter" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">6.2</span> R packages needed for this chapter</h2>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-1_b68bb1815aa20ce64b425de7ce553587">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-1_044342c54650671281c1424559fb2a84">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -308,12 +297,12 @@ div.csl-indent {
 <p>Exponentiate both sides to get:</p>
 <p><span class="math inline">\(log(y) = x\)</span></p>
 <p>This association is called multiplicative, because if x increases by 1, y increased by a <em>constant factor</em>.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -326,7 +315,7 @@ Note
 <div id="exm-logy" class="theorem example">
 <p><span class="theorem-title"><strong>Example 6.1 (Bacteria growth) </strong></span>Some bacteria dish grows with at a fixed proportional rate, that is it doubles its population size in a fixed period of time. This is what is called exponential growth. For concreteness, say, the bacteriae double each two days, starting with 1 unit of bacteria.</p>
 <p>After about three weeks, i.e., 10 doubling periods (20 days), we’ll have <span class="math inline">\(y\)</span> units of bacteriae:</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-2_0f132f1dfb57231c9a838d5dc649f555">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-2_7145e9009d8659ec0af3579192a22e95">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fl">2.7178</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> e<span class="sc">^</span><span class="dv">10</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -343,12 +332,12 @@ Note
 <li><a href="https://datenwerk.netlify.app/posts/log-y-regr1/log-y-regr1/">Effect of education on income</a></li>
 <li><a href="https://datenwerk.netlify.app/posts/log-y-regr2/log-y-regr2/">Effect of log-y transformation on the distribution, an example</a></li>
 </ul>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -376,29 +365,26 @@ Note
 <div class="cell-output-display">
 <div id="fig-multregr" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-multregr">flowchart LR
 X --&gt; Y1
 
 X1 --&gt; Y2
 X2 --&gt; Y2
 </pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
 </div>
-<p></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.1: One predictor (X) vs.&nbsp;two predictors (X1, X2)</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;6.1: One predictor (X) vs.&nbsp;two predictors (X1, X2)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>given by Figure <span class="quarto-unresolved-ref">?fig-3dregr2</span>, where a 3D account of a regression is given. 3D means to input variables, and (which is always the case) one output variable.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -408,12 +394,12 @@ Note
 </div>
 <p>A different perspective is shown <a href="https://upload.wikimedia.org/wikipedia/commons/a/ae/2d_multiple_linear_regression.gif?20161014061355">here</a>,<br>
 where a 3D account of a regression is given. 3D means to input variables, and (which is always the case) one output variable.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -422,28 +408,28 @@ Important
 </div>
 </div>
 <p>Here’s a visualization of a 3D regression plane (not line) <em>without interaction</em>: constant slope in one axis, see the following figure, <span class="quarto-unresolved-ref">?fig-3dregr2</span>. The three cubes show the same data, just turned by different degrees (along the z axis).</p>
-<div class="cell" data-hash="regression2_cache/html/fig-3dregr2_43580a5de4d401d30743d59b30ae151c">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/fig-3dregr2_48c90e576e029884ca20c60158cfeb90">
 <div class="cell-output-display">
 <div id="fig-3dregr2-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="img/3d1.png" class="img-fluid figure-img" width="875"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.2: 3D regression plane (not line) without interaction</figcaption><p></p>
+<p><img src="img/3d1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.2: 3D regression plane (not line) without interaction</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div id="fig-3dregr2-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="img/3d2.png" class="img-fluid figure-img" width="875"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.3: 3D regression plane (not line) without interaction</figcaption><p></p>
+<p><img src="img/3d2.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.3: 3D regression plane (not line) without interaction</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div id="fig-3dregr2-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="img/3d3.png" class="img-fluid figure-img" width="875"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.4: 3D regression plane (not line) without interaction</figcaption><p></p>
+<p><img src="img/3d3.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.4: 3D regression plane (not line) without interaction</figcaption>
 </figure>
 </div>
 </div>
@@ -454,16 +440,16 @@ Important
 <p>Or, in more regression like terms:</p>
 <p><span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon\)</span>, where x1 is <code>hp</code> and <code>x2</code> is <code>disp</code> in the <code>mtcars</code> dataset.</p>
 <p>In R terms:</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-4_74f830d92c8865198e463f86dd7bed66">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-4_3228f84cf5511f82684605e41abb43ff">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lm3d <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The 3D plot is shown in Figure <a href="#fig-mtcars3d">Figure&nbsp;<span>6.5</span></a>.</p>
-<div class="cell" data-hash="regression2_cache/html/fig-mtcars3d_e7b44966f8248cf6aceef8ed7ad337c3">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/fig-mtcars3d_426a3a2399d895452d36d7cc58f7545f">
 <div class="cell-output-display">
 <div id="fig-mtcars3d" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="regression2_files/figure-html/fig-mtcars3d-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.5: mpg ~ hp + disp</figcaption><p></p>
+<p><img src="regression2_files/figure-html/fig-mtcars3d-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.5: mpg ~ hp + disp</figcaption>
 </figure>
 </div>
 </div>
@@ -474,13 +460,21 @@ Important
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm1))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-hash="regression2_cache/html/unnamed-chunk-6_c74ea34971797271182078abacd22472">
+<div class="cell quarto-layout-panel" data-hash="regression2_cache/html/unnamed-chunk-6_03bdd34274b4e9c62e419645ab3a8f64">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="regression2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression2_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="regression2_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -491,29 +485,29 @@ Important
 <h3 data-number="6.4.2" class="anchored" data-anchor-id="interaction-1"><span class="header-section-number">6.4.2</span> Interaction</h3>
 <p>For interaction to happen we relax the assumption that the slope of predictor 1 must be constant for all values of predictor 2.</p>
 <p>In R, we specify an interaction model like this:</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-7_087b9ecf6ce5b16322c02fc2ec37ddb3">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-7_4f1f142c00fd46d9811d249e5c0b095d">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lm3d_interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp <span class="sc">+</span> hp<span class="sc">:</span>disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The symbol <code>hp:disp</code> can be read as “the interaction effect of <code>hp</code> and <code>disp</code>”.</p>
 <p>Here’s a visual account, see Figure <a href="#fig-mtcars3d-interact">Figure&nbsp;<span>6.6</span></a>.</p>
-<div class="cell" data-hash="regression2_cache/html/fig-mtcars3d-interact_a85f255a9b91f608efd76ec2f51d3a53">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/fig-mtcars3d-interact_5ee2fe3e3416c1eb23b78fe9988595e6">
 <div class="cell-output-display">
 <div id="fig-mtcars3d-interact" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="regression2_files/figure-html/fig-mtcars3d-interact-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.6: mpg ~ hp + disp</figcaption><p></p>
+<p><img src="regression2_files/figure-html/fig-mtcars3d-interact-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.6: mpg ~ hp + disp</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Compare <a href="#fig-mtcars3d-interact">Figure&nbsp;<span>6.6</span></a> and <a href="#fig-mtcars3d">Figure&nbsp;<span>6.5</span></a>. The difference is the interaction effect.</p>
 <p>In <a href="#fig-mtcars3d-interact">Figure&nbsp;<span>6.6</span></a> you’ll see that the lines along the Y axis are not parallel anymore. Similarly, the lines along the X axis are not parallel anymore.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -527,23 +521,23 @@ Important
 <h3 data-number="6.4.3" class="anchored" data-anchor-id="interaction-made-simple"><span class="header-section-number">6.4.3</span> Interaction made simple</h3>
 <p>If you find that two sophisticated, consider the following simple case.</p>
 <p>First, we mutate <code>am</code> to be a factor variable, in order to make things simpler (without loss of generality).</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-9_5f4ab9fff14557a7082f8df868dba4e1">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-9_08e55b928e3b66fd81ecce3f4f0201c5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_f =</span> <span class="fu">factor</span>(am))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we use this new variable for a simple regression model:</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-10_5feb123e3fd4e520aa6b36f9f392b42a">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-10_e9b4a64ce25735185cfc159fdcce0ec6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lm_interact_simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp <span class="sc">+</span> am_f <span class="sc">+</span> disp<span class="sc">:</span>am_f, <span class="at">data =</span> mtcars2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here’s the plot, Figure <a href="#fig-interact-simple">Figure&nbsp;<span>6.7</span></a>.</p>
-<div class="cell" data-hash="regression2_cache/html/fig-interact-simple_99fbef9f6a0fbc0508326abb1bb3540b">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/fig-interact-simple_2ef53d007bd582908a5b115af2040afd">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm_interact_simple))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-interact-simple" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="regression2_files/figure-html/fig-interact-simple-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.7: A simple interaction model</figcaption><p></p>
+<p><img src="regression2_files/figure-html/fig-interact-simple-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.7: A simple interaction model</figcaption>
 </figure>
 </div>
 </div>
@@ -552,9 +546,9 @@ Important
 <p>The interaction effect amounts to the <em>difference</em> in slops in <a href="#fig-interact-simple">Figure&nbsp;<span>6.7</span></a>.</p>
 <p>One might be inclined to interpret Figure <a href="#fig-interact-simple">Figure&nbsp;<span>6.7</span></a> as an 3D image, where the one (reddish) line is in the foreground and the blueish line in the background (or vice versa, as you like). Given a 3D image (and hence 2 predictors), we are where we started further above.</p>
 <p>For completeness, here are the parameters of the model.</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-12_775d5188655c479fc8b4cf34299662c9">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-12_29b38b5a0b9f137445cef04893411787">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 21%">
 <col style="width: 17%">
@@ -599,7 +593,7 @@ Important
 <td style="text-align: center;">0.005</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">disp * am f (1)</td>
+<td style="text-align: left;">disp × am f (1)</td>
 <td style="text-align: center;">-0.03</td>
 <td style="text-align: center;">0.01</td>
 <td style="text-align: center;">(-0.05, -7.99e-03)</td>
@@ -616,17 +610,17 @@ Important
 <p>The effect of of <code>am_f</code> must be interpreted when <code>disp</code> is zero, which does not make much sense.</p>
 <p>Therefore it simplifies the interpretation of regression coefficients to <em>center</em> all input variables, by subtrating the mean value (“demeaning” or “centering”):</p>
 <p><span class="math display">\[x' = x - \bar{x}\]</span> In R, this can be achieved e.g,. in this way:</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-13_f36f42eb7efbf9a3eed3efc3c7cdb729">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-13_a8c3d6da7832739f5665fc591a380351">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mtcars3 <span class="ot">&lt;-</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span> </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">disp_c =</span> disp <span class="sc">-</span> <span class="fu">mean</span>(disp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-14_62b434ed9d3a8b35ff94aac7a598612a">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-14_58b6b6011208093cfe91c4c3843ade52">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lm_interact_simple2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp_c <span class="sc">+</span> am_f <span class="sc">+</span> disp_c<span class="sc">:</span>am_f, <span class="at">data =</span> mtcars3)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm_interact_simple2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 14%">
 <col style="width: 13%">
@@ -708,14 +702,14 @@ Important
 <p>Given a model, we might want to know which predictor has the strongest association with the outcome?</p>
 <p>In order to answer this question, all predictor must have the same scale. Otherwise the importance of a predictor would increase by 1000, if we multiply each of the observations’ values by the same factor. However, this multiplication should not change the relevance of a predictor.</p>
 <p>A simple solution is to standardize all predictors to the same scale (sd=1).</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-15_368c43c0bc8774e8380981e6182b2254">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-15_6113501163f42270780d37129fcfb377">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mtcars4 <span class="ot">&lt;-</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">standardize</span>(<span class="at">select =</span> <span class="fu">c</span>(<span class="st">"disp"</span>, <span class="st">"hp"</span>, <span class="st">"cyl"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>By the way, “standardizing” centers the variable by default to a mean value of zero (by demeaning).</p>
 <p>See:</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-16_8bbdc1eed4dfdcd3734d94a48de3925d">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-16_b63948e2998d696974b9c1ce4748329b">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars4<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.57061982 -0.57061982 -0.99018209  0.22009369  1.04308123 -0.04616698</code></pre>
@@ -726,7 +720,7 @@ Important
 </div>
 </div>
 <p>Here’s the SD:</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-17_07d71b50a16fba00facdd4b67c382ce9">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-17_57836103614b7aa76498c4579707cf27">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mtcars4<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
@@ -737,7 +731,7 @@ Important
 </div>
 </div>
 <p>And here’s the mean value:</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-18_0ab5603ab03d1e8653182be64713a065">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-18_62df871933139045b92666f01c4ed0b6">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mtcars4<span class="sc">$</span>disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -9.084937e-17</code></pre>
@@ -748,12 +742,12 @@ Important
 </div>
 </div>
 <p>Now we are in a position to decide which predictor is more important:</p>
-<div class="cell" data-hash="regression2_cache/html/unnamed-chunk-19_54f18adf8411ad472d635e1f109e514a">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/unnamed-chunk-19_e5159b5a2ef343a995bf1cb055d0589c">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp <span class="sc">+</span> hp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars4)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 13%">
@@ -846,12 +840,12 @@ Important
 <h2 data-number="6.8" class="anchored" data-anchor-id="glimpse-on-parameter-estimation"><span class="header-section-number">6.8</span> Glimpse on parameter estimation</h2>
 <p>An elegant yet simple explanation of the math of parameter estimation can be found <a href="https://godatadriven.com/blog/the-linear-algebra-behind-linear-regression/">at “go data driven”</a>. A similar approach is presented <a href="https://shainarace.github.io/LinearAlgebra/leastsquares.html">here</a>.</p>
 <p>Consider this geometric interpretation of the least square method in Figure <a href="#fig-leastsq">Figure&nbsp;<span>6.8</span></a>.</p>
-<div class="cell" data-hash="regression2_cache/html/fig-leastsq_95e70ddafb325bc05bc167308d719a7b">
+<div class="cell" data-layout-align="center" data-hash="regression2_cache/html/fig-leastsq_5a49421ea69ad7c4234985334843dfd1">
 <div class="cell-output-display">
 <div id="fig-leastsq" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/543px-Linear_least_squares_geometric_interpretation.png" class="img-fluid figure-img" style="width:25.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.8: Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;6.8: Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia</figcaption>
 </figure>
 </div>
 </div>
@@ -863,14 +857,14 @@ Important
 <p>Mathematical foundations can be found in <span class="citation" data-cites="deisenroth_mathematics_2020">Deisenroth, Faisal, and Ong (<a href="references.html#ref-deisenroth_mathematics_2020" role="doc-biblioref">2020</a>)</span>. <a href="https://data-se.netlify.app/2022/06/13/free-resources-for-aspiring-data-adepts/">Here’s</a> a collection of online resources tapping into statistics and machine learning.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-deisenroth_mathematics_2020" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-deisenroth_mathematics_2020" class="csl-entry" role="listitem">
 Deisenroth, Marc Peter, A. Aldo Faisal, and Cheng Soon Ong. 2020. <em>Mathematics for Machine Learning</em>. Cambridge ; New York, <span>NY</span>: Cambridge University Press.
 </div>
-<div id="ref-gelman_regression_2021" class="csl-entry" role="doc-biblioentry">
+<div id="ref-gelman_regression_2021" class="csl-entry" role="listitem">
 Gelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. <em>Regression and Other Stories</em>. Analytical Methods for Social Research. Cambridge: Cambridge University Press.
 </div>
-<div id="ref-mcelreath_statistical_2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-mcelreath_statistical_2020" class="csl-entry" role="listitem">
 McElreath, Richard. 2020. <em>Statistical Rethinking: A Bayesian Course with Examples in r and Stan</em>. 2nd ed. <span>CRC</span> Texts in Statistical Science. Boca Raton: Taylor; Francis, <span>CRC</span> Press.
 </div>
 </div>
@@ -904,9 +898,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -971,6 +979,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
