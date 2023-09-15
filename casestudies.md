@@ -1,8 +1,11 @@
-# Case studies
+# Going further
+
+
+## Case studies
 
 
 
-## Case studies on data visualization
+### Case studies on data visualization
 
 
 
@@ -27,7 +30,7 @@
 
 
 
-## Case studies on explorative data analysis
+### Case studies on explorative data analysis
 
 
 
@@ -86,7 +89,7 @@
 
 
 
-## Case studies on linear modesl
+## Case studies on linear models
 
 
 
@@ -128,7 +131,7 @@
 
 
 
-## Case studies on machine learning using tidymodels
+### Case studies on machine learning using tidymodels
 
 
 
@@ -247,3 +250,29 @@
 
 - [Using tidymodels to Predict Health Insurance Cost: Resmapling](https://www.r-bloggers.com/2021/02/using-tidymodels-to-predict-health-insurance-cost/)
 :::
+
+
+
+
+
+## Recommened reading
+
+
+
+Check-out the references pointed out in this course.
+
+In addition, [here's a Zotero group with recommended resources on empirical research and statistical modeling](https://www.zotero.org/groups/4583286/intro-stats). 
+Note that the resources are of introductory nature.
+
+
+
+## Have fun
+
+And while we are talking about it, follow a strong purpose.
+
+Best of luck!
+
+
+
+
+
