@@ -261,7 +261,7 @@
 
 Check-out the references pointed out in this course.
 
-In addition, [here's a Zotero group with recommended resources on empirical research and statistical modeling](https://www.zotero.org/groups/4583286/intro-stats). 
+In addition, [here's a Zotero group with recommended resources on empirical research and statistical modeling](https://www.zotero.org/groups/4583286/intro-stats/library).
 Note that the resources are of introductory nature.
 
 
