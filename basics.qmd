@@ -58,7 +58,13 @@ Check-out this [introductory statistics course](https://statistik1.netlify.app/)
 Pro-Tipp: Use the translation tool of your browswer to translate into your favorite language.
 
 
-## Initial quiz
+### I want to dig deeper
+
+Check-out this [course on statistical inference using Bayes statistics](https://start-bayes.netlify.app/).
+If you are interested in predictive modeling, check-out [this couse](https://ds1-prognosemodellierung.netlify.app/).
+
+
+### Initial quiz
 
 
 To get an idea whether you have digested some R basics, consider the following quiz.

@@ -1,6 +1,17 @@
 # Going further
 
 
+## I want to dig deeper
+
+Check-out this [course on statistical inference using Bayes statistics](https://start-bayes.netlify.app/).
+If you are interested in predictive modeling, check-out [this couse](https://ds1-prognosemodellierung.netlify.app/).
+
+
+## More exercises
+
+There's a ton of exercises available at the [Datenwerk](https://datenwerk.netlify.app/).
+
+
 ## Case studies
 
 
