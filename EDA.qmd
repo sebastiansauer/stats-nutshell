@@ -445,9 +445,9 @@ ggbetweenstats(
   y = body_mass_g)
 ```
 
-Checkout the [manual](https://indrajeetpatil.github.io/ggstatsplot/reference/ggbetweenstats.html) of the funcdtion to get a handle on all the options and details.
+Checkout the [manual](https://indrajeetpatil.github.io/ggstatsplot/reference/ggbetweenstats.html) of the function to get a handle on all the options and details.
 
-Wait, let's drop all missing values (`NA`) before we plot, @fig-ggstatsplot2.
+Wait, let's drop all missing values (`NA`) before we plot using `drop_na()`, @fig-ggstatsplot2.
 
 
 

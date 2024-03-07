@@ -46,12 +46,6 @@ A more visual account of our basic modelling equation is depicted in @fig-model1
 
 :::{.cell layout-align="default"}
 
-```{.default .cell-code}
-flowchart LR
-  X --> Y
-  error --> Y
-```
-
 :::{.cell-output-display}
 
 :::{#fig-model1}
@@ -673,7 +667,6 @@ In Bayes statistics, it is customary to specify the model in something like the 
 
 
 $$\begin{aligned}
-
 y_i &\sim N(\mu_i,\sigma)\\
 \mu_i &= \beta_0 + \beta_1 x_i\\
 \beta_0, \beta_1 &\sim N(0, 1) \\
@@ -1073,6 +1066,10 @@ plot(summary(lm4_corr))
 1.  [mtcars simple 1](https://datenwerk.netlify.app/posts/mtcars-simple1/mtcars-simple1/)
 2.  [mtcars simple 2](https://datenwerk.netlify.app/posts/mtcars-simple2/mtcars-simple2/)
 3.  [mtcars simple 3](https://datenwerk.netlify.app/posts/mtcars-simple3/mtcars-simple3/)
+
+>   🧑‍🎓 I want more!
+
+>   👨‍🏫 Checkout all [exercises tagges with "regression"](https://datenwerk.netlify.app/#category=regression) on [datenwerk](https://datenwerk.netlify.app/). Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.
 
 ## Lab
 

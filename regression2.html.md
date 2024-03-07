@@ -51,7 +51,7 @@ The logarithm is not defined for negative (input) values. And $log(0) = -\infty$
 A side-effect of modelling `log_y` instead of `y` is that the distribution shape of the outcome variable changes. This can be useful at times.
 
 
-Log-Y Regression can usefully be employed for modelling growth, among othrs, see @exm-logy.
+Log-Y Regression can usefully be employed for modelling growth, among other, see @exm-logy.
 
 ::: {#exm-logy}
 
@@ -116,14 +116,6 @@ Regression analyses can be used with more than one predictor, see Figure @fig-mu
 
 :::{.cell fig-width="6.5" layout-align="default"}
 
-```{.default .cell-code}
-flowchart LR
-X --> Y1
-
-X1 --> Y2
-X2 --> Y2
-```
-
 :::{.cell-output-display}
 
 :::{#fig-multregr}
@@ -163,18 +155,20 @@ If the slope for one predictor is the same for all values of the other predictor
 Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure, @fig-3dregr2. The three cubes show the same data, just turned by different degrees (along the z axis).
 
 
-::: {.cell layout-align="center"}
+::: {#fig-3dregr2 .cell layout-ncol="3" layout-align="center"}
 ::: {.cell-output-display}
-![3D regression plane (not line) without interaction](img/3d1.png){#fig-3dregr2-1 fig-align='center' width=70%}
+![seen from angle 1](img/3d1.png){#fig-3dregr2-1 fig-align='center' width=70%}
 :::
 
 ::: {.cell-output-display}
-![3D regression plane (not line) without interaction](img/3d2.png){#fig-3dregr2-2 fig-align='center' width=70%}
+![seen from angle 2](img/3d2.png){#fig-3dregr2-2 fig-align='center' width=70%}
 :::
 
 ::: {.cell-output-display}
-![3D regression plane (not line) without interaction](img/3d3.png){#fig-3dregr2-3 fig-align='center' width=70%}
+![seen from angle 3](img/3d3.png){#fig-3dregr2-3 fig-align='center' width=70%}
 :::
+
+3D regression plane (not a line) without interaction
 :::
 
 

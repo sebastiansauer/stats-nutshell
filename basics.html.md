@@ -37,8 +37,9 @@ For example, in their paper the authors enumarate some dispositions that researc
 - Perseverance
 
 
+## Getting started
 
-## R Basics
+### R Basics
 
 Check out [chapter 1 in ModernDive](https://moderndive.com/1-getting-started.html) for an accessible introduction to getting started with R and RStudio.
 
@@ -50,7 +51,11 @@ In addition, your R packages should be updtodate, according to Arnold Schwarzene
 
 
 
+### Help me, I'm lost
 
+Check-out this [introductory statistics course](https://statistik1.netlify.app/).
+
+Pro-Tipp: Use the translation tool of your browswer to translate into your favorite language.
 
 
 ## Initial quiz

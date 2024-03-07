@@ -48,7 +48,7 @@ The logarithm is not defined for negative (input) values. And $log(0) = -\infty$
 A side-effect of modelling `log_y` instead of `y` is that the distribution shape of the outcome variable changes. This can be useful at times.
 
 
-Log-Y Regression can usefully be employed for modelling growth, among othrs, see @exm-logy.
+Log-Y Regression can usefully be employed for modelling growth, among other, see @exm-logy.
 
 ::: {#exm-logy}
 
@@ -98,6 +98,7 @@ Regression analyses can be used with more than one predictor, see Figure @fig-mu
 ```{mermaid}
 %%| fig-width: 6.5
 %%| label: fig-multregr
+%%| echo: false
 %%| fig-cap: "One predictor (X) vs. two predictors (X1, X2)"
 
 flowchart LR
@@ -125,10 +126,14 @@ Here's a visualization of a 3D regression plane (not line) *without interaction*
 ```{r plot-3dregr2}
 #| echo: false
 #| label: fig-3dregr2
-#| fig-cap: "3D regression plane (not line) without interaction"
-# results: "hold"
+#| fig-cap: "3D regression plane (not a line) without interaction"
+#| results: "hold"
 #| fig-align: "center"
 #| layout-ncol: 3
+#| fig-subcap: 
+#|   - seen from angle 1
+#|   - seen from angle 2
+#|   - seen from angle 3  
 
 # plane <- function(x, y) {
 #   x+y
