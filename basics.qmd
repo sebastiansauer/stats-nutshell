@@ -180,6 +180,8 @@ I strongly advice working with *Projects* in RStudio, as it makes working with f
 ## Blitz start with data {#sec-blitz-data}
 
 
+### Motor Trends Cars
+
 To blitz start with data, type the following in R:
 
 ```{r}
@@ -191,6 +193,10 @@ And the data set `mtcars` will be available.
 To get help for the data set, type `help(mtcars)`
 
 
+### Penguins
+
+
+![Allez, penguins! Image Credit: Allison Horst, CCO](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png)
 
 
 A bit more advanced, but it's a nice data set, try the Palmer Penguins data set:

@@ -104,6 +104,11 @@ This course can rather be considered a workshop in the sense that the instructor
 
 ## Schedule
 
+:::{.callout-note}
+Please not that the focus and the amount covered in a course strongly depends on the background, aims and prior knowledge of audience.
+:::
+
+
 ### Overview on topics covered
 
 -   Data Visualization using the grammar of graphics and ggplot2
@@ -191,11 +196,21 @@ This course can rather be considered a workshop in the sense that the instructor
 
 ## Instructor
 
+
+### Bio
+
 Sebastian Sauer works as a professor at Ansbach university, teaching statistics and related stuff. Analyzing data to answer questions related to social phenomena is one of his major interests. He is trying to help raising the methological (and particularly statistical) skills in the sciences (ie., scientists). The programming language "R" is one of his favorite tools. He sees himself as a learner, and is particularly interested learning more on quantitative approaches to understand nature. Open Science is a hot topic to him. He hopes to contribute to pressing social problems such as populism by bringing in his statistical and psychological know-how. He writes a blog which serves as a sketchpad for stuff in his mind (not immune to thought updates) at https://data-se.netlify.app/. Sebastian is the author of "Moderne Datenanalyse mit R" [@sauer_moderne_2019]. His publication list is available on [Google Scholar](https://scholar.google.de/citations?user=r-2ssnAAAAAJ&hl=en).
 
-## Contact me
 
-Feel free to contact me via email at `sebastiansauer1@gmail.com`.
+### Contact
+
+Check-out my personal homepage [here](https://sebastiansauer-academic.netlify.app/).
+
+
+
+Feel free to contact me via email at any time at `profsebastiansauerATgmail.com`.
+
+
 
 ## Assessment and grades
 
@@ -246,6 +261,14 @@ The most important R packages for this course are:
 
 The following packages are useful for data access (but not strictly mandatory):
 
+- palmerpenguins
+- ggpubr
+- rio
+- vtree
+- visdat
+- dataexplorer
+- tableOne
+- flextable
 -   gapminder
 -   nycflights13
 -   fivethirtyeight

@@ -1,8 +1,4 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
+
 # Exploratory Data Analysis
 
 ![](img/stern.png){width="5%"}
@@ -10,6 +6,8 @@ editor_options:
 
 
 ## R packages needed for this chapter
+
+Make sure to run the following code chunks in order to start the neccessary R packages.
 
 ```{r}
 #| message: false
@@ -21,6 +19,11 @@ library(rio)  # import/export data, eg., to excel
 library(ggpubr)  # simple data visualization
 library(ggstatsplot)  # data visualization ornamented with statistics
 ```
+
+
+:::{.callout-caution}
+You can only start a package if you have it installed upfront.
+:::
 
 
 
@@ -75,6 +78,12 @@ There a quite a few functions (residing in some packages) that help you doing ED
 This is approach is, well, convenient, but of course comes at a price.
 You will not have a great amount of choice and influence on the way the data is analyzed and presented. 
 
+We'll use the penguins data set for a demonstration.
+
+```{r}
+penguins <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
+```
+
 
 ### Data Explorer
 
@@ -86,21 +95,73 @@ Check it out [on its Githup page](http://boxuancui.github.io/DataExplorer/).
 
 
 
+```{r}
+library(DataExplorer)
+```
+
+For example, we can easyly get an overview of the distribution of all (quantitative) variables in the data set.
+What do you notice on inspecting the distributions, see @fig-peng-distros?
+
+```{r}
+#| label: fig-peng-distros
+#| fig-cap: An overview of the distribution can easily attained using the function plot_histogram
+plot_histogram(penguins)
+```
+
+
+A quick "introduction" to the data set is provided by the function `plot_intro`, see @fig-peng-intro.
+
+```{r}
+#| label: fig-peng-intro
+#| fig-cap: An introduction view on a data set
+plot_intro(penguins)
+```
+
+
+We can also get a glimpse on all the qualitative data columns in our datra set, see @fig-peng-bars.
+
+```{r}
+#| label: fig-peng-bars
+#| fig-cap: Bar plots visualizing the distribution of qualitative variables using the function plot_bar
+plot_bar(penguins)
+```
 
 
 
 
+### visdat
+
+The r package `visdat` provides a "fingerprint" of a data set.
+
+Let's show-case it using the penguins data set.
 
 
 
+```{r}
+#| label: vis-data-penguins
+#| fig-cap: A fingerprint of the penguins data set; for each variable the data type and the number of missings is shown.
+library(visdat)  # must be installed
+vis_dat(penguins)
+```
 
 
 
 ### vtree
 
-A bit similar to {DataExplorer}, the [R package {vtree}](https://nbarrowman.github.io/vtree) helps to explore visually datasets.
+A bit similar to {DataExplorer}, the [R package {vtree}](https://nbarrowman.github.io/vtree) helps to explore visually datasets, see @fig-vtree1.
 
-![vtree is used to generate variable trees, like the one above.](img/vtree-vertical.png)
+
+```{r}
+#| fig-cap: Breaking down the counts in a data set using vtree
+#| label: fig-vtree1
+
+library(vtree)
+vtree(penguins, c("sex", "island"))
+```
+
+
+
+
 
 
 
@@ -110,28 +171,34 @@ There are some packages, such as `{easystats}`, which provide comfortable access
 
 ```{r}
 library(easystats)  # once per session
-describe_distribution(mtcars)
+describe_distribution(penguins)
 ```
 
 
 `describe_distribution` provides us with an overview on typical descriptive summaries.
 
+How to export to MS Office? Well, one simple approach is obviously to copy-paste. 
+Checkout @sec-office for more advanced options.
+
 
 For nominal variables, consider `data_tabulate`:
 
 ```{r}
-data_tabulate(mtcars, select = c("am", "vs"))
+data_tabulate(penguins, select = c("sex", "island")) |> 
+  print_md() 
 ```
 
+
+Note that `print_md` helps to get a more visually pleasing (HTML) output, and not only raw command line style output.
 
 We can also get *grouped* tabulations,
 which amounts to something similar to a [contingency table](https://en.wikipedia.org/wiki/Contingency_table):
 
 
 ```{r}
-mtcars %>% 
-  group_by(am) %>% 
-  data_tabulate(select = "vs", collapse = TRUE)
+penguins %>% 
+  group_by(sex) %>% 
+  data_tabulate(select = "island", collapse = TRUE)
 ```
 
 
@@ -146,7 +213,7 @@ For example, [here's the function reference site](https://easystats.github.io/da
 
 ### TableOne
 
-The [R package `{tableOne}`](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html) provides something like the typical "Table One" in many papers.
+The [R package `{tableOne}`](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html) provides something like the typical "Table 1" in many papers.
 
 
 From the homepage:
@@ -162,6 +229,7 @@ penguins <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerp
 It's quite simple to use:
 
 ```{r}
+library(tableone)
 CreateTableOne(data = penguins)
 ```
 
@@ -173,6 +241,8 @@ tab1 <- CreateTableOne(data = penguins)
 summary(tab1)
 ```
 
+How to export to MS Office? Well, one simple approach is obviously to copy-paste. 
+Checkout @sec-office for more advanced options.
 
 
 ## Lab
@@ -205,9 +275,9 @@ At times, we would like to compute the same functions for many variables, ie col
 Let's load the penguins data for illustration.
 
 ```{r}
-d <- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
+penguins <- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
 
-head(d)
+head(penguins)
 ```
 
 
@@ -215,7 +285,7 @@ Say, we would like to compute the mean value for each numeric variable in the da
 
 
 ```{r}
-d %>% 
+penguins %>% 
   summarise(across(bill_length_mm:body_mass_g, mean, na.rm = TRUE))
 ```
 
@@ -223,7 +293,7 @@ d %>%
 Synonymously, we could write:
 
 ```{r}
-d %>% 
+penguins %>% 
   summarise(across(where(is.numeric), ~ mean(.x, na.rm = TRUE)))
 ```
 
@@ -234,7 +304,7 @@ Addmittedly, `easystats` makes it quite simple:
 
 
 ```{r}
-d %>% 
+penguins %>% 
   standardise(select = is.numeric) %>% 
   head()
 ```
@@ -247,7 +317,7 @@ But for the purpose of illustration, let's do it with more simple means, i.e. ti
 
 
 ```{r}
-d %>% 
+penguins %>% 
   transmute(across(bill_length_mm:body_mass_g, 
                 .fns = ~ {(.x - mean(.x, na.rm = TRUE)) / sd(.x, na.rm = TRUE)},
                 .names = "{.col}_z")) %>% 
@@ -266,7 +336,7 @@ z_stand <- function(x){
 
 ```{r}
 d2 <-
-d %>% 
+penguins %>% 
   mutate(across(bill_length_mm:body_mass_g, 
                 .fns = z_stand))
   
@@ -312,9 +382,52 @@ there are some nice wrappers on ggplot,
 levering the beauty of ggplot but making the making simple(r).
 
 
+### ggpubr
+
 [ggpubr](https://rpkgs.datanovia.com/ggpubr/index.html) is a simple yet powerful way to visualize data.
 
 
+```{r}
+library(ggpubr)  # must be installed
+```
+
+
+Let's visualize the association of bill length (see @fig-bill-length) with body mass, see @fig-peng-scatter1.
+
+![In case you did not know, that's what is meant by bill length and depth of our penguins](https://allisonhorst.github.io/palmerpenguins/reference/figures/culmen_depth.png){#fig-bill-length width=50%}
+
+```{r}
+#| label: fig-peng-scatter1
+#| fig-cap: "A simple scatterplot of the penguins data set using ggscatter"
+ggscatter(penguins,
+          x = "bill_length_mm",
+          y = "body_mass_g",
+          color = "sex")
+```
+
+
+Let's improve a bit on the plot, see @fig-peng-scatter2.
+
+
+```{r}
+#| label: fig-peng-scatter2
+#| fig-cap: "A more polished scatterplot of the penguins data set using ggscatter"
+ggscatter(penguins,
+          x = "bill_length_mm",
+          y = "body_mass_g",
+          color = "species",
+          shape = "species",
+          add = "reg.line",
+          xlab = "Bill length (mm)",
+          ylab = "Body maxx (g)",
+          conf.int = TRUE,
+          ellipse = TRUE,
+          cor.coef = TRUE)
+```
+
+Check out the [manual](https://rpkgs.datanovia.com/ggpubr/reference/ggscatter.html) of the function for further notice on the options.
+
+### ggstatsplot
 
 In addtion, consider [ggstatsplot])(https://indrajeetpatil.github.io/ggstatsplot/). 
 Let's use the `mtcars` dataset for a quick demonstration.
@@ -323,18 +436,35 @@ Here we go, @fig-ggstatsplot1.
 
 
 ```{r}
-#| label: fig-ggstatsplot
-#| fig-cap: "ggstatsplot baut auf ggplot2 auf, ist aber einfacher zu bedienen"
-
+#| label: fig-ggstatsplot1
+#| fig-cap: "ggstatsplot builds on ggplot, but is simpler to use"
+library(ggstatsplot)
 ggbetweenstats(
-  data = mtcars,
-  x = am,
-  y = mpg)
+  data = penguins,
+  x = sex,
+  y = body_mass_g)
 ```
 
+Checkout the [manual](https://indrajeetpatil.github.io/ggstatsplot/reference/ggbetweenstats.html) of the funcdtion to get a handle on all the options and details.
+
+Wait, let's drop all missing values (`NA`) before we plot, @fig-ggstatsplot2.
 
 
-## Exporting to Office
+
+```{r}
+#| label: fig-ggstatsplot2
+#| fig-cap: "Comparing groups on a quantitative output variable, but dropping missing values before hand"
+penguins_no_na <-
+penguins |> 
+  drop_na()  # from package "tidyverse"
+
+ggbetweenstats(
+  data = penguins_no_na,
+  x = sex,
+  y = body_mass_g)
+```
+
+## Exporting to Office {#sec-office}
 
 
 ### Excel
@@ -346,6 +476,7 @@ Data frames can be written as CSV or XLSX to disk, and then easily imported to o
 
 
 ```{r}
+library(easystats)   # must be installed
 df1 <- describe_distribution(mtcars)
 ```
 
@@ -362,13 +493,14 @@ Let's export as XLSX (via the R package `rio`) and as CSV:
 
 ```{r}
 #| eval: false
+library(rio)  # must be installed
 export(df1, file = "df1.xlsx")
 export(df1, file = "df1.csv")
 ```
 
 
-For exporting `csv` files we could also use `write_csv()` from the tidyverse or `write.csv` from base R.
-
+For exporting `csv` files we could *altneratively* use `write_csv()` from the tidyverse or `write.csv` from base R.
+Then, checkout the file in Excel. Note that it is possible to import CSV files to Excel.
 
 ```{r}
 df2 <- data_tabulate(mtcars$am)
@@ -381,6 +513,8 @@ str(df2)
 export(df2, file = "df2.csv")
 ```
 
+
+### More advanced
 
 Note that if we use `data_tabulate` like this:
 
@@ -415,20 +549,26 @@ In addition, one [user gave the following recommendation on StackOverflow](https
 
 
 Lastly, there are options to export directly to Word or Powerpoint.
-The R package `flextable` provides functions for that purpose:
+The R package `flextable` provides functions for that purpose, see @tbl-flex:
 
 
 
 ```{r}
-#| eval: false
+#| label: tbl-flex1
+#| tbl-cap: A table using the R package flextable
 library(flextable)
 my_flex_tab <- flextable(penguins)
-
-save_as_docx("Table 1 " = my_flex_tab, path = "my_tab.docx")
-
-save_as_pptx("Table 1 " = my_flex_tab, path = "my_tab.pptx")
+my_flex_tab
 ```
 
+
+Just save it to the Office format of your choice:
+
+```{r}
+#| eval: false
+save_as_docx("Table 1 " = my_flex_tab, path = "my_tab.docx")
+save_as_pptx("Table 1 " = my_flex_tab, path = "my_tab.pptx")
+```
 
 
 ## Case Studies

@@ -40,6 +40,7 @@ format:
 execute:
   warning: false   
   cache: true
+  echo: true
     
 
 editor: source 

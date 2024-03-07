@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,6 +116,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -121,6 +129,33 @@ div.csl-indent {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -129,12 +164,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regression1.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regression1.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -144,7 +179,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">stats-nutshell</a> 
@@ -208,7 +243,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./casestudies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case studies</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Going further</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -220,7 +255,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -286,12 +321,14 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
 <section id="r-packages-needed-for-this-chapter" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">5.1</span> R packages needed for this chapter</h2>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-1_93b8d8fc847bcfda0a70959e87bf1f06">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)  <span class="co"># optional!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -300,23 +337,30 @@ div.csl-indent {
 <section id="whats-modelling" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="whats-modelling"><span class="header-section-number">5.2</span> What’s modelling?</h2>
 <p><a href="https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model">Read this great introduction by modelling by Russel Poldrack</a>. Actually, the whole book is nice <span class="citation" data-cites="poldrack_statistical_2022">Poldrack (<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref">2022</a>)</span>.</p>
-<p>An epitome of modelling is this, let’s call it the fundamental modelling equation, a bit grandiose but at the point, see <a href="#eq-modelling">Equation&nbsp;<span>5.1</span></a>.</p>
+<p>An epitome of modelling is this, let’s call it the fundamental modelling equation, a bit grandiose but at the point, see <a href="#eq-modelling" class="quarto-xref">Equation&nbsp;<span>5.1</span></a>.</p>
 <p>The data can be separated in the model’s prediction and the rest (the “error”), i.e., what’s unaccounted for by the model.</p>
 <p><span id="eq-modelling"><span class="math display">\[
 \text{data} = \text{model} + \text{error}
 \tag{5.1}\]</span></span></p>
-<p>A more visual account of our basic modelling equation is depicted in <a href="#fig-model1">Figure&nbsp;<span>5.1</span></a>.</p>
-<div class="cell">
+<p>A more visual account of our basic modelling equation is depicted in <a href="#fig-model1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>.</p>
+<div class="cell" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flowchart LR</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  X --&gt; Y</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  error --&gt; Y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-model1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-model1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-model1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-model1">flowchart LR
   X --&gt; Y
   error --&gt; Y
 </pre>
 </div>
-<figcaption class="figure-caption">Figure&nbsp;5.1: A more visual account of our basic modelling equation</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: A more visual account of our basic modelling equation
+</figcaption>
 </figure>
 </div>
 </div>
@@ -327,16 +371,20 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/one-regression-to-rule-them-all.jpeg" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption class="figure-caption">One regression</figcaption>
+<figcaption>One regression</figcaption>
 </figure>
 </div>
 <p><a href="www.imgflip.com">Source: Image Flip</a></p>
 <p>Alternatively, venture into the forest of statistical tests as <a href="https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html">outlined e.g.&nbsp;here, at Uni Muenster</a>. Proceed at your own peril.</p>
-<p>You may want to ponder on this image of a decision tree of which test to choose, see Figure <a href="#fig-choose-test">Figure&nbsp;<span>5.2</span></a>.</p>
-<div id="fig-choose-test" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/choose-test.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.2: Choose your test carefully</figcaption>
+<p>You may want to ponder on this image of a decision tree of which test to choose, see Figure <a href="#fig-choose-test" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>.</p>
+<div id="fig-choose-test" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-choose-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/choose-test.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-choose-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: Choose your test carefully
+</figcaption>
 </figure>
 </div>
 <section id="common-statistical-tests-are-linear-models" class="level3" data-number="5.3.1">
@@ -345,26 +393,34 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/linear_tests_cheat_sheet.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Common statistical tests as linear models</figcaption>
+<figcaption>Common statistical tests as linear models</figcaption>
 </figure>
 </div>
 </section>
 <section id="how-to-find-the-regression-line" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="how-to-find-the-regression-line"><span class="header-section-number">5.3.2</span> How to find the regression line</h3>
-<p>In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figure <a href="#fig-regr1">Figure&nbsp;<span>5.3</span></a>.</p>
-<div id="fig-regr1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/800px-Coefficient_of_Determination.svg.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.3: Least Square Regression</figcaption>
+<p>In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figure <a href="#fig-regr1" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>.</p>
+<div id="fig-regr1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-regr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/800px-Coefficient_of_Determination.svg.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: Least Square Regression
+</figcaption>
 </figure>
 </div>
 <p><a href="https://commons.wikimedia.org/wiki/File:Coefficient_of_Determination.svg">Source: Orzetoo, CC-SA, Wikimedia</a></p>
-<p>Put simple, we are looking for the line which is in the “middle of the points”. More precisely, we place the line such that the squared distances from the line to the points is minimal, see Figre <a href="#fig-regr1">Figure&nbsp;<span>5.3</span></a>.</p>
-<p>Consider Figure <a href="#fig-regr2">Figure&nbsp;<span>5.4</span></a>, from <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression">this source</a> by <span class="citation" data-cites="roback_beyond_2021">Roback and Legler (<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref">2021</a>)</span>. It visualizes not only the notorious regression line, but also sheds light on regression assumptions, particularly on the error distribution.</p>
-<div id="fig-regr2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/OLSassumptions-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.4: Regression and some of its assumptions</figcaption>
+<p>Put simple, we are looking for the line which is in the “middle of the points”. More precisely, we place the line such that the squared distances from the line to the points is minimal, see Figre <a href="#fig-regr1" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>.</p>
+<p>Consider Figure <a href="#fig-regr2" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>, from <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression">this source</a> by <span class="citation" data-cites="roback_beyond_2021">Roback and Legler (<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref">2021</a>)</span>. It visualizes not only the notorious regression line, but also sheds light on regression assumptions, particularly on the error distribution.</p>
+<div id="fig-regr2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-regr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/OLSassumptions-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: Regression and some of its assumptions
+</figcaption>
 </figure>
 </div>
 <p>Among the assumptions of the linear model are:</p>
@@ -387,22 +443,26 @@ div.csl-indent {
 </section>
 <section id="in-all-its-glory" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="in-all-its-glory"><span class="header-section-number">5.4</span> In all its glory</h2>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/in-all-its-glory_5c581682d468720b7333bf33b7a903d1">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="regression1_files/figure-html/in-all-its-glory-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="regression1_files/figure-html/in-all-its-glory-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Let’s depict the residuals, s. <a href="#fig-lm2">Figure&nbsp;<span>5.5</span></a>.</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/fig-lm2_1dc15526e6d9f007d9ceb9935a449642">
+<p>Let’s depict the residuals, s. <a href="#fig-lm2" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>.</p>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-lm2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="regression1_files/figure-html/fig-lm2-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.5: Residuals as deviations from the predicted value</figcaption>
+<div id="fig-lm2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="regression1_files/figure-html/fig-lm2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: Residuals as deviations from the predicted value
+</figcaption>
 </figure>
 </div>
 </div>
@@ -411,9 +471,9 @@ div.csl-indent {
 <section id="first-model-one-metric-predictor" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="first-model-one-metric-predictor"><span class="header-section-number">5.5</span> First model: one metric predictor</h2>
 <p>First, let’s load some data:</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-4_3c8b1bf2ad527a21413c685f004b84de">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 32
 Columns: 11
@@ -433,12 +493,12 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 <section id="frequentist" class="level3" data-number="5.5.1">
 <h3 data-number="5.5.1" class="anchored" data-anchor-id="frequentist"><span class="header-section-number">5.5.1</span> Frequentist</h3>
 <p>Define and fit the model:</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm1-freq_57d698fdecbface4b124cfe7a860beef">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lm1_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lm1_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Get the parameter values:</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm1-frewq-params_9c17347accb479960459635ab41fcc2c">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -495,12 +555,12 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 </div>
 </div>
 <p>Plot the model parameters:</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/plot-lm1-freq_694e16cdea4ec8ae54f14a47e6cd8cc2">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm1_freq))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm1_freq))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="regression1_files/figure-html/plot-lm1-freq-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="regression1_files/figure-html/plot-lm1-freq-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -508,14 +568,14 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 </section>
 <section id="bayesian" class="level3" data-number="5.5.2">
 <h3 data-number="5.5.2" class="anchored" data-anchor-id="bayesian"><span class="header-section-number">5.5.2</span> Bayesian</h3>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm1-bayes_14b91552278be724010b364b2ac3e386">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 8.9e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.89 seconds.
+Chain 1: Gradient evaluation took 0.004213 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 42.13 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -532,15 +592,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.056403 seconds (Warm-up)
-Chain 1:                0.062497 seconds (Sampling)
-Chain 1:                0.1189 seconds (Total)
+Chain 1:  Elapsed Time: 0.059 seconds (Warm-up)
+Chain 1:                0.055 seconds (Sampling)
+Chain 1:                0.114 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 2.1e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.21 seconds.
+Chain 2: Gradient evaluation took 2e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.2 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -557,15 +617,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.059504 seconds (Warm-up)
-Chain 2:                0.052776 seconds (Sampling)
-Chain 2:                0.11228 seconds (Total)
+Chain 2:  Elapsed Time: 0.06 seconds (Warm-up)
+Chain 2:                0.057 seconds (Sampling)
+Chain 2:                0.117 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 1.5e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.15 seconds.
+Chain 3: Gradient evaluation took 1.8e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.18 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -582,15 +642,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.060164 seconds (Warm-up)
-Chain 3:                0.055246 seconds (Sampling)
-Chain 3:                0.11541 seconds (Total)
+Chain 3:  Elapsed Time: 0.06 seconds (Warm-up)
+Chain 3:                0.058 seconds (Sampling)
+Chain 3:                0.118 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 1.5e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.15 seconds.
+Chain 4: Gradient evaluation took 2e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.2 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -607,25 +667,25 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.058865 seconds (Warm-up)
-Chain 4:                0.053954 seconds (Sampling)
-Chain 4:                0.112819 seconds (Total)
+Chain 4:  Elapsed Time: 0.059 seconds (Warm-up)
+Chain 4:                0.058 seconds (Sampling)
+Chain 4:                0.117 seconds (Total)
 Chain 4: </code></pre>
 </div>
 </div>
 <p>Actually, we want to suppress some overly verbose output of the sampling, so add the argument <code>refresh = 0</code>:</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm-bayes-refresh0_092a69f530a8d4bc77dd5fe243b53681">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars, <span class="at">refresh =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars, <span class="at">refresh =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Get the parameter values:</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-5_0f06415c9b41d9e5936317771231e61c">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 10%">
-<col style="width: 7%">
+<col style="width: 9%">
 <col style="width: 4%">
 <col style="width: 9%">
 <col style="width: 9%">
@@ -654,26 +714,26 @@ Chain 4: </code></pre>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">30.01923</td>
+<td style="text-align: right;">30.0130467</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">26.7517738</td>
-<td style="text-align: right;">33.2576098</td>
+<td style="text-align: right;">26.7403264</td>
+<td style="text-align: right;">33.3658922</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.9993350</td>
-<td style="text-align: right;">3839.400</td>
+<td style="text-align: right;">0.9997042</td>
+<td style="text-align: right;">3737.681</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">20.09062</td>
 <td style="text-align: right;">15.0673701</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
-<td style="text-align: right;">-0.06770</td>
+<td style="text-align: right;">-0.0676743</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0884016</td>
-<td style="text-align: right;">-0.0470858</td>
+<td style="text-align: right;">-0.0885522</td>
+<td style="text-align: right;">-0.0467852</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.9995484</td>
-<td style="text-align: right;">3453.765</td>
+<td style="text-align: right;">0.9998273</td>
+<td style="text-align: right;">3836.318</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.2197599</td>
@@ -684,12 +744,12 @@ Chain 4: </code></pre>
 </div>
 </div>
 <p>Plot the model parameters:</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-6_0acf166ddcd089e8fa196d2dc98af8df">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm1_bayes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm1_bayes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="regression1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="regression1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -697,43 +757,43 @@ Chain 4: </code></pre>
 </section>
 <section id="model-performance" class="level3" data-number="5.5.3">
 <h3 data-number="5.5.3" class="anchored" data-anchor-id="model-performance"><span class="header-section-number">5.5.3</span> Model performance</h3>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-7_a82da158b8780b4230d68367b545b7a5">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># R2 for Linear Regression
        R2: 0.602
   adj. R2: 0.589</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/r2-bayes_980606c884dd1a483c6726e44aafbf20">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.584 (95% CI [0.370, 0.745])</code></pre>
+  Conditional R2: 0.586 (95% CI [0.382, 0.760])</code></pre>
 </div>
 </div>
 </section>
 <section id="model-check" class="level3" data-number="5.5.4">
 <h3 data-number="5.5.4" class="anchored" data-anchor-id="model-check"><span class="header-section-number">5.5.4</span> Model check</h3>
 <p>Here’s a bunch of typical model checks in the Frequentist sense.</p>
-<div class="cell" data-layout-align="center" data-fit-width="10" data-fig.asp="1" data-hash="regression1_cache/html/checkmodel-lm1-freq_6e539e04ba51e77e9ffaefb176ca9d25">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-fit-width="10">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="regression1_files/figure-html/checkmodel-lm1-freq-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="regression1_files/figure-html/checkmodel-lm1-freq-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>And here are some Bayesian flavored model checks.</p>
-<div class="cell" data-layout-align="center" data-fit-width="10" data-fig.asp="1" data-hash="regression1_cache/html/checkmodel-lm1-bayes_c312ec3b95da0c954bf2014308fe436d">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-fit-width="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="regression1_files/figure-html/checkmodel-lm1-bayes-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="regression1_files/figure-html/checkmodel-lm1-bayes-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -741,9 +801,9 @@ Chain 4: </code></pre>
 </section>
 <section id="get-some-predictions" class="level3" data-number="5.5.5">
 <h3 data-number="5.5.5" class="anchored" data-anchor-id="get-some-predictions"><span class="header-section-number">5.5.5</span> Get some predictions</h3>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm1-preds_ab6df23ff10147b9aacf30d54afa5af9">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lm1_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm1_freq)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>lm1_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>lm1_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm1_freq)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>lm1_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -836,12 +896,12 @@ Chain 4: </code></pre>
 </section>
 <section id="plot-the-model" class="level3" data-number="5.5.6">
 <h3 data-number="5.5.6" class="anchored" data-anchor-id="plot-the-model"><span class="header-section-number">5.5.6</span> Plot the model</h3>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/plot-lm1-pred_a5eba640930a182577cdb291a29f205b">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm1_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm1_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="regression1_files/figure-html/plot-lm1-pred-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="regression1_files/figure-html/plot-lm1-pred-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -861,10 +921,10 @@ Chain 4: </code></pre>
 <p>Bayes statistics provide a distribution as the result of the analysis, the posterior distribution, which provides us with quite some luxury.</p>
 <p>As the posterior distribution manifests itself by a number of samples, we can easily filter and manipulate this sample distribution in order to ask some interesing questions.</p>
 <p>See</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-8_c2a00d5d4ea888219a920453cd0f7dc9">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes_tibble <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(lm1_bayes)  <span class="co"># cast as a tibble (table)</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lm1_bayes_tibble)  <span class="co"># show the first few rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes_tibble <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(lm1_bayes)  <span class="co"># cast as a tibble (table)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lm1_bayes_tibble)  <span class="co"># show the first few rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -877,34 +937,34 @@ Chain 4: </code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">31.13917</td>
-<td style="text-align: right;">-0.0711852</td>
-<td style="text-align: right;">3.197711</td>
+<td style="text-align: right;">29.70189</td>
+<td style="text-align: right;">-0.0677765</td>
+<td style="text-align: right;">3.072381</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">28.75411</td>
-<td style="text-align: right;">-0.0636610</td>
-<td style="text-align: right;">4.671171</td>
+<td style="text-align: right;">30.78440</td>
+<td style="text-align: right;">-0.0714437</td>
+<td style="text-align: right;">5.038834</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">29.39286</td>
-<td style="text-align: right;">-0.0665289</td>
-<td style="text-align: right;">4.114371</td>
+<td style="text-align: right;">29.70498</td>
+<td style="text-align: right;">-0.0672385</td>
+<td style="text-align: right;">2.710406</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">29.96161</td>
-<td style="text-align: right;">-0.0651294</td>
-<td style="text-align: right;">4.548393</td>
+<td style="text-align: right;">29.87562</td>
+<td style="text-align: right;">-0.0628599</td>
+<td style="text-align: right;">5.004923</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">31.62700</td>
-<td style="text-align: right;">-0.0701204</td>
-<td style="text-align: right;">3.804601</td>
+<td style="text-align: right;">27.27882</td>
+<td style="text-align: right;">-0.0547451</td>
+<td style="text-align: right;">3.282582</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">28.14868</td>
-<td style="text-align: right;">-0.0626511</td>
-<td style="text-align: right;">4.102010</td>
+<td style="text-align: right;">33.61258</td>
+<td style="text-align: right;">-0.0868183</td>
+<td style="text-align: right;">4.891969</td>
 </tr>
 </tbody>
 </table>
@@ -914,9 +974,9 @@ Chain 4: </code></pre>
 <section id="asking-for-probabilites" class="level3" data-number="5.8.1">
 <h3 data-number="5.8.1" class="anchored" data-anchor-id="asking-for-probabilites"><span class="header-section-number">5.8.1</span> Asking for probabilites</h3>
 <p><em>What’s the probability that the effect of hp is negative?</em></p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-9_728a86c555d120f0a87889863d0b0963">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes_tibble <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(hp <span class="sc">&lt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(hp <span class="sc">&lt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -941,16 +1001,16 @@ Chain 4: </code></pre>
 <section id="asking-for-quantiles" class="level3" data-number="5.8.2">
 <h3 data-number="5.8.2" class="anchored" data-anchor-id="asking-for-quantiles"><span class="header-section-number">5.8.2</span> Asking for quantiles</h3>
 <p><em>With a given probability of, say 90%, how large is the effect of hp?</em></p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-10_2d212b89b31ad2130df5d30409e67ae9">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(lm1_bayes_tibble<span class="sc">$</span>hp, .<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(lm1_bayes_tibble<span class="sc">$</span>hp, .<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        90% 
--0.05448312 </code></pre>
+-0.05424696 </code></pre>
 </div>
 </div>
 <p><em>What’s the smallest 95% percent interval for the effect of hp?</em></p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-11_bfc2da08dbcbbed8c000a0eb0082db33">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -968,16 +1028,16 @@ Chain 4: </code></pre>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">26.817785</td>
-<td style="text-align: right;">33.2873498</td>
+<td style="text-align: right;">26.6464888</td>
+<td style="text-align: right;">33.2506932</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.088532</td>
-<td style="text-align: right;">-0.0475954</td>
+<td style="text-align: right;">-0.0899743</td>
+<td style="text-align: right;">-0.0484453</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
@@ -987,8 +1047,8 @@ Chain 4: </code></pre>
 </div>
 </div>
 <p>In case you prefer 89% intervals (I do!):</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-12_426a2de919fdd7a9d84209e5116bf1ac">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes, <span class="at">ci =</span> .<span class="dv">89</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes, <span class="at">ci =</span> .<span class="dv">89</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -1006,16 +1066,16 @@ Chain 4: </code></pre>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: right;">0.89</td>
-<td style="text-align: right;">27.3732054</td>
-<td style="text-align: right;">32.6197653</td>
+<td style="text-align: right;">27.4433208</td>
+<td style="text-align: right;">32.8529059</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
 <td style="text-align: right;">0.89</td>
-<td style="text-align: right;">-0.0832743</td>
-<td style="text-align: right;">-0.0491476</td>
+<td style="text-align: right;">-0.0844008</td>
+<td style="text-align: right;">-0.0509433</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
@@ -1046,9 +1106,9 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <p>How large is the uncertainty in <span class="math inline">\(y\)</span> associated with a given obersation? What interval of values should I expect for a randomly chosen observation?</p>
 </blockquote>
 <p>For example, what’s the uncertainty attached to the fuel economy of a car with 100 hp?</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-13_39cf7fc7cd4f46a0869ade354588d976">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">estimate_prediction</span>(<span class="at">model =</span> lm1_bayes, </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">hp =</span> <span class="dv">100</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">estimate_prediction</span>(<span class="at">model =</span> lm1_bayes, </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">hp =</span> <span class="dv">100</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -1064,10 +1124,10 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">23.35222</td>
-<td style="text-align: right;">4.094458</td>
-<td style="text-align: right;">15.53018</td>
-<td style="text-align: right;">31.2594</td>
+<td style="text-align: right;">23.17271</td>
+<td style="text-align: right;">4.160322</td>
+<td style="text-align: right;">15.16662</td>
+<td style="text-align: right;">31.30061</td>
 </tr>
 </tbody>
 </table>
@@ -1087,9 +1147,9 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <section id="multiple-metric-predictors" class="level2" data-number="5.9">
 <h2 data-number="5.9" class="anchored" data-anchor-id="multiple-metric-predictors"><span class="header-section-number">5.9</span> Multiple metric predictors</h2>
 <p>Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm2-freq_3d5dd6099feba168e4d828e7d4df082d">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lm2_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>lm2_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -1157,23 +1217,23 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 </div>
 <p>Similarly for Bayes inference:</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm2-bayes_4e6c232641f8c20c79ef5d19377b7de9">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>lm2_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>lm2_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Results</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm2-results_ce9463700302cc3a1cd9eb5150490f97">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 9%">
-<col style="width: 8%">
+<col style="width: 9%">
 <col style="width: 4%">
-<col style="width: 8%">
-<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 9%">
 <col style="width: 6%">
-<col style="width: 8%">
+<col style="width: 7%">
 <col style="width: 7%">
 <col style="width: 15%">
 <col style="width: 12%">
@@ -1197,39 +1257,39 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">30.7505061</td>
+<td style="text-align: right;">30.7309468</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">28.0524917</td>
-<td style="text-align: right;">33.5248323</td>
+<td style="text-align: right;">27.8683708</td>
+<td style="text-align: right;">33.3556538</td>
 <td style="text-align: right;">1.00000</td>
-<td style="text-align: right;">0.9994184</td>
-<td style="text-align: right;">4416.682</td>
+<td style="text-align: right;">1.000524</td>
+<td style="text-align: right;">3921.620</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">20.09062</td>
 <td style="text-align: right;">15.0673701</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
-<td style="text-align: right;">-0.0251499</td>
+<td style="text-align: right;">-0.0248306</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0526039</td>
-<td style="text-align: right;">0.0024292</td>
-<td style="text-align: right;">0.96625</td>
-<td style="text-align: right;">1.0006908</td>
-<td style="text-align: right;">2181.434</td>
+<td style="text-align: right;">-0.0513051</td>
+<td style="text-align: right;">0.0040632</td>
+<td style="text-align: right;">0.96075</td>
+<td style="text-align: right;">1.000970</td>
+<td style="text-align: right;">1962.597</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.2197599</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">disp</td>
-<td style="text-align: right;">-0.0301997</td>
+<td style="text-align: right;">-0.0301813</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0455587</td>
-<td style="text-align: right;">-0.0150872</td>
-<td style="text-align: right;">0.99975</td>
-<td style="text-align: right;">1.0016436</td>
-<td style="text-align: right;">2213.671</td>
+<td style="text-align: right;">-0.0458832</td>
+<td style="text-align: right;">-0.0151743</td>
+<td style="text-align: right;">1.00000</td>
+<td style="text-align: right;">1.002863</td>
+<td style="text-align: right;">1920.949</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.1215712</td>
@@ -1238,29 +1298,29 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </table>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm2_bayes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm2_bayes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="regression1_files/figure-html/lm2-results-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="regression1_files/figure-html/lm2-results-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm2_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm2_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.731 (95% CI [0.573, 0.839])</code></pre>
+  Conditional R2: 0.730 (95% CI [0.563, 0.838])</code></pre>
 </div>
 </div>
 <p>Depending on the value of <code>disp</code> the prediction of <code>mpg</code> from <code>hp</code> will vary:</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm2-pred_3cb57115d7699fb4d0568f8ea5707f9c">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>lm2_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm2_freq)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm2_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>lm2_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm2_freq)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm2_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="regression1_files/figure-html/lm2-pred-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="regression1_files/figure-html/lm2-pred-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1268,9 +1328,9 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </section>
 <section id="one-nominal-predictor" class="level2" data-number="5.10">
 <h2 data-number="5.10" class="anchored" data-anchor-id="one-nominal-predictor"><span class="header-section-number">5.10</span> One nominal predictor</h2>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm3a_1d159cead1008eba3b38a89cc0957301">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -1326,9 +1386,9 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-14_b1faed086e858181a0739285358596b6">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a, <span class="at">at =</span> <span class="st">"am = c(0, 1)"</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>lm3a_means </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a, <span class="at">at =</span> <span class="st">"am = c(0, 1)"</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>lm3a_means </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -1363,21 +1423,21 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 <p>If we were not to specify the values of <code>am</code> which we would like to get predictions for, the default of the function would select 10 values, spread across the range of <code>am</code>. For numeric variables, this is usually fine. However, for nominal variables - and <code>am</code> is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for <code>0</code> and <code>1</code>.</p>
 <p>However, unfortunately, the plot <em>needs</em> a nominal variable if we are to compare groups. In our case, <code>am</code> is considered a numeric variables, since it consists of numbers only. The plot does not work, malheureusement:</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-15_31a871c3856cf6ae06f1e240b4c2779e">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `rlang::sym()`:
 ! Can't convert a character vector to a symbol.</code></pre>
 </div>
 </div>
 <p>We need to transform <code>am</code> to a factor variable. That’s something like a string. If we hand over a <code>factor()</code> to the plotting function, everything will run smoothly. Computationwise, no big differences:</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm3a-factor_cfb7938c06a476e1be37eac7e627ea98">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_f =</span> <span class="fu">factor</span>(am))</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am_f, <span class="at">data =</span> mtcars2)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_f =</span> <span class="fu">factor</span>(am))</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am_f, <span class="at">data =</span> mtcars2)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -1433,33 +1493,37 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-16_5efbe04852f3b671a74345ac5598969f">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="regression1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="regression1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Note that we should have converted <code>am</code> to a factor variable before fitting the model. Otherwise, the plot won’t work.</p>
-<p>Here’s a more hand-crafted version of the last plot, see Fig. <a href="#fig-lm3a-means">Figure&nbsp;<span>5.6</span></a>.</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/fig-lm3a-means_3dd55d01f828c0056362c33cc582d31a">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars2) <span class="sc">+</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> am_f, <span class="at">y =</span> mpg) <span class="sc">+</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">data =</span> lm3a_means,</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> <span class="st">"orange"</span>,</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> CI_low, <span class="at">ymax =</span> CI_high, <span class="at">y =</span> Mean)) <span class="sc">+</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm3a_means, <span class="fu">aes</span>(<span class="at">y =</span> Mean, <span class="at">group =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here’s a more hand-crafted version of the last plot, see Fig. <a href="#fig-lm3a-means" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars2) <span class="sc">+</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> am_f, <span class="at">y =</span> mpg) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">data =</span> lm3a_means,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> <span class="st">"orange"</span>,</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> CI_low, <span class="at">ymax =</span> CI_high, <span class="at">y =</span> Mean)) <span class="sc">+</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm3a_means, <span class="fu">aes</span>(<span class="at">y =</span> Mean, <span class="at">group =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-lm3a-means" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="regression1_files/figure-html/fig-lm3a-means-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.6: Means per level of am</figcaption>
+<div id="fig-lm3a-means" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lm3a-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="regression1_files/figure-html/fig-lm3a-means-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lm3a-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.6: Means per level of am
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1467,13 +1531,13 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </section>
 <section id="one-metric-and-one-nominal-predictor" class="level2" data-number="5.11">
 <h2 data-number="5.11" class="anchored" data-anchor-id="one-metric-and-one-nominal-predictor"><span class="header-section-number">5.11</span> One metric and one nominal predictor</h2>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm4_448330ab3ed6d775d9c65a5b9fced8e4">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl))</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars2)</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl))</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars2)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -1551,13 +1615,13 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm4-pred_7689412ac310b3ddd84f5d216614f6a4">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>lm4_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm4)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm4_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>lm4_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm4)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm4_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="regression1_files/figure-html/lm4-pred-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="regression1_files/figure-html/lm4-pred-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1571,13 +1635,13 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <h2 data-number="5.13" class="anchored" data-anchor-id="what-about-correlation"><span class="header-section-number">5.13</span> What about correlation?</h2>
 <p>Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.</p>
 <p>Let’s get the correlation matrix of the variables in involved in <code>lm4</code>.</p>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/lm4-corr_b4c7b83f8cc1771d6d1e4bd398543dcf">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>lm4_corr <span class="ot">&lt;-</span> </span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, disp) <span class="sc">%&gt;%</span> </span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>()</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>lm4_corr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>lm4_corr <span class="ot">&lt;-</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, disp) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>()</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>lm4_corr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -1654,12 +1718,12 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="regression1_cache/html/unnamed-chunk-17_8f10e67ab0aa49de42bac0d77b4ab544">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">summary</span>(lm4_corr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">summary</span>(lm4_corr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="regression1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="regression1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1687,7 +1751,7 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <p><a href="https://media.giphy.com/media/141amBdjqs9Vvy/giphy.gif">Science!</a></p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-gelman_regression_2021" class="csl-entry" role="listitem">
 Gelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. <em>Regression and Other Stories</em>. Analytical Methods for Social Research. Cambridge: Cambridge University Press.
 </div>
@@ -1783,10 +1847,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1796,8 +1859,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1810,6 +1882,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1853,6 +2044,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1878,6 +2070,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1939,17 +2157,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./inference.html" class="pagination-link">
+      <a href="./inference.html" class="pagination-link  aria-label=" &lt;span="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./regression2.html" class="pagination-link">
+      <a href="./regression2.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>More linear models</span>">
         <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

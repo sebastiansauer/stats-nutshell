@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,6 +116,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -124,12 +132,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./basics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./basics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -139,7 +147,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">stats-nutshell</a> 
@@ -203,7 +211,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./casestudies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case studies</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Going further</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -215,7 +223,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -230,7 +238,11 @@ div.csl-indent {
   <li><a href="#r-basics" id="toc-r-basics" class="nav-link" data-scroll-target="#r-basics"><span class="header-section-number">2.2</span> R Basics</a></li>
   <li><a href="#initial-quiz" id="toc-initial-quiz" class="nav-link" data-scroll-target="#initial-quiz"><span class="header-section-number">2.3</span> Initial quiz</a></li>
   <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import"><span class="header-section-number">2.4</span> Data import</a></li>
-  <li><a href="#sec-blitz-data" id="toc-sec-blitz-data" class="nav-link" data-scroll-target="#sec-blitz-data"><span class="header-section-number">2.5</span> Blitz start with data</a></li>
+  <li><a href="#sec-blitz-data" id="toc-sec-blitz-data" class="nav-link" data-scroll-target="#sec-blitz-data"><span class="header-section-number">2.5</span> Blitz start with data</a>
+  <ul class="collapse">
+  <li><a href="#motor-trends-cars" id="toc-motor-trends-cars" class="nav-link" data-scroll-target="#motor-trends-cars"><span class="header-section-number">2.5.1</span> Motor Trends Cars</a></li>
+  <li><a href="#penguins" id="toc-penguins" class="nav-link" data-scroll-target="#penguins"><span class="header-section-number">2.5.2</span> Penguins</a></li>
+  </ul></li>
   <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">2.6</span> Lab</a></li>
   <li><a href="#more-data-set" id="toc-more-data-set" class="nav-link" data-scroll-target="#more-data-set"><span class="header-section-number">2.7</span> More data set</a></li>
   <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="header-section-number">2.8</span> Literature</a></li>
@@ -255,28 +267,38 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="a-framework-for-problem-solving" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="a-framework-for-problem-solving"><span class="header-section-number">2.1</span> A framework for problem solving</h2>
 <section id="ppdac" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="ppdac"><span class="header-section-number">2.1.1</span> PPDAC</h3>
-<p>The PPDAC Model is a methodological framework (aka a model) for applying the scientific method to any analytical or research question, or at least it is applicable to quite a few <span class="citation" data-cites="mackay_scientific_2000">(<a href="references.html#ref-mackay_scientific_2000" role="doc-biblioref">MacKay and Oldford 2000</a>)</span>. It is not meant to be a rigid sequence, but rather a cycle that may turn a number of rounds like a spiral. Statistician Chris Wild puts the PPDAC cycle in the following figure, see Figure <a href="#fig-ppdac">Figure&nbsp;<span>2.1</span></a>. In <a href="https://www.stat.auckland.ac.nz/~wild/d2i/articles/1.4%20Place%20of%20data%20analysis%20in%20problem%20solving_ARTICLE.pdf">this short essay</a>, he summaries his ideas on how to use the PPDAC as a tool for data analysis in problem solving.</p>
-<div id="fig-ppdac" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/ppdac.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.1: PPDAC cycle. Image source: Chris Wild</figcaption>
+<p>The PPDAC Model is a methodological framework (aka a model) for applying the scientific method to any analytical or research question, or at least it is applicable to quite a few <span class="citation" data-cites="mackay_scientific_2000">(<a href="references.html#ref-mackay_scientific_2000" role="doc-biblioref">MacKay and Oldford 2000</a>)</span>. It is not meant to be a rigid sequence, but rather a cycle that may turn a number of rounds like a spiral. Statistician Chris Wild puts the PPDAC cycle in the following figure, see Figure <a href="#fig-ppdac" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>. In <a href="https://www.stat.auckland.ac.nz/~wild/d2i/articles/1.4%20Place%20of%20data%20analysis%20in%20problem%20solving_ARTICLE.pdf">this short essay</a>, he summaries his ideas on how to use the PPDAC as a tool for data analysis in problem solving.</p>
+<div id="fig-ppdac" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ppdac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/ppdac.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ppdac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: PPDAC cycle. Image source: Chris Wild
+</figcaption>
 </figure>
 </div>
-<p>Wickham and Grolemund (see Figure <a href="EDA.html#fig-data-journey">Figure&nbsp;<span>3.1</span></a> in <a href="EDA.html#sec-data-journey"><span>Section&nbsp;3.3</span></a>) provide a suggestion of the parts of the statistical analyses, that is the “Analysis” step in the PPDAC.</p>
+<p>Wickham and Grolemund (see Figure <a href="EDA.html#fig-data-journey" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> in <a href="EDA.html#sec-data-journey" class="quarto-xref"><span>Section 3.3</span></a>) provide a suggestion of the parts of the statistical analyses, that is the “Analysis” step in the PPDAC.</p>
 </section>
 <section id="fundamental-issues-in-data-analysis" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="fundamental-issues-in-data-analysis"><span class="header-section-number">2.1.2</span> Fundamental issues in data analysis</h3>
-<p><span class="citation" data-cites="wild_statistical_1999">Wild and Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> further note that variation is one of the essential characteristics of data. They discern to types of variation however, see Figure <a href="#fig-variation">Figure&nbsp;<span>2.2</span></a>.</p>
-<div id="fig-variation" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/variation.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.2: Two types of variartion. Image source: Chris Wild</figcaption>
+<p><span class="citation" data-cites="wild_statistical_1999">Wild and Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> further note that variation is one of the essential characteristics of data. They discern to types of variation however, see Figure <a href="#fig-variation" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>.</p>
+<div id="fig-variation" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-variation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/variation.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-variation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Two types of variartion. Image source: Chris Wild
+</figcaption>
 </figure>
 </div>
 <p><span class="citation" data-cites="wild_statistical_1999">Wild and Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> give a more systematic overview on how a quantitative research question - applied or basic - can be tackled and conceived. For example, in their paper the authors enumarate some dispositions that researcher should embrace in order to fruitfully engage in empirical research:</p>
@@ -296,11 +318,15 @@ div.csl-indent {
 <h2 data-number="2.2" class="anchored" data-anchor-id="r-basics"><span class="header-section-number">2.2</span> R Basics</h2>
 <p>Check out <a href="https://moderndive.com/1-getting-started.html">chapter 1 in ModernDive</a> for an accessible introduction to getting started with R and RStudio.</p>
 <p>Please also note that R and RStudio should be installed before starting (this course).</p>
-<p>In addition, your R packages should be updtodate, according to Arnold Schwarzenegger (s. <a href="#fig-arnie">Figure&nbsp;<span>2.3</span></a>).</p>
-<div id="fig-arnie" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/terminator.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.3: Keep your R packages uptodate, or risk being an outdated model, Arnie says</figcaption>
+<p>In addition, your R packages should be updtodate, according to Arnold Schwarzenegger (s. <a href="#fig-arnie" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>).</p>
+<div id="fig-arnie" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-arnie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/terminator.jpg" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arnie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Keep your R packages uptodate, or risk being an outdated model, Arnie says
+</figcaption>
 </figure>
 </div>
 </section>
@@ -308,34 +334,34 @@ div.csl-indent {
 <h2 data-number="2.3" class="anchored" data-anchor-id="initial-quiz"><span class="header-section-number">2.3</span> Initial quiz</h2>
 <p>To get an idea whether you have digested some R basics, consider the following quiz.</p>
 <div id="exr-q1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.1 (Define a variable) </strong></span>Define in R the variable <code>age</code> and assign the value <code>42</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise 2.1 (Define a variable)</strong></span> Define in R the variable <code>age</code> and assign the value <code>42</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </div>
 <div id="exr-q2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.2 (Define a variable as a string) </strong></span>Define in R the variable <code>name</code> and assign the value <code>me</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise 2.2 (Define a variable as a string)</strong></span> Define in R the variable <code>name</code> and assign the value <code>me</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 </div>
 <div id="exr-q3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.3 (Define a variable by another variable) </strong></span>Define in R the variable <code>name</code> and assign the <em>variable</em> <code>age</code>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise 2.3 (Define a variable by another variable)</strong></span> Define in R the variable <code>name</code> and assign the <em>variable</em> <code>age</code>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 </div>
 <div id="exr-q3a" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.4 (Call a function) </strong></span>Ask R what today’s <code>date()</code> is, that is, call a function.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise 2.4 (Call a function)</strong></span> Ask R what today’s <code>date()</code> is, that is, call a function.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 </div>
 <div id="exr-q4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.5 (Define a vector) </strong></span>Define in R a vector <code>x</code> with the values 1,2,3 .<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise 2.5 (Define a vector)</strong></span> Define in R a vector <code>x</code> with the values 1,2,3 .<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 </div>
 <div id="exr-q5" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.6 (Vector wise computation) </strong></span>Square each value in the vector <code>x</code>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise 2.6 (Vector wise computation)</strong></span> Square each value in the vector <code>x</code>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 </div>
 <div id="exr-q6" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.7 (Vector wise computation 2) </strong></span>Square each value in the vector <code>x</code> and sum up the values.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise 2.7 (Vector wise computation 2)</strong></span> Square each value in the vector <code>x</code> and sum up the values.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
 </div>
 <div id="exr-q7" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.8 (Vector wise computation 3) </strong></span>Square each value in the vector <code>x</code>, sum up the values, and divide by 3.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise 2.8 (Vector wise computation 3)</strong></span> Square each value in the vector <code>x</code>, sum up the values, and divide by 3.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
 </div>
 <div id="exr-q8" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.9 (Compute the variance) </strong></span>Compute the variance of <code>x</code> using basic arithmetic.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise 2.9 (Compute the variance)</strong></span> Compute the variance of <code>x</code> using basic arithmetic.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
 </div>
 <div id="exr-q9" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.10 (Work with NA) </strong></span>Define the vector <code>y</code> with the values 1,2,NA. Compute the mean. Explain the results.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise 2.10 (Work with NA)</strong></span> Define the vector <code>y</code> with the values 1,2,NA. Compute the mean. Explain the results.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
 </div>
 </section>
 <section id="data-import" class="level2" data-number="2.4">
@@ -358,14 +384,25 @@ Note
 </section>
 <section id="sec-blitz-data" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="sec-blitz-data"><span class="header-section-number">2.5</span> Blitz start with data</h2>
+<section id="motor-trends-cars" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="motor-trends-cars"><span class="header-section-number">2.5.1</span> Motor Trends Cars</h3>
 <p>To blitz start with data, type the following in R:</p>
-<div class="cell" data-layout-align="center" data-hash="basics_cache/html/unnamed-chunk-2_a1c7461cc157a0684991e4f80acef985">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And the data set <code>mtcars</code> will be available.</p>
 <p>To get help for the data set, type <code>help(mtcars)</code></p>
+</section>
+<section id="penguins" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="penguins"><span class="header-section-number">2.5.2</span> Penguins</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png" class="img-fluid figure-img"></p>
+<figcaption>Allez, penguins! Image Credit: Allison Horst, CCO</figcaption>
+</figure>
+</div>
 <p>A bit more advanced, but it’s a nice data set, try the Palmer Penguins data set:</p>
-<div class="cell" data-layout-align="center" data-hash="basics_cache/html/unnamed-chunk-3_56ff8b301410f122e9f65ce84357743a">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)  <span class="co"># see the first few rows, the "head" of the table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -470,6 +507,7 @@ Note
 </div>
 <p>Here’s some <a href="https://vincentarelbundock.github.io/Rdatasets/doc/palmerpenguins/penguins.html">documentation (code book)</a> for this data set.</p>
 </section>
+</section>
 <section id="lab" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="lab"><span class="header-section-number">2.6</span> Lab</h2>
 <p>Import <em>your</em> research data into R.</p>
@@ -483,7 +521,7 @@ Note
 <p><span class="citation" data-cites="wild_statistical_1999">Wild and Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> discuss the thougnht processes involved in statistical problem solving seen from a broad perspective. <span class="citation" data-cites="ismay_statistical_2020">Ismay and Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span> is a helpful start into the first steps in R.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-ismay_statistical_2020" class="csl-entry" role="listitem">
 Ismay, Chester, and Albert Young-Sun Kim. 2020. <em>Statistical Inference via Data Science: A <span>ModernDive</span> into r and the Tidyverse</em>. Chapman &amp; Hall/<span>CRC</span> the r Series. Boca Raton: <span>CRC</span> Press / Taylor &amp; Francis Group. <a href="https://moderndive.com/">https://moderndive.com/</a>.
 </div>
@@ -507,7 +545,7 @@ Wild, Chris J, and Maxine Pfannkuch. 1999. <span>“Statistical Thinking in Empi
 <li id="fn7"><p><code>sum(x^2)</code><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p><code>mean(x^2)</code><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p><code>sum(x^2)</code><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><div class="cell" data-layout-align="center" data-hash="basics_cache/html/unnamed-chunk-1_206ffacd9c31fb13eb5ac6a097766367">
+<li id="fn10"><div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -605,10 +643,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -618,8 +655,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -632,6 +678,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -675,6 +840,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -700,6 +866,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -761,17 +953,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./goals.html" class="pagination-link">
+      <a href="./goals.html" class="pagination-link  aria-label=" &lt;span="" in="" statistics&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./EDA.html" class="pagination-link">
+      <a href="./EDA.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Exploratory Data Analysis</span>">
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
