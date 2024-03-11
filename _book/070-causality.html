@@ -8,7 +8,7 @@
 
 <meta name="description" content="A crash course on applied statistics with a focus on statistical modelling">
 
-<title>stats-nutshell - References</title>
+<title>stats-nutshell - 7&nbsp; Causality</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,10 +21,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -50,7 +85,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./080-outro.html" rel="prev">
+<link href="./080-outro.html" rel="next">
+<link href="./060-regression2.html" rel="prev">
 <link href="./img/logo-stats-nutshell.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -101,7 +137,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./070-causality.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -176,7 +212,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./070-causality.html" class="sidebar-item-text sidebar-link">
+  <a href="./070-causality.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></span></a>
   </div>
 </li>
@@ -188,7 +224,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -198,14 +234,22 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link active" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="header-section-number">7.1</span> R packages needed for this chapter</a></li>
+  <li><a href="#intro-to-causality" id="toc-intro-to-causality" class="nav-link" data-scroll-target="#intro-to-causality"><span class="header-section-number">7.2</span> Intro to causality</a></li>
+  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="header-section-number">7.3</span> Literature</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></h1>
 </div>
 
 
@@ -222,93 +266,35 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-cetinkaya-rundel_introduction_2021-2" class="csl-entry" role="listitem">
-Cetinkaya-Rundel, M., &amp; Hardin, J. (2021). <em>Introduction to
-<span>Modern Statistics</span></em>. <a href="https://openintro-ims.netlify.app/">https://openintro-ims.netlify.app/</a>
+<p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
+<section id="r-packages-needed-for-this-chapter" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">7.1</span> R packages needed for this chapter</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)  <span class="co"># optional  </span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ref-deisenroth_mathematics_2020" class="csl-entry" role="listitem">
-Deisenroth, M. P., Faisal, A. A., &amp; Ong, C. S. (2020).
-<em>Mathematics for machine learning</em>. Cambridge University Press.
-<a href="https://mml-book.github.io/">https://mml-book.github.io/</a>
-</div>
-<div id="ref-gelman_regression_2021" class="csl-entry" role="listitem">
-Gelman, A., Hill, J., &amp; Vehtari, A. (2021). <em>Regression and other
-stories</em>. Cambridge University Press.
-</div>
-<div id="ref-goodman_dirty_2008" class="csl-entry" role="listitem">
-Goodman, S. (2008). A dirty dozen: <span class="nocase">Twelve
-P-value</span> misconceptions. <em>Seminars in Hematology</em>,
-<em>45</em>(3), 135–140. <a href="https://doi.org/10.1053/j.seminhematol.2008.04.003">https://doi.org/10.1053/j.seminhematol.2008.04.003</a>
-</div>
-<div id="ref-hernan_second_2019" class="csl-entry" role="listitem">
-Hernán, M. A., Hsu, J., &amp; Healy, B. (2019). A second chance to get
-causal inference right: <span>A</span> classification of data science
-tasks. <em>Chance</em>, <em>32</em>(1), 42–49. <a href="https://doi.org/10.1080/09332480.2019.1579578">https://doi.org/10.1080/09332480.2019.1579578</a>
-</div>
-<div id="ref-ismay_statistical_2020" class="csl-entry" role="listitem">
-Ismay, C., &amp; Kim, A. Y.-S. (2020). <em>Statistical inference via
-data science: A <span>ModernDive</span> into <span>R</span> and the
-<span>Tidyverse</span></em>. CRC Press / Taylor &amp; Francis Group. <a href="https://moderndive.com/">https://moderndive.com/</a>
-</div>
-<div id="ref-mackay_scientific_2000" class="csl-entry" role="listitem">
-MacKay, R. J., &amp; Oldford, R. W. (2000). Scientific method,
-statistical method and the speed of light. <em>Statistical Science</em>,
-<em>15</em>(3), 254–278. <a href="https://doi.org/10.1214/ss/1009212817">https://doi.org/10.1214/ss/1009212817</a>
-</div>
+</section>
+<section id="intro-to-causality" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="intro-to-causality"><span class="header-section-number">7.2</span> Intro to causality</h2>
+<p>Check out this <a href="https://sebastiansauer-academic.netlify.app/uploads/Intro-to-Causality.pdf">talk</a>.</p>
+</section>
+<section id="literature" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="literature"><span class="header-section-number">7.3</span> Literature</h2>
+<p><span class="citation" data-cites="rohrer_thinking_2018">Rohrer (<a href="references.html#ref-rohrer_thinking_2018" role="doc-biblioref">2018</a>)</span> provides an accessible introduction to causal inference. Slightly more advanced is the introduction by one of the leading figures of the Field, Judea Pearl, <span class="citation" data-cites="pearl_causal_2016">Pearl et al. (<a href="references.html#ref-pearl_causal_2016" role="doc-biblioref">2016</a>)</span>. If your after a text book on modelling that covers causal inference, and if you like Bayesian statistics, than you should definitely check out <span class="citation" data-cites="mcelreath_statistical_2020">McElreath (<a href="references.html#ref-mcelreath_statistical_2020" role="doc-biblioref">2020</a>)</span>.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-mcelreath_statistical_2020" class="csl-entry" role="listitem">
-McElreath, R. (2020). <em>Statistical rethinking: A
-<span>Bayesian</span> course with examples in <span>R</span> and
-<span>Stan</span></em> (2nd ed.). <span>Taylor and Francis, CRC
-Press</span>.
+McElreath, R. (2020). <em>Statistical Rethinking: A <span>Bayesian</span> Course with Examples in <span>R</span> and <span>Stan</span></em> (2. Aufl.). <span>Taylor and Francis, CRC Press</span>.
 </div>
 <div id="ref-pearl_causal_2016" class="csl-entry" role="listitem">
-Pearl, J., Glymour, M., &amp; Jewell, N. P. (2016). <em>Causal inference
-in statistics: A primer</em>. Wiley.
-</div>
-<div id="ref-poldrack_statistical_2022" class="csl-entry" role="listitem">
-Poldrack, R. (2022a). <em>Statistical thinking for the 21st
-century</em>. <a href="https://statsthinking21.github.io/statsthinking21-core-site/index.html">https://statsthinking21.github.io/statsthinking21-core-site/index.html</a>
-</div>
-<div id="ref-poldrack_statistical_2022-1" class="csl-entry" role="listitem">
-Poldrack, R. (2022b). <em>Statistical <span>Thinking</span> for the 21st
-<span>Century</span></em>. <a href="https://statsthinking21.github.io/statsthinking21-core-site/index.html">https://statsthinking21.github.io/statsthinking21-core-site/index.html</a>
-</div>
-<div id="ref-roback_beyond_2021" class="csl-entry" role="listitem">
-Roback, P., &amp; Legler, J. (2021). <em>Beyond multiple linear
-regression: Applied generalized linear models and multilevel models
-in</em> (1st ed.). CRC Press.
+Pearl, J., Glymour, M., &amp; Jewell, N. P. (2016). <em>Causal Inference in Statistics: A Primer</em>. Wiley.
 </div>
 <div id="ref-rohrer_thinking_2018" class="csl-entry" role="listitem">
-Rohrer, J. M. (2018). Thinking <span>Clearly About Correlations</span>
-and <span>Causation</span>: <span>Graphical Causal Models</span> for
-<span>Observational Data</span>. <em>Advances in Methods and Practices
-in Psychological Science</em>, <em>1</em>(1), 27–42. <a href="https://doi.org/10.1177/2515245917745629">https://doi.org/10.1177/2515245917745629</a>
-</div>
-<div id="ref-sauer_moderne_2019" class="csl-entry" role="listitem">
-Sauer, S. (2019). <em>Moderne <span>Datenanalyse</span> mit
-<span>R</span>: <span>Daten</span> einlesen, aufbereiten, visualisieren
-und modellieren</em> (1. Auflage 2019). Springer. <a href="https://www.springer.com/de/book/9783658215866">https://www.springer.com/de/book/9783658215866</a>
-</div>
-<div id="ref-wasserstein_moving_2019" class="csl-entry" role="listitem">
-Wasserstein, R. L., Schirm, A. L., &amp; Lazar, N. A. (2019). Moving to
-a world beyond <span>“ p p <span><span class="math inline">&lt;</span></span> 0.05.”</span> <em>The American
-Statistician</em>, <em>73</em>, 1–19. <a href="https://doi.org/10.1080/00031305.2019.1583913">https://doi.org/10.1080/00031305.2019.1583913</a>
-</div>
-<div id="ref-r4ds" class="csl-entry" role="listitem">
-Wickham, H., &amp; Grolemund, G. (2016). <em>R for <span>Data
-Science</span>: <span>Visualize</span>, <span>Model</span>,
-<span>Transform</span>, <span>Tidy</span>, and <span>Import
-Data</span></em>. O’Reilly Media. <a href="https://r4ds.had.co.nz/index.html">https://r4ds.had.co.nz/index.html</a>
-</div>
-<div id="ref-wild_statistical_1999" class="csl-entry" role="listitem">
-Wild, C. J., &amp; Pfannkuch, M. (1999). Statistical thinking in
-empirical enquiry. <em>International Statistical Review</em>,
-<em>67</em>(3), 223–248.
+Rohrer, J. M. (2018). Thinking <span>Clearly About Correlations</span> and <span>Causation</span>: <span>Graphical Causal Models</span> for <span>Observational Data</span>. <em>Advances in Methods and Practices in Psychological Science</em>, <em>1</em>(1), 27–42. <a href="https://doi.org/10.1177/2515245917745629">https://doi.org/10.1177/2515245917745629</a>
 </div>
 </div>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -700,11 +686,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./080-outro.html" class="pagination-link  aria-label=" &lt;span="" further&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Going further</span></span>
+      <a href="./060-regression2.html" class="pagination-link  aria-label=" &lt;span="" linear="" models&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./080-outro.html" class="pagination-link" aria-label="<span class='chapter-number'>8</span>&nbsp; <span class='chapter-title'>Going further</span>">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Going further</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

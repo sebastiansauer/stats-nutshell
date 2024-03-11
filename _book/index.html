@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sebastian Sauer">
-<meta name="dcterms.date" content="2022-09-04">
+<meta name="description" content="A crash course on applied statistics with a focus on statistical modelling">
 
 <title>stats-nutshell</title>
 <style>
@@ -86,7 +86,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./goals.html" rel="next">
+<link href="./010-goals.html" rel="next">
+<link href="./img/logo-stats-nutshell.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -110,49 +111,20 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -162,11 +134,11 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -178,14 +150,20 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/logo-stats-nutshell.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">stats-nutshell</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/sebastiansauer/stats-nutshell" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Suchen"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -198,49 +176,49 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./goals.html" class="sidebar-item-text sidebar-link">
+  <a href="./010-goals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+  <a href="./020-basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./EDA.html" class="sidebar-item-text sidebar-link">
+  <a href="./030-EDA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inference.html" class="sidebar-item-text sidebar-link">
+  <a href="./040-inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression1.html" class="sidebar-item-text sidebar-link">
+  <a href="./050-regression1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression2.html" class="sidebar-item-text sidebar-link">
+  <a href="./060-regression2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./causality.html" class="sidebar-item-text sidebar-link">
+  <a href="./070-causality.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./casestudies.html" class="sidebar-item-text sidebar-link">
+  <a href="./080-outro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Going further</span></span></a>
   </div>
 </li>
@@ -257,7 +235,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
   <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
@@ -277,10 +255,6 @@ window.Quarto = {
   <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a>
   <ul class="collapse">
   <li><a href="#overview-on-topics-covered" id="toc-overview-on-topics-covered" class="nav-link" data-scroll-target="#overview-on-topics-covered">Overview on topics covered</a></li>
-  <li><a href="#block-1-explorative-data-analysis" id="toc-block-1-explorative-data-analysis" class="nav-link" data-scroll-target="#block-1-explorative-data-analysis">Block 1: Explorative Data Analysis</a></li>
-  <li><a href="#block-2-statistical-modelling-basic" id="toc-block-2-statistical-modelling-basic" class="nav-link" data-scroll-target="#block-2-statistical-modelling-basic">Block 2: Statistical Modelling: Basic</a></li>
-  <li><a href="#block-3-statistical-modelling-multiple-regression-and-interaction" id="toc-block-3-statistical-modelling-multiple-regression-and-interaction" class="nav-link" data-scroll-target="#block-3-statistical-modelling-multiple-regression-and-interaction">Block 3: Statistical Modelling: Multiple Regression and interaction</a></li>
-  <li><a href="#block-4-project-coaching" id="toc-block-4-project-coaching" class="nav-link" data-scroll-target="#block-4-project-coaching">Block 4: Project coaching</a></li>
   </ul></li>
   <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a>
   <ul class="collapse">
@@ -314,25 +288,38 @@ window.Quarto = {
 <h1 class="title">stats-nutshell</h1>
 </div>
 
+<div>
+  <div class="description">
+    A crash course on applied statistics with a focus on statistical modelling
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Autor:in</div>
     <div class="quarto-title-meta-contents">
-             <p>Sebastian Sauer </p>
+             <p>Sebastian Sauer <a href="https://orcid.org/0000-0003-1515-8348" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">Veröffentlichungsdatum</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 4, 2022</p>
+      <p class="date">11. März 2024</p>
     </div>
   </div>
   
     
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.10082518">10.5281/zenodo.10082518</a>
+      </p>
+    </div>
+  </div>
   </div>
   
 
@@ -355,14 +342,14 @@ window.Quarto = {
 </section>
 <section id="please-read-me" class="level2">
 <h2 class="anchored" data-anchor-id="please-read-me">Please read me</h2>
-<p>In order to benefit as much as possible from this course, it is necessary for you to read this preface information. Yoda agrees (s. <a href="#fig-yoda" class="quarto-xref">Figure&nbsp;<span>Yoda finds you should read the manual</span></a>).</p>
+<p>In order to benefit as much as possible from this course, it is necessary for you to read this preface information. Yoda agrees (s. <a href="#fig-yoda" class="quarto-xref">Abbildung&nbsp;<span>Yoda finds you should read the manual</span></a>).</p>
 <div id="fig-yoda" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-yoda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/yoda.jpg" class="img-fluid figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-yoda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Yoda finds you should read the manual
+Abbildung&nbsp;1: Yoda finds you should read the manual
 </figcaption>
 </figure>
 </div>
@@ -440,7 +427,7 @@ Figure&nbsp;1: Yoda finds you should read the manual
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Hinweis
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -450,109 +437,12 @@ Note
 <section id="overview-on-topics-covered" class="level3">
 <h3 class="anchored" data-anchor-id="overview-on-topics-covered">Overview on topics covered</h3>
 <ul>
-<li>Data Visualization using the grammar of graphics and ggplot2</li>
-<li>Data Wrangling based on the tidyverse in R</li>
-<li>Basic concepts of statistical modelling</li>
-<li>Primer on causal inference</li>
-<li>Introduction to regression analysis</li>
-</ul>
-</section>
-<section id="block-1-explorative-data-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="block-1-explorative-data-analysis">Block 1: Explorative Data Analysis</h3>
-<section id="visualization" class="level4">
-<h4 class="anchored" data-anchor-id="visualization">Visualization</h4>
-<ul>
-<li>Data <em>visualization</em>, see <a href="https://moderndive.com/2-viz.html">ModernDive Chap. 2</a>, and get the R code <a href="http://moderndive.com/scripts/02-visualization.R">here</a>
-<ul>
-<li>Exploring common types of statistical diagrams, the “5NG”</li>
-<li>Discussing when (not) to use diagrams <a href="https://public.tableau.com/profile/dan.murray#!/vizhome/AnscombesQuartet_16/AnscombesQuartet">see Anscombe’s Quartett</a>, and when to use which one</li>
-<li>Building elegant graphics in R</li>
-</ul></li>
-</ul>
-</section>
-<section id="data-wrangling" class="level4">
-<h4 class="anchored" data-anchor-id="data-wrangling">Data Wrangling</h4>
-<ul>
-<li>Data <em>wrangling</em>, see <a href="https://moderndive.com/3-wrangling.html">ModernDive Chap. 3</a>, and get the R code <a href="http://moderndive.com/scripts/03-wrangling.R">here</a>
-<ul>
-<li>A taxonomy of typical data operations</li>
-<li>How to perform common data operations with R</li>
-<li>Summarizing data (aka computing descriptive statistics)</li>
-</ul></li>
-</ul>
-</section>
-<section id="exercises-case-study" class="level4">
-<h4 class="anchored" data-anchor-id="exercises-case-study">Exercises / Case study</h4>
-<ul>
-<li>Exercises
-<ul>
-<li>Exercises on <a href="https://data-se.netlify.app/2021/02/24/exercises-to-data-wrangling-with-the-tidyverse">life expectancy</a>.</li>
-<li>Case study on the visualization of <a href="https://data-se.netlify.app/2021/02/24/exercises-no-solutions-data-vizualization-on-flight-delays-using-tidyverse-tools/">flight delays</a></li>
-<li>Advanced case study on <a href="https://www.njtierney.com/post/2017/11/07/tidyverse-billboard/">one hit wonders</a></li>
-<li>Visualization <a href="https://www.njtierney.com/post/2020/10/11/times-scales-covid/">covid cases</a></li>
-<li>Case study on nominal data: <a href="https://www.kaggle.com/headsortails/tidy-titarnic">Survival on the Titanic</a></li>
-<li>Inspiration for own project: Visualize Covid-19 cases from <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series">this source</a>.</li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="block-2-statistical-modelling-basic" class="level3">
-<h3 class="anchored" data-anchor-id="block-2-statistical-modelling-basic">Block 2: Statistical Modelling: Basic</h3>
-<section id="theory" class="level4">
-<h4 class="anchored" data-anchor-id="theory">Theory</h4>
-<ul>
-<li><p>Basics of <em>modelling</em>, see <a href="https://moderndive.com/5-regression.html">ModernDive Chap. 5.0</a>, and get the R code <a href="http://moderndive.com/scripts/05-regression.R">here</a></p>
-<ul>
-<li>What is modelling?</li>
-<li>Basic terminology</li>
-<li>Prediction vs.&nbsp;explanation</li>
-</ul></li>
-<li><p>Some thoughts on <em>causal inference</em>, see ModernDive Chap. 5.3.1</p></li>
-<li><p><em>Regression</em> with one numerical predictor, see ModernDive Chap. 5.1</p></li>
-<li><p>Regression with one categorical predictor, see ModernDive Chap. 5.2</p></li>
-<li><p>Assessing <em>model fit</em> (using (adjusted) <span class="math inline">\(R^2\)</span>), see ModernDive Chap. 5.3.2</p></li>
-<li><p>For some tips and tricks on typical issues, see <a href="https://moderndive.github.io/moderndive_labs/tips_and_tricks.html">ModernDive tips and tricks</a></p></li>
-</ul>
-</section>
-<section id="case-study" class="level4">
-<h4 class="anchored" data-anchor-id="case-study">Case study</h4>
-<ul>
-<li>Exercises/Case studies:
-<ul>
-<li>Prices of <a href="https://moderndive.com/11-thinking-with-data.html#seattle-house-prices">Boston houses</a>, first part</li>
-<li>Modeling <a href="https://data-se.netlify.app/2021/02/24/modelling-movie-successes-linear-regression/">movie succes</a>, first part</li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="block-3-statistical-modelling-multiple-regression-and-interaction" class="level3">
-<h3 class="anchored" data-anchor-id="block-3-statistical-modelling-multiple-regression-and-interaction">Block 3: Statistical Modelling: Multiple Regression and interaction</h3>
-<section id="theory-1" class="level4">
-<h4 class="anchored" data-anchor-id="theory-1">Theory</h4>
-<ul>
-<li><p>Slightly more advanced topics on linear regression such as <em>multiple regression and interaction</em>, see <a href="https://moderndive.com/6-multiple-regression.html">ModernDive Chap. 6</a>, and get the R code <a href="http://moderndive.com/scripts/06-multiple-regression.R">here</a></p></li>
-<li><p>One numerical and one categorical predictor, see ModernDive Chap. 6.1</p></li>
-<li><p>Two numerical predictors, see ModernDive Chap. 6.2</p></li>
-<li><p>Simpson’s paradox and more on causal inference, see ModernDive Chap. 6.3.3</p></li>
-</ul>
-</section>
-<section id="case-study-1" class="level4">
-<h4 class="anchored" data-anchor-id="case-study-1">Case study</h4>
-<ul>
-<li>Exercises/Case studies:
-<ul>
-<li>Prices of <a href="https://moderndive.com/11-thinking-with-data.html#seattle-house-prices">Boston houses</a>, second part</li>
-<li>Modeling <a href="https://data-se.netlify.app/2021/02/24/modelling-movie-successes-linear-regression/">movie succes</a>, second part</li>
-<li>Modeling <a href="https://data-se.netlify.app/slides/hands-on-data-exploration/handson-data-workshop_2018-11-21.html#68">flight delays</a></li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="block-4-project-coaching" class="level3">
-<h3 class="anchored" data-anchor-id="block-4-project-coaching">Block 4: Project coaching</h3>
-<ul>
-<li><p>This session is dedicated to work on real projects brought in by the students.</p></li>
-<li><p>In addition, open questions regarding the presented concepts are being discussed.</p></li>
+<li>Data <em>visualization</em> building the grammar of graphics and ggplot2</li>
+<li>Data <em>wrangling</em> based on the tidyverse in R</li>
+<li>Basic concepts of statistical <em>modelling</em></li>
+<li>Primer on <em>causal inference</em></li>
+<li>Introduction to <em>regression</em> analysis</li>
+<li>Quick refresher of <em>statistical inference</em></li>
 </ul>
 </section>
 </section>
@@ -560,7 +450,7 @@ Note
 <h2 class="anchored" data-anchor-id="instructor">Instructor</h2>
 <section id="bio" class="level3">
 <h3 class="anchored" data-anchor-id="bio">Bio</h3>
-<p>Sebastian Sauer works as a professor at Ansbach university, teaching statistics and related stuff. Analyzing data to answer questions related to social phenomena is one of his major interests. He is trying to help raising the methological (and particularly statistical) skills in the sciences (ie., scientists). The programming language “R” is one of his favorite tools. He sees himself as a learner, and is particularly interested learning more on quantitative approaches to understand nature. Open Science is a hot topic to him. He hopes to contribute to pressing social problems such as populism by bringing in his statistical and psychological know-how. He writes a blog which serves as a sketchpad for stuff in his mind (not immune to thought updates) at https://data-se.netlify.app/. Sebastian is the author of “Moderne Datenanalyse mit R” <span class="citation" data-cites="sauer_moderne_2019">(<a href="references.html#ref-sauer_moderne_2019" role="doc-biblioref">Sauer 2019</a>)</span>. His publication list is available on <a href="https://scholar.google.de/citations?user=r-2ssnAAAAAJ&amp;hl=en">Google Scholar</a>.</p>
+<p>Sebastian Sauer works as a professor at Ansbach university, teaching statistics and related stuff. Analyzing data to answer questions related to social phenomena is one of his major interests. He is trying to help raising the methological (and particularly statistical) skills in the sciences (ie., scientists). The programming language “R” is one of his favorite tools. He sees himself as a learner, and is particularly interested learning more on quantitative approaches to understand nature. Open Science is a hot topic to him. He hopes to contribute to pressing social problems such as populism by bringing in his statistical and psychological know-how. He writes a blog which serves as a sketchpad for stuff in his mind (not immune to thought updates) at https://data-se.netlify.app/. Sebastian is the author of “Moderne Datenanalyse mit R” <span class="citation" data-cites="sauer_moderne_2019">(<a href="references.html#ref-sauer_moderne_2019" role="doc-biblioref">Sauer, 2019</a>)</span>. His publication list is available on <a href="https://scholar.google.de/citations?user=r-2ssnAAAAAJ&amp;hl=en">Google Scholar</a>.</p>
 </section>
 <section id="contact" class="level3">
 <h3 class="anchored" data-anchor-id="contact">Contact</h3>
@@ -657,9 +547,9 @@ Note
 </section>
 <section id="technical-details" class="level2">
 <h2 class="anchored" data-anchor-id="technical-details">Technical Details</h2>
-<p>Last update: 2024-03-07 10:52:56</p>
+<p>Last update: 2024-03-11 11:30:54</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sessioninfo<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sessioninfo<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
@@ -698,9 +588,9 @@ Note
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-sauer_moderne_2019" class="csl-entry" role="listitem">
-Sauer, Sebastian. 2019. <em>Moderne Datenanalyse Mit r: Daten Einlesen, Aufbereiten, Visualisieren Und Modellieren</em>. 1. Auflage 2019. <span>FOM</span>-Edition. Wiesbaden: Springer. <a href="https://www.springer.com/de/book/9783658215866">https://www.springer.com/de/book/9783658215866</a>.
+Sauer, S. (2019). <em>Moderne <span>Datenanalyse</span> Mit <span>R</span>: <span>Daten</span> Einlesen, Aufbereiten, Visualisieren Und Modellieren</em> (1. Auflage 2019). Springer. <a href="https://www.springer.com/de/book/9783658215866">https://www.springer.com/de/book/9783658215866</a>
 </div>
 </div>
 </section>
@@ -768,12 +658,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Kopiert");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Kopiert");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -1105,7 +995,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./goals.html" class="pagination-link" aria-label="<span class='chapter-number'>1</span>&nbsp; <span class='chapter-title'>Goals in statistics</span>">
+      <a href="./010-goals.html" class="pagination-link" aria-label="<span class='chapter-number'>1</span>&nbsp; <span class='chapter-title'>Goals in statistics</span>">
         <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

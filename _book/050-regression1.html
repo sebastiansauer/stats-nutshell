@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A crash course on applied statistics with a focus on statistical modelling">
+
+<title>stats-nutshell - 5&nbsp; Modelling and regression</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./060-regression2.html" rel="next">
+<link href="./040-inference.html" rel="prev">
+<link href="./img/logo-stats-nutshell.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./050-regression1.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/logo-stats-nutshell.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">stats-nutshell</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/sebastiansauer/stats-nutshell" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./010-goals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./020-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./030-EDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./040-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./050-regression1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./060-regression2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./070-causality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./080-outro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Going further</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link active" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="header-section-number">5.1</span> R packages needed for this chapter</a></li>
+  <li><a href="#whats-modelling" id="toc-whats-modelling" class="nav-link" data-scroll-target="#whats-modelling"><span class="header-section-number">5.2</span> What’s modelling?</a></li>
+  <li><a href="#regression-as-the-umbrella-tool-for-modelling" id="toc-regression-as-the-umbrella-tool-for-modelling" class="nav-link" data-scroll-target="#regression-as-the-umbrella-tool-for-modelling"><span class="header-section-number">5.3</span> Regression as the umbrella tool for modelling</a>
+  <ul class="collapse">
+  <li><a href="#common-statistical-tests-are-linear-models" id="toc-common-statistical-tests-are-linear-models" class="nav-link" data-scroll-target="#common-statistical-tests-are-linear-models"><span class="header-section-number">5.3.1</span> Common statistical tests are linear models</a></li>
+  <li><a href="#how-to-find-the-regression-line" id="toc-how-to-find-the-regression-line" class="nav-link" data-scroll-target="#how-to-find-the-regression-line"><span class="header-section-number">5.3.2</span> How to find the regression line</a></li>
+  <li><a href="#the-linear-model" id="toc-the-linear-model" class="nav-link" data-scroll-target="#the-linear-model"><span class="header-section-number">5.3.3</span> The linear model</a></li>
+  <li><a href="#algebraic-derivation" id="toc-algebraic-derivation" class="nav-link" data-scroll-target="#algebraic-derivation"><span class="header-section-number">5.3.4</span> Algebraic derivation</a></li>
+  </ul></li>
+  <li><a href="#in-all-its-glory" id="toc-in-all-its-glory" class="nav-link" data-scroll-target="#in-all-its-glory"><span class="header-section-number">5.4</span> In all its glory</a></li>
+  <li><a href="#first-model-one-metric-predictor" id="toc-first-model-one-metric-predictor" class="nav-link" data-scroll-target="#first-model-one-metric-predictor"><span class="header-section-number">5.5</span> First model: one metric predictor</a>
+  <ul class="collapse">
+  <li><a href="#frequentist" id="toc-frequentist" class="nav-link" data-scroll-target="#frequentist"><span class="header-section-number">5.5.1</span> Frequentist</a></li>
+  <li><a href="#bayesian" id="toc-bayesian" class="nav-link" data-scroll-target="#bayesian"><span class="header-section-number">5.5.2</span> Bayesian</a></li>
+  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance"><span class="header-section-number">5.5.3</span> Model performance</a></li>
+  <li><a href="#model-check" id="toc-model-check" class="nav-link" data-scroll-target="#model-check"><span class="header-section-number">5.5.4</span> Model check</a></li>
+  <li><a href="#get-some-predictions" id="toc-get-some-predictions" class="nav-link" data-scroll-target="#get-some-predictions"><span class="header-section-number">5.5.5</span> Get some predictions</a></li>
+  <li><a href="#plot-the-model" id="toc-plot-the-model" class="nav-link" data-scroll-target="#plot-the-model"><span class="header-section-number">5.5.6</span> Plot the model</a></li>
+  </ul></li>
+  <li><a href="#more-of-this" id="toc-more-of-this" class="nav-link" data-scroll-target="#more-of-this"><span class="header-section-number">5.6</span> More of this</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">5.7</span> Lab</a></li>
+  <li><a href="#bayes-members-only" id="toc-bayes-members-only" class="nav-link" data-scroll-target="#bayes-members-only"><span class="header-section-number">5.8</span> Bayes-members only</a>
+  <ul class="collapse">
+  <li><a href="#asking-for-probabilites" id="toc-asking-for-probabilites" class="nav-link" data-scroll-target="#asking-for-probabilites"><span class="header-section-number">5.8.1</span> Asking for probabilites</a></li>
+  <li><a href="#asking-for-quantiles" id="toc-asking-for-quantiles" class="nav-link" data-scroll-target="#asking-for-quantiles"><span class="header-section-number">5.8.2</span> Asking for quantiles</a></li>
+  <li><a href="#model-specification" id="toc-model-specification" class="nav-link" data-scroll-target="#model-specification"><span class="header-section-number">5.8.3</span> Model specification</a></li>
+  <li><a href="#prediction-interval" id="toc-prediction-interval" class="nav-link" data-scroll-target="#prediction-interval"><span class="header-section-number">5.8.4</span> Prediction interval</a></li>
+  <li><a href="#and-more" id="toc-and-more" class="nav-link" data-scroll-target="#and-more"><span class="header-section-number">5.8.5</span> … And more</a></li>
+  </ul></li>
+  <li><a href="#multiple-metric-predictors" id="toc-multiple-metric-predictors" class="nav-link" data-scroll-target="#multiple-metric-predictors"><span class="header-section-number">5.9</span> Multiple metric predictors</a></li>
+  <li><a href="#one-nominal-predictor" id="toc-one-nominal-predictor" class="nav-link" data-scroll-target="#one-nominal-predictor"><span class="header-section-number">5.10</span> One nominal predictor</a></li>
+  <li><a href="#one-metric-and-one-nominal-predictor" id="toc-one-metric-and-one-nominal-predictor" class="nav-link" data-scroll-target="#one-metric-and-one-nominal-predictor"><span class="header-section-number">5.11</span> One metric and one nominal predictor</a></li>
+  <li><a href="#watch-out-for-simpson" id="toc-watch-out-for-simpson" class="nav-link" data-scroll-target="#watch-out-for-simpson"><span class="header-section-number">5.12</span> Watch out for Simpson</a></li>
+  <li><a href="#what-about-correlation" id="toc-what-about-correlation" class="nav-link" data-scroll-target="#what-about-correlation"><span class="header-section-number">5.13</span> What about correlation?</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.14</span> Exercises</a></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="header-section-number">5.15</span> Case study</a></li>
+  <li><a href="#lab-1" id="toc-lab-1" class="nav-link" data-scroll-target="#lab-1"><span class="header-section-number">5.16</span> Lab</a></li>
+  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="header-section-number">5.17</span> Going further</a></li>
+  <li><a href="#debrief" id="toc-debrief" class="nav-link" data-scroll-target="#debrief"><span class="header-section-number">5.18</span> Debrief</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
+<section id="r-packages-needed-for-this-chapter" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">5.1</span> R packages needed for this chapter</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)  <span class="co"># optional!</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="whats-modelling" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="whats-modelling"><span class="header-section-number">5.2</span> What’s modelling?</h2>
+<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model">Read this great introduction by modelling by Russel Poldrack</a>. Actually, the whole book is nice <span class="citation" data-cites="poldrack_statistical_2022">Poldrack (<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref">2022</a>)</span>.</p>
+<p>An epitome of modelling is this, let’s call it the fundamental modelling equation, a bit grandiose but at the point, see <a href="#eq-modelling" class="quarto-xref">Gleichung&nbsp;<span>5.1</span></a>.</p>
+<p>The data can be separated in the model’s prediction and the rest (the “error”), i.e., what’s unaccounted for by the model.</p>
+<p><span id="eq-modelling"><span class="math display">\[
+\text{data} = \text{model} + \text{error}
+\tag{5.1}\]</span></span></p>
+<p>A more visual account of our basic modelling equation is depicted in <a href="#fig-model1" class="quarto-xref">Abbildung&nbsp;<span>5.1</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-model1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-model1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-model1">flowchart LR
+  X --&gt; Y
+  error --&gt; Y
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;5.1: A more visual account of our basic modelling equation
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="regression-as-the-umbrella-tool-for-modelling" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="regression-as-the-umbrella-tool-for-modelling"><span class="header-section-number">5.3</span> Regression as the umbrella tool for modelling</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/one-regression-to-rule-them-all.jpeg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>One regression</figcaption>
+</figure>
+</div>
+<p><a href="www.imgflip.com">Source: Image Flip</a></p>
+<p>Alternatively, venture into the forest of statistical tests as <a href="https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html">outlined e.g.&nbsp;here, at Uni Muenster</a>. Proceed at your own peril.</p>
+<p>You may want to ponder on this image of a decision tree of which test to choose, see Figure <a href="#fig-choose-test" class="quarto-xref">Abbildung&nbsp;<span>5.2</span></a>.</p>
+<div id="fig-choose-test" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-choose-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/choose-test.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-choose-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;5.2: Choose your test carefully
+</figcaption>
+</figure>
+</div>
+<section id="common-statistical-tests-are-linear-models" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="common-statistical-tests-are-linear-models"><span class="header-section-number">5.3.1</span> Common statistical tests are linear models</h3>
+<p>As Jonas Kristoffer Lindeløv tells us, we can formulate most statistical tests as a linear model, ie., a regression.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/linear_tests_cheat_sheet.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Common statistical tests as linear models</figcaption>
+</figure>
+</div>
+</section>
+<section id="how-to-find-the-regression-line" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="how-to-find-the-regression-line"><span class="header-section-number">5.3.2</span> How to find the regression line</h3>
+<p>In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figure <a href="#fig-regr1" class="quarto-xref">Abbildung&nbsp;<span>5.3</span></a>.</p>
+<div id="fig-regr1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-regr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/800px-Coefficient_of_Determination.svg.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;5.3: Least Square Regression
+</figcaption>
+</figure>
+</div>
+<p><a href="https://commons.wikimedia.org/wiki/File:Coefficient_of_Determination.svg">Source: Orzetoo, CC-SA, Wikimedia</a></p>
+<p>Put simple, we are looking for the line which is in the “middle of the points”. More precisely, we place the line such that the squared distances from the line to the points is minimal, see Figre <a href="#fig-regr1" class="quarto-xref">Abbildung&nbsp;<span>5.3</span></a>.</p>
+<p>Consider Figure <a href="#fig-regr2" class="quarto-xref">Abbildung&nbsp;<span>5.4</span></a>, from <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression">this source</a> by <span class="citation" data-cites="roback_beyond_2021">Roback &amp; Legler (<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref">2021</a>)</span>. It visualizes not only the notorious regression line, but also sheds light on regression assumptions, particularly on the error distribution.</p>
+<div id="fig-regr2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-regr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/OLSassumptions-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;5.4: Regression and some of its assumptions
+</figcaption>
+</figure>
+</div>
+<p>Among the assumptions of the linear model are:</p>
+<ul>
+<li>linearity of the function</li>
+<li>variance of <span class="math inline">\(y\)</span> remains constant across range of <span class="math inline">\(x\)</span></li>
+<li>normality of residuals</li>
+</ul>
+</section>
+<section id="the-linear-model" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="the-linear-model"><span class="header-section-number">5.3.3</span> The linear model</h3>
+<p>Here’s the canonical form of the linear model.</p>
+<p>Consider a model with <span class="math inline">\(k\)</span> predictors:</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon\]</span></p>
+</section>
+<section id="algebraic-derivation" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="algebraic-derivation"><span class="header-section-number">5.3.4</span> Algebraic derivation</h3>
+<p>For the mathematical inclined, check out <a href="https://data-se.netlify.app/2022/05/23/ableitung-der-koeffizienten-der-einfachen-regression/">this derivation</a> of the simple case regression model. Note that the article is written in German, but your browser can effortlessly translate into English. Here’s a <a href="https://math.stackexchange.com/questions/716826/derivation-of-simple-linear-regression-parameters">similar English article from StackExchange</a>.</p>
+</section>
+</section>
+<section id="in-all-its-glory" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="in-all-its-glory"><span class="header-section-number">5.4</span> In all its glory</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/in-all-its-glory-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s depict the residuals, s. <a href="#fig-lm2" class="quarto-xref">Abbildung&nbsp;<span>5.5</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-lm2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="050-regression1_files/figure-html/fig-lm2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;5.5: Residuals as deviations from the predicted value
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="first-model-one-metric-predictor" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="first-model-one-metric-predictor"><span class="header-section-number">5.5</span> First model: one metric predictor</h2>
+<p>First, let’s load some data:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mtcars)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 32
+Columns: 11
+$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…
+$ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…
+$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…
+$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…
+$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…
+$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…
+$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…
+$ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…
+$ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…
+$ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…
+$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…</code></pre>
+</div>
+</div>
+<section id="frequentist" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="frequentist"><span class="header-section-number">5.5.1</span> Frequentist</h3>
+<p>Define and fit the model:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lm1_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Get the parameter values:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_freq)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 5%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">30.0988605</td>
+<td style="text-align: right;">1.6339210</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">26.7619488</td>
+<td style="text-align: right;">33.4357723</td>
+<td style="text-align: right;">18.421246</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0e+00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hp</td>
+<td style="text-align: right;">-0.0682283</td>
+<td style="text-align: right;">0.0101193</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.0888947</td>
+<td style="text-align: right;">-0.0475619</td>
+<td style="text-align: right;">-6.742388</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">2e-07</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Plot the model parameters:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm1_freq))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/plot-lm1-freq-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bayesian" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="bayesian"><span class="header-section-number">5.5.2</span> Bayesian</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+SAMPLING FOR MODEL 'continuous' NOW (CHAIN 1).
+Chain 1: 
+Chain 1: Gradient evaluation took 0.003812 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 38.12 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
+Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 1: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 1: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 1: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 1: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 1: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 1: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 0.066 seconds (Warm-up)
+Chain 1:                0.063 seconds (Sampling)
+Chain 1:                0.129 seconds (Total)
+Chain 1: 
+
+SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
+Chain 2: 
+Chain 2: Gradient evaluation took 2.2e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.22 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
+Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 2: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 2: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 2: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 2: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 2: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 2: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 0.064 seconds (Warm-up)
+Chain 2:                0.058 seconds (Sampling)
+Chain 2:                0.122 seconds (Total)
+Chain 2: 
+
+SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
+Chain 3: 
+Chain 3: Gradient evaluation took 2.2e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.22 seconds.
+Chain 3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
+Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 3: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 3: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 3: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 3: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 3: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 3: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 0.066 seconds (Warm-up)
+Chain 3:                0.06 seconds (Sampling)
+Chain 3:                0.126 seconds (Total)
+Chain 3: 
+
+SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
+Chain 4: 
+Chain 4: Gradient evaluation took 1.7e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.17 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
+Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 4: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 4: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 4: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 4: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 4: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 4: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 0.062 seconds (Warm-up)
+Chain 4:                0.057 seconds (Sampling)
+Chain 4:                0.119 seconds (Total)
+Chain 4: </code></pre>
+</div>
+</div>
+<p>Actually, we want to suppress some overly verbose output of the sampling, so add the argument <code>refresh = 0</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars, <span class="at">refresh =</span> <span class="dv">0</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Get the parameter values:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_bayes)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 4%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 2%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 16%">
+<col style="width: 12%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">pd</th>
+<th style="text-align: right;">Rhat</th>
+<th style="text-align: right;">ESS</th>
+<th style="text-align: left;">Prior_Distribution</th>
+<th style="text-align: right;">Prior_Location</th>
+<th style="text-align: right;">Prior_Scale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">30.0590424</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">26.7439165</td>
+<td style="text-align: right;">33.3124516</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000771</td>
+<td style="text-align: right;">2982.289</td>
+<td style="text-align: left;">normal</td>
+<td style="text-align: right;">20.09062</td>
+<td style="text-align: right;">15.0673701</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hp</td>
+<td style="text-align: right;">-0.0679057</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.0882979</td>
+<td style="text-align: right;">-0.0472594</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000275</td>
+<td style="text-align: right;">3533.338</td>
+<td style="text-align: left;">normal</td>
+<td style="text-align: right;">0.00000</td>
+<td style="text-align: right;">0.2197599</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Plot the model parameters:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm1_bayes))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="model-performance" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="model-performance"><span class="header-section-number">5.5.3</span> Model performance</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm1_freq)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># R2 for Linear Regression
+       R2: 0.602
+  adj. R2: 0.589</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm1_bayes)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Bayesian R2 with Compatibility Interval
+
+  Conditional R2: 0.583 (95% CI [0.379, 0.753])</code></pre>
+</div>
+</div>
+</section>
+<section id="model-check" class="level3" data-number="5.5.4">
+<h3 data-number="5.5.4" class="anchored" data-anchor-id="model-check"><span class="header-section-number">5.5.4</span> Model check</h3>
+<p>Here’s a bunch of typical model checks in the Frequentist sense.</p>
+<div class="cell" data-layout-align="center" data-fit-width="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_freq)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/checkmodel-lm1-freq-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And here are some Bayesian flavored model checks.</p>
+<div class="cell" data-layout-align="center" data-fit-width="10">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_bayes)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/checkmodel-lm1-bayes-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="get-some-predictions" class="level3" data-number="5.5.5">
+<h3 data-number="5.5.5" class="anchored" data-anchor-id="get-some-predictions"><span class="header-section-number">5.5.5</span> Get some predictions</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lm1_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm1_freq)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>lm1_pred</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">hp</th>
+<th style="text-align: right;">Predicted</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">52.00000</td>
+<td style="text-align: right;">26.550990</td>
+<td style="text-align: right;">1.1766139</td>
+<td style="text-align: right;">24.148024</td>
+<td style="text-align: right;">28.95396</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">83.44444</td>
+<td style="text-align: right;">24.405590</td>
+<td style="text-align: right;">0.9358933</td>
+<td style="text-align: right;">22.494241</td>
+<td style="text-align: right;">26.31694</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">114.88889</td>
+<td style="text-align: right;">22.260189</td>
+<td style="text-align: right;">0.7548971</td>
+<td style="text-align: right;">20.718484</td>
+<td style="text-align: right;">23.80190</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">146.33333</td>
+<td style="text-align: right;">20.114789</td>
+<td style="text-align: right;">0.6828911</td>
+<td style="text-align: right;">18.720139</td>
+<td style="text-align: right;">21.50944</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">177.77778</td>
+<td style="text-align: right;">17.969389</td>
+<td style="text-align: right;">0.7518697</td>
+<td style="text-align: right;">16.433866</td>
+<td style="text-align: right;">19.50491</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">209.22222</td>
+<td style="text-align: right;">15.823989</td>
+<td style="text-align: right;">0.9310065</td>
+<td style="text-align: right;">13.922620</td>
+<td style="text-align: right;">17.72536</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">240.66667</td>
+<td style="text-align: right;">13.678588</td>
+<td style="text-align: right;">1.1707841</td>
+<td style="text-align: right;">11.287528</td>
+<td style="text-align: right;">16.06965</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">272.11111</td>
+<td style="text-align: right;">11.533188</td>
+<td style="text-align: right;">1.4412478</td>
+<td style="text-align: right;">8.589767</td>
+<td style="text-align: right;">14.47661</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">303.55556</td>
+<td style="text-align: right;">9.387788</td>
+<td style="text-align: right;">1.7280486</td>
+<td style="text-align: right;">5.858642</td>
+<td style="text-align: right;">12.91693</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">335.00000</td>
+<td style="text-align: right;">7.242387</td>
+<td style="text-align: right;">2.0242544</td>
+<td style="text-align: right;">3.108308</td>
+<td style="text-align: right;">11.37647</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>More details on the above function can be found on the <a href="https://easystats.github.io/modelbased/reference/estimate_expectation.html#functions-for-estimating-predicted-values-and-uncertainty">respective page at the easystats site</a>.</p>
+</section>
+<section id="plot-the-model" class="level3" data-number="5.5.6">
+<h3 data-number="5.5.6" class="anchored" data-anchor-id="plot-the-model"><span class="header-section-number">5.5.6</span> Plot the model</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm1_pred)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/plot-lm1-pred-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="more-of-this" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="more-of-this"><span class="header-section-number">5.6</span> More of this</h2>
+<p>More technical details for gauging model performance and model quality, can be found on the site of <a href="https://easystats.github.io/performance/">the R package “performance</a> at the easystats site.</p>
+</section>
+<section id="lab" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="lab"><span class="header-section-number">5.7</span> Lab</h2>
+<p>Run a simple regression on your own research data. Present the results. Did you encounter any glitches?</p>
+</section>
+<section id="bayes-members-only" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="bayes-members-only"><span class="header-section-number">5.8</span> Bayes-members only</h2>
+<p>Bayes statistics provide a distribution as the result of the analysis, the posterior distribution, which provides us with quite some luxury.</p>
+<p>As the posterior distribution manifests itself by a number of samples, we can easily filter and manipulate this sample distribution in order to ask some interesing questions.</p>
+<p>See</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes_tibble <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(lm1_bayes)  <span class="co"># cast as a tibble (table)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lm1_bayes_tibble)  <span class="co"># show the first few rows</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">(Intercept)</th>
+<th style="text-align: right;">hp</th>
+<th style="text-align: right;">sigma</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">29.24798</td>
+<td style="text-align: right;">-0.0585108</td>
+<td style="text-align: right;">4.148574</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31.44328</td>
+<td style="text-align: right;">-0.0793732</td>
+<td style="text-align: right;">3.583081</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">31.66962</td>
+<td style="text-align: right;">-0.0810650</td>
+<td style="text-align: right;">3.406428</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">29.41583</td>
+<td style="text-align: right;">-0.0611019</td>
+<td style="text-align: right;">4.993273</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">28.85437</td>
+<td style="text-align: right;">-0.0658251</td>
+<td style="text-align: right;">3.520692</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31.20567</td>
+<td style="text-align: right;">-0.0744505</td>
+<td style="text-align: right;">4.846585</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<section id="asking-for-probabilites" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="asking-for-probabilites"><span class="header-section-number">5.8.1</span> Asking for probabilites</h3>
+<p><em>What’s the probability that the effect of hp is negative?</em></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(hp <span class="sc">&lt;</span> <span class="dv">0</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">hp &lt; 0</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">4000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Feel free to ask similar questions!</p>
+</section>
+<section id="asking-for-quantiles" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2" class="anchored" data-anchor-id="asking-for-quantiles"><span class="header-section-number">5.8.2</span> Asking for quantiles</h3>
+<p><em>With a given probability of, say 90%, how large is the effect of hp?</em></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(lm1_bayes_tibble<span class="sc">$</span>hp, .<span class="dv">9</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       90% 
+-0.0547369 </code></pre>
+</div>
+</div>
+<p><em>What’s the smallest 95% percent interval for the effect of hp?</em></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: left;">Effects</th>
+<th style="text-align: left;">Component</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">26.8254064</td>
+<td style="text-align: right;">33.3821880</td>
+<td style="text-align: left;">fixed</td>
+<td style="text-align: left;">conditional</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hp</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.0874363</td>
+<td style="text-align: right;">-0.0469058</td>
+<td style="text-align: left;">fixed</td>
+<td style="text-align: left;">conditional</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>In case you prefer 89% intervals (I do!):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes, <span class="at">ci =</span> .<span class="dv">89</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: left;">Effects</th>
+<th style="text-align: left;">Component</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">27.4210227</td>
+<td style="text-align: right;">32.6653275</td>
+<td style="text-align: left;">fixed</td>
+<td style="text-align: left;">conditional</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hp</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">-0.0847388</td>
+<td style="text-align: right;">-0.0522295</td>
+<td style="text-align: left;">fixed</td>
+<td style="text-align: left;">conditional</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="model-specification" class="level3" data-number="5.8.3">
+<h3 data-number="5.8.3" class="anchored" data-anchor-id="model-specification"><span class="header-section-number">5.8.3</span> Model specification</h3>
+<p>In Bayes statistics, it is customary to specify the model in something like the following way:</p>
+<p><span class="math display">\[\begin{aligned}
+y_i &amp;\sim N(\mu_i,\sigma)\\
+\mu_i &amp;= \beta_0 + \beta_1 x_i\\
+\beta_0, \beta_1 &amp;\sim N(0, 1) \\
+\sigma &amp;\sim E(1)
+\end{aligned}\]</span></p>
+<p>In this specification, <span class="math inline">\(N\)</span> refers to the normal distribution, and <span class="math inline">\(E\)</span> to the exponential distribution. Furthermore, this model assumes that the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are given in standard units.</p>
+</section>
+<section id="prediction-interval" class="level3" data-number="5.8.4">
+<h3 data-number="5.8.4" class="anchored" data-anchor-id="prediction-interval"><span class="header-section-number">5.8.4</span> Prediction interval</h3>
+<p>A prediction interval answers the following question</p>
+<blockquote class="blockquote">
+<p>How large is the uncertainty in <span class="math inline">\(y\)</span> associated with a given obersation? What interval of values should I expect for a randomly chosen observation?</p>
+</blockquote>
+<p>For example, what’s the uncertainty attached to the fuel economy of a car with 100 hp?</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">estimate_prediction</span>(<span class="at">model =</span> lm1_bayes, </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">hp =</span> <span class="dv">100</span>) )</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">hp</th>
+<th style="text-align: right;">Predicted</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">23.26178</td>
+<td style="text-align: right;">4.156918</td>
+<td style="text-align: right;">15.40819</td>
+<td style="text-align: right;">31.53782</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="and-more" class="level3" data-number="5.8.5">
+<h3 data-number="5.8.5" class="anchored" data-anchor-id="and-more"><span class="header-section-number">5.8.5</span> … And more</h3>
+<p>We could even ask intriguing questions such as</p>
+<blockquote class="blockquote">
+<p>Given the model, and given two random observations, one from the experimental group and one from the control group, what is the probability that observation 1 has a higher value in <span class="math inline">\(Y\)</span> than observation 2 has?</p>
+</blockquote>
+<p>Note that we are not only asking for “typical” observations as predicted by the model but we are also taking into account the uncertainty of the prediction for each group. Hence, <em>this</em> kind of questions is likely to yield more realistic (and less clear-cut) answers than just asking for the typical value. In other words, such analyses draw on the posterior predictive distribution.</p>
+</section>
+</section>
+<section id="multiple-metric-predictors" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="multiple-metric-predictors"><span class="header-section-number">5.9</span> Multiple metric predictors</h2>
+<p>Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lm2_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_freq)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 5%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">30.7359042</td>
+<td style="text-align: right;">1.3315661</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">28.0125457</td>
+<td style="text-align: right;">33.4592628</td>
+<td style="text-align: right;">23.082522</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">0.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hp</td>
+<td style="text-align: right;">-0.0248401</td>
+<td style="text-align: right;">0.0133855</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.0522165</td>
+<td style="text-align: right;">0.0025363</td>
+<td style="text-align: right;">-1.855746</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">0.0736791</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">disp</td>
+<td style="text-align: right;">-0.0303463</td>
+<td style="text-align: right;">0.0074049</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.0454909</td>
+<td style="text-align: right;">-0.0152016</td>
+<td style="text-align: right;">-4.098159</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">0.0003063</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Similarly for Bayes inference:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>lm2_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Results</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_bayes)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 4%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">pd</th>
+<th style="text-align: right;">Rhat</th>
+<th style="text-align: right;">ESS</th>
+<th style="text-align: left;">Prior_Distribution</th>
+<th style="text-align: right;">Prior_Location</th>
+<th style="text-align: right;">Prior_Scale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">30.7393959</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">27.9953578</td>
+<td style="text-align: right;">33.4954849</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.9999147</td>
+<td style="text-align: right;">4336.162</td>
+<td style="text-align: left;">normal</td>
+<td style="text-align: right;">20.09062</td>
+<td style="text-align: right;">15.0673701</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hp</td>
+<td style="text-align: right;">-0.0243992</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.0525050</td>
+<td style="text-align: right;">0.0036740</td>
+<td style="text-align: right;">0.957</td>
+<td style="text-align: right;">1.0021956</td>
+<td style="text-align: right;">2041.955</td>
+<td style="text-align: left;">normal</td>
+<td style="text-align: right;">0.00000</td>
+<td style="text-align: right;">0.2197599</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">disp</td>
+<td style="text-align: right;">-0.0307138</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.0458102</td>
+<td style="text-align: right;">-0.0153927</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">1.0014999</td>
+<td style="text-align: right;">2001.424</td>
+<td style="text-align: left;">normal</td>
+<td style="text-align: right;">0.00000</td>
+<td style="text-align: right;">0.1215712</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm2_bayes))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/lm2-results-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm2_bayes)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Bayesian R2 with Compatibility Interval
+
+  Conditional R2: 0.733 (95% CI [0.580, 0.845])</code></pre>
+</div>
+</div>
+<p>Depending on the value of <code>disp</code> the prediction of <code>mpg</code> from <code>hp</code> will vary:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>lm2_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm2_freq)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm2_pred)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/lm2-pred-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="one-nominal-predictor" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="one-nominal-predictor"><span class="header-section-number">5.10</span> One nominal predictor</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 10%">
+<col style="width: 5%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">17.147368</td>
+<td style="text-align: right;">1.124602</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">14.85062</td>
+<td style="text-align: right;">19.44411</td>
+<td style="text-align: right;">15.247492</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">am</td>
+<td style="text-align: right;">7.244939</td>
+<td style="text-align: right;">1.764422</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">3.64151</td>
+<td style="text-align: right;">10.84837</td>
+<td style="text-align: right;">4.106127</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0.000285</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a, <span class="at">at =</span> <span class="st">"am = c(0, 1)"</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>lm3a_means </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">am</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">17.14737</td>
+<td style="text-align: right;">1.124602</td>
+<td style="text-align: right;">14.85062</td>
+<td style="text-align: right;">19.44411</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">24.39231</td>
+<td style="text-align: right;">1.359578</td>
+<td style="text-align: right;">21.61568</td>
+<td style="text-align: right;">27.16894</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>If we were not to specify the values of <code>am</code> which we would like to get predictions for, the default of the function would select 10 values, spread across the range of <code>am</code>. For numeric variables, this is usually fine. However, for nominal variables - and <code>am</code> is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for <code>0</code> and <code>1</code>.</p>
+<p>However, unfortunately, the plot <em>needs</em> a nominal variable if we are to compare groups. In our case, <code>am</code> is considered a numeric variables, since it consists of numbers only. The plot does not work, malheureusement:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `rlang::sym()`:
+! Can't convert a character vector to a symbol.</code></pre>
+</div>
+</div>
+<p>We need to transform <code>am</code> to a factor variable. That’s something like a string. If we hand over a <code>factor()</code> to the plotting function, everything will run smoothly. Computationwise, no big differences:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_f =</span> <span class="fu">factor</span>(am))</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am_f, <span class="at">data =</span> mtcars2)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 10%">
+<col style="width: 5%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">17.147368</td>
+<td style="text-align: right;">1.124602</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">14.85062</td>
+<td style="text-align: right;">19.44411</td>
+<td style="text-align: right;">15.247492</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">am_f1</td>
+<td style="text-align: right;">7.244939</td>
+<td style="text-align: right;">1.764422</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">3.64151</td>
+<td style="text-align: right;">10.84837</td>
+<td style="text-align: right;">4.106127</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0.000285</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note that we should have converted <code>am</code> to a factor variable before fitting the model. Otherwise, the plot won’t work.</p>
+<p>Here’s a more hand-crafted version of the last plot, see Fig. <a href="#fig-lm3a-means" class="quarto-xref">Abbildung&nbsp;<span>5.6</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars2) <span class="sc">+</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> am_f, <span class="at">y =</span> mpg) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">data =</span> lm3a_means,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> <span class="st">"orange"</span>,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> CI_low, <span class="at">ymax =</span> CI_high, <span class="at">y =</span> Mean)) <span class="sc">+</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm3a_means, <span class="fu">aes</span>(<span class="at">y =</span> Mean, <span class="at">group =</span> <span class="dv">1</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-lm3a-means" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lm3a-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="050-regression1_files/figure-html/fig-lm3a-means-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lm3a-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;5.6: Means per level of am
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="one-metric-and-one-nominal-predictor" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="one-metric-and-one-nominal-predictor"><span class="header-section-number">5.11</span> One metric and one nominal predictor</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl))</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars2)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm4)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 5%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">28.6501182</td>
+<td style="text-align: right;">1.5877870</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">25.3976840</td>
+<td style="text-align: right;">31.9025524</td>
+<td style="text-align: right;">18.044056</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hp</td>
+<td style="text-align: right;">-0.0240388</td>
+<td style="text-align: right;">0.0154079</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.0556005</td>
+<td style="text-align: right;">0.0075228</td>
+<td style="text-align: right;">-1.560163</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0.1299540</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cyl6</td>
+<td style="text-align: right;">-5.9676551</td>
+<td style="text-align: right;">1.6392776</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-9.3255631</td>
+<td style="text-align: right;">-2.6097471</td>
+<td style="text-align: right;">-3.640418</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0.0010921</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cyl8</td>
+<td style="text-align: right;">-8.5208508</td>
+<td style="text-align: right;">2.3260749</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-13.2855993</td>
+<td style="text-align: right;">-3.7561022</td>
+<td style="text-align: right;">-3.663188</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0.0010286</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>lm4_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm4)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm4_pred)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/lm4-pred-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="watch-out-for-simpson" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="watch-out-for-simpson"><span class="header-section-number">5.12</span> Watch out for Simpson</h2>
+<p>Beware! Model estimates can swing wildly if you add (or remove) some predictor from your model. <a href="https://ecologyforthemasses.com/2022/06/08/who-is-simpson-and-what-does-his-paradox-mean-for-ecologists/">See this post</a> for an demonstration.</p>
+</section>
+<section id="what-about-correlation" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="what-about-correlation"><span class="header-section-number">5.13</span> What about correlation?</h2>
+<p>Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.</p>
+<p>Let’s get the correlation matrix of the variables in involved in <code>lm4</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>lm4_corr <span class="ot">&lt;-</span> </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, disp) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>()</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>lm4_corr</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 4%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 18%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter1</th>
+<th style="text-align: left;">Parameter2</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: right;">n_Obs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">mpg</td>
+<td style="text-align: left;">hp</td>
+<td style="text-align: right;">-0.7761684</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.8852686</td>
+<td style="text-align: right;">-0.5860994</td>
+<td style="text-align: right;">-6.742388</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">2e-07</td>
+<td style="text-align: left;">Pearson correlation</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mpg</td>
+<td style="text-align: left;">disp</td>
+<td style="text-align: right;">-0.8475514</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.9233594</td>
+<td style="text-align: right;">-0.7081376</td>
+<td style="text-align: right;">-8.747151</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0e+00</td>
+<td style="text-align: left;">Pearson correlation</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">hp</td>
+<td style="text-align: left;">disp</td>
+<td style="text-align: right;">0.7909486</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.6106794</td>
+<td style="text-align: right;">0.8932775</td>
+<td style="text-align: right;">7.080122</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">1e-07</td>
+<td style="text-align: left;">Pearson correlation</td>
+<td style="text-align: right;">32</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">summary</span>(lm4_corr))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.14</span> Exercises</h2>
+<ol type="1">
+<li><a href="https://datenwerk.netlify.app/posts/mtcars-simple1/mtcars-simple1/">mtcars simple 1</a></li>
+<li><a href="https://datenwerk.netlify.app/posts/mtcars-simple2/mtcars-simple2/">mtcars simple 2</a></li>
+<li><a href="https://datenwerk.netlify.app/posts/mtcars-simple3/mtcars-simple3/">mtcars simple 3</a></li>
+</ol>
+<blockquote class="blockquote">
+<p>🧑‍🎓 I want more!</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>👨‍🏫 Checkout all <a href="https://datenwerk.netlify.app/#category=regression">exercises tagges with “regression”</a> on <a href="https://datenwerk.netlify.app/">datenwerk</a>. Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.</p>
+</blockquote>
+</section>
+<section id="case-study" class="level2" data-number="5.15">
+<h2 data-number="5.15" class="anchored" data-anchor-id="case-study"><span class="header-section-number">5.15</span> Case study</h2>
+<ul>
+<li>Prices of <a href="https://moderndive.com/11-thinking-with-data.html#seattle-house-prices">Boston houses</a>, first part</li>
+<li>Modeling <a href="https://data-se.netlify.app/2021/02/24/modelling-movie-successes-linear-regression/">movie succes</a>, first part</li>
+</ul>
+</section>
+<section id="lab-1" class="level2" data-number="5.16">
+<h2 data-number="5.16" class="anchored" data-anchor-id="lab-1"><span class="header-section-number">5.16</span> Lab</h2>
+<p>Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.</p>
+</section>
+<section id="going-further" class="level2" data-number="5.17">
+<h2 data-number="5.17" class="anchored" data-anchor-id="going-further"><span class="header-section-number">5.17</span> Going further</h2>
+<p>An accessible treatment of regression is provided by <span class="citation" data-cites="ismay_statistical_2020">Ismay &amp; Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p><span class="citation" data-cites="roback_beyond_2021">Roback &amp; Legler (<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref">2021</a>)</span> provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by <span class="citation" data-cites="gelman_regression_2021">Gelman et al. (<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref">2021</a>)</span>. You may also benefit from <span class="citation" data-cites="poldrack_statistical_2022">Poldrack (<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref">2022</a>)</span> (open access).</p>
+<p>For a gentle introduction to the basics of modelling, see <a href="https://moderndive.com/5-regression.html">ModernDive Chap. 5.0</a> <span class="citation" data-cites="ismay_statistical_2020">(<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">Ismay &amp; Kim, 2020</a>)</span>, and get the R code <a href="http://moderndive.com/scripts/05-regression.R">here</a>. For slightly more advanced topics on linear regression such as multiple regression and interaction, see <a href="https://moderndive.com/6-multiple-regression.html">ModernDive Chap. 6</a>, and get the R code <a href="http://moderndive.com/scripts/06-multiple-regression.R">here</a>.</p>
+</section>
+<section id="debrief" class="level2" data-number="5.18">
+<h2 data-number="5.18" class="anchored" data-anchor-id="debrief"><span class="header-section-number">5.18</span> Debrief</h2>
+<p><a href="https://media.giphy.com/media/141amBdjqs9Vvy/giphy.gif">Science!</a></p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-gelman_regression_2021" class="csl-entry" role="listitem">
+Gelman, A., Hill, J., &amp; Vehtari, A. (2021). <em>Regression and Other Stories</em>. Cambridge University Press.
+</div>
+<div id="ref-ismay_statistical_2020" class="csl-entry" role="listitem">
+Ismay, C., &amp; Kim, A. Y.-S. (2020). <em>Statistical Inference via Data Science: A <span>ModernDive</span> into <span>R</span> and the <span>Tidyverse</span></em>. CRC Press / Taylor &amp; Francis Group. <a href="https://moderndive.com/">https://moderndive.com/</a>
+</div>
+<div id="ref-poldrack_statistical_2022" class="csl-entry" role="listitem">
+Poldrack, R. (2022). <em>Statistical Thinking for the 21st Century</em>. <a href="https://statsthinking21.github.io/statsthinking21-core-site/index.html">https://statsthinking21.github.io/statsthinking21-core-site/index.html</a>
+</div>
+<div id="ref-roback_beyond_2021" class="csl-entry" role="listitem">
+Roback, P., &amp; Legler, J. (2021). <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models In</em> (1. Aufl.). CRC Press.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./040-inference.html" class="pagination-link  aria-label=" &lt;span="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./060-regression2.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>More linear models</span>">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

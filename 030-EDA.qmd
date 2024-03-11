@@ -1,0 +1,647 @@
+
+# Exploratory Data Analysis
+
+![](img/stern.png){width="5%"}
+
+
+
+## R packages needed for this chapter
+
+Make sure to run the following code chunks in order to start the neccessary R packages.
+
+```{r}
+#| message: false
+#| warning: false
+library(easystats)  # make stats easy again
+library(tidyverse)  # data wrangling
+library(tableone)  # tables, optional
+library(rio)  # import/export data, eg., to excel
+library(ggpubr)  # simple data visualization
+library(ggstatsplot)  # data visualization ornamented with statistics
+```
+
+
+:::{.callout-caution}
+You can only start a package if you have it installed upfront.
+:::
+
+
+
+## What's EDA?
+
+
+Exploratory Data Analysis (EDA) is a procedure to scrutinize a dataset at hand in order learn about it. EDA comprises descriptive statistics, data visualization and data transformation techniques (such as dimension reduction).
+
+It's not so mathematical deep as modelling, but in practice it's really important.
+
+There's this famous saying:
+
+> In Data Science, 80% of time spent prepare data, 20% of time spent complain about the need to prepare data.
+
+EDA can roughly be said to comprise the following parts:
+
+-   Importing (and exporting) data
+-   Data cleansing (such as deal with missing data etc)
+-   Data transformation or "wrangling" (such as long to wide format)
+-   Computing desriptive statistics (such as the notorious mean)
+-   Analyzing distributions (is it normal?)
+-   Finding patterns in data (aka data mining)
+-   More complex data transformation techniques (such as factor analysis)
+
+
+
+
+## Data journey {#sec-data-journey}
+
+@r4ds present a visual sketch of what could be called the "data journey",
+i.e., the steps we are taking in order to learn from data, seen from an hands-on angle,
+see @fig-data-journey.
+
+![The data journey](img/data-journey.png){#fig-data-journey}
+
+
+## Blitz data
+
+
+See @sec-blitz-data for some data sets suitable to get going.
+
+
+## Data cleansing
+
+The R package {janitor} provides some nice stuff for data cleansing. Check out [this case study](https://www.exploringdata.org/post/how-to-clean-data-janitor-package/).
+
+
+
+## Convenience functions
+
+There a quite a few functions (residing in some packages) that help you doing EDA from a helicoptor point of view. In other words, you do not have to pay attention to nitty-gritty details, the function will do that for you. 
+This is approach is, well, convenient, but of course comes at a price.
+You will not have a great amount of choice and influence on the way the data is analyzed and presented. 
+
+We'll use the penguins data set for a demonstration.
+
+```{r}
+penguins <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
+```
+
+
+### Data Explorer
+
+There are many systems and approaches to explore data. One particular interesting system is the R-package `DataExplorer`.
+
+![R-package DataExplorer](img/dataexplorer-logo.png){width="20%"}
+
+Check it out [on its Githup page](http://boxuancui.github.io/DataExplorer/).
+
+
+
+```{r}
+library(DataExplorer)
+```
+
+For example, we can easyly get an overview of the distribution of all (quantitative) variables in the data set.
+What do you notice on inspecting the distributions, see @fig-peng-distros?
+
+```{r}
+#| label: fig-peng-distros
+#| fig-cap: An overview of the distribution can easily attained using the function plot_histogram
+plot_histogram(penguins)
+```
+
+
+A quick "introduction" to the data set is provided by the function `plot_intro`, see @fig-peng-intro.
+
+```{r}
+#| label: fig-peng-intro
+#| fig-cap: An introduction view on a data set
+plot_intro(penguins)
+```
+
+
+We can also get a glimpse on all the qualitative data columns in our datra set, see @fig-peng-bars.
+
+```{r}
+#| label: fig-peng-bars
+#| fig-cap: Bar plots visualizing the distribution of qualitative variables using the function plot_bar
+plot_bar(penguins)
+```
+
+
+
+
+### visdat
+
+The r package `visdat` provides a "fingerprint" of a data set.
+
+Let's show-case it using the penguins data set.
+
+
+
+```{r}
+#| label: vis-data-penguins
+#| fig-cap: A fingerprint of the penguins data set; for each variable the data type and the number of missings is shown.
+library(visdat)  # must be installed
+vis_dat(penguins)
+```
+
+
+
+### vtree
+
+A bit similar to {DataExplorer}, the [R package {vtree}](https://nbarrowman.github.io/vtree) helps to explore visually datasets, see @fig-vtree1.
+
+
+```{r}
+#| fig-cap: Breaking down the counts in a data set using vtree
+#| label: fig-vtree1
+#| out-width: 50%
+
+library(vtree)
+vtree(penguins, c("sex", "island"))
+```
+
+
+
+
+
+
+
+### The easystats way
+
+There are some packages, such as `{easystats}`, which provide comfortable access to basic statistics:
+
+```{r}
+library(easystats)  # once per session
+describe_distribution(penguins)
+```
+
+
+`describe_distribution` provides us with an overview on typical descriptive summaries.
+
+How to export to MS Office? Well, one simple approach is obviously to copy-paste. 
+Checkout @sec-office for more advanced options.
+
+
+For nominal variables, consider `data_tabulate`:
+
+```{r}
+data_tabulate(penguins, select = c("sex", "island")) |> 
+  print_md() 
+```
+
+
+Note that `print_md` helps to get a more visually pleasing (HTML) output, and not only raw command line style output.
+
+We can also get *grouped* tabulations,
+which amounts to something similar to a [contingency table](https://en.wikipedia.org/wiki/Contingency_table):
+
+
+```{r}
+penguins %>% 
+  group_by(sex) %>% 
+  data_tabulate(select = "island", collapse = TRUE)
+```
+
+
+
+
+:::{callout-note}
+Checkout the function reference of your favorite package in order to learn what's on the shelf.
+For example, [here's the function reference site](https://easystats.github.io/datawizard/reference/index.html) of `datawizard`, one of the packages in the `easystats` ecosystem.
+::::
+
+
+
+### TableOne
+
+The [R package `{tableOne}`](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html) provides something like the typical "Table 1" in many papers.
+
+
+From the homepage:
+
+>   The tableone package is an R package that eases the construction of “Table 1”, i.e., patient baseline characteristics table commonly found in biomedical research papers. The packages can summarize both continuous and categorical variables mixed within one table. Categorical variables can be summarized as counts and/or percentages. Continuous variables can be summarized in the “normal” way (means and standard deviations) or “nonnormal” way (medians and interquartile ranges).
+
+
+```{r}
+penguins <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
+```
+
+
+It's quite simple to use:
+
+```{r}
+library(tableone)
+CreateTableOne(data = penguins)
+```
+
+
+To get more detailled results, use the `summary` method:
+
+```{r}
+tab1 <- CreateTableOne(data = penguins)
+summary(tab1)
+```
+
+How to export to MS Office? Well, one simple approach is obviously to copy-paste. 
+Checkout @sec-office for more advanced options.
+
+
+## Lab
+
+Take your research data and prepare it using (at least) one of the "convenience" functions for data cleansing presented above. 
+
+
+
+## Tidyverse
+
+### Intro to the tidyverse
+
+The Tidyverse is probably the R thing with the most publicity. And it's great. It's a philosophy baken into an array of R packages. Perhaps central is the idea that a lot of little lego pieces, if fitting nicely together, provides a simple yet flexibel and thus powerful machinery.
+
+There's a lot of introctory material to the tidyverse around [for instance ](https://datasciencebook.ca/wrangling.html), so I'm not repeating that here.
+
+
+
+### More advanced tidyverse
+
+
+
+
+
+
+#### Repeat a function over many columns
+
+At times, we would like to compute the same functions for many variables, ie columns for tidyverse applications.
+
+Let's load the penguins data for illustration.
+
+```{r}
+penguins <- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
+
+head(penguins)
+```
+
+
+Say, we would like to compute the mean value for each numeric variable in the data set:
+
+
+```{r}
+penguins %>% 
+  summarise(across(bill_length_mm:body_mass_g, mean, na.rm = TRUE))
+```
+
+
+Synonymously, we could write:
+
+```{r}
+penguins %>% 
+  summarise(across(where(is.numeric), ~ mean(.x, na.rm = TRUE)))
+```
+
+
+Say, we would like to compute the z-value of each numeric variable.
+
+Addmittedly, `easystats` makes it quite simple:
+
+
+```{r}
+penguins %>% 
+  standardise(select = is.numeric) %>% 
+  head()
+```
+
+
+See the help page of `standardise` for mor details on how to select variables and on more options.
+
+
+But for the purpose of illustration, let's do it with more simple means, i.e. tidyverse only.
+
+
+```{r}
+penguins %>% 
+  transmute(across(bill_length_mm:body_mass_g, 
+                .fns = ~ {(.x - mean(.x, na.rm = TRUE)) / sd(.x, na.rm = TRUE)},
+                .names = "{.col}_z")) %>% 
+  head()
+```
+
+
+It's maybe more succint to put the z-value computation in its function, and then just apply this function:
+
+```{r}
+z_stand <- function(x){
+  (x - mean(x, na.rm = TRUE)) / sd(x, na.rm = TRUE)
+}
+```
+
+
+```{r}
+d2 <-
+penguins %>% 
+  mutate(across(bill_length_mm:body_mass_g, 
+                .fns = z_stand))
+  
+d2 %>% 
+  glimpse()
+```
+
+
+#### Rowwise operations
+
+
+For technical reasons, it's a bit cumbersome in (base) R to compute rowwise operations. 
+The thing is, R's dataframes are organized as vectors of *columns* so it's much easier to do stuff columnwise.
+
+However, since recently, computing rowwise operations with the tidyverse has become simpler.
+Consider the following example. Say we would like to know the highest z-value for each variable we just computed, that is the highest values *per individual*, ie., by row in the data frame.
+
+
+
+```{r}
+d2 %>% 
+  drop_na() %>% 
+  rowwise() %>% 
+  mutate(max_z = max(c(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g))) %>% 
+  head()
+```
+
+
+
+## Data visualization
+
+
+
+The star on the R visualization sky is called [ggplot](https://ggplot2.tidyverse.org/).
+It probably is one of the most advanced statistical visualization package on the planet.
+
+
+
+
+
+However, for a quick start,
+there are some nice wrappers on ggplot,
+levering the beauty of ggplot but making the making simple(r).
+
+
+### ggpubr
+
+[ggpubr](https://rpkgs.datanovia.com/ggpubr/index.html) is a simple yet powerful way to visualize data.
+
+
+```{r}
+library(ggpubr)  # must be installed
+```
+
+
+Let's visualize the association of bill length (see @fig-bill-length) with body mass, see @fig-peng-scatter1.
+
+![In case you did not know, that's what is meant by bill length and depth of our penguins](https://allisonhorst.github.io/palmerpenguins/reference/figures/culmen_depth.png){#fig-bill-length width=50%}
+
+```{r}
+#| label: fig-peng-scatter1
+#| fig-cap: "A simple scatterplot of the penguins data set using ggscatter"
+ggscatter(penguins,
+          x = "bill_length_mm",
+          y = "body_mass_g",
+          color = "sex")
+```
+
+
+Let's improve a bit on the plot, see @fig-peng-scatter2.
+
+
+```{r}
+#| label: fig-peng-scatter2
+#| fig-cap: "A more polished scatterplot of the penguins data set using ggscatter"
+ggscatter(penguins,
+          x = "bill_length_mm",
+          y = "body_mass_g",
+          color = "species",
+          shape = "species",
+          add = "reg.line",
+          xlab = "Bill length (mm)",
+          ylab = "Body maxx (g)",
+          conf.int = TRUE,
+          ellipse = TRUE,
+          cor.coef = TRUE)
+```
+
+Check out the [manual](https://rpkgs.datanovia.com/ggpubr/reference/ggscatter.html) of the function for further notice on the options.
+
+### ggstatsplot
+
+In addtion, consider [ggstatsplot])(https://indrajeetpatil.github.io/ggstatsplot/). 
+Let's use the `mtcars` dataset for a quick demonstration.
+For example, assume you would like to compare two group of cars, automatic vs. manual shifting, in terms of fuel economy.
+Here we go, @fig-ggstatsplot1.
+
+
+```{r}
+#| label: fig-ggstatsplot1
+#| fig-cap: "ggstatsplot builds on ggplot, but is simpler to use"
+library(ggstatsplot)
+ggbetweenstats(
+  data = penguins,
+  x = sex,
+  y = body_mass_g)
+```
+
+Checkout the [manual](https://indrajeetpatil.github.io/ggstatsplot/reference/ggbetweenstats.html) of the function to get a handle on all the options and details.
+
+Wait, let's drop all missing values (`NA`) before we plot using `drop_na()`, @fig-ggstatsplot2.
+
+
+
+```{r}
+#| label: fig-ggstatsplot2
+#| fig-cap: "Comparing groups on a quantitative output variable, but dropping missing values before hand"
+penguins_no_na <-
+penguins |> 
+  drop_na()  # from package "tidyverse"
+
+ggbetweenstats(
+  data = penguins_no_na,
+  x = sex,
+  y = body_mass_g)
+```
+
+## Exporting to Office {#sec-office}
+
+
+### Excel
+
+The most straightforward approach is to convince your EDA function to produce a data frame.
+Data frames can be written as CSV or XLSX to disk, and then easily imported to office packages.
+
+`easystats` and `tidyverse` are two examples where this happens.
+
+
+```{r}
+library(easystats)   # must be installed
+df1 <- describe_distribution(mtcars)
+```
+
+Now, `df1` is a data frame:
+
+```{r}
+str(df1)
+```
+
+
+Let's export as XLSX (via the R package `rio`) and as CSV:
+
+
+
+```{r}
+#| eval: false
+library(rio)  # must be installed
+export(df1, file = "df1.xlsx")
+export(df1, file = "df1.csv")
+```
+
+
+For exporting `csv` files we could *altneratively* use `write_csv()` from the tidyverse or `write.csv` from base R.
+Then, checkout the file in Excel. Note that it is possible to import CSV files to Excel.
+
+```{r}
+df2 <- data_tabulate(mtcars$am)
+str(df2)
+```
+
+
+```{r}
+#| eval: false
+export(df2, file = "df2.csv")
+```
+
+
+### More advanced
+
+Note that if we use `data_tabulate` like this:
+
+```{r}
+df3 <- data_tabulate(mtcars, select = c("am", "vs"))
+
+df3 %>% str()
+```
+
+
+We'll get a *list* of two data frames.
+
+To export either, we need to access each list list element:
+
+```{r}
+#| eval: false
+export(df3[[1]], file = "df3.csv")
+```
+
+
+
+### Word
+
+
+Obviously, once your data has arriven as a spreadsheet in Excel (or similar software packages),
+it's no big deal to get it into Word processors as well.
+
+In addition, one [user gave the following recommendation on StackOverflow](https://stackoverflow.com/questions/60815583/how-to-save-table1-package-output-table-to-doc-format-r):
+
+
+>   Another possible solution: The above strategy did not work for me when I had a similar issue, but it was resolved once I knitted the table1 object and opened the html in browser to copy the html table and successfully paste into word. Doing it within RStudio viewer would not work for me for some reason.
+
+
+Lastly, there are options to export directly to Word or Powerpoint.
+The R package `flextable` provides functions for that purpose, see @tbl-flex:
+
+
+
+```{r}
+#| label: tbl-flex1
+#| tbl-cap: A table using the R package flextable
+library(flextable)
+my_flex_tab <- flextable(penguins)
+my_flex_tab
+```
+
+
+Just save it to the Office format of your choice:
+
+```{r}
+#| eval: false
+save_as_docx("Table 1 " = my_flex_tab, path = "my_tab.docx")
+save_as_pptx("Table 1 " = my_flex_tab, path = "my_tab.pptx")
+```
+
+
+## Case Studies
+
+
+### Data Wrangling
+
+#### Penguins
+
+![R package/dataset palmerpenguins](img/palmerpenguins-logo.png){width="20%"}
+
+Explore the `palmerpenguins` dataset, it's a famous dataset made for learning data analysis.
+
+There's a great [interactive course on EDA based on the penguins](https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome). Have a look, it's great!
+
+
+
+
+[Go penguins! Allez!](https://media.giphy.com/media/3og0IO5z8Rd30ktV6g/giphy.gif){width="50%"}
+
+
+### More Case studies
+
+- [Rebekka Barter's introduction to the tidyverse](https://rebeccabarter.com/blog/2019-08-05_base_r_to_tidyverse)
+-   Case study on the visualization of [flight delays](https://data-se.netlify.app/2021/02/24/exercises-no-solutions-data-vizualization-on-flight-delays-using-tidyverse-tools/)
+-   Advanced case study on [one hit wonders](https://www.njtierney.com/post/2017/11/07/tidyverse-billboard/)
+-   Visualization [covid cases](https://www.njtierney.com/post/2020/10/11/times-scales-covid/)
+-   Case study on nominal data: [Survival on the Titanic](https://www.kaggle.com/headsortails/tidy-titarnic)
+-   Inspiration for own project: Visualize Covid-19 cases from [this source](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series).
+
+
+## Exercises
+
+- [Gapminder](https://datenwerk.netlify.app/posts/vis-gapminder/vis-gapminder)
+- [Penguins Visualization](https://datenwerk.netlify.app/posts/vis-penguins/vis-penguins)
+- [mtcars](https://datenwerk.netlify.app/posts/vis-mtcars/vis-mtcars)
+
+
+
+
+>   🧑‍🎓 I want more!
+
+>   👨‍🏫 Check-out all exercises from [Datenwerk](https://datenwerk.netlify.app/) with the tag [datawrangling](https://datenwerk.netlify.app/#category=datawrangling).
+
+
+
+## Cheatsheets
+
+There are a number of nice cheat sheets [available on an array of topics related to EDA](https://www.rstudio.com/resources/cheatsheets/), made available by the folks at RStudio.
+
+
+Consider this collection:
+
+- [{dplyr}: data wrangling](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/data-transformation.png)
+
+- [{tidyr}: data preparation](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/tidyr.png)
+
+- [{ggplot}: data visualization](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/data-visualization.png)
+
+- [{gtsummary}: publication ready tables](https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/gtsummary.png)
+
+
+So much great stuff! A bit too much to digest in one go, 
+but definitely worthwhile if you plan to dig deeper in data analysis.
+
+
+
+## Going further
+
+@r4ds is an highly recommendable resource in order to get a thorough understanding of data analysis using R. Note that this source is focusing on the "how to", not so much to theoretical foundations.
+@ismay_statistical_2020 is a gently introduction into many steps on the data journey, including EDA.
+For a gentle introduction to Data visualization, see [ModernDive Chap. 2](https://moderndive.com/2-viz.html) [@ismay_statistical_2020], and get the R code [here](http://moderndive.com/scripts/02-visualization.R).
+Similarly, for data wrangling, see [ModernDive Chap. 3](https://moderndive.com/3-wrangling.html), and get the R code [here](http://moderndive.com/scripts/03-wrangling.R).
+
+

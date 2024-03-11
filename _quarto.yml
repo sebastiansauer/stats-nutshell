@@ -3,26 +3,44 @@ project:
 
 book:
   title: "stats-nutshell"
-  author: "Sebastian Sauer"
-  date: "9/04/2022"
-  
-  
-
-  
+  author: 
+    - name: Sebastian Sauer
+      orcid: 0000-0003-1515-8348
+  date: now
+  doi: 10.5281/zenodo.10082518
+  description: "A crash course on applied statistics with a focus on statistical modelling"
   
   chapters:
     - index.qmd
-    - goals.qmd
-    - basics.qmd
-    - EDA.qmd
-    - inference.qmd
-    - regression1.qmd
-    - regression2.qmd
-    - causality.qmd
-    - casestudies.qmd
+    - 010-goals.qmd
+    - 020-basics.qmd
+    - 030-EDA.qmd
+    - 040-inference.qmd
+    - 050-regression1.qmd
+    - 060-regression2.qmd
+    - 070-causality.qmd
+    - 080-outro.qmd
     - references.qmd
+    
+   
+  sidebar: 
+    logo: img/logo-stats-nutshell.png
+  favicon: img/logo-stats-nutshell.png
+  repo-url: https://github.com/sebastiansauer/stats-nutshell
 
-bibliography: references.bib
+
+bibliography: "/Users/sebastiansaueruser/Google Drive/Literatur/refmgt/library-ses.bib"
+csl: "/Users/sebastiansaueruser/Google Drive/Literatur/refmgt/apa7.csl"
+
+
+  
+lang: de
+citation: true
+#google-scholar: true
+description: |
+  A crash course on applied statistics with a focus on statistical modelling
+license: "MIT" 
+
 
 format:
   html:
@@ -30,6 +48,7 @@ format:
     toc: true
     number-sections: true
     df-print: kable
+    fig-align: center
   # pdf:
   #   toc: true
   #   number-sections: true

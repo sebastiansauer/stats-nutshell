@@ -8,7 +8,7 @@
 
 <meta name="description" content="A crash course on applied statistics with a focus on statistical modelling">
 
-<title>stats-nutshell - References</title>
+<title>stats-nutshell - 1&nbsp; Goals in statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,10 +21,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -50,7 +85,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./080-outro.html" rel="prev">
+<link href="./020-basics.html" rel="next">
+<link href="./index.html" rel="prev">
 <link href="./img/logo-stats-nutshell.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -88,6 +124,9 @@ div.csl-indent {
     "search-label": "Suchen"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -101,7 +140,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./010-goals.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -140,7 +179,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./010-goals.html" class="sidebar-item-text sidebar-link">
+  <a href="./010-goals.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></span></a>
   </div>
 </li>
@@ -188,7 +227,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -198,14 +237,23 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">1.1</span> Overview</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">1.2</span> Lab</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">1.3</span> Further reading</a></li>
+  <li><a href="#if-nothing-else-helps" id="toc-if-nothing-else-helps" class="nav-link" data-scroll-target="#if-nothing-else-helps"><span class="header-section-number">1.4</span> If nothing else helps</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></h1>
 </div>
 
 
@@ -222,93 +270,94 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-cetinkaya-rundel_introduction_2021-2" class="csl-entry" role="listitem">
-Cetinkaya-Rundel, M., &amp; Hardin, J. (2021). <em>Introduction to
-<span>Modern Statistics</span></em>. <a href="https://openintro-ims.netlify.app/">https://openintro-ims.netlify.app/</a>
+<p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
+<section id="overview" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">1.1</span> Overview</h2>
+<p>Many stories to be told. Here’s one, on the goals pursued in statistics (and related fields), see Figure <a href="#fig-goals" class="quarto-xref">Abbildung&nbsp;<span>1.1</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>flowchart LR</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  A{Goals} --&gt; B(describe)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  A --&gt; C(predict)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  A --&gt; D(explain)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  B --&gt; E(distribution)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  B --&gt; F(assocation)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  B --&gt; G(extrapolation)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  C --&gt; H(point estimate)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  C --&gt; I(interval)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  D --&gt; J(causal inference)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  D --&gt; K(population)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  D --&gt; L(latent construct)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-goals" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-goals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-goals">flowchart LR
+  A{Goals} --&gt; B(describe)
+  A --&gt; C(predict)
+  A --&gt; D(explain)
+  B --&gt; E(distribution)
+  B --&gt; F(assocation)
+  B --&gt; G(extrapolation)
+  C --&gt; H(point estimate)
+  C --&gt; I(interval)
+  D --&gt; J(causal inference)
+  D --&gt; K(population)
+  D --&gt; L(latent construct)
+
+</pre>
 </div>
-<div id="ref-deisenroth_mathematics_2020" class="csl-entry" role="listitem">
-Deisenroth, M. P., Faisal, A. A., &amp; Ong, C. S. (2020).
-<em>Mathematics for machine learning</em>. Cambridge University Press.
-<a href="https://mml-book.github.io/">https://mml-book.github.io/</a>
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-goals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.1: A taxonomy of statistical goals
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that “goals” do not exist in the world. We make them up in our heads. Hence, they have no ontological existence, they are epistemological beasts. This entails that we are free to devise goals as we wish, provided we can convince ourselves and other souls of the utility of our creativity.</p>
+</div>
+</div>
+</section>
+<section id="lab" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="lab"><span class="header-section-number">1.2</span> Lab</h2>
+<p>Match <em>your</em> (most pressing) research goal to the nomenclature for scientific goals as shown in <a href="#fig-goals" class="quarto-xref">Abbildung&nbsp;<span>1.1</span></a>. Explain your reasoning.</p>
+<p>Next, put three research themes or studies you particularly like to this nomenclature and explain your reasoning.</p>
+</section>
+<section id="further-reading" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">1.3</span> Further reading</h2>
+<p><span class="citation" data-cites="hernan_second_2019">Hernán et al. (<a href="references.html#ref-hernan_second_2019" role="doc-biblioref">2019</a>)</span> distinguish:</p>
+<ul>
+<li><p><em>Description</em>: “How can women aged 60–80 years with stroke history be partitioned in classes defined by their characteristics?”</p></li>
+<li><p><em>Prediction</em>: “What is the probability of having a stroke next year for women with certain characteristics?”</p></li>
+<li><p><em>Causal inference</em>: “Will starting a statin reduce, on average, the risk of stroke in women with certain characteristics?”</p></li>
+</ul>
+<p><span class="citation" data-cites="gelman_regression_2021">Gelman et al. (<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref">2021</a>)</span>, chap.&nbsp;1.1 proposes three “challenges” of statistical inference.</p>
+</section>
+<section id="if-nothing-else-helps" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="if-nothing-else-helps"><span class="header-section-number">1.4</span> If nothing else helps</h2>
+<p>Stay calm and behold the <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif/600px-Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif?20170912223608">infinity</a>.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-gelman_regression_2021" class="csl-entry" role="listitem">
-Gelman, A., Hill, J., &amp; Vehtari, A. (2021). <em>Regression and other
-stories</em>. Cambridge University Press.
-</div>
-<div id="ref-goodman_dirty_2008" class="csl-entry" role="listitem">
-Goodman, S. (2008). A dirty dozen: <span class="nocase">Twelve
-P-value</span> misconceptions. <em>Seminars in Hematology</em>,
-<em>45</em>(3), 135–140. <a href="https://doi.org/10.1053/j.seminhematol.2008.04.003">https://doi.org/10.1053/j.seminhematol.2008.04.003</a>
+Gelman, A., Hill, J., &amp; Vehtari, A. (2021). <em>Regression and Other Stories</em>. Cambridge University Press.
 </div>
 <div id="ref-hernan_second_2019" class="csl-entry" role="listitem">
-Hernán, M. A., Hsu, J., &amp; Healy, B. (2019). A second chance to get
-causal inference right: <span>A</span> classification of data science
-tasks. <em>Chance</em>, <em>32</em>(1), 42–49. <a href="https://doi.org/10.1080/09332480.2019.1579578">https://doi.org/10.1080/09332480.2019.1579578</a>
-</div>
-<div id="ref-ismay_statistical_2020" class="csl-entry" role="listitem">
-Ismay, C., &amp; Kim, A. Y.-S. (2020). <em>Statistical inference via
-data science: A <span>ModernDive</span> into <span>R</span> and the
-<span>Tidyverse</span></em>. CRC Press / Taylor &amp; Francis Group. <a href="https://moderndive.com/">https://moderndive.com/</a>
-</div>
-<div id="ref-mackay_scientific_2000" class="csl-entry" role="listitem">
-MacKay, R. J., &amp; Oldford, R. W. (2000). Scientific method,
-statistical method and the speed of light. <em>Statistical Science</em>,
-<em>15</em>(3), 254–278. <a href="https://doi.org/10.1214/ss/1009212817">https://doi.org/10.1214/ss/1009212817</a>
-</div>
-<div id="ref-mcelreath_statistical_2020" class="csl-entry" role="listitem">
-McElreath, R. (2020). <em>Statistical rethinking: A
-<span>Bayesian</span> course with examples in <span>R</span> and
-<span>Stan</span></em> (2nd ed.). <span>Taylor and Francis, CRC
-Press</span>.
-</div>
-<div id="ref-pearl_causal_2016" class="csl-entry" role="listitem">
-Pearl, J., Glymour, M., &amp; Jewell, N. P. (2016). <em>Causal inference
-in statistics: A primer</em>. Wiley.
-</div>
-<div id="ref-poldrack_statistical_2022" class="csl-entry" role="listitem">
-Poldrack, R. (2022a). <em>Statistical thinking for the 21st
-century</em>. <a href="https://statsthinking21.github.io/statsthinking21-core-site/index.html">https://statsthinking21.github.io/statsthinking21-core-site/index.html</a>
-</div>
-<div id="ref-poldrack_statistical_2022-1" class="csl-entry" role="listitem">
-Poldrack, R. (2022b). <em>Statistical <span>Thinking</span> for the 21st
-<span>Century</span></em>. <a href="https://statsthinking21.github.io/statsthinking21-core-site/index.html">https://statsthinking21.github.io/statsthinking21-core-site/index.html</a>
-</div>
-<div id="ref-roback_beyond_2021" class="csl-entry" role="listitem">
-Roback, P., &amp; Legler, J. (2021). <em>Beyond multiple linear
-regression: Applied generalized linear models and multilevel models
-in</em> (1st ed.). CRC Press.
-</div>
-<div id="ref-rohrer_thinking_2018" class="csl-entry" role="listitem">
-Rohrer, J. M. (2018). Thinking <span>Clearly About Correlations</span>
-and <span>Causation</span>: <span>Graphical Causal Models</span> for
-<span>Observational Data</span>. <em>Advances in Methods and Practices
-in Psychological Science</em>, <em>1</em>(1), 27–42. <a href="https://doi.org/10.1177/2515245917745629">https://doi.org/10.1177/2515245917745629</a>
-</div>
-<div id="ref-sauer_moderne_2019" class="csl-entry" role="listitem">
-Sauer, S. (2019). <em>Moderne <span>Datenanalyse</span> mit
-<span>R</span>: <span>Daten</span> einlesen, aufbereiten, visualisieren
-und modellieren</em> (1. Auflage 2019). Springer. <a href="https://www.springer.com/de/book/9783658215866">https://www.springer.com/de/book/9783658215866</a>
-</div>
-<div id="ref-wasserstein_moving_2019" class="csl-entry" role="listitem">
-Wasserstein, R. L., Schirm, A. L., &amp; Lazar, N. A. (2019). Moving to
-a world beyond <span>“ p p <span><span class="math inline">&lt;</span></span> 0.05.”</span> <em>The American
-Statistician</em>, <em>73</em>, 1–19. <a href="https://doi.org/10.1080/00031305.2019.1583913">https://doi.org/10.1080/00031305.2019.1583913</a>
-</div>
-<div id="ref-r4ds" class="csl-entry" role="listitem">
-Wickham, H., &amp; Grolemund, G. (2016). <em>R for <span>Data
-Science</span>: <span>Visualize</span>, <span>Model</span>,
-<span>Transform</span>, <span>Tidy</span>, and <span>Import
-Data</span></em>. O’Reilly Media. <a href="https://r4ds.had.co.nz/index.html">https://r4ds.had.co.nz/index.html</a>
-</div>
-<div id="ref-wild_statistical_1999" class="csl-entry" role="listitem">
-Wild, C. J., &amp; Pfannkuch, M. (1999). Statistical thinking in
-empirical enquiry. <em>International Statistical Review</em>,
-<em>67</em>(3), 223–248.
+Hernán, M. A., Hsu, J., &amp; Healy, B. (2019). A Second Chance to Get Causal Inference Right: <span>A</span> Classification of Data Science Tasks. <em>Chance</em>, <em>32</em>(1), 42–49. <a href="https://doi.org/10.1080/09332480.2019.1579578">https://doi.org/10.1080/09332480.2019.1579578</a>
 </div>
 </div>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -700,11 +749,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./080-outro.html" class="pagination-link  aria-label=" &lt;span="" further&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Going further</span></span>
+      <a href="./index.html" class="pagination-link  aria-label=" preface"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./020-basics.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Basics</span>">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

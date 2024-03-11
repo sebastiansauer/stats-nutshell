@@ -111,88 +111,15 @@ Please not that the focus and the amount covered in a course strongly depends on
 
 ### Overview on topics covered
 
--   Data Visualization using the grammar of graphics and ggplot2
--   Data Wrangling based on the tidyverse in R
--   Basic concepts of statistical modelling
--   Primer on causal inference
--   Introduction to regression analysis
+-   Data *visualization* building the grammar of graphics and ggplot2
+-   Data *wrangling* based on the tidyverse in R
+-   Basic concepts of statistical *modelling*
+-   Primer on *causal inference*
+-   Introduction to *regression* analysis
+-   Quick refresher of *statistical inference*
 
-### Block 1: Explorative Data Analysis
 
-#### Visualization
 
--   Data *visualization*, see [ModernDive Chap. 2](https://moderndive.com/2-viz.html), and get the R code [here](http://moderndive.com/scripts/02-visualization.R)
-    -   Exploring common types of statistical diagrams, the "5NG"
-    -   Discussing when (not) to use diagrams [see Anscombe's Quartett](https://public.tableau.com/profile/dan.murray#!/vizhome/AnscombesQuartet_16/AnscombesQuartet), and when to use which one
-    -   Building elegant graphics in R
-
-#### Data Wrangling
-
--   Data *wrangling*, see [ModernDive Chap. 3](https://moderndive.com/3-wrangling.html), and get the R code [here](http://moderndive.com/scripts/03-wrangling.R)
-    -   A taxonomy of typical data operations
-    -   How to perform common data operations with R
-    -   Summarizing data (aka computing descriptive statistics)
-
-#### Exercises / Case study
-
--   Exercises
-    -   Exercises on [life expectancy](https://data-se.netlify.app/2021/02/24/exercises-to-data-wrangling-with-the-tidyverse).
-    -   Case study on the visualization of [flight delays](https://data-se.netlify.app/2021/02/24/exercises-no-solutions-data-vizualization-on-flight-delays-using-tidyverse-tools/)
-    -   Advanced case study on [one hit wonders](https://www.njtierney.com/post/2017/11/07/tidyverse-billboard/)
-    -   Visualization [covid cases](https://www.njtierney.com/post/2020/10/11/times-scales-covid/)
-    -   Case study on nominal data: [Survival on the Titanic](https://www.kaggle.com/headsortails/tidy-titarnic)
-    -   Inspiration for own project: Visualize Covid-19 cases from [this source](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series).
-
-### Block 2: Statistical Modelling: Basic
-
-#### Theory
-
--   Basics of *modelling*, see [ModernDive Chap. 5.0](https://moderndive.com/5-regression.html), and get the R code [here](http://moderndive.com/scripts/05-regression.R)
-
-    -   What is modelling?
-    -   Basic terminology
-    -   Prediction vs. explanation
-
--   Some thoughts on *causal inference*, see ModernDive Chap. 5.3.1
-
--   *Regression* with one numerical predictor, see ModernDive Chap. 5.1
-
--   Regression with one categorical predictor, see ModernDive Chap. 5.2
-
--   Assessing *model fit* (using (adjusted) $R^2$), see ModernDive Chap. 5.3.2
-
--   For some tips and tricks on typical issues, see [ModernDive tips and tricks](https://moderndive.github.io/moderndive_labs/tips_and_tricks.html)
-
-#### Case study
-
--   Exercises/Case studies:
-    -   Prices of [Boston houses](https://moderndive.com/11-thinking-with-data.html#seattle-house-prices), first part
-    -   Modeling [movie succes](https://data-se.netlify.app/2021/02/24/modelling-movie-successes-linear-regression/), first part
-
-### Block 3: Statistical Modelling: Multiple Regression and interaction
-
-#### Theory
-
--   Slightly more advanced topics on linear regression such as *multiple regression and interaction*, see [ModernDive Chap. 6](https://moderndive.com/6-multiple-regression.html), and get the R code [here](http://moderndive.com/scripts/06-multiple-regression.R)
-
--   One numerical and one categorical predictor, see ModernDive Chap. 6.1
-
--   Two numerical predictors, see ModernDive Chap. 6.2
-
--   Simpson's paradox and more on causal inference, see ModernDive Chap. 6.3.3
-
-#### Case study
-
--   Exercises/Case studies:
-    -   Prices of [Boston houses](https://moderndive.com/11-thinking-with-data.html#seattle-house-prices), second part
-    -   Modeling [movie succes](https://data-se.netlify.app/2021/02/24/modelling-movie-successes-linear-regression/), second part
-    -   Modeling [flight delays](https://data-se.netlify.app/slides/hands-on-data-exploration/handson-data-workshop_2018-11-21.html#68)
-
-### Block 4: Project coaching
-
--   This session is dedicated to work on real projects brought in by the students.
-
--   In addition, open questions regarding the presented concepts are being discussed.
 
 ## Instructor
 
@@ -315,7 +242,7 @@ I readily confess that this approach is novel to many learners in these days, le
 
 ## Technical Details
 
-Last update: 2024-03-07 10:52:56
+Last update: 2024-03-11 11:30:54
 
 
 ::: {.cell layout-align="center"}
