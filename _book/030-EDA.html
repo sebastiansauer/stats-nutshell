@@ -8,7 +8,7 @@
 
 <meta name="description" content="A crash course on applied statistics with a focus on statistical modelling">
 
-<title>stats-nutshell - 3&nbsp; Exploratory Data Analysis</title>
+<title>stats-nutshell - 2&nbsp; Exploratory Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -139,7 +139,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-EDA.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-EDA.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -178,50 +178,44 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./010-goals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./020-basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./030-EDA.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./040-inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./050-regression1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./060-regression2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More linear models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./070-causality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Causality</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./080-outro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Going further</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Going further</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -240,44 +234,44 @@ div.csl-indent {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link active" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="header-section-number">3.1</span> R packages needed for this chapter</a></li>
-  <li><a href="#whats-eda" id="toc-whats-eda" class="nav-link" data-scroll-target="#whats-eda"><span class="header-section-number">3.2</span> What’s EDA?</a></li>
-  <li><a href="#sec-data-journey" id="toc-sec-data-journey" class="nav-link" data-scroll-target="#sec-data-journey"><span class="header-section-number">3.3</span> Data journey</a></li>
-  <li><a href="#blitz-data" id="toc-blitz-data" class="nav-link" data-scroll-target="#blitz-data"><span class="header-section-number">3.4</span> Blitz data</a></li>
-  <li><a href="#data-cleansing" id="toc-data-cleansing" class="nav-link" data-scroll-target="#data-cleansing"><span class="header-section-number">3.5</span> Data cleansing</a></li>
-  <li><a href="#convenience-functions" id="toc-convenience-functions" class="nav-link" data-scroll-target="#convenience-functions"><span class="header-section-number">3.6</span> Convenience functions</a>
+  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link active" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="header-section-number">2.1</span> R packages needed for this chapter</a></li>
+  <li><a href="#whats-eda" id="toc-whats-eda" class="nav-link" data-scroll-target="#whats-eda"><span class="header-section-number">2.2</span> What’s EDA?</a></li>
+  <li><a href="#sec-data-journey" id="toc-sec-data-journey" class="nav-link" data-scroll-target="#sec-data-journey"><span class="header-section-number">2.3</span> Data journey</a></li>
+  <li><a href="#blitz-data" id="toc-blitz-data" class="nav-link" data-scroll-target="#blitz-data"><span class="header-section-number">2.4</span> Blitz data</a></li>
+  <li><a href="#data-cleansing" id="toc-data-cleansing" class="nav-link" data-scroll-target="#data-cleansing"><span class="header-section-number">2.5</span> Data cleansing</a></li>
+  <li><a href="#convenience-functions" id="toc-convenience-functions" class="nav-link" data-scroll-target="#convenience-functions"><span class="header-section-number">2.6</span> Convenience functions</a>
   <ul class="collapse">
-  <li><a href="#data-explorer" id="toc-data-explorer" class="nav-link" data-scroll-target="#data-explorer"><span class="header-section-number">3.6.1</span> Data Explorer</a></li>
-  <li><a href="#visdat" id="toc-visdat" class="nav-link" data-scroll-target="#visdat"><span class="header-section-number">3.6.2</span> visdat</a></li>
-  <li><a href="#vtree" id="toc-vtree" class="nav-link" data-scroll-target="#vtree"><span class="header-section-number">3.6.3</span> vtree</a></li>
-  <li><a href="#the-easystats-way" id="toc-the-easystats-way" class="nav-link" data-scroll-target="#the-easystats-way"><span class="header-section-number">3.6.4</span> The easystats way</a></li>
-  <li><a href="#tableone" id="toc-tableone" class="nav-link" data-scroll-target="#tableone"><span class="header-section-number">3.6.5</span> TableOne</a></li>
+  <li><a href="#data-explorer" id="toc-data-explorer" class="nav-link" data-scroll-target="#data-explorer"><span class="header-section-number">2.6.1</span> Data Explorer</a></li>
+  <li><a href="#visdat" id="toc-visdat" class="nav-link" data-scroll-target="#visdat"><span class="header-section-number">2.6.2</span> visdat</a></li>
+  <li><a href="#vtree" id="toc-vtree" class="nav-link" data-scroll-target="#vtree"><span class="header-section-number">2.6.3</span> vtree</a></li>
+  <li><a href="#the-easystats-way" id="toc-the-easystats-way" class="nav-link" data-scroll-target="#the-easystats-way"><span class="header-section-number">2.6.4</span> The easystats way</a></li>
+  <li><a href="#tableone" id="toc-tableone" class="nav-link" data-scroll-target="#tableone"><span class="header-section-number">2.6.5</span> TableOne</a></li>
   </ul></li>
-  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">3.7</span> Lab</a></li>
-  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><span class="header-section-number">3.8</span> Tidyverse</a>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">2.7</span> Lab</a></li>
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><span class="header-section-number">2.8</span> Tidyverse</a>
   <ul class="collapse">
-  <li><a href="#intro-to-the-tidyverse" id="toc-intro-to-the-tidyverse" class="nav-link" data-scroll-target="#intro-to-the-tidyverse"><span class="header-section-number">3.8.1</span> Intro to the tidyverse</a></li>
-  <li><a href="#more-advanced-tidyverse" id="toc-more-advanced-tidyverse" class="nav-link" data-scroll-target="#more-advanced-tidyverse"><span class="header-section-number">3.8.2</span> More advanced tidyverse</a></li>
+  <li><a href="#intro-to-the-tidyverse" id="toc-intro-to-the-tidyverse" class="nav-link" data-scroll-target="#intro-to-the-tidyverse"><span class="header-section-number">2.8.1</span> Intro to the tidyverse</a></li>
+  <li><a href="#more-advanced-tidyverse" id="toc-more-advanced-tidyverse" class="nav-link" data-scroll-target="#more-advanced-tidyverse"><span class="header-section-number">2.8.2</span> More advanced tidyverse</a></li>
   </ul></li>
-  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><span class="header-section-number">3.9</span> Data visualization</a>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><span class="header-section-number">2.9</span> Data visualization</a>
   <ul class="collapse">
-  <li><a href="#ggpubr" id="toc-ggpubr" class="nav-link" data-scroll-target="#ggpubr"><span class="header-section-number">3.9.1</span> ggpubr</a></li>
-  <li><a href="#ggstatsplot" id="toc-ggstatsplot" class="nav-link" data-scroll-target="#ggstatsplot"><span class="header-section-number">3.9.2</span> ggstatsplot</a></li>
+  <li><a href="#ggpubr" id="toc-ggpubr" class="nav-link" data-scroll-target="#ggpubr"><span class="header-section-number">2.9.1</span> ggpubr</a></li>
+  <li><a href="#ggstatsplot" id="toc-ggstatsplot" class="nav-link" data-scroll-target="#ggstatsplot"><span class="header-section-number">2.9.2</span> ggstatsplot</a></li>
   </ul></li>
-  <li><a href="#sec-office" id="toc-sec-office" class="nav-link" data-scroll-target="#sec-office"><span class="header-section-number">3.10</span> Exporting to Office</a>
+  <li><a href="#sec-office" id="toc-sec-office" class="nav-link" data-scroll-target="#sec-office"><span class="header-section-number">2.10</span> Exporting to Office</a>
   <ul class="collapse">
-  <li><a href="#excel" id="toc-excel" class="nav-link" data-scroll-target="#excel"><span class="header-section-number">3.10.1</span> Excel</a></li>
-  <li><a href="#more-advanced" id="toc-more-advanced" class="nav-link" data-scroll-target="#more-advanced"><span class="header-section-number">3.10.2</span> More advanced</a></li>
-  <li><a href="#word" id="toc-word" class="nav-link" data-scroll-target="#word"><span class="header-section-number">3.10.3</span> Word</a></li>
+  <li><a href="#excel" id="toc-excel" class="nav-link" data-scroll-target="#excel"><span class="header-section-number">2.10.1</span> Excel</a></li>
+  <li><a href="#more-advanced" id="toc-more-advanced" class="nav-link" data-scroll-target="#more-advanced"><span class="header-section-number">2.10.2</span> More advanced</a></li>
+  <li><a href="#word" id="toc-word" class="nav-link" data-scroll-target="#word"><span class="header-section-number">2.10.3</span> Word</a></li>
   </ul></li>
-  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies"><span class="header-section-number">3.11</span> Case Studies</a>
+  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies"><span class="header-section-number">2.11</span> Case Studies</a>
   <ul class="collapse">
-  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling"><span class="header-section-number">3.11.1</span> Data Wrangling</a></li>
-  <li><a href="#more-case-studies" id="toc-more-case-studies" class="nav-link" data-scroll-target="#more-case-studies"><span class="header-section-number">3.11.2</span> More Case studies</a></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling"><span class="header-section-number">2.11.1</span> Data Wrangling</a></li>
+  <li><a href="#more-case-studies" id="toc-more-case-studies" class="nav-link" data-scroll-target="#more-case-studies"><span class="header-section-number">2.11.2</span> More Case studies</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.12</span> Exercises</a></li>
-  <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets"><span class="header-section-number">3.13</span> Cheatsheets</a></li>
-  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="header-section-number">3.14</span> Going further</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.12</span> Exercises</a></li>
+  <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets"><span class="header-section-number">2.13</span> Cheatsheets</a></li>
+  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="header-section-number">2.14</span> Going further</a></li>
   </ul>
 </nav>
     </div>
@@ -286,7 +280,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></h1>
 </div>
 
 
@@ -304,8 +298,8 @@ div.csl-indent {
 
 
 <p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
-<section id="r-packages-needed-for-this-chapter" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">3.1</span> R packages needed for this chapter</h2>
+<section id="r-packages-needed-for-this-chapter" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">2.1</span> R packages needed for this chapter</h2>
 <p>Make sure to run the following code chunks in order to start the neccessary R packages.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># make stats easy again</span></span>
@@ -329,8 +323,8 @@ Vorsicht
 </div>
 </div>
 </section>
-<section id="whats-eda" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="whats-eda"><span class="header-section-number">3.2</span> What’s EDA?</h2>
+<section id="whats-eda" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="whats-eda"><span class="header-section-number">2.2</span> What’s EDA?</h2>
 <p>Exploratory Data Analysis (EDA) is a procedure to scrutinize a dataset at hand in order learn about it. EDA comprises descriptive statistics, data visualization and data transformation techniques (such as dimension reduction).</p>
 <p>It’s not so mathematical deep as modelling, but in practice it’s really important.</p>
 <p>There’s this famous saying:</p>
@@ -348,37 +342,37 @@ Vorsicht
 <li>More complex data transformation techniques (such as factor analysis)</li>
 </ul>
 </section>
-<section id="sec-data-journey" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="sec-data-journey"><span class="header-section-number">3.3</span> Data journey</h2>
-<p><span class="citation" data-cites="r4ds">Wickham &amp; Grolemund (<a href="references.html#ref-r4ds" role="doc-biblioref">2016</a>)</span> present a visual sketch of what could be called the “data journey”, i.e., the steps we are taking in order to learn from data, seen from an hands-on angle, see <a href="#fig-data-journey" class="quarto-xref">Abbildung&nbsp;<span>3.1</span></a>.</p>
+<section id="sec-data-journey" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-data-journey"><span class="header-section-number">2.3</span> Data journey</h2>
+<p><span class="citation" data-cites="r4ds">Wickham &amp; Grolemund (<a href="references.html#ref-r4ds" role="doc-biblioref">2016</a>)</span> present a visual sketch of what could be called the “data journey”, i.e., the steps we are taking in order to learn from data, seen from an hands-on angle, see <a href="#fig-data-journey" class="quarto-xref">Abbildung&nbsp;<span>2.1</span></a>.</p>
 <div id="fig-data-journey" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-journey-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/data-journey.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-journey-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.1: The data journey
+Abbildung&nbsp;2.1: The data journey
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="blitz-data" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="blitz-data"><span class="header-section-number">3.4</span> Blitz data</h2>
-<p>See <a href="020-basics.html#sec-blitz-data" class="quarto-xref"><span>Kapitel 2.4</span></a> for some data sets suitable to get going.</p>
+<section id="blitz-data" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="blitz-data"><span class="header-section-number">2.4</span> Blitz data</h2>
+<p>See <a href="020-basics.html#sec-blitz-data" class="quarto-xref"><span>Kapitel 1.7</span></a> for some data sets suitable to get going.</p>
 </section>
-<section id="data-cleansing" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="data-cleansing"><span class="header-section-number">3.5</span> Data cleansing</h2>
+<section id="data-cleansing" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="data-cleansing"><span class="header-section-number">2.5</span> Data cleansing</h2>
 <p>The R package {janitor} provides some nice stuff for data cleansing. Check out <a href="https://www.exploringdata.org/post/how-to-clean-data-janitor-package/">this case study</a>.</p>
 </section>
-<section id="convenience-functions" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="convenience-functions"><span class="header-section-number">3.6</span> Convenience functions</h2>
+<section id="convenience-functions" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="convenience-functions"><span class="header-section-number">2.6</span> Convenience functions</h2>
 <p>There a quite a few functions (residing in some packages) that help you doing EDA from a helicoptor point of view. In other words, you do not have to pay attention to nitty-gritty details, the function will do that for you. This is approach is, well, convenient, but of course comes at a price. You will not have a great amount of choice and influence on the way the data is analyzed and presented.</p>
 <p>We’ll use the penguins data set for a demonstration.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="data-explorer" class="level3" data-number="3.6.1">
-<h3 data-number="3.6.1" class="anchored" data-anchor-id="data-explorer"><span class="header-section-number">3.6.1</span> Data Explorer</h3>
+<section id="data-explorer" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="data-explorer"><span class="header-section-number">2.6.1</span> Data Explorer</h3>
 <p>There are many systems and approaches to explore data. One particular interesting system is the R-package <code>DataExplorer</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -390,7 +384,7 @@ Abbildung&nbsp;3.1: The data journey
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DataExplorer)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>For example, we can easyly get an overview of the distribution of all (quantitative) variables in the data set. What do you notice on inspecting the distributions, see <a href="#fig-peng-distros" class="quarto-xref">Abbildung&nbsp;<span>3.2</span></a>?</p>
+<p>For example, we can easyly get an overview of the distribution of all (quantitative) variables in the data set. What do you notice on inspecting the distributions, see <a href="#fig-peng-distros" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a>?</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_histogram</span>(penguins)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -400,13 +394,13 @@ Abbildung&nbsp;3.1: The data journey
 <img src="030-EDA_files/figure-html/fig-peng-distros-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peng-distros-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.2: An overview of the distribution can easily attained using the function plot_histogram
+Abbildung&nbsp;2.2: An overview of the distribution can easily attained using the function plot_histogram
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>A quick “introduction” to the data set is provided by the function <code>plot_intro</code>, see <a href="#fig-peng-intro" class="quarto-xref">Abbildung&nbsp;<span>3.3</span></a>.</p>
+<p>A quick “introduction” to the data set is provided by the function <code>plot_intro</code>, see <a href="#fig-peng-intro" class="quarto-xref">Abbildung&nbsp;<span>2.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_intro</span>(penguins)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -416,13 +410,13 @@ Abbildung&nbsp;3.2: An overview of the distribution can easily attained using th
 <img src="030-EDA_files/figure-html/fig-peng-intro-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peng-intro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.3: An introduction view on a data set
+Abbildung&nbsp;2.3: An introduction view on a data set
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>We can also get a glimpse on all the qualitative data columns in our datra set, see <a href="#fig-peng-bars" class="quarto-xref">Abbildung&nbsp;<span>3.4</span></a>.</p>
+<p>We can also get a glimpse on all the qualitative data columns in our datra set, see <a href="#fig-peng-bars" class="quarto-xref">Abbildung&nbsp;<span>2.4</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_bar</span>(penguins)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -432,15 +426,15 @@ Abbildung&nbsp;3.3: An introduction view on a data set
 <img src="030-EDA_files/figure-html/fig-peng-bars-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peng-bars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.4: Bar plots visualizing the distribution of qualitative variables using the function plot_bar
+Abbildung&nbsp;2.4: Bar plots visualizing the distribution of qualitative variables using the function plot_bar
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="visdat" class="level3" data-number="3.6.2">
-<h3 data-number="3.6.2" class="anchored" data-anchor-id="visdat"><span class="header-section-number">3.6.2</span> visdat</h3>
+<section id="visdat" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="visdat"><span class="header-section-number">2.6.2</span> visdat</h3>
 <p>The r package <code>visdat</code> provides a “fingerprint” of a data set.</p>
 <p>Let’s show-case it using the penguins data set.</p>
 <div class="cell" data-layout-align="center">
@@ -456,9 +450,9 @@ Abbildung&nbsp;3.4: Bar plots visualizing the distribution of qualitative variab
 </div>
 </div>
 </section>
-<section id="vtree" class="level3" data-number="3.6.3">
-<h3 data-number="3.6.3" class="anchored" data-anchor-id="vtree"><span class="header-section-number">3.6.3</span> vtree</h3>
-<p>A bit similar to {DataExplorer}, the <a href="https://nbarrowman.github.io/vtree">R package {vtree}</a> helps to explore visually datasets, see <a href="#fig-vtree1" class="quarto-xref">Abbildung&nbsp;<span>3.5</span></a>.</p>
+<section id="vtree" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="vtree"><span class="header-section-number">2.6.3</span> vtree</h3>
+<p>A bit similar to {DataExplorer}, the <a href="https://nbarrowman.github.io/vtree">R package {vtree}</a> helps to explore visually datasets, see <a href="#fig-vtree1" class="quarto-xref">Abbildung&nbsp;<span>2.5</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vtree)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vtree</span>(penguins, <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"island"</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -469,15 +463,15 @@ Abbildung&nbsp;3.4: Bar plots visualizing the distribution of qualitative variab
 <img src="030-EDA_files/figure-html//vtree001.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vtree1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.5: Breaking down the counts in a data set using vtree
+Abbildung&nbsp;2.5: Breaking down the counts in a data set using vtree
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="the-easystats-way" class="level3" data-number="3.6.4">
-<h3 data-number="3.6.4" class="anchored" data-anchor-id="the-easystats-way"><span class="header-section-number">3.6.4</span> The easystats way</h3>
+<section id="the-easystats-way" class="level3" data-number="2.6.4">
+<h3 data-number="2.6.4" class="anchored" data-anchor-id="the-easystats-way"><span class="header-section-number">2.6.4</span> The easystats way</h3>
 <p>There are some packages, such as <code>{easystats}</code>, which provide comfortable access to basic statistics:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># once per session</span></span>
@@ -590,7 +584,7 @@ Abbildung&nbsp;3.5: Breaking down the counts in a data set using vtree
 </div>
 </div>
 <p><code>describe_distribution</code> provides us with an overview on typical descriptive summaries.</p>
-<p>How to export to MS Office? Well, one simple approach is obviously to copy-paste. Checkout <a href="#sec-office" class="quarto-xref"><span>Kapitel 3.10</span></a> for more advanced options.</p>
+<p>How to export to MS Office? Well, one simple approach is obviously to copy-paste. Checkout <a href="#sec-office" class="quarto-xref"><span>Kapitel 2.10</span></a> for more advanced options.</p>
 <p>For nominal variables, consider <code>data_tabulate</code>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_tabulate</span>(penguins, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"island"</span>)) <span class="sc">|&gt;</span> </span>
@@ -725,8 +719,8 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 <p>Checkout the function reference of your favorite package in order to learn what’s on the shelf. For example, <a href="https://easystats.github.io/datawizard/reference/index.html">here’s the function reference site</a> of <code>datawizard</code>, one of the packages in the <code>easystats</code> ecosystem.</p>
 </div>
 </section>
-<section id="tableone" class="level3" data-number="3.6.5">
-<h3 data-number="3.6.5" class="anchored" data-anchor-id="tableone"><span class="header-section-number">3.6.5</span> TableOne</h3>
+<section id="tableone" class="level3" data-number="2.6.5">
+<h3 data-number="2.6.5" class="anchored" data-anchor-id="tableone"><span class="header-section-number">2.6.5</span> TableOne</h3>
 <p>The <a href="https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html">R package <code>{tableOne}</code></a> provides something like the typical “Table 1” in many papers.</p>
 <p>From the homepage:</p>
 <blockquote class="blockquote">
@@ -807,24 +801,24 @@ strata: Overall
                                                            </code></pre>
 </div>
 </div>
-<p>How to export to MS Office? Well, one simple approach is obviously to copy-paste. Checkout <a href="#sec-office" class="quarto-xref"><span>Kapitel 3.10</span></a> for more advanced options.</p>
+<p>How to export to MS Office? Well, one simple approach is obviously to copy-paste. Checkout <a href="#sec-office" class="quarto-xref"><span>Kapitel 2.10</span></a> for more advanced options.</p>
 </section>
 </section>
-<section id="lab" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="lab"><span class="header-section-number">3.7</span> Lab</h2>
+<section id="lab" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="lab"><span class="header-section-number">2.7</span> Lab</h2>
 <p>Take your research data and prepare it using (at least) one of the “convenience” functions for data cleansing presented above.</p>
 </section>
-<section id="tidyverse" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="tidyverse"><span class="header-section-number">3.8</span> Tidyverse</h2>
-<section id="intro-to-the-tidyverse" class="level3" data-number="3.8.1">
-<h3 data-number="3.8.1" class="anchored" data-anchor-id="intro-to-the-tidyverse"><span class="header-section-number">3.8.1</span> Intro to the tidyverse</h3>
+<section id="tidyverse" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="tidyverse"><span class="header-section-number">2.8</span> Tidyverse</h2>
+<section id="intro-to-the-tidyverse" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="intro-to-the-tidyverse"><span class="header-section-number">2.8.1</span> Intro to the tidyverse</h3>
 <p>The Tidyverse is probably the R thing with the most publicity. And it’s great. It’s a philosophy baken into an array of R packages. Perhaps central is the idea that a lot of little lego pieces, if fitting nicely together, provides a simple yet flexibel and thus powerful machinery.</p>
 <p>There’s a lot of introctory material to the tidyverse around <a href="https://datasciencebook.ca/wrangling.html">for instance</a>, so I’m not repeating that here.</p>
 </section>
-<section id="more-advanced-tidyverse" class="level3" data-number="3.8.2">
-<h3 data-number="3.8.2" class="anchored" data-anchor-id="more-advanced-tidyverse"><span class="header-section-number">3.8.2</span> More advanced tidyverse</h3>
-<section id="repeat-a-function-over-many-columns" class="level4" data-number="3.8.2.1">
-<h4 data-number="3.8.2.1" class="anchored" data-anchor-id="repeat-a-function-over-many-columns"><span class="header-section-number">3.8.2.1</span> Repeat a function over many columns</h4>
+<section id="more-advanced-tidyverse" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="more-advanced-tidyverse"><span class="header-section-number">2.8.2</span> More advanced tidyverse</h3>
+<section id="repeat-a-function-over-many-columns" class="level4" data-number="2.8.2.1">
+<h4 data-number="2.8.2.1" class="anchored" data-anchor-id="repeat-a-function-over-many-columns"><span class="header-section-number">2.8.2.1</span> Repeat a function over many columns</h4>
 <p>At times, we would like to compute the same functions for many variables, ie columns for tidyverse applications.</p>
 <p>Let’s load the penguins data for illustration.</p>
 <div class="cell" data-layout-align="center">
@@ -1191,8 +1185,8 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 </section>
-<section id="rowwise-operations" class="level4" data-number="3.8.2.2">
-<h4 data-number="3.8.2.2" class="anchored" data-anchor-id="rowwise-operations"><span class="header-section-number">3.8.2.2</span> Rowwise operations</h4>
+<section id="rowwise-operations" class="level4" data-number="2.8.2.2">
+<h4 data-number="2.8.2.2" class="anchored" data-anchor-id="rowwise-operations"><span class="header-section-number">2.8.2.2</span> Rowwise operations</h4>
 <p>For technical reasons, it’s a bit cumbersome in (base) R to compute rowwise operations. The thing is, R’s dataframes are organized as vectors of <em>columns</em> so it’s much easier to do stuff columnwise.</p>
 <p>However, since recently, computing rowwise operations with the tidyverse has become simpler. Consider the following example. Say we would like to know the highest z-value for each variable we just computed, that is the highest values <em>per individual</em>, ie., by row in the data frame.</p>
 <div class="cell" data-layout-align="center">
@@ -1311,24 +1305,25 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </section>
 </section>
 </section>
-<section id="data-visualization" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="data-visualization"><span class="header-section-number">3.9</span> Data visualization</h2>
+<section id="data-visualization" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="data-visualization"><span class="header-section-number">2.9</span> Data visualization</h2>
+<p>Visualize your data – plots can provide insights which can’t (easily) delivered by numbers alone. See <a href="https://public.tableau.com/app/profile/dan.murray/viz/AnscombesQuartet_16/AnscombesQuartet">Anscombe’s Quartet</a>.</p>
 <p>The star on the R visualization sky is called <a href="https://ggplot2.tidyverse.org/">ggplot</a>. It probably is one of the most advanced statistical visualization package on the planet.</p>
 <p>However, for a quick start, there are some nice wrappers on ggplot, levering the beauty of ggplot but making the making simple(r).</p>
-<section id="ggpubr" class="level3" data-number="3.9.1">
-<h3 data-number="3.9.1" class="anchored" data-anchor-id="ggpubr"><span class="header-section-number">3.9.1</span> ggpubr</h3>
+<section id="ggpubr" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1" class="anchored" data-anchor-id="ggpubr"><span class="header-section-number">2.9.1</span> ggpubr</h3>
 <p><a href="https://rpkgs.datanovia.com/ggpubr/index.html">ggpubr</a> is a simple yet powerful way to visualize data.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)  <span class="co"># must be installed</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s visualize the association of bill length (see <a href="#fig-bill-length" class="quarto-xref">Abbildung&nbsp;<span>3.6</span></a>) with body mass, see <a href="#fig-peng-scatter1" class="quarto-xref">Abbildung&nbsp;<span>3.7</span></a>.</p>
+<p>Let’s visualize the association of bill length (see <a href="#fig-bill-length" class="quarto-xref">Abbildung&nbsp;<span>2.6</span></a>) with body mass, see <a href="#fig-peng-scatter1" class="quarto-xref">Abbildung&nbsp;<span>2.7</span></a>.</p>
 <div id="fig-bill-length" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bill-length-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="https://allisonhorst.github.io/palmerpenguins/reference/figures/culmen_depth.png" class="img-fluid figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bill-length-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.6: In case you did not know, that’s what is meant by bill length and depth of our penguins
+Abbildung&nbsp;2.6: In case you did not know, that’s what is meant by bill length and depth of our penguins
 </figcaption>
 </figure>
 </div>
@@ -1344,13 +1339,13 @@ Abbildung&nbsp;3.6: In case you did not know, that’s what is meant by bill len
 <img src="030-EDA_files/figure-html/fig-peng-scatter1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peng-scatter1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.7: A simple scatterplot of the penguins data set using ggscatter
+Abbildung&nbsp;2.7: A simple scatterplot of the penguins data set using ggscatter
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Let’s improve a bit on the plot, see <a href="#fig-peng-scatter2" class="quarto-xref">Abbildung&nbsp;<span>3.8</span></a>.</p>
+<p>Let’s improve a bit on the plot, see <a href="#fig-peng-scatter2" class="quarto-xref">Abbildung&nbsp;<span>2.8</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatter</span>(penguins,</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"bill_length_mm"</span>,</span>
@@ -1370,7 +1365,7 @@ Abbildung&nbsp;3.7: A simple scatterplot of the penguins data set using ggscatte
 <img src="030-EDA_files/figure-html/fig-peng-scatter2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peng-scatter2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.8: A more polished scatterplot of the penguins data set using ggscatter
+Abbildung&nbsp;2.8: A more polished scatterplot of the penguins data set using ggscatter
 </figcaption>
 </figure>
 </div>
@@ -1378,9 +1373,9 @@ Abbildung&nbsp;3.8: A more polished scatterplot of the penguins data set using g
 </div>
 <p>Check out the <a href="https://rpkgs.datanovia.com/ggpubr/reference/ggscatter.html">manual</a> of the function for further notice on the options.</p>
 </section>
-<section id="ggstatsplot" class="level3" data-number="3.9.2">
-<h3 data-number="3.9.2" class="anchored" data-anchor-id="ggstatsplot"><span class="header-section-number">3.9.2</span> ggstatsplot</h3>
-<p>In addtion, consider <a href="#ggstatsplot">ggstatsplot</a>)(https://indrajeetpatil.github.io/ggstatsplot/). Let’s use the <code>mtcars</code> dataset for a quick demonstration. For example, assume you would like to compare two group of cars, automatic vs.&nbsp;manual shifting, in terms of fuel economy. Here we go, <a href="#fig-ggstatsplot1" class="quarto-xref">Abbildung&nbsp;<span>3.9</span></a>.</p>
+<section id="ggstatsplot" class="level3" data-number="2.9.2">
+<h3 data-number="2.9.2" class="anchored" data-anchor-id="ggstatsplot"><span class="header-section-number">2.9.2</span> ggstatsplot</h3>
+<p>In addtion, consider <a href="#ggstatsplot">ggstatsplot</a>)(https://indrajeetpatil.github.io/ggstatsplot/). Let’s use the <code>mtcars</code> dataset for a quick demonstration. For example, assume you would like to compare two group of cars, automatic vs.&nbsp;manual shifting, in terms of fuel economy. Here we go, <a href="#fig-ggstatsplot1" class="quarto-xref">Abbildung&nbsp;<span>2.9</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
@@ -1394,14 +1389,14 @@ Abbildung&nbsp;3.8: A more polished scatterplot of the penguins data set using g
 <img src="030-EDA_files/figure-html/fig-ggstatsplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ggstatsplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.9: ggstatsplot builds on ggplot, but is simpler to use
+Abbildung&nbsp;2.9: ggstatsplot builds on ggplot, but is simpler to use
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Checkout the <a href="https://indrajeetpatil.github.io/ggstatsplot/reference/ggbetweenstats.html">manual</a> of the function to get a handle on all the options and details.</p>
-<p>Wait, let’s drop all missing values (<code>NA</code>) before we plot using <code>drop_na()</code>, <a href="#fig-ggstatsplot2" class="quarto-xref">Abbildung&nbsp;<span>3.10</span></a>.</p>
+<p>Wait, let’s drop all missing values (<code>NA</code>) before we plot using <code>drop_na()</code>, <a href="#fig-ggstatsplot2" class="quarto-xref">Abbildung&nbsp;<span>2.10</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>penguins_no_na <span class="ot">&lt;-</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
@@ -1418,7 +1413,7 @@ Abbildung&nbsp;3.9: ggstatsplot builds on ggplot, but is simpler to use
 <img src="030-EDA_files/figure-html/fig-ggstatsplot2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ggstatsplot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.10: Comparing groups on a quantitative output variable, but dropping missing values before hand
+Abbildung&nbsp;2.10: Comparing groups on a quantitative output variable, but dropping missing values before hand
 </figcaption>
 </figure>
 </div>
@@ -1426,10 +1421,10 @@ Abbildung&nbsp;3.10: Comparing groups on a quantitative output variable, but dro
 </div>
 </section>
 </section>
-<section id="sec-office" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="sec-office"><span class="header-section-number">3.10</span> Exporting to Office</h2>
-<section id="excel" class="level3" data-number="3.10.1">
-<h3 data-number="3.10.1" class="anchored" data-anchor-id="excel"><span class="header-section-number">3.10.1</span> Excel</h3>
+<section id="sec-office" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="sec-office"><span class="header-section-number">2.10</span> Exporting to Office</h2>
+<section id="excel" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="excel"><span class="header-section-number">2.10.1</span> Excel</h3>
 <p>The most straightforward approach is to convince your EDA function to produce a data frame. Data frames can be written as CSV or XLSX to disk, and then easily imported to office packages.</p>
 <p><code>easystats</code> and <code>tidyverse</code> are two examples where this happens.</p>
 <div class="cell" data-layout-align="center">
@@ -1484,8 +1479,8 @@ Abbildung&nbsp;3.10: Comparing groups on a quantitative output variable, but dro
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df2, <span class="at">file =</span> <span class="st">"df2.csv"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="more-advanced" class="level3" data-number="3.10.2">
-<h3 data-number="3.10.2" class="anchored" data-anchor-id="more-advanced"><span class="header-section-number">3.10.2</span> More advanced</h3>
+<section id="more-advanced" class="level3" data-number="2.10.2">
+<h3 data-number="2.10.2" class="anchored" data-anchor-id="more-advanced"><span class="header-section-number">2.10.2</span> More advanced</h3>
 <p>Note that if we use <code>data_tabulate</code> like this:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"am"</span>, <span class="st">"vs"</span>))</span>
@@ -1529,8 +1524,8 @@ Abbildung&nbsp;3.10: Comparing groups on a quantitative output variable, but dro
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df3[[<span class="dv">1</span>]], <span class="at">file =</span> <span class="st">"df3.csv"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="word" class="level3" data-number="3.10.3">
-<h3 data-number="3.10.3" class="anchored" data-anchor-id="word"><span class="header-section-number">3.10.3</span> Word</h3>
+<section id="word" class="level3" data-number="2.10.3">
+<h3 data-number="2.10.3" class="anchored" data-anchor-id="word"><span class="header-section-number">2.10.3</span> Word</h3>
 <p>Obviously, once your data has arriven as a spreadsheet in Excel (or similar software packages), it’s no big deal to get it into Word processors as well.</p>
 <p>In addition, one <a href="https://stackoverflow.com/questions/60815583/how-to-save-table1-package-output-table-to-doc-format-r">user gave the following recommendation on StackOverflow</a>:</p>
 <blockquote class="blockquote">
@@ -1544,7 +1539,7 @@ Abbildung&nbsp;3.10: Comparing groups on a quantitative output variable, but dro
 <div id="tbl-flex1" class="cell quarto-float anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabelle&nbsp;3.1: A table using the R package flextable
+Tabelle&nbsp;2.1: A table using the R package flextable
 </figcaption>
 <div aria-describedby="tbl-flex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1561,12 +1556,12 @@ Tabelle&nbsp;3.1: A table using the R package flextable
 </div>
 </section>
 </section>
-<section id="case-studies" class="level2" data-number="3.11">
-<h2 data-number="3.11" class="anchored" data-anchor-id="case-studies"><span class="header-section-number">3.11</span> Case Studies</h2>
-<section id="data-wrangling" class="level3" data-number="3.11.1">
-<h3 data-number="3.11.1" class="anchored" data-anchor-id="data-wrangling"><span class="header-section-number">3.11.1</span> Data Wrangling</h3>
-<section id="penguins" class="level4" data-number="3.11.1.1">
-<h4 data-number="3.11.1.1" class="anchored" data-anchor-id="penguins"><span class="header-section-number">3.11.1.1</span> Penguins</h4>
+<section id="case-studies" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="case-studies"><span class="header-section-number">2.11</span> Case Studies</h2>
+<section id="data-wrangling" class="level3" data-number="2.11.1">
+<h3 data-number="2.11.1" class="anchored" data-anchor-id="data-wrangling"><span class="header-section-number">2.11.1</span> Data Wrangling</h3>
+<section id="penguins" class="level4" data-number="2.11.1.1">
+<h4 data-number="2.11.1.1" class="anchored" data-anchor-id="penguins"><span class="header-section-number">2.11.1.1</span> Penguins</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/palmerpenguins-logo.png" class="img-fluid figure-img" style="width:20.0%"></p>
@@ -1578,8 +1573,8 @@ Tabelle&nbsp;3.1: A table using the R package flextable
 <p><a href="https://media.giphy.com/media/3og0IO5z8Rd30ktV6g/giphy.gif" width="50%">Go penguins! Allez!</a></p>
 </section>
 </section>
-<section id="more-case-studies" class="level3" data-number="3.11.2">
-<h3 data-number="3.11.2" class="anchored" data-anchor-id="more-case-studies"><span class="header-section-number">3.11.2</span> More Case studies</h3>
+<section id="more-case-studies" class="level3" data-number="2.11.2">
+<h3 data-number="2.11.2" class="anchored" data-anchor-id="more-case-studies"><span class="header-section-number">2.11.2</span> More Case studies</h3>
 <ul>
 <li><a href="https://rebeccabarter.com/blog/2019-08-05_base_r_to_tidyverse">Rebekka Barter’s introduction to the tidyverse</a></li>
 <li>Case study on the visualization of <a href="https://data-se.netlify.app/2021/02/24/exercises-no-solutions-data-vizualization-on-flight-delays-using-tidyverse-tools/">flight delays</a></li>
@@ -1590,8 +1585,8 @@ Tabelle&nbsp;3.1: A table using the R package flextable
 </ul>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="3.12">
-<h2 data-number="3.12" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.12</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.12</span> Exercises</h2>
 <ul>
 <li><a href="https://datenwerk.netlify.app/posts/vis-gapminder/vis-gapminder">Gapminder</a></li>
 <li><a href="https://datenwerk.netlify.app/posts/vis-penguins/vis-penguins">Penguins Visualization</a></li>
@@ -1603,9 +1598,22 @@ Tabelle&nbsp;3.1: A table using the R package flextable
 <blockquote class="blockquote">
 <p>👨‍🏫 Check-out all exercises from <a href="https://datenwerk.netlify.app/">Datenwerk</a> with the tag <a href="https://datenwerk.netlify.app/#category=datawrangling">datawrangling</a>.</p>
 </blockquote>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the translation function of your browers to translate the webpage into your favorite language.</p>
+</div>
+</div>
 </section>
-<section id="cheatsheets" class="level2" data-number="3.13">
-<h2 data-number="3.13" class="anchored" data-anchor-id="cheatsheets"><span class="header-section-number">3.13</span> Cheatsheets</h2>
+<section id="cheatsheets" class="level2" data-number="2.13">
+<h2 data-number="2.13" class="anchored" data-anchor-id="cheatsheets"><span class="header-section-number">2.13</span> Cheatsheets</h2>
 <p>There are a number of nice cheat sheets <a href="https://www.rstudio.com/resources/cheatsheets/">available on an array of topics related to EDA</a>, made available by the folks at RStudio.</p>
 <p>Consider this collection:</p>
 <ul>
@@ -1616,8 +1624,8 @@ Tabelle&nbsp;3.1: A table using the R package flextable
 </ul>
 <p>So much great stuff! A bit too much to digest in one go, but definitely worthwhile if you plan to dig deeper in data analysis.</p>
 </section>
-<section id="going-further" class="level2" data-number="3.14">
-<h2 data-number="3.14" class="anchored" data-anchor-id="going-further"><span class="header-section-number">3.14</span> Going further</h2>
+<section id="going-further" class="level2" data-number="2.14">
+<h2 data-number="2.14" class="anchored" data-anchor-id="going-further"><span class="header-section-number">2.14</span> Going further</h2>
 <p><span class="citation" data-cites="r4ds">Wickham &amp; Grolemund (<a href="references.html#ref-r4ds" role="doc-biblioref">2016</a>)</span> is an highly recommendable resource in order to get a thorough understanding of data analysis using R. Note that this source is focusing on the “how to”, not so much to theoretical foundations. <span class="citation" data-cites="ismay_statistical_2020">Ismay &amp; Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span> is a gently introduction into many steps on the data journey, including EDA. For a gentle introduction to Data visualization, see <a href="https://moderndive.com/2-viz.html">ModernDive Chap. 2</a> <span class="citation" data-cites="ismay_statistical_2020">(<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">Ismay &amp; Kim, 2020</a>)</span>, and get the R code <a href="http://moderndive.com/scripts/02-visualization.R">here</a>. Similarly, for data wrangling, see <a href="https://moderndive.com/3-wrangling.html">ModernDive Chap. 3</a>, and get the R code <a href="http://moderndive.com/scripts/03-wrangling.R">here</a>.</p>
 
 
@@ -2022,12 +2030,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./020-basics.html" class="pagination-link  aria-label=" &lt;span="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./040-inference.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Inference</span>">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./040-inference.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Inference</span>">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inference</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

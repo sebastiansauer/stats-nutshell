@@ -8,7 +8,7 @@
 
 <meta name="description" content="A crash course on applied statistics with a focus on statistical modelling">
 
-<title>stats-nutshell - 6&nbsp; More linear models</title>
+<title>stats-nutshell - 5&nbsp; More linear models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -169,7 +169,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./060-regression2.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./060-regression2.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More linear models</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -208,50 +208,44 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./010-goals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./020-basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./030-EDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./040-inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./050-regression1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./060-regression2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More linear models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./070-causality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Causality</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./080-outro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Going further</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Going further</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -270,28 +264,28 @@ window.Quarto = {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#r-packages-needed" id="toc-r-packages-needed" class="nav-link active" data-scroll-target="#r-packages-needed"><span class="header-section-number">6.1</span> R-packages needed</a></li>
-  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="header-section-number">6.2</span> R packages needed for this chapter</a></li>
-  <li><a href="#multiplicative-associations" id="toc-multiplicative-associations" class="nav-link" data-scroll-target="#multiplicative-associations"><span class="header-section-number">6.3</span> Multiplicative associations</a>
+  <li><a href="#r-packages-needed" id="toc-r-packages-needed" class="nav-link active" data-scroll-target="#r-packages-needed"><span class="header-section-number">5.1</span> R-packages needed</a></li>
+  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="header-section-number">5.2</span> R packages needed for this chapter</a></li>
+  <li><a href="#multiplicative-associations" id="toc-multiplicative-associations" class="nav-link" data-scroll-target="#multiplicative-associations"><span class="header-section-number">5.3</span> Multiplicative associations</a>
   <ul class="collapse">
-  <li><a href="#the-log-y-model" id="toc-the-log-y-model" class="nav-link" data-scroll-target="#the-log-y-model"><span class="header-section-number">6.3.1</span> The Log-Y model</a></li>
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">6.3.2</span> Exercise</a></li>
-  <li><a href="#visualizing-log-transformation" id="toc-visualizing-log-transformation" class="nav-link" data-scroll-target="#visualizing-log-transformation"><span class="header-section-number">6.3.3</span> Visualizing Log Transformation</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">6.3.4</span> Further reading</a></li>
+  <li><a href="#the-log-y-model" id="toc-the-log-y-model" class="nav-link" data-scroll-target="#the-log-y-model"><span class="header-section-number">5.3.1</span> The Log-Y model</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">5.3.2</span> Exercise</a></li>
+  <li><a href="#visualizing-log-transformation" id="toc-visualizing-log-transformation" class="nav-link" data-scroll-target="#visualizing-log-transformation"><span class="header-section-number">5.3.3</span> Visualizing Log Transformation</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">5.3.4</span> Further reading</a></li>
   </ul></li>
-  <li><a href="#interaction" id="toc-interaction" class="nav-link" data-scroll-target="#interaction"><span class="header-section-number">6.4</span> Interaction</a>
+  <li><a href="#interaction" id="toc-interaction" class="nav-link" data-scroll-target="#interaction"><span class="header-section-number">5.4</span> Interaction</a>
   <ul class="collapse">
-  <li><a href="#multiple-predictors-no-interaction" id="toc-multiple-predictors-no-interaction" class="nav-link" data-scroll-target="#multiple-predictors-no-interaction"><span class="header-section-number">6.4.1</span> Multiple predictors, no interaction</a></li>
-  <li><a href="#interaction-1" id="toc-interaction-1" class="nav-link" data-scroll-target="#interaction-1"><span class="header-section-number">6.4.2</span> Interaction</a></li>
-  <li><a href="#interaction-made-simple" id="toc-interaction-made-simple" class="nav-link" data-scroll-target="#interaction-made-simple"><span class="header-section-number">6.4.3</span> Interaction made simple</a></li>
-  <li><a href="#centering-variables" id="toc-centering-variables" class="nav-link" data-scroll-target="#centering-variables"><span class="header-section-number">6.4.4</span> Centering variables</a></li>
+  <li><a href="#multiple-predictors-no-interaction" id="toc-multiple-predictors-no-interaction" class="nav-link" data-scroll-target="#multiple-predictors-no-interaction"><span class="header-section-number">5.4.1</span> Multiple predictors, no interaction</a></li>
+  <li><a href="#interaction-1" id="toc-interaction-1" class="nav-link" data-scroll-target="#interaction-1"><span class="header-section-number">5.4.2</span> Interaction</a></li>
+  <li><a href="#interaction-made-simple" id="toc-interaction-made-simple" class="nav-link" data-scroll-target="#interaction-made-simple"><span class="header-section-number">5.4.3</span> Interaction made simple</a></li>
+  <li><a href="#centering-variables" id="toc-centering-variables" class="nav-link" data-scroll-target="#centering-variables"><span class="header-section-number">5.4.4</span> Centering variables</a></li>
   </ul></li>
-  <li><a href="#predictor-relevance" id="toc-predictor-relevance" class="nav-link" data-scroll-target="#predictor-relevance"><span class="header-section-number">6.5</span> Predictor relevance</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.6</span> Exercises</a></li>
-  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies"><span class="header-section-number">6.7</span> Case studies</a></li>
-  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">6.8</span> Lab</a></li>
-  <li><a href="#glimpse-on-parameter-estimation" id="toc-glimpse-on-parameter-estimation" class="nav-link" data-scroll-target="#glimpse-on-parameter-estimation"><span class="header-section-number">6.9</span> Glimpse on parameter estimation</a></li>
-  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="header-section-number">6.10</span> Going further</a></li>
+  <li><a href="#predictor-relevance" id="toc-predictor-relevance" class="nav-link" data-scroll-target="#predictor-relevance"><span class="header-section-number">5.5</span> Predictor relevance</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.6</span> Exercises</a></li>
+  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies"><span class="header-section-number">5.7</span> Case studies</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">5.8</span> Lab</a></li>
+  <li><a href="#glimpse-on-parameter-estimation" id="toc-glimpse-on-parameter-estimation" class="nav-link" data-scroll-target="#glimpse-on-parameter-estimation"><span class="header-section-number">5.9</span> Glimpse on parameter estimation</a></li>
+  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="header-section-number">5.10</span> Going further</a></li>
   </ul>
 </nav>
     </div>
@@ -300,7 +294,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More linear models</span></h1>
 </div>
 
 
@@ -318,20 +312,20 @@ window.Quarto = {
 
 
 <p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
-<section id="r-packages-needed" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="r-packages-needed"><span class="header-section-number">6.1</span> R-packages needed</h2>
+<section id="r-packages-needed" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="r-packages-needed"><span class="header-section-number">5.1</span> R-packages needed</h2>
 </section>
-<section id="r-packages-needed-for-this-chapter" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">6.2</span> R packages needed for this chapter</h2>
+<section id="r-packages-needed-for-this-chapter" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">5.2</span> R packages needed for this chapter</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="multiplicative-associations" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="multiplicative-associations"><span class="header-section-number">6.3</span> Multiplicative associations</h2>
-<section id="the-log-y-model" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="the-log-y-model"><span class="header-section-number">6.3.1</span> The Log-Y model</h3>
+<section id="multiplicative-associations" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="multiplicative-associations"><span class="header-section-number">5.3</span> Multiplicative associations</h2>
+<section id="the-log-y-model" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="the-log-y-model"><span class="header-section-number">5.3.1</span> The Log-Y model</h3>
 <p>Consider again the linear model, in a simple form:</p>
 <p><span class="math display">\[\hat{y} = \beta_0 + \beta_1 x_1 +  \ldots + b_kx_k +\]</span> Surprisingly, we can use this <em>linear</em> model to describe <em>multiplicative</em> assocations:</p>
 <p><span class="math inline">\(\hat{y} = e^{b_0 + b_1x_1 + b_2x_2 + \ldots + b_kx_k}\)</span></p>
@@ -357,9 +351,9 @@ Hinweis
 </div>
 </div>
 <p>A side-effect of modelling <code>log_y</code> instead of <code>y</code> is that the distribution shape of the outcome variable changes. This can be useful at times.</p>
-<p>Log-Y Regression can usefully be employed for modelling growth, among other, see <a href="#exm-logy" class="quarto-xref">Beispiel&nbsp;<span>6.1</span></a>.</p>
+<p>Log-Y Regression can usefully be employed for modelling growth, among other, see <a href="#exm-logy" class="quarto-xref">Beispiel&nbsp;<span>5.1</span></a>.</p>
 <div id="exm-logy" class="theorem example">
-<p><span class="theorem-title"><strong>Beispiel 6.1 (Bacteria growth)</strong></span> Some bacteria dish grows with at a fixed proportional rate, that is it doubles its population size in a fixed period of time. This is what is called exponential growth. For concreteness, say, the bacteriae double each two days, starting with 1 unit of bacteria.</p>
+<p><span class="theorem-title"><strong>Beispiel 5.1 (Bacteria growth)</strong></span> Some bacteria dish grows with at a fixed proportional rate, that is it doubles its population size in a fixed period of time. This is what is called exponential growth. For concreteness, say, the bacteriae double each two days, starting with 1 unit of bacteria.</p>
 <p>After about three weeks, i.e., 10 doubling periods (20 days), we’ll have <span class="math inline">\(y\)</span> units of bacteriae:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fl">2.7178</span></span>
@@ -372,8 +366,8 @@ Hinweis
 <p>Quite a bit! More than 20 thousand times more than before.</p>
 </div>
 </section>
-<section id="exercise" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="exercise"><span class="header-section-number">6.3.2</span> Exercise</h3>
+<section id="exercise" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="exercise"><span class="header-section-number">5.3.2</span> Exercise</h3>
 <ul>
 <li><a href="https://datenwerk.netlify.app/posts/log-y-regr1/log-y-regr1/">Effect of education on income</a></li>
 <li><a href="https://datenwerk.netlify.app/posts/log-y-regr2/log-y-regr2/">Effect of log-y transformation on the distribution, an example</a></li>
@@ -392,21 +386,21 @@ Hinweis
 </div>
 </div>
 </section>
-<section id="visualizing-log-transformation" class="level3" data-number="6.3.3">
-<h3 data-number="6.3.3" class="anchored" data-anchor-id="visualizing-log-transformation"><span class="header-section-number">6.3.3</span> Visualizing Log Transformation</h3>
+<section id="visualizing-log-transformation" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="visualizing-log-transformation"><span class="header-section-number">5.3.3</span> Visualizing Log Transformation</h3>
 <p>Check out <a href="https://data-se.netlify.app/2022/01/14/visualizing-a-log-y-regression-model/">this post</a> for an example of a log-y regression visualized.</p>
 <p><a href="https://data-se.netlify.app/2021/06/17/ein-beispiel-zum-nutzen-einer-log-transformation/">This post</a> puts some more weight to the argument that a log-y transformation is useful (if you want to model multiplicative relations).</p>
 </section>
-<section id="further-reading" class="level3" data-number="6.3.4">
-<h3 data-number="6.3.4" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">6.3.4</span> Further reading</h3>
+<section id="further-reading" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">5.3.4</span> Further reading</h3>
 <p>Check out <a href="https://kenbenoit.net/assets/courses/ME104/logmodels2.pdf">this great essay by Kenneth Benoit</a> on different log-variants in regression. Also <span class="citation" data-cites="gelman_regression_2021">Gelman et al. (<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref">2021</a>)</span>, chapter 12 (and others), is useful.</p>
 </section>
 </section>
-<section id="interaction" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="interaction"><span class="header-section-number">6.4</span> Interaction</h2>
-<section id="multiple-predictors-no-interaction" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="multiple-predictors-no-interaction"><span class="header-section-number">6.4.1</span> Multiple predictors, no interaction</h3>
-<p>Regression analyses can be used with more than one predictor, see Figure <a href="#fig-multregr" class="quarto-xref">Abbildung&nbsp;<span>6.1</span></a>.</p>
+<section id="interaction" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="interaction"><span class="header-section-number">5.4</span> Interaction</h2>
+<section id="multiple-predictors-no-interaction" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="multiple-predictors-no-interaction"><span class="header-section-number">5.4.1</span> Multiple predictors, no interaction</h3>
+<p>Regression analyses can be used with more than one predictor, see Figure <a href="#fig-multregr" class="quarto-xref">Abbildung&nbsp;<span>5.1</span></a>.</p>
 <div class="cell" data-fig-width="6.5" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-multregr" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -422,13 +416,13 @@ X2 --&gt; Y2
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-multregr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;6.1: One predictor (X) vs.&nbsp;two predictors (X1, X2)
+Abbildung&nbsp;5.1: One predictor (X) vs.&nbsp;two predictors (X1, X2)
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>given by Figure <a href="#fig-3dregr2" class="quarto-xref">Abbildung&nbsp;<span>6.2</span></a>, where a 3D account of a regression is given. 3D means to input variables, and (which is always the case) one output variable.</p>
+<p>given by Figure <a href="#fig-3dregr2" class="quarto-xref">Abbildung&nbsp;<span>5.2</span></a>, where a 3D account of a regression is given. 3D means to input variables, and (which is always the case) one output variable.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -457,7 +451,7 @@ Wichtig
 <p>If the slope for one predictor is the same for all values of the other predictor, then we say that no interaction is taking place.</p>
 </div>
 </div>
-<p>Here’s a visualization of a 3D regression plane (not line) <em>without interaction</em>: constant slope in one axis, see the following figure, <a href="#fig-3dregr2" class="quarto-xref">Abbildung&nbsp;<span>6.2</span></a>. The three cubes show the same data, just turned by different degrees (along the z axis).</p>
+<p>Here’s a visualization of a 3D regression plane (not line) <em>without interaction</em>: constant slope in one axis, see the following figure, <a href="#fig-3dregr2" class="quarto-xref">Abbildung&nbsp;<span>5.2</span></a>. The three cubes show the same data, just turned by different degrees (along the z axis).</p>
 <div id="fig-3dregr2" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-3dregr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -501,7 +495,7 @@ Wichtig
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3dregr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;6.2: 3D regression plane (not a line) without interaction
+Abbildung&nbsp;5.2: 3D regression plane (not a line) without interaction
 </figcaption>
 </figure>
 </div>
@@ -514,7 +508,7 @@ Abbildung&nbsp;6.2: 3D regression plane (not a line) without interaction
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lm3d <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The 3D plot is shown in Figure <a href="#fig-mtcars3d" class="quarto-xref">Abbildung&nbsp;<span>6.3</span></a>.</p>
+<p>The 3D plot is shown in Figure <a href="#fig-mtcars3d" class="quarto-xref">Abbildung&nbsp;<span>5.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-mtcars3d" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
@@ -523,7 +517,7 @@ Abbildung&nbsp;6.2: 3D regression plane (not a line) without interaction
 <img src="060-regression2_files/figure-html/fig-mtcars3d-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mtcars3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;6.3: mpg ~ hp + disp
+Abbildung&nbsp;5.3: mpg ~ hp + disp
 </figcaption>
 </figure>
 </div>
@@ -554,15 +548,15 @@ Abbildung&nbsp;6.3: mpg ~ hp + disp
 </div>
 <p>Checkout <a href="https://data-se.netlify.app/2022/04/19/3d-regression-plane-with-scatter-plot/">this post</a> for a visually slightly more appealing 3d regression plane.</p>
 </section>
-<section id="interaction-1" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="interaction-1"><span class="header-section-number">6.4.2</span> Interaction</h3>
+<section id="interaction-1" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="interaction-1"><span class="header-section-number">5.4.2</span> Interaction</h3>
 <p>For interaction to happen we relax the assumption that the slope of predictor 1 must be constant for all values of predictor 2.</p>
 <p>In R, we specify an interaction model like this:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lm3d_interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp <span class="sc">+</span> hp<span class="sc">:</span>disp, <span class="at">data =</span> mtcars)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The symbol <code>hp:disp</code> can be read as “the interaction effect of <code>hp</code> and <code>disp</code>”.</p>
-<p>Here’s a visual account, see Figure <a href="#fig-mtcars3d-interact" class="quarto-xref">Abbildung&nbsp;<span>6.4</span></a>.</p>
+<p>Here’s a visual account, see Figure <a href="#fig-mtcars3d-interact" class="quarto-xref">Abbildung&nbsp;<span>5.4</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-mtcars3d-interact" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
@@ -571,14 +565,14 @@ Abbildung&nbsp;6.3: mpg ~ hp + disp
 <img src="060-regression2_files/figure-html/fig-mtcars3d-interact-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mtcars3d-interact-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;6.4: mpg ~ hp + disp
+Abbildung&nbsp;5.4: mpg ~ hp + disp
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Compare <a href="#fig-mtcars3d-interact" class="quarto-xref">Abbildung&nbsp;<span>6.4</span></a> and <a href="#fig-mtcars3d" class="quarto-xref">Abbildung&nbsp;<span>6.3</span></a>. The difference is the interaction effect.</p>
-<p>In <a href="#fig-mtcars3d-interact" class="quarto-xref">Abbildung&nbsp;<span>6.4</span></a> you’ll see that the lines along the Y axis are not parallel anymore. Similarly, the lines along the X axis are not parallel anymore.</p>
+<p>Compare <a href="#fig-mtcars3d-interact" class="quarto-xref">Abbildung&nbsp;<span>5.4</span></a> and <a href="#fig-mtcars3d" class="quarto-xref">Abbildung&nbsp;<span>5.3</span></a>. The difference is the interaction effect.</p>
+<p>In <a href="#fig-mtcars3d-interact" class="quarto-xref">Abbildung&nbsp;<span>5.4</span></a> you’ll see that the lines along the Y axis are not parallel anymore. Similarly, the lines along the X axis are not parallel anymore.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -594,8 +588,8 @@ Wichtig
 </div>
 <p>However, the <em>difference</em> or <em>change</em> between two adjacent values (lines) is constant. This value is the size the regression effect.</p>
 </section>
-<section id="interaction-made-simple" class="level3" data-number="6.4.3">
-<h3 data-number="6.4.3" class="anchored" data-anchor-id="interaction-made-simple"><span class="header-section-number">6.4.3</span> Interaction made simple</h3>
+<section id="interaction-made-simple" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="interaction-made-simple"><span class="header-section-number">5.4.3</span> Interaction made simple</h3>
 <p>If you find that two sophisticated, consider the following simple case.</p>
 <p>First, we mutate <code>am</code> to be a factor variable, in order to make things simpler (without loss of generality).</p>
 <div class="cell" data-layout-align="center">
@@ -607,7 +601,7 @@ Wichtig
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lm_interact_simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp <span class="sc">+</span> am_f <span class="sc">+</span> disp<span class="sc">:</span>am_f, <span class="at">data =</span> mtcars2)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here’s the plot, Figure <a href="#fig-interact-simple" class="quarto-xref">Abbildung&nbsp;<span>6.5</span></a>.</p>
+<p>Here’s the plot, Figure <a href="#fig-interact-simple" class="quarto-xref">Abbildung&nbsp;<span>5.5</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm_interact_simple))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -617,15 +611,15 @@ Wichtig
 <img src="060-regression2_files/figure-html/fig-interact-simple-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interact-simple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;6.5: A simple interaction model
+Abbildung&nbsp;5.5: A simple interaction model
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>In this picture, we see that the two regression lines are <em>not</em> parallel, and hence there is evidence of an interaction effect.</p>
-<p>The interaction effect amounts to the <em>difference</em> in slops in <a href="#fig-interact-simple" class="quarto-xref">Abbildung&nbsp;<span>6.5</span></a>.</p>
-<p>One might be inclined to interpret Figure <a href="#fig-interact-simple" class="quarto-xref">Abbildung&nbsp;<span>6.5</span></a> as an 3D image, where the one (reddish) line is in the foreground and the blueish line in the background (or vice versa, as you like). Given a 3D image (and hence 2 predictors), we are where we started further above.</p>
+<p>The interaction effect amounts to the <em>difference</em> in slops in <a href="#fig-interact-simple" class="quarto-xref">Abbildung&nbsp;<span>5.5</span></a>.</p>
+<p>One might be inclined to interpret Figure <a href="#fig-interact-simple" class="quarto-xref">Abbildung&nbsp;<span>5.5</span></a> as an 3D image, where the one (reddish) line is in the foreground and the blueish line in the background (or vice versa, as you like). Given a 3D image (and hence 2 predictors), we are where we started further above.</p>
 <p>For completeness, here are the parameters of the model.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -686,8 +680,8 @@ Abbildung&nbsp;6.5: A simple interaction model
 </div>
 </div>
 </section>
-<section id="centering-variables" class="level3" data-number="6.4.4">
-<h3 data-number="6.4.4" class="anchored" data-anchor-id="centering-variables"><span class="header-section-number">6.4.4</span> Centering variables</h3>
+<section id="centering-variables" class="level3" data-number="5.4.4">
+<h3 data-number="5.4.4" class="anchored" data-anchor-id="centering-variables"><span class="header-section-number">5.4.4</span> Centering variables</h3>
 <p>The effect of of <code>am_f</code> must be interpreted when <code>disp</code> is zero, which does not make much sense.</p>
 <p>Therefore it simplifies the interpretation of regression coefficients to <em>center</em> all input variables, by subtrating the mean value (“demeaning” or “centering”):</p>
 <p><span class="math display">\[x' = x - \bar{x}\]</span> In R, this can be achieved e.g,. in this way:</p>
@@ -778,8 +772,8 @@ Abbildung&nbsp;6.5: A simple interaction model
 </div>
 </section>
 </section>
-<section id="predictor-relevance" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="predictor-relevance"><span class="header-section-number">6.5</span> Predictor relevance</h2>
+<section id="predictor-relevance" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="predictor-relevance"><span class="header-section-number">5.5</span> Predictor relevance</h2>
 <p>Given a model, we might want to know which predictor has the strongest association with the outcome?</p>
 <p>In order to answer this question, all predictor must have the same scale. Otherwise the importance of a predictor would increase by 1000, if we multiply each of the observations’ values by the same factor. However, this multiplication should not change the relevance of a predictor.</p>
 <p>A simple solution is to standardize all predictors to the same scale (sd=1).</p>
@@ -904,8 +898,8 @@ Abbildung&nbsp;6.5: A simple interaction model
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.6</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.6</span> Exercises</h2>
 <ul>
 <li><a href="https://datenwerk.netlify.app/posts/log-y-regr3/log-y-regr3/">Predictor relevance</a></li>
 <li><a href="https://datenwerk.netlify.app/posts/adjustieren1/adjustieren1/">Adjusting</a></li>
@@ -913,22 +907,22 @@ Abbildung&nbsp;6.5: A simple interaction model
 <li><a href="https://datenwerk.netlify.app/posts/interpret-koeff/interpret-koeff/">Interpreting Regression coefficients</a></li>
 </ul>
 </section>
-<section id="case-studies" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="case-studies"><span class="header-section-number">6.7</span> Case studies</h2>
+<section id="case-studies" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="case-studies"><span class="header-section-number">5.7</span> Case studies</h2>
 <ul>
 <li>Prices of <a href="https://moderndive.com/11-thinking-with-data.html#seattle-house-prices">Boston houses</a>, second part</li>
 <li>Modeling <a href="https://data-se.netlify.app/2021/02/24/modelling-movie-successes-linear-regression/">movie succes</a>, second part</li>
 <li>Modeling <a href="https://data-se.netlify.app/slides/hands-on-data-exploration/handson-data-workshop_2018-11-21.html#68">flight delays</a></li>
 </ul>
 </section>
-<section id="lab" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="lab"><span class="header-section-number">6.8</span> Lab</h2>
+<section id="lab" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="lab"><span class="header-section-number">5.8</span> Lab</h2>
 <p>Get your own data, and build a simple model reflecting your research hypothesis based on the topics covered in this chapter. If you are lacking data (or hypothesis) get something close to it.</p>
 </section>
-<section id="glimpse-on-parameter-estimation" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="glimpse-on-parameter-estimation"><span class="header-section-number">6.9</span> Glimpse on parameter estimation</h2>
+<section id="glimpse-on-parameter-estimation" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="glimpse-on-parameter-estimation"><span class="header-section-number">5.9</span> Glimpse on parameter estimation</h2>
 <p>An elegant yet simple explanation of the math of parameter estimation can be found <a href="https://godatadriven.com/blog/the-linear-algebra-behind-linear-regression/">at “go data driven”</a>. A similar approach is presented <a href="https://shainarace.github.io/LinearAlgebra/leastsquares.html">here</a>.</p>
-<p>Consider this geometric interpretation of the least square method in Figure <a href="#fig-leastsq" class="quarto-xref">Abbildung&nbsp;<span>6.6</span></a>.</p>
+<p>Consider this geometric interpretation of the least square method in Figure <a href="#fig-leastsq" class="quarto-xref">Abbildung&nbsp;<span>5.6</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-leastsq" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
@@ -937,17 +931,18 @@ Abbildung&nbsp;6.5: A simple interaction model
 <img src="img/543px-Linear_least_squares_geometric_interpretation.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-leastsq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;6.6: Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia
+Abbildung&nbsp;5.6: Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="going-further" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="going-further"><span class="header-section-number">6.10</span> Going further</h2>
+<section id="going-further" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="going-further"><span class="header-section-number">5.10</span> Going further</h2>
 <p>A recent but already classic book on regression and inference (if this is possible) is the book by <span class="citation" data-cites="gelman_regression_2021">Gelman et al. (<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref">2021</a>)</span>. A great textbook on statistical modelling (with a Bayesian flavor) was written by <span class="citation" data-cites="mcelreath_statistical_2020">McElreath (<a href="references.html#ref-mcelreath_statistical_2020" role="doc-biblioref">2020</a>)</span>; it’s suitable for PhD level.</p>
 <p>Mathematical foundations can be found in <span class="citation" data-cites="deisenroth_mathematics_2020">Deisenroth et al. (<a href="references.html#ref-deisenroth_mathematics_2020" role="doc-biblioref">2020</a>)</span>. <a href="https://data-se.netlify.app/2022/06/13/free-resources-for-aspiring-data-adepts/">Here’s</a> a collection of online resources tapping into statistics and machine learning.</p>
+<p><a href="file:///Users/sebastiansaueruser/github-repos/sesa-blog/static/slides/Log-Log-Regression/Log-Log-Regression.html#1">Regression asks the Log: What you got to do here</a>, an introduction.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
@@ -1354,12 +1349,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./050-regression1.html" class="pagination-link  aria-label=" &lt;span="" and="" regression&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./070-causality.html" class="pagination-link" aria-label="<span class='chapter-number'>7</span>&nbsp; <span class='chapter-title'>Causality</span>">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./070-causality.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Causality</span>">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Causality</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

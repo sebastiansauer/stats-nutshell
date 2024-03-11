@@ -12,7 +12,7 @@ book:
   
   chapters:
     - index.qmd
-    - 010-goals.qmd
+    # - 010-goals.qmd
     - 020-basics.qmd
     - 030-EDA.qmd
     - 040-inference.qmd

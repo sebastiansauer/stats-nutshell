@@ -568,3 +568,7 @@ Consider this geometric interpretation of the least square method in Figure @fig
 A recent but already classic book on regression and inference (if this is possible) is the book by @gelman_regression_2021. A great textbook on statistical modelling (with a Bayesian flavor) was written by @mcelreath_statistical_2020; it's suitable for PhD level.
 
 Mathematical foundations can be found in @deisenroth_mathematics_2020. [Here's](https://data-se.netlify.app/2022/06/13/free-resources-for-aspiring-data-adepts/) a collection of online resources tapping into statistics and machine learning.
+
+[Regression asks the Log: What you got to do here](file:///Users/sebastiansaueruser/github-repos/sesa-blog/static/slides/Log-Log-Regression/Log-Log-Regression.html#1), an introduction.
+
+

@@ -9,6 +9,7 @@ Many stories to be told. Here's one, on the goals pursued in statistics (and rel
 ```{mermaid}
 %%| label: fig-goals
 %%| fig-cap: A taxonomy of statistical goals
+%%| echo: false
 flowchart LR
   A{Goals} --> B(describe)
   A --> C(predict)

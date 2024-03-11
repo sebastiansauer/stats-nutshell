@@ -8,7 +8,7 @@
 
 <meta name="description" content="A crash course on applied statistics with a focus on statistical modelling">
 
-<title>stats-nutshell - 2&nbsp; Basics</title>
+<title>stats-nutshell - 1&nbsp; Basics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -86,7 +86,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./030-EDA.html" rel="next">
-<link href="./010-goals.html" rel="prev">
+<link href="./index.html" rel="prev">
 <link href="./img/logo-stats-nutshell.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -124,6 +124,9 @@ div.csl-indent {
     "search-label": "Suchen"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -137,7 +140,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./020-basics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./020-basics.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -176,50 +179,44 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./010-goals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./020-basics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./030-EDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./040-inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./050-regression1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelling and regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./060-regression2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More linear models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More linear models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./070-causality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Causality</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./080-outro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Going further</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Going further</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -238,27 +235,31 @@ div.csl-indent {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#a-framework-for-problem-solving" id="toc-a-framework-for-problem-solving" class="nav-link active" data-scroll-target="#a-framework-for-problem-solving"><span class="header-section-number">2.1</span> A framework for problem solving</a>
+  <li><a href="#goals-in-statistics" id="toc-goals-in-statistics" class="nav-link active" data-scroll-target="#goals-in-statistics"><span class="header-section-number">1.1</span> Goals in statistics</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">1.2</span> Lab</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">1.3</span> Further reading</a></li>
+  <li><a href="#a-framework-for-problem-solving" id="toc-a-framework-for-problem-solving" class="nav-link" data-scroll-target="#a-framework-for-problem-solving"><span class="header-section-number">1.4</span> A framework for problem solving</a>
   <ul class="collapse">
-  <li><a href="#ppdac" id="toc-ppdac" class="nav-link" data-scroll-target="#ppdac"><span class="header-section-number">2.1.1</span> PPDAC</a></li>
-  <li><a href="#fundamental-issues-in-data-analysis" id="toc-fundamental-issues-in-data-analysis" class="nav-link" data-scroll-target="#fundamental-issues-in-data-analysis"><span class="header-section-number">2.1.2</span> Fundamental issues in data analysis</a></li>
+  <li><a href="#ppdac" id="toc-ppdac" class="nav-link" data-scroll-target="#ppdac"><span class="header-section-number">1.4.1</span> PPDAC</a></li>
+  <li><a href="#fundamental-issues-in-data-analysis" id="toc-fundamental-issues-in-data-analysis" class="nav-link" data-scroll-target="#fundamental-issues-in-data-analysis"><span class="header-section-number">1.4.2</span> Fundamental issues in data analysis</a></li>
   </ul></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span class="header-section-number">2.2</span> Getting started</a>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span class="header-section-number">1.5</span> Getting started</a>
   <ul class="collapse">
-  <li><a href="#r-basics" id="toc-r-basics" class="nav-link" data-scroll-target="#r-basics"><span class="header-section-number">2.2.1</span> R Basics</a></li>
-  <li><a href="#help-me-im-lost" id="toc-help-me-im-lost" class="nav-link" data-scroll-target="#help-me-im-lost"><span class="header-section-number">2.2.2</span> Help me, I’m lost</a></li>
-  <li><a href="#i-want-to-dig-deeper" id="toc-i-want-to-dig-deeper" class="nav-link" data-scroll-target="#i-want-to-dig-deeper"><span class="header-section-number">2.2.3</span> I want to dig deeper</a></li>
-  <li><a href="#initial-quiz" id="toc-initial-quiz" class="nav-link" data-scroll-target="#initial-quiz"><span class="header-section-number">2.2.4</span> Initial quiz</a></li>
+  <li><a href="#r-basics" id="toc-r-basics" class="nav-link" data-scroll-target="#r-basics"><span class="header-section-number">1.5.1</span> R Basics</a></li>
+  <li><a href="#help-me-im-lost" id="toc-help-me-im-lost" class="nav-link" data-scroll-target="#help-me-im-lost"><span class="header-section-number">1.5.2</span> Help me, I’m lost</a></li>
+  <li><a href="#i-want-to-dig-deeper" id="toc-i-want-to-dig-deeper" class="nav-link" data-scroll-target="#i-want-to-dig-deeper"><span class="header-section-number">1.5.3</span> I want to dig deeper</a></li>
+  <li><a href="#initial-quiz" id="toc-initial-quiz" class="nav-link" data-scroll-target="#initial-quiz"><span class="header-section-number">1.5.4</span> Initial quiz</a></li>
   </ul></li>
-  <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import"><span class="header-section-number">2.3</span> Data import</a></li>
-  <li><a href="#sec-blitz-data" id="toc-sec-blitz-data" class="nav-link" data-scroll-target="#sec-blitz-data"><span class="header-section-number">2.4</span> Blitz start with data</a>
+  <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import"><span class="header-section-number">1.6</span> Data import</a></li>
+  <li><a href="#sec-blitz-data" id="toc-sec-blitz-data" class="nav-link" data-scroll-target="#sec-blitz-data"><span class="header-section-number">1.7</span> Blitz start with data</a>
   <ul class="collapse">
-  <li><a href="#motor-trends-cars" id="toc-motor-trends-cars" class="nav-link" data-scroll-target="#motor-trends-cars"><span class="header-section-number">2.4.1</span> Motor Trends Cars</a></li>
-  <li><a href="#penguins" id="toc-penguins" class="nav-link" data-scroll-target="#penguins"><span class="header-section-number">2.4.2</span> Penguins</a></li>
+  <li><a href="#motor-trends-cars" id="toc-motor-trends-cars" class="nav-link" data-scroll-target="#motor-trends-cars"><span class="header-section-number">1.7.1</span> Motor Trends Cars</a></li>
+  <li><a href="#penguins" id="toc-penguins" class="nav-link" data-scroll-target="#penguins"><span class="header-section-number">1.7.2</span> Penguins</a></li>
   </ul></li>
-  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">2.5</span> Lab</a></li>
-  <li><a href="#more-data-set" id="toc-more-data-set" class="nav-link" data-scroll-target="#more-data-set"><span class="header-section-number">2.6</span> More data set</a></li>
-  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="header-section-number">2.7</span> Literature</a></li>
+  <li><a href="#lab-1" id="toc-lab-1" class="nav-link" data-scroll-target="#lab-1"><span class="header-section-number">1.8</span> Lab</a></li>
+  <li><a href="#more-data-sets" id="toc-more-data-sets" class="nav-link" data-scroll-target="#more-data-sets"><span class="header-section-number">1.9</span> More data sets</a></li>
+  <li><a href="#if-nothing-else-helps" id="toc-if-nothing-else-helps" class="nav-link" data-scroll-target="#if-nothing-else-helps"><span class="header-section-number">1.10</span> If nothing else helps</a></li>
+  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="header-section-number">1.11</span> Literature</a></li>
   </ul>
 </nav>
     </div>
@@ -267,7 +268,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics</span></h1>
 </div>
 
 
@@ -284,33 +285,95 @@ div.csl-indent {
 </header>
 
 
-<section id="a-framework-for-problem-solving" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="a-framework-for-problem-solving"><span class="header-section-number">2.1</span> A framework for problem solving</h2>
-<section id="ppdac" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="ppdac"><span class="header-section-number">2.1.1</span> PPDAC</h3>
-<p>The PPDAC Model is a methodological framework (aka a model) for applying the scientific method to any analytical or research question, or at least it is applicable to quite a few <span class="citation" data-cites="mackay_scientific_2000">(<a href="references.html#ref-mackay_scientific_2000" role="doc-biblioref">MacKay &amp; Oldford, 2000</a>)</span>. It is not meant to be a rigid sequence, but rather a cycle that may turn a number of rounds like a spiral. Statistician Chris Wild puts the PPDAC cycle in the following figure, see Figure <a href="#fig-ppdac" class="quarto-xref">Abbildung&nbsp;<span>2.1</span></a>. In <a href="https://www.stat.auckland.ac.nz/~wild/d2i/articles/1.4%20Place%20of%20data%20analysis%20in%20problem%20solving_ARTICLE.pdf">this short essay</a>, he summaries his ideas on how to use the PPDAC as a tool for data analysis in problem solving.</p>
+<section id="goals-in-statistics" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="goals-in-statistics"><span class="header-section-number">1.1</span> Goals in statistics</h2>
+<p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
+<p>Many stories to be told. Here’s one, on the goals pursued in statistics (and related fields), see Figure <a href="#fig-goals" class="quarto-xref">Abbildung&nbsp;<span>1.1</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-goals" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-goals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-goals">flowchart LR
+  A{Goals} --&gt; B(describe)
+  A --&gt; C(predict)
+  A --&gt; D(explain)
+  B --&gt; E(distribution)
+  B --&gt; F(assocation)
+  B --&gt; G(extrapolation)
+  C --&gt; H(point estimate)
+  C --&gt; I(interval)
+  D --&gt; J(causal inference)
+  D --&gt; K(population)
+  D --&gt; L(latent construct)
+
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-goals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.1: A taxonomy of statistical goals
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that “goals” do not exist in the world. We make them up in our heads. Hence, they have no ontological existence, they are epistemological beasts. This entails that we are free to devise goals as we wish, provided we can convince ourselves and other souls of the utility of our creativity.</p>
+</div>
+</div>
+</section>
+<section id="lab" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="lab"><span class="header-section-number">1.2</span> Lab</h2>
+<p>Match <em>your</em> (most pressing) research goal to the nomenclature for scientific goals as shown in <a href="#fig-goals" class="quarto-xref">Abbildung&nbsp;<span>1.1</span></a>. Explain your reasoning.</p>
+<p>Next, put three research themes or studies you particularly like to this nomenclature and explain your reasoning.</p>
+</section>
+<section id="further-reading" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">1.3</span> Further reading</h2>
+<p><span class="citation" data-cites="hernan_second_2019">Hernán et al. (<a href="references.html#ref-hernan_second_2019" role="doc-biblioref">2019</a>)</span> distinguish:</p>
+<ul>
+<li><p><em>Description</em>: “How can women aged 60–80 years with stroke history be partitioned in classes defined by their characteristics?”</p></li>
+<li><p><em>Prediction</em>: “What is the probability of having a stroke next year for women with certain characteristics?”</p></li>
+<li><p><em>Causal inference</em>: “Will starting a statin reduce, on average, the risk of stroke in women with certain characteristics?”</p></li>
+</ul>
+<p><span class="citation" data-cites="gelman_regression_2021">Gelman et al. (<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref">2021</a>)</span>, chap.&nbsp;1.1 proposes three “challenges” of statistical inference.</p>
+</section>
+<section id="a-framework-for-problem-solving" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="a-framework-for-problem-solving"><span class="header-section-number">1.4</span> A framework for problem solving</h2>
+<section id="ppdac" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="ppdac"><span class="header-section-number">1.4.1</span> PPDAC</h3>
+<p>The PPDAC Model is a methodological framework (aka a model) for applying the scientific method to any analytical or research question, or at least it is applicable to quite a few <span class="citation" data-cites="mackay_scientific_2000">(<a href="references.html#ref-mackay_scientific_2000" role="doc-biblioref">MacKay &amp; Oldford, 2000</a>)</span>. It is not meant to be a rigid sequence, but rather a cycle that may turn a number of rounds like a spiral. Statistician Chris Wild puts the PPDAC cycle in the following figure, see Figure <a href="#fig-ppdac" class="quarto-xref">Abbildung&nbsp;<span>1.2</span></a>. In <a href="https://www.stat.auckland.ac.nz/~wild/d2i/articles/1.4%20Place%20of%20data%20analysis%20in%20problem%20solving_ARTICLE.pdf">this short essay</a>, he summaries his ideas on how to use the PPDAC as a tool for data analysis in problem solving.</p>
 <div id="fig-ppdac" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ppdac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/ppdac.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ppdac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;2.1: PPDAC cycle. Image source: Chris Wild
+Abbildung&nbsp;1.2: PPDAC cycle. Image source: Chris Wild
 </figcaption>
 </figure>
 </div>
-<p>Wickham and Grolemund (see Figure <a href="030-EDA.html#fig-data-journey" class="quarto-xref">Abbildung&nbsp;<span>3.1</span></a> in <a href="030-EDA.html#sec-data-journey" class="quarto-xref"><span>Kapitel 3.3</span></a>) provide a suggestion of the parts of the statistical analyses, that is the “Analysis” step in the PPDAC.</p>
+<p>Wickham and Grolemund (see Figure <a href="030-EDA.html#fig-data-journey" class="quarto-xref">Abbildung&nbsp;<span>2.1</span></a> in <a href="030-EDA.html#sec-data-journey" class="quarto-xref"><span>Kapitel 2.3</span></a>) provide a suggestion of the parts of the statistical analyses, that is the “Analysis” step in the PPDAC.</p>
 </section>
-<section id="fundamental-issues-in-data-analysis" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="fundamental-issues-in-data-analysis"><span class="header-section-number">2.1.2</span> Fundamental issues in data analysis</h3>
-<p><span class="citation" data-cites="wild_statistical_1999">Wild &amp; Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> further note that variation is one of the essential characteristics of data. They discern to types of variation however, see Figure <a href="#fig-variation" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a>.</p>
+<section id="fundamental-issues-in-data-analysis" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="fundamental-issues-in-data-analysis"><span class="header-section-number">1.4.2</span> Fundamental issues in data analysis</h3>
+<p><span class="citation" data-cites="wild_statistical_1999">Wild &amp; Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> further note that variation is one of the essential characteristics of data. They discern to types of variation however, see Figure <a href="#fig-variation" class="quarto-xref">Abbildung&nbsp;<span>1.3</span></a>.</p>
 <div id="fig-variation" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-variation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/variation.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-variation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;2.2: Two types of variartion. Image source: Chris Wild
+Abbildung&nbsp;1.3: Two types of variartion. Image source: Chris Wild
 </figcaption>
 </figure>
 </div>
@@ -327,70 +390,70 @@ Abbildung&nbsp;2.2: Two types of variartion. Image source: Chris Wild
 </ul>
 </section>
 </section>
-<section id="getting-started" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="getting-started"><span class="header-section-number">2.2</span> Getting started</h2>
-<section id="r-basics" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="r-basics"><span class="header-section-number">2.2.1</span> R Basics</h3>
+<section id="getting-started" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="getting-started"><span class="header-section-number">1.5</span> Getting started</h2>
+<section id="r-basics" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="r-basics"><span class="header-section-number">1.5.1</span> R Basics</h3>
 <p>Check out <a href="https://moderndive.com/1-getting-started.html">chapter 1 in ModernDive</a> for an accessible introduction to getting started with R and RStudio.</p>
 <p>Please also note that R and RStudio should be installed before starting (this course).</p>
-<p>In addition, your R packages should be updtodate, according to Arnold Schwarzenegger (s. <a href="#fig-arnie" class="quarto-xref">Abbildung&nbsp;<span>2.3</span></a>).</p>
+<p>In addition, your R packages should be updtodate, according to Arnold Schwarzenegger (s. <a href="#fig-arnie" class="quarto-xref">Abbildung&nbsp;<span>1.4</span></a>).</p>
 <div id="fig-arnie" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-arnie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/terminator.jpg" class="img-fluid figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arnie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;2.3: Keep your R packages uptodate, or risk being an outdated model, Arnie says
+Abbildung&nbsp;1.4: Keep your R packages uptodate, or risk being an outdated model, Arnie says
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="help-me-im-lost" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="help-me-im-lost"><span class="header-section-number">2.2.2</span> Help me, I’m lost</h3>
+<section id="help-me-im-lost" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="help-me-im-lost"><span class="header-section-number">1.5.2</span> Help me, I’m lost</h3>
 <p>Check-out this <a href="https://statistik1.netlify.app/">introductory statistics course</a>.</p>
 <p>Pro-Tipp: Use the translation tool of your browswer to translate into your favorite language.</p>
 </section>
-<section id="i-want-to-dig-deeper" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="i-want-to-dig-deeper"><span class="header-section-number">2.2.3</span> I want to dig deeper</h3>
+<section id="i-want-to-dig-deeper" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="i-want-to-dig-deeper"><span class="header-section-number">1.5.3</span> I want to dig deeper</h3>
 <p>Check-out this <a href="https://start-bayes.netlify.app/">course on statistical inference using Bayes statistics</a>. If you are interested in predictive modeling, check-out <a href="https://ds1-prognosemodellierung.netlify.app/">this couse</a>.</p>
 </section>
-<section id="initial-quiz" class="level3" data-number="2.2.4">
-<h3 data-number="2.2.4" class="anchored" data-anchor-id="initial-quiz"><span class="header-section-number">2.2.4</span> Initial quiz</h3>
+<section id="initial-quiz" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="initial-quiz"><span class="header-section-number">1.5.4</span> Initial quiz</h3>
 <p>To get an idea whether you have digested some R basics, consider the following quiz.</p>
 <div id="exr-q1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Übungsaufgabe 2.1 (Define a variable)</strong></span> Define in R the variable <code>age</code> and assign the value <code>42</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span class="theorem-title"><strong>Übungsaufgabe 1.1 (Define a variable)</strong></span> Define in R the variable <code>age</code> and assign the value <code>42</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </div>
 <div id="exr-q2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Übungsaufgabe 2.2 (Define a variable as a string)</strong></span> Define in R the variable <code>name</code> and assign the value <code>me</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><span class="theorem-title"><strong>Übungsaufgabe 1.2 (Define a variable as a string)</strong></span> Define in R the variable <code>name</code> and assign the value <code>me</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 </div>
 <div id="exr-q3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Übungsaufgabe 2.3 (Define a variable by another variable)</strong></span> Define in R the variable <code>name</code> and assign the <em>variable</em> <code>age</code>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><span class="theorem-title"><strong>Übungsaufgabe 1.3 (Define a variable by another variable)</strong></span> Define in R the variable <code>name</code> and assign the <em>variable</em> <code>age</code>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 </div>
 <div id="exr-q3a" class="theorem exercise">
-<p><span class="theorem-title"><strong>Übungsaufgabe 2.4 (Call a function)</strong></span> Ask R what today’s <code>date()</code> is, that is, call a function.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p><span class="theorem-title"><strong>Übungsaufgabe 1.4 (Call a function)</strong></span> Ask R what today’s <code>date()</code> is, that is, call a function.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 </div>
 <div id="exr-q4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Übungsaufgabe 2.5 (Define a vector)</strong></span> Define in R a vector <code>x</code> with the values 1,2,3 .<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p><span class="theorem-title"><strong>Übungsaufgabe 1.5 (Define a vector)</strong></span> Define in R a vector <code>x</code> with the values 1,2,3 .<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 </div>
 <div id="exr-q5" class="theorem exercise">
-<p><span class="theorem-title"><strong>Übungsaufgabe 2.6 (Vector wise computation)</strong></span> Square each value in the vector <code>x</code>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p><span class="theorem-title"><strong>Übungsaufgabe 1.6 (Vector wise computation)</strong></span> Square each value in the vector <code>x</code>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 </div>
 <div id="exr-q6" class="theorem exercise">
-<p><span class="theorem-title"><strong>Übungsaufgabe 2.7 (Vector wise computation 2)</strong></span> Square each value in the vector <code>x</code> and sum up the values.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p><span class="theorem-title"><strong>Übungsaufgabe 1.7 (Vector wise computation 2)</strong></span> Square each value in the vector <code>x</code> and sum up the values.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
 </div>
 <div id="exr-q7" class="theorem exercise">
-<p><span class="theorem-title"><strong>Übungsaufgabe 2.8 (Vector wise computation 3)</strong></span> Square each value in the vector <code>x</code>, sum up the values, and divide by 3.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p><span class="theorem-title"><strong>Übungsaufgabe 1.8 (Vector wise computation 3)</strong></span> Square each value in the vector <code>x</code>, sum up the values, and divide by 3.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
 </div>
 <div id="exr-q8" class="theorem exercise">
-<p><span class="theorem-title"><strong>Übungsaufgabe 2.9 (Compute the variance)</strong></span> Compute the variance of <code>x</code> using basic arithmetic.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p><span class="theorem-title"><strong>Übungsaufgabe 1.9 (Compute the variance)</strong></span> Compute the variance of <code>x</code> using basic arithmetic.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
 </div>
 <div id="exr-q9" class="theorem exercise">
-<p><span class="theorem-title"><strong>Übungsaufgabe 2.10 (Work with NA)</strong></span> Define the vector <code>y</code> with the values 1,2,NA. Compute the mean. Explain the results.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+<p><span class="theorem-title"><strong>Übungsaufgabe 1.10 (Work with NA)</strong></span> Define the vector <code>y</code> with the values 1,2,NA. Compute the mean. Explain the results.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
 </div>
 </section>
 </section>
-<section id="data-import" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="data-import"><span class="header-section-number">2.3</span> Data import</h2>
+<section id="data-import" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="data-import"><span class="header-section-number">1.6</span> Data import</h2>
 <p>Check out <a href="https://moderndive.com/4-tidy.html">chapter 4 in ModernDive</a> on how to import data into RStudio and for some basic concepts about “tidy data”.</p>
 <p>Spoiler: There’s a button in RStudio in the “Environment” Pane saying “Import Dataset”. Just click it, and things should work out.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -407,10 +470,10 @@ Hinweis
 </div>
 </div>
 </section>
-<section id="sec-blitz-data" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="sec-blitz-data"><span class="header-section-number">2.4</span> Blitz start with data</h2>
-<section id="motor-trends-cars" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="motor-trends-cars"><span class="header-section-number">2.4.1</span> Motor Trends Cars</h3>
+<section id="sec-blitz-data" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="sec-blitz-data"><span class="header-section-number">1.7</span> Blitz start with data</h2>
+<section id="motor-trends-cars" class="level3" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="motor-trends-cars"><span class="header-section-number">1.7.1</span> Motor Trends Cars</h3>
 <p>To blitz start with data, type the following in R:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -418,8 +481,8 @@ Hinweis
 <p>And the data set <code>mtcars</code> will be available.</p>
 <p>To get help for the data set, type <code>help(mtcars)</code></p>
 </section>
-<section id="penguins" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="penguins"><span class="header-section-number">2.4.2</span> Penguins</h3>
+<section id="penguins" class="level3" data-number="1.7.2">
+<h3 data-number="1.7.2" class="anchored" data-anchor-id="penguins"><span class="header-section-number">1.7.2</span> Penguins</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png" class="img-fluid figure-img"></p>
@@ -533,20 +596,36 @@ Hinweis
 <p>Here’s some <a href="https://vincentarelbundock.github.io/Rdatasets/doc/palmerpenguins/penguins.html">documentation (code book)</a> for this data set.</p>
 </section>
 </section>
-<section id="lab" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="lab"><span class="header-section-number">2.5</span> Lab</h2>
+<section id="lab-1" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="lab-1"><span class="header-section-number">1.8</span> Lab</h2>
 <p>Import <em>your</em> research data into R.</p>
+<blockquote class="blockquote">
+<p>🧑‍🎓 I want more exercises on R!</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>👨‍🏫 Checkout all <a href="https://datenwerk.netlify.app/#category=R">exercises tagges with “R”</a> on <a href="https://datenwerk.netlify.app/">datenwerk</a>. Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.</p>
+</blockquote>
 </section>
-<section id="more-data-set" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="more-data-set"><span class="header-section-number">2.6</span> More data set</h2>
+<section id="more-data-sets" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="more-data-sets"><span class="header-section-number">1.9</span> More data sets</h2>
 <p>Check out <a href="https://data-se.netlify.app/2022/02/23/data-sets-for-for-teaching/">this curated list</a> of data sets useful for learning and practicing your data skills.</p>
 </section>
-<section id="literature" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="literature"><span class="header-section-number">2.7</span> Literature</h2>
+<section id="if-nothing-else-helps" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="if-nothing-else-helps"><span class="header-section-number">1.10</span> If nothing else helps</h2>
+<p>Stay calm and behold the <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif/600px-Spiral_of_black_and_white_squares_10_till_repetition_spiraling_in.gif?20170912223608">infinity</a>.</p>
+</section>
+<section id="literature" class="level2" data-number="1.11">
+<h2 data-number="1.11" class="anchored" data-anchor-id="literature"><span class="header-section-number">1.11</span> Literature</h2>
 <p><span class="citation" data-cites="wild_statistical_1999">Wild &amp; Pfannkuch (<a href="references.html#ref-wild_statistical_1999" role="doc-biblioref">1999</a>)</span> discuss the thougnht processes involved in statistical problem solving seen from a broad perspective. <span class="citation" data-cites="ismay_statistical_2020">Ismay &amp; Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span> is a helpful start into the first steps in R.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-gelman_regression_2021" class="csl-entry" role="listitem">
+Gelman, A., Hill, J., &amp; Vehtari, A. (2021). <em>Regression and Other Stories</em>. Cambridge University Press.
+</div>
+<div id="ref-hernan_second_2019" class="csl-entry" role="listitem">
+Hernán, M. A., Hsu, J., &amp; Healy, B. (2019). A Second Chance to Get Causal Inference Right: <span>A</span> Classification of Data Science Tasks. <em>Chance</em>, <em>32</em>(1), 42–49. <a href="https://doi.org/10.1080/09332480.2019.1579578">https://doi.org/10.1080/09332480.2019.1579578</a>
+</div>
 <div id="ref-ismay_statistical_2020" class="csl-entry" role="listitem">
 Ismay, C., &amp; Kim, A. Y.-S. (2020). <em>Statistical Inference via Data Science: A <span>ModernDive</span> into <span>R</span> and the <span>Tidyverse</span></em>. CRC Press / Taylor &amp; Francis Group. <a href="https://moderndive.com/">https://moderndive.com/</a>
 </div>
@@ -978,13 +1057,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./010-goals.html" class="pagination-link  aria-label=" &lt;span="" in="" statistics&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Goals in statistics</span></span>
+      <a href="./index.html" class="pagination-link  aria-label=" preface"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./030-EDA.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Exploratory Data Analysis</span>">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./030-EDA.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Exploratory Data Analysis</span>">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
