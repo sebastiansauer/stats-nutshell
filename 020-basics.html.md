@@ -114,7 +114,7 @@ For example, in their paper the authors enumarate some dispositions that researc
 
 ### R Basics
 
-Check out [chapter 1 in ModernDive](https://moderndive.com/1-getting-started.html) for an accessible introduction to getting started with R and RStudio.
+Check out the course [Statistics1, chapter on importing data](https://statistik1.netlify.app/020-r#daten-importieren) for an accessible introduction to getting started with R and RStudio.
 
 Please also note that R and RStudio should be installed before starting (this course).
 
@@ -155,7 +155,7 @@ Define in R the variable `age` and assign the value `42`.^[`age <- 42`, spaces a
 
 ## Define a variable as a string
 
-Define in R the variable `name` and assign the value `me`.^[`age <- "me"`]
+Define in R the variable `name` and assign the value `me`.^[`name <- "me"`]
 :::
 
 
@@ -163,7 +163,7 @@ Define in R the variable `name` and assign the value `me`.^[`age <- "me"`]
 
 ## Define a variable by another variable
 
-Define in R the variable `name` and assign the *variable* `age`.^[`age <- age`]
+Define in R the variable `name` and assign the *variable* `age`.^[`name <- age`]
 :::
 
 
@@ -274,7 +274,7 @@ Define the vector `y` with the values 1,2,NA. Compute the mean. Explain the resu
 ## Data import
 
 
-Check out [chapter 4 in ModernDive](https://moderndive.com/4-tidy.html) on how to import data into RStudio and for some basic concepts about "tidy data".
+Check out [chapter 3 in Statistics1](https://statistik1.netlify.app/020-r#daten-importieren) on how to import data into RStudio and for some basic concepts about "tidy data".
 
 Spoiler: There's a button in RStudio in the "Environment" Pane saying "Import Dataset". 
 Just click it, and things should work out.

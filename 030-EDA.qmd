@@ -502,7 +502,7 @@ export(df1, file = "df1.csv")
 ```
 
 
-For exporting `csv` files we could *altneratively* use `write_csv()` from the tidyverse or `write.csv` from base R.
+For exporting `csv` files we could *alternatively* use `write_csv()` from the tidyverse or `write.csv` from base R.
 Then, checkout the file in Excel. Note that it is possible to import CSV files to Excel.
 
 ```{r}
@@ -557,10 +557,10 @@ The R package `flextable` provides functions for that purpose, see @tbl-flex:
 
 
 ```{r}
-#| label: tbl-flex1
+#| label: tbl-flex
 #| tbl-cap: A table using the R package flextable
 library(flextable)
-my_flex_tab <- flextable(penguins)
+my_flex_tab <- flextable(head(penguins))
 my_flex_tab
 ```
 
