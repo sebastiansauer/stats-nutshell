@@ -89,11 +89,6 @@ see Figure @fig-belief-update.
 
 :::{.cell layout-align="center"}
 
-```{.default .cell-code}
-flowchart LR
-  A(prior belief) --> B(new data) --> C(posterior belief)
-```
-
 :::{.cell-output-display}
 
 :::{#fig-belief-update}
@@ -175,7 +170,7 @@ Consider your (most pressing) research question. Assess whether it is more acces
 
 ## p-value
 
-The p-value has been used as the pivotal criterion to decide about whether or not a research hypothesis were to be "accepted" (a term forbidden in frequentist and Popperian langauge) or to be rejected. However, more recently, it is advised to use the p-value only as *one* indicator among multiple; see @wasserstein_asas_2016 and @wasserstein_moving_2019.
+The p-value has been used as the pivotal criterion to decide about whether or not a research hypothesis were to be "accepted" (a term forbidden in frequentist and Popperian langauge) or to be rejected. However, more recently, it is advised to use the p-value only as *one* indicator among multiple; see @wasserstein_moving_2019.
 
 ::: callout-important
 The p-value is defined as the probability of obtaining the observed data (or more extreme) under the assumption of no effect.

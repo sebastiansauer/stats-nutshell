@@ -25,6 +25,7 @@ library(ggstatsplot)  # data visualization ornamented with statistics
 You can only start a package if you have it installed upfront.
 :::
 
+Check out the course [Statistics1, chapter on introducing R](https://statistik1.netlify.app/020-r#r-pakete) for an accessible introduction to getting started with R and RStudio and on how to *install R packages*.
 
 
 ## What's EDA?
@@ -99,7 +100,7 @@ Check it out [on its Githup page](http://boxuancui.github.io/DataExplorer/).
 library(DataExplorer)
 ```
 
-For example, we can easyly get an overview of the distribution of all (quantitative) variables in the data set.
+For example, we can easily get an overview of the distribution of all (quantitative) variables in the data set.
 What do you notice on inspecting the distributions, see @fig-peng-distros?
 
 ```{r}
@@ -469,8 +470,63 @@ ggbetweenstats(
 
 ## Exporting to Office {#sec-office}
 
+### Word
+
+#### Basic approach
+
+It's no big deal to get it into Word processors as well.
+Here's one simple way:
+
+1. Open a Quarto-Document in RStudio
+2. produce some nice table
+4. copy and paste it to Word
+
+
+Here's an example of producing a nice table:
+
+```{r}
+library(easystats)  # once per session only
+describe_distribution(penguins) |> print_md()
+```
+
+Note that `print_md()` will "prettify" your output. Without this line, your output will look more command-line-nerdy style.
+
+
+#### Additional ways
+
+In addition, one [user gave the following recommendation on StackOverflow](https://stackoverflow.com/questions/60815583/how-to-save-table1-package-output-table-to-doc-format-r):
+
+
+>   Another possible solution: The above strategy did not work for me when I had a similar issue, but it was resolved once I knitted the table1 object and opened the html in browser to copy the html table and successfully paste into word. Doing it within RStudio viewer would not work for me for some reason.
+
+
+Lastly, there are options to export directly to Word or Powerpoint.
+The R package `{flextable}` provides functions for that purpose, see @tbl-flex^[Don't forget to install it before you use it.]:
+
+
+
+```{r}
+#| label: tbl-flex
+#| tbl-cap: A table using the R package flextable
+library(flextable)
+my_flex_tab <- flextable(head(penguins))
+my_flex_tab
+```
+
+
+Just save it to the Office format of your choice:
+
+```{r}
+#| eval: false
+save_as_docx("Table 1 " = my_flex_tab, path = "my_tab.docx")
+save_as_pptx("Table 1 " = my_flex_tab, path = "my_tab.pptx")
+```
+
+
 
 ### Excel
+
+#### Just save your data to disk
 
 The most straightforward approach is to convince your EDA function to produce a data frame.
 Data frames can be written as CSV or XLSX to disk, and then easily imported to office packages.
@@ -517,7 +573,7 @@ export(df2, file = "df2.csv")
 ```
 
 
-### More advanced
+#### More advanced
 
 Note that if we use `data_tabulate` like this:
 
@@ -538,40 +594,6 @@ export(df3[[1]], file = "df3.csv")
 ```
 
 
-
-### Word
-
-
-Obviously, once your data has arriven as a spreadsheet in Excel (or similar software packages),
-it's no big deal to get it into Word processors as well.
-
-In addition, one [user gave the following recommendation on StackOverflow](https://stackoverflow.com/questions/60815583/how-to-save-table1-package-output-table-to-doc-format-r):
-
-
->   Another possible solution: The above strategy did not work for me when I had a similar issue, but it was resolved once I knitted the table1 object and opened the html in browser to copy the html table and successfully paste into word. Doing it within RStudio viewer would not work for me for some reason.
-
-
-Lastly, there are options to export directly to Word or Powerpoint.
-The R package `flextable` provides functions for that purpose, see @tbl-flex:
-
-
-
-```{r}
-#| label: tbl-flex
-#| tbl-cap: A table using the R package flextable
-library(flextable)
-my_flex_tab <- flextable(head(penguins))
-my_flex_tab
-```
-
-
-Just save it to the Office format of your choice:
-
-```{r}
-#| eval: false
-save_as_docx("Table 1 " = my_flex_tab, path = "my_tab.docx")
-save_as_pptx("Table 1 " = my_flex_tab, path = "my_tab.pptx")
-```
 
 
 ## Case Studies

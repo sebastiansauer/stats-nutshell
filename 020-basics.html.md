@@ -1,10 +1,31 @@
 # Basics
 
+![](img/stern.png){width="5%" fig-align="center"}
+
+## Embarking
+
+
+
+:::{#exr-einstieg}
+### Hello stats
+
+Present yourself to the group along the lines of the following three tags:
+
+1. Your primary scientific *interest*
+2. Your *expectations* to this course 
+3. Your *background* in statistics and R
+
+If you want, feel free to a *fun fact*. $\square$
+:::
+
+
+
 ## Goals in statistics
 
-![](img/stern.png){width="5%"}
 
 
+
+### Taxonmy of goals
 
 Many stories to be told. Here's one, on the goals pursued in statistics (and related fields), see Figure @fig-goals.
 
@@ -46,19 +67,6 @@ A taxonomy of statistical goals
 Note that "goals" do not exist in the world. We make them up in our heads. Hence, they have no ontological existence, they are epistemological beasts. This entails that we are free to devise goals as we wish, provided we can convince ourselves and other souls of the utility of our creativity.
 :::
 
-
-## Lab
-
-
-Match *your* (most pressing) research goal to the nomenclature for scientific goals as shown in @fig-goals.
-Explain your reasoning.
-
-Next, put three research themes or studies you particularly like to this nomenclature and explain your reasoning.
-
-
-
-## Further reading
-
 @hernan_second_2019 distinguish:
 
 
@@ -68,9 +76,14 @@ Next, put three research themes or studies you particularly like to this nomencl
 
 -   *Causal inference*: "Will starting a statin reduce, on average, the risk of stroke in women with certain characteristics?"
 
-@gelman_regression_2021, chap. 1.1 proposes three "challenges" of statistical inference.
+
+### Lab: Your goals
 
 
+Match *your* (most pressing) research goal to the nomenclature for scientific goals as shown in @fig-goals.
+Explain your reasoning.
+
+Next, put three research themes or studies you particularly like to this nomenclature and explain your reasoning.
 
 
 
@@ -131,141 +144,112 @@ Check-out this [introductory statistics course](https://statistik1.netlify.app/)
 Pro-Tipp: Use the translation tool of your browswer to translate into your favorite language.
 
 
-### I want to dig deeper
-
-Check-out this [course on statistical inference using Bayes statistics](https://start-bayes.netlify.app/).
-If you are interested in predictive modeling, check-out [this couse](https://ds1-prognosemodellierung.netlify.app/).
 
 
 ### Initial quiz
 
 
-To get an idea whether you have digested some R basics, consider the following quiz.
+To get an idea whether you have digested some R basics, consider [this quiz](https://datenwerk.netlify.app/posts/r-quiz/r-quiz).
 
 
-:::{#exr-q1}
+<!-- :::{#exr-q1} -->
 
-## Define a variable
+<!-- ## Define a variable -->
 
-Define in R the variable `age` and assign the value `42`.^[`age <- 42`, spaces are optional but useful]
-:::
-
-
-:::{#exr-q2}
-
-## Define a variable as a string
-
-Define in R the variable `name` and assign the value `me`.^[`name <- "me"`]
-:::
+<!-- Define in R the variable `age` and assign the value `42`.^[`age <- 42`, spaces are optional but useful] -->
+<!-- ::: -->
 
 
-:::{#exr-q3}
+<!-- :::{#exr-q2} -->
 
-## Define a variable by another variable
+<!-- ## Define a variable as a string -->
 
-Define in R the variable `name` and assign the *variable* `age`.^[`name <- age`]
-:::
-
-
+<!-- Define in R the variable `name` and assign the value `me`.^[`name <- "me"`] -->
+<!-- ::: -->
 
 
-:::{#exr-q3a}
+<!-- :::{#exr-q3} -->
 
-## Call a function
+<!-- ## Define a variable by another variable -->
 
-Ask R what today's  `date()` is, that is, call a function.^[`date()`]
-:::
-
-
-
-:::{#exr-q4}
-
-## Define a vector
-
-Define in R a vector `x` with the values 1,2,3 .^[`x <- c(1, 2, 3)`]
-:::
-
-
-
-:::{#exr-q5}
-
-## Vector wise computation
-
-Square each value in the vector `x`.^[`x^2`]
-:::
+<!-- Define in R the variable `name` and assign the *variable* `age`.^[`name <- age`] -->
+<!-- ::: -->
 
 
 
 
-:::{#exr-q6}
+<!-- :::{#exr-q3a} -->
 
-## Vector wise computation 2
+<!-- ## Call a function -->
 
-Square each value in the vector `x` and sum up the values.^[`sum(x^2)`]
-:::
-
-
-:::{#exr-q7}
-
-## Vector wise computation 3
-
-Square each value in the vector `x`, sum up the values, and divide by 3.^[`mean(x^2)`]
-:::
-
-:::{#exr-q8}
-
-## Compute the variance
-
-Compute the variance of `x` using basic arithmetic.^[`sum(x^2)`][^sol8]
-:::
-
-
-[^sol8]:
+<!-- Ask R what today's  `date()` is, that is, call a function.^[`date()`] -->
+<!-- ::: -->
 
 
 
-    ::: {.cell layout-align="center"}
-    
-    ```{.r .cell-code}
-    x <- c(1, 2, 3)
-    
-    sum((x - mean(x))^2) / (length(x)-1)
-    ```
-    
-    ::: {.cell-output .cell-output-stdout}
-    
-    ```
-    [1] 1
-    ```
-    
-    
-    :::
-    
-    ```{.r .cell-code}
-    # compare: 
-    var(x)  
-    ```
-    
-    ::: {.cell-output .cell-output-stdout}
-    
-    ```
-    [1] 1
-    ```
-    
-    
-    :::
-    :::
+<!-- :::{#exr-q4} -->
+
+<!-- ## Define a vector -->
+
+<!-- Define in R a vector `x` with the values 1,2,3 .^[`x <- c(1, 2, 3)`] -->
+<!-- ::: -->
+
+
+
+<!-- :::{#exr-q5} -->
+
+<!-- ## Vector wise computation -->
+
+<!-- Square each value in the vector `x`.^[`x^2`] -->
+<!-- ::: -->
 
 
 
 
+<!-- :::{#exr-q6} -->
 
-:::{#exr-q9}
+<!-- ## Vector wise computation 2 -->
 
-## Work with NA
+<!-- Square each value in the vector `x` and sum up the values.^[`sum(x^2)`] -->
+<!-- ::: -->
 
-Define the vector `y` with the values 1,2,NA. Compute the mean. Explain the results.^[`y <- c(1, 2, NA); mean(y)` NA (not available, ie., missing) is contagious in R: If there's a missing element, R will assume that something has gone wrong and will raise a red flag, i.e, give you a NA back.]
-:::
+
+<!-- :::{#exr-q7} -->
+
+<!-- ## Vector wise computation 3 -->
+
+<!-- Square each value in the vector `x`, sum up the values, and divide by 3.^[`mean(x^2)`] -->
+<!-- ::: -->
+
+<!-- :::{#exr-q8} -->
+
+<!-- ## Compute the variance -->
+
+<!-- Compute the variance of `x` using basic arithmetic.^[`sum(x^2)`][^sol8] -->
+<!-- ::: -->
+
+
+<!-- [^sol8]: -->
+
+
+<!--     ```{r} -->
+<!--     x <- c(1, 2, 3) -->
+
+<!--     sum((x - mean(x))^2) / (length(x)-1) -->
+
+<!--     # compare:  -->
+<!--     var(x)   -->
+<!--     ``` -->
+
+
+
+
+<!-- :::{#exr-q9} -->
+
+<!-- ## Work with NA -->
+
+<!-- Define the vector `y` with the values 1,2,NA. Compute the mean. Explain the results.^[`y <- c(1, 2, NA); mean(y)` NA (not available, ie., missing) is contagious in R: If there's a missing element, R will assume that something has gone wrong and will raise a red flag, i.e, give you a NA back.] -->
+<!-- ::: -->
 
 
 
@@ -288,6 +272,8 @@ I strongly advice working with *Projects* in RStudio, as it makes working with f
 
 ## Blitz start with data {#sec-blitz-data}
 
+We'll work predominantly with the following data sets.
+
 
 ### Motor Trends Cars
 
@@ -305,6 +291,14 @@ data(mtcars)
 And the data set `mtcars` will be available.
 
 To get help for the data set, type `help(mtcars)`
+
+
+
+{{< downloadthis data/mtcars.csv dname="mtcars.csv" label="Download the mtcars data" icon="database-fill-down" type="info" >}}
+
+
+
+
 
 
 ### Penguins
@@ -346,13 +340,19 @@ Here's some [documentation (code book)](https://vincentarelbundock.github.io/Rda
 
 
 
+{{< downloadthis data/penguins.csv dname="penguins.csv" label="Download the penguins data" icon="database-fill-down" type="info" >}}
+
+
+
+
+
 ## Lab
 
 Import *your* research data into R.
 
 >   🧑‍🎓 I want more exercises on R!
 
->   👨‍🏫 Checkout all [exercises tagges with "R"](https://datenwerk.netlify.app/#category=R) on [datenwerk](https://datenwerk.netlify.app/). Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.
+>   👨‍🏫 Checkout all [exercises tagged with "R"](https://datenwerk.netlify.app/#category=R) on [datenwerk](https://datenwerk.netlify.app/). Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.
 
 
 
@@ -370,12 +370,20 @@ Stay calm and behold the [infinity](https://upload.wikimedia.org/wikipedia/commo
 
 
 
-## Literature
+## Going further
 
 
+Similar to the "goals" of statistics as presented here, @gelman_regression_2021, chap. 1.1 proposes three "challenges" of statistical inference.
 
-
-@wild_statistical_1999 discuss the thougnht processes involved in statistical problem solving seen from a broad perspective.
+@wild_statistical_1999 discuss the thought processes involved in statistical problem solving seen from a broad perspective.
 @ismay_statistical_2020 is a helpful start into the first steps in R.
+
+
+
+
+
+
+If you want to dig deeper, check-out this [course on statistical inference using Bayes statistics](https://start-bayes.netlify.app/).
+If you are interested in predictive modeling, check-out [this couse](https://ds1-prognosemodellierung.netlify.app/).
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -111,17 +77,17 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Keine Treffer",
-    "search-matching-documents-text": "Treffer",
-    "search-copy-link-title": "Link in die Suche kopieren",
-    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
-    "search-more-match-text": "weitere Treffer in diesem Dokument",
-    "search-more-matches-text": "weitere Treffer in diesem Dokument",
-    "search-clear-button-title": "Zurücksetzen",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Abbrechen",
-    "search-submit-button-title": "Abschicken",
-    "search-label": "Suchen"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
@@ -166,11 +132,11 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./040-inference.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inference</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -189,13 +155,13 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">stats-nutshell</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/sebastiansauer/stats-nutshell" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/sebastiansauer/stats-nutshell" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Suchen"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -261,7 +227,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#what-is-it" id="toc-what-is-it" class="nav-link active" data-scroll-target="#what-is-it"><span class="header-section-number">3.1</span> What is it?</a></li>
@@ -321,7 +287,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Wichtig
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -332,7 +298,7 @@ Wichtig
 <section id="population-and-sample" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="population-and-sample"><span class="header-section-number">3.2</span> Population and sample</h2>
 <p>We want to have an estimate of some population value, for example the proportion of <code>A</code>.</p>
-<p>However, all we have is a subset, a sample of the populuation. Hence, we need to <em>infer</em> from the sample to the popluation. We do so by generalizing from the sample to the population, see Figure <a href="#fig-pop-sample" class="quarto-xref">Abbildung&nbsp;<span>3.1</span></a>.</p>
+<p>However, all we have is a subset, a sample of the populuation. Hence, we need to <em>infer</em> from the sample to the popluation. We do so by generalizing from the sample to the population, see Figure <a href="#fig-pop-sample" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>.</p>
 <div id="fig-pop-sample" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pop-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -364,14 +330,14 @@ Wichtig
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pop-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.1: Population vs.&nbsp;sample (Image credit: Karsten Luebke)
+Figure&nbsp;3.1: Population vs.&nbsp;sample (Image credit: Karsten Luebke)
 </figcaption>
 </figure>
 </div>
 </section>
 <section id="whats-not-inference" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="whats-not-inference"><span class="header-section-number">3.3</span> What’s not inference?</h2>
-<p>Consider fig. <a href="#fig-desk-inf" class="quarto-xref">Abbildung&nbsp;<span>3.2</span></a> which epitomizes the difference between <em>descriptive</em> and <em>inferential</em> statistics.</p>
+<p>Consider fig. <a href="#fig-desk-inf" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> which epitomizes the difference between <em>descriptive</em> and <em>inferential</em> statistics.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-desk-inf" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
@@ -380,7 +346,7 @@ Abbildung&nbsp;3.1: Population vs.&nbsp;sample (Image credit: Karsten Luebke)
 <img src="img/desk_vs_inf-crop.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-desk-inf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.2: The difference between description and inference
+Figure&nbsp;3.2: The difference between description and inference
 </figcaption>
 </figure>
 </div>
@@ -414,10 +380,8 @@ Abbildung&nbsp;3.2: The difference between description and inference
 <section id="bayes-inference" class="level3" data-number="3.5.2">
 <h3 data-number="3.5.2" class="anchored" data-anchor-id="bayes-inference"><span class="header-section-number">3.5.2</span> Bayes inference</h3>
 <p>Bayes inference is concerned about the probability of your research hypothesis.</p>
-<p>It simply redistributes your beliefs based on new data (evidence) you observe, see Figure <a href="#fig-belief-update" class="quarto-xref">Abbildung&nbsp;<span>3.3</span></a>.</p>
+<p>It simply redistributes your beliefs based on new data (evidence) you observe, see Figure <a href="#fig-belief-update" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>flowchart LR</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  A(prior belief) --&gt; B(new data) --&gt; C(posterior belief)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-belief-update" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -430,7 +394,7 @@ Abbildung&nbsp;3.2: The difference between description and inference
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-belief-update-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.3: Bayesian belief updating
+Figure&nbsp;3.3: Bayesian belief updating
 </figcaption>
 </figure>
 </div>
@@ -467,7 +431,7 @@ Abbildung&nbsp;3.3: Bayesian belief updating
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tipp
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -494,21 +458,21 @@ Tipp
 </section>
 <section id="p-value" class="level2" data-number="3.9">
 <h2 data-number="3.9" class="anchored" data-anchor-id="p-value"><span class="header-section-number">3.9</span> p-value</h2>
-<p>The p-value has been used as the pivotal criterion to decide about whether or not a research hypothesis were to be “accepted” (a term forbidden in frequentist and Popperian langauge) or to be rejected. However, more recently, it is advised to use the p-value only as <em>one</em> indicator among multiple; see <span class="citation" data-cites="wasserstein_asas_2016">(<a href="references.html#ref-wasserstein_asas_2016" role="doc-biblioref"><strong>wasserstein_asas_2016?</strong></a>)</span> and <span class="citation" data-cites="wasserstein_moving_2019">Wasserstein et al. (<a href="references.html#ref-wasserstein_moving_2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>The p-value has been used as the pivotal criterion to decide about whether or not a research hypothesis were to be “accepted” (a term forbidden in frequentist and Popperian langauge) or to be rejected. However, more recently, it is advised to use the p-value only as <em>one</em> indicator among multiple; see <span class="citation" data-cites="wasserstein_moving_2019">Wasserstein et al. (<a href="references.html#ref-wasserstein_moving_2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Wichtig
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>The p-value is defined as the probability of obtaining the observed data (or more extreme) under the assumption of no effect.</p>
 </div>
 </div>
-<p>Figure <a href="#fig-pvalue" class="quarto-xref">Abbildung&nbsp;<span>3.4</span></a> visualizes the p-value.</p>
+<p>Figure <a href="#fig-pvalue" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> visualizes the p-value.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-pvalue" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
@@ -517,7 +481,7 @@ Wichtig
 <img src="040-inference_files/figure-html/fig-pvalue-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pvalue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.4: Visualization of the p-value
+Figure&nbsp;3.4: Visualization of the p-value
 </figcaption>
 </figure>
 </div>
@@ -549,16 +513,16 @@ Abbildung&nbsp;3.4: Visualization of the p-value
 Cetinkaya-Rundel, M., &amp; Hardin, J. (2021). <em>Introduction to <span>Modern Statistics</span></em>. <a href="https://openintro-ims.netlify.app/">https://openintro-ims.netlify.app/</a>
 </div>
 <div id="ref-gelman_regression_2021" class="csl-entry" role="listitem">
-Gelman, A., Hill, J., &amp; Vehtari, A. (2021). <em>Regression and Other Stories</em>. Cambridge University Press.
+Gelman, A., Hill, J., &amp; Vehtari, A. (2021). <em>Regression and other stories</em>. Cambridge University Press.
 </div>
 <div id="ref-goodman_dirty_2008" class="csl-entry" role="listitem">
-Goodman, S. (2008). A Dirty Dozen: <span>Twelve P-value</span> Misconceptions. <em>Seminars in Hematology</em>, <em>45</em>(3), 135–140. <a href="https://doi.org/10.1053/j.seminhematol.2008.04.003">https://doi.org/10.1053/j.seminhematol.2008.04.003</a>
+Goodman, S. (2008). A dirty dozen: <span class="nocase">Twelve P-value</span> misconceptions. <em>Seminars in Hematology</em>, <em>45</em>(3), 135–140. <a href="https://doi.org/10.1053/j.seminhematol.2008.04.003">https://doi.org/10.1053/j.seminhematol.2008.04.003</a>
 </div>
 <div id="ref-poldrack_statistical_2022-1" class="csl-entry" role="listitem">
 Poldrack, R. (2022). <em>Statistical <span>Thinking</span> for the 21st <span>Century</span></em>. <a href="https://statsthinking21.github.io/statsthinking21-core-site/index.html">https://statsthinking21.github.io/statsthinking21-core-site/index.html</a>
 </div>
 <div id="ref-wasserstein_moving_2019" class="csl-entry" role="listitem">
-Wasserstein, R. L., Schirm, A. L., &amp; Lazar, N. A. (2019). Moving to a World beyond <span>„ p p <span><span class="math inline">\(&lt;\)</span></span> 0.05“</span>. <em>The American Statistician</em>, <em>73</em>, 1–19. <a href="https://doi.org/10.1080/00031305.2019.1583913">https://doi.org/10.1080/00031305.2019.1583913</a>
+Wasserstein, R. L., Schirm, A. L., &amp; Lazar, N. A. (2019). Moving to a world beyond <span>“ p p <span><span class="math inline">\(&lt;\)</span></span> 0.05.”</span> <em>The American Statistician</em>, <em>73</em>, 1–19. <a href="https://doi.org/10.1080/00031305.2019.1583913">https://doi.org/10.1080/00031305.2019.1583913</a>
 </div>
 </div>
 </section>
@@ -618,12 +582,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Kopiert");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Kopiert");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

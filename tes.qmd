@@ -1,0 +1,10 @@
+---
+title: "Untitled"
+---
+
+```{r}
+data(penguins, package = "palmerpenguins")
+library(easystats)  # once per session
+describe_distribution(penguins) |> print_md()
+```
+

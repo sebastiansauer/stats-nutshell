@@ -1069,7 +1069,7 @@ plot(summary(lm4_corr))
 
 >   🧑‍🎓 I want more!
 
->   👨‍🏫 Checkout all [exercises tagges with "regression"](https://datenwerk.netlify.app/#category=regression) on [datenwerk](https://datenwerk.netlify.app/). Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.
+>   👨‍🏫 Checkout all [exercises tagged with "regression"](https://datenwerk.netlify.app/#category=regression) on [datenwerk](https://datenwerk.netlify.app/). Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.
 
 
 
