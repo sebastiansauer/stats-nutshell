@@ -244,7 +244,7 @@
     "href": "020-basics.html#embarking",
     "title": "1  Basics",
     "section": "",
-    "text": "Exercise 1.1 (Hello stats) Present yourself to the group along the lines of the following three tags:\n\nYour primary scientific interest\nYour expectations to this course\nYour background in statistics and R\n\nIf you want, feel free to a fun fact. \\(\\square\\)",
+    "text": "Exercise 1.1 (Hello stats) Present yourself to the group along the lines of the following three tags:\n\nYour primary scientific interest\nYour expectations to this course\nYour background in statistics and R\n\nIf you want, feel free to add a fun fact. \\(\\square\\)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
     ]
@@ -304,7 +304,7 @@
     "href": "020-basics.html#lab",
     "title": "1  Basics",
     "section": "1.7 Lab",
-    "text": "1.7 Lab\nImport your research data into R.\n\n🧑‍🎓 I want more exercises on R!\n\n\n👨‍🏫 Checkout all exercises tagged with “R” on datenwerk. Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.",
+    "text": "1.7 Lab\nImport your research data into R.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
     ]
@@ -313,8 +313,8 @@
     "objectID": "020-basics.html#more-data-sets",
     "href": "020-basics.html#more-data-sets",
     "title": "1  Basics",
-    "section": "1.8 More data sets",
-    "text": "1.8 More data sets\nCheck out this curated list of data sets useful for learning and practicing your data skills.",
+    "section": "1.9 More data sets",
+    "text": "1.9 More data sets\nCheck out this curated list of data sets useful for learning and practicing your data skills.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
     ]
@@ -323,8 +323,8 @@
     "objectID": "020-basics.html#if-nothing-else-helps",
     "href": "020-basics.html#if-nothing-else-helps",
     "title": "1  Basics",
-    "section": "1.9 If nothing else helps",
-    "text": "1.9 If nothing else helps\nStay calm and behold the infinity.",
+    "section": "1.10 If nothing else helps",
+    "text": "1.10 If nothing else helps\nStay calm and behold the infinity.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
     ]
@@ -333,8 +333,8 @@
     "objectID": "020-basics.html#going-further",
     "href": "020-basics.html#going-further",
     "title": "1  Basics",
-    "section": "1.10 Going further",
-    "text": "1.10 Going further\nSimilar to the “goals” of statistics as presented here, Gelman et al. (2021), chap. 1.1 proposes three “challenges” of statistical inference.\nWild & Pfannkuch (1999) discuss the thought processes involved in statistical problem solving seen from a broad perspective. Ismay & Kim (2020) is a helpful start into the first steps in R.\nIf you want to dig deeper, check-out this course on statistical inference using Bayes statistics. If you are interested in predictive modeling, check-out this couse.\n\n\n\n\nGelman, A., Hill, J., & Vehtari, A. (2021). Regression and other stories. Cambridge University Press.\n\n\nHernán, M. A., Hsu, J., & Healy, B. (2019). A second chance to get causal inference right: A classification of data science tasks. Chance, 32(1), 42–49. https://doi.org/10.1080/09332480.2019.1579578\n\n\nIsmay, C., & Kim, A. Y.-S. (2020). Statistical inference via data science: A ModernDive into R and the Tidyverse. CRC Press / Taylor & Francis Group. https://moderndive.com/\n\n\nMacKay, R. J., & Oldford, R. W. (2000). Scientific method, statistical method and the speed of light. Statistical Science, 15(3), 254–278. https://doi.org/10.1214/ss/1009212817\n\n\nWild, C. J., & Pfannkuch, M. (1999). Statistical thinking in empirical enquiry. International Statistical Review, 67(3), 223–248.",
+    "section": "1.11 Going further",
+    "text": "1.11 Going further\nSimilar to the “goals” of statistics as presented here, Gelman et al. (2021), chap. 1.1 proposes three “challenges” of statistical inference.\nWild & Pfannkuch (1999) discuss the thought processes involved in statistical problem solving seen from a broad perspective. Ismay & Kim (2020) is a helpful start into the first steps in R.\nIf you want to dig deeper, check-out this course on statistical inference using Bayes statistics. If you are interested in predictive modeling, check-out this couse.\n\n\n\n\nGelman, A., Hill, J., & Vehtari, A. (2021). Regression and other stories. Cambridge University Press.\n\n\nHernán, M. A., Hsu, J., & Healy, B. (2019). A second chance to get causal inference right: A classification of data science tasks. Chance, 32(1), 42–49. https://doi.org/10.1080/09332480.2019.1579578\n\n\nIsmay, C., & Kim, A. Y.-S. (2020). Statistical inference via data science: A ModernDive into R and the Tidyverse. CRC Press / Taylor & Francis Group. https://moderndive.com/\n\n\nMacKay, R. J., & Oldford, R. W. (2000). Scientific method, statistical method and the speed of light. Statistical Science, 15(3), 254–278. https://doi.org/10.1214/ss/1009212817\n\n\nWild, C. J., & Pfannkuch, M. (1999). Statistical thinking in empirical enquiry. International Statistical Review, 67(3), 223–248.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
     ]
@@ -1007,6 +1007,16 @@
     "text": "Don’t forget to install it before you use it.↩︎",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Exploratory Data Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "020-basics.html#exercises",
+    "href": "020-basics.html#exercises",
+    "title": "1  Basics",
+    "section": "1.8 Exercises",
+    "text": "1.8 Exercises\n\n🧑‍🎓 I need exercises on R!\n\n\n👨‍🏫 Checkout all exercises tagged with “R” on datenwerk. Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
     ]
   }
 ]

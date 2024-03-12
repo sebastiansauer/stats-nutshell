@@ -15,7 +15,7 @@ Present yourself to the group along the lines of the following three tags:
 2. Your *expectations* to this course 
 3. Your *background* in statistics and R
 
-If you want, feel free to a *fun fact*. $\square$
+If you want, feel free to add a *fun fact*. $\square$
 :::
 
 
@@ -350,7 +350,10 @@ Here's some [documentation (code book)](https://vincentarelbundock.github.io/Rda
 
 Import *your* research data into R.
 
->   🧑‍🎓 I want more exercises on R!
+
+## Exercises
+
+>   🧑‍🎓 I need exercises on R!
 
 >   👨‍🏫 Checkout all [exercises tagged with "R"](https://datenwerk.netlify.app/#category=R) on [datenwerk](https://datenwerk.netlify.app/). Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.
 
