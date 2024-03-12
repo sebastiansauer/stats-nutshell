@@ -28,6 +28,12 @@ You can only start a package if you have it installed upfront.
 Check out the course [Statistics1, chapter on introducing R](https://statistik1.netlify.app/020-r#r-pakete) for an accessible introduction to getting started with R and RStudio and on how to *install R packages*.
 
 
+:::{#exr-install-pckgs}
+### Install the missing packages
+Take a minute to install any of the packages above which are not yet installed on your machine. Hint: Click on the pane *Packages* and then hit the button *Install*. $\square$
+:::
+
+
 ## What's EDA?
 
 
@@ -167,6 +173,42 @@ vtree(penguins, c("sex", "island"))
 
 
 
+
+### TableOne
+
+The [R package `{tableOne}`](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html) provides something like the typical "Table 1" in many papers.
+
+
+From the homepage:
+
+>   The tableone package is an R package that eases the construction of “Table 1”, i.e., patient baseline characteristics table commonly found in biomedical research papers. The packages can summarize both continuous and categorical variables mixed within one table. Categorical variables can be summarized as counts and/or percentages. Continuous variables can be summarized in the “normal” way (means and standard deviations) or “nonnormal” way (medians and interquartile ranges).
+
+
+```{r}
+penguins <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
+```
+
+
+It's quite simple to use:
+
+```{r}
+library(tableone)
+CreateTableOne(data = penguins)
+```
+
+
+To get more detailled results, use the `summary` method:
+
+```{r}
+tab1 <- CreateTableOne(data = penguins)
+summary(tab1)
+```
+
+How to export to MS Office? Well, one simple approach is obviously to copy-paste. 
+Checkout @sec-office for more advanced options.
+
+
+
 ### The easystats way
 
 There are some packages, such as `{easystats}`, which provide comfortable access to basic statistics:
@@ -213,41 +255,56 @@ For example, [here's the function reference site](https://easystats.github.io/da
 
 
 
-### TableOne
-
-The [R package `{tableOne}`](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html) provides something like the typical "Table 1" in many papers.
 
 
-From the homepage:
+### The easystats way
 
->   The tableone package is an R package that eases the construction of “Table 1”, i.e., patient baseline characteristics table commonly found in biomedical research papers. The packages can summarize both continuous and categorical variables mixed within one table. Categorical variables can be summarized as counts and/or percentages. Continuous variables can be summarized in the “normal” way (means and standard deviations) or “nonnormal” way (medians and interquartile ranges).
-
+There are some packages, such as `{easystats}`, which provide comfortable access to basic statistics:
 
 ```{r}
-penguins <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
+library(easystats)  # once per session
+describe_distribution(penguins)
 ```
 
 
-It's quite simple to use:
-
-```{r}
-library(tableone)
-CreateTableOne(data = penguins)
-```
-
-
-To get more detailled results, use the `summary` method:
-
-```{r}
-tab1 <- CreateTableOne(data = penguins)
-summary(tab1)
-```
+`describe_distribution` provides us with an overview on typical descriptive summaries.
 
 How to export to MS Office? Well, one simple approach is obviously to copy-paste. 
 Checkout @sec-office for more advanced options.
 
 
-## Lab
+For nominal variables, consider `data_tabulate`:
+
+```{r}
+data_tabulate(penguins, select = c("sex", "island")) |> 
+  print_md() 
+```
+
+
+Note that `print_md` helps to get a more visually pleasing (HTML) output, and not only raw command line style output.
+
+We can also get *grouped* tabulations,
+which amounts to something similar to a [contingency table](https://en.wikipedia.org/wiki/Contingency_table):
+
+
+```{r}
+penguins %>% 
+  group_by(sex) %>% 
+  data_tabulate(select = "island", collapse = TRUE)
+```
+
+
+
+
+:::{callout-note}
+Checkout the function reference of your favorite package in order to learn what's on the shelf.
+For example, [here's the function reference site](https://easystats.github.io/datawizard/reference/index.html) of `datawizard`, one of the packages in the `easystats` ecosystem.
+::::
+
+
+
+
+### Lab
 
 Take your research data and prepare it using (at least) one of the "convenience" functions for data cleansing presented above. 
 
@@ -255,11 +312,13 @@ Take your research data and prepare it using (at least) one of the "convenience"
 
 ## Tidyverse
 
+![Entering the tidyverse](img/tidyverse.png){width=30%}
+
 ### Intro to the tidyverse
 
-The Tidyverse is probably the R thing with the most publicity. And it's great. It's a philosophy baken into an array of R packages. Perhaps central is the idea that a lot of little lego pieces, if fitting nicely together, provides a simple yet flexibel and thus powerful machinery.
+The Tidyverse is probably the R thing with the most publicity. And it's great. It's a philosophy baked into an array of R packages. Perhaps central is the idea that a lot of little Lego pieces, if fitting nicely together, provides a simple yet flexible and thus powerful machinery.
 
-There's a lot of introctory material to the tidyverse around [for instance ](https://datasciencebook.ca/wrangling.html), so I'm not repeating that here.
+There's a lot of introductory material to the tidyverse around [for instance ](https://datasciencebook.ca/wrangling.html), so I'm not repeating that here.
 
 
 
@@ -368,6 +427,11 @@ d2 %>%
 
 
 
+### Lab
+
+Take your research data and play around using the `tidyverse` functions shown above.
+
+
 ## Data visualization
 
 
@@ -467,6 +531,17 @@ ggbetweenstats(
   x = sex,
   y = body_mass_g)
 ```
+
+
+
+
+### Lab
+
+Take your research data and play around using the visualization functions shown above.
+
+
+
+
 
 ## Exporting to Office {#sec-office}
 
@@ -592,6 +667,18 @@ To export either, we need to access each list list element:
 #| eval: false
 export(df3[[1]], file = "df3.csv")
 ```
+
+
+
+
+
+
+
+
+### Lab
+
+Take your research data, produce some nice tables and figures and import them into a word file.
+
 
 
 
