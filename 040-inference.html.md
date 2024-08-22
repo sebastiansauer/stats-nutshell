@@ -4,6 +4,10 @@
 
 
 
+
+
+
+
 ![](img/stern.png){width="5%"}
 
 ## What is it?
@@ -39,6 +43,8 @@ Population vs. sample (Image credit: Karsten Luebke)
 Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive* and *inferential* statistics.
 
 
+
+
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
 ![The difference between description and inference](img/desk_vs_inf-crop.png){#fig-desk-inf fig-align='center' width=50%}
@@ -46,9 +52,13 @@ Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive
 :::
 
 
+
+
 ## When size helps
 
 Larger samples allow for more precise estimations (ceteris paribus).
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -56,6 +66,8 @@ Larger samples allow for more precise estimations (ceteris paribus).
 ![Sample size in motion, Image credit: Karsten Luebke](img/Estimate.gif){fig-align='center' width=70%}
 :::
 :::
+
+
 
 
 
@@ -87,11 +99,13 @@ see Figure @fig-belief-update.
 
 
 
-:::{.cell layout-align="center"}
 
-:::{.cell-output-display}
 
-:::{#fig-belief-update}
+::::::{.cell layout-align="center"}
+
+:::::{.cell-output-display}
+
+::::{#fig-belief-update}
 
 :::{}
 
@@ -103,9 +117,11 @@ see Figure @fig-belief-update.
 
 
 Bayesian belief updating
-:::
-:::
-:::
+::::
+:::::
+::::::
+
+
 
 
 
@@ -159,11 +175,15 @@ Consider your (most pressing) research question. Assess whether it is more acces
 ## Comment from xkcd
 
 
+
+
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
 ![](img/frequentists_vs_bayesians_2x.png){fig-align='center' width=50%}
 :::
 :::
+
+
 
 
 [Quelle](https://xkcd.com/1132/)
@@ -179,11 +199,15 @@ The p-value is defined as the probability of obtaining the observed data (or mor
 Figure @fig-pvalue visualizes the p-value.
 
 
+
+
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
 ![Visualization of the p-value](040-inference_files/figure-html/fig-pvalue-1.png){#fig-pvalue fig-align='center' width=50%}
 :::
 :::
+
+
 
 
 ## Some confusion remains about the p-value

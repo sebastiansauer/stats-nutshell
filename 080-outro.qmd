@@ -3,8 +3,11 @@
 
 ## I want to dig deeper
 
+Check-out my [intro stats book](https://statistik1.netlify.app/) to get an overview on statistical modeling using  regression techniques. Please use your browser's translation feature to render the webpages into your favorite language.
+
+
 Check-out this [course on statistical inference using Bayes statistics](https://start-bayes.netlify.app/).
-If you are interested in predictive modeling, check-out [this couse](https://ds1-prognosemodellierung.netlify.app/).
+If you are interested in predictive modeling, check-out [this course](https://ds1-prognosemodellierung.netlify.app/).
 
 
 ## More exercises

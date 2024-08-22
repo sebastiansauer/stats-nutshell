@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="description" content="A crash course on applied statistics with a focus on statistical modelling">
 
-<title>stats-nutshell - 4&nbsp; Modelling and regression</title>
+<title>4&nbsp; Modelling and regression – stats-nutshell</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -128,7 +128,7 @@ div.csl-indent {
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -166,13 +166,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./050-regression1.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelling and regression</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -339,7 +339,7 @@ window.Quarto = {
 </section>
 <section id="whats-modelling" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="whats-modelling"><span class="header-section-number">4.2</span> What’s modelling?</h2>
-<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model">Read this great introduction by modelling by Russel Poldrack</a>. Actually, the whole book is nice <span class="citation" data-cites="poldrack_statistical_2022">Poldrack (<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref">2022</a>)</span>.</p>
+<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model">Read this great introduction by modelling by Russel Poldrack</a>. Actually, the whole book is nice <span class="citation" data-cites="poldrack_statistical_2022">(<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref"><strong>poldrack_statistical_2022?</strong></a>)</span>.</p>
 <p>An epitome of modelling is this, let’s call it the fundamental modelling equation, a bit grandiose but at the point, see <a href="#eq-modelling" class="quarto-xref">Equation&nbsp;<span>4.1</span></a>.</p>
 <p>The data can be separated in the model’s prediction and the rest (the “error”), i.e., what’s unaccounted for by the model.</p>
 <p><span id="eq-modelling"><span class="math display">\[
@@ -348,7 +348,7 @@ window.Quarto = {
 <p>A more visual account of our basic modelling equation is depicted in <a href="#fig-model1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-model1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-model1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-model1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
@@ -377,7 +377,7 @@ Figure&nbsp;4.1: A more visual account of our basic modelling equation
 <p><a href="www.imgflip.com">Source: Image Flip</a></p>
 <p>Alternatively, venture into the forest of statistical tests as <a href="https://web.archive.org/web/20091029162244/http://www.wiwi.uni-muenster.de/ioeb/en/organisation/pfaff/stat_overview_table.html">outlined e.g.&nbsp;here, at Uni Muenster</a>. Proceed at your own peril.</p>
 <p>You may want to ponder on this image of a decision tree of which test to choose, see Figure <a href="#fig-choose-test" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>.</p>
-<div id="fig-choose-test" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-choose-test" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-choose-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/choose-test.png" class="img-fluid figure-img">
@@ -400,7 +400,7 @@ Figure&nbsp;4.2: Choose your test carefully
 <section id="how-to-find-the-regression-line" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="how-to-find-the-regression-line"><span class="header-section-number">4.3.2</span> How to find the regression line</h3>
 <p>In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figure <a href="#fig-regr1" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>.</p>
-<div id="fig-regr1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-regr1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-regr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/800px-Coefficient_of_Determination.svg.png" class="img-fluid figure-img">
@@ -412,8 +412,8 @@ Figure&nbsp;4.3: Least Square Regression
 </div>
 <p><a href="https://commons.wikimedia.org/wiki/File:Coefficient_of_Determination.svg">Source: Orzetoo, CC-SA, Wikimedia</a></p>
 <p>Put simple, we are looking for the line which is in the “middle of the points”. More precisely, we place the line such that the squared distances from the line to the points is minimal, see Figre <a href="#fig-regr1" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>.</p>
-<p>Consider Figure <a href="#fig-regr2" class="quarto-xref">Figure&nbsp;<span>4.4</span></a>, from <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression">this source</a> by <span class="citation" data-cites="roback_beyond_2021">Roback &amp; Legler (<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref">2021</a>)</span>. It visualizes not only the notorious regression line, but also sheds light on regression assumptions, particularly on the error distribution.</p>
-<div id="fig-regr2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<p>Consider Figure <a href="#fig-regr2" class="quarto-xref">Figure&nbsp;<span>4.4</span></a>, from <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#assumptions-for-linear-least-squares-regression">this source</a> by <span class="citation" data-cites="roback_beyond_2021">(<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref"><strong>roback_beyond_2021?</strong></a>)</span>. It visualizes not only the notorious regression line, but also sheds light on regression assumptions, particularly on the error distribution.</p>
+<div id="fig-regr2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-regr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/OLSassumptions-1.png" class="img-fluid figure-img">
@@ -455,7 +455,7 @@ Figure&nbsp;4.4: Regression and some of its assumptions
 <p>Let’s depict the residuals, s. <a href="#fig-lm2" class="quarto-xref">Figure&nbsp;<span>4.5</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-lm2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-lm2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="050-regression1_files/figure-html/fig-lm2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
@@ -470,6 +470,19 @@ Figure&nbsp;4.5: Residuals as deviations from the predicted value
 </section>
 <section id="first-model-one-metric-predictor" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="first-model-one-metric-predictor"><span class="header-section-number">4.5</span> First model: one metric predictor</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All the R-code for each chapter can be found as pure, R-only files <a href="https://github.com/sebastiansauer/stats-nutshell/tree/main/R-code-for-the-chapters">here</a>. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
 <p>First, let’s load some data:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
@@ -501,7 +514,7 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 13%">
@@ -682,7 +695,7 @@ Chain 4: </code></pre>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 10%">
 <col style="width: 9%">
@@ -806,7 +819,7 @@ Chain 4: </code></pre>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>lm1_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">hp</th>
@@ -927,7 +940,7 @@ Chain 4: </code></pre>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lm1_bayes_tibble)  <span class="co"># show the first few rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">(Intercept)</th>
@@ -979,7 +992,7 @@ Chain 4: </code></pre>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(hp <span class="sc">&lt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">hp &lt; 0</th>
@@ -1013,7 +1026,7 @@ Chain 4: </code></pre>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Parameter</th>
@@ -1051,7 +1064,7 @@ Chain 4: </code></pre>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes, <span class="at">ci =</span> .<span class="dv">89</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Parameter</th>
@@ -1108,7 +1121,7 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">hp =</span> <span class="dv">100</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">hp</th>
@@ -1149,7 +1162,7 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 13%">
@@ -1222,7 +1235,7 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 9%">
 <col style="width: 9%">
@@ -1330,7 +1343,7 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 14%">
 <col style="width: 14%">
@@ -1388,7 +1401,7 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>lm3a_means </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">am</th>
@@ -1437,7 +1450,7 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 14%">
 <col style="width: 14%">
@@ -1513,7 +1526,7 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> CI_low, <span class="at">ymax =</span> CI_high, <span class="at">y =</span> Mean)) <span class="sc">+</span></span>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm3a_means, <span class="fu">aes</span>(<span class="at">y =</span> Mean, <span class="at">group =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-lm3a-means" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-lm3a-means" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lm3a-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="050-regression1_files/figure-html/fig-lm3a-means-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
@@ -1537,7 +1550,7 @@ Figure&nbsp;4.6: Means per level of am
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 13%">
@@ -1641,7 +1654,7 @@ Figure&nbsp;4.6: Means per level of am
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>lm4_corr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 9%">
 <col style="width: 9%">
@@ -1753,9 +1766,10 @@ Figure&nbsp;4.6: Means per level of am
 </section>
 <section id="going-further" class="level2" data-number="4.17">
 <h2 data-number="4.17" class="anchored" data-anchor-id="going-further"><span class="header-section-number">4.17</span> Going further</h2>
-<p>An accessible treatment of regression is provided by <span class="citation" data-cites="ismay_statistical_2020">Ismay &amp; Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span>.</p>
-<p><span class="citation" data-cites="roback_beyond_2021">Roback &amp; Legler (<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref">2021</a>)</span> provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by <span class="citation" data-cites="gelman_regression_2021">Gelman et al. (<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref">2021</a>)</span>. You may also benefit from <span class="citation" data-cites="poldrack_statistical_2022">Poldrack (<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref">2022</a>)</span> (open access).</p>
-<p>For a gentle introduction to the basics of modelling, see <a href="https://moderndive.com/5-regression.html">ModernDive Chap. 5.0</a> <span class="citation" data-cites="ismay_statistical_2020">(<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">Ismay &amp; Kim, 2020</a>)</span>, and get the R code <a href="http://moderndive.com/scripts/05-regression.R">here</a>. For slightly more advanced topics on linear regression such as multiple regression and interaction, see <a href="https://moderndive.com/6-multiple-regression.html">ModernDive Chap. 6</a>, and get the R code <a href="http://moderndive.com/scripts/06-multiple-regression.R">here</a>.</p>
+<p>Check-out <a href="https://statistik1.netlify.app/080-regression1">this chapter</a> of my intro stats book to get an overview on statistical modeling using basic regression technieques. Please use your browser’s translation feature to render the webpages into your favorite language.</p>
+<p>An accessible treatment of regression is provided by <span class="citation" data-cites="ismay_statistical_2020">(<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref"><strong>ismay_statistical_2020?</strong></a>)</span>.</p>
+<p><span class="citation" data-cites="roback_beyond_2021">(<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref"><strong>roback_beyond_2021?</strong></a>)</span> provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by <span class="citation" data-cites="gelman_regression_2021">Gelman et al. (<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref">2021</a>)</span>. You may also benefit from <span class="citation" data-cites="poldrack_statistical_2022">(<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref"><strong>poldrack_statistical_2022?</strong></a>)</span> (open access).</p>
+<p>For a gentle introduction to the basics of modelling, see <a href="https://moderndive.com/5-regression.html">ModernDive Chap. 5.0</a> <span class="citation" data-cites="ismay_statistical_2020">(<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref"><strong>ismay_statistical_2020?</strong></a>)</span>, and get the R code <a href="http://moderndive.com/scripts/05-regression.R">here</a>. For slightly more advanced topics on linear regression such as multiple regression and interaction, see <a href="https://moderndive.com/6-multiple-regression.html">ModernDive Chap. 6</a>, and get the R code <a href="http://moderndive.com/scripts/06-multiple-regression.R">here</a>.</p>
 </section>
 <section id="debrief" class="level2" data-number="4.18">
 <h2 data-number="4.18" class="anchored" data-anchor-id="debrief"><span class="header-section-number">4.18</span> Debrief</h2>
@@ -1765,15 +1779,6 @@ Figure&nbsp;4.6: Means per level of am
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-gelman_regression_2021" class="csl-entry" role="listitem">
 Gelman, A., Hill, J., &amp; Vehtari, A. (2021). <em>Regression and other stories</em>. Cambridge University Press.
-</div>
-<div id="ref-ismay_statistical_2020" class="csl-entry" role="listitem">
-Ismay, C., &amp; Kim, A. Y.-S. (2020). <em>Statistical inference via data science: A <span>ModernDive</span> into <span>R</span> and the <span>Tidyverse</span></em>. CRC Press / Taylor &amp; Francis Group. <a href="https://moderndive.com/">https://moderndive.com/</a>
-</div>
-<div id="ref-poldrack_statistical_2022" class="csl-entry" role="listitem">
-Poldrack, R. (2022). <em>Statistical thinking for the 21st century</em>. <a href="https://statsthinking21.github.io/statsthinking21-core-site/index.html">https://statsthinking21.github.io/statsthinking21-core-site/index.html</a>
-</div>
-<div id="ref-roback_beyond_2021" class="csl-entry" role="listitem">
-Roback, P., &amp; Legler, J. (2021). <em>Beyond multiple linear regression: Applied generalized linear models and multilevel models in</em> (1st ed.). CRC Press.
 </div>
 </div>
 </section>
@@ -1814,18 +1819,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1857,7 +1851,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1892,7 +1926,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -2168,12 +2206,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./040-inference.html" class="pagination-link  aria-label=" &lt;span="">
+      <a href="./040-inference.html" class="pagination-link" aria-label="Inference">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inference</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./060-regression2.html" class="pagination-link" aria-label="<span class='chapter-number'>5</span>&nbsp; <span class='chapter-title'>More linear models</span>">
+      <a href="./060-regression2.html" class="pagination-link" aria-label="More linear models">
         <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More linear models</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

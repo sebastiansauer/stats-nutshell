@@ -2,7 +2,6 @@
 
 ![](img/stern.png){width="5%"}
 
-## R-packages needed
 
 
 ## R packages needed for this chapter
@@ -15,19 +14,25 @@ library(tidyverse)
 ```
 
 
+:::{.callout-note}
+All the R-code for each chapter can be found as pure, R-only files [here](https://github.com/sebastiansauer/stats-nutshell/tree/main/R-code-for-the-chapters). $\square$
+:::
+
 ## Multiplicative associations
 
 ### The Log-Y model
 
 Consider again the linear model, in a simple form:
 
-$$\hat{y} = \beta_0 + \beta_1 x_1 +  \ldots + b_kx_k +$$ Surprisingly, we can use this *linear* model to describe *multiplicative* assocations:
+$$\hat{y} = \beta_0 + \beta_1 x_1 +  \ldots + b_kx_k$$.
+
+Surprisingly, we can use this *linear* model to describe *multiplicative* assocations:
 
 $\hat{y} = e^{b_0 + b_1x_1 + b_2x_2 + \ldots + b_kx_k}$
 
-(I wrote `b` instead of $\beta$ just to show that both has its meaning, but are separate things.)
+(I wrote `b` instead of $\beta$ just to show that both has its meaning, but are separate things. However, we'll be okay if we treat them as "similar" for the moment.)
 
-Exponentiate both sides to get:
+Exponentiate both sides of the last equation to get:
 
 $log (\hat{y}) = b_0 + b_1x_1 + b_2x_2 + \ldots + b_kx_k$
 
@@ -370,6 +375,8 @@ knitr::include_graphics("img/543px-Linear_least_squares_geometric_interpretation
 
 ## Going further
 
+Check-out [this chapter](https://statistik1.netlify.app/090-regression2) of my intro stats book to get an overview on statistical modeling using somewhat more advanced regression techniques. 
+Please use your browser's translation feature to render the webpages into your favorite language.
 
 
 A recent but already classic book on regression and inference (if this is possible) is the book by @gelman_regression_2021. A great textbook on statistical modelling (with a Bayesian flavor) was written by @mcelreath_statistical_2020; it's suitable for PhD level.

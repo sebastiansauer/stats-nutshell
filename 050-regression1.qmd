@@ -150,6 +150,11 @@ ggplot(d,
 
 ## First model: one metric predictor
 
+:::{.callout-note}
+All the R-code for each chapter can be found as pure, R-only files [here](https://github.com/sebastiansauer/stats-nutshell/tree/main/R-code-for-the-chapters). $\square$
+:::
+
+
 First, let's load some data:
 
 ```{r}
@@ -527,6 +532,8 @@ plot(summary(lm4_corr))
 Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.
 
 ## Going further 
+
+Check-out [this chapter](https://statistik1.netlify.app/080-regression1) of my intro stats book to get an overview on statistical modeling using basic regression technieques. Please use your browser's translation feature to render the webpages into your favorite language.
 
 An accessible treatment of regression is provided by @ismay_statistical_2020.
 

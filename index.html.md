@@ -2,18 +2,30 @@
 
 ![A nutshell of little (statistics) stars](img/stern.png){width="15%"}
 
+
+:::{.callout-note}
+## {{< fa language >}}
+
+This book is written in English. However, your browser will easily translate the text to your favorite language. Please check your browser's documentation for details. It should be done with one or two clicks. $\square$
+:::
+
+
+
 ## Welcome!
 
-This is an introductory course on *statistical modelling*. Welcome!
+This is an introductory course on *statistical modeling*. Welcome!
 
 The *focus of this course* is on how to specify a theoretical idea (possibly vague) in a testable statistical model.
+
+
+
 
 
 
 ## Please read me
 
 
-In order to benefit as much as possible from this course, it is necessary for you to read this preface information. Yoda agrees (s. @fig-yoda).
+In order to benefit as much as possible from this course, it is essential to read this preface information. Yoda agrees (s. @fig-yoda).
 
 ![Yoda finds you should read the manual](img/yoda.jpg){#fig-yoda width="50%"}
 
@@ -65,9 +77,13 @@ This course builds on the freely available e-book [ModernDive](https://moderndiv
 
 ## Course logistics
 
+
+
 This course can be presented as a one-day seminar or split-up in two or more blocks.
 
 The course can be held in English or German.
+
+### For students
 
 Please *bring your own computer* and *read the notes* regarding course logistics in advance. Note that some *upfront preparation is needed* from the learners.
 
@@ -76,6 +92,16 @@ R and RStudio[^index-1] will be needed throughout the course. Please make sure t
 [^index-1]: Desktop version, not the server
 
 All learning materials (such as literature, code, data) will be provided in electronic format.
+
+
+### For organizers
+
+The following technical equipements is needed for courses in *classroom*:
+
+- WiFi access for students and instructor(s)
+- electricity/power plugs for students and instructors
+- Projector
+- seat and desk for each student and instructor
 
 ## UPFRONT student preparation
 
@@ -242,53 +268,6 @@ I readily confess that this approach is novel to many learners in these days, le
 
 ## Technical Details
 
-Last update: 2024-03-11 17:07:30
+Last update: of this page: `r Sys.time()`
 
 
-::: {.cell layout-align="center"}
-
-```{.r .cell-code}
-sessioninfo::session_info()
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-─ Session info ───────────────────────────────────────────────────────────────
- setting  value
- version  R version 4.2.1 (2022-06-23)
- os       macOS Big Sur ... 10.16
- system   x86_64, darwin17.0
- ui       X11
- language (EN)
- collate  en_US.UTF-8
- ctype    en_US.UTF-8
- tz       Europe/Berlin
- date     2024-03-07
- pandoc   3.1.12.2 @ /usr/local/bin/ (via rmarkdown)
-
-─ Packages ───────────────────────────────────────────────────────────────────
- package     * version date (UTC) lib source
- cli           3.6.2   2023-12-11 [1] CRAN (R 4.2.0)
- digest        0.6.33  2023-07-07 [1] CRAN (R 4.2.0)
- evaluate      0.23    2023-11-01 [1] CRAN (R 4.2.0)
- fastmap       1.1.1   2023-02-24 [1] CRAN (R 4.2.0)
- htmltools     0.5.7   2023-11-03 [1] CRAN (R 4.2.0)
- htmlwidgets   1.6.2   2023-03-17 [1] CRAN (R 4.2.0)
- jsonlite      1.8.8   2023-12-04 [1] CRAN (R 4.2.0)
- knitr         1.45    2023-10-30 [1] CRAN (R 4.2.1)
- rlang         1.1.3   2024-01-10 [1] CRAN (R 4.2.1)
- rmarkdown     2.25    2023-09-18 [1] CRAN (R 4.2.0)
- rstudioapi    0.15.0  2023-07-07 [1] CRAN (R 4.2.0)
- sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.2.0)
- xfun          0.41    2023-11-01 [1] CRAN (R 4.2.0)
-
- [1] /Users/sebastiansaueruser/Rlibs
- [2] /Library/Frameworks/R.framework/Versions/4.2/Resources/library
-
-──────────────────────────────────────────────────────────────────────────────
-```
-
-
-:::
-:::

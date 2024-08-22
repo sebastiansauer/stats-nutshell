@@ -7,7 +7,9 @@
 
 ## R packages needed for this chapter
 
-Make sure to run the following code chunks in order to start the neccessary R packages.
+Make sure to run the following code chunks in order to start the neccessary R packages needed in this chapter.
+
+
 
 ```{r}
 #| message: false
@@ -26,6 +28,11 @@ You can only start a package if you have it installed upfront.
 :::
 
 Check out the course [Statistics1, chapter on introducing R](https://statistik1.netlify.app/020-r#r-pakete) for an accessible introduction to getting started with R and RStudio and on how to *install R packages*.
+
+
+:::{.callout-note}
+All the R-code for each chapter can be found as pure, R-only files [here](https://github.com/sebastiansauer/stats-nutshell/tree/main/R-code-for-the-chapters). $\square$
+:::
 
 
 :::{#exr-install-pckgs}
@@ -753,6 +760,9 @@ but definitely worthwhile if you plan to dig deeper in data analysis.
 
 
 ## Going further
+
+Check-out [the chapter on data vizualization](https://statistik1.netlify.app/090-regression2) of my intro stats book to get an overview on data viz techniques. Please use your browser's translation feature to render the webpages into your favorite language. More on summary statistics (i.e., descriptive statistics) can be found in the same book in [this chapter](https://statistik1.netlify.app/030-aufbereiten).
+
 
 @r4ds is an highly recommendable resource in order to get a thorough understanding of data analysis using R. Note that this source is focusing on the "how to", not so much to theoretical foundations.
 @ismay_statistical_2020 is a gently introduction into many steps on the data journey, including EDA.

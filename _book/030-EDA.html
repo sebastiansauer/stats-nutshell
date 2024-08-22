@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="description" content="A crash course on applied statistics with a focus on statistical modelling">
 
-<title>stats-nutshell - 2&nbsp; Exploratory Data Analysis</title>
+<title>2&nbsp; Exploratory Data Analysis – stats-nutshell</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -127,7 +127,7 @@ div.csl-indent {
 <link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
 <script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -165,13 +165,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-EDA.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -332,7 +332,7 @@ window.Quarto = {
 <p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
 <section id="r-packages-needed-for-this-chapter" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">2.1</span> R packages needed for this chapter</h2>
-<p>Make sure to run the following code chunks in order to start the neccessary R packages.</p>
+<p>Make sure to run the following code chunks in order to start the neccessary R packages needed in this chapter.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># make stats easy again</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># data wrangling</span></span>
@@ -355,6 +355,19 @@ Caution
 </div>
 </div>
 <p>Check out the course <a href="https://statistik1.netlify.app/020-r#r-pakete">Statistics1, chapter on introducing R</a> for an accessible introduction to getting started with R and RStudio and on how to <em>install R packages</em>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All the R-code for each chapter can be found as pure, R-only files <a href="https://github.com/sebastiansauer/stats-nutshell/tree/main/R-code-for-the-chapters">here</a>. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
 <div id="exr-install-pckgs" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.1 (Install the missing packages)</strong></span> Take a minute to install any of the packages above which are not yet installed on your machine. Hint: Click on the pane <em>Packages</em> and then hit the button <em>Install</em>. <span class="math inline">\(\square\)</span></p>
 </div>
@@ -381,7 +394,7 @@ Caution
 <section id="sec-data-journey" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="sec-data-journey"><span class="header-section-number">2.3</span> Data journey</h2>
 <p><span class="citation" data-cites="r4ds">Wickham &amp; Grolemund (<a href="references.html#ref-r4ds" role="doc-biblioref">2016</a>)</span> present a visual sketch of what could be called the “data journey”, i.e., the steps we are taking in order to learn from data, seen from an hands-on angle, see <a href="#fig-data-journey" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
-<div id="fig-data-journey" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-data-journey" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-journey-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/data-journey.png" class="img-fluid figure-img">
@@ -424,7 +437,7 @@ Figure&nbsp;2.1: The data journey
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_histogram</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-peng-distros" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-peng-distros" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-peng-distros-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="030-EDA_files/figure-html/fig-peng-distros-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
@@ -440,7 +453,7 @@ Figure&nbsp;2.2: An overview of the distribution can easily attained using the f
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_intro</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-peng-intro" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-peng-intro" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-peng-intro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="030-EDA_files/figure-html/fig-peng-intro-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
@@ -456,7 +469,7 @@ Figure&nbsp;2.3: An introduction view on a data set
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_bar</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-peng-bars" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-peng-bars" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-peng-bars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="030-EDA_files/figure-html/fig-peng-bars-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
@@ -479,7 +492,7 @@ Figure&nbsp;2.4: Bar plots visualizing the distribution of qualitative variables
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="030-EDA_files/figure-html/vis-data-penguins-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="030-EDA_files/figure-html/vis-data-penguins-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 <figcaption>A fingerprint of the penguins data set; for each variable the data type and the number of missings is shown.</figcaption>
 </figure>
 </div>
@@ -493,7 +506,7 @@ Figure&nbsp;2.4: Bar plots visualizing the distribution of qualitative variables
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vtree)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vtree</span>(penguins, <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"island"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-vtree1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-vtree1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-vtree1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="030-EDA_files/figure-html//vtree001.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
@@ -598,7 +611,7 @@ strata: Overall
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 17%">
 <col style="width: 10%">
@@ -710,7 +723,7 @@ strata: Overall
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_tabulate</span>(penguins, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"island"</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_md</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <caption>Frequency Table</caption>
 <thead>
 <tr class="header">
@@ -847,7 +860,7 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 17%">
 <col style="width: 10%">
@@ -959,7 +972,7 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_tabulate</span>(penguins, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"island"</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_md</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <caption>Frequency Table</caption>
 <thead>
 <tr class="header">
@@ -1118,7 +1131,7 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 9%">
 <col style="width: 8%">
@@ -1221,7 +1234,7 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">bill_length_mm</th>
@@ -1248,7 +1261,7 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 11%">
 <col style="width: 19%">
@@ -1289,7 +1302,7 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 9%">
 <col style="width: 7%">
@@ -1396,7 +1409,7 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">bill_length_mm_z</th>
@@ -1488,7 +1501,7 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 7%">
@@ -1612,7 +1625,7 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)  <span class="co"># must be installed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s visualize the association of bill length (see <a href="#fig-bill-length" class="quarto-xref">Figure&nbsp;<span>2.6</span></a>) with body mass, see <a href="#fig-peng-scatter1" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>.</p>
-<div id="fig-bill-length" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-bill-length" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bill-length-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="https://allisonhorst.github.io/palmerpenguins/reference/figures/culmen_depth.png" class="img-fluid figure-img" style="width:50.0%">
@@ -1628,7 +1641,7 @@ Figure&nbsp;2.6: In case you did not know, that’s what is meant by bill length
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"body_mass_g"</span>,</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"sex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-peng-scatter1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-peng-scatter1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-peng-scatter1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="030-EDA_files/figure-html/fig-peng-scatter1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
@@ -1654,7 +1667,7 @@ Figure&nbsp;2.7: A simple scatterplot of the penguins data set using ggscatter
 <span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">ellipse =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">cor.coef =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-peng-scatter2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-peng-scatter2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-peng-scatter2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="030-EDA_files/figure-html/fig-peng-scatter2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
@@ -1678,7 +1691,7 @@ Figure&nbsp;2.8: A more polished scatterplot of the penguins data set using ggsc
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> sex,</span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-ggstatsplot1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-ggstatsplot1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ggstatsplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="030-EDA_files/figure-html/fig-ggstatsplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
@@ -1702,7 +1715,7 @@ Figure&nbsp;2.9: ggstatsplot builds on ggplot, but is simpler to use
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> sex,</span>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-ggstatsplot2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-ggstatsplot2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ggstatsplot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="030-EDA_files/figure-html/fig-ggstatsplot2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
@@ -1737,7 +1750,7 @@ Figure&nbsp;2.10: Comparing groups on a quantitative output variable, but droppi
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># once per session only</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(penguins) <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 17%">
 <col style="width: 8%">
@@ -1846,7 +1859,7 @@ Figure&nbsp;2.10: Comparing groups on a quantitative output variable, but droppi
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>my_flex_tab <span class="ot">&lt;-</span> <span class="fu">flextable</span>(<span class="fu">head</span>(penguins))</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>my_flex_tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-flex" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-flex" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;2.1: A table using the R package flextable
@@ -2045,13 +2058,11 @@ Tip
 </section>
 <section id="going-further" class="level2" data-number="2.13">
 <h2 data-number="2.13" class="anchored" data-anchor-id="going-further"><span class="header-section-number">2.13</span> Going further</h2>
-<p><span class="citation" data-cites="r4ds">Wickham &amp; Grolemund (<a href="references.html#ref-r4ds" role="doc-biblioref">2016</a>)</span> is an highly recommendable resource in order to get a thorough understanding of data analysis using R. Note that this source is focusing on the “how to”, not so much to theoretical foundations. <span class="citation" data-cites="ismay_statistical_2020">Ismay &amp; Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span> is a gently introduction into many steps on the data journey, including EDA. For a gentle introduction to Data visualization, see <a href="https://moderndive.com/2-viz.html">ModernDive Chap. 2</a> <span class="citation" data-cites="ismay_statistical_2020">(<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">Ismay &amp; Kim, 2020</a>)</span>, and get the R code <a href="http://moderndive.com/scripts/02-visualization.R">here</a>. Similarly, for data wrangling, see <a href="https://moderndive.com/3-wrangling.html">ModernDive Chap. 3</a>, and get the R code <a href="http://moderndive.com/scripts/03-wrangling.R">here</a>.</p>
+<p>Check-out <a href="https://statistik1.netlify.app/090-regression2">the chapter on data vizualization</a> of my intro stats book to get an overview on data viz techniques. Please use your browser’s translation feature to render the webpages into your favorite language. More on summary statistics (i.e., descriptive statistics) can be found in the same book in <a href="https://statistik1.netlify.app/030-aufbereiten">this chapter</a>.</p>
+<p><span class="citation" data-cites="r4ds">Wickham &amp; Grolemund (<a href="references.html#ref-r4ds" role="doc-biblioref">2016</a>)</span> is an highly recommendable resource in order to get a thorough understanding of data analysis using R. Note that this source is focusing on the “how to”, not so much to theoretical foundations. <span class="citation" data-cites="ismay_statistical_2020">(<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref"><strong>ismay_statistical_2020?</strong></a>)</span> is a gently introduction into many steps on the data journey, including EDA. For a gentle introduction to Data visualization, see <a href="https://moderndive.com/2-viz.html">ModernDive Chap. 2</a> <span class="citation" data-cites="ismay_statistical_2020">(<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref"><strong>ismay_statistical_2020?</strong></a>)</span>, and get the R code <a href="http://moderndive.com/scripts/02-visualization.R">here</a>. Similarly, for data wrangling, see <a href="https://moderndive.com/3-wrangling.html">ModernDive Chap. 3</a>, and get the R code <a href="http://moderndive.com/scripts/03-wrangling.R">here</a>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
-<div id="ref-ismay_statistical_2020" class="csl-entry" role="listitem">
-Ismay, C., &amp; Kim, A. Y.-S. (2020). <em>Statistical inference via data science: A <span>ModernDive</span> into <span>R</span> and the <span>Tidyverse</span></em>. CRC Press / Taylor &amp; Francis Group. <a href="https://moderndive.com/">https://moderndive.com/</a>
-</div>
 <div id="ref-r4ds" class="csl-entry" role="listitem">
 Wickham, H., &amp; Grolemund, G. (2016). <em>R for <span>Data Science</span>: <span>Visualize</span>, <span>Model</span>, <span>Transform</span>, <span>Tidy</span>, and <span>Import Data</span></em>. O’Reilly Media. <a href="https://r4ds.had.co.nz/index.html">https://r4ds.had.co.nz/index.html</a>
 </div>
@@ -2100,18 +2111,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2143,7 +2143,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -2178,7 +2218,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -2454,12 +2498,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./020-basics.html" class="pagination-link  aria-label=" &lt;span="">
+      <a href="./020-basics.html" class="pagination-link" aria-label="Basics">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./040-inference.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Inference</span>">
+      <a href="./040-inference.html" class="pagination-link" aria-label="Inference">
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inference</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

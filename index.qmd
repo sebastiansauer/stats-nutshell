@@ -2,18 +2,30 @@
 
 ![A nutshell of little (statistics) stars](img/stern.png){width="15%"}
 
+
+:::{.callout-note}
+## {{< fa language >}}
+
+This book is written in English. However, your browser will easily translate the text to your favorite language. Please check your browser's documentation for details. It should be done with one or two clicks. $\square$
+:::
+
+
+
 ## Welcome!
 
-This is an introductory course on *statistical modelling*. Welcome!
+This is an introductory course on *statistical modeling*. Welcome!
 
 The *focus of this course* is on how to specify a theoretical idea (possibly vague) in a testable statistical model.
+
+
+
 
 
 
 ## Please read me
 
 
-In order to benefit as much as possible from this course, it is necessary for you to read this preface information. Yoda agrees (s. @fig-yoda).
+In order to benefit as much as possible from this course, it is essential to read this preface information. Yoda agrees (s. @fig-yoda).
 
 ![Yoda finds you should read the manual](img/yoda.jpg){#fig-yoda width="50%"}
 
@@ -65,9 +77,13 @@ This course builds on the freely available e-book [ModernDive](https://moderndiv
 
 ## Course logistics
 
+
+
 This course can be presented as a one-day seminar or split-up in two or more blocks.
 
 The course can be held in English or German.
+
+### For students
 
 Please *bring your own computer* and *read the notes* regarding course logistics in advance. Note that some *upfront preparation is needed* from the learners.
 
@@ -76,6 +92,16 @@ R and RStudio[^index-1] will be needed throughout the course. Please make sure t
 [^index-1]: Desktop version, not the server
 
 All learning materials (such as literature, code, data) will be provided in electronic format.
+
+
+### For organizers
+
+The following technical equipements is needed for courses in *classroom*:
+
+- WiFi access for students and instructor(s)
+- electricity/power plugs for students and instructors
+- Projector
+- seat and desk for each student and instructor
 
 ## UPFRONT student preparation
 
@@ -242,9 +268,6 @@ I readily confess that this approach is novel to many learners in these days, le
 
 ## Technical Details
 
-Last update: `r Sys.time()`
+Last update: of this page: `r Sys.time()`
 
-```{r}
-sessioninfo::session_info()
-```
 

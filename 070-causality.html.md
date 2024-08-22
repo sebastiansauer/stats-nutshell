@@ -7,6 +7,8 @@
 ## R packages needed for this chapter
 
 
+
+
 ::: {.cell layout-align="center"}
 
 ```{.r .cell-code}
@@ -14,6 +16,8 @@ library(tidyverse)
 library(ggdag)  # optional  
 ```
 :::
+
+
 
 
 

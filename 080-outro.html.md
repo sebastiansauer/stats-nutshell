@@ -3,8 +3,11 @@
 
 ## I want to dig deeper
 
+Check-out my [intro stats book](https://statistik1.netlify.app/) to get an overview on statistical modeling using  regression techniques. Please use your browser's translation feature to render the webpages into your favorite language.
+
+
 Check-out this [course on statistical inference using Bayes statistics](https://start-bayes.netlify.app/).
-If you are interested in predictive modeling, check-out [this couse](https://ds1-prognosemodellierung.netlify.app/).
+If you are interested in predictive modeling, check-out [this course](https://ds1-prognosemodellierung.netlify.app/).
 
 
 ## More exercises
@@ -17,6 +20,8 @@ There's a ton of exercises available at the [Datenwerk](https://datenwerk.netlif
 
 
 ### Case studies on data visualization
+
+
 
 
 
@@ -41,7 +46,11 @@ There's a ton of exercises available at the [Datenwerk](https://datenwerk.netlif
 
 
 
+
+
 ### Case studies on explorative data analysis
+
+
 
 
 
@@ -100,7 +109,11 @@ There's a ton of exercises available at the [Datenwerk](https://datenwerk.netlif
 
 
 
+
+
 ## Case studies on linear models
+
+
 
 
 
@@ -142,7 +155,11 @@ There's a ton of exercises available at the [Datenwerk](https://datenwerk.netlif
 
 
 
+
+
 ### Case studies on machine learning using tidymodels
+
+
 
 
 
@@ -261,6 +278,8 @@ There's a ton of exercises available at the [Datenwerk](https://datenwerk.netlif
 
 - [Using tidymodels to Predict Health Insurance Cost: Resmapling](https://www.r-bloggers.com/2021/02/using-tidymodels-to-predict-health-insurance-cost/)
 :::
+
+
 
 
 

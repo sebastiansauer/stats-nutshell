@@ -31,11 +31,13 @@ Many stories to be told. Here's one, on the goals pursued in statistics (and rel
 
 
 
-:::{.cell layout-align="center"}
 
-:::{.cell-output-display}
 
-:::{#fig-goals}
+::::::{.cell layout-align="center"}
+
+:::::{.cell-output-display}
+
+::::{#fig-goals}
 
 :::{}
 
@@ -57,9 +59,11 @@ Many stories to be told. Here's one, on the goals pursued in statistics (and rel
 
 
 A taxonomy of statistical goals
-:::
-:::
-:::
+::::
+:::::
+::::::
+
+
 
 
 
@@ -152,105 +156,6 @@ Pro-Tipp: Use the translation tool of your browswer to translate into your favor
 To get an idea whether you have digested some R basics, consider [this quiz](https://datenwerk.netlify.app/posts/r-quiz/r-quiz).
 
 
-<!-- :::{#exr-q1} -->
-
-<!-- ## Define a variable -->
-
-<!-- Define in R the variable `age` and assign the value `42`.^[`age <- 42`, spaces are optional but useful] -->
-<!-- ::: -->
-
-
-<!-- :::{#exr-q2} -->
-
-<!-- ## Define a variable as a string -->
-
-<!-- Define in R the variable `name` and assign the value `me`.^[`name <- "me"`] -->
-<!-- ::: -->
-
-
-<!-- :::{#exr-q3} -->
-
-<!-- ## Define a variable by another variable -->
-
-<!-- Define in R the variable `name` and assign the *variable* `age`.^[`name <- age`] -->
-<!-- ::: -->
-
-
-
-
-<!-- :::{#exr-q3a} -->
-
-<!-- ## Call a function -->
-
-<!-- Ask R what today's  `date()` is, that is, call a function.^[`date()`] -->
-<!-- ::: -->
-
-
-
-<!-- :::{#exr-q4} -->
-
-<!-- ## Define a vector -->
-
-<!-- Define in R a vector `x` with the values 1,2,3 .^[`x <- c(1, 2, 3)`] -->
-<!-- ::: -->
-
-
-
-<!-- :::{#exr-q5} -->
-
-<!-- ## Vector wise computation -->
-
-<!-- Square each value in the vector `x`.^[`x^2`] -->
-<!-- ::: -->
-
-
-
-
-<!-- :::{#exr-q6} -->
-
-<!-- ## Vector wise computation 2 -->
-
-<!-- Square each value in the vector `x` and sum up the values.^[`sum(x^2)`] -->
-<!-- ::: -->
-
-
-<!-- :::{#exr-q7} -->
-
-<!-- ## Vector wise computation 3 -->
-
-<!-- Square each value in the vector `x`, sum up the values, and divide by 3.^[`mean(x^2)`] -->
-<!-- ::: -->
-
-<!-- :::{#exr-q8} -->
-
-<!-- ## Compute the variance -->
-
-<!-- Compute the variance of `x` using basic arithmetic.^[`sum(x^2)`][^sol8] -->
-<!-- ::: -->
-
-
-<!-- [^sol8]: -->
-
-
-<!--     ```{r} -->
-<!--     x <- c(1, 2, 3) -->
-
-<!--     sum((x - mean(x))^2) / (length(x)-1) -->
-
-<!--     # compare:  -->
-<!--     var(x)   -->
-<!--     ``` -->
-
-
-
-
-<!-- :::{#exr-q9} -->
-
-<!-- ## Work with NA -->
-
-<!-- Define the vector `y` with the values 1,2,NA. Compute the mean. Explain the results.^[`y <- c(1, 2, NA); mean(y)` NA (not available, ie., missing) is contagious in R: If there's a missing element, R will assume that something has gone wrong and will raise a red flag, i.e, give you a NA back.] -->
-<!-- ::: -->
-
 
 
 
@@ -280,6 +185,8 @@ We'll work predominantly with the following data sets.
 To blitz start with data, type the following in R:
 
 
+
+
 ::: {.cell layout-align="center"}
 
 ```{.r .cell-code}
@@ -288,13 +195,20 @@ data(mtcars)
 :::
 
 
+
+
 And the data set `mtcars` will be available.
 
 To get help for the data set, type `help(mtcars)`
 
 
 
+
+
 {{< downloadthis data/mtcars.csv dname="mtcars.csv" label="Download the mtcars data" icon="database-fill-down" type="info" >}}
+
+
+
 
 
 
@@ -308,6 +222,8 @@ To get help for the data set, type `help(mtcars)`
 
 
 A bit more advanced, but it's a nice data set, try the Palmer Penguins data set:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -336,11 +252,18 @@ head(d)  # see the first few rows, the "head" of the table
 
 
 
+
+
 Here's some [documentation (code book)](https://vincentarelbundock.github.io/Rdatasets/doc/palmerpenguins/penguins.html) for this data set.
 
 
 
+
+
 {{< downloadthis data/penguins.csv dname="penguins.csv" label="Download the penguins data" icon="database-fill-down" type="info" >}}
+
+
+
 
 
 

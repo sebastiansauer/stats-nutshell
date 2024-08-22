@@ -2,10 +2,11 @@
 
 ![](img/stern.png){width="5%"}
 
-## R-packages needed
 
 
 ## R packages needed for this chapter
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -18,19 +19,27 @@ library(tidyverse)
 
 
 
+
+
+:::{.callout-note}
+All the R-code for each chapter can be found as pure, R-only files [here](https://github.com/sebastiansauer/stats-nutshell/tree/main/R-code-for-the-chapters). $\square$
+:::
+
 ## Multiplicative associations
 
 ### The Log-Y model
 
 Consider again the linear model, in a simple form:
 
-$$\hat{y} = \beta_0 + \beta_1 x_1 +  \ldots + b_kx_k +$$ Surprisingly, we can use this *linear* model to describe *multiplicative* assocations:
+$$\hat{y} = \beta_0 + \beta_1 x_1 +  \ldots + b_kx_k$$.
+
+Surprisingly, we can use this *linear* model to describe *multiplicative* assocations:
 
 $\hat{y} = e^{b_0 + b_1x_1 + b_2x_2 + \ldots + b_kx_k}$
 
-(I wrote `b` instead of $\beta$ just to show that both has its meaning, but are separate things.)
+(I wrote `b` instead of $\beta$ just to show that both has its meaning, but are separate things. However, we'll be okay if we treat them as "similar" for the moment.)
 
-Exponentiate both sides to get:
+Exponentiate both sides of the last equation to get:
 
 $log (\hat{y}) = b_0 + b_1x_1 + b_2x_2 + \ldots + b_kx_k$
 
@@ -63,6 +72,8 @@ For concreteness, say, the bacteriae double each two days, starting with 1 unit 
 After about three weeks, i.e., 10 doubling periods (20 days), we'll have $y$  units of bacteriae:
 
 
+
+
 ::: {.cell layout-align="center"}
 
 ```{.r .cell-code}
@@ -80,6 +91,8 @@ y
 
 :::
 :::
+
+
 
 
 Quite a bit! More than 20 thousand times more than before.
@@ -114,11 +127,13 @@ Regression analyses can be used with more than one predictor, see Figure @fig-mu
 
 
 
-:::{.cell fig-width="6.5" layout-align="center"}
 
-:::{.cell-output-display}
 
-:::{#fig-multregr}
+::::::{.cell fig-width="6.5" layout-align="center"}
+
+:::::{.cell-output-display}
+
+::::{#fig-multregr}
 
 :::{}
 
@@ -133,9 +148,11 @@ X2 --&gt; Y2
 
 
 One predictor (X) vs. two predictors (X1, X2)
-:::
-:::
-:::
+::::
+:::::
+::::::
+
+
 
 
 
@@ -155,6 +172,8 @@ If the slope for one predictor is the same for all values of the other predictor
 Here's a visualization of a 3D regression plane (not line) *without interaction*: constant slope in one axis, see the following figure, @fig-3dregr2. The three cubes show the same data, just turned by different degrees (along the z axis).
 
 
+
+
 ::: {#fig-3dregr2 .cell layout-ncol="3" layout-align="center"}
 ::: {.cell-output-display}
 ![seen from angle 1](img/3d1.png){#fig-3dregr2-1 fig-align='center' width=70%}
@@ -172,6 +191,8 @@ Here's a visualization of a 3D regression plane (not line) *without interaction*
 :::
 
 
+
+
 Note that in the above figure, the slope in each predictor axis equals 1, boringly. Hence the according 2D plots are boring, too.
 
 For the sake of an example, consider this linear model:
@@ -185,6 +206,8 @@ $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon$, where x1 is `hp` and `x2` 
 In R terms:
 
 
+
+
 ::: {.cell layout-align="center"}
 
 ```{.r .cell-code}
@@ -193,7 +216,11 @@ lm3d <- lm(mpg ~ hp + disp, data = mtcars)
 :::
 
 
+
+
 The 3D plot is shown in Figure @fig-mtcars3d.
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -203,7 +230,11 @@ The 3D plot is shown in Figure @fig-mtcars3d.
 :::
 
 
+
+
 Here are the two corresponding 2d (1 predictor) regression models:
+
+
 
 
 ::: {.cell layout-ncol="2" layout-align="center"}
@@ -228,6 +259,8 @@ plot(estimate_relation(lm2))
 :::
 
 
+
+
 Checkout [this post](https://data-se.netlify.app/2022/04/19/3d-regression-plane-with-scatter-plot/) for a visually slightly more appealing 3d regression plane.
 
 ### Interaction
@@ -235,6 +268,8 @@ Checkout [this post](https://data-se.netlify.app/2022/04/19/3d-regression-plane-
 For interaction to happen we relax the assumption that the slope of predictor 1 must be constant for all values of predictor 2.
 
 In R, we specify an interaction model like this:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -245,9 +280,13 @@ lm3d_interact <- lm(mpg ~ hp + disp + hp:disp, data = mtcars)
 :::
 
 
+
+
 The symbol `hp:disp` can be read as "the interaction effect of `hp` and `disp`".
 
 Here's a visual account, see Figure @fig-mtcars3d-interact.
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -255,6 +294,8 @@ Here's a visual account, see Figure @fig-mtcars3d-interact.
 ![mpg ~ hp + disp](060-regression2_files/figure-html/fig-mtcars3d-interact-1.png){#fig-mtcars3d-interact fig-align='center' width=70%}
 :::
 :::
+
+
 
 
 Compare @fig-mtcars3d-interact and @fig-mtcars3d.
@@ -276,6 +317,8 @@ If you find that two sophisticated, consider the following simple case.
 First, we mutate `am` to be a factor variable, in order to make things simpler (without loss of generality).
 
 
+
+
 ::: {.cell layout-align="center"}
 
 ```{.r .cell-code}
@@ -286,7 +329,11 @@ mtcars2 <-
 :::
 
 
+
+
 Now we use this new variable for a simple regression model:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -297,7 +344,11 @@ lm_interact_simple <- lm(mpg ~ disp + am_f + disp:am_f, data = mtcars2)
 :::
 
 
+
+
 Here's the plot, Figure @fig-interact-simple.
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -312,6 +363,8 @@ plot(estimate_relation(lm_interact_simple))
 :::
 
 
+
+
 In this picture, we see that the two regression lines are *not* parallel, and hence there is evidence of an interaction effect.
 
 The interaction effect amounts to the *difference* in slops in  @fig-interact-simple.
@@ -319,6 +372,8 @@ The interaction effect amounts to the *difference* in slops in  @fig-interact-si
 One might be inclined to interpret Figure @fig-interact-simple as an 3D image, where the one (reddish) line is in the foreground and the blueish line in the background (or vice versa, as you like). Given a 3D image (and hence 2 predictors), we are where we started further above.
 
 For completeness, here are the parameters of the model.
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -337,6 +392,8 @@ For completeness, here are the parameters of the model.
 :::
 
 
+
+
 ### Centering variables
 
 The effect of of `am_f` must be interpreted when `disp` is zero, which does not make much sense.
@@ -344,6 +401,8 @@ The effect of of `am_f` must be interpreted when `disp` is zero, which does not 
 Therefore it simplifies the interpretation of regression coefficients to *center* all input variables, by subtrating the mean value ("demeaning" or "centering"):
 
 $$x' = x - \bar{x}$$ In R, this can be achieved e.g,. in this way:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -377,6 +436,8 @@ parameters(lm_interact_simple2)
 :::
 
 
+
+
 ## Predictor relevance
 
 Given a model, we might want to know which predictor has the strongest association with the outcome?
@@ -384,6 +445,8 @@ Given a model, we might want to know which predictor has the strongest associati
 In order to answer this question, all predictor must have the same scale. Otherwise the importance of a predictor would increase by 1000, if we multiply each of the observations' values by the same factor. However, this multiplication should not change the relevance of a predictor.
 
 A simple solution is to standardize all predictors to the same scale (sd=1).
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -396,9 +459,13 @@ mtcars4 <-
 :::
 
 
+
+
 By the way, "standardizing" centers the variable by default to a mean value of zero (by demeaning).
 
 See:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -431,7 +498,11 @@ head(mtcars$disp)
 :::
 
 
+
+
 Here's the SD:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -464,7 +535,11 @@ sd(mtcars$disp)
 :::
 
 
+
+
 And here's the mean value:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -497,7 +572,11 @@ mean(mtcars$disp)
 :::
 
 
+
+
 Now we are in a position to decide which predictor is more important:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -520,6 +599,8 @@ parameters(m)
 </div>
 :::
 :::
+
+
 
 
 ## Exercises
@@ -553,6 +634,8 @@ Consider this geometric interpretation of the least square method in Figure @fig
 
 
 
+
+
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
 ![Geometric interpretation of the least square method. Source: Oleg Alexandrov on Wikimedia](img/543px-Linear_least_squares_geometric_interpretation.png){#fig-leastsq fig-align='center' width=25%}
@@ -561,8 +644,12 @@ Consider this geometric interpretation of the least square method in Figure @fig
 
 
 
+
+
 ## Going further
 
+Check-out [this chapter](https://statistik1.netlify.app/090-regression2) of my intro stats book to get an overview on statistical modeling using somewhat more advanced regression techniques. 
+Please use your browser's translation feature to render the webpages into your favorite language.
 
 
 A recent but already classic book on regression and inference (if this is possible) is the book by @gelman_regression_2021. A great textbook on statistical modelling (with a Bayesian flavor) was written by @mcelreath_statistical_2020; it's suitable for PhD level.

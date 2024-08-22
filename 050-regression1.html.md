@@ -6,6 +6,8 @@
 ## R packages needed for this chapter
 
 
+
+
 ::: {.cell layout-align="center"}
 
 ```{.r .cell-code}
@@ -18,6 +20,8 @@ library(rstanarm)  # optional!
 ::: {.cell layout-align="center"}
 
 :::
+
+
 
 
 ## What's modelling?
@@ -44,11 +48,13 @@ A more visual account of our basic modelling equation is depicted in @fig-model1
 
 
 
-:::{.cell layout-align="center"}
 
-:::{.cell-output-display}
 
-:::{#fig-model1}
+::::::{.cell layout-align="center"}
+
+:::::{.cell-output-display}
+
+::::{#fig-model1}
 
 :::{}
 
@@ -60,9 +66,11 @@ A more visual account of our basic modelling equation is depicted in @fig-model1
 
 
 A more visual account of our basic modelling equation
-:::
-:::
-:::
+::::
+:::::
+::::::
+
+
 
 
 
@@ -124,6 +132,8 @@ For the mathematical inclined, check out [this derivation](https://data-se.netli
 ## In all its glory
 
 
+
+
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
 ![](050-regression1_files/figure-html/in-all-its-glory-1.png){fig-align='center' width=70%}
@@ -132,7 +142,11 @@ For the mathematical inclined, check out [this derivation](https://data-se.netli
 
 
 
+
+
 Let's depict the residuals, s. @fig-lm2.
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -143,9 +157,18 @@ Let's depict the residuals, s. @fig-lm2.
 
 
 
+
+
 ## First model: one metric predictor
 
+:::{.callout-note}
+All the R-code for each chapter can be found as pure, R-only files [here](https://github.com/sebastiansauer/stats-nutshell/tree/main/R-code-for-the-chapters). $\square$
+:::
+
+
 First, let's load some data:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -178,9 +201,13 @@ $ carb <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,â€
 :::
 
 
+
+
 ### Frequentist
 
 Define and fit the model:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -191,7 +218,11 @@ lm1_freq <- lm(mpg ~ hp, data = mtcars)
 :::
 
 
+
+
 Get the parameter values:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -213,7 +244,11 @@ parameters(lm1_freq)
 :::
 
 
+
+
 Plot the model parameters:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -228,7 +263,11 @@ plot(parameters(lm1_freq))
 :::
 
 
+
+
 ### Bayesian
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -347,7 +386,11 @@ Chain 4:
 :::
 
 
+
+
 Actually, we want to suppress some overly verbose output of the sampling, so add the argument `refresh = 0`:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -358,7 +401,11 @@ lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
 :::
 
 
+
+
 Get the parameter values:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -380,7 +427,11 @@ parameters(lm1_bayes)
 :::
 
 
+
+
 Plot the model parameters:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -395,7 +446,11 @@ plot(parameters(lm1_bayes))
 :::
 
 
+
+
 ### Model performance
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -435,9 +490,13 @@ r2(lm1_bayes)
 :::
 
 
+
+
 ### Model check
 
 Here's a bunch of typical model checks in the Frequentist sense.
+
+
 
 
 ::: {.cell layout-align="center" fit-width='10'}
@@ -453,7 +512,11 @@ check_model(lm1_freq)
 
 
 
+
+
 And here are some Bayesian flavored model checks.
+
+
 
 
 ::: {.cell layout-align="center" fit-width='10'}
@@ -468,7 +531,11 @@ check_model(lm1_bayes)
 :::
 
 
+
+
 ### Get some predictions
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -499,9 +566,13 @@ lm1_pred
 :::
 
 
+
+
 More details on the above function can be found on the [respective page at the easystats site](https://easystats.github.io/modelbased/reference/estimate_expectation.html#functions-for-estimating-predicted-values-and-uncertainty).
 
 ### Plot the model
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -514,6 +585,8 @@ plot(lm1_pred)
 ![](050-regression1_files/figure-html/plot-lm1-pred-1.png){fig-align='center' width=70%}
 :::
 :::
+
+
 
 
 ## More of this
@@ -542,6 +615,8 @@ As the posterior distribution manifests itself by a number of samples, we can ea
 See
 
 
+
+
 ::: {.cell layout-align="center"}
 
 ```{.r .cell-code}
@@ -567,9 +642,13 @@ head(lm1_bayes_tibble)  # show the first few rows
 :::
 
 
+
+
 ### Asking for probabilites
 
 *What's the probability that the effect of hp is negative?*
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -591,11 +670,15 @@ lm1_bayes_tibble %>%
 :::
 
 
+
+
 Feel free to ask similar questions!
 
 ### Asking for quantiles
 
 *With a given probability of, say 90%, how large is the effect of hp?*
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -616,7 +699,11 @@ quantile(lm1_bayes_tibble$hp, .9)
 :::
 
 
+
+
 *What's the smallest 95% percent interval for the effect of hp?*
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -638,7 +725,11 @@ hdi(lm1_bayes)
 :::
 
 
+
+
 In case you prefer 89% intervals (I do!):
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -658,6 +749,8 @@ hdi(lm1_bayes, ci = .89)
 </div>
 :::
 :::
+
+
 
 
 
@@ -691,6 +784,8 @@ For example, what's the uncertainty attached to the fuel economy of a car with 1
 
 
 
+
+
 ::: {.cell layout-align="center"}
 
 ```{.r .cell-code}
@@ -708,6 +803,8 @@ estimate_prediction(model = lm1_bayes,
 </div>
 :::
 :::
+
+
 
 
 
@@ -737,6 +834,8 @@ In other words, such analyses draw on the posterior predictive distribution.
 Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.
 
 
+
+
 ::: {.cell layout-align="center"}
 
 ```{.r .cell-code}
@@ -758,7 +857,11 @@ parameters(lm2_freq)
 :::
 
 
+
+
 Similarly for Bayes inference:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -769,7 +872,11 @@ lm2_bayes <- stan_glm(mpg ~ hp + disp, data = mtcars)
 :::
 
 
+
+
 Results
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -815,7 +922,11 @@ r2(lm2_bayes)
 :::
 
 
+
+
 Depending on the value of `disp` the prediction of `mpg` from `hp` will vary:
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -831,7 +942,11 @@ plot(lm2_pred)
 :::
 
 
+
+
 ## One nominal predictor
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -872,12 +987,16 @@ lm3a_means
 :::
 :::
 
+
+
 If we were not to specify the values of `am` which we would like to get predictions for, the default of the function would select 10 values, spread across the range of `am`. For numeric variables, this is usually fine. However, for nominal variables - and `am` is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for `0` and `1`.
 
 
 However, unfortunately, the plot *needs* a nominal variable if we are to compare groups. 
 In our case, `am` is considered a numeric variables, since it consists of numbers only. 
 The plot does not work, malheureusement:
+
+
 
 
 
@@ -902,9 +1021,13 @@ Error in `rlang::sym()`:
 
 
 
+
+
 We need to transform `am` to a factor variable. That's something like a string. 
 If we hand over a `factor()` to the plotting function, everything will run smoothly. 
 Computationwise, no big differences:
+
+
 
 
 
@@ -945,9 +1068,13 @@ plot(lm3a_means)
 
 
 
+
+
 Note that we should have converted `am` to a factor variable before fitting the model. Otherwise, the plot won't work.
 
 Here's a more hand-crafted version of the last plot, see Fig. @fig-lm3a-means.
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -969,7 +1096,11 @@ ggplot(mtcars2) +
 :::
 
 
+
+
 ## One metric and one nominal predictor
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -1011,6 +1142,8 @@ plot(lm4_pred)
 
 
 
+
+
 ## Watch out for Simpson
 
 Beware! Model estimates can swing wildly if you add (or remove) some predictor from your model. [See this post](https://ecologyforthemasses.com/2022/06/08/who-is-simpson-and-what-does-his-paradox-mean-for-ecologists/) for an demonstration.
@@ -1023,6 +1156,8 @@ Beware! Model estimates can swing wildly if you add (or remove) some predictor f
 Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.
 
 Let's get the correlation matrix of the variables in involved in `lm4`.
+
+
 
 
 ::: {.cell layout-align="center"}
@@ -1061,6 +1196,8 @@ plot(summary(lm4_corr))
 :::
 
 
+
+
 ## Exercises
 
 1.  [mtcars simple 1](https://datenwerk.netlify.app/posts/mtcars-simple1/mtcars-simple1/)
@@ -1083,6 +1220,8 @@ plot(summary(lm4_corr))
 Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.
 
 ## Going further 
+
+Check-out [this chapter](https://statistik1.netlify.app/080-regression1) of my intro stats book to get an overview on statistical modeling using basic regression technieques. Please use your browser's translation feature to render the webpages into your favorite language.
 
 An accessible treatment of regression is provided by @ismay_statistical_2020.
 
