@@ -29,7 +29,7 @@ book:
   repo-url: https://github.com/sebastiansauer/stats-nutshell
 
 
-bibliography: "/Users/sebastiansaueruser/Google Drive/Literatur/refmgt/library-ses.bib"
+bibliography: "/Users/sebastiansaueruser/Google Drive/Literatur/refmgt/ses.bib"
 csl: "/Users/sebastiansaueruser/Google Drive/Literatur/refmgt/apa7.csl"
 
 
@@ -63,7 +63,7 @@ execute:
     
 
 editor: source 
-keep-md: true
+keep-md: false 
 
 knitr: 
   opts_chunk: 
