@@ -142,6 +142,17 @@ plot_bar(penguins)
 
 
 
+:::{#exr-mtcars-dataexplorer}
+### Visualizing mtcars using dataExplorer
+
+Use `dataExplorer` in a similar way as shown above. More specifically,
+
+1. Plot histograms for all metric variables.
+2. Provide a visual overview on the total amount of missing data.
+3. Plot bar plots to visualize the distribution of all non-metric columns (variables).
+
+:::
+
 
 ### visdat
 
@@ -151,7 +162,7 @@ Let's show-case it using the penguins data set.
 
 
 
-```{r}
+```{r vis-data-peng}
 #| label: vis-data-penguins
 #| fig-cap: A fingerprint of the penguins data set; for each variable the data type and the number of missings is shown.
 library(visdat)  # must be installed
@@ -159,6 +170,11 @@ vis_dat(penguins)
 ```
 
 
+:::{#exr-mtcars-visdat}
+### Provide a visual fingerprint of mtcars
+
+Use the R package visdat to provide a similar "fingerprint" as @vis-data-penguins of the dataset mtcars.
+:::
 
 ### vtree
 
@@ -215,52 +231,15 @@ How to export to MS Office? Well, one simple approach is obviously to copy-paste
 Checkout @sec-office for more advanced options.
 
 
+:::{#exr-mtcars-tableone}
 
-### The easystats way
+### Create a Table 1 for mtcars
 
-There are some packages, such as `{easystats}`, which provide comfortable access to basic statistics:
-
-```{r}
-library(easystats)  # once per session
-describe_distribution(penguins)
-```
+You are free to choose a more overview presentation or a more detailled one. 
+Why did you choose your kind of presentation (overview vs. detailled)? Explain.
 
 
-`describe_distribution` provides us with an overview on typical descriptive summaries.
-
-How to export to MS Office? Well, one simple approach is obviously to copy-paste. 
-Checkout @sec-office for more advanced options.
-
-
-For nominal variables, consider `data_tabulate`:
-
-```{r}
-data_tabulate(penguins, select = c("sex", "island")) |> 
-  print_md() 
-```
-
-
-Note that `print_md` helps to get a more visually pleasing (HTML) output, and not only raw command line style output.
-
-We can also get *grouped* tabulations,
-which amounts to something similar to a [contingency table](https://en.wikipedia.org/wiki/Contingency_table):
-
-
-```{r}
-penguins %>% 
-  group_by(sex) %>% 
-  data_tabulate(select = "island", collapse = TRUE)
-```
-
-
-
-
-:::{callout-note}
-Checkout the function reference of your favorite package in order to learn what's on the shelf.
-For example, [here's the function reference site](https://easystats.github.io/datawizard/reference/index.html) of `datawizard`, one of the packages in the `easystats` ecosystem.
-::::
-
-
+:::
 
 
 
@@ -282,13 +261,24 @@ Checkout @sec-office for more advanced options.
 
 For nominal variables, consider `data_tabulate`:
 
+
 ```{r}
+#| eval: false
 data_tabulate(penguins, select = c("sex", "island")) |> 
   print_md() 
 ```
 
 
-Note that `print_md` helps to get a more visually pleasing (HTML) output, and not only raw command line style output.
+
+```{r}
+#| echo: false
+data_tabulate(penguins, select = c("sex", "island")) |> 
+  print_md() 
+```
+
+
+Note that adding `print_md` at the end of your pipeline helps to get a more visually pleasing (HTML) output, and not only raw command line style output.
+
 
 We can also get *grouped* tabulations,
 which amounts to something similar to a [contingency table](https://en.wikipedia.org/wiki/Contingency_table):
@@ -309,6 +299,14 @@ For example, [here's the function reference site](https://easystats.github.io/da
 ::::
 
 
+
+:::{#exr-mtcars-easystats}
+
+### mtcars with easystats
+
+Check out the exercise [`mtcars-easystats`]() at the [Datenwerk](https://datenwerk.netlify.app/).
+
+:::
 
 
 ### Lab
@@ -328,6 +326,12 @@ The Tidyverse is probably the R thing with the most publicity. And it's great. I
 There's a lot of introductory material to the tidyverse around [for instance ](https://datasciencebook.ca/wrangling.html), so I'm not repeating that here.
 
 
+
+:::{#exr-tidyverse-datenwerk}
+### Tidyverse on the Datenwerk
+
+There are a number of exercises related to data wrangling and Exploratory Data Analysis (EDA) using the Tidyverse methods on the [Datenwerk](https://datenwerk.netlify.app/#category=tidyverse). Feel free to check out!
+:::
 
 ### More advanced tidyverse
 
@@ -381,7 +385,7 @@ penguins %>%
 See the help page of `standardise` for mor details on how to select variables and on more options.
 
 
-But for the purpose of illustration, let's do it with more simple means, i.e. tidyverse only.
+But for the purpose of illustration, let's do it with more standard methods, i.e. tidyverse only.
 
 
 ```{r}
@@ -393,7 +397,9 @@ penguins %>%
 ```
 
 
-It's maybe more succint to put the z-value computation in its function, and then just apply this function:
+
+
+It's maybe more succinct to put the z-value computation in a function, and then just apply this function:
 
 ```{r}
 z_stand <- function(x){
@@ -411,6 +417,10 @@ penguins %>%
 d2 %>% 
   glimpse()
 ```
+
+
+Quite complicated!? Feel free to use the pre-prepared functions such as `standardize`.
+After all, what's progress if not re-inventing the wheel but building on what has already been achieved?
 
 
 #### Rowwise operations
@@ -540,11 +550,38 @@ ggbetweenstats(
 ```
 
 
+### Exercises
+
+
+:::{#exr-vis-mtcars}
+
+### Visualize the mtcars dataset
+
+Use the tools presented here to visualize variables of interest of the *mtcars* dataset. In addition, provided plots that investigate bivariate associations (i.e., potential correlations between two variables).
+
+Check out a possible solution [at the Datenwerk](https://datenwerk.netlify.app/posts/vis-mtcars/vis-mtcars).
+
+:::
+
+
+
+:::{#exr-vis-penguins}
+
+### Visualize the penguins dataset
+
+Use the tools presented here to visualize variables of interest of the *penguins* dataset. In addition, provided plots that investigate bivariate associations (i.e., potential correlations between two variables).
+
+Check out a possible solution [at the Datenwerk](https://datenwerk.netlify.app/posts/vis-penguins/vis-penguins).
+
+:::
+
+
 
 
 ### Lab
 
 Take your research data and play around using the visualization functions shown above.
+
 
 
 
@@ -571,7 +608,8 @@ library(easystats)  # once per session only
 describe_distribution(penguins) |> print_md()
 ```
 
-Note that `print_md()` will "prettify" your output. Without this line, your output will look more command-line-nerdy style.
+Note that `print_md()` will "prettify" your output -- *if* you render a Quarto document. It will *not* show up nicely in a pure R document.
+Without this line, your output will look more command-line-nerdy style.
 
 
 #### Additional ways
@@ -721,9 +759,12 @@ There's a great [interactive course on EDA based on the penguins](https://alliso
 
 ## Exercises
 
-- [Gapminder](https://datenwerk.netlify.app/posts/vis-gapminder/vis-gapminder)
-- [Penguins Visualization](https://datenwerk.netlify.app/posts/vis-penguins/vis-penguins)
-- [mtcars](https://datenwerk.netlify.app/posts/vis-mtcars/vis-mtcars)
+- [smartphone1](https://datenwerk.netlify.app/posts/smartphone1/)
+- [oecd-yacsda](https://datenwerk.netlify.app/posts/oecd-yacsda/)
+- [flights-yacsda-eda](https://datenwerk.netlify.app/posts/flights-yacsda-eda/)
+- [vis-Gapminder](https://datenwerk.netlify.app/posts/vis-gapminder/vis-gapminder)
+- [vis-penguins](https://datenwerk.netlify.app/posts/vis-penguins/vis-penguins)
+- [vis-mtcars](https://datenwerk.netlify.app/posts/vis-mtcars/vis-mtcars)
 
 
 

@@ -158,7 +158,10 @@ knitr::include_graphics("img/frequentists_vs_bayesians_2x.png")
 
 ## p-value
 
-The p-value has been used as the pivotal criterion to decide about whether or not a research hypothesis were to be "accepted" (a term forbidden in frequentist and Popperian langauge) or to be rejected. However, more recently, it is advised to use the p-value only as *one* indicator among multiple; see @wasserstein_moving_2019.
+The p-value has been used as the pivotal criterion to decide about whether or not a research hypothesis were to be "accepted" 
+(a term forbidden in frequentist and Popperian langauge) or to be rejected. 
+However, more recently, it is advised to use the p-value only as *one* indicator *among multiple*
+; see @wasserstein_asas_2016
 
 ::: callout-important
 The p-value is defined as the probability of obtaining the observed data (or more extreme) under the assumption of no effect.
@@ -193,10 +196,22 @@ ggplot(NULL, aes(c(-3,3))) +
 For Bayesian inference, check out the tag [bayes](https://datenwerk.netlify.app/#category=bayes) on the same website.
 
 
+For example,
+
+- [punktschaetzer-reicht-nicht](https://datenwerk.netlify.app/posts/punktschaetzer-reicht-nicht/punktschaetzer-reicht-nicht)
+- [wikipedia](https://datenwerk.netlify.app/posts/wikipedia/)
+- [nullhyp-beispiel](https://datenwerk.netlify.app/posts/nullhyp-beispiel/nullhyp-beispiel)
+
+
+## Case studies
+
+
+
+- [flights-delay-simplified](https://datenwerk.netlify.app/posts/flights-delay-simplified/)
 
 
 ## Going further
 
 @goodman_dirty_2008 provides an entertaining overview on typical misconceptions of the p-value [full text](https://www.ohri.ca//newsroom/seminars/SeminarUploads/1829/Suggested%20Reading%20-%20Nov%203,%202014.pdf).
-@poldrack_statistical_2022-1 provides a fresh, accessible and sound introduction to statistical inference; in addition @cetinkaya-rundel_introduction_2021-2 is a worthwhile treatise.
+@poldrack_statistical_2022 provides a fresh, accessible and sound introduction to statistical inference; in addition @cetinkaya-rundel_introduction_2021 is a worthwhile treatise.
 

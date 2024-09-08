@@ -252,14 +252,21 @@ More details on the above function can be found on the [respective page at the e
 plot(lm1_pred)
 ```
 
-## More of this
+### More of this
 
 More technical details for gauging model performance and model quality, can be found on the site of [the R package "performance](https://easystats.github.io/performance/) at the easystats site.
 
 
 
 
-## Lab
+### Exercises
+
+- [mtcars-regr01](https://datenwerk.netlify.app/posts/mtcars-regr01/mtcars-regr01)
+- [lm1](https://datenwerk.netlify.app/posts/lm1/lm1)
+- 
+
+
+### Lab
 
 Run a simple regression on your own research data. Present the results. Did you encounter any glitches?
 
@@ -367,11 +374,11 @@ In other words, such analyses draw on the posterior predictive distribution.
 
 
 
+## More linear models
 
 
 
-
-## Multiple metric predictors
+### Multiple metric predictors
 
 Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.
 
@@ -402,7 +409,7 @@ lm2_pred <- estimate_relation(lm2_freq)
 plot(lm2_pred)
 ```
 
-## One nominal predictor
+### One nominal predictor
 
 ```{r lm3a}
 lm3a <- lm(mpg ~ am, data = mtcars)
@@ -467,7 +474,7 @@ ggplot(mtcars2) +
   geom_line(data = lm3a_means, aes(y = Mean, group = 1))
 ```
 
-## One metric and one nominal predictor
+### One metric and one nominal predictor
 
 ```{r lm4}
 mtcars2 <-
@@ -484,7 +491,7 @@ plot(lm4_pred)
 ```
 
 
-## Watch out for Simpson
+### Watch out for Simpson
 
 Beware! Model estimates can swing wildly if you add (or remove) some predictor from your model. [See this post](https://ecologyforthemasses.com/2022/06/08/who-is-simpson-and-what-does-his-paradox-mean-for-ecologists/) for an demonstration.
 

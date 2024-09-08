@@ -290,7 +290,11 @@ lm_interact_simple2 <- lm(mpg ~ disp_c + am_f + disp_c:am_f, data = mtcars3)
 parameters(lm_interact_simple2)
 ```
 
-## Predictor relevance
+
+
+
+
+### Predictor relevance
 
 Given a model, we might want to know which predictor has the strongest association with the outcome?
 
@@ -336,10 +340,15 @@ parameters(m)
 
 ## Exercises
 
--   [Predictor relevance](https://datenwerk.netlify.app/posts/log-y-regr3/log-y-regr3/)
--   [Adjusting](https://datenwerk.netlify.app/posts/adjustieren1/adjustieren1/)
--   [Adjusting 2](https://datenwerk.netlify.app/posts/adjustieren2/adjustieren2/)
--   [Interpreting Regression coefficients](https://datenwerk.netlify.app/posts/interpret-koeff/interpret-koeff/)
+- [log-y-regr3/](https://datenwerk.netlify.app/posts/log-y-regr3/log-y-regr3/)
+- [adjustieren1](https://datenwerk.netlify.app/posts/adjustieren1/adjustieren1/)
+- [adjustieren2](https://datenwerk.netlify.app/posts/adjustieren2/adjustieren2/)
+- [Interpreting Regression coefficients](https://datenwerk.netlify.app/posts/interpret-koeff/interpret-koeff/)
+- [mario-compare-models](https://datenwerk.netlify.app/posts/mario-compare-models/)
+- 
+- [adjustieren1a](https://datenwerk.netlify.app/posts/adjustieren1a/adjustieren1a) 
+- [interaktionseffekt1](https://datenwerk.netlify.app/posts/interaktionseffekt1/interaktionseffekt1)
+- [adjustieren2](https://datenwerk.netlify.app/posts/adjustieren2/adjustieren2)
 
 
 ## Case studies
@@ -356,7 +365,8 @@ parameters(m)
 
 Get your own data, and build a simple model reflecting your research hypothesis based on the topics covered in this chapter. If you are lacking data (or hypothesis) get something close to it.
 
-## Glimpse on parameter estimation
+## Going further
+
 
 An elegant yet simple explanation of the math of parameter estimation can be found [at "go data driven"](https://godatadriven.com/blog/the-linear-algebra-behind-linear-regression/). 
 A similar approach is presented [here](https://shainarace.github.io/LinearAlgebra/leastsquares.html).
@@ -373,7 +383,6 @@ knitr::include_graphics("img/543px-Linear_least_squares_geometric_interpretation
 ```
 
 
-## Going further
 
 Check-out [this chapter](https://statistik1.netlify.app/090-regression2) of my intro stats book to get an overview on statistical modeling using somewhat more advanced regression techniques. 
 Please use your browser's translation feature to render the webpages into your favorite language.

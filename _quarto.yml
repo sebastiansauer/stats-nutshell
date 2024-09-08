@@ -9,6 +9,7 @@ book:
   date: now
   doi: 10.5281/zenodo.10082518
   description: "A crash course on applied statistics with a focus on statistical modelling"
+
   
   chapters:
     - index.qmd
