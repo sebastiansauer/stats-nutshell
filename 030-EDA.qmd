@@ -163,7 +163,7 @@ Let's show-case it using the penguins data set.
 
 
 ```{r vis-data-peng}
-#| label: vis-data-penguins
+#| label: fig-vis-data-penguins
 #| fig-cap: A fingerprint of the penguins data set; for each variable the data type and the number of missings is shown.
 library(visdat)  # must be installed
 vis_dat(penguins)
@@ -173,7 +173,7 @@ vis_dat(penguins)
 :::{#exr-mtcars-visdat}
 ### Provide a visual fingerprint of mtcars
 
-Use the R package visdat to provide a similar "fingerprint" as @vis-data-penguins of the dataset mtcars.
+Use the R package *visdat* to provide a similar "fingerprint" as @fig-vis-data-penguins of the dataset mtcars.
 :::
 
 ### vtree
@@ -215,17 +215,33 @@ penguins <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerp
 It's quite simple to use:
 
 ```{r}
-library(tableone)
+#| eval: false
+library(tableone)  
 CreateTableOne(data = penguins)
 ```
+
+
+
+```{r}
+#| echo: false
+library(tableone)  
+table1 <- CreateTableOne(data = penguins)
+kableone(table1)
+```
+
+
 
 
 To get more detailled results, use the `summary` method:
 
 ```{r}
+#| eval: false
 tab1 <- CreateTableOne(data = penguins)
 summary(tab1)
 ```
+
+Check-out the [TableOne manual](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html) for a more detailled introduction.
+
 
 How to export to MS Office? Well, one simple approach is obviously to copy-paste. 
 Checkout @sec-office for more advanced options.
@@ -284,10 +300,23 @@ We can also get *grouped* tabulations,
 which amounts to something similar to a [contingency table](https://en.wikipedia.org/wiki/Contingency_table):
 
 
+
 ```{r}
+#| eval: false
 penguins %>% 
   group_by(sex) %>% 
   data_tabulate(select = "island", collapse = TRUE)
+```
+
+
+
+
+```{r}
+#| echo: false
+penguins %>% 
+  group_by(sex) %>% 
+  data_tabulate(select = "island", collapse = TRUE) |> 
+  print_md()
 ```
 
 
@@ -372,7 +401,7 @@ penguins %>%
 
 Say, we would like to compute the z-value of each numeric variable.
 
-Addmittedly, `easystats` makes it quite simple:
+Admittedly, `easystats` makes it quite simple:
 
 
 ```{r}

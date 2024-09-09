@@ -498,21 +498,25 @@ Figure&nbsp;2.4: Bar plots visualizing the distribution of qualitative variables
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(visdat)  <span class="co"># must be installed</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_dat</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="030-EDA_files/figure-html/vis-data-penguins-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>A fingerprint of the penguins data set; for each variable the data type and the number of missings is shown.</figcaption>
+<div id="fig-vis-data-penguins" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vis-data-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="030-EDA_files/figure-html/fig-vis-data-penguins-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vis-data-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: A fingerprint of the penguins data set; for each variable the data type and the number of missings is shown.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div id="exr-mtcars-visdat" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.3 (Provide a visual fingerprint of mtcars)</strong></span> Use the R package visdat to provide a similar “fingerprint” as <span class="citation" data-cites="vis-data-penguins">(<a href="references.html#ref-vis-data-penguins" role="doc-biblioref"><strong>vis-data-penguins?</strong></a>)</span> of the dataset mtcars.</p>
+<p><span class="theorem-title"><strong>Exercise 2.3 (Provide a visual fingerprint of mtcars)</strong></span> Use the R package <em>visdat</em> to provide a similar “fingerprint” as <a href="#fig-vis-data-penguins" class="quarto-xref">Figure&nbsp;<span>2.5</span></a> of the dataset mtcars.</p>
 </div>
 </section>
 <section id="vtree" class="level3" data-number="2.6.3">
 <h3 data-number="2.6.3" class="anchored" data-anchor-id="vtree"><span class="header-section-number">2.6.3</span> vtree</h3>
-<p>A bit similar to {DataExplorer}, the <a href="https://nbarrowman.github.io/vtree">R package {vtree}</a> helps to explore visually datasets, see <a href="#fig-vtree1" class="quarto-xref">Figure&nbsp;<span>2.5</span></a>.</p>
+<p>A bit similar to {DataExplorer}, the <a href="https://nbarrowman.github.io/vtree">R package {vtree}</a> helps to explore visually datasets, see <a href="#fig-vtree1" class="quarto-xref">Figure&nbsp;<span>2.6</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vtree)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vtree</span>(penguins, <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"island"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -523,7 +527,7 @@ Figure&nbsp;2.4: Bar plots visualizing the distribution of qualitative variables
 <img src="030-EDA_files/figure-html//vtree001.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vtree1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.5: Breaking down the counts in a data set using vtree
+Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 </figcaption>
 </figure>
 </div>
@@ -542,76 +546,105 @@ Figure&nbsp;2.5: Breaking down the counts in a data set using vtree
 </div>
 <p>It’s quite simple to use:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)  </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CreateTableOne</span>(<span class="at">data =</span> penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                               
-                                Overall         
-  n                                 344         
-  rownames (mean (SD))           172.50 (99.45) 
-  species (%)                                   
-     Adelie                         152 (44.2)  
-     Chinstrap                       68 (19.8)  
-     Gentoo                         124 (36.0)  
-  island (%)                                    
-     Biscoe                         168 (48.8)  
-     Dream                          124 (36.0)  
-     Torgersen                       52 (15.1)  
-  bill_length_mm (mean (SD))      43.92 (5.46)  
-  bill_depth_mm (mean (SD))       17.15 (1.97)  
-  flipper_length_mm (mean (SD))  200.92 (14.06) 
-  body_mass_g (mean (SD))       4201.75 (801.95)
-  sex (%)                                       
-                                     11 ( 3.2)  
-     female                         165 (48.0)  
-     male                           168 (48.8)  
-  year (mean (SD))              2008.03 (0.82)  </code></pre>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Overall</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">n</td>
+<td style="text-align: left;">344</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rownames (mean (SD))</td>
+<td style="text-align: left;">172.50 (99.45)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">species (%)</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">152 (44.2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">68 (19.8)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">124 (36.0)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">island (%)</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: left;">168 (48.8)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dream</td>
+<td style="text-align: left;">124 (36.0)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: left;">52 (15.1)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bill_length_mm (mean (SD))</td>
+<td style="text-align: left;">43.92 (5.46)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bill_depth_mm (mean (SD))</td>
+<td style="text-align: left;">17.15 (1.97)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">flipper_length_mm (mean (SD))</td>
+<td style="text-align: left;">200.92 (14.06)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">body_mass_g (mean (SD))</td>
+<td style="text-align: left;">4201.75 (801.95)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sex (%)</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">11 ( 3.2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">165 (48.0)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">168 (48.8)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">year (mean (SD))</td>
+<td style="text-align: left;">2008.03 (0.82)</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>To get more detailled results, use the <code>summary</code> method:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> penguins)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tab1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-     ### Summary of continuous variables ###
-
-strata: Overall
-                    n miss p.miss mean    sd median  p25  p75  min  max  skew
-rownames          344    0    0.0  172  99.4    172   87  258    1  344  0.00
-bill_length_mm    344    2    0.6   44   5.5     44   39   48   32   60  0.05
-bill_depth_mm     344    2    0.6   17   2.0     17   16   19   13   22 -0.14
-flipper_length_mm 344    2    0.6  201  14.1    197  190  213  172  231  0.35
-body_mass_g       344    2    0.6 4202 802.0   4050 3550 4750 2700 6300  0.47
-year              344    0    0.0 2008   0.8   2008 2007 2009 2007 2009 -0.05
-                  kurt
-rownames          -1.2
-bill_length_mm    -0.9
-bill_depth_mm     -0.9
-flipper_length_mm -1.0
-body_mass_g       -0.7
-year              -1.5
-
-=======================================================================================
-
-     ### Summary of categorical variables ### 
-
-strata: Overall
-     var   n miss p.miss     level freq percent cum.percent
- species 344    0    0.0    Adelie  152    44.2        44.2
-                         Chinstrap   68    19.8        64.0
-                            Gentoo  124    36.0       100.0
-                                                           
-  island 344    0    0.0    Biscoe  168    48.8        48.8
-                             Dream  124    36.0        84.9
-                         Torgersen   52    15.1       100.0
-                                                           
-     sex 344    0    0.0             11     3.2         3.2
-                            female  165    48.0        51.2
-                              male  168    48.8       100.0
-                                                           </code></pre>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> penguins)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tab1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+<p>Check-out the <a href="https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html">TableOne manual</a> for a more detailled introduction.</p>
 <p>How to export to MS Office? Well, one simple approach is obviously to copy-paste. Checkout <a href="#sec-office" class="quarto-xref"><span>Section 2.9</span></a> for more advanced options.</p>
 <div id="exr-mtcars-tableone" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.4 (Create a Table 1 for mtcars)</strong></span> You are free to choose a more overview presentation or a more detailled one. Why did you choose your kind of presentation (overview vs.&nbsp;detailled)? Explain.</p>
@@ -621,8 +654,8 @@ strata: Overall
 <h3 data-number="2.6.5" class="anchored" data-anchor-id="the-easystats-way"><span class="header-section-number">2.6.5</span> The easystats way</h3>
 <p>There are some packages, such as <code>{easystats}</code>, which provide comfortable access to basic statistics:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># once per session</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># once per session</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -734,8 +767,8 @@ strata: Overall
 <p>How to export to MS Office? Well, one simple approach is obviously to copy-paste. Checkout <a href="#sec-office" class="quarto-xref"><span>Section 2.9</span></a> for more advanced options.</p>
 <p>For nominal variables, consider <code>data_tabulate</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_tabulate</span>(penguins, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"island"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_md</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_tabulate</span>(penguins, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"island"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_md</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -839,29 +872,163 @@ strata: Overall
 <p>Note that adding <code>print_md</code> at the end of your pipeline helps to get a more visually pleasing (HTML) output, and not only raw command line style output.</p>
 <p>We can also get <em>grouped</em> tabulations, which amounts to something similar to a <a href="https://en.wikipedia.org/wiki/Contingency_table">contingency table</a>:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_tabulate</span>(<span class="at">select =</span> <span class="st">"island"</span>, <span class="at">collapse =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># Frequency Table
-
-Variable |        Group |     Value |  N | Raw % | Valid % | Cumulative %
----------+--------------+-----------+----+-------+---------+-------------
-island   |       sex () |    Biscoe |  5 | 45.45 |   45.45 |        45.45
-         |              |     Dream |  1 |  9.09 |    9.09 |        54.55
-         |              | Torgersen |  5 | 45.45 |   45.45 |       100.00
-         |              |      &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |         &lt;NA&gt;
----------+--------------+-----------+----+-------+---------+-------------
-island   | sex (female) |    Biscoe | 80 | 48.48 |   48.48 |        48.48
-         |              |     Dream | 61 | 36.97 |   36.97 |        85.45
-         |              | Torgersen | 24 | 14.55 |   14.55 |       100.00
-         |              |      &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |         &lt;NA&gt;
----------+--------------+-----------+----+-------+---------+-------------
-island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
-         |              |     Dream | 62 | 36.90 |   36.90 |        86.31
-         |              | Torgersen | 23 | 13.69 |   13.69 |       100.00
-         |              |      &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |         &lt;NA&gt;
--------------------------------------------------------------------------</code></pre>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_tabulate</span>(<span class="at">select =</span> <span class="st">"island"</span>, <span class="at">collapse =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Frequency Table</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">Group</th>
+<th style="text-align: right;">Value</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: left;">Raw %</th>
+<th style="text-align: right;">Valid %</th>
+<th style="text-align: right;">Cumulative %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">island</td>
+<td style="text-align: right;">sex ()</td>
+<td style="text-align: right;">Biscoe</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">45.45</td>
+<td style="text-align: right;">45.45</td>
+<td style="text-align: right;">45.45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">Dream</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">9.09</td>
+<td style="text-align: right;">9.09</td>
+<td style="text-align: right;">54.55</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">Torgersen</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">45.45</td>
+<td style="text-align: right;">45.45</td>
+<td style="text-align: right;">100.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">(NA)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: right;">(NA)</td>
+<td style="text-align: right;">(NA)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">island</td>
+<td style="text-align: right;">sex (female)</td>
+<td style="text-align: right;">Biscoe</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: left;">48.48</td>
+<td style="text-align: right;">48.48</td>
+<td style="text-align: right;">48.48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">Dream</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: left;">36.97</td>
+<td style="text-align: right;">36.97</td>
+<td style="text-align: right;">85.45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">Torgersen</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">14.55</td>
+<td style="text-align: right;">14.55</td>
+<td style="text-align: right;">100.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">(NA)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: right;">(NA)</td>
+<td style="text-align: right;">(NA)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">island</td>
+<td style="text-align: right;">sex (male)</td>
+<td style="text-align: right;">Biscoe</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: left;">49.40</td>
+<td style="text-align: right;">49.40</td>
+<td style="text-align: right;">49.40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">Dream</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: left;">36.90</td>
+<td style="text-align: right;">36.90</td>
+<td style="text-align: right;">86.31</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">Torgersen</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: left;">13.69</td>
+<td style="text-align: right;">13.69</td>
+<td style="text-align: right;">100.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">(NA)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: right;">(NA)</td>
+<td style="text-align: right;">(NA)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="{callout-note}">
@@ -899,9 +1066,9 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 <p>At times, we would like to compute the same functions for many variables, ie columns for tidyverse applications.</p>
 <p>Let’s load the penguins data for illustration.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1003,8 +1170,8 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 </div>
 <p>Say, we would like to compute the mean value for each numeric variable in the data set:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1030,8 +1197,8 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 </div>
 <p>Synonymously, we could write:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1068,11 +1235,11 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 </div>
 </div>
 <p>Say, we would like to compute the z-value of each numeric variable.</p>
-<p>Addmittedly, <code>easystats</code> makes it quite simple:</p>
+<p>Admittedly, <code>easystats</code> makes it quite simple:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">standardise</span>(<span class="at">select =</span> is.numeric) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">standardise</span>(<span class="at">select =</span> is.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1175,11 +1342,11 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 <p>See the help page of <code>standardise</code> for mor details on how to select variables and on more options.</p>
 <p>But for the purpose of illustration, let’s do it with more standard methods, i.e.&nbsp;tidyverse only.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span> {(.x <span class="sc">-</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)},</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.names =</span> <span class="st">"{.col}_z"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span> {(.x <span class="sc">-</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)},</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.names =</span> <span class="st">"{.col}_z"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1235,18 +1402,18 @@ island   |   sex (male) |    Biscoe | 83 | 49.40 |   49.40 |        49.40
 </div>
 <p>It’s maybe more succinct to put the z-value computation in a function, and then just apply this function:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>z_stand <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>z_stand <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> z_stand))</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> z_stand))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 9
@@ -1268,11 +1435,11 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>For technical reasons, it’s a bit cumbersome in (base) R to compute rowwise operations. The thing is, R’s dataframes are organized as vectors of <em>columns</em> so it’s much easier to do stuff columnwise.</p>
 <p>However, since recently, computing rowwise operations with the tidyverse has become simpler. Consider the following example. Say we would like to know the highest z-value for each variable we just computed, that is the highest values <em>per individual</em>, ie., by row in the data frame.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">max_z =</span> <span class="fu">max</span>(<span class="fu">c</span>(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g))) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">max_z =</span> <span class="fu">max</span>(<span class="fu">c</span>(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g))) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1396,24 +1563,24 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <h3 data-number="2.8.1" class="anchored" data-anchor-id="ggpubr"><span class="header-section-number">2.8.1</span> ggpubr</h3>
 <p><a href="https://rpkgs.datanovia.com/ggpubr/index.html">ggpubr</a> is a simple yet powerful way to visualize data.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)  <span class="co"># must be installed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)  <span class="co"># must be installed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s visualize the association of bill length (see <a href="#fig-bill-length" class="quarto-xref">Figure&nbsp;<span>2.6</span></a>) with body mass, see <a href="#fig-peng-scatter1" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>.</p>
+<p>Let’s visualize the association of bill length (see <a href="#fig-bill-length" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>) with body mass, see <a href="#fig-peng-scatter1" class="quarto-xref">Figure&nbsp;<span>2.8</span></a>.</p>
 <div id="fig-bill-length" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bill-length-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="https://allisonhorst.github.io/palmerpenguins/reference/figures/culmen_depth.png" class="img-fluid figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bill-length-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.6: In case you did not know, that’s what is meant by bill length and depth of our penguins
+Figure&nbsp;2.7: In case you did not know, that’s what is meant by bill length and depth of our penguins
 </figcaption>
 </figure>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatter</span>(penguins,</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"bill_length_mm"</span>,</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"body_mass_g"</span>,</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"sex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatter</span>(penguins,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"bill_length_mm"</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"body_mass_g"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"sex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-peng-scatter1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1421,25 +1588,25 @@ Figure&nbsp;2.6: In case you did not know, that’s what is meant by bill length
 <img src="030-EDA_files/figure-html/fig-peng-scatter1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peng-scatter1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.7: A simple scatterplot of the penguins data set using ggscatter
+Figure&nbsp;2.8: A simple scatterplot of the penguins data set using ggscatter
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Let’s improve a bit on the plot, see <a href="#fig-peng-scatter2" class="quarto-xref">Figure&nbsp;<span>2.8</span></a>.</p>
+<p>Let’s improve a bit on the plot, see <a href="#fig-peng-scatter2" class="quarto-xref">Figure&nbsp;<span>2.9</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatter</span>(penguins,</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"bill_length_mm"</span>,</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"body_mass_g"</span>,</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"species"</span>,</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">shape =</span> <span class="st">"species"</span>,</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">add =</span> <span class="st">"reg.line"</span>,</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Body maxx (g)"</span>,</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">conf.int =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">ellipse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">cor.coef =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatter</span>(penguins,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"bill_length_mm"</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"body_mass_g"</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"species"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">shape =</span> <span class="st">"species"</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">add =</span> <span class="st">"reg.line"</span>,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Bill length (mm)"</span>,</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Body maxx (g)"</span>,</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">conf.int =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">ellipse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">cor.coef =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-peng-scatter2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1447,7 +1614,7 @@ Figure&nbsp;2.7: A simple scatterplot of the penguins data set using ggscatter
 <img src="030-EDA_files/figure-html/fig-peng-scatter2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peng-scatter2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.8: A more polished scatterplot of the penguins data set using ggscatter
+Figure&nbsp;2.9: A more polished scatterplot of the penguins data set using ggscatter
 </figcaption>
 </figure>
 </div>
@@ -1457,13 +1624,13 @@ Figure&nbsp;2.8: A more polished scatterplot of the penguins data set using ggsc
 </section>
 <section id="ggstatsplot" class="level3" data-number="2.8.2">
 <h3 data-number="2.8.2" class="anchored" data-anchor-id="ggstatsplot"><span class="header-section-number">2.8.2</span> ggstatsplot</h3>
-<p>In addtion, consider <a href="#ggstatsplot">ggstatsplot</a>)(https://indrajeetpatil.github.io/ggstatsplot/). Let’s use the <code>mtcars</code> dataset for a quick demonstration. For example, assume you would like to compare two group of cars, automatic vs.&nbsp;manual shifting, in terms of fuel economy. Here we go, <a href="#fig-ggstatsplot1" class="quarto-xref">Figure&nbsp;<span>2.9</span></a>.</p>
+<p>In addtion, consider <a href="#ggstatsplot">ggstatsplot</a>)(https://indrajeetpatil.github.io/ggstatsplot/). Let’s use the <code>mtcars</code> dataset for a quick demonstration. For example, assume you would like to compare two group of cars, automatic vs.&nbsp;manual shifting, in terms of fuel economy. Here we go, <a href="#fig-ggstatsplot1" class="quarto-xref">Figure&nbsp;<span>2.10</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> sex,</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> sex,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-ggstatsplot1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1471,23 +1638,23 @@ Figure&nbsp;2.8: A more polished scatterplot of the penguins data set using ggsc
 <img src="030-EDA_files/figure-html/fig-ggstatsplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ggstatsplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.9: ggstatsplot builds on ggplot, but is simpler to use
+Figure&nbsp;2.10: ggstatsplot builds on ggplot, but is simpler to use
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Checkout the <a href="https://indrajeetpatil.github.io/ggstatsplot/reference/ggbetweenstats.html">manual</a> of the function to get a handle on all the options and details.</p>
-<p>Wait, let’s drop all missing values (<code>NA</code>) before we plot using <code>drop_na()</code>, <a href="#fig-ggstatsplot2" class="quarto-xref">Figure&nbsp;<span>2.10</span></a>.</p>
+<p>Wait, let’s drop all missing values (<code>NA</code>) before we plot using <code>drop_na()</code>, <a href="#fig-ggstatsplot2" class="quarto-xref">Figure&nbsp;<span>2.11</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>penguins_no_na <span class="ot">&lt;-</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()  <span class="co"># from package "tidyverse"</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins_no_na,</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> sex,</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>penguins_no_na <span class="ot">&lt;-</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()  <span class="co"># from package "tidyverse"</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins_no_na,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> sex,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-ggstatsplot2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1495,7 +1662,7 @@ Figure&nbsp;2.9: ggstatsplot builds on ggplot, but is simpler to use
 <img src="030-EDA_files/figure-html/fig-ggstatsplot2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ggstatsplot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.10: Comparing groups on a quantitative output variable, but dropping missing values before hand
+Figure&nbsp;2.11: Comparing groups on a quantitative output variable, but dropping missing values before hand
 </figcaption>
 </figure>
 </div>
@@ -1532,8 +1699,8 @@ Figure&nbsp;2.10: Comparing groups on a quantitative output variable, but droppi
 </ol>
 <p>Here’s an example of producing a nice table:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># once per session only</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(penguins) <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># once per session only</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(penguins) <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
@@ -1641,9 +1808,9 @@ Figure&nbsp;2.10: Comparing groups on a quantitative output variable, but droppi
 </blockquote>
 <p>Lastly, there are options to export directly to Word or Powerpoint. The R package <code>{flextable}</code> provides functions for that purpose, see <a href="#tbl-flex" class="quarto-xref">Table&nbsp;<span>2.1</span></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>my_flex_tab <span class="ot">&lt;-</span> <span class="fu">flextable</span>(<span class="fu">head</span>(penguins))</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>my_flex_tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>my_flex_tab <span class="ot">&lt;-</span> <span class="fu">flextable</span>(<span class="fu">head</span>(penguins))</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>my_flex_tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="tbl-flex" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1659,8 +1826,8 @@ Table&nbsp;2.1: A table using the R package flextable
 </div>
 <p>Just save it to the Office format of your choice:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_docx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.docx"</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_pptx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.pptx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_docx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.docx"</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_pptx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.pptx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -1671,12 +1838,12 @@ Table&nbsp;2.1: A table using the R package flextable
 <p>The most straightforward approach is to convince your EDA function to produce a data frame. Data frames can be written as CSV or XLSX to disk, and then easily imported to office packages.</p>
 <p><code>easystats</code> and <code>tidyverse</code> are two examples where this happens.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)   <span class="co"># must be installed</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">describe_distribution</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)   <span class="co"># must be installed</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">describe_distribution</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, <code>df1</code> is a data frame:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Classes 'parameters_distribution', 'see_parameters_distribution' and 'data.frame':  11 obs. of  10 variables:
  $ Variable : chr  "mpg" "cyl" "disp" "hp" ...
@@ -1695,14 +1862,14 @@ Table&nbsp;2.1: A table using the R package flextable
 </div>
 <p>Let’s export as XLSX (via the R package <code>rio</code>) and as CSV:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)  <span class="co"># must be installed</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.xlsx"</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)  <span class="co"># must be installed</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.xlsx"</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For exporting <code>csv</code> files we could <em>alternatively</em> use <code>write_csv()</code> from the tidyverse or <code>write.csv</code> from base R. Then, checkout the file in Excel. Note that it is possible to import CSV files to Excel.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars<span class="sc">$</span>am)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars<span class="sc">$</span>am)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Classes 'datawizard_table' and 'data.frame':    3 obs. of  6 variables:
  $ Variable    : chr  "mtcars$am" "mtcars$am" "mtcars$am"
@@ -1719,16 +1886,16 @@ Table&nbsp;2.1: A table using the R package flextable
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df2, <span class="at">file =</span> <span class="st">"df2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df2, <span class="at">file =</span> <span class="st">"df2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="more-advanced" class="level4" data-number="2.9.2.2">
 <h4 data-number="2.9.2.2" class="anchored" data-anchor-id="more-advanced"><span class="header-section-number">2.9.2.2</span> More advanced</h4>
 <p>Note that if we use <code>data_tabulate</code> like this:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"am"</span>, <span class="st">"vs"</span>))</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"am"</span>, <span class="st">"vs"</span>))</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 2
  $ :Classes 'datawizard_table' and 'data.frame':    3 obs. of  6 variables:
@@ -1765,7 +1932,7 @@ Table&nbsp;2.1: A table using the R package flextable
 <p>We’ll get a <em>list</em> of two data frames.</p>
 <p>To export either, we need to access each list list element:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df3[[<span class="dv">1</span>]], <span class="at">file =</span> <span class="st">"df3.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df3[[<span class="dv">1</span>]], <span class="at">file =</span> <span class="st">"df3.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

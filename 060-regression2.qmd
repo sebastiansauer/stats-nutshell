@@ -131,6 +131,7 @@ Here's a visualization of a 3D regression plane (not line) *without interaction*
 ```{r plot-3dregr2}
 #| echo: false
 #| label: fig-3dregr2
+#| out-width: 100%
 #| fig-cap: "3D regression plane (not a line) without interaction"
 #| results: "hold"
 #| fig-align: "center"
@@ -213,7 +214,7 @@ Here's a visual account, see Figure @fig-mtcars3d-interact.
 ```{r}
 #| echo: false
 #| label: fig-mtcars3d-interact
-#| fig-cap: "mpg ~ hp + disp"
+#| fig-cap: "mpg ~ hp + disp + hp:disp"
 x <- seq(min(mtcars$hp), max(mtcars$hp), length.out = 25)
 y <- seq(min(mtcars$disp), max(mtcars$disp), length.out = 25)
 z <- outer(x, y, function(x,y) {predict(lm3d_interact, data.frame(hp = x, disp = y))})
@@ -340,7 +341,7 @@ parameters(m)
 
 ## Exercises
 
-- [log-y-regr3/](https://datenwerk.netlify.app/posts/log-y-regr3/log-y-regr3/)
+- [log-y-regr3](https://datenwerk.netlify.app/posts/log-y-regr3/log-y-regr3/)
 - [adjustieren1](https://datenwerk.netlify.app/posts/adjustieren1/adjustieren1/)
 - [adjustieren2](https://datenwerk.netlify.app/posts/adjustieren2/adjustieren2/)
 - [Interpreting Regression coefficients](https://datenwerk.netlify.app/posts/interpret-koeff/interpret-koeff/)

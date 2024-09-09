@@ -239,3 +239,7 @@ If you want to dig deeper, check-out this [course on statistical inference using
 If you are interested in predictive modeling, check-out [this couse](https://ds1-prognosemodellierung.netlify.app/).
 
 
+Looking for a text book on statistical modelling suitable to applied PhD level? 
+I recommend @mcelreath_statistical_2020 and @gelman_regression_2021.
+
+
