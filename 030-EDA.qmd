@@ -215,24 +215,29 @@ penguins <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerp
 It's quite simple to use:
 
 ```{r}
-#| eval: false
+#| eval: true
 library(tableone)  
 CreateTableOne(data = penguins)
 ```
 
+Note that you can get a markdown/html version by adding the command `kableone`.
+
 
 
 ```{r}
-#| echo: false
+#| echo: true
+#| eval: true
 library(tableone)  
 table1 <- CreateTableOne(data = penguins)
 kableone(table1)
 ```
 
+However, to get a markdown (styled) output, you need to run your script in a Quarto document,
+not in an R script.
 
 
 
-To get more detailled results, use the `summary` method:
+To get more detailed results, use the `summary` method:
 
 ```{r}
 #| eval: false
@@ -240,10 +245,10 @@ tab1 <- CreateTableOne(data = penguins)
 summary(tab1)
 ```
 
-Check-out the [TableOne manual](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html) for a more detailled introduction.
+Check-out the [TableOne manual](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html) for a more detailed introduction.
 
 
-How to export to MS Office? Well, one simple approach is obviously to copy-paste. 
+How to export to MS Office? Well, one simple approach is obviously to copy-paste (the styled version). 
 Checkout @sec-office for more advanced options.
 
 
@@ -265,7 +270,8 @@ There are some packages, such as `{easystats}`, which provide comfortable access
 
 ```{r}
 library(easystats)  # once per session
-describe_distribution(penguins)
+describe_distribution(penguins) |>  # describe all distributions in the data set
+  format_table(digits = 2)  # show 2 decimals only
 ```
 
 
@@ -280,8 +286,8 @@ For nominal variables, consider `data_tabulate`:
 
 ```{r}
 #| eval: false
-data_tabulate(penguins, select = c("sex", "island")) |> 
-  print_md() 
+data_tabulate(penguins, select = c("sex", "island")) |>  # tabulate nominal variables
+  print_md() # stylize output
 ```
 
 

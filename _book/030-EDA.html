@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.8">
+<meta name="generator" content="quarto-1.6.20">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -93,10 +93,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-018089954d508eae8a473f0b7f0491f0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e19161ed4e9aff9b066a34963cfd5be8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0907b20a9700af8a13c62216b970de3d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -125,7 +125,9 @@ div.csl-indent {
   }
 }</script>
 <link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
 <script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
+
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -407,7 +409,7 @@ Figure&nbsp;2.1: The data journey
 </section>
 <section id="blitz-data" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="blitz-data"><span class="header-section-number">2.4</span> Blitz data</h2>
-<p>See <a href="020-basics.html#sec-blitz-data" class="quarto-xref"><span>Section 1.6</span></a> for some data sets suitable to get going.</p>
+<p>See <a href="020-basics.html#sec-blitz-data" class="quarto-xref"><span>Section 1.7</span></a> for some data sets suitable to get going.</p>
 </section>
 <section id="data-cleansing" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="data-cleansing"><span class="header-section-number">2.5</span> Data cleansing</h2>
@@ -548,8 +550,35 @@ Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)  </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CreateTableOne</span>(<span class="at">data =</span> penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                               
+                                Overall         
+  n                                 344         
+  rownames (mean (SD))           172.50 (99.45) 
+  species (%)                                   
+     Adelie                         152 (44.2)  
+     Chinstrap                       68 (19.8)  
+     Gentoo                         124 (36.0)  
+  island (%)                                    
+     Biscoe                         168 (48.8)  
+     Dream                          124 (36.0)  
+     Torgersen                       52 (15.1)  
+  bill_length_mm (mean (SD))      43.92 (5.46)  
+  bill_depth_mm (mean (SD))       17.15 (1.97)  
+  flipper_length_mm (mean (SD))  200.92 (14.06) 
+  body_mass_g (mean (SD))       4201.75 (801.95)
+  sex (%)                                       
+                                     11 ( 3.2)  
+     female                         165 (48.0)  
+     male                           168 (48.8)  
+  year (mean (SD))              2008.03 (0.82)  </code></pre>
 </div>
+</div>
+<p>Note that you can get a markdown/html version by adding the command <code>kableone</code>.</p>
 <div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)  </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> penguins)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kableone</span>(table1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -639,13 +668,14 @@ Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 </table>
 </div>
 </div>
-<p>To get more detailled results, use the <code>summary</code> method:</p>
+<p>However, to get a markdown (styled) output, you need to run your script in a Quarto document, not in an R script.</p>
+<p>To get more detailed results, use the <code>summary</code> method:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> penguins)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tab1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> penguins)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tab1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Check-out the <a href="https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html">TableOne manual</a> for a more detailled introduction.</p>
-<p>How to export to MS Office? Well, one simple approach is obviously to copy-paste. Checkout <a href="#sec-office" class="quarto-xref"><span>Section 2.9</span></a> for more advanced options.</p>
+<p>Check-out the <a href="https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html">TableOne manual</a> for a more detailed introduction.</p>
+<p>How to export to MS Office? Well, one simple approach is obviously to copy-paste (the styled version). Checkout <a href="#sec-office" class="quarto-xref"><span>Section 2.9</span></a> for more advanced options.</p>
 <div id="exr-mtcars-tableone" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.4 (Create a Table 1 for mtcars)</strong></span> You are free to choose a more overview presentation or a more detailled one. Why did you choose your kind of presentation (overview vs.&nbsp;detailled)? Explain.</p>
 </div>
@@ -654,109 +684,110 @@ Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 <h3 data-number="2.6.5" class="anchored" data-anchor-id="the-easystats-way"><span class="header-section-number">2.6.5</span> The easystats way</h3>
 <p>There are some packages, such as <code>{easystats}</code>, which provide comfortable access to basic statistics:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># once per session</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># once per session</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(penguins) <span class="sc">|&gt;</span>  <span class="co"># describe all distributions in the data set</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format_table</span>(<span class="at">digits =</span> <span class="dv">2</span>)  <span class="co"># show 2 decimals only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 10%">
-<col style="width: 11%">
+<col style="width: 19%">
 <col style="width: 8%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 3%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
 <col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 10%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Variable</th>
-<th style="text-align: right;">Mean</th>
-<th style="text-align: right;">SD</th>
-<th style="text-align: right;">IQR</th>
-<th style="text-align: right;">Min</th>
-<th style="text-align: right;">Max</th>
-<th style="text-align: right;">Skewness</th>
-<th style="text-align: right;">Kurtosis</th>
-<th style="text-align: right;">n</th>
-<th style="text-align: right;">n_Missing</th>
+<th style="text-align: left;">Mean</th>
+<th style="text-align: left;">SD</th>
+<th style="text-align: left;">IQR</th>
+<th style="text-align: left;">Min</th>
+<th style="text-align: left;">Max</th>
+<th style="text-align: left;">Skewness</th>
+<th style="text-align: left;">Kurtosis</th>
+<th style="text-align: left;">n</th>
+<th style="text-align: left;">n_Missing</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">rownames</td>
-<td style="text-align: right;">172.50000</td>
-<td style="text-align: right;">99.4484791</td>
-<td style="text-align: right;">172.500</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">344.0</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">-1.2000000</td>
-<td style="text-align: right;">344</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: left;">172.50</td>
+<td style="text-align: left;">99.45</td>
+<td style="text-align: left;">172.50</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">344.00</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: left;">-1.20</td>
+<td style="text-align: left;">344.00</td>
+<td style="text-align: left;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">bill_length_mm</td>
-<td style="text-align: right;">43.92193</td>
-<td style="text-align: right;">5.4595837</td>
-<td style="text-align: right;">9.300</td>
-<td style="text-align: right;">32.1</td>
-<td style="text-align: right;">59.6</td>
-<td style="text-align: right;">0.0531181</td>
-<td style="text-align: right;">-0.8760270</td>
-<td style="text-align: right;">342</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: left;">43.92</td>
+<td style="text-align: left;">5.46</td>
+<td style="text-align: left;">9.30</td>
+<td style="text-align: left;">32.10</td>
+<td style="text-align: left;">59.60</td>
+<td style="text-align: left;">0.05</td>
+<td style="text-align: left;">-0.88</td>
+<td style="text-align: left;">342.00</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">bill_depth_mm</td>
-<td style="text-align: right;">17.15117</td>
-<td style="text-align: right;">1.9747932</td>
-<td style="text-align: right;">3.125</td>
-<td style="text-align: right;">13.1</td>
-<td style="text-align: right;">21.5</td>
-<td style="text-align: right;">-0.1434646</td>
-<td style="text-align: right;">-0.9068661</td>
-<td style="text-align: right;">342</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: left;">17.15</td>
+<td style="text-align: left;">1.97</td>
+<td style="text-align: left;">3.12</td>
+<td style="text-align: left;">13.10</td>
+<td style="text-align: left;">21.50</td>
+<td style="text-align: left;">-0.14</td>
+<td style="text-align: left;">-0.91</td>
+<td style="text-align: left;">342.00</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">flipper_length_mm</td>
-<td style="text-align: right;">200.91520</td>
-<td style="text-align: right;">14.0617137</td>
-<td style="text-align: right;">23.250</td>
-<td style="text-align: right;">172.0</td>
-<td style="text-align: right;">231.0</td>
-<td style="text-align: right;">0.3456818</td>
-<td style="text-align: right;">-0.9842729</td>
-<td style="text-align: right;">342</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: left;">200.92</td>
+<td style="text-align: left;">14.06</td>
+<td style="text-align: left;">23.25</td>
+<td style="text-align: left;">172.00</td>
+<td style="text-align: left;">231.00</td>
+<td style="text-align: left;">0.35</td>
+<td style="text-align: left;">-0.98</td>
+<td style="text-align: left;">342.00</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">body_mass_g</td>
-<td style="text-align: right;">4201.75439</td>
-<td style="text-align: right;">801.9545357</td>
-<td style="text-align: right;">1206.250</td>
-<td style="text-align: right;">2700.0</td>
-<td style="text-align: right;">6300.0</td>
-<td style="text-align: right;">0.4703293</td>
-<td style="text-align: right;">-0.7192219</td>
-<td style="text-align: right;">342</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: left;">4201.75</td>
+<td style="text-align: left;">801.95</td>
+<td style="text-align: left;">1206.25</td>
+<td style="text-align: left;">2700.00</td>
+<td style="text-align: left;">6300.00</td>
+<td style="text-align: left;">0.47</td>
+<td style="text-align: left;">-0.72</td>
+<td style="text-align: left;">342.00</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">year</td>
-<td style="text-align: right;">2008.02907</td>
-<td style="text-align: right;">0.8183559</td>
-<td style="text-align: right;">2.000</td>
-<td style="text-align: right;">2007.0</td>
-<td style="text-align: right;">2009.0</td>
-<td style="text-align: right;">-0.0537278</td>
-<td style="text-align: right;">-1.5049366</td>
-<td style="text-align: right;">344</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: left;">2008.03</td>
+<td style="text-align: left;">0.82</td>
+<td style="text-align: left;">2.00</td>
+<td style="text-align: left;">2007.00</td>
+<td style="text-align: left;">2009.00</td>
+<td style="text-align: left;">-0.05</td>
+<td style="text-align: left;">-1.50</td>
+<td style="text-align: left;">344.00</td>
+<td style="text-align: left;">0</td>
 </tr>
 </tbody>
 </table>
@@ -767,8 +798,8 @@ Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 <p>How to export to MS Office? Well, one simple approach is obviously to copy-paste. Checkout <a href="#sec-office" class="quarto-xref"><span>Section 2.9</span></a> for more advanced options.</p>
 <p>For nominal variables, consider <code>data_tabulate</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_tabulate</span>(penguins, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"island"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_md</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_tabulate</span>(penguins, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"island"</span>)) <span class="sc">|&gt;</span>  <span class="co"># tabulate nominal variables</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_md</span>() <span class="co"># stylize output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -872,9 +903,9 @@ Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 <p>Note that adding <code>print_md</code> at the end of your pipeline helps to get a more visually pleasing (HTML) output, and not only raw command line style output.</p>
 <p>We can also get <em>grouped</em> tabulations, which amounts to something similar to a <a href="https://en.wikipedia.org/wiki/Contingency_table">contingency table</a>:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_tabulate</span>(<span class="at">select =</span> <span class="st">"island"</span>, <span class="at">collapse =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_tabulate</span>(<span class="at">select =</span> <span class="st">"island"</span>, <span class="at">collapse =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1066,9 +1097,9 @@ Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 <p>At times, we would like to compute the same functions for many variables, ie columns for tidyverse applications.</p>
 <p>Let’s load the penguins data for illustration.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1170,8 +1201,8 @@ Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 </div>
 <p>Say, we would like to compute the mean value for each numeric variable in the data set:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1197,8 +1228,8 @@ Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 </div>
 <p>Synonymously, we could write:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1237,9 +1268,9 @@ Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 <p>Say, we would like to compute the z-value of each numeric variable.</p>
 <p>Admittedly, <code>easystats</code> makes it quite simple:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">standardise</span>(<span class="at">select =</span> is.numeric) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">standardise</span>(<span class="at">select =</span> is.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1342,11 +1373,11 @@ Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 <p>See the help page of <code>standardise</code> for mor details on how to select variables and on more options.</p>
 <p>But for the purpose of illustration, let’s do it with more standard methods, i.e.&nbsp;tidyverse only.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span> {(.x <span class="sc">-</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)},</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.names =</span> <span class="st">"{.col}_z"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span> {(.x <span class="sc">-</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)},</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.names =</span> <span class="st">"{.col}_z"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1402,18 +1433,18 @@ Figure&nbsp;2.6: Breaking down the counts in a data set using vtree
 </div>
 <p>It’s maybe more succinct to put the z-value computation in a function, and then just apply this function:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>z_stand <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>z_stand <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> z_stand))</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(bill_length_mm<span class="sc">:</span>body_mass_g, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> z_stand))</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 9
@@ -1435,11 +1466,11 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>For technical reasons, it’s a bit cumbersome in (base) R to compute rowwise operations. The thing is, R’s dataframes are organized as vectors of <em>columns</em> so it’s much easier to do stuff columnwise.</p>
 <p>However, since recently, computing rowwise operations with the tidyverse has become simpler. Consider the following example. Say we would like to know the highest z-value for each variable we just computed, that is the highest values <em>per individual</em>, ie., by row in the data frame.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">max_z =</span> <span class="fu">max</span>(<span class="fu">c</span>(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g))) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">max_z =</span> <span class="fu">max</span>(<span class="fu">c</span>(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g))) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1563,7 +1594,7 @@ $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <h3 data-number="2.8.1" class="anchored" data-anchor-id="ggpubr"><span class="header-section-number">2.8.1</span> ggpubr</h3>
 <p><a href="https://rpkgs.datanovia.com/ggpubr/index.html">ggpubr</a> is a simple yet powerful way to visualize data.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)  <span class="co"># must be installed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)  <span class="co"># must be installed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s visualize the association of bill length (see <a href="#fig-bill-length" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>) with body mass, see <a href="#fig-peng-scatter1" class="quarto-xref">Figure&nbsp;<span>2.8</span></a>.</p>
 <div id="fig-bill-length" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1577,10 +1608,10 @@ Figure&nbsp;2.7: In case you did not know, that’s what is meant by bill length
 </figure>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatter</span>(penguins,</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"bill_length_mm"</span>,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"body_mass_g"</span>,</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"sex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatter</span>(penguins,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"bill_length_mm"</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"body_mass_g"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"sex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-peng-scatter1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1596,17 +1627,17 @@ Figure&nbsp;2.8: A simple scatterplot of the penguins data set using ggscatter
 </div>
 <p>Let’s improve a bit on the plot, see <a href="#fig-peng-scatter2" class="quarto-xref">Figure&nbsp;<span>2.9</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatter</span>(penguins,</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"bill_length_mm"</span>,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"body_mass_g"</span>,</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"species"</span>,</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">shape =</span> <span class="st">"species"</span>,</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">add =</span> <span class="st">"reg.line"</span>,</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Body maxx (g)"</span>,</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">conf.int =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">ellipse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">cor.coef =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatter</span>(penguins,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"bill_length_mm"</span>,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"body_mass_g"</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"species"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">shape =</span> <span class="st">"species"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">add =</span> <span class="st">"reg.line"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Bill length (mm)"</span>,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Body maxx (g)"</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">conf.int =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">ellipse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">cor.coef =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-peng-scatter2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1626,11 +1657,11 @@ Figure&nbsp;2.9: A more polished scatterplot of the penguins data set using ggsc
 <h3 data-number="2.8.2" class="anchored" data-anchor-id="ggstatsplot"><span class="header-section-number">2.8.2</span> ggstatsplot</h3>
 <p>In addtion, consider <a href="#ggstatsplot">ggstatsplot</a>)(https://indrajeetpatil.github.io/ggstatsplot/). Let’s use the <code>mtcars</code> dataset for a quick demonstration. For example, assume you would like to compare two group of cars, automatic vs.&nbsp;manual shifting, in terms of fuel economy. Here we go, <a href="#fig-ggstatsplot1" class="quarto-xref">Figure&nbsp;<span>2.10</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> sex,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> sex,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-ggstatsplot1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1647,14 +1678,14 @@ Figure&nbsp;2.10: ggstatsplot builds on ggplot, but is simpler to use
 <p>Checkout the <a href="https://indrajeetpatil.github.io/ggstatsplot/reference/ggbetweenstats.html">manual</a> of the function to get a handle on all the options and details.</p>
 <p>Wait, let’s drop all missing values (<code>NA</code>) before we plot using <code>drop_na()</code>, <a href="#fig-ggstatsplot2" class="quarto-xref">Figure&nbsp;<span>2.11</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>penguins_no_na <span class="ot">&lt;-</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()  <span class="co"># from package "tidyverse"</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins_no_na,</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> sex,</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>penguins_no_na <span class="ot">&lt;-</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()  <span class="co"># from package "tidyverse"</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins_no_na,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> sex,</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-ggstatsplot2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1699,8 +1730,8 @@ Figure&nbsp;2.11: Comparing groups on a quantitative output variable, but droppi
 </ol>
 <p>Here’s an example of producing a nice table:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># once per session only</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(penguins) <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># once per session only</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_distribution</span>(penguins) <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
@@ -1808,9 +1839,9 @@ Figure&nbsp;2.11: Comparing groups on a quantitative output variable, but droppi
 </blockquote>
 <p>Lastly, there are options to export directly to Word or Powerpoint. The R package <code>{flextable}</code> provides functions for that purpose, see <a href="#tbl-flex" class="quarto-xref">Table&nbsp;<span>2.1</span></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>my_flex_tab <span class="ot">&lt;-</span> <span class="fu">flextable</span>(<span class="fu">head</span>(penguins))</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>my_flex_tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>my_flex_tab <span class="ot">&lt;-</span> <span class="fu">flextable</span>(<span class="fu">head</span>(penguins))</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>my_flex_tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="tbl-flex" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1818,7 +1849,7 @@ Table&nbsp;2.1: A table using the R package flextable
 </figcaption>
 <div aria-describedby="tbl-flex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-28325ac6{}.cl-28273132{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-282d19d0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-282d19da{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-282d3988{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-282d3992{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-282d399c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-282d399d{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-282d39a6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-282d39a7{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-28325ac6"><thead><tr style="overflow-wrap:break-word;"><th class="cl-282d3988"><p class="cl-282d19d0"><span class="cl-28273132">rownames</span></p></th><th class="cl-282d3992"><p class="cl-282d19da"><span class="cl-28273132">species</span></p></th><th class="cl-282d3992"><p class="cl-282d19da"><span class="cl-28273132">island</span></p></th><th class="cl-282d3988"><p class="cl-282d19d0"><span class="cl-28273132">bill_length_mm</span></p></th><th class="cl-282d3988"><p class="cl-282d19d0"><span class="cl-28273132">bill_depth_mm</span></p></th><th class="cl-282d3988"><p class="cl-282d19d0"><span class="cl-28273132">flipper_length_mm</span></p></th><th class="cl-282d3988"><p class="cl-282d19d0"><span class="cl-28273132">body_mass_g</span></p></th><th class="cl-282d3992"><p class="cl-282d19da"><span class="cl-28273132">sex</span></p></th><th class="cl-282d3988"><p class="cl-282d19d0"><span class="cl-28273132">year</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">1</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">Adelie</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">Torgersen</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">39.1</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">18.7</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">181</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">3,750</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">male</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">2,007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">2</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">Adelie</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">Torgersen</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">39.5</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">17.4</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">186</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">3,800</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">female</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">2,007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">3</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">Adelie</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">Torgersen</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">40.3</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">18.0</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">195</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">3,250</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">female</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">2,007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">4</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">Adelie</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">Torgersen</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132"></span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132"></span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132"></span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132"></span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132"></span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">2,007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">5</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">Adelie</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">Torgersen</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">36.7</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">19.3</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">193</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">3,450</span></p></td><td class="cl-282d399d"><p class="cl-282d19da"><span class="cl-28273132">female</span></p></td><td class="cl-282d399c"><p class="cl-282d19d0"><span class="cl-28273132">2,007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-282d39a6"><p class="cl-282d19d0"><span class="cl-28273132">6</span></p></td><td class="cl-282d39a7"><p class="cl-282d19da"><span class="cl-28273132">Adelie</span></p></td><td class="cl-282d39a7"><p class="cl-282d19da"><span class="cl-28273132">Torgersen</span></p></td><td class="cl-282d39a6"><p class="cl-282d19d0"><span class="cl-28273132">39.3</span></p></td><td class="cl-282d39a6"><p class="cl-282d19d0"><span class="cl-28273132">20.6</span></p></td><td class="cl-282d39a6"><p class="cl-282d19d0"><span class="cl-28273132">190</span></p></td><td class="cl-282d39a6"><p class="cl-282d19d0"><span class="cl-28273132">3,650</span></p></td><td class="cl-282d39a7"><p class="cl-282d19da"><span class="cl-28273132">male</span></p></td><td class="cl-282d39a6"><p class="cl-282d19d0"><span class="cl-28273132">2,007</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-460029ea{}.cl-45f2abbc{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-45f7f5b8{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-45f7f5c2{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-45f82498{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-45f824a2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-45f824ac{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-45f824ad{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-45f824ae{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-45f824b6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-460029ea"><thead><tr style="overflow-wrap:break-word;"><th class="cl-45f82498"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">rownames</span></p></th><th class="cl-45f824a2"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">species</span></p></th><th class="cl-45f824a2"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">island</span></p></th><th class="cl-45f82498"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">bill_length_mm</span></p></th><th class="cl-45f82498"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">bill_depth_mm</span></p></th><th class="cl-45f82498"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">flipper_length_mm</span></p></th><th class="cl-45f82498"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">body_mass_g</span></p></th><th class="cl-45f824a2"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">sex</span></p></th><th class="cl-45f82498"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">year</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">1</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Adelie</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Torgersen</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">39.1</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">18.7</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">181</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">3,750</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">male</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">2,007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">2</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Adelie</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Torgersen</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">39.5</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">17.4</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">186</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">3,800</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">female</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">2,007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">3</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Adelie</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Torgersen</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">40.3</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">18.0</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">195</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">3,250</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">female</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">2,007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">4</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Adelie</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Torgersen</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc"></span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc"></span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc"></span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc"></span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc"></span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">2,007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">5</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Adelie</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Torgersen</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">36.7</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">19.3</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">193</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">3,450</span></p></td><td class="cl-45f824ad"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">female</span></p></td><td class="cl-45f824ac"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">2,007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-45f824ae"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">6</span></p></td><td class="cl-45f824b6"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Adelie</span></p></td><td class="cl-45f824b6"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">Torgersen</span></p></td><td class="cl-45f824ae"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">39.3</span></p></td><td class="cl-45f824ae"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">20.6</span></p></td><td class="cl-45f824ae"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">190</span></p></td><td class="cl-45f824ae"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">3,650</span></p></td><td class="cl-45f824b6"><p class="cl-45f7f5c2"><span class="cl-45f2abbc">male</span></p></td><td class="cl-45f824ae"><p class="cl-45f7f5b8"><span class="cl-45f2abbc">2,007</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 </figure>
@@ -1826,8 +1857,8 @@ Table&nbsp;2.1: A table using the R package flextable
 </div>
 <p>Just save it to the Office format of your choice:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_docx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.docx"</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_pptx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.pptx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_docx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.docx"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_pptx</span>(<span class="st">"Table 1 "</span> <span class="ot">=</span> my_flex_tab, <span class="at">path =</span> <span class="st">"my_tab.pptx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -1838,12 +1869,12 @@ Table&nbsp;2.1: A table using the R package flextable
 <p>The most straightforward approach is to convince your EDA function to produce a data frame. Data frames can be written as CSV or XLSX to disk, and then easily imported to office packages.</p>
 <p><code>easystats</code> and <code>tidyverse</code> are two examples where this happens.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)   <span class="co"># must be installed</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">describe_distribution</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)   <span class="co"># must be installed</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">describe_distribution</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, <code>df1</code> is a data frame:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Classes 'parameters_distribution', 'see_parameters_distribution' and 'data.frame':  11 obs. of  10 variables:
  $ Variable : chr  "mpg" "cyl" "disp" "hp" ...
@@ -1862,14 +1893,14 @@ Table&nbsp;2.1: A table using the R package flextable
 </div>
 <p>Let’s export as XLSX (via the R package <code>rio</code>) and as CSV:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)  <span class="co"># must be installed</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.xlsx"</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)  <span class="co"># must be installed</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.xlsx"</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df1, <span class="at">file =</span> <span class="st">"df1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For exporting <code>csv</code> files we could <em>alternatively</em> use <code>write_csv()</code> from the tidyverse or <code>write.csv</code> from base R. Then, checkout the file in Excel. Note that it is possible to import CSV files to Excel.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars<span class="sc">$</span>am)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars<span class="sc">$</span>am)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Classes 'datawizard_table' and 'data.frame':    3 obs. of  6 variables:
  $ Variable    : chr  "mtcars$am" "mtcars$am" "mtcars$am"
@@ -1886,16 +1917,16 @@ Table&nbsp;2.1: A table using the R package flextable
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df2, <span class="at">file =</span> <span class="st">"df2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df2, <span class="at">file =</span> <span class="st">"df2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="more-advanced" class="level4" data-number="2.9.2.2">
 <h4 data-number="2.9.2.2" class="anchored" data-anchor-id="more-advanced"><span class="header-section-number">2.9.2.2</span> More advanced</h4>
 <p>Note that if we use <code>data_tabulate</code> like this:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"am"</span>, <span class="st">"vs"</span>))</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data_tabulate</span>(mtcars, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"am"</span>, <span class="st">"vs"</span>))</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 2
  $ :Classes 'datawizard_table' and 'data.frame':    3 obs. of  6 variables:
@@ -1932,7 +1963,7 @@ Table&nbsp;2.1: A table using the R package flextable
 <p>We’ll get a <em>list</em> of two data frames.</p>
 <p>To export either, we need to access each list list element:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df3[[<span class="dv">1</span>]], <span class="at">file =</span> <span class="st">"df3.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(df3[[<span class="dv">1</span>]], <span class="at">file =</span> <span class="st">"df3.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
