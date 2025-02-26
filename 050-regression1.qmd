@@ -11,6 +11,7 @@
 library(easystats)
 library(tidyverse)
 library(rstanarm)  # optional!
+library(ggpubr)  # data visualization
 ```
 
 
@@ -416,28 +417,45 @@ lm3a <- lm(mpg ~ am, data = mtcars)
 parameters(lm3a)
 ```
 
+
+A linear model with one predictor having two values amounts to nothing more than comparing the means of two groups:
+
+
 ```{r}
-lm3a_means <- estimate_means(lm3a, at = "am = c(0, 1)")
-lm3a_means 
+ggviolin(mtcars, x = "am", y = "mpg",
+         add = "mean_se") +
+  labs(caption = "Mean plus/minus SE are shown")
 ```
-If we were not to specify the values of `am` which we would like to get predictions for, the default of the function would select 10 values, spread across the range of `am`. For numeric variables, this is usually fine. However, for nominal variables - and `am` is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for `0` and `1`.
+
+Let's compute the mean values per group:
+
+```{r}
+mtcars |> 
+  group_by(am) |> 
+  describe_distribution(select = "mpg")
+```
 
 
-However, unfortunately, the plot *needs* a nominal variable if we are to compare groups. 
+
+
+However, unfortunately, the plot of the model *needs* a nominal variable if we are to compare groups. 
 In our case, `am` is considered a numeric variables, since it consists of numbers only. 
-The plot does not work, malheureusement:
+The plot does not work as expected, malheureusement:
 
 
 
 ```{r}
 #| error: true
+plot(estimate_relation(lm3a))
 plot(lm3a_means)
 ```
 
 
 
-We need to transform `am` to a factor variable. That's something like a string. 
-If we hand over a `factor()` to the plotting function, everything will run smoothly. 
+We need to transform `am` to a *factor* variable. 
+That's something like a string (text) variable. 
+If we hand over a `factor()` to the plotting function, 
+everything will run smoothly. 
 Computationwise, no big differences:
 
 
@@ -449,6 +467,22 @@ mtcars2 <-
 lm3a <- lm(mpg ~ am_f, data = mtcars2)
 parameters(lm3a)
 ```
+
+
+We can also compute the predicted output values of our model at given input variable values:
+
+
+```{r}
+lm3a_means <- estimate_means(lm3a, at = "am = c(0, 1)")
+lm3a_means 
+```
+
+If we were not to specify the values of `am` which we would like to get predictions for, 
+the default of the function would select 10 values, 
+spread across the range of `am`. For numeric variables, this is usually fine. 
+However, for nominal variables - and `am` is in fact a nominally scaled variable - 
+we insist that we want predictions 
+for the levels of the variable only, that is for `0` and `1`.
 
 
 ```{r}

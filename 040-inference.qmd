@@ -8,7 +8,28 @@ library(knitr)
 
 ![](img/stern.png){width="5%"}
 
+
+
+
+## R packages needed for this chapter
+
+Make sure to run the following code chunks in order to start the neccessary R packages needed in this chapter.
+
+
+
+```{r}
+#| message: false
+#| warning: false
+library(easystats)  # make stats easy again
+library(tidyverse)  # data wrangling
+```
+
+
+
+
 ## What is it?
+
+### Generalizing from a sample to a population
 
 Statistical inference, according to @gelman_regression_2021, chap. 1.1, faces the challenge of *generalizing* from the particular to the general.
 
@@ -22,7 +43,7 @@ In more details, this amounts to generalizing from ...
 Statistical inference is concerned with making general claims from particular data using mathematical tools.
 :::
 
-## Population and sample
+### Population and sample
 
 We want to have an estimate of some population value, for example the proportion of `A`.
 
@@ -36,7 +57,7 @@ However, all we have is a subset, a sample of the populuation. Hence, we need to
 Population vs. sample (Image credit: Karsten Luebke)
 :::
 
-## What's not inference?
+### What's not inference?
 
 Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive* and *inferential* statistics.
 
@@ -48,7 +69,7 @@ Consider fig. @fig-desk-inf which epitomizes the difference between *descriptive
 knitr::include_graphics("img/desk_vs_inf-crop.png")
 ```
 
-## When size helps
+### When size helps
 
 Larger samples allow for more precise estimations (ceteris paribus).
 
@@ -63,9 +84,58 @@ knitr::include_graphics("img/Estimate.gif")
 
 <!-- ![Sample size in motion, Image credit: Karsten Luebke](img/Estimate.gif) -->
 
-## What flavors are available?
 
-Typically, when one hears "inference" one thinks of p-values and null hypothesis testing. Those procedures are examples of the school of *Frequentist statistics*.
+
+
+
+
+### Inference in a nutshell
+
+Let's look at a concrete example.
+
+Here's a research question:
+
+>   Are the auction prices (`total_pr`) of *new* Mariokart games higher than the auction prices for *used* ones (variable `cond`ition)?
+
+
+Of cource, we would like to know the answer to the research question with respect to the population, not just to the sample at hand. 
+The sample at hand is known without any uncertainty.
+To the contrary, the exact value in the population is unknown.
+We use statistics to *estimate* it.
+
+For a quick example, first load the Mariokart data set (see @lst-mariokart)
+
+```{r}
+mariokart <- read.csv(  "https://vincentarelbundock.github.io/Rdatasets/csv/openintro/mariokart.csv")
+```
+
+Now, let's do *INFERENCE STATISTICS*! Voila:
+
+
+```{r}
+my_inference_model <- lm(total_pr ~ cond, data = mariokart)
+parameters(my_inference_model) |> print_md()
+```
+
+The model estimates the "effect" of the "used" condition of approx. 6.6 Dollar.
+Used games cost on average about 6.6 Dollar *less* compared to new ones, according to this model.
+
+
+The value at `95% CI` shows us the 95% confidence interval (CI) (Frequentist flavor). 
+The CI is an indication of the precision with which we estimate the parameter of interest. 
+Values within the CI can be dubbed "plausible" values of the parameter of interest; values outside are "implausible". 
+Put shortly, the model thinks that the true effect in the population is somewhere between approx. -15 and +2 Dollar.
+
+We also learn that zero is included in the CI of `cond`: 
+That means that zero is plausible value for the effect of `cond`.
+Therefore, we cannot exclude the null/zero value/hypothesis.
+
+
+
+## What inference flavors are available?
+
+Typically, when one hears "inference" one thinks of p-values and null hypothesis testing. 
+Those procedures are examples of the school of *Frequentist statistics*.
 
 However, there's a second flavor of statistics to be mentioned here: *Bayesian statistics*.
 
@@ -75,7 +145,8 @@ Frequentism is *not* concerned about the probability of your research hypothesis
 
 Frequentism is all about controlling the *long-term error*. For illustration, suppose you are the CEO of a factory producing screws, and many of them. 
 As the boss, you are not so much interested if a particular scree is in order (or faulty). 
-Rather you are interested that the overall, long-term error rate of your production is low. 
+Rather you are interested that the overall, 
+long-term error rate of your production is low. 
 One may add that your goal might not the minimize the long-term error, b
 ut to control it to a certain level - it may be to expensive to produce super high quality screws. 
 Some decent, but cheap screws, might be more profitable.
@@ -213,5 +284,6 @@ For example,
 ## Going further
 
 @goodman_dirty_2008 provides an entertaining overview on typical misconceptions of the p-value [full text](https://www.ohri.ca//newsroom/seminars/SeminarUploads/1829/Suggested%20Reading%20-%20Nov%203,%202014.pdf).
-@poldrack_statistical_2022 provides a fresh, accessible and sound introduction to statistical inference; in addition @cetinkaya-rundel_introduction_2021 is a worthwhile treatise.
+@poldrack_statistical_2022 provides a fresh, 
+accessible and sound introduction to statistical inference; in addition @cetinkaya-rundel_introduction_2021 is a worthwhile treatise.
 

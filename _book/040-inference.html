@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.20">
+<meta name="generator" content="quarto-1.6.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -59,10 +93,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-018089954d508eae8a473f0b7f0491f0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-a8378a0342da607bf6aa9ac04725c156.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0907b20a9700af8a13c62216b970de3d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ed6da6eef3892af8a4b5ed59bfb951f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -90,6 +124,7 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="default">
 <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -230,23 +265,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-it" id="toc-what-is-it" class="nav-link active" data-scroll-target="#what-is-it"><span class="header-section-number">3.1</span> What is it?</a></li>
-  <li><a href="#population-and-sample" id="toc-population-and-sample" class="nav-link" data-scroll-target="#population-and-sample"><span class="header-section-number">3.2</span> Population and sample</a></li>
-  <li><a href="#whats-not-inference" id="toc-whats-not-inference" class="nav-link" data-scroll-target="#whats-not-inference"><span class="header-section-number">3.3</span> What’s not inference?</a></li>
-  <li><a href="#when-size-helps" id="toc-when-size-helps" class="nav-link" data-scroll-target="#when-size-helps"><span class="header-section-number">3.4</span> When size helps</a></li>
-  <li><a href="#what-flavors-are-available" id="toc-what-flavors-are-available" class="nav-link" data-scroll-target="#what-flavors-are-available"><span class="header-section-number">3.5</span> What flavors are available?</a>
+  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link active" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="header-section-number">3.1</span> R packages needed for this chapter</a></li>
+  <li><a href="#what-is-it" id="toc-what-is-it" class="nav-link" data-scroll-target="#what-is-it"><span class="header-section-number">3.2</span> What is it?</a>
   <ul class="collapse">
-  <li><a href="#frequentist-inference" id="toc-frequentist-inference" class="nav-link" data-scroll-target="#frequentist-inference"><span class="header-section-number">3.5.1</span> Frequentist inference</a></li>
-  <li><a href="#bayes-inference" id="toc-bayes-inference" class="nav-link" data-scroll-target="#bayes-inference"><span class="header-section-number">3.5.2</span> Bayes inference</a></li>
+  <li><a href="#generalizing-from-a-sample-to-a-population" id="toc-generalizing-from-a-sample-to-a-population" class="nav-link" data-scroll-target="#generalizing-from-a-sample-to-a-population"><span class="header-section-number">3.2.1</span> Generalizing from a sample to a population</a></li>
+  <li><a href="#population-and-sample" id="toc-population-and-sample" class="nav-link" data-scroll-target="#population-and-sample"><span class="header-section-number">3.2.2</span> Population and sample</a></li>
+  <li><a href="#whats-not-inference" id="toc-whats-not-inference" class="nav-link" data-scroll-target="#whats-not-inference"><span class="header-section-number">3.2.3</span> What’s not inference?</a></li>
+  <li><a href="#when-size-helps" id="toc-when-size-helps" class="nav-link" data-scroll-target="#when-size-helps"><span class="header-section-number">3.2.4</span> When size helps</a></li>
+  <li><a href="#inference-in-a-nutshell" id="toc-inference-in-a-nutshell" class="nav-link" data-scroll-target="#inference-in-a-nutshell"><span class="header-section-number">3.2.5</span> Inference in a nutshell</a></li>
   </ul></li>
-  <li><a href="#but-which-one-should-i-consume" id="toc-but-which-one-should-i-consume" class="nav-link" data-scroll-target="#but-which-one-should-i-consume"><span class="header-section-number">3.6</span> But which one should I consume?</a></li>
-  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">3.7</span> Lab</a></li>
-  <li><a href="#comment-from-xkcd" id="toc-comment-from-xkcd" class="nav-link" data-scroll-target="#comment-from-xkcd"><span class="header-section-number">3.8</span> Comment from xkcd</a></li>
-  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="header-section-number">3.9</span> p-value</a></li>
-  <li><a href="#some-confusion-remains-about-the-p-value" id="toc-some-confusion-remains-about-the-p-value" class="nav-link" data-scroll-target="#some-confusion-remains-about-the-p-value"><span class="header-section-number">3.10</span> Some confusion remains about the p-value</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.11</span> Exercises</a></li>
-  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies"><span class="header-section-number">3.12</span> Case studies</a></li>
-  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="header-section-number">3.13</span> Going further</a></li>
+  <li><a href="#what-inference-flavors-are-available" id="toc-what-inference-flavors-are-available" class="nav-link" data-scroll-target="#what-inference-flavors-are-available"><span class="header-section-number">3.3</span> What inference flavors are available?</a>
+  <ul class="collapse">
+  <li><a href="#frequentist-inference" id="toc-frequentist-inference" class="nav-link" data-scroll-target="#frequentist-inference"><span class="header-section-number">3.3.1</span> Frequentist inference</a></li>
+  <li><a href="#bayes-inference" id="toc-bayes-inference" class="nav-link" data-scroll-target="#bayes-inference"><span class="header-section-number">3.3.2</span> Bayes inference</a></li>
+  </ul></li>
+  <li><a href="#but-which-one-should-i-consume" id="toc-but-which-one-should-i-consume" class="nav-link" data-scroll-target="#but-which-one-should-i-consume"><span class="header-section-number">3.4</span> But which one should I consume?</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">3.5</span> Lab</a></li>
+  <li><a href="#comment-from-xkcd" id="toc-comment-from-xkcd" class="nav-link" data-scroll-target="#comment-from-xkcd"><span class="header-section-number">3.6</span> Comment from xkcd</a></li>
+  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="header-section-number">3.7</span> p-value</a></li>
+  <li><a href="#some-confusion-remains-about-the-p-value" id="toc-some-confusion-remains-about-the-p-value" class="nav-link" data-scroll-target="#some-confusion-remains-about-the-p-value"><span class="header-section-number">3.8</span> Some confusion remains about the p-value</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.9</span> Exercises</a></li>
+  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies"><span class="header-section-number">3.10</span> Case studies</a></li>
+  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="header-section-number">3.11</span> Going further</a></li>
   </ul>
 </nav>
     </div>
@@ -273,9 +313,19 @@ window.Quarto = {
 
 
 <p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
-<section id="what-is-it" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="what-is-it"><span class="header-section-number">3.1</span> What is it?</h2>
-<p>Statistical inference, according to <span class="citation" data-cites="gelman_regression_2021">(<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref"><strong>gelman_regression_2021?</strong></a>)</span>, chap.&nbsp;1.1, faces the challenge of <em>generalizing</em> from the particular to the general.</p>
+<section id="r-packages-needed-for-this-chapter" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">3.1</span> R packages needed for this chapter</h2>
+<p>Make sure to run the following code chunks in order to start the neccessary R packages needed in this chapter.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># make stats easy again</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># data wrangling</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="what-is-it" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="what-is-it"><span class="header-section-number">3.2</span> What is it?</h2>
+<section id="generalizing-from-a-sample-to-a-population" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="generalizing-from-a-sample-to-a-population"><span class="header-section-number">3.2.1</span> Generalizing from a sample to a population</h3>
+<p>Statistical inference, according to <span class="citation" data-cites="gelman_regression_2021">Gelman et al. (<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref">2021</a>)</span>, chap.&nbsp;1.1, faces the challenge of <em>generalizing</em> from the particular to the general.</p>
 <p>In more details, this amounts to generalizing from …</p>
 <ol type="1">
 <li>a sample to a population</li>
@@ -296,8 +346,8 @@ Important
 </div>
 </div>
 </section>
-<section id="population-and-sample" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="population-and-sample"><span class="header-section-number">3.2</span> Population and sample</h2>
+<section id="population-and-sample" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="population-and-sample"><span class="header-section-number">3.2.2</span> Population and sample</h3>
 <p>We want to have an estimate of some population value, for example the proportion of <code>A</code>.</p>
 <p>However, all we have is a subset, a sample of the populuation. Hence, we need to <em>infer</em> from the sample to the popluation. We do so by generalizing from the sample to the population, see Figure <a href="#fig-pop-sample" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>.</p>
 <div id="fig-pop-sample" class="quarto-layout-panel">
@@ -336,8 +386,8 @@ Figure&nbsp;3.1: Population vs.&nbsp;sample (Image credit: Karsten Luebke)
 </figure>
 </div>
 </section>
-<section id="whats-not-inference" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="whats-not-inference"><span class="header-section-number">3.3</span> What’s not inference?</h2>
+<section id="whats-not-inference" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="whats-not-inference"><span class="header-section-number">3.2.3</span> What’s not inference?</h3>
 <p>Consider fig. <a href="#fig-desk-inf" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> which epitomizes the difference between <em>descriptive</em> and <em>inferential</em> statistics.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -354,8 +404,8 @@ Figure&nbsp;3.2: The difference between description and inference
 </div>
 </div>
 </section>
-<section id="when-size-helps" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="when-size-helps"><span class="header-section-number">3.4</span> When size helps</h2>
+<section id="when-size-helps" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="when-size-helps"><span class="header-section-number">3.2.4</span> When size helps</h3>
 <p>Larger samples allow for more precise estimations (ceteris paribus).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -369,17 +419,71 @@ Figure&nbsp;3.2: The difference between description and inference
 </div>
 <!-- ![Sample size in motion, Image credit: Karsten Luebke](img/Estimate.gif) -->
 </section>
-<section id="what-flavors-are-available" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="what-flavors-are-available"><span class="header-section-number">3.5</span> What flavors are available?</h2>
+<section id="inference-in-a-nutshell" class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="inference-in-a-nutshell"><span class="header-section-number">3.2.5</span> Inference in a nutshell</h3>
+<p>Let’s look at a concrete example.</p>
+<p>Here’s a research question:</p>
+<blockquote class="blockquote">
+<p>Are the auction prices (<code>total_pr</code>) of <em>new</em> Mariokart games higher than the auction prices for <em>used</em> ones (variable <code>cond</code>ition)?</p>
+</blockquote>
+<p>Of cource, we would like to know the answer to the research question with respect to the population, not just to the sample at hand. The sample at hand is known without any uncertainty. To the contrary, the exact value in the population is unknown. We use statistics to <em>estimate</em> it.</p>
+<p>For a quick example, first load the Mariokart data set (see <a href="020-basics.html#lst-mariokart" class="quarto-xref">Listing&nbsp;<span>1.1</span></a>)</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mariokart <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(  <span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/openintro/mariokart.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, let’s do <em>INFERENCE STATISTICS</em>! Voila:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_inference_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(total_pr <span class="sc">~</span> cond, <span class="at">data =</span> mariokart)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(my_inference_model) <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: center;">Coefficient</th>
+<th style="text-align: center;">SE</th>
+<th style="text-align: center;">95% CI</th>
+<th style="text-align: center;">t(141)</th>
+<th style="text-align: center;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">53.77</td>
+<td style="text-align: center;">3.33</td>
+<td style="text-align: center;">(47.19, 60.35)</td>
+<td style="text-align: center;">16.15</td>
+<td style="text-align: center;">&lt; .001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cond (used)</td>
+<td style="text-align: center;">-6.62</td>
+<td style="text-align: center;">4.34</td>
+<td style="text-align: center;">(-15.21, 1.96)</td>
+<td style="text-align: center;">-1.52</td>
+<td style="text-align: center;">0.130</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The model estimates the “effect” of the “used” condition of approx. 6.6 Dollar. Used games cost on average about 6.6 Dollar <em>less</em> compared to new ones, according to this model.</p>
+<p>The value at <code>95% CI</code> shows us the 95% confidence interval (CI) (Frequentist flavor). The CI is an indication of the precision with which we estimate the parameter of interest. Values within the CI can be dubbed “plausible” values of the parameter of interest; values outside are “implausible”. Put shortly, the model thinks that the true effect in the population is somewhere between approx. -15 and +2 Dollar.</p>
+<p>We also learn that zero is included in the CI of <code>cond</code>: That means that zero is plausible value for the effect of <code>cond</code>. Therefore, we cannot exclude the null/zero value/hypothesis.</p>
+</section>
+</section>
+<section id="what-inference-flavors-are-available" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="what-inference-flavors-are-available"><span class="header-section-number">3.3</span> What inference flavors are available?</h2>
 <p>Typically, when one hears “inference” one thinks of p-values and null hypothesis testing. Those procedures are examples of the school of <em>Frequentist statistics</em>.</p>
 <p>However, there’s a second flavor of statistics to be mentioned here: <em>Bayesian statistics</em>.</p>
-<section id="frequentist-inference" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="frequentist-inference"><span class="header-section-number">3.5.1</span> Frequentist inference</h3>
+<section id="frequentist-inference" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="frequentist-inference"><span class="header-section-number">3.3.1</span> Frequentist inference</h3>
 <p>Frequentism is <em>not</em> concerned about the probability of your research hypothesis.</p>
 <p>Frequentism is all about controlling the <em>long-term error</em>. For illustration, suppose you are the CEO of a factory producing screws, and many of them. As the boss, you are not so much interested if a particular scree is in order (or faulty). Rather you are interested that the overall, long-term error rate of your production is low. One may add that your goal might not the minimize the long-term error, b ut to control it to a certain level - it may be to expensive to produce super high quality screws. Some decent, but cheap screws, might be more profitable.</p>
 </section>
-<section id="bayes-inference" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="bayes-inference"><span class="header-section-number">3.5.2</span> Bayes inference</h3>
+<section id="bayes-inference" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="bayes-inference"><span class="header-section-number">3.3.2</span> Bayes inference</h3>
 <p>Bayes inference is concerned about the probability of your research hypothesis.</p>
 <p>It simply redistributes your beliefs based on new data (evidence) you observe, see Figure <a href="#fig-belief-update" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
@@ -414,8 +518,8 @@ Figure&nbsp;3.3: Bayesian belief updating
 <p>Check out this <a href="https://youtu.be/HZGCoVF3YvM">great video on Bayes Theorem by 3b1b</a>.</p>
 </section>
 </section>
-<section id="but-which-one-should-i-consume" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="but-which-one-should-i-consume"><span class="header-section-number">3.6</span> But which one should I consume?</h2>
+<section id="but-which-one-should-i-consume" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="but-which-one-should-i-consume"><span class="header-section-number">3.4</span> But which one should I consume?</h2>
 <p>PRO Frequentist:</p>
 <ul>
 <li>Your supervisor and reviewers will be more familiar with it</li>
@@ -440,12 +544,12 @@ Tip
 </div>
 </div>
 </section>
-<section id="lab" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="lab"><span class="header-section-number">3.7</span> Lab</h2>
+<section id="lab" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="lab"><span class="header-section-number">3.5</span> Lab</h2>
 <p>Consider your (most pressing) research question. Assess whether it is more accessible via Frequentist or via Bayesian statistics. Explain your reasoning.</p>
 </section>
-<section id="comment-from-xkcd" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="comment-from-xkcd"><span class="header-section-number">3.8</span> Comment from xkcd</h2>
+<section id="comment-from-xkcd" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="comment-from-xkcd"><span class="header-section-number">3.6</span> Comment from xkcd</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -457,8 +561,8 @@ Tip
 </div>
 <p><a href="https://xkcd.com/1132/">Quelle</a></p>
 </section>
-<section id="p-value" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="p-value"><span class="header-section-number">3.9</span> p-value</h2>
+<section id="p-value" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="p-value"><span class="header-section-number">3.7</span> p-value</h2>
 <p>The p-value has been used as the pivotal criterion to decide about whether or not a research hypothesis were to be “accepted” (a term forbidden in frequentist and Popperian langauge) or to be rejected. However, more recently, it is advised to use the p-value only as <em>one</em> indicator <em>among multiple</em> ; see <span class="citation" data-cites="wasserstein_asas_2016">(<a href="references.html#ref-wasserstein_asas_2016" role="doc-biblioref"><strong>wasserstein_asas_2016?</strong></a>)</span></p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -489,8 +593,8 @@ Figure&nbsp;3.4: Visualization of the p-value
 </div>
 </div>
 </section>
-<section id="some-confusion-remains-about-the-p-value" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="some-confusion-remains-about-the-p-value"><span class="header-section-number">3.10</span> Some confusion remains about the p-value</h2>
+<section id="some-confusion-remains-about-the-p-value" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="some-confusion-remains-about-the-p-value"><span class="header-section-number">3.8</span> Some confusion remains about the p-value</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/6m29tz.jpeg" class="img-fluid figure-img" style="width:25.0%"></p>
@@ -498,8 +602,8 @@ Figure&nbsp;3.4: Visualization of the p-value
 </figure>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="3.11">
-<h2 data-number="3.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.11</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.9</span> Exercises</h2>
 <blockquote class="blockquote">
 <p>👨‍🏫 Check-out all exercises from <a href="https://datenwerk.netlify.app/">Datenwerk</a> with the tag <a href="https://datenwerk.netlify.app/#category=inference">inference</a>. For Bayesian inference, check out the tag <a href="https://datenwerk.netlify.app/#category=bayes">bayes</a> on the same website.</p>
 </blockquote>
@@ -510,20 +614,23 @@ Figure&nbsp;3.4: Visualization of the p-value
 <li><a href="https://datenwerk.netlify.app/posts/nullhyp-beispiel/nullhyp-beispiel">nullhyp-beispiel</a></li>
 </ul>
 </section>
-<section id="case-studies" class="level2" data-number="3.12">
-<h2 data-number="3.12" class="anchored" data-anchor-id="case-studies"><span class="header-section-number">3.12</span> Case studies</h2>
+<section id="case-studies" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="case-studies"><span class="header-section-number">3.10</span> Case studies</h2>
 <ul>
 <li><a href="https://datenwerk.netlify.app/posts/flights-delay-simplified/">flights-delay-simplified</a></li>
 </ul>
 </section>
-<section id="going-further" class="level2" data-number="3.13">
-<h2 data-number="3.13" class="anchored" data-anchor-id="going-further"><span class="header-section-number">3.13</span> Going further</h2>
+<section id="going-further" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="going-further"><span class="header-section-number">3.11</span> Going further</h2>
 <p><span class="citation" data-cites="goodman_dirty_2008">Goodman (<a href="references.html#ref-goodman_dirty_2008" role="doc-biblioref">2008</a>)</span> provides an entertaining overview on typical misconceptions of the p-value <a href="https://www.ohri.ca//newsroom/seminars/SeminarUploads/1829/Suggested%20Reading%20-%20Nov%203,%202014.pdf">full text</a>. <span class="citation" data-cites="poldrack_statistical_2022">(<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref"><strong>poldrack_statistical_2022?</strong></a>)</span> provides a fresh, accessible and sound introduction to statistical inference; in addition <span class="citation" data-cites="cetinkaya-rundel_introduction_2021">Cetinkaya-Rundel &amp; Hardin (<a href="references.html#ref-cetinkaya-rundel_introduction_2021" role="doc-biblioref">2021</a>)</span> is a worthwhile treatise.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-cetinkaya-rundel_introduction_2021" class="csl-entry" role="listitem">
 Cetinkaya-Rundel, M., &amp; Hardin, J. (2021). <em>Introduction to <span>Modern Statistics</span></em>. <a href="https://openintro-ims.netlify.app/">https://openintro-ims.netlify.app/</a>
+</div>
+<div id="ref-gelman_regression_2021" class="csl-entry" role="listitem">
+Gelman, A., Hill, J., &amp; Vehtari, A. (2021). <em>Regression and other stories</em>. Cambridge University Press.
 </div>
 <div id="ref-goodman_dirty_2008" class="csl-entry" role="listitem">
 Goodman, S. (2008). A <span>Dirty Dozen</span>: <span>Twelve P-Value Misconceptions</span>. <em>Seminars in Hematology</em>, <em>45</em>(3), 135–140. <a href="https://doi.org/10.1053/j.seminhematol.2008.04.003">https://doi.org/10.1053/j.seminhematol.2008.04.003</a>

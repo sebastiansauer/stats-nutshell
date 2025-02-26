@@ -50,11 +50,8 @@ format:
     number-sections: true
     df-print: kable
     fig-align: center
-  # pdf:
-  #   toc: true
-  #   number-sections: true
-  #   colorlinks: true
-  #   keep-tex: true
+    mermaid:
+      theme: default
 
     
 execute:

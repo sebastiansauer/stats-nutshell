@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.20">
+<meta name="generator" content="quarto-1.6.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -93,10 +93,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-018089954d508eae8a473f0b7f0491f0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-a8378a0342da607bf6aa9ac04725c156.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0907b20a9700af8a13c62216b970de3d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ed6da6eef3892af8a4b5ed59bfb951f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -124,6 +124,7 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="default">
 <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -338,7 +339,8 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)  <span class="co"># optional!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)  <span class="co"># optional!</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)  <span class="co"># data visualization</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="whats-modelling" class="level2" data-number="4.2">
@@ -591,8 +593,8 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 <pre><code>
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 0.001509 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 15.09 seconds.
+Chain 1: Gradient evaluation took 0.00513 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 51.3 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -609,15 +611,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.146 seconds (Warm-up)
-Chain 1:                0.132 seconds (Sampling)
-Chain 1:                0.278 seconds (Total)
+Chain 1:  Elapsed Time: 0.056 seconds (Warm-up)
+Chain 1:                0.053 seconds (Sampling)
+Chain 1:                0.109 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 3.5e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.35 seconds.
+Chain 2: Gradient evaluation took 1.6e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.16 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -634,15 +636,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.129 seconds (Warm-up)
-Chain 2:                0.119 seconds (Sampling)
-Chain 2:                0.248 seconds (Total)
+Chain 2:  Elapsed Time: 0.049 seconds (Warm-up)
+Chain 2:                0.047 seconds (Sampling)
+Chain 2:                0.096 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 2.6e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.26 seconds.
+Chain 3: Gradient evaluation took 5.3e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.53 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -659,15 +661,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.128 seconds (Warm-up)
-Chain 3:                0.111 seconds (Sampling)
-Chain 3:                0.239 seconds (Total)
+Chain 3:  Elapsed Time: 0.052 seconds (Warm-up)
+Chain 3:                0.044 seconds (Sampling)
+Chain 3:                0.096 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 3.8e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.38 seconds.
+Chain 4: Gradient evaluation took 1.7e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.17 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -684,9 +686,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.117 seconds (Warm-up)
-Chain 4:                0.123 seconds (Sampling)
-Chain 4:                0.24 seconds (Total)
+Chain 4:  Elapsed Time: 0.049 seconds (Warm-up)
+Chain 4:                0.048 seconds (Sampling)
+Chain 4:                0.097 seconds (Total)
 Chain 4: </code></pre>
 </div>
 </div>
@@ -705,7 +707,7 @@ Chain 4: </code></pre>
 <col style="width: 9%">
 <col style="width: 4%">
 <col style="width: 9%">
-<col style="width: 8%">
+<col style="width: 9%">
 <col style="width: 2%">
 <col style="width: 8%">
 <col style="width: 7%">
@@ -731,26 +733,26 @@ Chain 4: </code></pre>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">30.0090209</td>
+<td style="text-align: right;">30.0258671</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">26.6423442</td>
-<td style="text-align: right;">33.443505</td>
+<td style="text-align: right;">26.6511691</td>
+<td style="text-align: right;">33.4092485</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.9999200</td>
-<td style="text-align: right;">3613.281</td>
+<td style="text-align: right;">0.9998508</td>
+<td style="text-align: right;">3901.253</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">20.09062</td>
 <td style="text-align: right;">15.0673701</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
-<td style="text-align: right;">-0.0679276</td>
+<td style="text-align: right;">-0.0677732</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0894339</td>
-<td style="text-align: right;">-0.046958</td>
+<td style="text-align: right;">-0.0881377</td>
+<td style="text-align: right;">-0.0467074</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.9995874</td>
-<td style="text-align: right;">3542.674</td>
+<td style="text-align: right;">1.0001298</td>
+<td style="text-align: right;">3462.203</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.2197599</td>
@@ -787,7 +789,7 @@ Chain 4: </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code># Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.587 (95% CI [0.381, 0.758])</code></pre>
+  Conditional R2: 0.587 (95% CI [0.376, 0.755])</code></pre>
 </div>
 </div>
 </section>
@@ -962,34 +964,34 @@ Chain 4: </code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">28.70230</td>
-<td style="text-align: right;">-0.0601686</td>
-<td style="text-align: right;">3.833360</td>
+<td style="text-align: right;">30.36084</td>
+<td style="text-align: right;">-0.0670639</td>
+<td style="text-align: right;">3.870440</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">31.47548</td>
-<td style="text-align: right;">-0.0757680</td>
-<td style="text-align: right;">3.713191</td>
+<td style="text-align: right;">29.70206</td>
+<td style="text-align: right;">-0.0661331</td>
+<td style="text-align: right;">4.035431</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">28.96370</td>
-<td style="text-align: right;">-0.0630780</td>
-<td style="text-align: right;">4.119686</td>
+<td style="text-align: right;">31.04928</td>
+<td style="text-align: right;">-0.0745350</td>
+<td style="text-align: right;">3.940575</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">31.57136</td>
-<td style="text-align: right;">-0.0705471</td>
-<td style="text-align: right;">4.070501</td>
+<td style="text-align: right;">29.71194</td>
+<td style="text-align: right;">-0.0633953</td>
+<td style="text-align: right;">3.836345</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">29.37132</td>
-<td style="text-align: right;">-0.0681390</td>
-<td style="text-align: right;">3.600306</td>
+<td style="text-align: right;">26.95708</td>
+<td style="text-align: right;">-0.0466278</td>
+<td style="text-align: right;">3.907002</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">31.14209</td>
-<td style="text-align: right;">-0.0748936</td>
-<td style="text-align: right;">3.751157</td>
+<td style="text-align: right;">31.68332</td>
+<td style="text-align: right;">-0.0781663</td>
+<td style="text-align: right;">3.660311</td>
 </tr>
 </tbody>
 </table>
@@ -1030,7 +1032,7 @@ Chain 4: </code></pre>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(lm1_bayes_tibble<span class="sc">$</span>hp, .<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        90% 
--0.05445979 </code></pre>
+-0.05429705 </code></pre>
 </div>
 </div>
 <p><em>What’s the smallest 95% percent interval for the effect of hp?</em></p>
@@ -1053,16 +1055,16 @@ Chain 4: </code></pre>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">26.6423906</td>
-<td style="text-align: right;">33.4443807</td>
+<td style="text-align: right;">26.8196810</td>
+<td style="text-align: right;">33.5375524</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0886681</td>
-<td style="text-align: right;">-0.0464334</td>
+<td style="text-align: right;">-0.0887995</td>
+<td style="text-align: right;">-0.0475132</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
@@ -1091,16 +1093,16 @@ Chain 4: </code></pre>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: right;">0.89</td>
-<td style="text-align: right;">27.4346823</td>
-<td style="text-align: right;">32.9463105</td>
+<td style="text-align: right;">27.336389</td>
+<td style="text-align: right;">32.7313829</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
 <td style="text-align: right;">0.89</td>
-<td style="text-align: right;">-0.0844604</td>
-<td style="text-align: right;">-0.0509582</td>
+<td style="text-align: right;">-0.085595</td>
+<td style="text-align: right;">-0.0526822</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
@@ -1146,10 +1148,10 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">23.30947</td>
-<td style="text-align: right;">4.165468</td>
-<td style="text-align: right;">14.76403</td>
-<td style="text-align: right;">31.36395</td>
+<td style="text-align: right;">23.23795</td>
+<td style="text-align: right;">4.096616</td>
+<td style="text-align: right;">15.25316</td>
+<td style="text-align: right;">31.36842</td>
 </tr>
 </tbody>
 </table>
@@ -1281,39 +1283,39 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">30.6601910</td>
+<td style="text-align: right;">30.7401922</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">27.8723694</td>
-<td style="text-align: right;">33.3169722</td>
+<td style="text-align: right;">27.8998921</td>
+<td style="text-align: right;">33.3325232</td>
 <td style="text-align: right;">1.00000</td>
-<td style="text-align: right;">0.9995711</td>
-<td style="text-align: right;">5009.228</td>
+<td style="text-align: right;">0.9993953</td>
+<td style="text-align: right;">4172.592</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">20.09062</td>
 <td style="text-align: right;">15.0673701</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
-<td style="text-align: right;">-0.0246691</td>
+<td style="text-align: right;">-0.0246551</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0503629</td>
-<td style="text-align: right;">0.0038158</td>
-<td style="text-align: right;">0.95375</td>
-<td style="text-align: right;">1.0006553</td>
-<td style="text-align: right;">2070.094</td>
+<td style="text-align: right;">-0.0512410</td>
+<td style="text-align: right;">0.0029018</td>
+<td style="text-align: right;">0.95975</td>
+<td style="text-align: right;">0.9997783</td>
+<td style="text-align: right;">2066.124</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.2197599</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">disp</td>
-<td style="text-align: right;">-0.0305959</td>
+<td style="text-align: right;">-0.0304618</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0460168</td>
-<td style="text-align: right;">-0.0155190</td>
-<td style="text-align: right;">0.99975</td>
-<td style="text-align: right;">1.0010159</td>
-<td style="text-align: right;">2045.304</td>
+<td style="text-align: right;">-0.0456687</td>
+<td style="text-align: right;">-0.0155818</td>
+<td style="text-align: right;">1.00000</td>
+<td style="text-align: right;">1.0005632</td>
+<td style="text-align: right;">2063.119</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.1215712</td>
@@ -1334,7 +1336,7 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <div class="cell-output cell-output-stdout">
 <pre><code># Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.731 (95% CI [0.580, 0.842])</code></pre>
+  Conditional R2: 0.730 (95% CI [0.576, 0.845])</code></pre>
 </div>
 </div>
 <p>Depending on the value of <code>disp</code> the prediction of <code>mpg</code> from <code>hp</code> will vary:</p>
@@ -1410,58 +1412,110 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 </div>
 </div>
+<p>A linear model with one predictor having two values amounts to nothing more than comparing the means of two groups:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a, <span class="at">at =</span> <span class="st">"am = c(0, 1)"</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>lm3a_means </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggviolin</span>(mtcars, <span class="at">x =</span> <span class="st">"am"</span>, <span class="at">y =</span> <span class="st">"mpg"</span>,</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">add =</span> <span class="st">"mean_se"</span>) <span class="sc">+</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Mean plus/minus SE are shown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s compute the mean values per group:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(am) <span class="sc">|&gt;</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe_distribution</span>(<span class="at">select =</span> <span class="st">"mpg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 3%">
+<col style="width: 11%">
+<col style="width: 8%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">am</th>
+<th style="text-align: left;">Variable</th>
 <th style="text-align: right;">Mean</th>
-<th style="text-align: right;">SE</th>
-<th style="text-align: right;">CI_low</th>
-<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+<th style="text-align: right;">Skewness</th>
+<th style="text-align: right;">Kurtosis</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">n_Missing</th>
+<th style="text-align: left;">.group</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0</td>
+<td style="text-align: left;">mpg</td>
 <td style="text-align: right;">17.14737</td>
-<td style="text-align: right;">1.124602</td>
-<td style="text-align: right;">14.85062</td>
-<td style="text-align: right;">19.44411</td>
+<td style="text-align: right;">3.833966</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">10.4</td>
+<td style="text-align: right;">24.4</td>
+<td style="text-align: right;">0.0164578</td>
+<td style="text-align: right;">-0.3339353</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">am=0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1</td>
+<td style="text-align: left;">mpg</td>
 <td style="text-align: right;">24.39231</td>
-<td style="text-align: right;">1.359578</td>
-<td style="text-align: right;">21.61568</td>
-<td style="text-align: right;">27.16894</td>
+<td style="text-align: right;">6.166504</td>
+<td style="text-align: right;">10.05</td>
+<td style="text-align: right;">15.0</td>
+<td style="text-align: right;">33.9</td>
+<td style="text-align: right;">0.0672942</td>
+<td style="text-align: right;">-1.1586082</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">am=1</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p>If we were not to specify the values of <code>am</code> which we would like to get predictions for, the default of the function would select 10 values, spread across the range of <code>am</code>. For numeric variables, this is usually fine. However, for nominal variables - and <code>am</code> is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for <code>0</code> and <code>1</code>.</p>
-<p>However, unfortunately, the plot <em>needs</em> a nominal variable if we are to compare groups. In our case, <code>am</code> is considered a numeric variables, since it consists of numbers only. The plot does not work, malheureusement:</p>
+<p>However, unfortunately, the plot of the model <em>needs</em> a nominal variable if we are to compare groups. In our case, <code>am</code> is considered a numeric variables, since it consists of numbers only. The plot does not work as expected, malheureusement:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm3a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in `rlang::sym()`:
-! Can't convert a character vector to a symbol.</code></pre>
+<pre><code>Error: object 'lm3a_means' not found</code></pre>
 </div>
 </div>
-<p>We need to transform <code>am</code> to a factor variable. That’s something like a string. If we hand over a <code>factor()</code> to the plotting function, everything will run smoothly. Computationwise, no big differences:</p>
+<p>We need to transform <code>am</code> to a <em>factor</em> variable. That’s something like a string (text) variable. If we hand over a <code>factor()</code> to the plotting function, everything will run smoothly. Computationwise, no big differences:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_f =</span> <span class="fu">factor</span>(am))</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am_f, <span class="at">data =</span> mtcars2)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_f =</span> <span class="fu">factor</span>(am))</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am_f, <span class="at">data =</span> mtcars2)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1517,13 +1571,56 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 </div>
 </div>
+<p>We can also compute the predicted output values of our model at given input variable values:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a, <span class="at">at =</span> <span class="st">"am = c(0, 1)"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>lm3a_means </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">am_f</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: right;">17.14737</td>
+<td style="text-align: right;">1.124602</td>
+<td style="text-align: right;">14.85062</td>
+<td style="text-align: right;">19.44411</td>
+<td style="text-align: right;">15.24749</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">24.39231</td>
+<td style="text-align: right;">1.359578</td>
+<td style="text-align: right;">21.61568</td>
+<td style="text-align: right;">27.16894</td>
+<td style="text-align: right;">17.94108</td>
+<td style="text-align: right;">30</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>If we were not to specify the values of <code>am</code> which we would like to get predictions for, the default of the function would select 10 values, spread across the range of <code>am</code>. For numeric variables, this is usually fine. However, for nominal variables - and <code>am</code> is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for <code>0</code> and <code>1</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="050-regression1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1531,14 +1628,14 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <p>Note that we should have converted <code>am</code> to a factor variable before fitting the model. Otherwise, the plot won’t work.</p>
 <p>Here’s a more hand-crafted version of the last plot, see Fig. <a href="#fig-lm3a-means" class="quarto-xref">Figure&nbsp;<span>4.6</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars2) <span class="sc">+</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> am_f, <span class="at">y =</span> mpg) <span class="sc">+</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">data =</span> lm3a_means,</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> <span class="st">"orange"</span>,</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> CI_low, <span class="at">ymax =</span> CI_high, <span class="at">y =</span> Mean)) <span class="sc">+</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm3a_means, <span class="fu">aes</span>(<span class="at">y =</span> Mean, <span class="at">group =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars2) <span class="sc">+</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> am_f, <span class="at">y =</span> mpg) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">data =</span> lm3a_means,</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> <span class="st">"orange"</span>,</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> CI_low, <span class="at">ymax =</span> CI_high, <span class="at">y =</span> Mean)) <span class="sc">+</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm3a_means, <span class="fu">aes</span>(<span class="at">y =</span> Mean, <span class="at">group =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-lm3a-means" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1556,12 +1653,12 @@ Figure&nbsp;4.6: Means per level of am
 <section id="one-metric-and-one-nominal-predictor" class="level3" data-number="4.7.3">
 <h3 data-number="4.7.3" class="anchored" data-anchor-id="one-metric-and-one-nominal-predictor"><span class="header-section-number">4.7.3</span> One metric and one nominal predictor</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl))</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars2)</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl))</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars2)</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1640,8 +1737,8 @@ Figure&nbsp;4.6: Means per level of am
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>lm4_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm4)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm4_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>lm4_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm4)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm4_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1661,12 +1758,12 @@ Figure&nbsp;4.6: Means per level of am
 <p>Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.</p>
 <p>Let’s get the correlation matrix of the variables in involved in <code>lm4</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>lm4_corr <span class="ot">&lt;-</span> </span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, disp) <span class="sc">%&gt;%</span> </span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>()</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>lm4_corr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lm4_corr <span class="ot">&lt;-</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, disp) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>()</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>lm4_corr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1744,11 +1841,11 @@ Figure&nbsp;4.6: Means per level of am
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">summary</span>(lm4_corr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">summary</span>(lm4_corr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="050-regression1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1783,7 +1880,7 @@ Figure&nbsp;4.6: Means per level of am
 <h2 data-number="4.12" class="anchored" data-anchor-id="going-further"><span class="header-section-number">4.12</span> Going further</h2>
 <p>Check-out <a href="https://statistik1.netlify.app/080-regression1">this chapter</a> of my intro stats book to get an overview on statistical modeling using basic regression technieques. Please use your browser’s translation feature to render the webpages into your favorite language.</p>
 <p>An accessible treatment of regression is provided by <span class="citation" data-cites="ismay_statistical_2020">Ismay &amp; Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span>.</p>
-<p><span class="citation" data-cites="roback_beyond_2021">Roback &amp; Legler (<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref">2021</a>)</span> provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by <span class="citation" data-cites="gelman_regression_2021">(<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref"><strong>gelman_regression_2021?</strong></a>)</span>. You may also benefit from <span class="citation" data-cites="poldrack_statistical_2022">(<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref"><strong>poldrack_statistical_2022?</strong></a>)</span> (open access).</p>
+<p><span class="citation" data-cites="roback_beyond_2021">Roback &amp; Legler (<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref">2021</a>)</span> provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by <span class="citation" data-cites="gelman_regression_2021">Gelman et al. (<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref">2021</a>)</span>. You may also benefit from <span class="citation" data-cites="poldrack_statistical_2022">(<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref"><strong>poldrack_statistical_2022?</strong></a>)</span> (open access).</p>
 <p>For a gentle introduction to the basics of modelling, see <a href="https://moderndive.com/5-regression.html">ModernDive Chap. 5.0</a> <span class="citation" data-cites="ismay_statistical_2020">(<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">Ismay &amp; Kim, 2020</a>)</span>, and get the R code <a href="http://moderndive.com/scripts/05-regression.R">here</a>. For slightly more advanced topics on linear regression such as multiple regression and interaction, see <a href="https://moderndive.com/6-multiple-regression.html">ModernDive Chap. 6</a>, and get the R code <a href="http://moderndive.com/scripts/06-multiple-regression.R">here</a>.</p>
 </section>
 <section id="debrief" class="level2" data-number="4.13">
@@ -1792,6 +1889,9 @@ Figure&nbsp;4.6: Means per level of am
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-gelman_regression_2021" class="csl-entry" role="listitem">
+Gelman, A., Hill, J., &amp; Vehtari, A. (2021). <em>Regression and other stories</em>. Cambridge University Press.
+</div>
 <div id="ref-ismay_statistical_2020" class="csl-entry" role="listitem">
 Ismay, C., &amp; Kim, A. Y.-S. (2020). <em>Statistical inference via data science: A <span>ModernDive</span> into <span>R</span> and the <span>Tidyverse</span></em>. CRC Press / Taylor &amp; Francis Group. <a href="https://moderndive.com/">https://moderndive.com/</a>
 </div>
