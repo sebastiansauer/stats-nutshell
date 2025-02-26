@@ -200,7 +200,7 @@ To get an idea whether you have digested some R basics, consider [this quiz](htt
 
 
 
-## Data import
+## Blitz start with data {#sec-blitz-data}
 
 
 Check out [chapter 3 in Statistics1](https://statistik1.netlify.app/020-r#daten-importieren) on how to import data into RStudio and for some basic concepts about "tidy data".
@@ -215,7 +215,7 @@ I strongly advice working with *Projects* in RStudio, as it makes working with f
 
 
 
-## Blitz start with data {#sec-blitz-data}
+
 
 We'll work predominantly with the following data sets.
 
@@ -252,7 +252,7 @@ head(d)  # see the first few rows, the "head" of the table
 
 Here's some [documentation (code book)](https://vincentarelbundock.github.io/Rdatasets/doc/palmerpenguins/penguins.html) for this data set.
 
-{{< downloadthis data/penguins.csv dname="penguins.csv" label="Download the penguins data (CSV)" icon="database-fill-down" type="info" >}}
+{{< downloadthis data/penguins.csv dname="penguins" label="Download the penguins data (CSV)" icon="database-fill-down" type="info" >}}
 
 
 ### Mariokart
@@ -280,7 +280,7 @@ mariokart <- read.csv(  "https://vincentarelbundock.github.io/Rdatasets/csv/open
 
 ![Hello, Mario](img/mario.jpg){#fig-mario width="25%"}
 
-{{< downloadthis data/mariokart.csv dname="mariokart.csv" label = "Download the Mariokart data set (CSV)" >}} {{< downloadthis data/mariokart.xlsx dname="mariokart.xlsx" label = "Download the Mariokart data set XLSX" >}}
+{{< downloadthis data/mariokart.csv dname="mariokart" label = "Download the Mariokart data set (CSV)" >}} {{< downloadthis data/mariokart.xlsx dname="mariokart.xlsx" label = "Download the Mariokart data set XLSX" >}}
 
 
 

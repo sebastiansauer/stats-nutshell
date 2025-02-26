@@ -52,6 +52,11 @@ format:
     fig-align: center
     mermaid:
       theme: default
+  # pdf:
+  #   toc: true
+  #   number-sections: true
+  #   colorlinks: true
+  #   keep-tex: true
 
     
 execute:

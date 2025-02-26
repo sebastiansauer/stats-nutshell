@@ -130,6 +130,11 @@ We also learn that zero is included in the CI of `cond`:
 That means that zero is plausible value for the effect of `cond`.
 Therefore, we cannot exclude the null/zero value/hypothesis.
 
+```{r}
+ggpubr
+```
+
+
 
 
 ## What inference flavors are available?
