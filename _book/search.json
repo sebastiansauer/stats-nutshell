@@ -290,71 +290,11 @@
     ]
   },
   {
-    "objectID": "020-basics.html#data-import",
-    "href": "020-basics.html#data-import",
-    "title": "1  Basics",
-    "section": "1.6 Data import",
-    "text": "1.6 Data import\nCheck out chapter 3 in Statistics1 on how to import data into RStudio and for some basic concepts about “tidy data”.\nSpoiler: There’s a button in RStudio in the “Environment” Pane saying “Import Dataset”. Just click it, and things should work out.\n\n\n\n\n\n\nNote\n\n\n\nI strongly advice working with Projects in RStudio, as it makes working with file paths a lot easier.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
-    ]
-  },
-  {
     "objectID": "020-basics.html#sec-blitz-data",
     "href": "020-basics.html#sec-blitz-data",
     "title": "1  Basics",
-    "section": "1.7 Blitz start with data",
-    "text": "1.7 Blitz start with data\nWe’ll work predominantly with the following data sets.\n\n1.7.1 Motor Trends Cars\nTo blitz start with data, type the following in R:\n\ndata(mtcars)\n\nAnd the data set mtcars will be available.\nTo get help for the data set, type help(mtcars)\n Download the mtcars data \n\n\n1.7.2 Penguins\n\n\n\nAllez, penguins! Image Credit: Allison Horst, CCO\n\n\nA bit more advanced, but it’s a nice data set, try the Palmer Penguins data set:\n\nd &lt;- read.csv(\"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv\")\n\nhead(d)  # see the first few rows, the \"head\" of the table\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrownames\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n1\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\n2\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n2007\n\n\n4\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\n\n2007\n\n\n5\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007\n\n\n6\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale\n2007\n\n\n\n\n\n\nHere’s some documentation (code book) for this data set.\n Download the penguins data (CSV) \n\n\n1.7.3 Mariokart\nHello Mario, see Figure 1.6!\nThe data set Mariokart is available via the R package {openintro}.\n\ndata(\"mariokart\", package = \"openintro\") # Paket muss installiert sein\n\nAlternatively, you can download and import it from the Web, see Listing 1.1.\n\n\n\n\nListing 1.1: Mariokart-Datensatz importieren (mit read.csv)\n\n\nmariokart &lt;- read.csv(  \"https://vincentarelbundock.github.io/Rdatasets/csv/openintro/mariokart.csv\")\n\n\n\n\n\n\n\n\n\n\nFigure 1.6: Hello, Mario\n\n\n\n Download the Mariokart data set (CSV)   Download the Mariokart data set XLSX",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
-    ]
-  },
-  {
-    "objectID": "020-basics.html#lab",
-    "href": "020-basics.html#lab",
-    "title": "1  Basics",
-    "section": "1.8 Lab",
-    "text": "1.8 Lab\nImport your research data into R.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
-    ]
-  },
-  {
-    "objectID": "020-basics.html#exercises",
-    "href": "020-basics.html#exercises",
-    "title": "1  Basics",
-    "section": "1.9 Exercises",
-    "text": "1.9 Exercises\n\n🧑‍🎓 I need exercises on R!\n\n\n👨‍🏫 Checkout all exercises tagged with “R” on datenwerk. Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
-    ]
-  },
-  {
-    "objectID": "020-basics.html#more-data-sets",
-    "href": "020-basics.html#more-data-sets",
-    "title": "1  Basics",
-    "section": "1.10 More data sets",
-    "text": "1.10 More data sets\nCheck out this curated list of data sets useful for learning and practicing your data skills.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
-    ]
-  },
-  {
-    "objectID": "020-basics.html#if-nothing-else-helps",
-    "href": "020-basics.html#if-nothing-else-helps",
-    "title": "1  Basics",
-    "section": "1.11 If nothing else helps",
-    "text": "1.11 If nothing else helps\nStay calm and behold the infinity.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
-    ]
-  },
-  {
-    "objectID": "020-basics.html#going-further",
-    "href": "020-basics.html#going-further",
-    "title": "1  Basics",
-    "section": "1.12 Going further",
-    "text": "1.12 Going further\nSimilar to the “goals” of statistics as presented here, Gelman et al. (2021), chap. 1.1 proposes three “challenges” of statistical inference.\nWild & Pfannkuch (1999) discuss the thought processes involved in statistical problem solving seen from a broad perspective. Ismay & Kim (2020) is a helpful start into the first steps in R.\nIf you want to dig deeper, check-out this course on statistical inference using Bayes statistics. If you are interested in predictive modeling, check-out this couse.\nLooking for a text book on statistical modelling suitable to applied PhD level? I recommend McElreath (2020) and Gelman et al. (2021).\n\n\n\n\nGelman, A., Hill, J., & Vehtari, A. (2021). Regression and other stories. Cambridge University Press.\n\n\nHernán, M. A., Hsu, J., & Healy, B. (2019). A Second Chance to Get Causal Inference Right: A Classification of Data Science Tasks. Chance, 32(1), 42–49. https://doi.org/10.1080/09332480.2019.1579578\n\n\nIsmay, C., & Kim, A. Y.-S. (2020). Statistical inference via data science: A ModernDive into R and the Tidyverse. CRC Press / Taylor & Francis Group. https://moderndive.com/\n\n\nMacKay, R. J., & Oldford, R. W. (2000). Scientific Method, Statistical Method and the Speed of Light. Statistical Science, 15(3), 254–278. https://doi.org/10.1214/ss/1009212817\n\n\nMcElreath, R. (2020). Statistical rethinking: A Bayesian course with examples in R and Stan (2nd ed.). Taylor and Francis, CRC Press.\n\n\nWild, C. J., & Pfannkuch, M. (1999). Statistical thinking in empirical enquiry. International Statistical Review, 67(3), 223–248.",
+    "section": "1.6 Blitz start with data",
+    "text": "1.6 Blitz start with data\nCheck out chapter 3 in Statistics1 on how to import data into RStudio and for some basic concepts about “tidy data”.\nSpoiler: There’s a button in RStudio in the “Environment” Pane saying “Import Dataset”. Just click it, and things should work out.\n\n\n\n\n\n\nNote\n\n\n\nI strongly advice working with Projects in RStudio, as it makes working with file paths a lot easier.\n\n\nWe’ll work predominantly with the following data sets.\n\n1.6.1 Motor Trends Cars\nTo blitz start with data, type the following in R:\n\ndata(mtcars)\n\nAnd the data set mtcars will be available.\nTo get help for the data set, type help(mtcars)\n Download the mtcars data \n\n\n1.6.2 Penguins\n\n\n\nAllez, penguins! Image Credit: Allison Horst, CCO\n\n\nA bit more advanced, but it’s a nice data set, try the Palmer Penguins data set:\n\nd &lt;- read.csv(\"https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv\")\n\nhead(d)  # see the first few rows, the \"head\" of the table\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrownames\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n1\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\n2\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n2007\n\n\n4\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\n\n2007\n\n\n5\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007\n\n\n6\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale\n2007\n\n\n\n\n\n\nHere’s some documentation (code book) for this data set.\n Download the penguins data (CSV) \n\n\n1.6.3 Mariokart\nHello Mario, see Figure 1.6!\nThe data set Mariokart is available via the R package {openintro}.\n\ndata(\"mariokart\", package = \"openintro\") # Paket muss installiert sein\n\nAlternatively, you can download and import it from the Web, see Listing 1.1.\n\n\n\n\nListing 1.1: Mariokart-Datensatz importieren (mit read.csv)\n\n\nmariokart &lt;- read.csv(  \"https://vincentarelbundock.github.io/Rdatasets/csv/openintro/mariokart.csv\")\n\n\n\n\n\n\n\n\n\n\nFigure 1.6: Hello, Mario\n\n\n\n Download the Mariokart data set (CSV) \n\n\nHernán, M. A., Hsu, J., & Healy, B. (2019). A Second Chance to Get Causal Inference Right: A Classification of Data Science Tasks. Chance, 32(1), 42–49. https://doi.org/10.1080/09332480.2019.1579578\n\n\nMacKay, R. J., & Oldford, R. W. (2000). Scientific Method, Statistical Method and the Speed of Light. Statistical Science, 15(3), 254–278. https://doi.org/10.1214/ss/1009212817\n\n\nWild, C. J., & Pfannkuch, M. (1999). Statistical thinking in empirical enquiry. International Statistical Review, 67(3), 223–248.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Basics</span>"
     ]
@@ -414,7 +354,7 @@
     "href": "030-EDA.html#blitz-data",
     "title": "2  Exploratory Data Analysis",
     "section": "2.4 Blitz data",
-    "text": "2.4 Blitz data\nSee Section 1.7 for some data sets suitable to get going.",
+    "text": "2.4 Blitz data\nSee Section 1.6 for some data sets suitable to get going.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Exploratory Data Analysis</span>"
     ]
@@ -524,7 +464,7 @@
     "href": "040-inference.html",
     "title": "3  Inference",
     "section": "",
-    "text": "3.1 R packages needed for this chapter\nMake sure to run the following code chunks in order to start the neccessary R packages needed in this chapter.\nlibrary(easystats)  # make stats easy again\nlibrary(tidyverse)  # data wrangling",
+    "text": "3.1 R packages needed for this chapter\nMake sure to run the following code chunks in order to start the neccessary R packages needed in this chapter.\nlibrary(easystats)  # make stats easy again\nlibrary(tidyverse)  # data wrangling\nlibrary(ggpubr)  # visualization",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inference</span>"
     ]
@@ -534,27 +474,7 @@
     "href": "040-inference.html#what-is-it",
     "title": "3  Inference",
     "section": "3.2 What is it?",
-    "text": "3.2 What is it?\n\n3.2.1 Generalizing from a sample to a population\nStatistical inference, according to Gelman et al. (2021), chap. 1.1, faces the challenge of generalizing from the particular to the general.\nIn more details, this amounts to generalizing from …\n\na sample to a population\na treatment to a control group (i.e., causal inference)\nobserved measurement to the underlying (“latent”) construct of interest\n\n\n\n\n\n\n\nImportant\n\n\n\nStatistical inference is concerned with making general claims from particular data using mathematical tools.\n\n\n\n\n3.2.2 Population and sample\nWe want to have an estimate of some population value, for example the proportion of A.\nHowever, all we have is a subset, a sample of the populuation. Hence, we need to infer from the sample to the popluation. We do so by generalizing from the sample to the population, see Figure Figure 3.1.\n\n\n\n\n\n\n\n\n\n\n\n(a) Population\n\n\n\n\n\n\n\n\n\n\n\n(b) Sample\n\n\n\n\n\n\n\nFigure 3.1: Population vs. sample (Image credit: Karsten Luebke)\n\n\n\n\n\n3.2.3 What’s not inference?\nConsider fig. Figure 3.2 which epitomizes the difference between descriptive and inferential statistics.\n\n\n\n\n\n\n\n\nFigure 3.2: The difference between description and inference\n\n\n\n\n\n\n\n3.2.4 When size helps\nLarger samples allow for more precise estimations (ceteris paribus).\n\n\n\n\n\nSample size in motion, Image credit: Karsten Luebke\n\n\n\n\n\n\n\n3.2.5 Inference in a nutshell\nLet’s look at a concrete example.\nHere’s a research question:\n\nAre the auction prices (total_pr) of new Mariokart games higher than the auction prices for used ones (variable condition)?\n\nOf cource, we would like to know the answer to the research question with respect to the population, not just to the sample at hand. The sample at hand is known without any uncertainty. To the contrary, the exact value in the population is unknown. We use statistics to estimate it.\nFor a quick example, first load the Mariokart data set (see Listing 1.1)\n\nmariokart &lt;- read.csv(  \"https://vincentarelbundock.github.io/Rdatasets/csv/openintro/mariokart.csv\")\n\nNow, let’s do INFERENCE STATISTICS! Voila:\n\nmy_inference_model &lt;- lm(total_pr ~ cond, data = mariokart)\nparameters(my_inference_model) |&gt; print_md()\n\n\n\n\nParameter\nCoefficient\nSE\n95% CI\nt(141)\np\n\n\n\n\n(Intercept)\n53.77\n3.33\n(47.19, 60.35)\n16.15\n&lt; .001\n\n\ncond (used)\n-6.62\n4.34\n(-15.21, 1.96)\n-1.52\n0.130\n\n\n\n\n\nThe model estimates the “effect” of the “used” condition of approx. 6.6 Dollar. Used games cost on average about 6.6 Dollar less compared to new ones, according to this model.\nThe value at 95% CI shows us the 95% confidence interval (CI) (Frequentist flavor). The CI is an indication of the precision with which we estimate the parameter of interest. Values within the CI can be dubbed “plausible” values of the parameter of interest; values outside are “implausible”. Put shortly, the model thinks that the true effect in the population is somewhere between approx. -15 and +2 Dollar.\nWe also learn that zero is included in the CI of cond: That means that zero is plausible value for the effect of cond. Therefore, we cannot exclude the null/zero value/hypothesis.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inference</span>"
-    ]
-  },
-  {
-    "objectID": "040-inference.html#whats-not-inference",
-    "href": "040-inference.html#whats-not-inference",
-    "title": "3  Inference",
-    "section": "3.3 What’s not inference?",
-    "text": "3.3 What’s not inference?\nConsider fig. Figure 3.2 which epitomizes the difference between descriptive and inferential statistics.\n\n\n\n\n\n\n\n\nFigure 3.2: The difference between description and inference",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inference</span>"
-    ]
-  },
-  {
-    "objectID": "040-inference.html#when-size-helps",
-    "href": "040-inference.html#when-size-helps",
-    "title": "3  Inference",
-    "section": "3.4 When size helps",
-    "text": "3.4 When size helps\nLarger samples allow for more precise estimations (ceteris paribus).\n\n\n\n\n\nSample size in motion, Image credit: Karsten Luebke\n\n\n\n\n\n\n3.4.1 Inference in a nutshell\nLet’s look at a concrete example.\nHere’s a research question:\n\nAre the auction prices (total_pr) of new Mariokart games higher than the auction prices for used ones (variable condition)?\n\nOf cource, we would like to know the answer to the research question with respect to the population, not just to the sample at hand. The sample at hand is known without any uncertainty. To the contrary, the exact value in the population is unknown. We use statistics to estimate it.\nFor a quick example, first load the Mariokart data set (see Listing 1.1)\n\nmariokart &lt;- read.csv(  \"https://vincentarelbundock.github.io/Rdatasets/csv/openintro/mariokart.csv\")\n\nNow, let’s do INFERENCE STATISTICS! Voila:\n\nmy_inference_model &lt;- lm(total_pr ~ cond, data = mariokart)\nparameters(my_inference_model) |&gt; print_md()\n\n\n\n\nParameter\nCoefficient\nSE\n95% CI\nt(141)\np\n\n\n\n\n(Intercept)\n53.77\n3.33\n(47.19, 60.35)\n16.15\n&lt; .001\n\n\ncond (used)\n-6.62\n4.34\n(-15.21, 1.96)\n-1.52\n0.130\n\n\n\n\n\nThe model estimates the “effect” of the “used” condition of approx. 6.6 Dollar. Used games cost on average about 6.6 Dollar less compared to new ones, according to this model.\nThe value at 95% CI shows us the 95% confidence interval (CI) (Frequentist flavor). The CI is an indication of the precision with which we estimate the parameter of interest. Values within the CI can be dubbed “plausible” values of the parameter of interest; values outside are “implausible”. Put shortly, the model thinks that the true effect in the population is somewhere between approx. -15 and +2 Dollar.\nWe also learn that zero is included in the CI of cond: That means that zero is plausible value for the effect of cond. Therefore, we cannot exclude the null/zero value/hypothesis.",
+    "text": "3.2 What is it?\n\n3.2.1 Generalizing from a sample to a population\nStatistical inference, according to Gelman et al. (2021), chap. 1.1, faces the challenge of generalizing from the particular to the general.\nIn more details, this amounts to generalizing from …\n\na sample to a population\na treatment to a control group (i.e., causal inference)\nobserved measurement to the underlying (“latent”) construct of interest\n\n\n\n\n\n\n\nImportant\n\n\n\nStatistical inference is concerned with making general claims from particular data using mathematical tools.\n\n\n\n\n3.2.2 Population and sample\nWe want to have an estimate of some population value, for example the proportion of A.\nHowever, all we have is a subset, a sample of the populuation. Hence, we need to infer from the sample to the popluation. We do so by generalizing from the sample to the population, see Figure Figure 3.1.\n\n\n\n\n\n\n\n\n\n\n\n(a) Population\n\n\n\n\n\n\n\n\n\n\n\n(b) Sample\n\n\n\n\n\n\n\nFigure 3.1: Population vs. sample (Image credit: Karsten Luebke)\n\n\n\n\n\n3.2.3 What’s not inference?\nConsider fig. Figure 3.2 which epitomizes the difference between descriptive and inferential statistics.\n\n\n\n\n\n\n\n\nFigure 3.2: The difference between description and inference\n\n\n\n\n\n\n\n3.2.4 When size helps\nLarger samples allow for more precise estimations (ceteris paribus).\n\n\n\n\n\nSample size in motion, Image credit: Karsten Luebke\n\n\n\n\n\n\n\n3.2.5 Inference in a nutshell\nLet’s look at a concrete example.\nHere’s a research question:\n\nAre the auction prices (total_pr) of new Mariokart games higher than the auction prices for used ones (variable condition)?\n\nOf cource, we would like to know the answer to the research question with respect to the population, not just to the sample at hand. The sample at hand is known without any uncertainty. To the contrary, the exact value in the population is unknown. We use statistics to estimate it.\nFor a quick example, first load the Mariokart data set (see Listing 1.1)\n\nmariokart &lt;- read.csv(  \"https://vincentarelbundock.github.io/Rdatasets/csv/openintro/mariokart.csv\")\n\nNow, let’s do INFERENCE STATISTICS! Voila:\n\nmy_inference_model &lt;- lm(total_pr ~ cond, data = mariokart)\nparameters(my_inference_model) |&gt; print_md()\n\n\n\n\nParameter\nCoefficient\nSE\n95% CI\nt(141)\np\n\n\n\n\n(Intercept)\n53.77\n3.33\n(47.19, 60.35)\n16.15\n&lt; .001\n\n\ncond (used)\n-6.62\n4.34\n(-15.21, 1.96)\n-1.52\n0.130\n\n\n\n\n\nThe model estimates the “effect” of the “used” condition of approx. 6.6 Dollar. Used games cost on average about 6.6 Dollar less compared to new ones, according to this model.\nThe value at 95% CI shows us the 95% confidence interval (CI) (Frequentist flavor). The CI is an indication of the precision with which we estimate the parameter of interest. Values within the CI can be dubbed “plausible” values of the parameter of interest; values outside are “implausible”. Put shortly, the model thinks that the true effect in the population is somewhere between approx. -15 and +2 Dollar.\nWe also learn that zero is included in the CI of cond: That means that zero is plausible value for the effect of cond. Therefore, we cannot exclude the null/zero value/hypothesis.\nFor concreteness, here’s a visualization of the difference in total price between the groups.\n\nggboxplot(mariokart, \n          x = \"cond\",\n          y = \"total_pr\",\n          add = \"mean_se\")",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inference</span>"
     ]

@@ -241,7 +241,8 @@ To get help for the data set, type `help(mtcars)`
 ![Allez, penguins! Image Credit: Allison Horst, CCO](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png)
 
 
-A bit more advanced, but it's a nice data set, try the Palmer Penguins data set:
+A bit more advanced, but it's a nice data set, 
+try the Palmer Penguins data set:
 
 ```{r}
 d <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/palmerpenguins/penguins.csv")
@@ -280,7 +281,7 @@ mariokart <- read.csv(  "https://vincentarelbundock.github.io/Rdatasets/csv/open
 
 ![Hello, Mario](img/mario.jpg){#fig-mario width="25%"}
 
-{{< downloadthis data/mariokart.csv dname="mariokart" label = "Download the Mariokart data set (CSV)" >}} {{< downloadthis data/mariokart.xlsx dname="mariokart.xlsx" label = "Download the Mariokart data set XLSX" >}}
+{{< downloadthis data/mariokart.csv dname="mariokart" label = "Download the Mariokart data set (CSV)" icon="database-fill-down" type="info" >}} {{< downloadthis data/mariokart.xlsx dname="mariokart.xlsx" label = "Download the Mariokart data set XLSX" > icon="database-fill-down" type="info"}}
 
 
 

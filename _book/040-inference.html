@@ -318,7 +318,8 @@ window.Quarto = {
 <p>Make sure to run the following code chunks in order to start the neccessary R packages needed in this chapter.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)  <span class="co"># make stats easy again</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># data wrangling</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># data wrangling</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)  <span class="co"># visualization</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="what-is-it" class="level2" data-number="3.2">
@@ -471,6 +472,20 @@ Figure&nbsp;3.2: The difference between description and inference
 <p>The model estimates the “effect” of the “used” condition of approx. 6.6 Dollar. Used games cost on average about 6.6 Dollar <em>less</em> compared to new ones, according to this model.</p>
 <p>The value at <code>95% CI</code> shows us the 95% confidence interval (CI) (Frequentist flavor). The CI is an indication of the precision with which we estimate the parameter of interest. Values within the CI can be dubbed “plausible” values of the parameter of interest; values outside are “implausible”. Put shortly, the model thinks that the true effect in the population is somewhere between approx. -15 and +2 Dollar.</p>
 <p>We also learn that zero is included in the CI of <code>cond</code>: That means that zero is plausible value for the effect of <code>cond</code>. Therefore, we cannot exclude the null/zero value/hypothesis.</p>
+<p>For concreteness, here’s a visualization of the difference in total price between the groups.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggboxplot</span>(mariokart, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"cond"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"total_pr"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">add =</span> <span class="st">"mean_se"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="040-inference_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="what-inference-flavors-are-available" class="level2" data-number="3.3">

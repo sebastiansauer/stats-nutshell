@@ -4,6 +4,7 @@
 #| include: false
 library(tidyverse)
 library(knitr)
+library(ggpubr)
 ```
 
 ![](img/stern.png){width="5%"}
@@ -22,6 +23,7 @@ Make sure to run the following code chunks in order to start the neccessary R pa
 #| warning: false
 library(easystats)  # make stats easy again
 library(tidyverse)  # data wrangling
+library(ggpubr)  # visualization
 ```
 
 
@@ -130,8 +132,15 @@ We also learn that zero is included in the CI of `cond`:
 That means that zero is plausible value for the effect of `cond`.
 Therefore, we cannot exclude the null/zero value/hypothesis.
 
+For concreteness, here's a visualization of the difference in total price between the groups.
+
+
+
 ```{r}
-ggpubr
+ggboxplot(mariokart, 
+          x = "cond",
+          y = "total_pr",
+          add = "mean_se")
 ```
 
 
