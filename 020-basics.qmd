@@ -173,7 +173,7 @@ And the data set `mtcars` will be available.
 
 To get help for the data set, type `help(mtcars)`
 
-{{< downloadthis data/mtcars.csv dname="mtcars.csv" label="Download the mtcars data" icon="database-fill-down" type="info" >}}
+{{< downloadthis data/mtcars.csv dname="mtcars" label="Download the mtcars data" icon="database-fill-down" type="info" >}}
 
 
 ### Penguins
