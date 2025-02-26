@@ -39,3 +39,9 @@ vignettes/*.pdf
 .Renviron
 
 /.quarto/
+
+
+# unwanted stuff:
+temp*.*
+
+

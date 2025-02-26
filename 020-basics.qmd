@@ -27,7 +27,7 @@ If you want, feel free to add a *fun fact*. $\square$
 
 ### Taxonmy of goals
 
-Many stories to be told. Here's one, on the goals pursued in statistics (and related fields), see Figure @fig-goals.
+Many stories to be told. Here's one, on the goals pursued in statistics (and related fields), see  @fig-goals.
 
 ```{mermaid}
 %%| label: fig-goals
@@ -62,6 +62,13 @@ Note that "goals" do not exist in the world. We make them up in our heads. Hence
 -   *Causal inference*: "Will starting a statin reduce, on average, the risk of stroke in women with certain characteristics?"
 
 
+
+
+
+
+
+
+
 ### Lab: Your goals
 
 
@@ -72,7 +79,8 @@ Next, put three research themes or studies you particularly like to this nomencl
 
 
 
-## A framework for problem solving
+
+## Data analysis as a step-by-step recipe
 
 ### PPDAC
 
@@ -86,7 +94,58 @@ Statistician Chris Wild puts the PPDAC cycle in the following figure, see Figure
 Wickham and Grolemund (see Figure @fig-data-journey in @sec-data-journey) provide a suggestion of the parts of the statistical analyses, that is the "Analysis" step in the PPDAC.
 
 
-### Fundamental issues in data analysis
+
+
+
+### Seven steps of data analysis
+
+
+Data analysis can be conceived as the idea of executing a number of subsequent steps,
+similar to a cooking receipe. 
+
+@fig-ueberblick proposes "the seven steps of data analysis".^[Keep in mind that this is magical language. However, it sounds nice and it's not bad unless you forgot that this is only of multiple ideas of how to do data analysis.]
+
+Actually, there are nine steps in @fig-ueberblick. As two of which are not directly concerned with data analysis, you may not disagree too strongly with the notion of seven steps.
+
+
+
+```{mermaid}
+%%| fig-cap: "The 'seven steps of data analysis'"
+%%| label: fig-ueberblick
+%%| fig-width: 4
+%%| echo: false
+flowchart LR
+  subgraph F[Framework]
+    direction LR
+    subgraph P[Preparation]
+      direction TB
+      I[Importing] --> T[Transforming]
+    end
+    subgraph B[One variable models]
+      direction TB
+      B1[Point Models] --> V[Visualization]
+      V --> U[Variability 1]
+    end
+    subgraph L[Multiple variables Models]
+      direction TB
+      L1[(Linear Models)] --> L2[Variability 2]
+    end  
+    subgraph R[Reporting]
+      direction TB
+      R1[Writing up] --> R2[Hoping for the best]
+    end
+  end
+
+  P --> B
+  B --> L
+  L --> R
+
+```
+
+
+
+
+## Variability as the focus of data analysis
 
 
 

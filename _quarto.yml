@@ -30,8 +30,8 @@ book:
   repo-url: https://github.com/sebastiansauer/stats-nutshell
 
 
-bibliography: "/Users/sebastiansaueruser/Google Drive/Literatur/refmgt/ses.bib"
-csl: "/Users/sebastiansaueruser/Google Drive/Literatur/refmgt/apa7.csl"
+bibliography: "ses.bib"
+csl: "apa7.csl"
 
 
   

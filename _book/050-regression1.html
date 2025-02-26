@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.8">
+<meta name="generator" content="quarto-1.6.20">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -93,10 +93,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-018089954d508eae8a473f0b7f0491f0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e19161ed4e9aff9b066a34963cfd5be8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0907b20a9700af8a13c62216b970de3d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -343,7 +343,7 @@ window.Quarto = {
 </section>
 <section id="whats-modelling" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="whats-modelling"><span class="header-section-number">4.2</span> What’s modelling?</h2>
-<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model">Read this great introduction by modelling by Russel Poldrack</a>. Actually, the whole book is nice <span class="citation" data-cites="poldrack_statistical_2022">Poldrack (<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref">2022</a>)</span>.</p>
+<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/fitting-models.html#what-is-a-model">Read this great introduction by modelling by Russel Poldrack</a>. Actually, the whole book is nice <span class="citation" data-cites="poldrack_statistical_2022">(<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref"><strong>poldrack_statistical_2022?</strong></a>)</span>.</p>
 <p>An epitome of modelling is this, let’s call it the fundamental modelling equation, a bit grandiose but at the point, see <a href="#eq-modelling" class="quarto-xref">Equation&nbsp;<span>4.1</span></a>.</p>
 <p>The data can be separated in the model’s prediction and the rest (the “error”), i.e., what’s unaccounted for by the model.</p>
 <p><span id="eq-modelling"><span class="math display">\[
@@ -591,8 +591,8 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 <pre><code>
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 0.003812 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 38.12 seconds.
+Chain 1: Gradient evaluation took 0.001509 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 15.09 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -609,15 +609,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.066 seconds (Warm-up)
-Chain 1:                0.063 seconds (Sampling)
-Chain 1:                0.129 seconds (Total)
+Chain 1:  Elapsed Time: 0.146 seconds (Warm-up)
+Chain 1:                0.132 seconds (Sampling)
+Chain 1:                0.278 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 2.2e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.22 seconds.
+Chain 2: Gradient evaluation took 3.5e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.35 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -634,15 +634,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.064 seconds (Warm-up)
-Chain 2:                0.058 seconds (Sampling)
-Chain 2:                0.122 seconds (Total)
+Chain 2:  Elapsed Time: 0.129 seconds (Warm-up)
+Chain 2:                0.119 seconds (Sampling)
+Chain 2:                0.248 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 2.2e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.22 seconds.
+Chain 3: Gradient evaluation took 2.6e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.26 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -659,15 +659,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.066 seconds (Warm-up)
-Chain 3:                0.06 seconds (Sampling)
-Chain 3:                0.126 seconds (Total)
+Chain 3:  Elapsed Time: 0.128 seconds (Warm-up)
+Chain 3:                0.111 seconds (Sampling)
+Chain 3:                0.239 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 1.7e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.17 seconds.
+Chain 4: Gradient evaluation took 3.8e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.38 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -684,9 +684,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.062 seconds (Warm-up)
-Chain 4:                0.057 seconds (Sampling)
-Chain 4:                0.119 seconds (Total)
+Chain 4:  Elapsed Time: 0.117 seconds (Warm-up)
+Chain 4:                0.123 seconds (Sampling)
+Chain 4:                0.24 seconds (Total)
 Chain 4: </code></pre>
 </div>
 </div>
@@ -705,9 +705,9 @@ Chain 4: </code></pre>
 <col style="width: 9%">
 <col style="width: 4%">
 <col style="width: 9%">
-<col style="width: 9%">
+<col style="width: 8%">
 <col style="width: 2%">
-<col style="width: 7%">
+<col style="width: 8%">
 <col style="width: 7%">
 <col style="width: 16%">
 <col style="width: 12%">
@@ -731,26 +731,26 @@ Chain 4: </code></pre>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">30.0590424</td>
+<td style="text-align: right;">30.0090209</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">26.7439165</td>
-<td style="text-align: right;">33.3124516</td>
+<td style="text-align: right;">26.6423442</td>
+<td style="text-align: right;">33.443505</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1.000771</td>
-<td style="text-align: right;">2982.289</td>
+<td style="text-align: right;">0.9999200</td>
+<td style="text-align: right;">3613.281</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">20.09062</td>
 <td style="text-align: right;">15.0673701</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
-<td style="text-align: right;">-0.0679057</td>
+<td style="text-align: right;">-0.0679276</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0882979</td>
-<td style="text-align: right;">-0.0472594</td>
+<td style="text-align: right;">-0.0894339</td>
+<td style="text-align: right;">-0.046958</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1.000275</td>
-<td style="text-align: right;">3533.338</td>
+<td style="text-align: right;">0.9995874</td>
+<td style="text-align: right;">3542.674</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.2197599</td>
@@ -787,7 +787,7 @@ Chain 4: </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code># Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.583 (95% CI [0.379, 0.753])</code></pre>
+  Conditional R2: 0.587 (95% CI [0.381, 0.758])</code></pre>
 </div>
 </div>
 </section>
@@ -962,34 +962,34 @@ Chain 4: </code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">29.24798</td>
-<td style="text-align: right;">-0.0585108</td>
-<td style="text-align: right;">4.148574</td>
+<td style="text-align: right;">28.70230</td>
+<td style="text-align: right;">-0.0601686</td>
+<td style="text-align: right;">3.833360</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">31.44328</td>
-<td style="text-align: right;">-0.0793732</td>
-<td style="text-align: right;">3.583081</td>
+<td style="text-align: right;">31.47548</td>
+<td style="text-align: right;">-0.0757680</td>
+<td style="text-align: right;">3.713191</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">31.66962</td>
-<td style="text-align: right;">-0.0810650</td>
-<td style="text-align: right;">3.406428</td>
+<td style="text-align: right;">28.96370</td>
+<td style="text-align: right;">-0.0630780</td>
+<td style="text-align: right;">4.119686</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">29.41583</td>
-<td style="text-align: right;">-0.0611019</td>
-<td style="text-align: right;">4.993273</td>
+<td style="text-align: right;">31.57136</td>
+<td style="text-align: right;">-0.0705471</td>
+<td style="text-align: right;">4.070501</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">28.85437</td>
-<td style="text-align: right;">-0.0658251</td>
-<td style="text-align: right;">3.520692</td>
+<td style="text-align: right;">29.37132</td>
+<td style="text-align: right;">-0.0681390</td>
+<td style="text-align: right;">3.600306</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">31.20567</td>
-<td style="text-align: right;">-0.0744505</td>
-<td style="text-align: right;">4.846585</td>
+<td style="text-align: right;">31.14209</td>
+<td style="text-align: right;">-0.0748936</td>
+<td style="text-align: right;">3.751157</td>
 </tr>
 </tbody>
 </table>
@@ -1029,8 +1029,8 @@ Chain 4: </code></pre>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(lm1_bayes_tibble<span class="sc">$</span>hp, .<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       90% 
--0.0547369 </code></pre>
+<pre><code>        90% 
+-0.05445979 </code></pre>
 </div>
 </div>
 <p><em>What’s the smallest 95% percent interval for the effect of hp?</em></p>
@@ -1053,16 +1053,16 @@ Chain 4: </code></pre>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">26.8254064</td>
-<td style="text-align: right;">33.3821880</td>
+<td style="text-align: right;">26.6423906</td>
+<td style="text-align: right;">33.4443807</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0874363</td>
-<td style="text-align: right;">-0.0469058</td>
+<td style="text-align: right;">-0.0886681</td>
+<td style="text-align: right;">-0.0464334</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
@@ -1091,16 +1091,16 @@ Chain 4: </code></pre>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: right;">0.89</td>
-<td style="text-align: right;">27.4210227</td>
-<td style="text-align: right;">32.6653275</td>
+<td style="text-align: right;">27.4346823</td>
+<td style="text-align: right;">32.9463105</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
 <td style="text-align: right;">0.89</td>
-<td style="text-align: right;">-0.0847388</td>
-<td style="text-align: right;">-0.0522295</td>
+<td style="text-align: right;">-0.0844604</td>
+<td style="text-align: right;">-0.0509582</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
@@ -1146,10 +1146,10 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">23.26178</td>
-<td style="text-align: right;">4.156918</td>
-<td style="text-align: right;">15.40819</td>
-<td style="text-align: right;">31.53782</td>
+<td style="text-align: right;">23.30947</td>
+<td style="text-align: right;">4.165468</td>
+<td style="text-align: right;">14.76403</td>
+<td style="text-align: right;">31.36395</td>
 </tr>
 </tbody>
 </table>
@@ -1252,11 +1252,11 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 9%">
-<col style="width: 9%">
+<col style="width: 8%">
 <col style="width: 4%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 6%">
 <col style="width: 8%">
 <col style="width: 7%">
 <col style="width: 15%">
@@ -1281,39 +1281,39 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">30.7393959</td>
+<td style="text-align: right;">30.6601910</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">27.9953578</td>
-<td style="text-align: right;">33.4954849</td>
-<td style="text-align: right;">1.000</td>
-<td style="text-align: right;">0.9999147</td>
-<td style="text-align: right;">4336.162</td>
+<td style="text-align: right;">27.8723694</td>
+<td style="text-align: right;">33.3169722</td>
+<td style="text-align: right;">1.00000</td>
+<td style="text-align: right;">0.9995711</td>
+<td style="text-align: right;">5009.228</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">20.09062</td>
 <td style="text-align: right;">15.0673701</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
-<td style="text-align: right;">-0.0243992</td>
+<td style="text-align: right;">-0.0246691</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0525050</td>
-<td style="text-align: right;">0.0036740</td>
-<td style="text-align: right;">0.957</td>
-<td style="text-align: right;">1.0021956</td>
-<td style="text-align: right;">2041.955</td>
+<td style="text-align: right;">-0.0503629</td>
+<td style="text-align: right;">0.0038158</td>
+<td style="text-align: right;">0.95375</td>
+<td style="text-align: right;">1.0006553</td>
+<td style="text-align: right;">2070.094</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.2197599</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">disp</td>
-<td style="text-align: right;">-0.0307138</td>
+<td style="text-align: right;">-0.0305959</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0458102</td>
-<td style="text-align: right;">-0.0153927</td>
-<td style="text-align: right;">1.000</td>
-<td style="text-align: right;">1.0014999</td>
-<td style="text-align: right;">2001.424</td>
+<td style="text-align: right;">-0.0460168</td>
+<td style="text-align: right;">-0.0155190</td>
+<td style="text-align: right;">0.99975</td>
+<td style="text-align: right;">1.0010159</td>
+<td style="text-align: right;">2045.304</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.1215712</td>
@@ -1334,7 +1334,7 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <div class="cell-output cell-output-stdout">
 <pre><code># Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.733 (95% CI [0.580, 0.845])</code></pre>
+  Conditional R2: 0.731 (95% CI [0.580, 0.842])</code></pre>
 </div>
 </div>
 <p>Depending on the value of <code>disp</code> the prediction of <code>mpg</code> from <code>hp</code> will vary:</p>
@@ -1783,7 +1783,7 @@ Figure&nbsp;4.6: Means per level of am
 <h2 data-number="4.12" class="anchored" data-anchor-id="going-further"><span class="header-section-number">4.12</span> Going further</h2>
 <p>Check-out <a href="https://statistik1.netlify.app/080-regression1">this chapter</a> of my intro stats book to get an overview on statistical modeling using basic regression technieques. Please use your browser’s translation feature to render the webpages into your favorite language.</p>
 <p>An accessible treatment of regression is provided by <span class="citation" data-cites="ismay_statistical_2020">Ismay &amp; Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span>.</p>
-<p><span class="citation" data-cites="roback_beyond_2021">Roback &amp; Legler (<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref">2021</a>)</span> provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by <span class="citation" data-cites="gelman_regression_2021">Gelman et al. (<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref">2021</a>)</span>. You may also benefit from <span class="citation" data-cites="poldrack_statistical_2022">Poldrack (<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref">2022</a>)</span> (open access).</p>
+<p><span class="citation" data-cites="roback_beyond_2021">Roback &amp; Legler (<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref">2021</a>)</span> provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by <span class="citation" data-cites="gelman_regression_2021">(<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref"><strong>gelman_regression_2021?</strong></a>)</span>. You may also benefit from <span class="citation" data-cites="poldrack_statistical_2022">(<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref"><strong>poldrack_statistical_2022?</strong></a>)</span> (open access).</p>
 <p>For a gentle introduction to the basics of modelling, see <a href="https://moderndive.com/5-regression.html">ModernDive Chap. 5.0</a> <span class="citation" data-cites="ismay_statistical_2020">(<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">Ismay &amp; Kim, 2020</a>)</span>, and get the R code <a href="http://moderndive.com/scripts/05-regression.R">here</a>. For slightly more advanced topics on linear regression such as multiple regression and interaction, see <a href="https://moderndive.com/6-multiple-regression.html">ModernDive Chap. 6</a>, and get the R code <a href="http://moderndive.com/scripts/06-multiple-regression.R">here</a>.</p>
 </section>
 <section id="debrief" class="level2" data-number="4.13">
@@ -1792,14 +1792,8 @@ Figure&nbsp;4.6: Means per level of am
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
-<div id="ref-gelman_regression_2021" class="csl-entry" role="listitem">
-Gelman, A., Hill, J., &amp; Vehtari, A. (2021). <em>Regression and other stories</em>. Cambridge University Press.
-</div>
 <div id="ref-ismay_statistical_2020" class="csl-entry" role="listitem">
 Ismay, C., &amp; Kim, A. Y.-S. (2020). <em>Statistical inference via data science: A <span>ModernDive</span> into <span>R</span> and the <span>Tidyverse</span></em>. CRC Press / Taylor &amp; Francis Group. <a href="https://moderndive.com/">https://moderndive.com/</a>
-</div>
-<div id="ref-poldrack_statistical_2022" class="csl-entry" role="listitem">
-Poldrack, R. (2022). <em>Statistical <span>Thinking</span> for the 21st <span>Century</span></em>. <a href="https://statsthinking21.github.io/statsthinking21-core-site/index.html">https://statsthinking21.github.io/statsthinking21-core-site/index.html</a>
 </div>
 <div id="ref-roback_beyond_2021" class="csl-entry" role="listitem">
 Roback, P., &amp; Legler, J. (2021). <em>Beyond multiple linear regression: Applied generalized linear models and multilevel models in</em> (1st ed.). CRC Press.
