@@ -299,5 +299,6 @@ For example,
 
 @goodman_dirty_2008 provides an entertaining overview on typical misconceptions of the p-value [full text](https://www.ohri.ca//newsroom/seminars/SeminarUploads/1829/Suggested%20Reading%20-%20Nov%203,%202014.pdf).
 @poldrack_statistical_2022 provides a fresh, 
-accessible and sound introduction to statistical inference; in addition @cetinkaya-rundel_introduction_2021 is a worthwhile treatise.
+accessible and sound introduction to statistical inference; 
+in addition @cetinkaya-rundel_introduction_2021 is a worthwhile treatise.
 
