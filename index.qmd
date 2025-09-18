@@ -187,7 +187,8 @@ Check out the [Github repo of this project](https://github.com/sebastiansauer/st
 
 ## Resources
 
-## Live Coding
+
+### Live Coding
 
 - Check out the [Live coding Github repo](https://github.com/sebastiansauer/enough_statistics_to_be_dangerous) of this course. You will find the (R) code from the course in real-time there.
 
