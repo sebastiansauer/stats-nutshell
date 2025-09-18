@@ -187,7 +187,16 @@ Check out the [Github repo of this project](https://github.com/sebastiansauer/st
 
 ## Resources
 
-### Recommendations
+## Live Coding
+
+- Check out the [Live coding Github repo](https://github.com/sebastiansauer/enough_statistics_to_be_dangerous) of this course. You will find the (R) code from the course in real-time there.
+
+
+- Check out the [RStudio (Posit) Cloud (Online RStudio) repo](https://posit.cloud/content/10942267) of this course. You will also find all the code from the course there (it's a mirror of the Github repo). In addition, you can execute your code - or the code of the teacher - right there. Note that you need to copy the repo into your own account, as you have writing access only in your own account.
+
+
+
+### Recommended reading
 
 -   [RStudio Cheatsheets](https://rstudio.com/resources/cheatsheets/), particularly on [data wrangling](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf), and [data vizualization](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
 
