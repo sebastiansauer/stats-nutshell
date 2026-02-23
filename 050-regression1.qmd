@@ -158,6 +158,7 @@ ggplot(d,
 The following "ladder" shows the logical structure of common linear model in increasing complexity.
 
 Note:
+
 - `y`: the dependent variable
 - `x`: a metric independent variable
 - `b`: a binary (dichotomic) independent variable
@@ -495,8 +496,8 @@ A linear model with one predictor having two values amounts to nothing more than
 
 
 ```{r}
-ggviolin(mtcars, x = "am", y = "mpg",
-         add = "mean_se") +
+ggdotplot(mtcars, x = "am", y = "mpg",
+         add = c("mean_se")) +
   labs(caption = "Mean plus/minus SE are shown")
 ```
 
@@ -603,6 +604,70 @@ plot(lm4_pred)
 Beware! Model estimates can swing wildly if you add (or remove) some predictor from your model. [See this post](https://ecologyforthemasses.com/2022/06/08/who-is-simpson-and-what-does-his-paradox-mean-for-ecologists/) for an demonstration.
 
 
+### Quadrat models are also linear
+
+Let's simulate some data, where $X$ and $Y$ are associated in a quadratic manner:
+
+```{r}
+x <- abs(rnorm(n = 100, sd = 3))
+e <- rnorm(100)
+y <- x^2 + e
+
+d_square <-
+  data.frame(
+    x = x,
+    e = e,
+    y = y
+  )
+```
+
+
+Here's a scatterplot of the data:
+
+```{r}
+ggscatter(d_square,
+          x = "x",
+          y = "y")
+```
+
+
+Here's a "quadratic linear" model:
+
+
+```{r}
+lm_square <-
+  lm(y ~ I(x^2) + x, data = d_square)
+```
+
+Note `x^2` in a regression formula is *not* understood as arithmetic squaring.
+Hence, we need the `I()`.
+
+
+```{r}
+parameters(lm_square)
+```
+
+
+Here's our quadratic trend:
+
+```{r}
+estimate_relation(lm_square) |> 
+  plot() +
+  geom_point(aes(x = x, y = y), data = d_square)
+```
+
+
+
+Why is this quadratic model considered linear?
+
+Because $y$ is a linear function of the *betas*; the x-es are seen as *constants*:
+
+$y = \beta_0 + \beta_1\times x_1 + \beta_2 \times x_2 + \epsilon$,
+
+where $\x_2$ is the squared value of `x`.
+
+
+The same logic applies for other "non-linear" trends such as higher polynomials or exponential trends.
 
 
 ## What about correlation?
@@ -623,6 +688,18 @@ lm4_corr
 ```{r}
 plot(summary(lm4_corr))
 ```
+
+Again,
+here's the scatter plot (for `mpg` as a function of `disp`):
+
+```{r}
+ggscatter(mtcars,
+          x = "disp",
+          y = "mpg",
+          add = "reg.line")
+```
+
+
 
 ## Exercises
 

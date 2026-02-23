@@ -473,6 +473,7 @@ window.Quarto = {
   <li><a href="#one-nominal-predictor" id="toc-one-nominal-predictor" class="nav-link" data-scroll-target="#one-nominal-predictor"><span class="header-section-number">4.5.2</span> One nominal predictor</a></li>
   <li><a href="#one-metric-and-one-nominal-predictor" id="toc-one-metric-and-one-nominal-predictor" class="nav-link" data-scroll-target="#one-metric-and-one-nominal-predictor"><span class="header-section-number">4.5.3</span> One metric and one nominal predictor</a></li>
   <li><a href="#watch-out-for-simpson" id="toc-watch-out-for-simpson" class="nav-link" data-scroll-target="#watch-out-for-simpson"><span class="header-section-number">4.5.4</span> Watch out for Simpson</a></li>
+  <li><a href="#quadrat-models-are-also-linear" id="toc-quadrat-models-are-also-linear" class="nav-link" data-scroll-target="#quadrat-models-are-also-linear"><span class="header-section-number">4.5.5</span> Quadrat models are also linear</a></li>
   </ul></li>
   <li><a href="#what-about-correlation" id="toc-what-about-correlation" class="nav-link" data-scroll-target="#what-about-correlation"><span class="header-section-number">4.6</span> What about correlation?</a></li>
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">4.7</span> Exercises</a></li>
@@ -656,7 +657,14 @@ Figure&nbsp;4.5: Residuals as deviations from the predicted value
 <section id="a-ladder-of-common-regression-formula-variants" class="level3" data-number="4.2.7">
 <h3 data-number="4.2.7" class="anchored" data-anchor-id="a-ladder-of-common-regression-formula-variants"><span class="header-section-number">4.2.7</span> A ladder of common regression formula variants</h3>
 <p>The following “ladder” shows the logical structure of common linear model in increasing complexity.</p>
-<p>Note: - <code>y</code>: the dependent variable - <code>x</code>: a metric independent variable - <code>b</code>: a binary (dichotomic) independent variable - <code>g</code>: a nominal (two or more groups) independent variable - <code>_c</code>: a <em>c</em>entered variable</p>
+<p>Note:</p>
+<ul>
+<li><code>y</code>: the dependent variable</li>
+<li><code>x</code>: a metric independent variable</li>
+<li><code>b</code>: a binary (dichotomic) independent variable</li>
+<li><code>g</code>: a nominal (two or more groups) independent variable</li>
+<li><code>_c</code>: a <em>c</em>entered variable</li>
+</ul>
 <ol start="0" type="1">
 <li><code>y ~ 1</code> - the simple grand mean value</li>
 <li><code>y ~ b</code> - difference between two mean values</li>
@@ -1698,8 +1706,8 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 <p>A linear model with one predictor having two values amounts to nothing more than comparing the means of two groups:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggviolin</span>(mtcars, <span class="at">x =</span> <span class="st">"am"</span>, <span class="at">y =</span> <span class="st">"mpg"</span>,</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">add =</span> <span class="st">"mean_se"</span>) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdotplot</span>(mtcars, <span class="at">x =</span> <span class="st">"am"</span>, <span class="at">y =</span> <span class="st">"mpg"</span>,</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">add =</span> <span class="fu">c</span>(<span class="st">"mean_se"</span>)) <span class="sc">+</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Mean plus/minus SE are shown"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2036,18 +2044,139 @@ Figure&nbsp;4.6: Means per level of am
 <h3 data-number="4.5.4" class="anchored" data-anchor-id="watch-out-for-simpson"><span class="header-section-number">4.5.4</span> Watch out for Simpson</h3>
 <p>Beware! Model estimates can swing wildly if you add (or remove) some predictor from your model. <a href="https://ecologyforthemasses.com/2022/06/08/who-is-simpson-and-what-does-his-paradox-mean-for-ecologists/">See this post</a> for an demonstration.</p>
 </section>
+<section id="quadrat-models-are-also-linear" class="level3" data-number="4.5.5">
+<h3 data-number="4.5.5" class="anchored" data-anchor-id="quadrat-models-are-also-linear"><span class="header-section-number">4.5.5</span> Quadrat models are also linear</h3>
+<p>Let’s simulate some data, where <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are associated in a quadratic manner:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">3</span>))</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> e</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>d_square <span class="ot">&lt;-</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> x,</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">e =</span> e,</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> y</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Here’s a scatterplot of the data:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatter</span>(d_square,</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"x"</span>,</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"y"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here’s a “quadratic linear” model:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>lm_square <span class="ot">&lt;-</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> x, <span class="at">data =</span> d_square)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Note <code>x^2</code> in a regression formula is <em>not</em> understood as arithmetic squaring. Hence, we need the <code>I()</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm_square)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 5%">
+<col style="width: 12%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-0.3513295</td>
+<td style="text-align: right;">0.2865703</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.9200923</td>
+<td style="text-align: right;">0.2174334</td>
+<td style="text-align: right;">-1.2259798</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">0.2231743</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I(x^2)</td>
+<td style="text-align: right;">0.9870886</td>
+<td style="text-align: right;">0.0375881</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.9124867</td>
+<td style="text-align: right;">1.0616905</td>
+<td style="text-align: right;">26.2606916</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">0.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">x</td>
+<td style="text-align: right;">0.1465346</td>
+<td style="text-align: right;">0.2331559</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.3162154</td>
+<td style="text-align: right;">0.6092845</td>
+<td style="text-align: right;">0.6284831</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">0.5311646</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Here’s our quadratic trend:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">estimate_relation</span>(lm_square) <span class="sc">|&gt;</span> </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">data =</span> d_square)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Why is this quadratic model considered linear?</p>
+<p>Because <span class="math inline">\(y\)</span> is a linear function of the <em>betas</em>; the x-es are seen as <em>constants</em>:</p>
+<p><span class="math inline">\(y = \beta_0 + \beta_1\times x_1 + \beta_2 \times x_2 + \epsilon\)</span>,</p>
+<p>where <span class="math inline">\(\x_2\)</span> is the squared value of <code>x</code>.</p>
+<p>The same logic applies for other “non-linear” trends such as higher polynomials or exponential trends.</p>
+</section>
 </section>
 <section id="what-about-correlation" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="what-about-correlation"><span class="header-section-number">4.6</span> What about correlation?</h2>
 <p>Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.</p>
 <p>Let’s get the correlation matrix of the variables in involved in <code>lm4</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>lm4_corr <span class="ot">&lt;-</span> </span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, disp) <span class="sc">%&gt;%</span> </span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>()</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>lm4_corr</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>lm4_corr <span class="ot">&lt;-</span> </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, disp) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>()</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>lm4_corr</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -2125,11 +2254,25 @@ Figure&nbsp;4.6: Means per level of am
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">summary</span>(lm4_corr))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">summary</span>(lm4_corr))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="050-regression1_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Again, here’s the scatter plot (for <code>mpg</code> as a function of <code>disp</code>):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatter</span>(mtcars,</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"disp"</span>,</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"mpg"</span>,</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">add =</span> <span class="st">"reg.line"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
