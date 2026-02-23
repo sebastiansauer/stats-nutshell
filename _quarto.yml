@@ -1,5 +1,15 @@
 project:
   type: book
+  
+keywords:
+- statistics
+- modelling
+- introduction
+- course
+- data analysis
+- R
+
+
 
 book:
   title: "stats-nutshell"
@@ -9,8 +19,8 @@ book:
   date: now
   doi: 10.5281/zenodo.10082518
   description: "A crash course on applied statistics with a focus on statistical modelling"
-
-  
+  repo-url: https://github.com/sebastiansauer/stats-nutshell
+  repo-actions: [source, issue]
   chapters:
     - index.qmd
     # - 010-goals.qmd
@@ -22,13 +32,11 @@ book:
     - 070-causality.qmd
     - 080-outro.qmd
     - references.qmd
-    
-   
   sidebar: 
-    logo: img/logo-stats-nutshell.png
+      logo: img/logo-stats-nutshell.png
+      search: true
   favicon: img/logo-stats-nutshell.png
-  repo-url: https://github.com/sebastiansauer/stats-nutshell
-
+  
 
 bibliography: "ses.bib"
 csl: "apa7.csl"
@@ -45,8 +53,12 @@ license: "MIT"
 
 format:
   html:
-    theme: cosmo 
     toc: true
+    toc-depth: 3
+    toc-expand: 2
+    theme:
+      light: lumen
+      dark: darkly
     number-sections: true
     df-print: kable
     fig-align: center

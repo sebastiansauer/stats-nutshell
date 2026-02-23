@@ -45,3 +45,5 @@ vignettes/*.pdf
 temp*.*
 
 
+
+**/*.quarto_ipynb

@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="keywords" content="statistics, modelling, introduction, course, data analysis, R">
 <meta name="description" content="A crash course on applied statistics with a focus on statistical modelling">
 
 <title>4&nbsp; Modelling and regression – stats-nutshell</title>
@@ -22,8 +23,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -88,15 +90,21 @@ div.csl-indent {
 <link href="./060-regression2.html" rel="next">
 <link href="./040-inference.html" rel="prev">
 <link href="./img/logo-stats-nutshell.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-a8378a0342da607bf6aa9ac04725c156.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ed6da6eef3892af8a4b5ed59bfb951f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-4760c14e01bb68cedbd56ecf75849c93.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4c6d65c679321d81af7ec8b61b1d5a24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-4760c14e01bb68cedbd56ecf75849c93.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -143,7 +151,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -161,7 +169,169 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -185,12 +355,14 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./img/logo-stats-nutshell.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./img/logo-stats-nutshell.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./img/logo-stats-nutshell.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">stats-nutshell</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/sebastiansauer/stats-nutshell" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -261,58 +433,59 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-packages-needed-for-this-chapter" id="toc-r-packages-needed-for-this-chapter" class="nav-link active" data-scroll-target="#r-packages-needed-for-this-chapter"><span class="header-section-number">4.1</span> R packages needed for this chapter</a></li>
-  <li><a href="#whats-modelling" id="toc-whats-modelling" class="nav-link" data-scroll-target="#whats-modelling"><span class="header-section-number">4.2</span> What’s modelling?</a></li>
-  <li><a href="#regression-as-the-umbrella-tool-for-modelling" id="toc-regression-as-the-umbrella-tool-for-modelling" class="nav-link" data-scroll-target="#regression-as-the-umbrella-tool-for-modelling"><span class="header-section-number">4.3</span> Regression as the umbrella tool for modelling</a>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"><span class="header-section-number">4.1</span> Setup</a></li>
+  <li><a href="#whats-modelling" id="toc-whats-modelling" class="nav-link" data-scroll-target="#whats-modelling"><span class="header-section-number">4.2</span> What’s modelling?</a>
   <ul class="collapse">
-  <li><a href="#common-statistical-tests-are-linear-models" id="toc-common-statistical-tests-are-linear-models" class="nav-link" data-scroll-target="#common-statistical-tests-are-linear-models"><span class="header-section-number">4.3.1</span> Common statistical tests are linear models</a></li>
-  <li><a href="#how-to-find-the-regression-line" id="toc-how-to-find-the-regression-line" class="nav-link" data-scroll-target="#how-to-find-the-regression-line"><span class="header-section-number">4.3.2</span> How to find the regression line</a></li>
-  <li><a href="#the-linear-model" id="toc-the-linear-model" class="nav-link" data-scroll-target="#the-linear-model"><span class="header-section-number">4.3.3</span> The linear model</a></li>
-  <li><a href="#algebraic-derivation" id="toc-algebraic-derivation" class="nav-link" data-scroll-target="#algebraic-derivation"><span class="header-section-number">4.3.4</span> Algebraic derivation</a></li>
+  <li><a href="#regression-as-the-umbrella-tool-for-modelling" id="toc-regression-as-the-umbrella-tool-for-modelling" class="nav-link" data-scroll-target="#regression-as-the-umbrella-tool-for-modelling"><span class="header-section-number">4.2.1</span> Regression as the umbrella tool for modelling</a></li>
+  <li><a href="#common-statistical-tests-are-linear-models" id="toc-common-statistical-tests-are-linear-models" class="nav-link" data-scroll-target="#common-statistical-tests-are-linear-models"><span class="header-section-number">4.2.2</span> Common statistical tests are linear models</a></li>
+  <li><a href="#how-to-find-the-regression-line" id="toc-how-to-find-the-regression-line" class="nav-link" data-scroll-target="#how-to-find-the-regression-line"><span class="header-section-number">4.2.3</span> How to find the regression line</a></li>
+  <li><a href="#the-linear-model" id="toc-the-linear-model" class="nav-link" data-scroll-target="#the-linear-model"><span class="header-section-number">4.2.4</span> The linear model</a></li>
+  <li><a href="#algebraic-derivation" id="toc-algebraic-derivation" class="nav-link" data-scroll-target="#algebraic-derivation"><span class="header-section-number">4.2.5</span> Algebraic derivation</a></li>
+  <li><a href="#the-linear-model-in-all-its-glory" id="toc-the-linear-model-in-all-its-glory" class="nav-link" data-scroll-target="#the-linear-model-in-all-its-glory"><span class="header-section-number">4.2.6</span> The linear model in all its glory</a></li>
+  <li><a href="#a-ladder-of-common-regression-formula-variants" id="toc-a-ladder-of-common-regression-formula-variants" class="nav-link" data-scroll-target="#a-ladder-of-common-regression-formula-variants"><span class="header-section-number">4.2.7</span> A ladder of common regression formula variants</a></li>
   </ul></li>
-  <li><a href="#in-all-its-glory" id="toc-in-all-its-glory" class="nav-link" data-scroll-target="#in-all-its-glory"><span class="header-section-number">4.4</span> In all its glory</a></li>
-  <li><a href="#first-model-one-metric-predictor" id="toc-first-model-one-metric-predictor" class="nav-link" data-scroll-target="#first-model-one-metric-predictor"><span class="header-section-number">4.5</span> First model: one metric predictor</a>
+  <li><a href="#a-simple-model-one-metric-predictor" id="toc-a-simple-model-one-metric-predictor" class="nav-link" data-scroll-target="#a-simple-model-one-metric-predictor"><span class="header-section-number">4.3</span> A simple model: one metric predictor</a>
   <ul class="collapse">
-  <li><a href="#frequentist" id="toc-frequentist" class="nav-link" data-scroll-target="#frequentist"><span class="header-section-number">4.5.1</span> Frequentist</a></li>
-  <li><a href="#bayesian" id="toc-bayesian" class="nav-link" data-scroll-target="#bayesian"><span class="header-section-number">4.5.2</span> Bayesian</a></li>
-  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance"><span class="header-section-number">4.5.3</span> Model performance</a></li>
-  <li><a href="#model-check" id="toc-model-check" class="nav-link" data-scroll-target="#model-check"><span class="header-section-number">4.5.4</span> Model check</a></li>
-  <li><a href="#get-some-predictions" id="toc-get-some-predictions" class="nav-link" data-scroll-target="#get-some-predictions"><span class="header-section-number">4.5.5</span> Get some predictions</a></li>
-  <li><a href="#plot-the-model" id="toc-plot-the-model" class="nav-link" data-scroll-target="#plot-the-model"><span class="header-section-number">4.5.6</span> Plot the model</a></li>
-  <li><a href="#more-of-this" id="toc-more-of-this" class="nav-link" data-scroll-target="#more-of-this"><span class="header-section-number">4.5.7</span> More of this</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.5.8</span> Exercises</a></li>
-  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">4.5.9</span> Lab</a></li>
+  <li><a href="#frequentist" id="toc-frequentist" class="nav-link" data-scroll-target="#frequentist"><span class="header-section-number">4.3.1</span> Frequentist</a></li>
+  <li><a href="#bayesian" id="toc-bayesian" class="nav-link" data-scroll-target="#bayesian"><span class="header-section-number">4.3.2</span> Bayesian</a></li>
+  <li><a href="#model-parameters" id="toc-model-parameters" class="nav-link" data-scroll-target="#model-parameters"><span class="header-section-number">4.3.3</span> Model parameters</a></li>
+  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance"><span class="header-section-number">4.3.4</span> Model performance</a></li>
+  <li><a href="#model-check" id="toc-model-check" class="nav-link" data-scroll-target="#model-check"><span class="header-section-number">4.3.5</span> Model check</a></li>
+  <li><a href="#more-of-this" id="toc-more-of-this" class="nav-link" data-scroll-target="#more-of-this"><span class="header-section-number">4.3.6</span> More of this</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.3.7</span> Exercises</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">4.3.8</span> Lab</a></li>
   </ul></li>
-  <li><a href="#bayes-members-only" id="toc-bayes-members-only" class="nav-link" data-scroll-target="#bayes-members-only"><span class="header-section-number">4.6</span> Bayes-members only</a>
+  <li><a href="#bayes-members-only" id="toc-bayes-members-only" class="nav-link" data-scroll-target="#bayes-members-only"><span class="header-section-number">4.4</span> Bayes-members only</a>
   <ul class="collapse">
-  <li><a href="#asking-for-probabilites" id="toc-asking-for-probabilites" class="nav-link" data-scroll-target="#asking-for-probabilites"><span class="header-section-number">4.6.1</span> Asking for probabilites</a></li>
-  <li><a href="#asking-for-quantiles" id="toc-asking-for-quantiles" class="nav-link" data-scroll-target="#asking-for-quantiles"><span class="header-section-number">4.6.2</span> Asking for quantiles</a></li>
-  <li><a href="#model-specification" id="toc-model-specification" class="nav-link" data-scroll-target="#model-specification"><span class="header-section-number">4.6.3</span> Model specification</a></li>
-  <li><a href="#prediction-interval" id="toc-prediction-interval" class="nav-link" data-scroll-target="#prediction-interval"><span class="header-section-number">4.6.4</span> Prediction interval</a></li>
-  <li><a href="#and-more" id="toc-and-more" class="nav-link" data-scroll-target="#and-more"><span class="header-section-number">4.6.5</span> … And more</a></li>
+  <li><a href="#asking-for-probabilites" id="toc-asking-for-probabilites" class="nav-link" data-scroll-target="#asking-for-probabilites"><span class="header-section-number">4.4.1</span> Asking for probabilites</a></li>
+  <li><a href="#asking-for-quantiles" id="toc-asking-for-quantiles" class="nav-link" data-scroll-target="#asking-for-quantiles"><span class="header-section-number">4.4.2</span> Asking for quantiles</a></li>
+  <li><a href="#model-specification" id="toc-model-specification" class="nav-link" data-scroll-target="#model-specification"><span class="header-section-number">4.4.3</span> Model specification</a></li>
+  <li><a href="#prediction-interval" id="toc-prediction-interval" class="nav-link" data-scroll-target="#prediction-interval"><span class="header-section-number">4.4.4</span> Prediction interval</a></li>
+  <li><a href="#and-more" id="toc-and-more" class="nav-link" data-scroll-target="#and-more"><span class="header-section-number">4.4.5</span> … And more</a></li>
   </ul></li>
-  <li><a href="#more-linear-models" id="toc-more-linear-models" class="nav-link" data-scroll-target="#more-linear-models"><span class="header-section-number">4.7</span> More linear models</a>
+  <li><a href="#more-linear-models" id="toc-more-linear-models" class="nav-link" data-scroll-target="#more-linear-models"><span class="header-section-number">4.5</span> More linear models</a>
   <ul class="collapse">
-  <li><a href="#multiple-metric-predictors" id="toc-multiple-metric-predictors" class="nav-link" data-scroll-target="#multiple-metric-predictors"><span class="header-section-number">4.7.1</span> Multiple metric predictors</a></li>
-  <li><a href="#one-nominal-predictor" id="toc-one-nominal-predictor" class="nav-link" data-scroll-target="#one-nominal-predictor"><span class="header-section-number">4.7.2</span> One nominal predictor</a></li>
-  <li><a href="#one-metric-and-one-nominal-predictor" id="toc-one-metric-and-one-nominal-predictor" class="nav-link" data-scroll-target="#one-metric-and-one-nominal-predictor"><span class="header-section-number">4.7.3</span> One metric and one nominal predictor</a></li>
-  <li><a href="#watch-out-for-simpson" id="toc-watch-out-for-simpson" class="nav-link" data-scroll-target="#watch-out-for-simpson"><span class="header-section-number">4.7.4</span> Watch out for Simpson</a></li>
+  <li><a href="#multiple-metric-predictors" id="toc-multiple-metric-predictors" class="nav-link" data-scroll-target="#multiple-metric-predictors"><span class="header-section-number">4.5.1</span> Multiple metric predictors</a></li>
+  <li><a href="#one-nominal-predictor" id="toc-one-nominal-predictor" class="nav-link" data-scroll-target="#one-nominal-predictor"><span class="header-section-number">4.5.2</span> One nominal predictor</a></li>
+  <li><a href="#one-metric-and-one-nominal-predictor" id="toc-one-metric-and-one-nominal-predictor" class="nav-link" data-scroll-target="#one-metric-and-one-nominal-predictor"><span class="header-section-number">4.5.3</span> One metric and one nominal predictor</a></li>
+  <li><a href="#watch-out-for-simpson" id="toc-watch-out-for-simpson" class="nav-link" data-scroll-target="#watch-out-for-simpson"><span class="header-section-number">4.5.4</span> Watch out for Simpson</a></li>
   </ul></li>
-  <li><a href="#what-about-correlation" id="toc-what-about-correlation" class="nav-link" data-scroll-target="#what-about-correlation"><span class="header-section-number">4.8</span> What about correlation?</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">4.9</span> Exercises</a></li>
-  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="header-section-number">4.10</span> Case study</a></li>
-  <li><a href="#lab-1" id="toc-lab-1" class="nav-link" data-scroll-target="#lab-1"><span class="header-section-number">4.11</span> Lab</a></li>
-  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="header-section-number">4.12</span> Going further</a></li>
-  <li><a href="#debrief" id="toc-debrief" class="nav-link" data-scroll-target="#debrief"><span class="header-section-number">4.13</span> Debrief</a></li>
+  <li><a href="#what-about-correlation" id="toc-what-about-correlation" class="nav-link" data-scroll-target="#what-about-correlation"><span class="header-section-number">4.6</span> What about correlation?</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">4.7</span> Exercises</a></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="header-section-number">4.8</span> Case study</a></li>
+  <li><a href="#lab-1" id="toc-lab-1" class="nav-link" data-scroll-target="#lab-1"><span class="header-section-number">4.9</span> Lab</a></li>
+  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="header-section-number">4.10</span> Going further</a></li>
+  <li><a href="#debrief" id="toc-debrief" class="nav-link" data-scroll-target="#debrief"><span class="header-section-number">4.11</span> Debrief</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/sebastiansauer/stats-nutshell/blob/main/050-regression1.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/sebastiansauer/stats-nutshell/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -329,18 +502,25 @@ window.Quarto = {
   </div>
   
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>statistics, modelling, introduction, course, data analysis, R</p>
+  </div>
+</div>
 
 </header>
 
 
 <p><img src="img/stern.png" class="img-fluid" style="width:5.0%"></p>
-<section id="r-packages-needed-for-this-chapter" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="r-packages-needed-for-this-chapter"><span class="header-section-number">4.1</span> R packages needed for this chapter</h2>
+<section id="setup" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">4.1</span> Setup</h2>
+<p>The following R packages are needed for this chapter.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)  <span class="co"># optional!</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)  <span class="co"># data visualization</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)  <span class="co"># data visualization</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="whats-modelling" class="level2" data-number="4.2">
@@ -371,9 +551,8 @@ Figure&nbsp;4.1: A more visual account of our basic modelling equation
 </div>
 </div>
 </div>
-</section>
-<section id="regression-as-the-umbrella-tool-for-modelling" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="regression-as-the-umbrella-tool-for-modelling"><span class="header-section-number">4.3</span> Regression as the umbrella tool for modelling</h2>
+<section id="regression-as-the-umbrella-tool-for-modelling" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="regression-as-the-umbrella-tool-for-modelling"><span class="header-section-number">4.2.1</span> Regression as the umbrella tool for modelling</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/one-regression-to-rule-them-all.jpeg" class="img-fluid figure-img" style="width:50.0%"></p>
@@ -393,8 +572,9 @@ Figure&nbsp;4.2: Choose your test carefully
 </figcaption>
 </figure>
 </div>
-<section id="common-statistical-tests-are-linear-models" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="common-statistical-tests-are-linear-models"><span class="header-section-number">4.3.1</span> Common statistical tests are linear models</h3>
+</section>
+<section id="common-statistical-tests-are-linear-models" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="common-statistical-tests-are-linear-models"><span class="header-section-number">4.2.2</span> Common statistical tests are linear models</h3>
 <p>As Jonas Kristoffer Lindeløv tells us, we can formulate most statistical tests as a linear model, ie., a regression.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -403,8 +583,8 @@ Figure&nbsp;4.2: Choose your test carefully
 </figure>
 </div>
 </section>
-<section id="how-to-find-the-regression-line" class="level3" data-number="4.3.2">
-<h3 data-number="4.3.2" class="anchored" data-anchor-id="how-to-find-the-regression-line"><span class="header-section-number">4.3.2</span> How to find the regression line</h3>
+<section id="how-to-find-the-regression-line" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="how-to-find-the-regression-line"><span class="header-section-number">4.2.3</span> How to find the regression line</h3>
 <p>In the simplest case, regression analyses can be interpreted geometrically as a line in a 2D coordinate system, see Figure <a href="#fig-regr1" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>.</p>
 <div id="fig-regr1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -436,19 +616,18 @@ Figure&nbsp;4.4: Regression and some of its assumptions
 <li>normality of residuals</li>
 </ul>
 </section>
-<section id="the-linear-model" class="level3" data-number="4.3.3">
-<h3 data-number="4.3.3" class="anchored" data-anchor-id="the-linear-model"><span class="header-section-number">4.3.3</span> The linear model</h3>
+<section id="the-linear-model" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="the-linear-model"><span class="header-section-number">4.2.4</span> The linear model</h3>
 <p>Here’s the canonical form of the linear model.</p>
 <p>Consider a model with <span class="math inline">\(k\)</span> predictors:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k + \epsilon\]</span></p>
 </section>
-<section id="algebraic-derivation" class="level3" data-number="4.3.4">
-<h3 data-number="4.3.4" class="anchored" data-anchor-id="algebraic-derivation"><span class="header-section-number">4.3.4</span> Algebraic derivation</h3>
+<section id="algebraic-derivation" class="level3" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="algebraic-derivation"><span class="header-section-number">4.2.5</span> Algebraic derivation</h3>
 <p>For the mathematical inclined, check out <a href="https://data-se.netlify.app/2022/05/23/ableitung-der-koeffizienten-der-einfachen-regression/">this derivation</a> of the simple case regression model. Note that the article is written in German, but your browser can effortlessly translate into English. Here’s a <a href="https://math.stackexchange.com/questions/716826/derivation-of-simple-linear-regression-parameters">similar English article from StackExchange</a>.</p>
 </section>
-</section>
-<section id="in-all-its-glory" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="in-all-its-glory"><span class="header-section-number">4.4</span> In all its glory</h2>
+<section id="the-linear-model-in-all-its-glory" class="level3" data-number="4.2.6">
+<h3 data-number="4.2.6" class="anchored" data-anchor-id="the-linear-model-in-all-its-glory"><span class="header-section-number">4.2.6</span> The linear model in all its glory</h3>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -474,8 +653,24 @@ Figure&nbsp;4.5: Residuals as deviations from the predicted value
 </div>
 </div>
 </section>
-<section id="first-model-one-metric-predictor" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="first-model-one-metric-predictor"><span class="header-section-number">4.5</span> First model: one metric predictor</h2>
+<section id="a-ladder-of-common-regression-formula-variants" class="level3" data-number="4.2.7">
+<h3 data-number="4.2.7" class="anchored" data-anchor-id="a-ladder-of-common-regression-formula-variants"><span class="header-section-number">4.2.7</span> A ladder of common regression formula variants</h3>
+<p>The following “ladder” shows the logical structure of common linear model in increasing complexity.</p>
+<p>Note: - <code>y</code>: the dependent variable - <code>x</code>: a metric independent variable - <code>b</code>: a binary (dichotomic) independent variable - <code>g</code>: a nominal (two or more groups) independent variable - <code>_c</code>: a <em>c</em>entered variable</p>
+<ol start="0" type="1">
+<li><code>y ~ 1</code> - the simple grand mean value</li>
+<li><code>y ~ b</code> - difference between two mean values</li>
+<li><code>y ~ g</code> - differences between multiple mean values</li>
+<li><code>y ~ x_c</code> - y as a linear function of x</li>
+<li><code>y ~ x1_c + x2_c</code> - y as a linear function of both x1 and x2</li>
+<li><code>y ~ x_c + g + x_c:g</code> - the interaction (moderator) model</li>
+<li><code>log(y) ~ x1 + x2</code> - multiplicative association of independent variables</li>
+<li><code>log(p/(1-p)) ~ x</code> - logistic regression</li>
+</ol>
+</section>
+</section>
+<section id="a-simple-model-one-metric-predictor" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="a-simple-model-one-metric-predictor"><span class="header-section-number">4.3</span> A simple model: one metric predictor</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -491,8 +686,8 @@ Note
 </div>
 <p>First, let’s load some data:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mtcars)  <span class="co"># don't forget to start the "tidyverse package" upfront</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 32
 Columns: 11
@@ -509,15 +704,15 @@ $ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3
 $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…</code></pre>
 </div>
 </div>
-<section id="frequentist" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="frequentist"><span class="header-section-number">4.5.1</span> Frequentist</h3>
+<section id="frequentist" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="frequentist"><span class="header-section-number">4.3.1</span> Frequentist</h3>
 <p>Define and fit the model:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lm1_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lm1_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Get the parameter values:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_freq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -575,7 +770,7 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 </div>
 <p>Plot the model parameters:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm1_freq))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm1_freq))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -584,17 +779,30 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 </div>
 </div>
 </div>
-</section>
-<section id="bayesian" class="level3" data-number="4.5.2">
-<h3 data-number="4.5.2" class="anchored" data-anchor-id="bayesian"><span class="header-section-number">4.5.2</span> Bayesian</h3>
+<p>Plot the regression line:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">estimate_prediction</span>(lm1_freq, <span class="at">by =</span> <span class="st">"hp"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> mpg, <span class="at">x =</span> hp), <span class="at">data =</span> mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bayesian" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="bayesian"><span class="header-section-number">4.3.2</span> Bayesian</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 0.00513 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 51.3 seconds.
+Chain 1: Gradient evaluation took 0.000423 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 4.23 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -611,15 +819,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.056 seconds (Warm-up)
-Chain 1:                0.053 seconds (Sampling)
-Chain 1:                0.109 seconds (Total)
+Chain 1:  Elapsed Time: 0.035 seconds (Warm-up)
+Chain 1:                0.033 seconds (Sampling)
+Chain 1:                0.068 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 1.6e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.16 seconds.
+Chain 2: Gradient evaluation took 1.4e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.14 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -636,15 +844,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.049 seconds (Warm-up)
-Chain 2:                0.047 seconds (Sampling)
-Chain 2:                0.096 seconds (Total)
+Chain 2:  Elapsed Time: 0.032 seconds (Warm-up)
+Chain 2:                0.033 seconds (Sampling)
+Chain 2:                0.065 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 5.3e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.53 seconds.
+Chain 3: Gradient evaluation took 1.6e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.16 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -661,15 +869,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.052 seconds (Warm-up)
-Chain 3:                0.044 seconds (Sampling)
-Chain 3:                0.096 seconds (Total)
+Chain 3:  Elapsed Time: 0.056 seconds (Warm-up)
+Chain 3:                0.037 seconds (Sampling)
+Chain 3:                0.093 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 1.7e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.17 seconds.
+Chain 4: Gradient evaluation took 1.3e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -686,19 +894,22 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.049 seconds (Warm-up)
-Chain 4:                0.048 seconds (Sampling)
-Chain 4:                0.097 seconds (Total)
+Chain 4:  Elapsed Time: 0.034 seconds (Warm-up)
+Chain 4:                0.037 seconds (Sampling)
+Chain 4:                0.071 seconds (Total)
 Chain 4: </code></pre>
 </div>
 </div>
 <p>Actually, we want to suppress some overly verbose output of the sampling, so add the argument <code>refresh = 0</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars, <span class="at">refresh =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars, <span class="at">refresh =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="model-parameters" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="model-parameters"><span class="header-section-number">4.3.3</span> Model parameters</h3>
 <p>Get the parameter values:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_bayes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -706,10 +917,10 @@ Chain 4: </code></pre>
 <col style="width: 10%">
 <col style="width: 9%">
 <col style="width: 4%">
-<col style="width: 9%">
+<col style="width: 8%">
 <col style="width: 9%">
 <col style="width: 2%">
-<col style="width: 8%">
+<col style="width: 7%">
 <col style="width: 7%">
 <col style="width: 16%">
 <col style="width: 12%">
@@ -733,26 +944,26 @@ Chain 4: </code></pre>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">30.0258671</td>
+<td style="text-align: right;">30.1271159</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">26.6511691</td>
-<td style="text-align: right;">33.4092485</td>
+<td style="text-align: right;">26.760846</td>
+<td style="text-align: right;">33.3711909</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.9998508</td>
-<td style="text-align: right;">3901.253</td>
+<td style="text-align: right;">1.000212</td>
+<td style="text-align: right;">3514.811</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">20.09062</td>
 <td style="text-align: right;">15.0673701</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
-<td style="text-align: right;">-0.0677732</td>
+<td style="text-align: right;">-0.0680751</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0881377</td>
-<td style="text-align: right;">-0.0467074</td>
+<td style="text-align: right;">-0.088685</td>
+<td style="text-align: right;">-0.0472875</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1.0001298</td>
-<td style="text-align: right;">3462.203</td>
+<td style="text-align: right;">1.000639</td>
+<td style="text-align: right;">3617.460</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.2197599</td>
@@ -762,67 +973,78 @@ Chain 4: </code></pre>
 </div>
 </div>
 </div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm1_freq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 5%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">30.0988605</td>
+<td style="text-align: right;">1.6339210</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">26.7619488</td>
+<td style="text-align: right;">33.4357723</td>
+<td style="text-align: right;">18.421246</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0e+00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hp</td>
+<td style="text-align: right;">-0.0682283</td>
+<td style="text-align: right;">0.0101193</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.0888947</td>
+<td style="text-align: right;">-0.0475619</td>
+<td style="text-align: right;">-6.742388</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">2e-07</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <p>Plot the model parameters:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm1_bayes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm1_bayes))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="050-regression1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="model-performance" class="level3" data-number="4.5.3">
-<h3 data-number="4.5.3" class="anchored" data-anchor-id="model-performance"><span class="header-section-number">4.5.3</span> Model performance</h3>
+<p>Get some predictions</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># R2 for Linear Regression
-       R2: 0.602
-  adj. R2: 0.589</code></pre>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># Bayesian R2 with Compatibility Interval
-
-  Conditional R2: 0.587 (95% CI [0.376, 0.755])</code></pre>
-</div>
-</div>
-</section>
-<section id="model-check" class="level3" data-number="4.5.4">
-<h3 data-number="4.5.4" class="anchored" data-anchor-id="model-check"><span class="header-section-number">4.5.4</span> Model check</h3>
-<p>Here’s a bunch of typical model checks in the Frequentist sense.</p>
-<div class="cell" data-layout-align="center" data-fit-width="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="050-regression1_files/figure-html/checkmodel-lm1-freq-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>And here are some Bayesian flavored model checks.</p>
-<div class="cell" data-layout-align="center" data-fit-width="10">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="050-regression1_files/figure-html/checkmodel-lm1-bayes-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="get-some-predictions" class="level3" data-number="4.5.5">
-<h3 data-number="4.5.5" class="anchored" data-anchor-id="get-some-predictions"><span class="header-section-number">4.5.5</span> Get some predictions</h3>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lm1_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm1_freq)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>lm1_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lm1_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm1_freq)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>lm1_pred</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -837,70 +1059,70 @@ Chain 4: </code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">52.00000</td>
+<td style="text-align: right;">52.000</td>
 <td style="text-align: right;">26.550990</td>
 <td style="text-align: right;">1.1766139</td>
 <td style="text-align: right;">24.148024</td>
 <td style="text-align: right;">28.95396</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">83.44444</td>
-<td style="text-align: right;">24.405590</td>
-<td style="text-align: right;">0.9358933</td>
-<td style="text-align: right;">22.494241</td>
-<td style="text-align: right;">26.31694</td>
+<td style="text-align: right;">83.444</td>
+<td style="text-align: right;">24.405620</td>
+<td style="text-align: right;">0.9358964</td>
+<td style="text-align: right;">22.494265</td>
+<td style="text-align: right;">26.31698</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">114.88889</td>
-<td style="text-align: right;">22.260189</td>
-<td style="text-align: right;">0.7548971</td>
-<td style="text-align: right;">20.718484</td>
-<td style="text-align: right;">23.80190</td>
+<td style="text-align: right;">114.889</td>
+<td style="text-align: right;">22.260182</td>
+<td style="text-align: right;">0.7548966</td>
+<td style="text-align: right;">20.718477</td>
+<td style="text-align: right;">23.80189</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">146.33333</td>
-<td style="text-align: right;">20.114789</td>
+<td style="text-align: right;">146.333</td>
+<td style="text-align: right;">20.114812</td>
 <td style="text-align: right;">0.6828911</td>
-<td style="text-align: right;">18.720139</td>
-<td style="text-align: right;">21.50944</td>
+<td style="text-align: right;">18.720162</td>
+<td style="text-align: right;">21.50946</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">177.77778</td>
-<td style="text-align: right;">17.969389</td>
-<td style="text-align: right;">0.7518697</td>
-<td style="text-align: right;">16.433866</td>
-<td style="text-align: right;">19.50491</td>
+<td style="text-align: right;">177.778</td>
+<td style="text-align: right;">17.969374</td>
+<td style="text-align: right;">0.7518707</td>
+<td style="text-align: right;">16.433849</td>
+<td style="text-align: right;">19.50490</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">209.22222</td>
-<td style="text-align: right;">15.823989</td>
-<td style="text-align: right;">0.9310065</td>
-<td style="text-align: right;">13.922620</td>
-<td style="text-align: right;">17.72536</td>
+<td style="text-align: right;">209.222</td>
+<td style="text-align: right;">15.824004</td>
+<td style="text-align: right;">0.9310050</td>
+<td style="text-align: right;">13.922638</td>
+<td style="text-align: right;">17.72537</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">240.66667</td>
-<td style="text-align: right;">13.678588</td>
-<td style="text-align: right;">1.1707841</td>
-<td style="text-align: right;">11.287528</td>
-<td style="text-align: right;">16.06965</td>
+<td style="text-align: right;">240.667</td>
+<td style="text-align: right;">13.678565</td>
+<td style="text-align: right;">1.1707869</td>
+<td style="text-align: right;">11.287500</td>
+<td style="text-align: right;">16.06963</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">272.11111</td>
-<td style="text-align: right;">11.533188</td>
-<td style="text-align: right;">1.4412478</td>
-<td style="text-align: right;">8.589767</td>
+<td style="text-align: right;">272.111</td>
+<td style="text-align: right;">11.533196</td>
+<td style="text-align: right;">1.4412468</td>
+<td style="text-align: right;">8.589777</td>
 <td style="text-align: right;">14.47661</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">303.55556</td>
-<td style="text-align: right;">9.387788</td>
-<td style="text-align: right;">1.7280486</td>
-<td style="text-align: right;">5.858642</td>
-<td style="text-align: right;">12.91693</td>
+<td style="text-align: right;">303.556</td>
+<td style="text-align: right;">9.387757</td>
+<td style="text-align: right;">1.7280527</td>
+<td style="text-align: right;">5.858603</td>
+<td style="text-align: right;">12.91691</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">335.00000</td>
+<td style="text-align: right;">335.000</td>
 <td style="text-align: right;">7.242387</td>
 <td style="text-align: right;">2.0242544</td>
 <td style="text-align: right;">3.108308</td>
@@ -912,11 +1134,10 @@ Chain 4: </code></pre>
 </div>
 </div>
 <p>More details on the above function can be found on the <a href="https://easystats.github.io/modelbased/reference/estimate_expectation.html#functions-for-estimating-predicted-values-and-uncertainty">respective page at the easystats site</a>.</p>
-</section>
-<section id="plot-the-model" class="level3" data-number="4.5.6">
-<h3 data-number="4.5.6" class="anchored" data-anchor-id="plot-the-model"><span class="header-section-number">4.5.6</span> Plot the model</h3>
+<p>Plot the model (regression line):</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm1_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm1_pred) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> mpg, <span class="at">x =</span> hp), <span class="at">data =</span> mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -926,32 +1147,95 @@ Chain 4: </code></pre>
 </div>
 </div>
 </section>
-<section id="more-of-this" class="level3" data-number="4.5.7">
-<h3 data-number="4.5.7" class="anchored" data-anchor-id="more-of-this"><span class="header-section-number">4.5.7</span> More of this</h3>
+<section id="model-performance" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="model-performance"><span class="header-section-number">4.3.4</span> Model performance</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm1_freq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># R2 for Linear Regression
+       R2: 0.602
+  adj. R2: 0.589</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm1_bayes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Bayesian R2 with Compatibility Interval
+
+  Conditional R2: 0.588 (95% CI [0.373, 0.753])</code></pre>
+</div>
+</div>
+</section>
+<section id="model-check" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="model-check"><span class="header-section-number">4.3.5</span> Model check</h3>
+<p>Here’s a bunch of typical model checks in the Frequentist sense.</p>
+<div class="cell" data-layout-align="center" data-fit-width="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_freq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/checkmodel-lm1-freq-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And here are some Bayesian flavored model checks.</p>
+<div class="cell" data-layout-align="center" data-fit-width="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm1_bayes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/checkmodel-lm1-bayes-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s have a look at the predictions and the residuals:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred =</span> <span class="fu">predict</span>(lm1_bayes),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">resid =</span> <span class="fu">resid</span>(lm1_bayes))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gghistogram</span>(mtcars, </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="st">"resid"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looks okay.</p>
+</section>
+<section id="more-of-this" class="level3" data-number="4.3.6">
+<h3 data-number="4.3.6" class="anchored" data-anchor-id="more-of-this"><span class="header-section-number">4.3.6</span> More of this</h3>
 <p>More technical details for gauging model performance and model quality, can be found on the site of <a href="https://easystats.github.io/performance/">the R package “performance</a> at the easystats site.</p>
 </section>
-<section id="exercises" class="level3" data-number="4.5.8">
-<h3 data-number="4.5.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.5.8</span> Exercises</h3>
+<section id="exercises" class="level3" data-number="4.3.7">
+<h3 data-number="4.3.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.3.7</span> Exercises</h3>
+<p>See <a href="https://sebastiansauer.github.io/Datenwerk/#category=regression">Datenwerk</a> with tag “#regression”.</p>
 <ul>
 <li><a href="https://datenwerk.netlify.app/posts/mtcars-regr01/mtcars-regr01">mtcars-regr01</a></li>
 <li><a href="https://datenwerk.netlify.app/posts/lm1/lm1">lm1</a></li>
-<li></li>
 </ul>
 </section>
-<section id="lab" class="level3" data-number="4.5.9">
-<h3 data-number="4.5.9" class="anchored" data-anchor-id="lab"><span class="header-section-number">4.5.9</span> Lab</h3>
+<section id="lab" class="level3" data-number="4.3.8">
+<h3 data-number="4.3.8" class="anchored" data-anchor-id="lab"><span class="header-section-number">4.3.8</span> Lab</h3>
 <p>Run a simple regression on your own research data. Present the results. Did you encounter any glitches?</p>
 </section>
 </section>
-<section id="bayes-members-only" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="bayes-members-only"><span class="header-section-number">4.6</span> Bayes-members only</h2>
+<section id="bayes-members-only" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="bayes-members-only"><span class="header-section-number">4.4</span> Bayes-members only</h2>
 <p>Bayes statistics provide a distribution as the result of the analysis, the posterior distribution, which provides us with quite some luxury.</p>
 <p>As the posterior distribution manifests itself by a number of samples, we can easily filter and manipulate this sample distribution in order to ask some interesing questions.</p>
 <p>See</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes_tibble <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(lm1_bayes)  <span class="co"># cast as a tibble (table)</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lm1_bayes_tibble)  <span class="co"># show the first few rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes_tibble <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(lm1_bayes)  <span class="co"># cast as a tibble (table)</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lm1_bayes_tibble)  <span class="co"># show the first few rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -964,46 +1248,46 @@ Chain 4: </code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">30.36084</td>
-<td style="text-align: right;">-0.0670639</td>
-<td style="text-align: right;">3.870440</td>
+<td style="text-align: right;">28.84148</td>
+<td style="text-align: right;">-0.0716195</td>
+<td style="text-align: right;">4.224321</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">29.70206</td>
-<td style="text-align: right;">-0.0661331</td>
-<td style="text-align: right;">4.035431</td>
+<td style="text-align: right;">32.40379</td>
+<td style="text-align: right;">-0.0773078</td>
+<td style="text-align: right;">3.943005</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">31.04928</td>
-<td style="text-align: right;">-0.0745350</td>
-<td style="text-align: right;">3.940575</td>
+<td style="text-align: right;">28.26745</td>
+<td style="text-align: right;">-0.0616808</td>
+<td style="text-align: right;">3.838316</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">29.71194</td>
-<td style="text-align: right;">-0.0633953</td>
-<td style="text-align: right;">3.836345</td>
+<td style="text-align: right;">33.07188</td>
+<td style="text-align: right;">-0.0830290</td>
+<td style="text-align: right;">4.403910</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">26.95708</td>
-<td style="text-align: right;">-0.0466278</td>
-<td style="text-align: right;">3.907002</td>
+<td style="text-align: right;">30.84380</td>
+<td style="text-align: right;">-0.0711837</td>
+<td style="text-align: right;">3.861623</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">31.68332</td>
-<td style="text-align: right;">-0.0781663</td>
-<td style="text-align: right;">3.660311</td>
+<td style="text-align: right;">29.37730</td>
+<td style="text-align: right;">-0.0574441</td>
+<td style="text-align: right;">3.998523</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<section id="asking-for-probabilites" class="level3" data-number="4.6.1">
-<h3 data-number="4.6.1" class="anchored" data-anchor-id="asking-for-probabilites"><span class="header-section-number">4.6.1</span> Asking for probabilites</h3>
+<section id="asking-for-probabilites" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="asking-for-probabilites"><span class="header-section-number">4.4.1</span> Asking for probabilites</h3>
 <p><em>What’s the probability that the effect of hp is negative?</em></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes_tibble <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(hp <span class="sc">&lt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>lm1_bayes_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(hp <span class="sc">&lt;</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1025,19 +1309,19 @@ Chain 4: </code></pre>
 </div>
 <p>Feel free to ask similar questions!</p>
 </section>
-<section id="asking-for-quantiles" class="level3" data-number="4.6.2">
-<h3 data-number="4.6.2" class="anchored" data-anchor-id="asking-for-quantiles"><span class="header-section-number">4.6.2</span> Asking for quantiles</h3>
+<section id="asking-for-quantiles" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="asking-for-quantiles"><span class="header-section-number">4.4.2</span> Asking for quantiles</h3>
 <p><em>With a given probability of, say 90%, how large is the effect of hp?</em></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(lm1_bayes_tibble<span class="sc">$</span>hp, .<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(lm1_bayes_tibble<span class="sc">$</span>hp, .<span class="dv">9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        90% 
--0.05429705 </code></pre>
+-0.05458488 </code></pre>
 </div>
 </div>
 <p><em>What’s the smallest 95% percent interval for the effect of hp?</em></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1055,16 +1339,16 @@ Chain 4: </code></pre>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">26.8196810</td>
-<td style="text-align: right;">33.5375524</td>
+<td style="text-align: right;">26.8240164</td>
+<td style="text-align: right;">33.4168051</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0887995</td>
-<td style="text-align: right;">-0.0475132</td>
+<td style="text-align: right;">-0.0887201</td>
+<td style="text-align: right;">-0.0473449</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
@@ -1075,7 +1359,7 @@ Chain 4: </code></pre>
 </div>
 <p>In case you prefer 89% intervals (I do!):</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes, <span class="at">ci =</span> .<span class="dv">89</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hdi</span>(lm1_bayes, <span class="at">ci =</span> .<span class="dv">89</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1093,16 +1377,16 @@ Chain 4: </code></pre>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: right;">0.89</td>
-<td style="text-align: right;">27.336389</td>
-<td style="text-align: right;">32.7313829</td>
+<td style="text-align: right;">27.5246307</td>
+<td style="text-align: right;">32.8680028</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
 <td style="text-align: right;">0.89</td>
-<td style="text-align: right;">-0.085595</td>
-<td style="text-align: right;">-0.0526822</td>
+<td style="text-align: right;">-0.0849041</td>
+<td style="text-align: right;">-0.0512066</td>
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">conditional</td>
 </tr>
@@ -1112,8 +1396,8 @@ Chain 4: </code></pre>
 </div>
 </div>
 </section>
-<section id="model-specification" class="level3" data-number="4.6.3">
-<h3 data-number="4.6.3" class="anchored" data-anchor-id="model-specification"><span class="header-section-number">4.6.3</span> Model specification</h3>
+<section id="model-specification" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="model-specification"><span class="header-section-number">4.4.3</span> Model specification</h3>
 <p>In Bayes statistics, it is customary to specify the model in something like the following way:</p>
 <p><span class="math display">\[\begin{aligned}
 y_i &amp;\sim N(\mu_i,\sigma)\\
@@ -1123,16 +1407,16 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 \end{aligned}\]</span></p>
 <p>In this specification, <span class="math inline">\(N\)</span> refers to the normal distribution, and <span class="math inline">\(E\)</span> to the exponential distribution. Furthermore, this model assumes that the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are given in standard units.</p>
 </section>
-<section id="prediction-interval" class="level3" data-number="4.6.4">
-<h3 data-number="4.6.4" class="anchored" data-anchor-id="prediction-interval"><span class="header-section-number">4.6.4</span> Prediction interval</h3>
+<section id="prediction-interval" class="level3" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="prediction-interval"><span class="header-section-number">4.4.4</span> Prediction interval</h3>
 <p>A prediction interval answers the following question</p>
 <blockquote class="blockquote">
 <p>How large is the uncertainty in <span class="math inline">\(y\)</span> associated with a given obersation? What interval of values should I expect for a randomly chosen observation?</p>
 </blockquote>
 <p>For example, what’s the uncertainty attached to the fuel economy of a car with 100 hp?</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">estimate_prediction</span>(<span class="at">model =</span> lm1_bayes, </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">hp =</span> <span class="dv">100</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">estimate_prediction</span>(<span class="at">model =</span> lm1_bayes, </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">hp =</span> <span class="dv">100</span>) )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1148,10 +1432,10 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">23.23795</td>
-<td style="text-align: right;">4.096616</td>
-<td style="text-align: right;">15.25316</td>
-<td style="text-align: right;">31.36842</td>
+<td style="text-align: right;">23.26693</td>
+<td style="text-align: right;">4.167489</td>
+<td style="text-align: right;">14.99959</td>
+<td style="text-align: right;">31.42942</td>
 </tr>
 </tbody>
 </table>
@@ -1159,8 +1443,8 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 </div>
 </section>
-<section id="and-more" class="level3" data-number="4.6.5">
-<h3 data-number="4.6.5" class="anchored" data-anchor-id="and-more"><span class="header-section-number">4.6.5</span> … And more</h3>
+<section id="and-more" class="level3" data-number="4.4.5">
+<h3 data-number="4.4.5" class="anchored" data-anchor-id="and-more"><span class="header-section-number">4.4.5</span> … And more</h3>
 <p>We could even ask intriguing questions such as</p>
 <blockquote class="blockquote">
 <p>Given the model, and given two random observations, one from the experimental group and one from the control group, what is the probability that observation 1 has a higher value in <span class="math inline">\(Y\)</span> than observation 2 has?</p>
@@ -1168,14 +1452,14 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <p>Note that we are not only asking for “typical” observations as predicted by the model but we are also taking into account the uncertainty of the prediction for each group. Hence, <em>this</em> kind of questions is likely to yield more realistic (and less clear-cut) answers than just asking for the typical value. In other words, such analyses draw on the posterior predictive distribution.</p>
 </section>
 </section>
-<section id="more-linear-models" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="more-linear-models"><span class="header-section-number">4.7</span> More linear models</h2>
-<section id="multiple-metric-predictors" class="level3" data-number="4.7.1">
-<h3 data-number="4.7.1" class="anchored" data-anchor-id="multiple-metric-predictors"><span class="header-section-number">4.7.1</span> Multiple metric predictors</h3>
+<section id="more-linear-models" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="more-linear-models"><span class="header-section-number">4.5</span> More linear models</h2>
+<section id="multiple-metric-predictors" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="multiple-metric-predictors"><span class="header-section-number">4.5.1</span> Multiple metric predictors</h3>
 <p>Assume we have a theory that dictates that fuel economy is a (causal) function of horse power and engine displacement.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lm2_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>lm2_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_freq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1244,26 +1528,26 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 <p>Similarly for Bayes inference:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>lm2_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>lm2_bayes <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> disp, <span class="at">data =</span> mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Results</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm2_bayes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
+<col style="width: 10%">
 <col style="width: 9%">
-<col style="width: 8%">
 <col style="width: 4%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 4%">
 <col style="width: 8%">
 <col style="width: 7%">
 <col style="width: 15%">
 <col style="width: 12%">
-<col style="width: 9%">
+<col style="width: 10%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1283,39 +1567,39 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">30.7401922</td>
+<td style="text-align: right;">30.7414461</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">27.8998921</td>
-<td style="text-align: right;">33.3325232</td>
-<td style="text-align: right;">1.00000</td>
-<td style="text-align: right;">0.9993953</td>
-<td style="text-align: right;">4172.592</td>
+<td style="text-align: right;">27.9174011</td>
+<td style="text-align: right;">33.5256115</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.9995722</td>
+<td style="text-align: right;">5030.497</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">20.09062</td>
 <td style="text-align: right;">15.0673701</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">hp</td>
-<td style="text-align: right;">-0.0246551</td>
+<td style="text-align: right;">-0.0249491</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0512410</td>
-<td style="text-align: right;">0.0029018</td>
-<td style="text-align: right;">0.95975</td>
-<td style="text-align: right;">0.9997783</td>
-<td style="text-align: right;">2066.124</td>
+<td style="text-align: right;">-0.0521502</td>
+<td style="text-align: right;">0.0023749</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">1.0025928</td>
+<td style="text-align: right;">1941.692</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.2197599</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">disp</td>
-<td style="text-align: right;">-0.0304618</td>
+<td style="text-align: right;">-0.0300386</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-0.0456687</td>
-<td style="text-align: right;">-0.0155818</td>
-<td style="text-align: right;">1.00000</td>
-<td style="text-align: right;">1.0005632</td>
-<td style="text-align: right;">2063.119</td>
+<td style="text-align: right;">-0.0459895</td>
+<td style="text-align: right;">-0.0154262</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.0017993</td>
+<td style="text-align: right;">1962.035</td>
 <td style="text-align: left;">normal</td>
 <td style="text-align: right;">0.00000</td>
 <td style="text-align: right;">0.1215712</td>
@@ -1324,7 +1608,7 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </table>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm2_bayes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">parameters</span>(lm2_bayes))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1332,17 +1616,17 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm2_bayes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(lm2_bayes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Bayesian R2 with Compatibility Interval
 
-  Conditional R2: 0.730 (95% CI [0.576, 0.845])</code></pre>
+  Conditional R2: 0.730 (95% CI [0.566, 0.840])</code></pre>
 </div>
 </div>
 <p>Depending on the value of <code>disp</code> the prediction of <code>mpg</code> from <code>hp</code> will vary:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>lm2_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm2_freq)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm2_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>lm2_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm2_freq)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm2_pred)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1352,11 +1636,11 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 </div>
 </section>
-<section id="one-nominal-predictor" class="level3" data-number="4.7.2">
-<h3 data-number="4.7.2" class="anchored" data-anchor-id="one-nominal-predictor"><span class="header-section-number">4.7.2</span> One nominal predictor</h3>
+<section id="one-nominal-predictor" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="one-nominal-predictor"><span class="header-section-number">4.5.2</span> One nominal predictor</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1414,40 +1698,41 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 <p>A linear model with one predictor having two values amounts to nothing more than comparing the means of two groups:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggviolin</span>(mtcars, <span class="at">x =</span> <span class="st">"am"</span>, <span class="at">y =</span> <span class="st">"mpg"</span>,</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">add =</span> <span class="st">"mean_se"</span>) <span class="sc">+</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Mean plus/minus SE are shown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggviolin</span>(mtcars, <span class="at">x =</span> <span class="st">"am"</span>, <span class="at">y =</span> <span class="st">"mpg"</span>,</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">add =</span> <span class="st">"mean_se"</span>) <span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Mean plus/minus SE are shown"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="050-regression1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Let’s compute the mean values per group:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(am) <span class="sc">|&gt;</span> </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe_distribution</span>(<span class="at">select =</span> <span class="st">"mpg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(am) <span class="sc">|&gt;</span> </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe_distribution</span>(<span class="at">select =</span> <span class="st">"mpg"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 7%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 11%">
-<col style="width: 13%">
 <col style="width: 3%">
 <col style="width: 11%">
-<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 3%">
+<col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
+<th style="text-align: right;">am</th>
 <th style="text-align: left;">Variable</th>
 <th style="text-align: right;">Mean</th>
 <th style="text-align: right;">SD</th>
@@ -1458,11 +1743,11 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <th style="text-align: right;">Kurtosis</th>
 <th style="text-align: right;">n</th>
 <th style="text-align: right;">n_Missing</th>
-<th style="text-align: left;">.group</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: right;">0</td>
 <td style="text-align: left;">mpg</td>
 <td style="text-align: right;">17.14737</td>
 <td style="text-align: right;">3.833966</td>
@@ -1473,9 +1758,9 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <td style="text-align: right;">-0.3339353</td>
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: left;">am=0</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">1</td>
 <td style="text-align: left;">mpg</td>
 <td style="text-align: right;">24.39231</td>
 <td style="text-align: right;">6.166504</td>
@@ -1486,7 +1771,6 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <td style="text-align: right;">-1.1586082</td>
 <td style="text-align: right;">13</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: left;">am=1</td>
 </tr>
 </tbody>
 </table>
@@ -1495,27 +1779,27 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 <p>However, unfortunately, the plot of the model <em>needs</em> a nominal variable if we are to compare groups. In our case, <code>am</code> is considered a numeric variables, since it consists of numbers only. The plot does not work as expected, malheureusement:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm3a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">estimate_relation</span>(lm3a))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="050-regression1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error: object 'lm3a_means' not found</code></pre>
+<pre><code>Error: Objekt 'lm3a_means' nicht gefunden</code></pre>
 </div>
 </div>
 <p>We need to transform <code>am</code> to a <em>factor</em> variable. That’s something like a string (text) variable. If we hand over a <code>factor()</code> to the plotting function, everything will run smoothly. Computationwise, no big differences:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_f =</span> <span class="fu">factor</span>(am))</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am_f, <span class="at">data =</span> mtcars2)</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_f =</span> <span class="fu">factor</span>(am))</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>lm3a <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am_f, <span class="at">data =</span> mtcars2)</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm3a)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1573,8 +1857,8 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 <p>We can also compute the predicted output values of our model at given input variable values:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a, <span class="at">at =</span> <span class="st">"am = c(0, 1)"</span>)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>lm3a_means </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a, <span class="at">at =</span> <span class="st">"am = c(0, 1)"</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>lm3a_means </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1615,12 +1899,12 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 </div>
 <p>If we were not to specify the values of <code>am</code> which we would like to get predictions for, the default of the function would select 10 values, spread across the range of <code>am</code>. For numeric variables, this is usually fine. However, for nominal variables - and <code>am</code> is in fact a nominally scaled variable - we insist that we want predictions for the levels of the variable only, that is for <code>0</code> and <code>1</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lm3a_means <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(lm3a)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3a_means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="050-regression1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1628,14 +1912,14 @@ y_i &amp;\sim N(\mu_i,\sigma)\\
 <p>Note that we should have converted <code>am</code> to a factor variable before fitting the model. Otherwise, the plot won’t work.</p>
 <p>Here’s a more hand-crafted version of the last plot, see Fig. <a href="#fig-lm3a-means" class="quarto-xref">Figure&nbsp;<span>4.6</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars2) <span class="sc">+</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> am_f, <span class="at">y =</span> mpg) <span class="sc">+</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">data =</span> lm3a_means,</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> <span class="st">"orange"</span>,</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> CI_low, <span class="at">ymax =</span> CI_high, <span class="at">y =</span> Mean)) <span class="sc">+</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm3a_means, <span class="fu">aes</span>(<span class="at">y =</span> Mean, <span class="at">group =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars2) <span class="sc">+</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> am_f, <span class="at">y =</span> mpg) <span class="sc">+</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">data =</span> lm3a_means,</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> <span class="st">"orange"</span>,</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> CI_low, <span class="at">ymax =</span> CI_high, <span class="at">y =</span> Mean)) <span class="sc">+</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm3a_means, <span class="fu">aes</span>(<span class="at">y =</span> Mean, <span class="at">group =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-lm3a-means" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1650,15 +1934,15 @@ Figure&nbsp;4.6: Means per level of am
 </div>
 </div>
 </section>
-<section id="one-metric-and-one-nominal-predictor" class="level3" data-number="4.7.3">
-<h3 data-number="4.7.3" class="anchored" data-anchor-id="one-metric-and-one-nominal-predictor"><span class="header-section-number">4.7.3</span> One metric and one nominal predictor</h3>
+<section id="one-metric-and-one-nominal-predictor" class="level3" data-number="4.5.3">
+<h3 data-number="4.5.3" class="anchored" data-anchor-id="one-metric-and-one-nominal-predictor"><span class="header-section-number">4.5.3</span> One metric and one nominal predictor</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl))</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars2)</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>mtcars2 <span class="ot">&lt;-</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl))</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars2)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span>(lm4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1737,8 +2021,8 @@ Figure&nbsp;4.6: Means per level of am
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>lm4_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm4)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm4_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>lm4_pred <span class="ot">&lt;-</span> <span class="fu">estimate_relation</span>(lm4)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm4_pred)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1748,22 +2032,22 @@ Figure&nbsp;4.6: Means per level of am
 </div>
 </div>
 </section>
-<section id="watch-out-for-simpson" class="level3" data-number="4.7.4">
-<h3 data-number="4.7.4" class="anchored" data-anchor-id="watch-out-for-simpson"><span class="header-section-number">4.7.4</span> Watch out for Simpson</h3>
+<section id="watch-out-for-simpson" class="level3" data-number="4.5.4">
+<h3 data-number="4.5.4" class="anchored" data-anchor-id="watch-out-for-simpson"><span class="header-section-number">4.5.4</span> Watch out for Simpson</h3>
 <p>Beware! Model estimates can swing wildly if you add (or remove) some predictor from your model. <a href="https://ecologyforthemasses.com/2022/06/08/who-is-simpson-and-what-does-his-paradox-mean-for-ecologists/">See this post</a> for an demonstration.</p>
 </section>
 </section>
-<section id="what-about-correlation" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="what-about-correlation"><span class="header-section-number">4.8</span> What about correlation?</h2>
+<section id="what-about-correlation" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="what-about-correlation"><span class="header-section-number">4.6</span> What about correlation?</h2>
 <p>Correlation is really a close cousin to regression. In fact, regression with standardized variables amounts to correlation.</p>
 <p>Let’s get the correlation matrix of the variables in involved in <code>lm4</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lm4_corr <span class="ot">&lt;-</span> </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, disp) <span class="sc">%&gt;%</span> </span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>()</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>lm4_corr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>lm4_corr <span class="ot">&lt;-</span> </span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, disp) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>()</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>lm4_corr</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1841,18 +2125,18 @@ Figure&nbsp;4.6: Means per level of am
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">summary</span>(lm4_corr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">summary</span>(lm4_corr))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="050-regression1_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="050-regression1_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="exercises-1" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">4.9</span> Exercises</h2>
+<section id="exercises-1" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">4.7</span> Exercises</h2>
 <ol type="1">
 <li><a href="https://datenwerk.netlify.app/posts/mtcars-simple1/mtcars-simple1/">mtcars simple 1</a></li>
 <li><a href="https://datenwerk.netlify.app/posts/mtcars-simple2/mtcars-simple2/">mtcars simple 2</a></li>
@@ -1865,26 +2149,26 @@ Figure&nbsp;4.6: Means per level of am
 <p>👨‍🏫 Checkout all <a href="https://datenwerk.netlify.app/#category=regression">exercises tagged with “regression”</a> on <a href="https://datenwerk.netlify.app/">datenwerk</a>. Pro-Tipp: Use the translation function of your browers to translate the webpage into your favorite language.</p>
 </blockquote>
 </section>
-<section id="case-study" class="level2" data-number="4.10">
-<h2 data-number="4.10" class="anchored" data-anchor-id="case-study"><span class="header-section-number">4.10</span> Case study</h2>
+<section id="case-study" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="case-study"><span class="header-section-number">4.8</span> Case study</h2>
 <ul>
 <li>Prices of <a href="https://moderndive.com/11-thinking-with-data.html#seattle-house-prices">Boston houses</a>, first part</li>
 <li>Modeling <a href="https://data-se.netlify.app/2021/02/24/modelling-movie-successes-linear-regression/">movie succes</a>, first part</li>
 </ul>
 </section>
-<section id="lab-1" class="level2" data-number="4.11">
-<h2 data-number="4.11" class="anchored" data-anchor-id="lab-1"><span class="header-section-number">4.11</span> Lab</h2>
+<section id="lab-1" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="lab-1"><span class="header-section-number">4.9</span> Lab</h2>
 <p>Get your own data, and build a simple model reflecting your research hypothesis. If you are lacking data (or hypothesis) get something close to it.</p>
 </section>
-<section id="going-further" class="level2" data-number="4.12">
-<h2 data-number="4.12" class="anchored" data-anchor-id="going-further"><span class="header-section-number">4.12</span> Going further</h2>
+<section id="going-further" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="going-further"><span class="header-section-number">4.10</span> Going further</h2>
 <p>Check-out <a href="https://statistik1.netlify.app/080-regression1">this chapter</a> of my intro stats book to get an overview on statistical modeling using basic regression technieques. Please use your browser’s translation feature to render the webpages into your favorite language.</p>
 <p>An accessible treatment of regression is provided by <span class="citation" data-cites="ismay_statistical_2020">Ismay &amp; Kim (<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">2020</a>)</span>.</p>
 <p><span class="citation" data-cites="roback_beyond_2021">Roback &amp; Legler (<a href="references.html#ref-roback_beyond_2021" role="doc-biblioref">2021</a>)</span> provide a more than introductory account of regression while being accessible. A recent but already classic book (if this is possible) is the book by <span class="citation" data-cites="gelman_regression_2021">Gelman et al. (<a href="references.html#ref-gelman_regression_2021" role="doc-biblioref">2021</a>)</span>. You may also benefit from <span class="citation" data-cites="poldrack_statistical_2022">Poldrack (<a href="references.html#ref-poldrack_statistical_2022" role="doc-biblioref">2022</a>)</span> (open access).</p>
 <p>For a gentle introduction to the basics of modelling, see <a href="https://moderndive.com/5-regression.html">ModernDive Chap. 5.0</a> <span class="citation" data-cites="ismay_statistical_2020">(<a href="references.html#ref-ismay_statistical_2020" role="doc-biblioref">Ismay &amp; Kim, 2020</a>)</span>, and get the R code <a href="http://moderndive.com/scripts/05-regression.R">here</a>. For slightly more advanced topics on linear regression such as multiple regression and interaction, see <a href="https://moderndive.com/6-multiple-regression.html">ModernDive Chap. 6</a>, and get the R code <a href="http://moderndive.com/scripts/06-multiple-regression.R">here</a>.</p>
 </section>
-<section id="debrief" class="level2" data-number="4.13">
-<h2 data-number="4.13" class="anchored" data-anchor-id="debrief"><span class="header-section-number">4.13</span> Debrief</h2>
+<section id="debrief" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="debrief"><span class="header-section-number">4.11</span> Debrief</h2>
 <p><a href="https://media.giphy.com/media/141amBdjqs9Vvy/giphy.gif">Science!</a></p>
 
 
@@ -1906,239 +2190,256 @@ Roback, P., &amp; Legler, J. (2021). <em>Beyond multiple linear regression: Appl
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2146,185 +2447,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./040-inference.html" class="pagination-link" aria-label="Inference">
@@ -2342,4 +2619,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sebastiansauer/stats-nutshell/blob/main/050-regression1.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/sebastiansauer/stats-nutshell/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

@@ -3,7 +3,9 @@
 ![](img/stern.png){width="5%"}
 
 
-## R packages needed for this chapter
+## Setup
+
+The following R packages are needed for this chapter.
 
 ```{r}
 #| message: false
@@ -53,7 +55,7 @@ flowchart LR
 ```
 
 
-## Regression as the umbrella tool for modelling
+### Regression as the umbrella tool for modelling
 
 ![One regression](img/one-regression-to-rule-them-all.jpeg){width="50%"}
 
@@ -107,7 +109,7 @@ For the mathematical inclined, check out [this derivation](https://data-se.netli
 
 
 
-## In all its glory
+### The linear model in all its glory
 
 ```{r in-all-its-glory}
 #| message: false
@@ -149,7 +151,34 @@ ggplot(d,
 ```
 
 
-## First model: one metric predictor
+
+### A ladder of common regression formula variants
+
+
+The following "ladder" shows the logical structure of common linear model in increasing complexity.
+
+Note:
+- `y`: the dependent variable
+- `x`: a metric independent variable
+- `b`: a binary (dichotomic) independent variable
+- `g`: a nominal (two or more groups) independent variable
+- `_c`: a *c*entered variable
+
+
+0. `y ~ 1` - the simple grand mean value
+1. `y ~ b` - difference between two mean values
+2. `y ~ g` - differences between multiple mean values
+3. `y ~ x_c` - y as a linear function of x
+4.  `y ~ x1_c + x2_c` - y as a linear function of both x1 and x2
+5. `y ~ x_c + g + x_c:g`  - the interaction (moderator) model
+6. `log(y) ~ x1 + x2` - multiplicative association of independent variables
+7. `log(p/(1-p)) ~ x` - logistic regression
+
+
+
+
+
+## A simple model: one metric predictor
 
 :::{.callout-note}
 All the R-code for each chapter can be found as pure, R-only files [here](https://github.com/sebastiansauer/stats-nutshell/tree/main/R-code-for-the-chapters). $\square$
@@ -160,7 +189,7 @@ First, let's load some data:
 
 ```{r}
 data(mtcars)
-glimpse(mtcars)
+glimpse(mtcars)  # don't forget to start the "tidyverse package" upfront
 ```
 
 ### Frequentist
@@ -183,6 +212,16 @@ Plot the model parameters:
 plot(parameters(lm1_freq))
 ```
 
+Plot the regression line:
+
+```{r}
+estimate_prediction(lm1_freq, by = "hp") |> 
+  plot() +
+  geom_point(aes(y = mpg, x = hp), data = mtcars)
+```
+
+
+
 ### Bayesian
 
 ```{r lm1-bayes}
@@ -195,17 +234,45 @@ Actually, we want to suppress some overly verbose output of the sampling, so add
 lm1_bayes <- stan_glm(mpg ~ hp, data = mtcars, refresh = 0)
 ```
 
+
+### Model parameters
+
 Get the parameter values:
 
 ```{r}
 parameters(lm1_bayes)
 ```
 
+
+```{r}
+parameters(lm1_freq)
+```
+
+
 Plot the model parameters:
 
 ```{r}
 plot(parameters(lm1_bayes))
 ```
+
+Get some predictions
+
+```{r lm1-preds}
+lm1_pred <- estimate_relation(lm1_freq)
+lm1_pred
+```
+
+More details on the above function can be found on the [respective page at the easystats site](https://easystats.github.io/modelbased/reference/estimate_expectation.html#functions-for-estimating-predicted-values-and-uncertainty).
+
+
+Plot the model (regression line):
+
+```{r plot-lm1-pred}
+plot(lm1_pred) +
+  geom_point(aes(y = mpg, x = hp), data = mtcars)
+```
+
+
 
 ### Model performance
 
@@ -238,20 +305,23 @@ And here are some Bayesian flavored model checks.
 check_model(lm1_bayes)
 ```
 
-### Get some predictions
 
-```{r lm1-preds}
-lm1_pred <- estimate_relation(lm1_freq)
-lm1_pred
+Let's have a look at the predictions and the residuals:
+
+```{r}
+mtcars <-
+  mtcars |> 
+  mutate(pred = predict(lm1_bayes),
+         resid = resid(lm1_bayes))
 ```
 
-More details on the above function can be found on the [respective page at the easystats site](https://easystats.github.io/modelbased/reference/estimate_expectation.html#functions-for-estimating-predicted-values-and-uncertainty).
 
-### Plot the model
-
-```{r plot-lm1-pred}
-plot(lm1_pred)
+```{r}
+gghistogram(mtcars, 
+            x = "resid")
 ```
+Looks okay.
+
 
 ### More of this
 
@@ -262,9 +332,12 @@ More technical details for gauging model performance and model quality, can be f
 
 ### Exercises
 
+See [Datenwerk](https://sebastiansauer.github.io/Datenwerk/#category=regression) with tag "#regression".
+
+
 - [mtcars-regr01](https://datenwerk.netlify.app/posts/mtcars-regr01/mtcars-regr01)
 - [lm1](https://datenwerk.netlify.app/posts/lm1/lm1)
-- 
+
 
 
 ### Lab

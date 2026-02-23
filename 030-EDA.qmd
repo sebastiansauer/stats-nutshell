@@ -663,16 +663,10 @@ The R package `{flextable}` provides functions for that purpose, see @tbl-flex^[
 ```{r}
 #| label: tbl-flex
 #| tbl-cap: A table using the R package flextable
+#| eval: false
 library(flextable)
 my_flex_tab <- flextable(head(penguins))
-my_flex_tab
-```
 
-
-Just save it to the Office format of your choice:
-
-```{r}
-#| eval: false
 save_as_docx("Table 1 " = my_flex_tab, path = "my_tab.docx")
 save_as_pptx("Table 1 " = my_flex_tab, path = "my_tab.pptx")
 ```

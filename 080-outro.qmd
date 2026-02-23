@@ -23,7 +23,7 @@ There's a ton of exercises available at the [Datenwerk](https://datenwerk.netlif
 
 
 ```{r child-vis, results='asis', echo = FALSE}
-url <- "https://raw.githubusercontent.com/sebastiansauer/Lehre/main/yacsdas/yacsdas-vis.md"
+url <- "https://raw.githubusercontent.com/sebastiansauer/Lehre/main/Archiv/yacsdas/yacsdas-vis.md"
 childtext <- readLines(url)
 cat(childtext, sep="\n")
 ```
@@ -39,7 +39,7 @@ cat(childtext, sep="\n")
 
 
 ```{r child-eda, results='asis', echo = FALSE}
-url <- "https://raw.githubusercontent.com/sebastiansauer/Lehre/main/yacsdas/yacsdas-EDA.md"
+url <- "https://raw.githubusercontent.com/sebastiansauer/Lehre/main/Archiv/yacsdas/yacsdas-EDA.md"
 childtext <- readLines(url)
 cat(childtext, sep="\n")
 ```
@@ -57,7 +57,7 @@ cat(childtext, sep="\n")
 
 
 ```{r child2, results='asis', echo = FALSE}
-url <- "https://raw.githubusercontent.com/sebastiansauer/Lehre/main/yacsdas/yacsdas-lm.md"
+url <- "https://raw.githubusercontent.com/sebastiansauer/Lehre/main/Archiv/yacsdas/yacsdas-lm.md"
 childtext <- readLines(url)
 cat(childtext, sep="\n")
 ```
@@ -69,7 +69,7 @@ cat(childtext, sep="\n")
 
 
 ```{r child3, results='asis', echo = FALSE}
-url <- "https://raw.githubusercontent.com/sebastiansauer/Lehre/main/yacsdas/yacsdas-tidymodels.md"
+url <- "https://raw.githubusercontent.com/sebastiansauer/Lehre/main/Archiv/yacsdas/yacsdas-tidymodels.md"
 childtext <- readLines(url)
 cat(childtext, sep="\n")
 ```
