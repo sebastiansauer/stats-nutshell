@@ -19,7 +19,7 @@ library(ggdag)  # optional
 
 ## Intro to causality
 
-Check out this [talk](https://sebastiansauer-academic.netlify.app/uploads/Intro-to-Causality.pdf).
+Check out this [talk](https://sebastiansauer.github.io/sebastiansaueracademic/uploads/Intro-to-Causality.pdf).
 
 ## Literature
 

@@ -157,7 +157,7 @@ Sebastian Sauer works as a professor at Ansbach university, teaching statistics 
 
 ### Contact
 
-Check-out my personal homepage [here](https://sebastiansauer-academic.netlify.app/).
+Check-out my personal homepage [here](https://sebastiansauer.github.io/sebastiansaueracademic/).
 
 
 
@@ -181,7 +181,7 @@ Most of the materials as presented below is made available through the course bo
 
 This is permissive work, [see the licence here](https://github.com/sebastiansauer/stats-nutshell/blob/main/LICENSE).
 
-The author is [Sebastian Sauer](https://sebastiansauer-academic.netlify.app/).
+The author is [Sebastian Sauer](https://sebastiansauer.github.io/sebastiansaueracademic/).
 
 Check out the [Github repo of this project](https://github.com/sebastiansauer/stats-nutshell).
 

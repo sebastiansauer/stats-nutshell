@@ -328,7 +328,7 @@ Similar to the "goals" of statistics as presented here, @gelman_regression_2021,
 
 
 If you want to dig deeper, check-out this [course on statistical inference using Bayes statistics](https://start-bayes.netlify.app/).
-If you are interested in predictive modeling, check-out [this couse](https://ds1-prognosemodellierung.netlify.app/).
+If you are interested in predictive modeling, check-out [this couse](https://sebastiansauer.github.io/datascience1/).
 
 
 Looking for a text book on statistical modelling suitable to applied PhD level? 

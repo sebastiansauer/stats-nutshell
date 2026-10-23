@@ -213,7 +213,7 @@ Most of the materials as presented below is made available through the course bo
 
 This is permissive work, [see the licence here](https://github.com/sebastiansauer/stats-nutshell/blob/main/LICENSE).
 
-The author is [Sebastian Sauer](https://sebastiansauer-academic.netlify.app/).
+The author is [Sebastian Sauer](https://sebastiansauer.github.io/sebastiansaueracademic/).
 
 Check out the [Github repo of this project](https://github.com/sebastiansauer/stats-nutshell).
 

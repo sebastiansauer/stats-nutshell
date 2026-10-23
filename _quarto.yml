@@ -72,6 +72,7 @@ format:
 
     
 execute:
+  freeze: auto
   warning: false   
   cache: true
   echo: true
